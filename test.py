@@ -1,4 +1,4 @@
-import os
+import os, sys
 
-print ('hel')
-open('output.txt', 'w').write('hel')
+os.chdir('data/')
+os.system('wget ftp://ftp.ebi.ac.uk/pub/databases/msd/sifts/flatfiles/tsv/pdb_chain_pfam.tsv.gz')
