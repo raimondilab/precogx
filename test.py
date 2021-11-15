@@ -1,6 +1,7 @@
 import os, sys, gzip
 
 os.chdir('data/')
+os.system('rm -rf pdb_chain_pfam.tsv.gz')
 os.system('wget ftp://ftp.ebi.ac.uk/pub/databases/msd/sifts/flatfiles/tsv/pdb_chain_pfam.tsv.gz')
 
 l = ''
