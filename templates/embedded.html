@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="static/sequence-viewer.bundle.js"></script>
+  <script src="static/ngl.js"></script>
 </head>
 <body>
 
@@ -38,7 +39,6 @@
     <div class="col-5 p-3 border border-primary">
       <h3><u>Structure</u></h3>
       <div id="viewport" style="width:725px; height:500px;"></div>
-      <script src="static/ngl.js"></script>
       <script>
       // Create NGL Stage object
         var stage = new NGL.Stage( "viewport" );
@@ -92,8 +92,11 @@
       options = options.split('\n');
       var new_options = '';
       for (var i = 0; i < options.length; i++) {
-        var x = i.toString();
-        new_options += "<li><a class=\"dropdown-item\" onClick=\"makeStructure(\'"+options[i]+"\')\">" + options[i]+"</a></li>";
+        var x = options[i].split(' ');
+        var pdbid = x[0];
+        var chainGPCR = x[1];
+        var chainGPROT = x[2];
+        new_options += "<li><a class=\"dropdown-item\" onClick=\"makeStructure(\'"+pdbid+"\',\'"+chainGPCR+"\',\'"+chainGPROT+"\')\">" + pdbid+"</a></li>";
       }
       //alert(options);
       document.getElementById("pdblist").innerHTML = new_options;
