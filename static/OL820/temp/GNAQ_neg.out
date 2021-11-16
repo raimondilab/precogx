@@ -1,0 +1,94 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.3 (Nov 2019); http://hmmer.org/
+# Copyright (C) 2019 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  GNAQ_neg.hmm
+# target sequence database:        /data/Users/gurdeep/transformers/predictor/output/OL820/temp//new_fasta_file.txt
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       GNAQ_subali_neg  [M=356]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+   3.5e-111  358.3   9.0   4.9e-111  357.9   9.0    1.2  1  DRD2      
+    2.4e-83  266.8  18.2      3e-83  266.5  18.2    1.0  1  DRD1      
+
+
+Domain annotation for each sequence (and alignments):
+>> DRD2  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  357.9   9.0  4.9e-111  4.9e-111      10     319 ..       5     443 .]       1     443 [] 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 357.9 bits;  conditional E-value: 4.9e-111
+  GNAQ_subali_neg  10 alaacrtaqivtqysvganytwllvegvyllsllvlvgllelggvlGNllVilvvlrsrklrtvtnlfilnLAvADllvallvlPfviayyllg 103
+                      +l++ +++   +++s + n ++++    + +++++l++ll++++v+GN+lV+++v r+++l+t+tn++i++LAvADllva+lv+P+v++ ++ g
+             DRD2   5 NLSWYDDDLERQNWSRPFNGSDGKADRPHYNYYATLLTLLIAVIVFGNVLVCMAVSREKALQTTTNYLIVSLAVADLLVATLVMPWVVYLEVVG 98 
+                      67788888899999******************************************************************************** PP
+
+  GNAQ_subali_neg 104 hwpfgrvlCklvlaldyvnmtaSiltLcaisvdRylavvhplrykrl..tprrakavlllvWvlsalfvlPplivrylkrqyentqCwernase 195
+                      +w+f+r++C+++++ld++++taSil+Lcais+dRy+av++p+ y+++  ++rr  +++ +vWvls+++++P l+++++    ++++C + n   
+             DRD2  99 EWKFSRIHCDIFVTLDVMMCTASILNLCAISIDRYTAVAMPMLYNTRysSKRRVTVMISIVWVLSFTISCPLLFGLNN---ADQNECIIAN--- 186
+                      **********************************************99888888999*********************...**********... PP
+
+  GNAQ_subali_neg 196 aayviyssvvaFllplliivlcylrilrklrrr............................................................. 228
+                      +a+v+yss+v+F++p+++++l+y++i++ lrrr                                                             
+             DRD2 187 PAFVVYSSIVSFYVPFIVTLLVYIKIYIVLRRRrkrvntkrssrafrahlraplkgncthpedmklctvimksngsfpvnrrrveaarraqele 280
+                      ********************************************************************************************** PP
+
+  GNAQ_subali_neg 229 ..........................................................................akkrrrrrrsarrerkvtrt 248
+                                                                                                 k+ +rr+ s+++e+k+t++
+             DRD2 281 memlsstsppertryspippshhqltlpdpshhglhstpdspakpeknghakdhpkiakifeiqtmpngktrtsLKTMSRRKLSQQKEKKATQM 374
+                      **************************************************************************999***************** PP
+
+  GNAQ_subali_neg 249 lavvllvFvlCWlPffvlvllnalcqlseevpktlfsfalwLaylNSclNPiiYallnkefrrrfrkllti 319
+                      la+vl+vF++CWlPff++++ln++c+++  +p +l+s+++wL+y+NS++NPiiY+ +n+efr++f k+l++
+             DRD2 375 LAIVLGVFIICWLPFFITHILNIHCDCN--IPPVLYSAFTWLGYVNSAVNPIIYTTFNIEFRKAFLKILHC 443
+                      **************************99..9*************************************998 PP
+
+>> DRD1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  266.5  18.2     3e-83     3e-83      37     328 ..      21     356 ..       3     383 .. 0.89
+
+  Alignments for each domain:
+  == domain 1  score: 266.5 bits;  conditional E-value: 3e-83
+  GNAQ_subali_neg  37 vyllsllvlvgllelggvlGNllVilvvlrsrklrt.vtnlfilnLAvADllvallvlPfviayyllghwpfgrvlCklvlaldyvnmtaSilt 129
+                      + +++ ++++ ll+l ++lGN+lV+ +v+r r+lr+ vtn f+++LAv+Dllva+lv+P+ ++ ++ g wpfg+ +C +++a+d++++taSil+
+             DRD1  21 SVRILTACFLSLLILSTLLGNTLVCAAVIRFRHLRSkVTNFFVISLAVSDLLVAVLVMPWKAVAEIAGFWPFGS-FCNIWVAFDIMCSTASILN 113
+                      5678899999***********************9999************************************7.9****************** PP
+
+  GNAQ_subali_neg 130 LcaisvdRylavvhplrykrl.tprrakavlllvWvlsalfvlPpl.ivryl........krqyentqCwern.............aseaayvi 200
+                      Lc+isvdRy+a+  p+ry r+ tp+ a +++ ++W+ls+l+++ p+ + +++                    n             + +++y i
+             DRD1 114 LCVISVDRYWAISSPFRYERKmTPKAAFILISVAWTLSVLISFIPVqLSWHKakptspsdG-----------NatslaetidncdsSLSRTYAI 196
+                      ****************************************986555156666666544430...........3333344456677667****** PP
+
+  GNAQ_subali_neg 201 yssvvaFllplliivlcylrilrklrrr.............................akkrrrrrrsarrerkvtrtlavvllvFvlCWlPffv 265
+                      +ssv++F++p++i+++ y+ri+r ++++                             ++ +++ + s +re+kv++tl v+++vFv CWlPff+
+             DRD1 197 SSSVISFYIPVAIMIVTYTRIYRIAQKQirriaaleraavhakncqtttgngkpvecSQPESSFKMSFKRETKVLKTLSVIMGVFVCCWLPFFI 290
+                      ********************************************************877788888888************************** PP
+
+  GNAQ_subali_neg 266 lvllnalcqlse....evpktlfsfalwLaylNSclNPiiYallnkefrrrfrklltilinrlifir 328
+                      l+++  +c + e    ++ ++ f++++w++++NS+lNPiiYa +n++fr++f  ll + + +  + +
+             DRD1 291 LNCILPFCGSGEtqpfCIDSNTFDVFVWFGWANSSLNPIIYA-FNADFRKAFSTLLGCYRLCPATNN 356
+                      **********999***************************87.699**********99776655544 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                            1  (356 nodes)
+Target sequences:                          2  (889 residues searched)
+Passed MSV filter:                         2  (1); expected 0.0 (0.02)
+Passed bias filter:                        2  (1); expected 0.0 (0.02)
+Passed Vit filter:                         2  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         2  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  2  [actual number of targets]
+Domain search space  (domZ):               2  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.00
+# Mc/sec: 35.20
+//
+[ok]

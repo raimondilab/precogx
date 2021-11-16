@@ -6,10 +6,16 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Kepp the sequence-viewer library always at the top to avoid conflict with others -->
+  <script src="static/sequence-viewer.bundle.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="static/sequence-viewer.bundle.js"></script>
+  <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="static/ngl.js"></script>
+  <script src="static/make_pdblist.js"></script>
+  <script src="static/make_table.js"></script>
 </head>
 <body>
 
@@ -22,6 +28,97 @@
   </script>
 
   <div class="row p-3">
+
+    <div class="col-1">
+    </div>
+
+    <div id="outputtable" class="col-10 border border-primary">
+    <h3><u>Results</u></h3>
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <!--
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Description</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Alphabet puzzle</td>
+          <td>2016/01/15</td>
+          <td>Done</td>
+          <td data-order="1000">€1.000,00</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Blue-Ray cover</td>
+          <td>2018/03/15</td>
+          <td>To Do</td>
+          <td data-order="1999">€1.999,00</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>TV carton</td>
+          <td>2019/02/08</td>
+          <td>Offer</td>
+          <td data-order="1369">€1.369,00</td>
+        </tr>
+      </tbody>
+    -->
+    </table>
+    </div>
+
+    <div class="col-1">
+    </div>
+
+  </div>
+
+
+  <script>
+
+  //var dataSet = [['DRD1', 0.08, 0.5],
+  //            ['DRD2', 0.4, 0.78],
+  //            ['DRD3', 0.5, 0.8]
+  //          ];
+  //var dataSet = [];
+  //var dataSet = readOutput();
+  $(document).ready(function() {
+    var dataT = $('#example').DataTable({
+      //data: dataSet,
+      "ajax": "static/OL820/out.json",
+
+      columns: [
+          { title: "GPCR" },
+          { title: "GNAL" },
+          { title: "GNAI2" },
+          { title: "GNA12" },
+          { title: "GoA" },
+          { title: "GNA15" },
+          { title: "GNAI1" },
+          { title: "GNAI3" },
+          { title: "GNAS" },
+          { title: "GNAQ" },
+          { title: "GNA14" },
+          { title: "GNA11" },
+          { title: "GNAO1" },
+          { title: "GNAZ" },
+          { title: "GNA13" },
+          { title: "GoB" }
+      ]
+      });
+      $('#example tbody').on( 'click', 'td', function () {
+        //console.log( table.row( this ).data() );
+        //alert(dataT.cell( this ).data());
+        makeSequence(dataT.cell(this).data());
+      });
+    });
+  </script>
+
+  <div class="row p-3">
     <div class="col-1">
     </div>
 
@@ -29,7 +126,9 @@
     <div class="col-4 p-3 border border-primary">
       <h3><u>Sequence</u></h3>
       <div id="sequence-viewer" class="p-3"></div>
+
       <script src="static/sequence.js"></script>
+      <script>makeSequence('DRD1');</script>
     </div>
 
     <div class="col-1">
@@ -38,16 +137,10 @@
     <!-- NGL VIEWER -->
     <div class="col-5 p-3 border border-primary">
       <h3><u>Structure</u></h3>
-      <div id="viewport" style="width:725px; height:500px;"></div>
+      <div id="viewport" style="width:725px; height:400px;"></div>
       <script>
-      // Create NGL Stage object
         var stage = new NGL.Stage( "viewport" );
         stage.setParameters( { backgroundColor: "white"} );
-        // Load PDB entry 1CRN
-        //function loadS(val){
-          //stage.removeAllComponents();
-          //stage.loadFile( "static/"+val+".cif", { defaultRepresentation: true } );
-        //}
       </script>
       <script src="static/structure.js"></script>
       <div class="dropdown" id="dd-example">
@@ -85,26 +178,6 @@
   function getSelectValue() {
     alert(document.getElementById("pdblist").value);
   }
-  function loadDoc() {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-      var options = this.responseText;
-      options = options.split('\n');
-      var new_options = '';
-      for (var i = 0; i < options.length; i++) {
-        var x = options[i].split(' ');
-        var pdbid = x[0];
-        var chainGPCR = x[1];
-        var chainGPROT = x[2];
-        new_options += "<li><a class=\"dropdown-item\" onClick=\"makeStructure(\'"+pdbid+"\',\'"+chainGPCR+"\',\'"+chainGPROT+"\')\">" + pdbid+"</a></li>";
-      }
-      //alert(options);
-      document.getElementById("pdblist").innerHTML = new_options;
-    }
-    xhttp.open("GET", "static/help.txt");
-    xhttp.send();
-  }
-
   </script>
 </body>
 </html>
