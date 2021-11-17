@@ -24,6 +24,6 @@ l = ''
 for pdbid in dic:
     if dic[pdbid]['GPCR'] != '-' and dic[pdbid]['GPROT'] != '-':
         l += pdbid + ' ' + dic[pdbid]['GPCR'] + ' ' + dic[pdbid]['GPROT'] + '\n'
-        os.system('wget https://www.rcsb.org/fasta/chain/'+pdbid.upper()+'.'+dic[pdbid]['GPCR'] + ' -O ../static/fasta/'+ pdbid.upper()+'.'+dic[pdbid]['GPCR']+'.fasta')
+        os.system('wget https://www.rcsb.org/fasta/entry/'+pdbid.lower()+'/download' + ' -O ../static/fasta/'+ pdbid.lower()+'.fasta')
 
 open('../static/pdblist.txt', 'w').write(l)
