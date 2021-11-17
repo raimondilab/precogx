@@ -22,7 +22,7 @@ for line in gzip.open('pdb_chain_pfam.tsv.gz', 'rt'):
 
 l = ''
 for pdbid in dic:
-    if dic[pdbid]['GPCR'] != '-':
+    if dic[pdbid]['GPCR'] != '-' and dic[pdbid]['GPROT'] != '-':
         l += pdbid + ' ' + dic[pdbid]['GPCR'] + ' ' + dic[pdbid]['GPROT'] + '\n'
 
-open('../static/help.txt', 'w').write(l)
+open('../static/pdblist.txt', 'w').write(l)

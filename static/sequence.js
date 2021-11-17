@@ -1,6 +1,6 @@
 // Function to read the GPCR name from the Results table and fetch it's FASTA
 // and render it in the Sequence Panel
-function makeSequence(gpcr) {
+function makeSequence(gpcr, path_to_fasta) {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     var fasta = this.responseText;
@@ -39,6 +39,6 @@ function makeSequence(gpcr) {
     seq.selection(21,33,"green");
     //document.getElementById("pdblist").innerHTML = new_options;
   }
-  xhttp.open("GET", "static/OL820/temp/new_fasta_file.txt");
+  xhttp.open("GET", path_to_fasta);
   xhttp.send();
 }

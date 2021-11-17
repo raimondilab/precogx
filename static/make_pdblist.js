@@ -14,6 +14,6 @@ function loadDoc() {
     //alert(options);
     document.getElementById("pdblist").innerHTML = new_options;
   }
-  xhttp.open("GET", "static/help.txt");
+  xhttp.open("GET", "static/pdblist.txt");
   xhttp.send();
 }

@@ -16,6 +16,7 @@
   <script src="static/ngl.js"></script>
   <script src="static/make_pdblist.js"></script>
   <script src="static/make_table.js"></script>
+  <script src="static/structure.js"></script>
 </head>
 <body>
 
@@ -27,49 +28,16 @@
   });
   </script>
 
+  <!-- RESULTS PANEL (dataTables) -->
   <div class="row p-3">
 
     <div class="col-1">
     </div>
 
     <div id="outputtable" class="col-10 border border-primary">
-    <h3><u>Results</u><h5>({{path_to_json_output}})</h5></h3>
-    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-      <!--
-      <thead>
-        <tr>
-          <th>Order</th>
-          <th>Description</th>
-          <th>Deadline</th>
-          <th>Status</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Alphabet puzzle</td>
-          <td>2016/01/15</td>
-          <td>Done</td>
-          <td data-order="1000">€1.000,00</td>
-        </tr>
-        <tr>
-          <td>29</td>
-          <td>Blue-Ray cover</td>
-          <td>2018/03/15</td>
-          <td>To Do</td>
-          <td data-order="1999">€1.999,00</td>
-        </tr>
-        <tr>
-          <td>30</td>
-          <td>TV carton</td>
-          <td>2019/02/08</td>
-          <td>Offer</td>
-          <td data-order="1369">€1.369,00</td>
-        </tr>
-      </tbody>
-    -->
-    </table>
+      <h3><u>Results</u><h5>({{path_to_json_output}})</h5></h3>
+      <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      </table>
     </div>
 
     <div class="col-1">
@@ -77,18 +45,9 @@
 
   </div>
 
-
   <script>
-
-  //var dataSet = [['DRD1', 0.08, 0.5],
-  //            ['DRD2', 0.4, 0.78],
-  //            ['DRD3', 0.5, 0.8]
-  //          ];
-  //var dataSet = [];
-  //var dataSet = readOutput();
   $(document).ready(function() {
     var dataT = $('#example').DataTable({
-      //data: dataSet,
       //"ajax": "static/OL820/out.json",
       "ajax": {{path_to_json_output|safe}},
 
@@ -112,9 +71,9 @@
       ]
       });
       $('#example tbody').on( 'click', 'td', function () {
-        //console.log( table.row( this ).data() );
         //alert(dataT.cell( this ).data());
-        makeSequence(dataT.cell(this).data());
+        makeSequence(dataT.cell(this).data(), {{path_to_fasta|safe}});
+        makeStructure('3sn6', 'R', 'A', dataT.cell(this).data());
       });
     });
   </script>
@@ -123,30 +82,34 @@
     <div class="col-1">
     </div>
 
-    <!-- neXtprot VIEWER -->
+    <!-- SEQUENCE PANEL (neXtprot viewer) -->
     <div class="col-4 p-3 border border-primary">
       <h3><u>Sequence</u></h3>
       <div id="sequence-viewer" class="p-3"></div>
 
       <script src="static/sequence.js"></script>
-      <script>makeSequence('DRD1');</script>
+      <script>makeSequence('DRD1', {{path_to_fasta|safe}});</script>
     </div>
 
     <div class="col-1">
     </div>
 
-    <!-- NGL VIEWER -->
+    <!-- STRUCTURE PANEL (NGL viewer) -->
     <div class="col-5 p-3 border border-primary">
       <h3><u>Structure</u></h3>
-      <div id="viewport" style="width:725px; height:400px;"></div>
+      <div id="viewport" style="width:725px; height:400px;">
+      </div>
       <script>
         var stage = new NGL.Stage( "viewport" );
         stage.setParameters( { backgroundColor: "white"} );
       </script>
-      <script src="static/structure.js"></script>
+      <!--<script src="static/structure.js">-->
+      <script>
+        makeStructure('3sn6', 'R', 'A', 'DRD1');
+      </script>
       <div class="dropdown" id="dd-example">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" onclick="loadDoc();">
-          PDB-ID
+        PDB-ID
         </button>
         <ul id="pdblist" class="dropdown-menu" onchange="alert(this.value);">
         </ul>
@@ -158,27 +121,5 @@
 
   </div>
 
- <!--
-  <script>
-    $(document).ready(function(){
-      $('#dd-example li a').on('click', function(){
-        alert('TEST');
-      });
-    })
-  </script>
--->
-  <!--
-  <select id="drop" onchange="makeStructure(this.value);">
-    <option value="">Select one...</option>
-    <option value="6CMO">6CMO</option>
-    <option value="3sn6">3sn6</option>
-  </select>
--->
-
-  <script>
-  function getSelectValue() {
-    alert(document.getElementById("pdblist").value);
-  }
-  </script>
 </body>
 </html>
