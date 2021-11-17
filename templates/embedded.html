@@ -20,10 +20,10 @@
 <body>
 
   <!-- NavBars -->
-  <div id="includedContent"></div>
+  <div id="navbars"></div>
   <script>
   $(function(){
-    $("#includedContent").load("static/navbars.html");
+    $("#navbars").load("static/navbars.html");
   });
   </script>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div id="outputtable" class="col-10 border border-primary">
-    <h3><u>Results</u></h3>
+    <h3><u>Results</u><h5>({{path_to_json_output}})</h5></h3>
     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <!--
       <thead>
@@ -89,7 +89,8 @@
   $(document).ready(function() {
     var dataT = $('#example').DataTable({
       //data: dataSet,
-      "ajax": "static/OL820/out.json",
+      //"ajax": "static/OL820/out.json",
+      "ajax": {{path_to_json_output|safe}},
 
       columns: [
           { title: "GPCR" },
