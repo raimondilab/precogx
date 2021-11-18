@@ -33,12 +33,14 @@ l = ''
 for pdbid in dic:
     if dic[pdbid]['GPCR'] != '-' and dic[pdbid]['GPROT'] != '-':
         l += pdbid + ' ' + dic[pdbid]['GPCR'] + ' ' + dic[pdbid]['GPROT'] + '\n'
-        os.system('wget https://www.rcsb.org/fasta/entry/'+pdbid.lower()+'/download' + ' -O ../static/fasta/'+ pdbid.lower()+'.fasta')
+        os.system('wget https://www.rcsb.org/fasta/entry/'+pdbid.lower()+'/download' + ' -O ../data/fasta/'+ pdbid.lower()+'.fasta')
 
-open('../static/pdblist.txt', 'w').write(l)
+open('../data/pdblist.txt', 'w').write(l)
 
 ## Concatenate all FASTA files into one and make a blastdb in blastdb/
-os.chdir('../static/fasta/')
+os.chdir('../data/fasta/')
+# Delete existing all_pdbs.fasta
+os.system("rm -rf all_pdbs.fasta")
 l = ''
 for files in os.listdir('.'):
     if files.endswith('.fasta'):
@@ -48,4 +50,5 @@ for files in os.listdir('.'):
 open ('all_pdbs.fasta', 'w').write(l)
 if os.path.isfile('blastdb/') == False:
     os.system("mkdir blastdb/")
+os.system("rm -rf blastdb/all_pdbs*")
 os.system("makeblastdb -in all_pdbs.fasta -dbtype 'prot' -out blastdb/all_pdbs")

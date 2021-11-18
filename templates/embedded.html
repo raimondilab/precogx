@@ -14,10 +14,15 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="static/ngl.js"></script>
-  <script src="static/make_pdblist.js"></script>
-  <script src="static/make_table.js"></script>
   <script src="static/structure.js"></script>
+  <script src="static/sequence.js"></script>
 </head>
+<style>
+.dropdown-menu {
+    max-height: 280px;
+    overflow-y: auto;
+}
+</style>
 <body>
 
   <!-- NavBars -->
@@ -36,7 +41,7 @@
     </div>
 
     <div id="outputtable" class="col-10 border border-primary">
-      <h3><u>Results</u><h5>({{path_to_json_output}})</h5></h3>
+      <h3><u>Results</u><h5>({{path_to_json_output}})</h5><h5>Click on GPCR</h5></h3>
       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
       </table>
     </div>
@@ -74,11 +79,17 @@
       $('#example tbody').on( 'click', 'td', function () {
         //alert(dataT.cell( this ).data());
         makeSequence(dataT.cell(this).data(), {{path_to_fasta|safe}});
-        makeStructure('3sn6', 'R', 'A', dataT.cell(this).data());
-        selected_gpcr = dataT.cell(this).data();
-        resetPDBlist(selected_gpcr);
+        //makeStructure('3sn6', 'R', 'A', dataT.cell(this).data());
+        makeStructure(dataT.cell(this).data());
+        //resetPDBlist(selected_gpcr);
       });
+
     });
+  </script>
+
+  <script>
+  makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}});
+  makeStructure({{first_entry|safe}});
   </script>
 
   <div class="row p-3">
@@ -89,9 +100,7 @@
     <div class="col-4 p-3 border border-primary">
       <h3><u>Sequence</u></h3>
       <div id="sequence-viewer" class="p-3"></div>
-
-      <script src="static/sequence.js"></script>
-      <script>makeSequence('DRD1', {{path_to_fasta|safe}});</script>
+      <!--<script>makeSequence('DRD1', {{path_to_fasta|safe}});</script>-->
     </div>
 
     <div class="col-1">
@@ -100,44 +109,21 @@
     <!-- STRUCTURE PANEL (NGL viewer) -->
     <div class="col-5 p-3 border border-primary">
       <h3><u>Structure</u></h3>
+      <div class="dropdown" id="dd-example">
+        <button type="button" id="PDBbutton" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown";>
+        PDB-ID
+        </button>
+          <ul id="pdblist" class="dropdown-menu">
+          </ul>
+      </div>
+
       <div id="viewport" style="width:725px; height:400px;">
       </div>
       <script>
         var stage = new NGL.Stage( "viewport" );
         stage.setParameters( { backgroundColor: "white"} );
       </script>
-      <!--<script src="static/structure.js">-->
-      <script>
-        makeStructure('3sn6', 'R', 'A', 'DRD1');
-      </script>
-      <div class="dropdown" id="dd-example">
-        <button type="button" id="PDBbutton" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown";>
-        PDB-ID
-        </button>
-        <div id="buttonContainer">
-        </div>
-        <script>
-            resetPDBlist('DRD1');
-            /*
-            //var container = document.getElementById('buttonContainer');
-            //let btn = document.createElement("button");
-            var dropDown = document.getElementById('PDBbutton');
-            //btn.innerHTML = "Submit";
-            //btn.type = "submit";
-            //btn.class="btn btn-primary dropdown-toggle";
-            //btn.data-bs-toggle="dropdown";
-            dropDown.addEventListener("show.bs.dropdown", function () {
-            //btn.addEventListener("click", function () {
-              alert("Button is clicked");
-              //var selected_gpcr = 'DRD1';
-              resetPDBlist(selected_gpcr);
-            });
-            //container.appendChild(btn);
-            */
-        </script>
-        <ul id="pdblist" class="dropdown-menu" onchange="alert(this.value);">
-        </ul>
-      </div>
+
     </div>
 
     <div class="col-1">
