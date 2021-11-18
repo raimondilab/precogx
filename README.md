@@ -1,5 +1,5 @@
 ## PRECOGx webApp
-![action main](https://github.com/gurdeep330/precogx/actions/workflows/main.yml/badge.svg)
+![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
 
 ![Legacy version](https://github.com/gurdeep330/precog)
 
