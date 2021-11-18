@@ -25,12 +25,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Setup Miniconda
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2.1.1
+        run: conda list
+
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
 
-      - name: execute py script # run the run.py to get the latest data
-        run: python test.py
+#      - name: execute py script # run the run.py to get the latest data
+#        run: python test.py
 
       - name: commit files
         run: |

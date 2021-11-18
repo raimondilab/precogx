@@ -26,6 +26,7 @@
   $(function(){
     $("#navbars").load("static/navbars.html");
   });
+  var selected_gpcr = '';
   </script>
 
   <!-- RESULTS PANEL (dataTables) -->
@@ -74,6 +75,8 @@
         //alert(dataT.cell( this ).data());
         makeSequence(dataT.cell(this).data(), {{path_to_fasta|safe}});
         makeStructure('3sn6', 'R', 'A', dataT.cell(this).data());
+        selected_gpcr = dataT.cell(this).data();
+        resetPDBlist(selected_gpcr);
       });
     });
   </script>
@@ -108,9 +111,30 @@
         makeStructure('3sn6', 'R', 'A', 'DRD1');
       </script>
       <div class="dropdown" id="dd-example">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" onclick="loadDoc();">
+        <button type="button" id="PDBbutton" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown";>
         PDB-ID
         </button>
+        <div id="buttonContainer">
+        </div>
+        <script>
+            resetPDBlist('DRD1');
+            /*
+            //var container = document.getElementById('buttonContainer');
+            //let btn = document.createElement("button");
+            var dropDown = document.getElementById('PDBbutton');
+            //btn.innerHTML = "Submit";
+            //btn.type = "submit";
+            //btn.class="btn btn-primary dropdown-toggle";
+            //btn.data-bs-toggle="dropdown";
+            dropDown.addEventListener("show.bs.dropdown", function () {
+            //btn.addEventListener("click", function () {
+              alert("Button is clicked");
+              //var selected_gpcr = 'DRD1';
+              resetPDBlist(selected_gpcr);
+            });
+            //container.appendChild(btn);
+            */
+        </script>
         <ul id="pdblist" class="dropdown-menu" onchange="alert(this.value);">
         </ul>
       </div>

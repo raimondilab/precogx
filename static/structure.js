@@ -1,6 +1,7 @@
 // Function to read the PDB-ID, GPCR chain and G-protein chain from pdblist.txt
 // and render it to the Structure Panel
 function makeStructure(pdbid, chainGPCR, chainGPROT, gpcr) {
+
   $.ajax({
     url:"/help", //the page containing python script
     type: "post", //request type,
@@ -8,16 +9,17 @@ function makeStructure(pdbid, chainGPCR, chainGPROT, gpcr) {
     data: JSON.stringify({pdbid: pdbid, chainGPCR: chainGPCR, chainGPROT: chainGPROT, gpcr: gpcr}),
     success: function(response){
 				console.log(response);
-        alert(response['status']);
+        //alert(response['status']);
 			},
 			error: function(error){
 				console.log(error);
 			}
     });
+
   //var id = pdbid;
   //alert(gpcr+'structure');
   stage.removeAllComponents();
-  stage.setParameters( { backgroundColor: "white"} );
+  stage.setParameters({backgroundColor: "white"});
   //stage.loadFile("static/"+pdbid+".cif", {defaultRepresentation: true});
   //stage.loadFile("static/"+pdbid+".cif").then(function (o) {
   stage.loadFile("rcsb://"+pdbid+".cif").then(function (o) {

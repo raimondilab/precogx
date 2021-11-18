@@ -8,7 +8,7 @@ function makeSequence(gpcr, path_to_fasta) {
     //Ignore i = 0 as it's empty
     for (var i = 1; i < fasta.length; i++) {
       var x = fasta[i].split('\n');
-      // Check if the first line has the GPCR name; If yes, selec the sequence
+      // Check if the first line has the GPCR name; If yes, select the sequence
       if (x[0] == gpcr) {
         var sequence = '';
         for (var j = 1; j < x.length; j++) {

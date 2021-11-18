@@ -14,9 +14,14 @@ def help():
     if request.method == 'POST':
         data = request.get_json(force=True)
         print (data['gpcr'])
+        best_structure(data['gpcr'])
         return jsonify({'status': 'OK'})
     else:
         return ("<html><h3>It was a GET request</h3></html>")
+
+
+def best_structure(gpcr):
+    print ('running best_structure')
 
 ## Route to output page
 @app.route('/output', methods=['GET', 'POST'])
