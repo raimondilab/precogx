@@ -43,8 +43,7 @@ jobs:
         run: |
           conda install -c bioconda blast
           mkdir blastdb
-          blastp --help
-#          makeblastdb -in static/fasta/all_pdbs.fasta -dbtype 'prot' -out static/fasta/blastdb/all_pdbs
+          makeblastdb -in static/fasta/all_pdbs.fasta -dbtype 'prot' -out static/fasta/blastdb/all_pdbs
 
 
       - name: commit files
