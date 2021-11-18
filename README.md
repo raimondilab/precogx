@@ -26,9 +26,16 @@ python3 run.py
 Open the URL on your browser ```http://129.206.245.88:5000```
 
 ## Features enabled
-1. Load FASTA (in Sequence panel) and 3D strucrture (Structure panel) of the first entry.
+1. Load FASTA (in Sequence panel) and 3D strucrture (Structure panel) of the first entry
 2. Update Seqeuence and Structure panels by clicking on <b>GPCR</b>
 3. Update PDB list on every click (sort based on sequence identity)
+
+## Workflows
+1. The current workflow ```Latest-3D``` fetches the latest SIFT mappings
+2. Extracts all GPCR/G-protein complexes and save them in ```data/pdb_list.txt```
+3. Fetches PDB FASTA files (```data/fasta/```) of the complexes and concatenates them into ```data/fasta/all_pdbs.fasta```
+4. Set up Miniconda and insall BLAST
+5. Create a blastdb of ```data/fasta/all_pdbs.fasta```, which is required to find the best structures (Structure panel)
 
 Use ![Issues](https://github.com/gurdeep330/precogx/issues) to suggest more features or report problems.
 
