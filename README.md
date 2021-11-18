@@ -25,6 +25,8 @@ python3 run.py
 
 Open the URL on your browser ```http://129.206.245.88:5000```
 
+It currently runs using a sample output file ```static/OL820/out.tsv```
+
 ## Features enabled
 1. Load FASTA (in Sequence panel) and 3D strucrture (Structure panel) of the first entry
 2. Update Seqeuence and Structure panels by clicking on <b>GPCR</b>
