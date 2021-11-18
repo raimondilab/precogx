@@ -28,6 +28,8 @@ jobs:
       # Setup Miniconda
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2.1.1
+
+      - name: Try conda
         run: conda list
 
 
