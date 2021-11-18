@@ -29,15 +29,21 @@ jobs:
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2.1.1
 
-      - name: INSTALL blast
+      - name: Install BLAST
         run:  conda install -c bioconda blast
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
 
-      - name: execute py script # run the run.py to get the latest data
+      - name: execute test script # run the run.py to get the latest data
         run: python test.py
+
+      - name: Make directory blastdb
+        run: mkdir blastdb
+
+      - name: Make blastdb of PDB FASTA
+        run: makeblastdb -in static/fasta/all_pdbs.fasta -dbtype 'prot' -out static/fasta/blastdb/all_pdbs
 
       - name: commit files
         run: |
