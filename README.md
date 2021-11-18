@@ -1,7 +1,7 @@
 ## PRECOGx webApp
 ![action main](https://github.com/gurdeep330/precogx/actions/workflows/main.yml/badge.svg)
 
-![Legancy version](https://github.com/gurdeep330/precog)
+![Legacy version](https://github.com/gurdeep330/precog)
 
 A Flask-based webApp to predict GPCR/G-protein couplings.
 
@@ -31,7 +31,7 @@ Open the URL on your browser ```http://129.206.245.88:5000```
 3. Update PDB list on every click (sort based on sequence identity)
 
 ## Workflows
-1. The current workflow ```Latest-3D``` fetches the latest SIFT mappings
+1. The current workflow ```.github/workflows/main.yml``` fetches the latest SIFT mappings
 2. Extracts all GPCR/G-protein complexes and save them in ```data/pdb_list.txt```
 3. Fetches PDB FASTA files (```data/fasta/```) of the complexes and concatenates them into ```data/fasta/all_pdbs.fasta```
 4. Set up Miniconda and insall BLAST
