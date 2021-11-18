@@ -25,10 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Setup Miniconda
-      - name: Setup Miniconda
-        uses: conda-incubator/setup-miniconda@v2.1.1
-
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -36,9 +32,14 @@ jobs:
 #      - name: execute test script # run the run.py to get the latest data
 #        run: python test.py
 
+      # Setup Miniconda
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2.1.1
+        with:
+          auto-update-conda: true
+
       - name: Install and run BLAST
+        shell: bash -l {0}
         run: |
           conda install -c bioconda blast
           mkdir blastdb
