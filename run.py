@@ -13,7 +13,7 @@ def home():
 def order_pdbs():
     if request.method == 'POST':
         data = request.get_json(force=True)
-        print (data['gpcr'])
+        #print (data['gpcr'])
         ordered_pdbs = reorder_pdbs(data['gpcr'])
         return jsonify({'ordered_pdbs': ordered_pdbs})
     else:
@@ -43,7 +43,7 @@ def reorder_pdbs(gpcr):
         elif line[0] == '>':
             pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower()
             row = []
-            print (chain_info[pdbid])
+            #print (chain_info[pdbid])
             row.append(pdbid)
             row.append(chain_info[pdbid]['gpcr_chain'])
             row.append(chain_info[pdbid]['gprotein_chain'])
