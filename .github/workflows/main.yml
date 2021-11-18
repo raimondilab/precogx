@@ -40,7 +40,6 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2.1.1
       - name: Install and run BLAST
         run: |
-          conda activate test
           conda install -c bioconda blast
           mkdir blastdb
           makeblastdb -in static/fasta/all_pdbs.fasta -dbtype 'prot' -out static/fasta/blastdb/all_pdbs
