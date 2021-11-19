@@ -1,9 +1,9 @@
 ## PRECOGx webApp
 ![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
 
-![Legacy version](https://github.com/gurdeep330/precog)
+A Flask-based webApp to visualize PRECOGx predictions. Source code and analysisof PRECOGx can be found ![here](https://github.com/raimondilab/transformers/tree/main/predictor)
 
-A Flask-based webApp to predict GPCR/G-protein couplings.
+PRECOG (legacy version) can be found ![here](https://github.com/gurdeep330/precog)
 
 ## File organization
 ```data```: Files/folders requried to run the app
@@ -30,9 +30,9 @@ It currently runs using a sample output file ```static/OL820/out.tsv```
 ## Features enabled
 1. Load FASTA (in Sequence panel) and 3D strucrture (Structure panel) of the first entry
 2. Update Seqeuence and Structure panels by clicking on <b>GPCR</b>
-3. Update PDB list on every click (sort based on sequence identity)
+3. Update PDB-ID list on every click (sort based on sequence identity)
 
-## Workflows
+## Automate workflow
 1. The current workflow ```.github/workflows/main.yml``` fetches the latest SIFT mappings
 2. Extracts all GPCR/G-protein complexes and save them in ```data/pdb_list.txt```
 3. Fetches PDB FASTA files (```data/fasta/```) of the complexes and concatenates them into ```data/fasta/all_pdbs.fasta```
