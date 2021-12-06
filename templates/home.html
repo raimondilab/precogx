@@ -38,14 +38,61 @@
     </div>
 
     <div class="col-6">
-      <form action="/output" method="POST">
-        <div class="mb-3">
+      <h3 id="running" style="text-align: center; padding-top: 5%;">Running...</h3>
+      <form action="/input" method="POST">
+        <div class="mb-3" id="form">
           <label for="input" class="form-label"><h3>Input FASTA</h3></label>
-            <textarea class="form-control" id="input" name="input" rows="10"></textarea>
+            <textarea class="form-control" id="inputForm" name="input" rows="10">
+            </textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        <div style="float: right;">
+          <button type="button" id="ex1" class="btn btn-info">Example 1</button>
+          <button type="button" id="ex2" class="btn btn-info">Example 2</button>
+        </div>
       </form>
     </div>
+    <script>
+    $(document).on('click', '#ex1', function() {
+      //alert('hello');
+      var seq1 = ">DRD1\n";
+      seq1 += "MRTLNTSAMDGTGLVVERDFSVRILTACFLSLLILSTLLGNTLVCAAVIRFRHLRSKVTN\n";
+      seq1 += "FFVISLAVSDLLVAVLVMPWKAVAEIAGFWPFGSFCNIWVAFDIMCSTASILNLCVISVD\n";
+      seq1 += "RYWAISSPFRYERKMTPKAAFILISVAWTLSVLISFIPVQLSWHKAKPTSPSDGNATSLA\n";
+      seq1 += "ETIDNCDSSLSRTYAISSSVISFYIPVAIMIVTYTRIYRIAQKQIRRIAALERAAVHAKN\n";
+      seq1 += "CQTTTGNGKPVECSQPESSFKMSFKRETKVLKTLSVIMGVFVCCWLPFFILNCILPFCGS\n";
+      seq1 += "GETQPFCIDSNTFDVFVWFGWANSSLNPIIYAFNADFRKAFSTLLGCYRLCPATNNAIET\n";
+      seq1 += "VSINNNGAAMFSSHHEPRGSISKECNLVYLIPHAVGSSEDLKKEEAAGIARPLEKLSPAL\n";
+      seq1 += "SVILDYDTDVSLEKIQPITQNGQHPT\n";
+      seq1 += ">DRD1/N5P\n"
+      var seq2 = ">FFAR2\n";
+      seq2 += "MLPDWKSSLILMAYIIIFLTGLPANLLALRAFVGRIRQPQPAPVHILLLSLTLADLLLLL\n";
+      seq2 += "LLPFKIIEAASNFRWYLPKVVCALTSFGFYSSIYCSTWLLAGISIERYLGVAFPVQYKLS\n";
+      seq2 += "RRPLYGVIAALVAWVMSFGHCTIVIIVQYLNTTEQVRSGNEITCYENFTDNQLDVVLPVR\n";
+      seq2 += "LELCLVLFFIPMAVTIFCYWRFVWIMLSQPLVGAQRRRRAVGLAVVTLLNFLVCFGPYNV\n";
+      seq2 += "SHLVGYHQRKSPWWRSIAVVFSSLNASLDPLLFYFSSSVVRRAFGRGLQVLRNQGSSLLG\n";
+      seq2 += "RRGKDTAEGTNEDRGVGQGEGMPSSDFTTE";
+
+      $('#inputForm').html(seq1);
+    });
+    $(document).on('click', '#ex2', function() {
+      //alert('hello');
+      var seq2 = "DRD1/F61P\n";
+      seq2 += "CXCR3/D278A";
+      $('#inputForm').html(seq2);
+    });
+    $(document).ready(function(){
+      $('#inputForm').html("DRD1/F61P\nCXCR3/D278A");
+      $("#running").hide();
+      $("#submit").click(function(){
+        $("#form").slideUp();
+        $("#submit").slideUp();
+        $("#ex1").slideUp();
+        $("#ex2").slideUp();
+        $("#running").show(1000);
+      });
+    });
+    </script>
 
     <div class="col-3">
     </div>

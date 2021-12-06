@@ -1,0 +1,93 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  data/7tm_1.hmm
+# target sequence database:        static/predictor/output/NWKRF/input.fasta
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       7tm_1  [M=264]
+Accession:   PF00001.24
+Description: 7 transmembrane receptor (rhodopsin family)
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence  Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------  -----------
+    4.8e-77  245.8  14.6    6.1e-77  245.5  14.6    1.1  1  DRD1_WT    
+    2.4e-76  243.6  13.8      3e-76  243.2  13.8    1.1  1  DRD1_F61P  
+
+
+Domain annotation for each sequence (and alignments):
+>> DRD1_WT  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  245.5  14.6   6.1e-77   6.1e-77       1     264 []      40     331 ..      40     331 .. 0.87
+
+  Alignments for each domain:
+  == domain 1  score: 245.5 bits;  conditional E-value: 6.1e-77
+              HHHHHHHHHHHSSTTHS.HHHHHHHHHHHHHHHHHHHHHHHHHHHHHTHSSHSSHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHSHHHHHHHSHHHH CS
+              xxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx RF
+    7tm_1   1 gNllViyviltkkslqt.stnilllsLaiaDlllgllvlpfaiiqeltknewlfghvlCrlwlsvdvflstasilnllaisfDRYlaitkplkykrkrtkrv 101
+              gN+lV++++++ ++l++ +tn++++sLa++Dll+++lv+p+ ++ e+ ++ w+fg++ C++w+++d+++stasilnl++is+DRY+ai +p++y+rk+t++ 
+  DRD1_WT  40 GNTLVCAAVIRFRHLRSkVTNFFVISLAVSDLLVAVLVMPWKAVAEI-AGFWPFGSF-CNIWVAFDIMCSTASILNLCVISVDRYWAISSPFRYERKMTPKA 139
+              8***************99*****************************.5*******7.******************************************** PP
+
+              HHHHHHHHHHHHHHHHHHHHHHTEEEC...TTTTT...........TCEEEESSTCHHHHHHHHHHHHHTHHHHHHHHHHHHHHHHHHHHHHHHHHHCHHHH CS
+              xxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx RF
+    7tm_1 102 arlmillvWvlslllavpllvletvet...naqdt...........tkdCqittlpaesmyiifsavasfilPllvmvilyarifqtvlktsrtmtskskng 189
+              a+++i ++W+ls+l++++++ l++++    +                + C+ + ++   +y+i s+v+sf++P+ +m+++y+ri++ ++k+ r+ ++ ++  
+  DRD1_WT 140 AFILISVAWTLSVLISFIPVQLSWHKAkptS---PsdgnatslaetIDNCDSSLSR---TYAISSSVISFYIPVAIMIVTYTRIYRIAQKQIRRIAALERAA 235
+              *************************664543...2334666677666677777777...**************************************88888 PP
+
+              ...................HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH..STTSCCHHHHHHHHHHHHHHHHHHHHHHHHHH CS
+              ...................xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx RF
+    7tm_1 190 ...................egvgtpplkgvrekkaaktlgivvavfivcwlPftiiyllqal..svdceaagciptalftiawlgysnsavNPiiY 264
+                                 + +++ +++ +re+k++ktl ++++vf++cwlPf+i++++ ++  s +++  +   + + +++w+g++ns +NPiiY
+  DRD1_WT 236 vhakncqtttgngkpvecsQPESSFKMSFKRETKVLKTLSVIMGVFVCCWLPFFILNCILPFcgSGETQPFCIDSNTFDVFVWFGWANSSLNPIIY 331
+              8887777776666655554444444499999*******************************65455555544455555555************** PP
+
+>> DRD1_F61P  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  243.2  13.8     3e-76     3e-76       1     264 []      40     331 ..      40     331 .. 0.87
+
+  Alignments for each domain:
+  == domain 1  score: 243.2 bits;  conditional E-value: 3e-76
+                HHHHHHHHHHHSSTTHS.HHHHHHHHHHHHHHHHHHHHHHHHHHHHHTHSSHSSHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHSHHHHHHHSHH CS
+                xxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx RF
+      7tm_1   1 gNllViyviltkkslqt.stnilllsLaiaDlllgllvlpfaiiqeltknewlfghvlCrlwlsvdvflstasilnllaisfDRYlaitkplkykrkrtk 99 
+                gN+lV++++++ ++l++ +tn +++sLa++Dll+++lv+p+ ++ e+ ++ w+fg++ C++w+++d+++stasilnl++is+DRY+ai +p++y+rk+t+
+  DRD1_F61P  40 GNTLVCAAVIRFRHLRSkVTNPFVISLAVSDLLVAVLVMPWKAVAEI-AGFWPFGSF-CNIWVAFDIMCSTASILNLCVISVDRYWAISSPFRYERKMTP 137
+                8***************99*****************************.5*******7.****************************************** PP
+
+                HHHHHHHHHHHHHHHHHHHHHHHHTEEEC...TTTTT...........TCEEEESSTCHHHHHHHHHHHHHTHHHHHHHHHHHHHHHHHHHHHHHHHHHC CS
+                xxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx RF
+      7tm_1 100 rvarlmillvWvlslllavpllvletvet...naqdt...........tkdCqittlpaesmyiifsavasfilPllvmvilyarifqtvlktsrtmtsk 185
+                + a+++i ++W+ls+l++++++ l++++    +                + C+ + ++   +y+i s+v+sf++P+ +m+++y+ri++ ++k+ r+ ++ 
+  DRD1_F61P 138 KAAFILISVAWTLSVLISFIPVQLSWHKAkptS---PsdgnatslaetIDNCDSSLSR---TYAISSSVISFYIPVAIMIVTYTRIYRIAQKQIRRIAAL 231
+                ***************************664543...2334666677666677777777...**************************************8 PP
+
+                HHHH...................HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH..STTSCCHHHHHHHHHHHHHHHHHHHHHHHHHH CS
+                xxxx...................xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx RF
+      7tm_1 186 skng...................egvgtpplkgvrekkaaktlgivvavfivcwlPftiiyllqal..svdceaagciptalftiawlgysnsavNPiiY 264
+                ++                     + +++ +++ +re+k++ktl ++++vf++cwlPf+i++++ ++  s +++  +   + + +++w+g++ns +NPiiY
+  DRD1_F61P 232 ERAAvhakncqtttgngkpvecsQPESSFKMSFKRETKVLKTLSVIMGVFVCCWLPFFILNCILPFcgSGETQPFCIDSNTFDVFVWFGWANSSLNPIIY 331
+                88888887777776666655554444444499999*******************************65455555544455555555************** PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (264 nodes)
+Target sequences:                            2  (892 residues searched)
+Passed MSV filter:                         2  (1); expected 0.0 (0.02)
+Passed bias filter:                        2  (1); expected 0.0 (0.02)
+Passed Vit filter:                         2  (1); expected 0.0 (0.001)
+Passed Fwd filter:                         2  (1); expected 0.0 (1e-05)
+Initial search space (Z):                  2  [actual number of targets]
+Domain search space  (domZ):               2  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 23.55
+//
+[ok]
