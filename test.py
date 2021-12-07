@@ -34,7 +34,7 @@ for line in gzip.open('pdb_chain_pfam.tsv.gz', 'rt'):
 ## fetch FASTA files of PDB IDs
 l = ''
 for pdbid in dic:
-    if dic[pdbid]['GPCR'] != '-' and dic[pdbid]['GPROT'] != '-' and and dic[pdbid]['BARR'] != '-':
+    if dic[pdbid]['GPCR'] != '-' and dic[pdbid]['GPROT'] != '-' and dic[pdbid]['BARR'] != '-':
         l += pdbid + ' ' + dic[pdbid]['GPCR'] + ' ' + dic[pdbid]['GPROT'] + ' ' + dic[pdbid]['BARR'] + '\n'
         os.system('wget https://www.rcsb.org/fasta/entry/'+pdbid.lower()+'/download' + ' -O ../data/fasta/'+ pdbid.lower()+'.fasta')
 
