@@ -44,6 +44,9 @@ class GPCR:
         self.name = name
         self.seq = ''
         self.var = []
+        self.shedding = {}
+        self.iuphar = {}
+        self.ebbret = {}
 
 def main(input, input_file, assay):
     while True:
@@ -60,9 +63,9 @@ def main(input, input_file, assay):
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
     if input_file == None:
-        input = formatInput(input)
+        gpcrs, input = formatInput(input)
     else:
-        input = formatInputFile(input_file)
+        gpcrs, input = formatInputFile(input_file)
 
     open('static/predictor/output/'+uniq_id+'/input.fasta', 'w').write(input)
     input_file = 'static/predictor/output/'+uniq_id+'/input.fasta'
@@ -119,18 +122,49 @@ def main(input, input_file, assay):
         Xs_test_pca_copy = predict.main(d, uniq_id, gprotein, input_file, input_embedding, model, int(feature_type), str(embedding))
         np.save('static/predictor/output/'+uniq_id+'/'+gprotein, Xs_test_pca_copy)
 
+    for gpcr in gpcrs:
+        OtherSources(gpcr, gpcrs)
+
     name=str(input_file)
     #name1=name.split('/')[7].split('.')[0]
     l = '#PRECOGx\n'
-    l += '#Input'
+    l += '#Input\tVAR'
     for gprotein in gproteins:
         l += '\t' + str(gprotein)
     l += '\n'
     for name in d:
-        l += name
+        l += name.split('_')[0] + '\t' + name.split('_')[1]
         for gprotein in gproteins:
             l += '\t' + str(round(d[name][gprotein],3))
         l += '\n'
+        ## Add ebbret information
+        gpcr = name.split('_')[0]
+        l += gpcr + '\t' + 'IUPHAR'
+        for gprotein in gproteins:
+            if gprotein in gpcrs[gpcr].iuphar:
+                l += '\t' + gpcrs[gpcr].iuphar[gprotein]
+            else:
+                l += '\t-'
+        l += '\n'
+        ## Add shedding information
+        gpcr = name.split('_')[0]
+        l += gpcr + '\t' + 'LogRAi'
+        for gprotein in gproteins:
+            if gprotein in gpcrs[gpcr].shedding:
+                l += '\t' + gpcrs[gpcr].shedding[gprotein]
+            else:
+                l += '\t-'
+        l += '\n'
+        ## Add ebbret information
+        gpcr = name.split('_')[0]
+        l += gpcr + '\t' + 'Emax'
+        for gprotein in gproteins:
+            if gprotein in gpcrs[gpcr].ebbret:
+                l += '\t' + gpcrs[gpcr].ebbret[gprotein]
+            else:
+                l += '\t-'
+        l += '\n'
+
     #print (l)
     #shutil.rmtree('output/'+uniq_id+'/')
     open('static/predictor/output/'+uniq_id+'/out.tsv', 'w').write(l)
@@ -150,6 +184,46 @@ def main(input, input_file, assay):
 
     #shutil.rmtree('output/'+uniq_id+'/')
     return (uniq_id)
+
+def OtherSources(gpcr_given, gpcrs):
+    for line in open('static/predictor/data_precog/LogRAi_values_final.tsv', 'r'):
+        if line[0] != '#':
+            gpcr_found = line.split('\t')[0]
+            if gpcr_found == gpcr_given:
+                values = line.replace('\n', '').split('\t')[1:]
+                for value, gprotein in zip(values, gproteins):
+                    gpcrs[gpcr_found].shedding[gprotein] = str(round(float(value), 2))
+        else:
+            gproteins = line.replace('\n', '').split('\t')[1:]
+
+    for line in open('static/predictor/data_precog2/emax.tsv', 'r'):
+        if line[0] != '#':
+            gpcr_found = line.split('\t')[2]
+            if gpcr_found == gpcr_given:
+                values = line.replace('\n', '').split('\t')[5:]
+                for value, gprotein in zip(values, gproteins):
+                    gpcrs[gpcr_found].ebbret[gprotein] = value
+        else:
+            gproteins = line.replace('\n', '').split('\t')[5:]
+
+    dic_gprot_family = {'Gs': ['GNAS', 'GNAL'],
+                        'Gi/o': ['GNAI1', 'GNAI2', 'GNAI3', 'GNAZ', 'GoA', 'GoB'],
+                        'Gq/11': ['GNAQ', 'GNA11', 'GNA14', 'GNA15'],
+                        'G12/13': ['GNA12', 'GNA13']
+                        }
+    for line in open('static/predictor/data_precog2/IUPHAR_couplings.tsv', 'r'):
+        if line[0] != '#':
+            gpcr_found = line.split('\t')[1]
+            if gpcr_found == gpcr_given:
+                pc_values = line.replace('\n', '').split('\t')[5]
+                sc_values = line.replace('\n', '').split('\t')[6]
+                for gprot_family in dic_gprot_family:
+                    if gprot_family in pc_values:
+                        for gprotein in dic_gprot_family[gprot_family]:
+                            gpcrs[gpcr_found].iuphar[gprotein] = 'PC'
+                    elif gprot_family in sc_values:
+                        for gprotein in dic_gprot_family[gprot_family]:
+                            gpcrs[gpcr_found].iuphar[gprotein] = 'SC'
 
 def formatInputFile(input_file):
     ## if input in FASTA format
@@ -184,7 +258,7 @@ def formatInputFile(input_file):
                 new_input += gpcrs[name].seq[:position] + newAA + gpcrs[name].seq[position:] + '\n'
     print (new_input)
     #sys.exit()
-    return (new_input)
+    return (gpcrs, new_input)
 
 def formatInput(input):
     ## if input in FASTA format
@@ -240,7 +314,7 @@ def formatInput(input):
                     new_input += gpcrs[name].seq[:position] + newAA + gpcrs[name].seq[position+1:] + '\n'
     #print (new_input)
     #sys.exit()
-    return (new_input)
+    return (gpcrs, new_input)
 
 def fetchSeq(name):
     #print ('here')
@@ -293,8 +367,8 @@ if __name__ == "__main__":
     ## Parser
     parser = argparse.ArgumentParser(description='Script to predict GPCR couplings using ESM and/or seq-based features', epilog='End of help')
     parser.add_argument('assay', help='Input what assay is used (ebret or shed)')
-    parser.add_argument('--input_file', help='Input File (FASTA formatted)')
-    parser.add_argument('--input', help='Input (FASTA formatted)')
+    parser.add_argument('--input_file', help='Input File (FASTA format)')
+    parser.add_argument('--input', help='Input (Mechismo format)')
     args = parser.parse_args()
     assay = args.assay
     input = args.input

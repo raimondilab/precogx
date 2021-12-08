@@ -397,14 +397,23 @@ def output(uniq_id):
         ## extract first entry
         with open(os.getcwd() + path_to_json_output) as f:
             d = json.load(f)
-        first_entry = 'Hello'
+
+        ## Important: here we are passing GPCR_VAR as gpcr name.
+        ## In case VAR is IUPHAR, Emax or LogRAi, gpcr name is sent as GPCR_WT
+        ## for sequence, contacts, structure and PCA panels
+        first_entry = ''
         gpcr_list = []
         for key1 in d:
             for num, key2 in enumerate(d[key1]):
+                gpcr = key2[0]
+                if key2[1] == 'WT' or key2[1] not in ['IUPHAR', 'LogRAi', 'Emax']:
+                    variant = '_' + key2[1]
+                else:
+                    variant = '_WT'
                 if num == 0:
-                    first_entry = key2[0]
+                    first_entry = gpcr+variant
                     #print (key1, d[key1])
-                gpcr_list.append(key2[0])
+                gpcr_list.append(gpcr+variant)
                 #break
 
         #print (first_entry)
