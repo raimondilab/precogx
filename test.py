@@ -34,10 +34,12 @@ for line in gzip.open('pdb_chain_pfam.tsv.gz', 'rt'):
 ## Save PDB ID and chain information as well as
 ## fetch FASTA files of PDB IDs
 l = ''
+pdblist = []
 for pdbid in dic:
     if (dic[pdbid]['GPCR'] != '-' and dic[pdbid]['GPROT'] != '-') or (dic[pdbid]['GPCR'] != '-' and dic[pdbid]['BARR'] != '-'):
         l += pdbid + ' ' + dic[pdbid]['GPCR'] + ' ' + dic[pdbid]['GPROT'] + ' ' + dic[pdbid]['BARR'] + '\n'
         os.system('wget https://www.rcsb.org/fasta/entry/'+pdbid.lower()+'/download' + ' -O ../data/fasta/'+ pdbid.lower()+'.fasta')
+        pdblist.append(pdbid)
 
 #print (l)
 #sys.exit()
@@ -49,7 +51,7 @@ os.chdir('../data/fasta/')
 os.system("rm -rf all_pdbs.fasta")
 l = ''
 for files in os.listdir('.'):
-    if files.endswith('.fasta'):
+    if files.endswith('.fasta') and files.split('.fasta')[0] in pdblist:
         for line in open(files, 'r'):
             l += line
 
@@ -58,3 +60,4 @@ if os.path.isfile('blastdb/') == False:
     os.system("mkdir blastdb/")
 os.system("rm -rf blastdb/all_pdbs*")
 os.system("makeblastdb -in all_pdbs.fasta -dbtype 'prot' -out blastdb/all_pdbs")
+print ('complete')

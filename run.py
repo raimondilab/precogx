@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import os, sys, json
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
 sys.path.insert(1, 'static/predictor/')
 import precogx
 
@@ -13,30 +14,35 @@ def home():
     return render_template('home.html')
 
 def extract_contacts(gprotein_given, cutoff):
-    dic = {}; positions = []; pair_positions = []
+    dic = {}; positions = []; pair_positions = []; scores = []
     for line in open('static/Gprot_contacts/specific_position_score.txt', 'r'):
         if line.split(' ')[0] != 'TM_pos1':
             pos1 = line.split(' ')[0]
             pos2 = line.split(' ')[1]
             gprotein_found = line.split(' ')[2]
             score = float(line.replace('\n','').split(' ')[3])
-            if score >= cutoff and gprotein_given == gprotein_found:
-                #print (score)
-                if pos1 not in dic:
-                    dic[pos1] = {}
-                dic[pos1][pos2] = score
+            if gprotein_given == gprotein_found:
+                if score >= cutoff:
+                    #print (score)
+                    if pos1 not in dic:
+                        dic[pos1] = {}
+                    dic[pos1][pos2] = score
 
-                if pos2 not in dic:
-                    dic[pos2] = {}
-                dic[pos2][pos1] = score
+                    if pos2 not in dic:
+                        dic[pos2] = {}
+                    dic[pos2][pos1] = score
 
-                positions.append(pos1)
-                positions.append(pos2)
-                pair_positions.append(pos1+'-'+pos2)
+                    positions.append(pos1)
+                    positions.append(pos2)
+                    pair_positions.append(pos1+':'+pos2+':'+str(score))
+                scores.append(score)
 
+    scoresMax = max(scores)
+    scoresMin = min(scores)
     positions = list(set(positions))
     positions = np.array(np.sort(positions))
     data = []
+    num_contacts = []
     for pos1 in positions:
         row = []
         for pos2 in positions:
@@ -46,9 +52,19 @@ def extract_contacts(gprotein_given, cutoff):
                 #row.append(0)
                 row.append(None)
         data.append(row)
+        num_contacts.append([round(len(dic[pos1]),2)])
     #print (cutoff, gprotein_given)
     #print ('positions', positions)
-    return data, positions, pair_positions
+
+    scaler = MinMaxScaler(feature_range=(0.25,1.0))
+    num_contacts = scaler.fit_transform(num_contacts)
+    num_contacts = num_contacts.flatten().tolist()
+    for i in range(0, len(num_contacts)):
+        num_contacts[i] = str(num_contacts[i])
+
+    #print (num_contacts)
+
+    return scoresMax, scoresMin, data, positions, pair_positions, num_contacts
 
 #
 @app.route('/fetchContactsHeatmap', methods=['GET', 'POST'])
@@ -58,21 +74,21 @@ def fetchContactsHeatmap():
         #print (data['gpcr'])
         gprotein_given = data['gprotein']
         cutoff = float(data['cutoff'])
-        scores, positions, pair_positions = extract_contacts(gprotein_given, cutoff)
+        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
         for i in range(0, len(positions)):
             positions[i] = str(positions[i]).replace('.', 'x')
-        return jsonify({'fetch_contacts': scores, 'positions': positions.tolist()})
+        return jsonify({'fetch_contactsMin': scoresMin, 'fetch_contactsMax': scoresMax, 'fetch_contacts': scores, 'positions': positions.tolist()})
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
 def extract_pca(gprotein, label):
     Xs_train_pca = np.load('static/Xs_train_pca/'+gprotein+'.npy', allow_pickle=True)
-    Xs_train_pca_coupling, Xs_train_pca_uncoupling = filter_gpcr_list(Xs_train_pca, label, gprotein)
+    Xs_train_pca_coupling, Xs_train_pca_uncoupling, genes_to_consider_coupling, genes_to_consider_uncoupling = filter_gpcr_list(Xs_train_pca, label, gprotein)
     x_train_coupling = Xs_train_pca_coupling[:,0].tolist()
     x_train_uncoupling = Xs_train_pca_uncoupling[:,0].tolist()
     y_train_coupling = Xs_train_pca_coupling[:,1].tolist()
     y_train_uncoupling = Xs_train_pca_uncoupling[:,1].tolist()
-    return x_train_coupling, x_train_uncoupling, y_train_coupling, y_train_uncoupling
+    return x_train_coupling, x_train_uncoupling, y_train_coupling, y_train_uncoupling, genes_to_consider_coupling, genes_to_consider_uncoupling
 
 def filter_gpcr_list(X, label, gprotein):
     genes_to_consider_coupling = []
@@ -113,7 +129,7 @@ def filter_gpcr_list(X, label, gprotein):
         #print (genes_to_consider_uncoupling)
 
     gpcr_list = []
-    for line in open('static/predictor/gpcr_list.txt', 'r'):
+    for line in open('static/Xs_train_pca/gpcr_list.txt', 'r'):
         gpcr_list.append(line.replace('\n', ''))
 
     X_pos = []
@@ -124,7 +140,7 @@ def filter_gpcr_list(X, label, gprotein):
         elif gene in genes_to_consider_uncoupling:
             X_neg.append(row)
 
-    return (np.array(X_pos), np.array(X_neg))
+    return (np.array(X_pos), np.array(X_neg), genes_to_consider_coupling, genes_to_consider_uncoupling)
 
 @app.route('/fetchPCA', methods=['GET', 'POST'])
 def fetchPCA():
@@ -133,20 +149,47 @@ def fetchPCA():
         label = data['label']
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
+        print (gpcr_given)
         uniq_id = data['uniq_id']
-        Xs_test_pca = np.load('static/predictor/output/'+uniq_id+'/'+gprotein_given+'.npy', allow_pickle=True)
-        x_test = Xs_test_pca[:,0].tolist()
-        y_test = Xs_test_pca[:,1].tolist()
-        x_train_coupling, x_train_uncoupling, y_train_coupling, y_train_uncoupling = extract_pca(gprotein_given, label)
+        ### MUT
+        Xs_test_pca = np.load('static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
+        print (Xs_test_pca)
+        #x_test = Xs_test_pca[:,0].tolist()
+        #y_test = Xs_test_pca[:,1].tolist()
+        x_test = Xs_test_pca[0].tolist()
+        y_test = Xs_test_pca[1].tolist()
+        print (x_test)
+        print (y_test)
+        ### WT
+        if '_WT' not in gpcr_given:
+            wt = gpcr_given.split('_')[0] + '_WT'
+            Xs_wt_pca = np.load('static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
+            print (Xs_wt_pca)
+            #x_test = Xs_test_pca[:,0].tolist()
+            #y_test = Xs_test_pca[:,1].tolist()
+            x_wt = Xs_wt_pca[0].tolist()
+            y_wt = Xs_wt_pca[1].tolist()
+            print (x_wt)
+            print (y_wt)
+        else:
+            x_wt = '-'
+            y_wt = '-'
+
+        x_train_coupling, x_train_uncoupling, y_train_coupling, y_train_uncoupling, genes_to_consider_coupling, genes_to_consider_uncoupling = extract_pca(gprotein_given, label)
         #print (x_train, y_train, x_test, y_test)
+        #print (genes_to_consider_coupling)
         minimum = min(x_train_coupling + x_train_uncoupling)
         maximum = max(x_train_coupling + x_train_uncoupling)
         return jsonify({'x_train_coupling': x_train_coupling,
                         'x_train_uncoupling': x_train_uncoupling,
                         'y_train_coupling': y_train_coupling,
                         'y_train_uncoupling': y_train_uncoupling,
+                        'genes_to_consider_coupling': genes_to_consider_coupling,
+                        'genes_to_consider_uncoupling': genes_to_consider_uncoupling,
                         'x_test': x_test,
                         'y_test': y_test,
+                        'x_wt': x_wt,
+                        'y_wt': y_wt,
                         'min': minimum,
                         'max': maximum})
     else:
@@ -162,8 +205,7 @@ def fetchContactsSequence():
         path_to_fasta = data['path_to_fasta']
         uniq_id = data['uniq_id']
         cutoff = float(data['cutoff'])
-        scores, positions, pair_positions = extract_contacts(gprotein_given, cutoff)
-        positions = positions
+        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
 
         #print ('fetch_seq', positions)
         fasta_sequence = ''; flag = 0
@@ -188,7 +230,7 @@ def fetchContactsSequence():
                     flag = 1
             elif flag == 1:
                 if len(line.split()) > 0:
-                    if line.split()[0] == '7tm_1':
+                    if line.split()[0] == '0037432':
                         startDomain = line.split()[1]
                         domain = line.split()[2]
                         endDomain = line.split()[3]
@@ -211,6 +253,7 @@ def fetchContactsSequence():
 
         #print (dic)
 
+        '''
         BW_to_PFAM = {}
         for count, line in enumerate(open('data/7tm_1_2020_BW_matches.tsv', 'r')):
             BW_to_PFAM[line.split('\t')[1]] = count+1
@@ -224,6 +267,22 @@ def fetchContactsSequence():
                 if pfam_position in dic:
                     #print (dic[pfam_position])
                     seq_positions.append(int(dic[pfam_position]))
+        '''
+        gpcr = gpcr_given.split('_')[0]
+        dic_BW2SEQ = {}
+        for line in open('data/GPCRDB_numbering.tsv', 'r'):
+            if gpcr == line.split('\t')[0] or gpcr == line.split('\t')[1]:
+                BW = line.split('\t')[-2]
+                SEQ = line.split('\t')[3]
+                if BW != '-' and SEQ != '-':
+                    dic_BW2SEQ[BW] = SEQ
+
+        #print (positions)
+        #print (dic_BW2SEQ)
+        seq_positions = []
+        for bw_position in positions:
+            if bw_position in dic_BW2SEQ:
+                seq_positions.append(int(dic_BW2SEQ[bw_position]))
 
         return jsonify({'fetch_contacts': scores, 'seq_positions': seq_positions, 'sequence': fasta_sequence})
     else:
@@ -238,6 +297,7 @@ def convertPositionsBW2PDB():
         pdbID = data['pdbID']
         positions = data['positions']
         pair_positions = data['pair_positions']
+        num_contacts = data['num_contacts']
         gpcr_given = data['gpcr']
         uniq_id = data['uniq_id']
         #print (pdbID)
@@ -255,7 +315,7 @@ def convertPositionsBW2PDB():
                         flag = 1
                 elif flag == 1:
                     if len(line.split()) > 0:
-                        if line.split()[0] == '7tm_1':
+                        if line.split()[0] == '0037432':
                             startDomain = line.split()[1]
                             domain = line.split()[2]
                             endDomain = line.split()[3]
@@ -290,25 +350,30 @@ def convertPositionsBW2PDB():
 
         #print (BW_to_PFAM)
         #print (PFAM_to_PDB)
+        #print (num_contacts)
         modified_positions = []
-        for position in positions.split(','):
+        modified_num_contacts = []
+        for num, position in enumerate(positions.split(',')):
             if position in BW_to_PFAM:
                 #print (BW_to_PFAM[position], end=' ')
                 if BW_to_PFAM[position] in PFAM_to_PDB:
                     pdbPosition = PFAM_to_PDB[BW_to_PFAM[position]]
                     modified_positions.append(pdbPosition)
+                    modified_num_contacts.append(str(num_contacts.split(',')[num]))
+        #print (modified_num_contacts)
 
         modified_pair_positions = []
         #print (pair_positions)
         for position in pair_positions.split(','):
-            pos1 = position.split('-')[0]
-            pos2 = position.split('-')[1]
+            pos1 = position.split(':')[0]
+            pos2 = position.split(':')[1]
+            score = position.split(':')[2]
             if pos1 in BW_to_PFAM and pos2 in BW_to_PFAM:
                 #print (BW_to_PFAM[position], end=' ')
                 if BW_to_PFAM[pos1] in PFAM_to_PDB and BW_to_PFAM[pos2] in PFAM_to_PDB:
                     pdbPosition1 = PFAM_to_PDB[BW_to_PFAM[pos1]]
                     pdbPosition2 = PFAM_to_PDB[BW_to_PFAM[pos2]]
-                    modified_pair_positions.append(pdbPosition1+'-'+pdbPosition2)
+                    modified_pair_positions.append(pdbPosition1+':'+pdbPosition2+':'+score)
 
         #print (modified_positions)
         mutation_position = '-'
@@ -320,6 +385,7 @@ def convertPositionsBW2PDB():
                     break
 
         return jsonify({'modified_positions': '_'.join(modified_positions),
+                        'modified_num_contacts': '_'.join(modified_num_contacts),
                         'modified_pair_positions': '_'.join(modified_pair_positions),
                         'mutation_position': mutation_position
                         })
@@ -334,9 +400,13 @@ def fetchContactsPDBStructure():
         gpcr_given = data['gpcr']
         cutoff = float(data['cutoff'])
         uniq_id = data['uniq_id']
-        scores, positions, pair_positions = extract_contacts(gprotein_given, cutoff)
+        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
         ordered_pdbs = reorder_pdbs(gpcr_given, uniq_id) ## return list of reordered PDB IDs based on GPCR
-        return jsonify({'ordered_pdbs': ordered_pdbs, 'positions': ','.join(positions.tolist()), 'pair_positions': ','.join(pair_positions)})
+        return jsonify({'try': positions.tolist(),
+                        'ordered_pdbs': ordered_pdbs,
+                        'positions': ','.join(positions.tolist()),
+                        'num_contacts': ','.join(num_contacts),
+                        'pair_positions': ','.join(pair_positions)})
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 

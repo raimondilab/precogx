@@ -12,42 +12,58 @@ function makePCA(uniq_id, label, gpcr, gprotein) {
 				console.log(response);
         showPCA(uniq_id, label, gpcr, gprotein);
         var train_coupling = {
-          //x: [1, 2, 3, 4, 5],
           x:response['x_train_coupling'],
-          //y: [1, 6, 3, 6, 1],
           y:response['y_train_coupling'],
           mode: 'markers',
           type: 'scatter',
           name: label + ' coupling',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+          text: response['genes_to_consider_coupling'],
           marker: { size: 12 }
         };
 
         var train_uncoupling = {
-          //x: [1, 2, 3, 4, 5],
           x:response['x_train_uncoupling'],
-          //y: [1, 6, 3, 6, 1],
           y:response['y_train_uncoupling'],
           mode: 'markers',
           type: 'scatter',
           name: label + ' not coupling',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+          text: response['genes_to_consider_uncoupling'],
           marker: { size: 12 }
         };
 
+        if (response['x_wt'] != '-') {
+          var testColor = "purple";
+        }
+        else {
+          var testColor = "green";
+        }
         var test = {
-          //x: [1, 2, 3, 4, 5],
-          x: response['x_test'],
-          //y: [1, 6, 3, 6, 1],
-          y: response['y_test'],
+          x: [response['x_test']],
+          y: [response['y_test']],
           mode: 'markers',
           type: 'scatter',
           name: gpcr,
           //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-          marker: { size: 12 }
+          marker: { size: 12, color: testColor }
         };
 
-        var data = [ train_coupling, train_uncoupling, test ];
+        if (response['x_wt'] != '-') {
+          var wt = {
+            x: [response['x_wt']],
+            y: [response['y_wt']],
+            mode: 'markers',
+            type: 'scatter',
+            name: gpcr.split('_')[0]+'_WT',
+            //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
+            marker: { size: 12, color: "green" }
+          };
+          var data = [ train_coupling, train_uncoupling, test, wt ];
+        }
+        else {
+          var data = [ train_coupling, train_uncoupling, test ];
+        }
 
         var layout = {
           xaxis: {

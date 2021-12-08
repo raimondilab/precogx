@@ -70,6 +70,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list) {
       var gprotein = header[colIndex];
       var gpcr = gpcrs[rowIndex];
       var variant = gpcr_list[rowIndex];
+      //alert(gpcr);
       $(cell).data('gpcr', gpcr);
       $(cell).data('gprotein', gprotein);
       var slider1_value = document.getElementById('slider1_value').innerHTML;
@@ -89,7 +90,11 @@ function firstrow(path_to_json_output) {
   var colIndex = 14;
   var cell = dataT.cell(rowIndex,colIndex).node();
   $(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
-  $(cell).data('gpcr', dataT.cell(0,0).data());
+  var gpcr_variant = dataT.cell(0,0).data() + '_';
+  gpcr_variant += dataT.cell(0,1).data();
+  //alert(d);
+  //$(cell).data('gpcr', dataT.cell(0,0).data());
+  $(cell).data('gpcr', gpcr_variant);
   $(cell).data('gprotein', 'GNA12');
 }
 

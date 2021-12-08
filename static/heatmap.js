@@ -13,13 +13,28 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
           {
             //z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
             z: response['fetch_contacts'],
+            zmin: Number(response['fetch_contactsMin']),
+            zmax: Number(response['fetch_contactsMax']),
             x: response['positions'],
             y: response['positions'],
-            type: 'heatmap'
-            //hoverongaps: false
+            type: 'heatmap',
+            colorscale: [
+              ['0.0', 'rgb(165,0,0)'],
+              ['0.111111111111', 'rgb(215,48,0)'],
+              ['0.222222222222', 'rgb(244,109,0)'],
+              ['0.333333333333', 'rgb(253,174,0)'],
+              ['0.444444444444', 'rgb(254,224,0)'],
+              ['0.555555555556', 'rgb(224,243,0)'],
+              ['0.666666666667', 'rgb(171,217,0)'],
+              ['0.777777777778', 'rgb(116,173,0)'],
+              ['0.888888888889', 'rgb(69,117,0)'],
+              ['1.0', 'rgb(49,54,0)']
+            ],
+            hoverongaps: false
           }
         ];
         Plotly.newPlot('myDiv', data);
+
 			},
 			error: function(error){
 				console.log(error);

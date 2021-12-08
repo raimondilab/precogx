@@ -58,6 +58,7 @@ def main(input, input_file, assay):
             os.system('mkdir static/predictor/output/'+uniq_id+'/ebret/')
             os.system('mkdir static/predictor/output/'+uniq_id+'/ebret/seq_features/')
             os.system('mkdir static/predictor/output/'+uniq_id+'/embed/')
+            os.system('mkdir static/predictor/output/'+uniq_id+'/PCA/')
             input_embedding = 'static/predictor/output/'+uniq_id+'/embed/'
             break
 
@@ -90,7 +91,8 @@ def main(input, input_file, assay):
             ['Barr2_0.95_33_ebret_esm1b.joblib',0],['Barr2-GRK2_0.95_0_ebret_esm1b.joblib',0]]
 
     # run hmmsearch
-    os.system('hmmsearch data/7tm_1.hmm '+input_file+' > static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
+    #os.system('hmmsearch data/7tm_1.hmm '+input_file+' > static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
+    os.system('hmmsearch data/SCOP_7TM_348.hmm '+input_file+' > static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
 
      # create embeddings
     for row in data:
@@ -120,7 +122,9 @@ def main(input, input_file, assay):
         embedding = row[0].split('.')[1].split('_')[-1]
 
         Xs_test_pca_copy = predict.main(d, uniq_id, gprotein, input_file, input_embedding, model, int(feature_type), str(embedding))
-        np.save('static/predictor/output/'+uniq_id+'/'+gprotein, Xs_test_pca_copy)
+        #np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein, Xs_test_pca_copy)
+        for name, row in zip(d, Xs_test_pca_copy):
+            np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)
 
     for gpcr in gpcrs:
         OtherSources(gpcr, gpcrs)
@@ -137,33 +141,36 @@ def main(input, input_file, assay):
         for gprotein in gproteins:
             l += '\t' + str(round(d[name][gprotein],3))
         l += '\n'
-        ## Add ebbret information
-        gpcr = name.split('_')[0]
-        l += gpcr + '\t' + 'IUPHAR'
-        for gprotein in gproteins:
-            if gprotein in gpcrs[gpcr].iuphar:
-                l += '\t' + gpcrs[gpcr].iuphar[gprotein]
-            else:
-                l += '\t-'
-        l += '\n'
-        ## Add shedding information
-        gpcr = name.split('_')[0]
-        l += gpcr + '\t' + 'LogRAi'
-        for gprotein in gproteins:
-            if gprotein in gpcrs[gpcr].shedding:
-                l += '\t' + gpcrs[gpcr].shedding[gprotein]
-            else:
-                l += '\t-'
-        l += '\n'
-        ## Add ebbret information
-        gpcr = name.split('_')[0]
-        l += gpcr + '\t' + 'Emax'
-        for gprotein in gproteins:
-            if gprotein in gpcrs[gpcr].ebbret:
-                l += '\t' + gpcrs[gpcr].ebbret[gprotein]
-            else:
-                l += '\t-'
-        l += '\n'
+
+        ## Put other information after WT
+        if name.split('_')[1] == 'WT':
+            ## Add ebbret information
+            gpcr = name.split('_')[0]
+            l += gpcr + '\t' + 'IUPHAR'
+            for gprotein in gproteins:
+                if gprotein in gpcrs[gpcr].iuphar:
+                    l += '\t' + gpcrs[gpcr].iuphar[gprotein]
+                else:
+                    l += '\t-'
+            l += '\n'
+            ## Add shedding information
+            gpcr = name.split('_')[0]
+            l += gpcr + '\t' + 'LogRAi'
+            for gprotein in gproteins:
+                if gprotein in gpcrs[gpcr].shedding:
+                    l += '\t' + gpcrs[gpcr].shedding[gprotein]
+                else:
+                    l += '\t-'
+            l += '\n'
+            ## Add ebbret information
+            gpcr = name.split('_')[0]
+            l += gpcr + '\t' + 'Emax'
+            for gprotein in gproteins:
+                if gprotein in gpcrs[gpcr].ebbret:
+                    l += '\t' + gpcrs[gpcr].ebbret[gprotein]
+                else:
+                    l += '\t-'
+            l += '\n'
 
     #print (l)
     #shutil.rmtree('output/'+uniq_id+'/')
@@ -236,7 +243,7 @@ def formatInputFile(input_file):
                 variant = given_name.split('/')[1]
             else:
                 name = given_name
-                variant = 'wt'
+                variant = 'WT'
 
             if name not in gpcrs:
                 gpcrs[name] = GPCR(name)

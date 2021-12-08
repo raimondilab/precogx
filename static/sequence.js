@@ -45,7 +45,7 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, uniq_id) {
           var example = [];
           for (var i = 0; i < seq_positions.length; i++) {
             if (Number(variantPosition) === seq_positions[i]) {
-              example.push({start: Number(seq_positions[i]-1), end: Number(seq_positions[i]), color: "black", underscore: false, bgcolor: "red"});
+              example.push({start: Number(seq_positions[i]-1), end: Number(seq_positions[i]), color: "black", underscore: false, bgcolor: "violet"});
             }
             else {
               //example.push(seq_positions[j]);
