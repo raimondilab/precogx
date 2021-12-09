@@ -21,6 +21,7 @@ import numpy as np
 from joblib import dump, load
 
 def main(d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_type,embedding):
+    homeDir = os.getcwd()
     train_set = model.split('/')[-1].split('_')[3]
     EMB_LAYER = int(model.split('/')[-1].split('_')[2])
     num_pca = float(model.split('/')[-1].split('_')[1])
@@ -61,8 +62,8 @@ def main(d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_type,em
     Xs_test = Xtest
     ###ys_train = np.array(ys)
 
-    scaler = load('static/predictor/scaler/all/scaler_'+gprotein+'_'+str(num_pca)+'_'+str(EMB_LAYER)+'_'+str(train_set)+'_'+embedding)
-    pca = load('static/predictor/pca/all/pca_'+gprotein+'_'+str(num_pca)+'_'+str(EMB_LAYER)+'_'+str(train_set)+'_'+embedding)
+    scaler = load(homeDir + '/static/predictor/scaler/all/scaler_'+gprotein+'_'+str(num_pca)+'_'+str(EMB_LAYER)+'_'+str(train_set)+'_'+embedding)
+    pca = load(homeDir + '/static/predictor/pca/all/pca_'+gprotein+'_'+str(num_pca)+'_'+str(EMB_LAYER)+'_'+str(train_set)+'_'+embedding)
 
     ###pca = PCA(num_pca) #204 iuphar,118 shedding ,67 ebret,bret new 78
     ###pca.fit(Xs_train)

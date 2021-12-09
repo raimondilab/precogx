@@ -49,17 +49,20 @@ class GPCR:
         self.ebbret = {}
 
 def main(input, input_file, assay):
+    homeDir = os.getcwd()
+    print (homeDir)
     while True:
         uniq_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))
         if os.path.exists('output/'+uniq_id) == False:
-            os.system('mkdir static/predictor/output/'+uniq_id)
-            os.system('mkdir static/predictor/output/'+uniq_id+'/shed/')
-            os.system('mkdir static/predictor/output/'+uniq_id+'/shed/seq_features/')
-            os.system('mkdir static/predictor/output/'+uniq_id+'/ebret/')
-            os.system('mkdir static/predictor/output/'+uniq_id+'/ebret/seq_features/')
-            os.system('mkdir static/predictor/output/'+uniq_id+'/embed/')
-            os.system('mkdir static/predictor/output/'+uniq_id+'/PCA/')
-            input_embedding = 'static/predictor/output/'+uniq_id+'/embed/'
+            #os.system('mkdir static/predictor/output/'+uniq_id)
+            os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id)
+            os.system('mkdir ' + homeDir+ '/static/predictor/output/'+uniq_id+'/shed/')
+            os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/shed/seq_features/')
+            os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/ebret/')
+            os.system('mkdir ' + homeDir +'/static/predictor/output/'+uniq_id+'/ebret/seq_features/')
+            os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/embed/')
+            os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/PCA/')
+            input_embedding = homeDir + '/static/predictor/output/'+uniq_id+'/embed/'
             break
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
@@ -68,8 +71,8 @@ def main(input, input_file, assay):
     else:
         gpcrs, input = formatInputFile(input_file)
 
-    open('static/predictor/output/'+uniq_id+'/input.fasta', 'w').write(input)
-    input_file = 'static/predictor/output/'+uniq_id+'/input.fasta'
+    open(homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta', 'w').write(input)
+    input_file = homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta'
 
     '''
     record = SeqIO.read(input_file, "fasta")
@@ -82,7 +85,7 @@ def main(input, input_file, assay):
 
     if assay == 'all':
         #path_to_model = '/data/Users/marin/transformers/runs/final_models/best_all/'
-        path_to_model = 'static/predictor/best_all/'
+        path_to_model = homeDir + '/static/predictor/best_all/'
         data = [['GNAS_0.95_28_shed_esm1b.joblib', 0],['GNAL_0.95_33_shed_esm1b.joblib', 0],['GNAI1_0.95_31_ebret_esm1b.joblib', 0],
             ['GNAI2_0.95_20_ebret_esm1b.joblib', 0],['GNAI3_0.95_29_shed_esm1b.joblib',0],
             ['GoA_0.95_20_ebret_esm1b.joblib', 0],['GoB_0.95_33_ebret_esm1b.joblib', 0],['GNAZ_0.95_32_ebret_esm1b.joblib', 0],['GNA11_0.95_25_ebret_esm1b.joblib', 0],
@@ -92,7 +95,7 @@ def main(input, input_file, assay):
 
     # run hmmsearch
     #os.system('hmmsearch data/7tm_1.hmm '+input_file+' > static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
-    os.system('hmmsearch data/SCOP_7TM_348.hmm '+input_file+' > static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
+    os.system('hmmsearch ' + homeDir + '/data/SCOP_7TM_348.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
 
      # create embeddings
     for row in data:
@@ -124,10 +127,10 @@ def main(input, input_file, assay):
         Xs_test_pca_copy = predict.main(d, uniq_id, gprotein, input_file, input_embedding, model, int(feature_type), str(embedding))
         #np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein, Xs_test_pca_copy)
         for name, row in zip(d, Xs_test_pca_copy):
-            np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)
+            np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)
 
     for gpcr in gpcrs:
-        OtherSources(gpcr, gpcrs)
+        OtherSources(gpcr, gpcrs, homeDir)
 
     name=str(input_file)
     #name1=name.split('/')[7].split('.')[0]
@@ -174,26 +177,26 @@ def main(input, input_file, assay):
 
     #print (l)
     #shutil.rmtree('output/'+uniq_id+'/')
-    open('static/predictor/output/'+uniq_id+'/out.tsv', 'w').write(l)
+    open(homeDir + '/static/predictor/output/'+uniq_id+'/out.tsv', 'w').write(l)
     print ('The output is saved at static/predictor/output/'+uniq_id)
 
     data = []
     dic = {}
-    for line in open('static/predictor/output/'+uniq_id+'/out.tsv', 'r'):
+    for line in open(homeDir + '/static/predictor/output/'+uniq_id+'/out.tsv', 'r'):
         row = []
         if line[0] != '#':
             row = line.replace('\n', '').split('\t')
             data.append(row)
 
     dic = {'data': data}
-    with open('static/predictor/output/'+uniq_id+'/out.json', 'w') as f:
+    with open(homeDir + '/static/predictor/output/'+uniq_id+'/out.json', 'w') as f:
         json.dump(dic, f)
 
     #shutil.rmtree('output/'+uniq_id+'/')
     return (uniq_id)
 
-def OtherSources(gpcr_given, gpcrs):
-    for line in open('static/predictor/data_precog/LogRAi_values_final.tsv', 'r'):
+def OtherSources(gpcr_given, gpcrs, homeDir):
+    for line in open(homeDir + '/static/predictor/data_precog/LogRAi_values_final.tsv', 'r'):
         if line[0] != '#':
             gpcr_found = line.split('\t')[0]
             if gpcr_found == gpcr_given:
@@ -203,7 +206,7 @@ def OtherSources(gpcr_given, gpcrs):
         else:
             gproteins = line.replace('\n', '').split('\t')[1:]
 
-    for line in open('static/predictor/data_precog2/emax.tsv', 'r'):
+    for line in open(homeDir + '/static/predictor/data_precog2/emax.tsv', 'r'):
         if line[0] != '#':
             gpcr_found = line.split('\t')[2]
             if gpcr_found == gpcr_given:
@@ -218,7 +221,7 @@ def OtherSources(gpcr_given, gpcrs):
                         'Gq/11': ['GNAQ', 'GNA11', 'GNA14', 'GNA15'],
                         'G12/13': ['GNA12', 'GNA13']
                         }
-    for line in open('static/predictor/data_precog2/IUPHAR_couplings.tsv', 'r'):
+    for line in open(homeDir + '/static/predictor/data_precog2/IUPHAR_couplings.tsv', 'r'):
         if line[0] != '#':
             gpcr_found = line.split('\t')[1]
             if gpcr_found == gpcr_given:
