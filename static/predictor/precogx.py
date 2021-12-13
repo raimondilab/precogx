@@ -36,8 +36,12 @@ import numpy as np
 from joblib import dump, load
 import time, random, string
 from Bio import SeqIO
-import precogxb_app.static.predictor.predict as predict
-import precogxb_app.static.predictor.extract as extract 
+#import precogxb_app.static.predictor.predict as predict
+#import precogxb_app.static.predictor.extract as extract 
+#path = app.root_path
+#sys.path.insert(1, path + '/static/predictor/')
+#import extract
+#import predict
 
 class GPCR:
     def __init__(self, name):
@@ -52,6 +56,9 @@ def main(input, input_file, assay, path):
     #homeDir = os.getcwd()
     #homeDir = '/var/www/flask_apps/precogxb_app/'
     homeDir = path
+    sys.path.insert(1, path + '/static/predictor/')
+    import extract
+    import predict
     print ('hello', homeDir, os.getcwd(), os.listdir('.'), path)
     while True:
         uniq_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))

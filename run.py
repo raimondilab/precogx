@@ -2,14 +2,16 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for
 import os, sys, json
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-sys.path.insert(1, 'static/predictor/')
-from precogxb_app.static.predictor import precogx
+#sys.path.insert(1, 'static/predictor/')
+#from precogxb_app.static.predictor import precogx
 
 app = Flask(__name__)
 
 ##
 path = os.getcwd()
 path = app.root_path
+sys.path.insert(1, path + '/static/predictor/')
+import precogx
 
 ## Route to home page
 @app.route('/', methods=['GET', 'POST'])
