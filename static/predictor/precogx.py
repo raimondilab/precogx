@@ -37,7 +37,7 @@ from joblib import dump, load
 import time, random, string
 from Bio import SeqIO
 #import precogxb_app.static.predictor.predict as predict
-#import precogxb_app.static.predictor.extract as extract 
+#import precogxb_app.static.predictor.extract as extract
 #path = app.root_path
 #sys.path.insert(1, path + '/static/predictor/')
 #import extract
@@ -81,7 +81,7 @@ def main(input, input_file, assay, path):
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/embed/')
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/PCA/')
             input_embedding = '/static/predictor/output/'+uniq_id+'/embed/'
-            ''' 
+            '''
             break
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
@@ -122,6 +122,8 @@ def main(input, input_file, assay, path):
         if "esm1b"  in  row[0].split('.')[1].split('_')[-1]:
             #model_location= "/var/www/flask_apps/precogxb_app/esm_pretrained/esm1b_t33_650M_UR50S.pt"
             model_location = homeDir + "/esm_pretrained/esm1b_t33_650M_UR50S.pt"
+            if os.path.isdir(model_location) == False:
+                model_location= "esm1b_t33_650M_UR50S"
 
     md=[]
     for row in data:
