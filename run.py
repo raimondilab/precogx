@@ -3,12 +3,13 @@ import os, sys, json
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 sys.path.insert(1, 'static/predictor/')
-import precogx
+from precogxb_app.static.predictor import precogx
 
 app = Flask(__name__)
 
 ##
 path = os.getcwd()
+path = app.root_path
 
 ## Route to home page
 @app.route('/', methods=['GET', 'POST'])
@@ -492,7 +493,7 @@ def input():
         input = request.form['input']
         input_file = None ## Upload FASTA file
         ## Run the predictor
-        uniq_id = precogx.main(input, input_file, 'all')
+        uniq_id = precogx.main(input, input_file, 'all', app.root_path)
         #uniq_id = 'OXDUB'
         return redirect('/output/'+uniq_id)
     else:
@@ -502,11 +503,13 @@ def input():
 def output(uniq_id):
     if request.method == 'GET' or request.method == 'POST':
         #print (os.getcwd())
+        print ('running', app.root_path)
+        print ('running', app.instance_path)
         path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
-        path_to_fasta = os.getcwd()+ "/static/predictor/output/"+uniq_id+"/input.fasta"
+        path_to_fasta = path + "/static/predictor/output/"+uniq_id+"/input.fasta"
 
         ## extract first entry
-        with open(os.getcwd() + path_to_json_output) as f:
+        with open(path + path_to_json_output) as f:
             d = json.load(f)
 
         ## Important: here we are passing GPCR_VAR as gpcr name.

@@ -36,8 +36,8 @@ import numpy as np
 from joblib import dump, load
 import time, random, string
 from Bio import SeqIO
-import predict
-import extract
+import precogxb_app.static.predictor.predict as predict
+import precogxb_app.static.predictor.extract as extract 
 
 class GPCR:
     def __init__(self, name):
@@ -48,9 +48,11 @@ class GPCR:
         self.iuphar = {}
         self.ebbret = {}
 
-def main(input, input_file, assay):
-    homeDir = os.getcwd()
-    print (homeDir)
+def main(input, input_file, assay, path):
+    #homeDir = os.getcwd()
+    #homeDir = '/var/www/flask_apps/precogxb_app/'
+    homeDir = path
+    print ('hello', homeDir, os.getcwd(), os.listdir('.'), path)
     while True:
         uniq_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))
         if os.path.exists('output/'+uniq_id) == False:
@@ -63,6 +65,16 @@ def main(input, input_file, assay):
             os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/embed/')
             os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/PCA/')
             input_embedding = homeDir + '/static/predictor/output/'+uniq_id+'/embed/'
+            '''
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id)
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/shed/')
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/shed/seq_features/')
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/ebret/')
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/ebret/seq_features/')
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/embed/')
+            os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/PCA/')
+            input_embedding = '/static/predictor/output/'+uniq_id+'/embed/'
+            ''' 
             break
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
@@ -384,4 +396,4 @@ if __name__ == "__main__":
     assay = args.assay
     input = args.input
     input_file = args.input_file
-    uniq_id = main(input, input_file, assay)
+    uniq_id = main(input, input_file, assay, os.getcwd())
