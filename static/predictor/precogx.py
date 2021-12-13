@@ -121,9 +121,13 @@ def main(input, input_file, assay, path):
     for row in data:
         if "esm1b"  in  row[0].split('.')[1].split('_')[-1]:
             #model_location= "/var/www/flask_apps/precogxb_app/esm_pretrained/esm1b_t33_650M_UR50S.pt"
+            #model_location= "/var/www/flask_apps/precogxb_app/esm_pretrained/esm1b_t33_650M_UR50S.pt"
             model_location = homeDir + "/esm_pretrained/esm1b_t33_650M_UR50S.pt"
-            if os.path.isdir(model_location) == False:
+            #print (model_location, 'model_location')
+            if os.path.isfile(model_location) == False:
+                #print ('not found')
                 model_location= "esm1b_t33_650M_UR50S"
+            
 
     md=[]
     for row in data:
