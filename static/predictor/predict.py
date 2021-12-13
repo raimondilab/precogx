@@ -137,12 +137,14 @@ def main(d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_type,em
         #
         ###scaler.fit(Xs_train_pca)
         ###Xs_train_pca = scaler.transform(Xs_train_pca)
+        Xs_test_pca_copy = Xs_test_pca[:]
         Xs_test_pca = scaler.transform(Xs_test_pca)
+        #pass
         #
 
     ###dump(scaler, 'scaler/scaler_'+gprotein+'_'+str(num_pca)+'_'+str(EMB_LAYER)+'_'+str(train_set)+'_'+embedding)
     ###dump(pca, 'pca/pca_'+gprotein+'_'+str(num_pca)+'_'+str(EMB_LAYER)+'_'+str(train_set)+'_'+embedding)
-    Xs_test_pca_copy = Xs_test_pca[:]
+    #Xs_test_pca_copy = Xs_test_pca[:]
 
     model_name = load(model)
     try:

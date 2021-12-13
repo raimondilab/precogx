@@ -92,7 +92,7 @@ div.checkboxRight {
   makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
   makeStructure({{first_entry|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
   makeHeatmap(0.0, {{first_entry|safe}}, 'GNA12');
-  makePCA({{uniq_id|safe}}, 'Shedding', {{first_entry|safe}}, 'GNA12');
+  makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, 'GNA12');
   </script>
 
   <div class="row p-3">
@@ -115,7 +115,7 @@ div.checkboxRight {
           makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
           makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
-          makePCA({{uniq_id|safe}}, 'Shedding', selected_gpcr, selected_gprotein)
+          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein)
       });
       </script>
       <div id="sequence-viewer" class="p-3" style="display: none;"></div>
@@ -126,11 +126,16 @@ div.checkboxRight {
     <div class="col-4 p-3 border border-primary">
       <h3><u>PCA</u></h3>
       <div class="dropdown" id="labels">
-        <button type="button" id="labelButton" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown";>
-        Labels
+        <button type="button" id="AssayButton" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown";>
+        Assay
         </button>
-          <ul id="labelList" class="dropdown-menu">
+          <ul id="AssayList" class="dropdown-menu">
           </ul>
+          <button type="button" id="PCAButton" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown";>
+          PCA
+          </button>
+            <ul id="PCAList" class="dropdown-menu">
+            </ul>
       </div>
       <div id='myDiv2' ><!-- Plotly chart will be drawn inside this DIV --></div>
       <script>
