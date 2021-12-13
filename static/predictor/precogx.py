@@ -59,7 +59,7 @@ def main(input, input_file, assay, path):
     sys.path.insert(1, path + '/static/predictor/')
     import extract
     import predict
-    print ('hello', homeDir, os.getcwd(), os.listdir('.'), path)
+    #print ('hello', homeDir, os.getcwd(), os.listdir('.'), path)
     while True:
         uniq_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))
         if os.path.exists('output/'+uniq_id) == False:
@@ -120,7 +120,8 @@ def main(input, input_file, assay, path):
      # create embeddings
     for row in data:
         if "esm1b"  in  row[0].split('.')[1].split('_')[-1]:
-            model_location= "esm1b_t33_650M_UR50S"
+            #model_location= "/var/www/flask_apps/precogxb_app/esm_pretrained/esm1b_t33_650M_UR50S.pt"
+            model_location = homeDir + "/esm_pretrained/esm1b_t33_650M_UR50S.pt"
 
     md=[]
     for row in data:
@@ -144,7 +145,7 @@ def main(input, input_file, assay, path):
         feature_type = row[1]
         embedding = row[0].split('.')[1].split('_')[-1]
 
-        Xs_test_pca_copy = predict.main(d, uniq_id, gprotein, input_file, input_embedding, model, int(feature_type), str(embedding))
+        Xs_test_pca_copy = predict.main(path, d, uniq_id, gprotein, input_file, input_embedding, model, int(feature_type), str(embedding))
         #np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein, Xs_test_pca_copy)
         for name, row in zip(d, Xs_test_pca_copy):
             np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)
@@ -198,7 +199,7 @@ def main(input, input_file, assay, path):
     #print (l)
     #shutil.rmtree('output/'+uniq_id+'/')
     open(homeDir + '/static/predictor/output/'+uniq_id+'/out.tsv', 'w').write(l)
-    print ('The output is saved at static/predictor/output/'+uniq_id)
+    #print ('The output is saved at static/predictor/output/'+uniq_id)
 
     data = []
     dic = {}
@@ -226,7 +227,7 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
         else:
             gproteins = line.replace('\n', '').split('\t')[1:]
 
-    for line in open(homeDir + '/static/predictor/data_precog2/emax.tsv', 'r'):
+    for line in open(homeDir + '/static/predictor/data_precog2/emax.tsv', 'r', encoding="utf-8"):
         if line[0] != '#':
             gpcr_found = line.split('\t')[2]
             if gpcr_found == gpcr_given:
@@ -286,7 +287,7 @@ def formatInputFile(input_file):
                 position = int(variant[1:-1]) - 1
                 newAA = variant[-1]
                 new_input += gpcrs[name].seq[:position] + newAA + gpcrs[name].seq[position:] + '\n'
-    print (new_input)
+    #print (new_input)
     #sys.exit()
     return (gpcrs, new_input)
 

@@ -20,8 +20,8 @@ from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from joblib import dump, load
 
-def main(d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_type,embedding):
-    homeDir = os.getcwd()
+def main(path, d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_type,embedding):
+    homeDir = path
     train_set = model.split('/')[-1].split('_')[3]
     EMB_LAYER = int(model.split('/')[-1].split('_')[2])
     num_pca = float(model.split('/')[-1].split('_')[1])

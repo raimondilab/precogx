@@ -124,7 +124,7 @@ def filter_gpcr_list(X, assay, gprotein):
 
     elif assay == 'ebBRET':
         num = -1
-        for line in open(path+'/static/predictor/data_precog2/emax.tsv', 'r'):
+        for line in open(path+'/static/predictor/data_precog2/emax.tsv', 'r', encoding="utf-8"):
             if line[0] != '#':
                 gene = line.split('\t')[2]
                 if float(line.split('\t')[num+5]) > 0.0:
@@ -185,28 +185,28 @@ def fetchPCA():
         pca_type = data['pca_type']
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
-        print ('pca_type', gpcr_given)
+        #print ('pca_type', gpcr_given)
         uniq_id = data['uniq_id']
         ### MUT
         Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
-        print ('test',Xs_test_pca)
+        #print ('test',Xs_test_pca)
         #x_test = Xs_test_pca[:,0].tolist()
         #y_test = Xs_test_pca[:,1].tolist()
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
-        print (x_test)
-        print (y_test)
+        #print (x_test)
+        #print (y_test)
         ### WT
         if '_WT' not in gpcr_given:
             wt = gpcr_given.split('_')[0] + '_WT'
             Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
-            print (Xs_wt_pca)
+            #print (Xs_wt_pca)
             #x_test = Xs_test_pca[:,0].tolist()
             #y_test = Xs_test_pca[:,1].tolist()
             x_wt = Xs_wt_pca[0].tolist()
             y_wt = Xs_wt_pca[1].tolist()
-            print (x_wt)
-            print (y_wt)
+            #print (x_wt)
+            #print (y_wt)
         else:
             x_wt = '-'
             y_wt = '-'
@@ -218,7 +218,7 @@ def fetchPCA():
         maxX = max(x_train_coupling + x_train_uncoupling + x_train_grey)
         minY = min(y_train_coupling + y_train_uncoupling + x_train_grey)
         maxY = max(y_train_coupling + y_train_uncoupling + x_train_grey)
-        print(minY, maxY)
+        #print(minY, maxY)
         return jsonify({'x_train_coupling': x_train_coupling,
                         'x_train_uncoupling': x_train_uncoupling,
                         'y_train_coupling': y_train_coupling,
@@ -506,7 +506,7 @@ def output(uniq_id):
     if request.method == 'GET' or request.method == 'POST':
         #print (os.getcwd())
         print ('running', app.root_path)
-        print ('running', app.instance_path)
+        #print ('running', app.instance_path)
         path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
         path_to_fasta = path + "/static/predictor/output/"+uniq_id+"/input.fasta"
 
