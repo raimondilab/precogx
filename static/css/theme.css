@@ -57,7 +57,7 @@
 body {
   margin: 0;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
+  font-size: 1ems;
   font-weight: 400;
   line-height: 1.5;
   color:#00819D;
@@ -18611,17 +18611,12 @@ margin-top: -5em;
 margin-left: 5rem;
 
 }
-
-#viewport > div:nth-child(1) > canvas:nth-child(1) {
-width: 100% !important;
-height: 100%  !important;
-}
 .toolbar {
     float: left;
 }
 
 .charNumbers, .fastaSeq{
-font-size: 1rem !important;
+font-size: .80ems !important;
 }
 
 .inputSearchSeq{
@@ -18641,26 +18636,30 @@ padding: .95rem .95rem;
 }
 
 .dataTables_filter{
-padding-bottom: 20px !important;
+padding-bottom: 1.25rem!important;
 }
 
 
-div.col-xl-6:nth-child(1) > div:nth-child(1), div.col-xl-6:nth-child(2) > div:nth-child(1){
+div.col-xl-6{
 height: 40rem !important;
-}
-
-#sequence-viewer{
-margin-top: 16px;
-}
-
-
-#viewport{
-width:30rem;
-height:30rem;
 
 }
 
-#modebar-f3f1dc .modebar-btn.active .icon path {
-    fill: black !important;
-
+#myDiv2, #myDiv{
+position: relative;
+width: 40ems;
+height: 28.125rem;
 }
+
+ #myDiv{
+margin-bo
+}
+
+
+#viewport, #sequence-viewer {
+position: relative;
+width: 40ems;
+height: 28.125rem;
+margin-top: 1rem;
+}
+
