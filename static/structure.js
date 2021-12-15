@@ -31,7 +31,12 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         */
 
         // Define format of selection of mutation position (if any)
-        modified_pair_positions_array = modified_pair_positions.split('_');
+        if (modified_pair_positions == '') {
+          modified_pair_positions_array = []
+        }
+        else {
+          modified_pair_positions_array = modified_pair_positions.split('_');
+        }
         selectionDistanceEnrichment = [];
         selectionDistanceDepletion = [];
         if (modified_pair_positions_array.length) {
@@ -103,16 +108,18 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       color: "purple"
                       //color: schemeId,
                   });
-                  o.addRepresentation( "distance", {
-                      //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
-                      atomPair: selectionDistanceEnrichment,
-                      color: "green"
-                  } );
-                  o.addRepresentation( "distance", {
-                      //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
-                      atomPair: selectionDistanceDepletion,
-                      color: "red"
-                  } );
+                  if (modified_pair_positions_array != []) {                    
+                    o.addRepresentation( "distance", {
+                        //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
+                        atomPair: selectionDistanceEnrichment,
+                        color: "green"
+                    } );
+                    o.addRepresentation( "distance", {
+                        //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
+                        atomPair: selectionDistanceDepletion,
+                        color: "red"
+                    } );
+                  }
                   o.autoView(':'+chainGPCR);
                   //o.removeAllRepresentations();
                   //o.center({sele:'1-50',});

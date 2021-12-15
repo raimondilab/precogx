@@ -115,7 +115,7 @@ div.checkboxRight {
           makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
           makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
-          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein)
+          makePCA({{uniq_id|safe}}, '', 'GPCRome', selected_gpcr, selected_gprotein)
       });
       </script>
       <div id="sequence-viewer" class="p-3" style="display: none;"></div>
