@@ -1,0 +1,106 @@
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  top: 0px;
+  /*position: fixed;*/
+  width:100%;
+  padding: 3px;
+  background-color: #CD5C5C;
+  box-shadow: 0px 0px 10px 3px grey;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  text-align: center;
+  z-index: 99;
+}
+#header h2 a{
+  font-size: 1em;
+  padding: 0;
+  text-decoration: none;
+  font-weight: bold;
+  color: #FCE8DC;
+  text-shadow: 3px 2px #CB2C3E;
+  background-color: #CD5C5C;
+}
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1px;
+  text-align: center;
+  width: 250px;
+  background-color: #CD5C5C;
+  display: inline;
+}
+#navbar ul li {
+  display: inline;
+}
+#navbar ul li a {
+  padding-left: 1em;
+  padding-right: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #FCE8DC;
+  background-color: #CD5C5C;
+}
+#navbar ul li a:hover {
+  color: #CD5C5C;
+  background-color: #FCE8DC;
+}
+
+.home-link:before {
+  font-family: FontAwesome;
+  content: "\f015";
+  padding: 0 3px;
+}
+.help-link:before {
+  font-family: FontAwesome;
+  content: "\f059";
+  padding: 0 3px;
+}
+.russell-link:before {
+  font-family: FontAwesome;
+  content: "\f0c0";
+  padding: 0 3px;
+}
+
+#main {
+  /* position */
+ /* right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+ */
+  /*margin-top: 8em;*/
+  /* dimensions */
+  min-height: 0em;
+  width: 75%;
+  height: 50px;
+  /* style */
+  background-color: #fff;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /*padding: 20px;*/
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: grey;
+  text-align: center;
+}
+
+#footer hr {
+  border-color: grey;
+  background-color: grey;
+  color: grey;
+}

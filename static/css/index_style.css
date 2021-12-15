@@ -1,0 +1,118 @@
+div + div {
+  margin-top: 1em;
+}
+
+#intro {
+  top: 5em;
+  padding: 10px;
+}
+
+#query_form {
+  /*border: 5px solid #FE7F4A;*/
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #FFF;
+}
+
+textarea {
+  width: 30em;
+  height: 200px;
+  resize:vertical;
+  font: 1em Helvetica, arial, sans-serif;
+  overflow: auto;
+  /*font-style: oblique;
+  color: grey;*/
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  padding: 7px 7px;
+}
+
+#name {
+  font: 1em Helvetica, arial, sans-serif;
+  width: 30em;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  padding: 7px 7px;
+}
+
+label {
+  width: 190px;
+  text-align: center;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+#name:focus, textarea:focus {
+  border-color: #888;
+}
+
+button {
+  display: inline-block;
+  border-radius: 6px;
+  background-color: #CD5C5C;
+  border: none;
+  padding: 5px;
+  width: 120px;
+  margin: 2px;
+  color: #fff;
+  font-size: 1em;
+  /* text-align: center; */
+  vertical-align: middle;
+  cursor: pointer;
+
+  /* GROW EFFECT */
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+button:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.ex_button {
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  overflow: hidden;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.ex_button:hover{
+  background-color: #2098D1;
+  color: white;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.ex_button:focus, .ex_button:active {
+  background-color: #2098D1;
+  color: white;
+}
+
+#submit-button {
+  padding-left: 15px;
+}
+#submit-button:after {
+  font-family: FontAwesome;
+  content: "\f138";
+  padding: 0 10px;
+}
+#reset-button:after{
+  font-family: FontAwesome;
+  content: "\f021";
+  padding: 0 10px;
+}
