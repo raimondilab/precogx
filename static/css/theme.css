@@ -18645,21 +18645,27 @@ height: 40rem !important;
 
 }
 
-#myDiv2, #myDiv{
+#myDiv2{
 position: relative;
 width: 40ems;
 height: 28.125rem;
 }
 
- #myDiv{
-margin-bo
+#myDiv{
+position: relative;
+width: 40ems;
+height: 40rem;
+margin-left:1rem;
 }
 
 
 #viewport, #sequence-viewer {
 position: relative;
 width: 40ems;
-height: 28.125rem;
+height: 40rem;
 margin-top: 1rem;
 }
 
+.fastaSeq, .charNumbers{
+font-size: 0.75rem !important;
+}
