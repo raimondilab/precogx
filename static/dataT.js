@@ -169,11 +169,15 @@ function initTable(path_to_json_output) {
             'csv',
             'excel',
             'spacer',
-            'pdf',
             {
                 extend: 'spacer',
                 style: 'bar',
-                text: '</div>'
+                text: '</div>',
+            },
+             {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
             }
         ],
     "fixedColumns":   {

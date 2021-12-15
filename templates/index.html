@@ -6,24 +6,15 @@
 <section class="pt-8 py-0" id="home" xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="row min-vh-xl-100 min-vh-xxl-25">
-            <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-end">
-                <img class="pt-7 pt-md-0 w-60" src="static/img/icons/algorithm_c.png" alt="Machine learning workflow" /></div>
-            <div class="col-md-75 col-xl-6 col-xxl-5 text-md-start text-center py-6">
-                <h1 class="fw-light font-base fs-6 fs-xxl-7"><strong>PRECOGx</strong></h1>
-                <p class="fs-2 mb-5 text-justify">
-                    Delving deep into <strong>GPCR</strong> signaling mechanisms with protein <strong>embeddings</strong> (ESM-1b)
-                </p>
+            <div class="col-md-75 col-xl-6 col-xxl-5  order-0 order-md-1 text-end py-4">
+                <img class="pt-7 pt-md-0 w-60" src="static/img/icons/algorithm_c.png" alt="Machine learning workflow" />
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- <section> begin ============================-->
-<section class="py-0" id="make">
-    <div class="container">
-        <div class="row py-5 justify-content-lg-evenly">
-            <h1 class="fw-bold">Make prediction</h1>
-            <form class="row g-3" method="POST" action='/input'>
+            <div class="col-md-5 col-xl-6 col-xxl-7 text-md-start text-center py-4">
+                <h1 class="fw-light font-base fs-6 fs-xxl-7"><strong>PRECOGx</strong></h1>
+                <p class="fs-1 mb-5 text-justify">
+                    Delving deep into <strong>GPCR</strong> signaling mechanisms with <strong> protein embeddings</strong> (ESM-1b)
+                </p>
+                 <form class="row g-3" method="POST" action='/input'>
                 {% if error %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     {{ error }}
@@ -37,28 +28,19 @@
                 <div class="col-12">
                     <div class="col-auto">
                         <div class="float-start">
-                             <button class="btn btn-primary rounded-pill" id="submit" type="submit">Submit</button>
+                             <button class="btn btn-primary  btn-sm rounded-pill" id="submit" type="submit">Submit</button>
                         </div>
                          <div class="float-end">
-                              <button class="btn btn-primary rounded-pill " type="button" id="ex1">Example 1</button>
-                              <button class="btn btn-primary rounded-pill" type="button" id="ex2">Example 2</button>
+                              <button class="btn btn-primary btn-sm rounded-pill " type="button" id="ex1">Example 1</button>
+                              <button class="btn btn-primary  btn-sm rounded-pill" type="button" id="ex2">Example 2</button>
                         </div>
                     </div>
                 </div>
             </form>
-            <!--            <form  class="row g-3" method="POST" action='/predictions_file' enctype=multipart/form-data>-->
-            <!--                <div class="col-auto">-->
-            <!--                    <input name="fasta_file" class="form-control  form-livedoc-control"  id="formFileSm" type="file" required="required">-->
-            <!--                </div>-->
-            <!--                <div class="col-auto">-->
-            <!--                    <button class="btn btn-primary rounded-pill mb-3" type="submit">Upload file</button>-->
-            <!--                </div>-->
-            <!--            </form>-->
+            </div>
         </div>
     </div>
-    <!-- end of .container-->
 </section>
-
 
 <!-- <section> begin ============================-->
 <section class="py-xxl-7" id="running">

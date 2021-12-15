@@ -35,7 +35,6 @@ $( document ).ready(function() {
 
       $("#submit").click(function(){
         $("#home").slideUp();
-        $("#make").slideUp();
 
         var element = document.getElementById("footer");
         element.classList.add("footer");
