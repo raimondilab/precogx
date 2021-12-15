@@ -19,7 +19,7 @@ import precogx
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 def extract_contacts(gprotein_given, cutoff):
     assay = ''
@@ -556,7 +556,7 @@ def output(uniq_id):
         #print (first_entry)
         #path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
         #path_to_fasta = "/static/predictor/output/"+uniq_id+"/input.fasta"
-        return render_template('embedded.html',
+        return render_template('result.html',
                                 path_to_json_output=json.dumps(path_to_json_output),
                                 path_to_fasta=json.dumps(path_to_fasta),
                                 first_entry=json.dumps(first_entry),
@@ -564,6 +564,16 @@ def output(uniq_id):
                                 uniq_id=json.dumps(uniq_id))
     else:
         return ("<html><h3>It was a GET request</h3></html>")
+
+# Route to help page
+@app.route('/help')
+def help():
+    return render_template('help.html')
+
+# Route to about page
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
