@@ -13,8 +13,10 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
           {
             //z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
             z: response['fetch_contacts'],
-            zmin: Number(response['fetch_contactsMin']),
-            zmax: Number(response['fetch_contactsMax']),
+            //zmin: Number(response['fetch_contactsMin']),
+            //zmax: Number(response['fetch_contactsMax']),
+            zmin: -1.0,
+            zmax: 1.0,
             x: response['positions'],
             y: response['positions'],
             type: 'heatmap',

@@ -117,6 +117,9 @@ def main(input, input_file, assay, path):
     os.system('hmmsearch ' + homeDir + '/data/7tm_1.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
     #os.system('hmmsearch ' + homeDir + '/data/SCOP_7TM_348.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
 
+    # BLAST GPCRDB
+    os.system('blastp -query ' + input_file + ' -outfmt 5 -out ' + homeDir + '/static/predictor/output/' + uniq_id + '/GPCRDBblast.txt -db ' + homeDir + '/data/GPCRDB/blastdb/GPCRDB')
+
      # create embeddings
     for row in data:
         if "esm1b"  in  row[0].split('.')[1].split('_')[-1]:
@@ -127,7 +130,7 @@ def main(input, input_file, assay, path):
             if os.path.isfile(model_location) == False:
                 #print ('not found')
                 model_location= "esm1b_t33_650M_UR50S"
-            
+
 
     md=[]
     for row in data:
@@ -223,44 +226,47 @@ def main(input, input_file, assay, path):
     return (uniq_id)
 
 def OtherSources(gpcr_given, gpcrs, homeDir):
-    for line in open(homeDir + '/static/predictor/data_precog/LogRAi_values_final.tsv', 'r'):
+    for line in open(homeDir + '/data/shedding.tsv', 'r'):
         if line[0] != '#':
-            gpcr_found = line.split('\t')[0]
-            if gpcr_found == gpcr_given:
-                values = line.replace('\n', '').split('\t')[1:]
+            gene_found = line.split('\t')[0]
+            acc_found = line.split('\t')[1]
+            if gene_found == gpcr_given or acc_found == gpcr_given:
+                values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
-                    gpcrs[gpcr_found].shedding[gprotein] = str(round(float(value), 2))
+                    gpcrs[gpcr_given].shedding[gprotein] = str(round(float(value), 2))
         else:
-            gproteins = line.replace('\n', '').split('\t')[1:]
+            gproteins = line.replace('\n', '').split('\t')[2:]
 
-    for line in open(homeDir + '/static/predictor/data_precog2/emax.tsv', 'r', encoding="utf-8"):
+    for line in open(homeDir + '/data/ebbret.tsv', 'r', encoding="utf-8"):
         if line[0] != '#':
-            gpcr_found = line.split('\t')[2]
-            if gpcr_found == gpcr_given:
-                values = line.replace('\n', '').split('\t')[5:]
+            gene_found = line.split('\t')[0]
+            acc_found = line.split('\t')[1]
+            if gene_found == gpcr_given or acc_found == gpcr_given:
+                values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
-                    gpcrs[gpcr_found].ebbret[gprotein] = value
+                    gpcrs[gpcr_given].ebbret[gprotein] = value
         else:
-            gproteins = line.replace('\n', '').split('\t')[5:]
+            gproteins = line.replace('\n', '').split('\t')[2:]
 
     dic_gprot_family = {'Gs': ['GNAS', 'GNAL'],
                         'Gi/o': ['GNAI1', 'GNAI2', 'GNAI3', 'GNAZ', 'GoA', 'GoB'],
                         'Gq/11': ['GNAQ', 'GNA11', 'GNA14', 'GNA15'],
                         'G12/13': ['GNA12', 'GNA13']
                         }
-    for line in open(homeDir + '/static/predictor/data_precog2/IUPHAR_couplings.tsv', 'r'):
+    for line in open(homeDir + '/data/iuphar.tsv', 'r'):
         if line[0] != '#':
-            gpcr_found = line.split('\t')[1]
-            if gpcr_found == gpcr_given:
-                pc_values = line.replace('\n', '').split('\t')[5]
-                sc_values = line.replace('\n', '').split('\t')[6]
+            gene_found = line.split('\t')[0]
+            acc_found = line.split('\t')[1]
+            if gene_found == gpcr_given or acc_found == gpcr_given:
+                pc_values = line.replace('\n', '').split('\t')[2]
+                sc_values = line.replace('\n', '').split('\t')[3]
                 for gprot_family in dic_gprot_family:
                     if gprot_family in pc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
-                            gpcrs[gpcr_found].iuphar[gprotein] = 'PC'
+                            gpcrs[gpcr_given].iuphar[gprotein] = 'PC'
                     elif gprot_family in sc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
-                            gpcrs[gpcr_found].iuphar[gprotein] = 'SC'
+                            gpcrs[gpcr_given].iuphar[gprotein] = 'SC'
 
 def formatInputFile(input_file):
     ## if input in FASTA format

@@ -78,7 +78,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list) {
       makeSequence(gpcr, path_to_fasta, gprotein, slider1_value, uniq_id);
       makeStructure(gpcr, gprotein, slider1_value, uniq_id);
       makeHeatmap(slider1_value, gpcr, gprotein);
-      makePCA(uniq_id, 'Shedding', 'GPCRome', gpcr, gprotein);
+      makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
     });
   });
 }

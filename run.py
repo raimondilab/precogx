@@ -45,14 +45,16 @@ def extract_contacts(gprotein_given, cutoff):
                 dic[pos2][pos1] = score
 
                 positions.append(pos1)
-                positions.append(pos2)
+                if pos2 not in positions:
+                    positions.append(pos2)
                 pair_positions.append(pos1+':'+pos2+':'+str(score))
             scores.append(score)
 
     scoresMax = max(scores)
     scoresMin = min(scores)
-    positions = list(set(positions))
-    positions = np.array(np.sort(positions))
+    positions = np.array(positions)
+    #positions = list(set(positions))
+    #positions = np.array(np.sort(positions))
     data = []
     num_contacts = []
     for pos1 in positions:
@@ -478,6 +480,14 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
         gprotein_chain = line.split(' ')[2].replace('\n', '')
         barr_chain = line.split(' ')[3].replace('\n', '')
 
+        chain_info[pdbid] = {}
+        chain_info[pdbid]['gpcr_chain'] = gpcr_chain
+        if gprotein_chain != '-':
+            chain_info[pdbid]['gprotein_chain'] = gprotein_chain
+        elif barr_chain != '-':
+            chain_info[pdbid]['gprotein_chain'] = barr_chain
+
+        '''
         ## Select pdbid depending G-protein or Barrs
         if 'Barr' in gprotein:
             if barr_chain != '-':
@@ -489,6 +499,7 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
                 chain_info[pdbid] = {}
                 chain_info[pdbid]['gpcr_chain'] = gpcr_chain
                 chain_info[pdbid]['gprotein_chain'] = gprotein_chain
+        '''
 
     dic = {}
     for line in open(path_to_output+'/blastp_output.txt', 'r'):
