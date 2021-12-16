@@ -38,8 +38,8 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
 
         var layout = {
               autosize: false,
-              width: 650,
-              height: 650
+              width: 420,
+              height: 420
         };
 
         Plotly.newPlot('myDiv', data, layout);

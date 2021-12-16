@@ -18654,15 +18654,15 @@ height: 28.125rem;
 #myDiv{
 position: relative;
 width: 40ems;
-height: 40rem;
-margin-left:1rem;
+height: 28.125rem;
+margin-left: 1.25rem;
 }
 
 
 #viewport, #sequence-viewer {
 position: relative;
 width: 40ems;
-height: 40rem;
+height: 28.125rem;
 margin-top: 1rem;
 }
 
