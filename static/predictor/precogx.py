@@ -3,7 +3,7 @@
 
 import argparse, requests, urllib
 import gzip
-import regex as re
+#import regex as re
 import os, sys, json
 import random
 from collections import Counter
@@ -278,6 +278,7 @@ def formatInputFile(input_file):
             if line.split() != []:
                 if line[0] != '#':
                     given_name = line.replace('\n', '')
+                    '''
                     pattern = re.compile("\\>sp\\|.*\\|.*_.*")
 
                     if pattern.match(given_name) != None:
@@ -286,6 +287,7 @@ def formatInputFile(input_file):
                         #given_name = str(line.split('>')[1].replace('\n', '').replace(' ','').split()[0])
                         given_name = str(line.split('>')[1])
                         given_name = ' '.join(given_name.split())
+                    '''
 
                     if '/' in given_name:
                         name = given_name.split('/')[0]
@@ -325,8 +327,8 @@ def formatInput(input):
                 if line[0] != '#':
                     if line[0] == '>':
                         given_name = line.replace('\n', '')
+                        '''
                         pattern = re.compile("\\>sp\\|.*\\|.*_.*")
-
                         if pattern.match(given_name) != None:
                             given_name = given_name.split('>')[1].split(' ')[0]
                             #print ('match', pattern.match(given_name))
@@ -334,7 +336,7 @@ def formatInput(input):
                             #given_name = line.split('>')[1].replace('\n', '').replace(' ','').split()[0]
                             given_name = str(line.split('>')[1])
                             given_name = ' '.join(given_name.split())
-
+                        '''
                         if '/' not in given_name:
                             name = str(given_name)
                             variant = 'WT'
@@ -353,6 +355,7 @@ def formatInput(input):
             if line.split() != []:
                 if line[0] != '#':
                     given_name = line.replace('\n', '')
+                    '''
                     pattern = re.compile("\\>sp\\|.*\\|.*_.*")
                     if pattern.match(given_name) != None:
                         given_name = given_name.split(' ')[0]
@@ -361,7 +364,7 @@ def formatInput(input):
                         given_name = str(line.replace(' ','').split()[0])
                         #print ('this one', given_name)
                         #given_name = ' '.join(given_name.split())
-
+                    '''
                     if '/' not in given_name:
                         name = given_name
                         variant = 'WT'

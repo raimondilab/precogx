@@ -85,3 +85,4 @@ $( document ).ready(function() {
 //      (rank===messages.length-1)?rank=0:rank++; // if you have displayed the last message from the array, go back to the first one, else go to next message
 //    }, 1000);
 //}
+//}
