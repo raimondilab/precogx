@@ -37,9 +37,10 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
         ];
 
         var layout = {
-              autosize: false,
-              width: 420,
-              height: 420
+              autosize: true,
+              width: 475,
+              height: 475,
+              title: gprotein
         };
 
         Plotly.newPlot('myDiv', data, layout, {displayModeBar: true, scrollZoom: true});
