@@ -12,6 +12,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
     success: function(response){
 				console.log(response);
         //alert(assay);
+        //alert(response['score_coupling']);
         var assay = response['assay'];
         showPCA(uniq_id, assay, pca_type, gpcr, gprotein);
         var train_grey = {
@@ -33,7 +34,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           name: assay + ' coupling',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
           text: response['genes_to_consider_coupling'],
-          marker: { size: 12, color: 'orange' }
+          marker: { size: 12, color: response['score_coupling'] }
         };
 
         var train_uncoupling = {
@@ -44,7 +45,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           name: assay + ' not coupling',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
           text: response['genes_to_consider_uncoupling'],
-          marker: { size: 12, color: 'blue' }
+          marker: { size: 12, color: response['score_uncoupling'] }
         };
 
         if (response['x_wt'] != '-') {
@@ -71,7 +72,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
             type: 'scatter',
             name: gpcr.split('_')[0]+'_WT',
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-            marker: { size: 12, color: "green" }
+            marker: { size: 12, color: "darkblue" }
           };
           var data = [ train_grey, train_coupling, train_uncoupling, test, wt ];
         }

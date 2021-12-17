@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from Bio import SearchIO
 from Bio.Blast import NCBIXML
+from matplotlib import cm
 #sys.path.insert(1, 'static/predictor/')
 #from precogxb_app.static.predictor import precogx
 
@@ -35,7 +36,7 @@ def extract_contacts(gprotein_given, cutoff):
             pos1 = line.split('\t')[-2]
             pos2 = line.replace('\n', '').split('\t')[-1]
             score = float(line.replace('\n','').split('\t')[1])
-            if score >= cutoff:
+            if score >= cutoff or score <= (-1.0)*cutoff:
                 if pos1 not in dic:
                     dic[pos1] = {}
                 dic[pos1][pos2] = score
@@ -71,7 +72,7 @@ def extract_contacts(gprotein_given, cutoff):
     #print ('positions', positions)
 
     if num_contacts != []:
-        scaler = MinMaxScaler(feature_range=(0.25,1.0))
+        scaler = MinMaxScaler(feature_range=(0.35,1.0))
         num_contacts = scaler.fit_transform(num_contacts)
         num_contacts = num_contacts.flatten().tolist()
         for i in range(0, len(num_contacts)):
@@ -102,18 +103,22 @@ def extract_pca(gprotein, assay, pca_type):
     else:
         #Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
         Xs_train_pca = np.load(path+'/static/best_PCA/GNAZ.npy', allow_pickle=True)
-    Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
+    score_coupling, score_uncoupling, Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
     #print ('train', Xs_train_pca_coupling)
+    score_coupling = score_coupling.tolist()
+    score_uncoupling = score_uncoupling.tolist()
     x_train_coupling = Xs_train_pca_coupling[:,0].tolist()
     x_train_uncoupling = Xs_train_pca_uncoupling[:,0].tolist()
     x_train_grey = Xs_train_pca_grey[:,0].tolist()
     y_train_coupling = Xs_train_pca_coupling[:,1].tolist()
     y_train_uncoupling = Xs_train_pca_uncoupling[:,1].tolist()
     y_train_grey = Xs_train_pca_grey[:,1].tolist()
-    return x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey
+    return score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey
 
 def filter_gpcr_list(X, assay, gprotein):
     genes_to_consider_coupling = []
+    score_coupling = []
+    score_uncoupling = []
     genes_to_consider_uncoupling = []
     #print (assay)
     #assay = 'ebBRET'
@@ -123,10 +128,20 @@ def filter_gpcr_list(X, assay, gprotein):
             if line[0] != '#':
                 gene = line.split('\t')[0]
                 acc = line.split('\t')[1]
+                score = float(line.split('\t')[num+2]) + 1
+                #color = cm.get_cmap('RdYlGn', 100)
+                #r,g,b,a = color(score)
+                #print (score,r,g,b)
                 if float(line.split('\t')[num+2]) >= -1.0:
                     genes_to_consider_coupling.append(gene+'|'+acc)
+                    color = cm.get_cmap('YlGn', 10)
+                    r,g,b,a = color(score)
+                    score_coupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
                 else:
                     genes_to_consider_uncoupling.append(gene+'|'+acc)
+                    color = cm.get_cmap('OrRd', 10)
+                    r,g,b,a = color(score*(-1.0))
+                    score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
             else:
                 flag = 0
                 header = line.replace('\n', '').split('\t')[2:]
@@ -143,10 +158,17 @@ def filter_gpcr_list(X, assay, gprotein):
             if line[0] != '#':
                 gene = line.split('\t')[0]
                 acc = line.split('\t')[1]
+                score = float(line.split('\t')[num+2])
+
                 if float(line.split('\t')[num+2]) > 0.0:
                     genes_to_consider_coupling.append(gene+'|'+acc)
+                    color = cm.get_cmap('Greens', 100)
+                    r,g,b,a = color(score)
+                    score_coupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
                 else:
                     genes_to_consider_uncoupling.append(gene+'|'+acc)
+                    #score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
+                    score_uncoupling.append('red')
             else:
                 header = line.replace('\n', '').split('\t')[2:]
                 for num, gprot in enumerate(header):
@@ -168,8 +190,10 @@ def filter_gpcr_list(X, assay, gprotein):
                 acc = line.split('\t')[1]
                 if gprotein_fam in line:
                     genes_to_consider_coupling.append(gene+'|'+acc)
+                    score_coupling.append('green')
                 else:
                     genes_to_consider_uncoupling.append(gene+'|'+acc)
+                    score_uncoupling.append('red')
 
     elif assay == 'STRING':
         string_map = {
@@ -184,8 +208,10 @@ def filter_gpcr_list(X, assay, gprotein):
             acc = line.split('\t')[1]
             if barr in line:
                 genes_to_consider_coupling.append(gene+'|'+acc)
+                score_coupling.append('green')
             else:
                 genes_to_consider_uncoupling.append(gene+'|'+acc)
+                score_uncoupling.append('green')
     #print (genes_to_consider_coupling)
     #print (genes_to_consider_uncoupling)
 
@@ -211,7 +237,7 @@ def filter_gpcr_list(X, assay, gprotein):
 
     #print (X_pos)
 
-    return (np.array(X_pos), np.array(X_neg), np.array(X_grey), genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey)
+    return (np.array(score_coupling), np.array(score_uncoupling), np.array(X_pos), np.array(X_neg), np.array(X_grey), genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey)
 
 @app.route('/fetchPCA', methods=['GET', 'POST'])
 def fetchPCA():
@@ -221,7 +247,7 @@ def fetchPCA():
         pca_type = data['pca_type']
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
-        #print (gprotein_given, gpcr_given)
+        print (gprotein_given, gpcr_given)
         uniq_id = data['uniq_id']
 
         if assay == '':
@@ -257,7 +283,7 @@ def fetchPCA():
             x_wt = '-'
             y_wt = '-'
 
-        x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
+        score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
         #print (x_train, y_train, x_test, y_test)
         #print (genes_to_consider_coupling)
         minX = min(x_train_coupling + x_train_uncoupling + x_train_grey)
@@ -271,6 +297,8 @@ def fetchPCA():
                         'y_train_uncoupling': y_train_uncoupling,
                         'x_train_grey': x_train_grey,
                         'y_train_grey': y_train_grey,
+                        'score_coupling': score_coupling,
+                        'score_uncoupling': score_uncoupling,
                         'assay': assay,
                         'genes_to_consider_coupling': genes_to_consider_coupling,
                         'genes_to_consider_uncoupling': genes_to_consider_uncoupling,
@@ -388,6 +416,7 @@ def convertPositionsBW2PDB():
                     BW2GPCRDB[BW] = GPCRDB
 
         modified_positions = []
+        modified_positions_labels = []
         modified_num_contacts = []
 
         for num, BW in enumerate(positions.split(',')):
@@ -396,7 +425,9 @@ def convertPositionsBW2PDB():
                 if GPCRDB in GPCRDB2PDB:
                     pdbPosition = GPCRDB2PDB[GPCRDB]
                     modified_positions.append(str(pdbPosition))
+                    modified_positions_labels.append(str(BW))
                     modified_num_contacts.append(str(num_contacts.split(',')[num]))
+        #print (modified_positions_labels)
 
         modified_pair_positions = []
         if pair_positions.split() != []:
@@ -413,6 +444,7 @@ def convertPositionsBW2PDB():
                         modified_pair_positions.append(pdbPosition1+':'+pdbPosition2+':'+score)
 
         mutation_position = '-'
+        mutation_position_label = '-'
         if '_WT' not in gpcr_given:
             mutation_sequence_position = int(gpcr_given.split('_')[1][1:-1])
             handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
@@ -433,6 +465,7 @@ def convertPositionsBW2PDB():
 
             if mutation_sequence_position in SEQ2GPCRDB:
                 mutation_GPCRDB_position = SEQ2GPCRDB[mutation_sequence_position]
+                mutation_position_label = mutation_sequence_position
 
             if mutation_GPCRDB_position in GPCRDB2PDB:
                 mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]
@@ -441,9 +474,11 @@ def convertPositionsBW2PDB():
         #print (modified_pair_positions)
 
         return jsonify({'modified_positions': '_'.join(modified_positions),
+                        'modified_positions_labels': '_'.join(modified_positions_labels),
                         'modified_num_contacts': '_'.join(modified_num_contacts),
                         'modified_pair_positions': '_'.join(modified_pair_positions),
-                        'mutation_position': mutation_position
+                        'mutation_position': mutation_position,
+                        'mutation_position_label': mutation_position_label
                         })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
@@ -457,6 +492,7 @@ def fetchContactsPDBStructure():
         cutoff = float(data['cutoff'])
         uniq_id = data['uniq_id']
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
+        print ('print', gprotein_given, pair_positions)
         ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
         return jsonify({'try': positions.tolist(),
                         'ordered_pdbs': ordered_pdbs,

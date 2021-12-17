@@ -99,15 +99,17 @@ def makeMapFASTA(pdbID, dic):
 
     #print (SEQ2PDB)
     #print (GPCRDB2SEQ)
+
     l = ''
     for s in GPCRDB2SEQ:
         q = GPCRDB2SEQ[s]
         if q in SEQ2PDB:
             pdbPosition = SEQ2PDB[q]
-            l += str(pdbID) + '\t' + chainID + '\t' + str(s) + '\t' + str(q) + '\t' + bestHIT + '\n'
-            #print (l)
-        open('data/PDB/GPCRDB/'+pdbID+'.txt', 'w').write(l)
+            l += str(pdbID) + '\t' + chainID + '\t' + str(pdbPosition) + '\t' + str(s) + '\t' + bestHIT + '\n'
+    open('data/PDB/GPCRDB/'+pdbID+'.txt', 'w').write(l)
 
+    #print (l)
+    #sys.exit()
     return fasta
 
 ## Save PDB ID and chain information as well as
@@ -115,12 +117,14 @@ def makeMapFASTA(pdbID, dic):
 l = ''
 pdblist = []; allPDB = ''
 for pdbID in dic:
-    if (dic[pdbID]['GPCR'] != '-' and dic[pdbID]['GPROT'] != '-') or (dic[pdbID]['GPCR'] != '-' and dic[pdbID]['BARR'] != '-'):
-        l += pdbID + ' ' + dic[pdbID]['GPCR'] + ' ' + dic[pdbID]['GPROT'] + ' ' + dic[pdbID]['BARR'] + '\n'
-        #os.system('wget https://www.rcsb.org/fasta/entry/'+pdbID.lower()+'/download' + ' -O ../data/fasta/'+ pdbID.lower()+'.fasta')
-        allPDB += makeMapFASTA(pdbID, dic) + '\n'
-        pdblist.append(pdbID)
-        #break
+    #if pdbID == '6wwz' or pdbID == '6WWZ':
+    if True:
+        if (dic[pdbID]['GPCR'] != '-' and dic[pdbID]['GPROT'] != '-') or (dic[pdbID]['GPCR'] != '-' and dic[pdbID]['BARR'] != '-'):
+            l += pdbID + ' ' + dic[pdbID]['GPCR'] + ' ' + dic[pdbID]['GPROT'] + ' ' + dic[pdbID]['BARR'] + '\n'
+            #os.system('wget https://www.rcsb.org/fasta/entry/'+pdbID.lower()+'/download' + ' -O ../data/fasta/'+ pdbID.lower()+'.fasta')
+            allPDB += makeMapFASTA(pdbID, dic) + '\n'
+            pdblist.append(pdbID)
+            #break
 
 #print (l)
 open('data/PDB/pdblist.txt', 'w').write(l)
