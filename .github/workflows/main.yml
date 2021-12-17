@@ -40,17 +40,18 @@ jobs:
       # Install and run MAKEDB
       - name: Install BioPython
         shell: bash -l {0}
-        run: conda install -c conda-forge biopython
+        run: |
+        conda install -c conda-forge biopython
+        python test.py
 
       # run the test.py to get the latest SIFT and PDB FASTA files
       - name: execute test.py script
         run: python test.py
 
       # Install and run MAKEDB
-      - name: Install BioPython, BLAST and run makeblastdb
+      - name: Install BLAST and run makeblastdb
         shell: bash -l {0}
         run: |
-          conda install -c conda-forge biopython
           conda install -c bioconda blast
           mkdir blastdb
           makeblastdb -in data/fasta/all_pdbs.fasta -dbtype 'prot' -out data/fasta/blastdb/all_pdbs
