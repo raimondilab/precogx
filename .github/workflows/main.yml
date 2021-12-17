@@ -41,8 +41,7 @@ jobs:
       - name: Install BioPython & run test.py
         shell: bash -l {0}
         run: |
-          conda install python=3.1
-          conda install -c conda-forge biopython
+          sudo apt-get install python-biopython
           conda install -c bioconda blast
           python test.py
           mkdir blastdb
