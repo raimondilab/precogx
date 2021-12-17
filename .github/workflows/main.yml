@@ -41,9 +41,9 @@ jobs:
       - name: Install BioPython & run test.py
         shell: bash -l {0}
         run: |
+          conda install python=3.1
           conda install -c conda-forge biopython
           conda install -c bioconda blast
-          conda install python=3.8
           python test.py
           mkdir blastdb
           makeblastdb -in data/fasta/all_pdbs.fasta -dbtype 'prot' -out data/fasta/blastdb/all_pdbs
