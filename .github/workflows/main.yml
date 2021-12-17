@@ -45,8 +45,8 @@ jobs:
         python test.py
 
       # run the test.py to get the latest SIFT and PDB FASTA files
-      - name: execute test.py script
-        run: python test.py
+      #- name: execute test.py script
+      #  run: python test.py
 
       # Install and run MAKEDB
       - name: Install BLAST and run makeblastdb
