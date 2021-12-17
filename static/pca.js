@@ -12,10 +12,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
     success: function(response){
 				console.log(response);
         //alert(assay);
-<<<<<<< HEAD
-=======
         //alert(response['score_coupling']);
->>>>>>> refs/remotes/origin/main
         var assay = response['assay'];
         showPCA(uniq_id, assay, pca_type, gpcr, gprotein);
         var train_grey = {
