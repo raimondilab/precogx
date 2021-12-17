@@ -41,7 +41,7 @@ jobs:
       - name: Install BioPython & run test.py
         shell: bash -l {0}
         run: |
-          apt-get install python-biopython
+          conda install biopython
           conda install -c bioconda blast
           python test.py
           mkdir blastdb
