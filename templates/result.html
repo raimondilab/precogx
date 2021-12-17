@@ -23,21 +23,18 @@
 <script src="{{url_for('static', filename='/pca.js')}}"></script>
 <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet" />
 
-<script>
-  $(function(){
-        $("#modalCoupling").load("/static/html/modals.html");
-      });
-  </script>
-  <script>
-    function loadIntro() {
-            introJs().start();
-    }
-  </script>
 <script>
 var selected_gpcr = '';
 
+$(function(){
+        $("#modalCoupling").load("/static/html/modals.html");
+});
+
+function loadIntro() {
+            introJs().start();
+};
 </script>
 
 <style>
@@ -54,9 +51,10 @@ div.dataTables_wrapper {
         margin: 0 auto;
 }
 
-    div.ColVis {
+div.ColVis {
         float: left;
-    }
+}
+
 div.checkboxRight {
   position: absolute;
   display: inline-block;
@@ -72,7 +70,7 @@ div.checkboxRight {
     <div class="container pb-2">
 
         <h1 class="fw-bold mb-4">Result
-        <!--<button type="button" class="btn btn-info btn-md" onclick="loadIntro()">Need a quick intro?</button>-->
+           <!--<button type="button" class="btn btn-info btn-md" onclick="loadIntro()">Need a quick intro?</button>-->
         <span class="btn btn-info btn-sm" onclick="loadIntro()">Need a quick intro?</span>
         </h1>
 
@@ -82,15 +80,9 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Coupling probabilites
-                        <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#dataModal">?</span>
-                        <!--
-                        <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#dataModal" style="background-color: blue">
-                          <span class="glyphicon glyphicon-question-sign" aria-hidden="true">
-                          </span>
-                        </button>
-                        -->
+                         <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#dataModal">?</span>
                         </h2>
-                        <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2" cellspacing="0" width="100%"></table>
+                        <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2 fs--2" cellspacing="0" width="100%"></table>
                     </div>  <!-- end card body-->
                 </div> <!-- end card -->
             </div>
@@ -98,9 +90,9 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">PCA
-                        <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#pcaModal">?</span>
+                         <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#pcaModal">?</span>
                         </h2>
-                        <div  class="p-1">
+                        <div  class="p-1 fs--2">
                             <div class="dropdown" id="labels">
                                 <button type="button" id="AssayButton" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown";>
                                     Assay
@@ -118,13 +110,13 @@ div.checkboxRight {
         </div> <!--end row one-->
 
 
-            <!-- Load first GPCR and G-protein with max probability -->
+            <!-- Load first GPCR and GNA12 -->
            <script>
-              makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}}, {{first_gprotein|safe}}, {{first_gprotein_index|safe}})
-              makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, {{uniq_id|safe}});
-              makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, {{uniq_id|safe}});
-              makeHeatmap(0.0, {{first_entry|safe}}, {{first_gprotein|safe}});
-              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, {{first_gprotein|safe}});
+              makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}})
+              makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
+              makeStructure({{first_entry|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
+              makeHeatmap(0.0, {{first_entry|safe}}, 'GNA12');
+              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, 'GNA12');
             </script>
 
         <div class="row align-items-center mb-5">
@@ -136,25 +128,39 @@ div.checkboxRight {
                         </h2>
 
                         <!-- SEQUENCE PANEL (neXtprot viewer) -->
-                        <button type="button" class="btn btn-primary btn-sm" onclick="togglePanel()" id="toggleButton">Show sequence</button>
-                        <label class="form-label" for="slider1">Filter cutoff</label>
-                        <input type="range" class="form-range" min="-1.0" max="1.0" step="0.1" value="0.0" style="width:15%;" id="slider1">
-                        <span id="slider1_value">0.0</span>
 
-
+                         <div class="col-auto">
+                        <div class="float-start">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="togglePanel()" id="toggleButton">Show sequence</button>
+                        </div>
+                         <div class="float-end">
+                             <div class="row g-3 align-items-center">
+                                 <div class="col-auto">
+                                     <label for="slider1" class="col-form-label" >Filter cutoff</label>
+                                 </div>
+                                 <div class="col-auto">
+                                     <input type="range" class="form-range" min="-1.0" max="1.0" step="0.1" value="0.0" style="width:80%;" id="slider1">
+                                 </div>
+                                 <div class="col-auto">
+                                    <span id="slider1_value">0.0</span>
+                                 </div>
+                             </div>
+                        </div>
+                       </div>
                         <!-- Update panels if slider is changed -->
                         <script>
-                            $(document).on('input', '#slider1', function() {
-                                $('#slider1_value').html( $(this).val() );
-                                var slider1_value = document.getElementById('slider1_value').innerHTML;
-                                var selected_gpcr = $('#selected').data('gpcr');
-                                var selected_gprotein = $('#selected').data('gprotein')
-                                makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
-                                makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
-                                makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
-                                makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
-                            });
-                          </script>
+
+                                      $(document).on('input', '#slider1', function() {
+                                          $('#slider1_value').html($(this).val() );
+                                          var slider1_value = document.getElementById('slider1_value').innerHTML;
+                                          var selected_gpcr = $('#selected').data('gpcr');
+                                          var selected_gprotein = $('#selected').data('gprotein')
+                                          makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
+                                          makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
+                                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
+                                          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                                      });
+                            </script>
                         <div id="sequence-viewer"  style="display: none;"></div>
                         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
 
@@ -175,7 +181,7 @@ div.checkboxRight {
                             <ul id="pdblist" class="dropdown-menu"></ul>
                         </div>
 
-                        <div id="viewport" class="align-items-center"></div>
+                        <div id="viewport" class="align-items-center fs--2"></div>
                         <script>
                             var stage = new NGL.Stage( "viewport" );
                             stage.setParameters( { backgroundColor: "white"} );
@@ -188,6 +194,10 @@ div.checkboxRight {
 
 
     </div>
+    </div> <!--end row three-->
+    </div>
+    </div>
+
     <div id ="modalCoupling">
     </div>
 </section>
