@@ -87,6 +87,23 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   var pa = o.structure.getPrincipalAxes();
                   stage.animationControls.rotate(pa.getRotationQuaternion(), 1500);
 
+                  var downloadButton = createElement("input", {
+                    class:"custom-control-input",
+                    type: "button",
+                    value: "Download"
+                  }, { top: "50px", left: "10px" })
+                  downloadButton.onclick = function (e) {
+                    stage.makeImage( {
+                        factor: 1,
+                        antialias: true,
+                        trim: false,
+                        transparent: false
+                    } ).then( function( blob ){
+                        NGL.download( blob, "precogx.png" );
+                    } );
+                  }
+                  addElement(downloadButton);
+
                   var distanceButton = createElement("input", {
                     class:"custom-control-input",
                     type: "button",

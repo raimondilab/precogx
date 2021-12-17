@@ -20,21 +20,11 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           y:response['y_train_grey'],
           mode: 'markers',
           type: 'scatter',
-          name: assay + ' grey',
+          //name: assay + ' grey',
+          name: 'Not annotated',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
           text: response['genes_to_consider_grey'],
           marker: { size: 12, color: 'lightgrey' }
-        };
-
-        var train_coupling = {
-          x:response['x_train_coupling'],
-          y:response['y_train_coupling'],
-          mode: 'markers',
-          type: 'scatter',
-          name: assay + ' coupling',
-          //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
-          text: response['genes_to_consider_coupling'],
-          marker: { size: 12, color: response['score_coupling'] }
         };
 
         var train_uncoupling = {
@@ -42,17 +32,30 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           y:response['y_train_uncoupling'],
           mode: 'markers',
           type: 'scatter',
-          name: assay + ' not coupling',
+          //name: assay + ' not coupling',
+          name: 'Not coupling',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
           text: response['genes_to_consider_uncoupling'],
           marker: { size: 12, color: response['score_uncoupling'] }
         };
 
+        var train_coupling = {
+          x:response['x_train_coupling'],
+          y:response['y_train_coupling'],
+          mode: 'markers',
+          type: 'scatter',
+          //name: assay + ' coupling',
+          name: 'Coupling',
+          //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+          text: response['genes_to_consider_coupling'],
+          marker: { size: 12, color: response['score_coupling'] }
+        };
+
         if (response['x_wt'] != '-') {
-          var testColor = "purple";
+          var testColor = "fuchsia";
         }
         else {
-          var testColor = "green";
+          var testColor = "darkorange";
         }
         var test = {
           x: [response['x_test']],
@@ -72,12 +75,12 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
             type: 'scatter',
             name: gpcr.split('_')[0]+'_WT',
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-            marker: { size: 12, color: "darkblue" }
+            marker: { size: 12, color: "darkorange" }
           };
-          var data = [ train_grey, train_coupling, train_uncoupling, test, wt ];
+          var data = [ train_grey, train_uncoupling, train_coupling, test, wt ];
         }
         else {
-          var data = [ train_grey, train_coupling, train_uncoupling, test ];
+          var data = [ train_grey, train_uncoupling, train_coupling, test ];
         }
 
         var layout = {
@@ -90,7 +93,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           title: gprotein
         };
 
-        Plotly.newPlot('myDiv2', data, layout);
+        Plotly.newPlot('myDiv2', data, layout, {displayModeBar: true, scrollZoom: true});
 			},
 			error: function(error){
 				console.log(error);

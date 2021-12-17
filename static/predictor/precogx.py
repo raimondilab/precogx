@@ -53,7 +53,7 @@ class GPCR:
         self.iuphar = {}
         self.ebbret = {}
 
-def main(input, input_file, assay, path):
+def main(numseqs, input, input_file, assay, path):
     #homeDir = os.getcwd()
     #homeDir = '/var/www/flask_apps/precogxb_app/'
     homeDir = path
@@ -87,9 +87,9 @@ def main(input, input_file, assay, path):
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
     if input_file == None:
-        gpcrs, input = formatInput(input)
+        gpcrs, input = formatInput(numseqs, input)
     else:
-        gpcrs, input = formatInputFile(input_file)
+        gpcrs, input = formatInputFile(numseqs, input_file)
 
     open(homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta', 'w').write(input)
     input_file = homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta'
@@ -270,15 +270,19 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
                         for gprotein in dic_gprot_family[gprot_family]:
                             gpcrs[gpcr_given].iuphar[gprotein] = 'SC'
 
-def formatInputFile(input_file):
+def formatInputFile(numseqs, input_file):
+    num = 0
     ## if input in FASTA format
     gpcrs = {}
     for line in open(input_file, 'r'):
+        if num == numseqs:
+            break
         if line.split != []:
             if line.split() != []:
                 if line[0] != '#':
+                    num += 1
                     given_name = line.replace('\n', '')
-                    
+
                     pattern = re.compile("\\>sp\\|.*\\|.*_.*")
 
                     if pattern.match(given_name) != None:
@@ -287,7 +291,7 @@ def formatInputFile(input_file):
                         #given_name = str(line.split('>')[1].replace('\n', '').replace(' ','').split()[0])
                         given_name = str(line.split('>')[1])
                         given_name = ' '.join(given_name.split())
-                    
+
 
                     if '/' in given_name:
                         name = given_name.split('/')[0]
@@ -318,16 +322,20 @@ def formatInputFile(input_file):
     #sys.exit()
     return (gpcrs, new_input)
 
-def formatInput(input):
+def formatInput(numseqs, input):
+    num = 0
     ## if input in FASTA format
     gpcrs = {}
     if '>' in input:
         for line in input.split('\n'):
+            if num == numseqs:
+                break
             if line.split() != []:
                 if line[0] != '#':
                     if line[0] == '>':
+                        num += 1
                         given_name = line.replace('\n', '')
-                        
+
                         pattern = re.compile("\\>sp\\|.*\\|.*_.*")
                         if pattern.match(given_name) != None:
                             given_name = given_name.split('>')[1].split(' ')[0]
@@ -336,7 +344,7 @@ def formatInput(input):
                             #given_name = line.split('>')[1].replace('\n', '').replace(' ','').split()[0]
                             given_name = str(line.split('>')[1])
                             given_name = ' '.join(given_name.split())
-                        
+
                         if '/' not in given_name:
                             name = str(given_name)
                             variant = 'WT'
@@ -352,10 +360,13 @@ def formatInput(input):
     else:
         ## if input is uniprot acc or gene name
         for line in input.split('\n'):
+            if num == numseqs:
+                break
             if line.split() != []:
                 if line[0] != '#':
+                    num += 1
                     given_name = line.replace('\n', '')
-                    
+
                     pattern = re.compile("\\>sp\\|.*\\|.*_.*")
                     if pattern.match(given_name) != None:
                         given_name = given_name.split(' ')[0]
@@ -364,7 +375,7 @@ def formatInput(input):
                         given_name = str(line.replace(' ','').split()[0])
                         #print ('this one', given_name)
                         #given_name = ' '.join(given_name.split())
-                    
+
                     if '/' not in given_name:
                         name = given_name
                         variant = 'WT'
@@ -450,10 +461,16 @@ if __name__ == "__main__":
     ## Parser
     parser = argparse.ArgumentParser(description='Script to predict GPCR couplings using ESM and/or seq-based features', epilog='End of help')
     parser.add_argument('assay', help='Input what assay is used (ebret or shed)')
-    parser.add_argument('--input_file', help='Input File (FASTA format)')
+    parser.add_argument('--file', help='Input File (FASTA/Mechismo format)')
     parser.add_argument('--input', help='Input (Mechismo format)')
+    parser.add_argument('--numseqs', help='Num of seqs allowed (default: 15)')
     args = parser.parse_args()
     assay = args.assay
     input = args.input
-    input_file = args.input_file
-    uniq_id = main(input, input_file, assay, os.getcwd())
+    input_file = args.file
+    numseqs = args.numseqs
+    if numseqs == None:
+        numseqs = 25
+    else:
+        numseqs = int(numseqs)
+    uniq_id = main(numseqs, input, input_file, assay, os.getcwd())

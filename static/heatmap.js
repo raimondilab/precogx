@@ -42,7 +42,7 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
               height: 420
         };
 
-        Plotly.newPlot('myDiv', data, layout);
+        Plotly.newPlot('myDiv', data, layout, {displayModeBar: true, scrollZoom: true});
 
 			},
 			error: function(error){

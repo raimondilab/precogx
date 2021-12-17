@@ -11,9 +11,11 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, uniq_id) {
 				console.log(response);
         sequence = response['sequence']
         seq_positions = response['seq_positions']
+        bw_positions = response['bw_positions']
         var variant = gpcr.split('_')[1];
         var numberPattern = /\d+/g;
         var variantPosition = Number(variant.match( numberPattern ));
+        /*
         if (variantPosition != null && seq_positions.includes(Number(variantPosition)) == false) {
           //alert(variantPosition);
           seq_positions.push(variantPosition);
@@ -22,15 +24,18 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, uniq_id) {
                               });
           }
         seq_positions = [... new Set(seq_positions)];
+        */
         //alert(seq_positions);
+        //alert(variantPosition);
         var seq = new Sequence(sequence);
         seq.render('#sequence-viewer', {
                     'showLineNumbers': true,
                     'wrapAminoAcids': true,
-                    'charsPerLine': 40,
+                    'charsPerLine': 70,
                     'toolbar': true,
                     'title' : gpcr,
                     'search': true,
+                    'badge': false,
                     'header' : {
                         display:true,
                         searchInTitle :false,
@@ -45,15 +50,30 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, uniq_id) {
           var example = [];
           for (var i = 0; i < seq_positions.length; i++) {
             if (Number(variantPosition) === seq_positions[i]) {
-              example.push({start: Number(seq_positions[i]-1), end: Number(seq_positions[i]), color: "black", underscore: false, bgcolor: "violet"});
+              example.push({start: Number(seq_positions[i]-1), end: Number(seq_positions[i]), color: "black", underscore: false, bgcolor: "violet", tooltip: 'BW: '+bw_positions[i]});
             }
             else {
               //example.push(seq_positions[j]);
-              example.push({start: Number(seq_positions[i]-1), end: Number(seq_positions[i]), color: "black", underscore: false, bgcolor: "khaki"});
+              example.push({start: Number(seq_positions[i]-1), end: Number(seq_positions[i]), color: "black", underscore: false, bgcolor: "khaki", tooltip: 'BW: '+bw_positions[i]});
             }
           }
           //seq.selection(35,43,"blue");
           seq.coverage(example);
+
+          if (variant != 'WT') {
+            var exampleLegend = [
+                {name: "Mutation:", color: "violet", underscore: false},
+                {name: "Contact positions", color: "khaki", underscore: false},
+                {name: "Hover to view BW annotation"}
+                ];
+          }
+          else {
+            var exampleLegend = [
+                {name: "Contact positions", color: "khaki", underscore: false},
+                {name: "<br>Hover to view BW annotation"}
+                ];
+          }
+          seq.addLegend(exampleLegend);
         }
 
 			},

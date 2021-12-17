@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} PRECOGx | Result {{uniq_id|safe}} {% endblock %}
+{% block title %} PRECOGx | Result | {{uniq_id|safe}} {% endblock %}
 
 {% block head %}
 <script src="{{url_for('static', filename='/sequence-viewer.bundle.js')}}"></script>
@@ -163,4 +163,3 @@ div.checkboxRight {
     </div>
 </section>
 {% endblock%}
-

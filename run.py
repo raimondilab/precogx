@@ -134,13 +134,18 @@ def filter_gpcr_list(X, assay, gprotein):
                 #print (score,r,g,b)
                 if float(line.split('\t')[num+2]) >= -1.0:
                     genes_to_consider_coupling.append(gene+'|'+acc)
-                    color = cm.get_cmap('YlGn', 10)
+                    color = cm.get_cmap('Greens', 100)
                     r,g,b,a = color(score)
                     score_coupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
                 else:
                     genes_to_consider_uncoupling.append(gene+'|'+acc)
-                    color = cm.get_cmap('OrRd', 10)
-                    r,g,b,a = color(score*(-1.0))
+                    color = cm.get_cmap('Greys', 100)
+                    score *= (-1.0)
+                    # To bring the score from range 0 to 1
+                    # to 0.25 to 0.75 so it is neither too white (low value)
+                    # not too black (high value)
+                    score = score/2 + 0.25
+                    r,g,b,a = color(score)
                     score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
             else:
                 flag = 0
@@ -168,7 +173,7 @@ def filter_gpcr_list(X, assay, gprotein):
                 else:
                     genes_to_consider_uncoupling.append(gene+'|'+acc)
                     #score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
-                    score_uncoupling.append('red')
+                    score_uncoupling.append('grey')
             else:
                 header = line.replace('\n', '').split('\t')[2:]
                 for num, gprot in enumerate(header):
@@ -190,10 +195,13 @@ def filter_gpcr_list(X, assay, gprotein):
                 acc = line.split('\t')[1]
                 if gprotein_fam in line:
                     genes_to_consider_coupling.append(gene+'|'+acc)
-                    score_coupling.append('green')
+                    if gprotein_fam in line.split('\t')[2]:
+                        score_coupling.append('forestgreen')
+                    else:
+                        score_coupling.append('lightgreen')
                 else:
                     genes_to_consider_uncoupling.append(gene+'|'+acc)
-                    score_uncoupling.append('red')
+                    score_uncoupling.append('grey')
 
     elif assay == 'STRING':
         string_map = {
@@ -376,13 +384,37 @@ def fetchContactsSequence():
         #print (BW2GPCRDB)
         #print (positions)
         seq_positions = []
+        bw_positions = []
         for BW in positions:
             if BW in BW2GPCRDB:
                 GPCRDB = BW2GPCRDB[BW]
                 SEQ = GPCRDB2SEQ[GPCRDB]
                 seq_positions.append(int(SEQ))
+                bw_positions.append(BW)
 
-        return jsonify({'fetch_contacts': scores, 'seq_positions': seq_positions, 'sequence': fasta_sequence})
+        #print (list(set(seq_positions)))
+        #seq_positions = list(set(seq_positions))
+        seq_positions = np.array(seq_positions)
+        bw_positions = np.array(bw_positions)
+        indexes = np.unique(seq_positions, return_index=True)[1]
+        seq_positions = seq_positions[indexes]
+        #print(bw_positions[indexes])
+        bw_positions = bw_positions[indexes]
+        print (seq_positions)
+        print (bw_positions)
+        '''
+        indexes = np.argsort(seq_positions)
+        print (indexes)
+        seq_positions = seq_positions[indexes]
+        print (seq_positions)
+        '''
+        seq_positions = seq_positions.tolist()
+        bw_positions = bw_positions.tolist()
+
+        return jsonify({'fetch_contacts': scores,
+                        'seq_positions': seq_positions,
+                        'bw_positions': bw_positions,
+                        'sequence': fasta_sequence})
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
@@ -492,7 +524,7 @@ def fetchContactsPDBStructure():
         cutoff = float(data['cutoff'])
         uniq_id = data['uniq_id']
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
-        print ('print', gprotein_given, pair_positions)
+        #print ('print', gprotein_given, pair_positions)
         ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
         return jsonify({'try': positions.tolist(),
                         'ordered_pdbs': ordered_pdbs,
@@ -563,7 +595,7 @@ def input():
         input = request.form['input']
         input_file = None ## Upload FASTA file
         ## Run the predictor
-        uniq_id = precogx.main(input, input_file, 'all', app.root_path)
+        uniq_id = precogx.main(15, input, input_file, 'all', app.root_path)
         #uniq_id = 'OXDUB'
         return redirect('/output/'+uniq_id)
     else:
@@ -571,7 +603,8 @@ def input():
 
 @app.route('/output/<uniq_id>', methods=['GET', 'POST'])
 def output(uniq_id):
-    if request.method == 'GET' or request.method == 'POST':
+    #if request.method == 'GET' or request.method == 'POST':
+    if request.method == 'GET':
         #print (os.getcwd())
         print ('running', app.root_path)
         #print ('running', app.instance_path)
@@ -610,7 +643,7 @@ def output(uniq_id):
                                 gpcr_list=json.dumps(gpcr_list),
                                 uniq_id=json.dumps(uniq_id))
     else:
-        return ("<html><h3>It was a GET request</h3></html>")
+        return ("<html><h3>It was a POST request</h3></html>")
 
 # Route to help page
 @app.route('/help')
