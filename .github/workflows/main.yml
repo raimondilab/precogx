@@ -31,15 +31,20 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      # run the test.py to get the latest SIFT and PDB FASTA files
-      - name: execute test.py script
-        run: python test.py
-
       # Setup Miniconda
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2.1.1
         with:
           auto-update-conda: true
+
+      # Install and run MAKEDB
+      - name: Install BioPython
+        shell: bash -l {0}
+        run: conda install -c conda-forge biopython
+
+      # run the test.py to get the latest SIFT and PDB FASTA files
+      - name: execute test.py script
+        run: python test.py
 
       # Install and run MAKEDB
       - name: Install BioPython, BLAST and run makeblastdb
