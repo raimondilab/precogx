@@ -44,8 +44,6 @@ jobs:
           conda install biopython
           conda install -c bioconda blast
           python test.py
-          mkdir blastdb
-          makeblastdb -in data/fasta/all_pdbs.fasta -dbtype 'prot' -out data/fasta/blastdb/all_pdbs
 
       # run the test.py to get the latest SIFT and PDB FASTA files
       #- name: execute test.py script
