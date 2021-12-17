@@ -42,9 +42,10 @@ jobs:
           auto-update-conda: true
 
       # Install and run MAKEDB
-      - name: Install BLAST and run makeblastdb
+      - name: Install BioPython, BLAST and run makeblastdb
         shell: bash -l {0}
         run: |
+          conda install -c conda-forge biopython
           conda install -c bioconda blast
           mkdir blastdb
           makeblastdb -in data/fasta/all_pdbs.fasta -dbtype 'prot' -out data/fasta/blastdb/all_pdbs
