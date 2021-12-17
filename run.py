@@ -643,7 +643,7 @@ def output(uniq_id):
                     for line in open(path + "/static/predictor/output/"+uniq_id+"/out.tsv", 'r'):
                         if '#Input' in line:
                             header = line.replace('\n', '').replace('#', '').split('\t')
-                            print (header)
+                            #print (header)
                             break
                     #print (header[first_gprotein_index])
                     first_gprotein = header[first_gprotein_index]
