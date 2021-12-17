@@ -3,6 +3,7 @@
 
 import argparse, requests, urllib
 import gzip
+#import regex as re
 import os, sys, json
 import random
 from collections import Counter
@@ -117,6 +118,9 @@ def main(input, input_file, assay, path):
     os.system('hmmsearch ' + homeDir + '/data/7tm_1.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
     #os.system('hmmsearch ' + homeDir + '/data/SCOP_7TM_348.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
 
+    # BLAST GPCRDB
+    os.system('blastp -query ' + input_file + ' -outfmt 5 -out ' + homeDir + '/static/predictor/output/' + uniq_id + '/GPCRDBblast.txt -db ' + homeDir + '/data/GPCRDB/blastdb/GPCRDB')
+
      # create embeddings
     for row in data:
         if "esm1b"  in  row[0].split('.')[1].split('_')[-1]:
@@ -127,7 +131,7 @@ def main(input, input_file, assay, path):
             if os.path.isfile(model_location) == False:
                 #print ('not found')
                 model_location= "esm1b_t33_650M_UR50S"
-            
+
 
     md=[]
     for row in data:
@@ -167,15 +171,16 @@ def main(input, input_file, assay, path):
         l += '\t' + str(gprotein)
     l += '\n'
     for name in d:
-        l += name.split('_')[0] + '\t' + name.split('_')[1]
+        print (name, 'here')
+        l += '_'.join(name.split('_')[:-1]) + '\t' + name.split('_')[-1]
         for gprotein in gproteins:
             l += '\t' + str(round(d[name][gprotein],3))
         l += '\n'
 
         ## Put other information after WT
-        if name.split('_')[1] == 'WT':
+        if name.split('_')[-1] == 'WT':
             ## Add ebbret information
-            gpcr = name.split('_')[0]
+            gpcr = '_'.join(name.split('_')[:-1])
             l += gpcr + '\t' + 'IUPHAR'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].iuphar:
@@ -184,7 +189,7 @@ def main(input, input_file, assay, path):
                     l += '\t-'
             l += '\n'
             ## Add shedding information
-            gpcr = name.split('_')[0]
+            gpcr = '_'.join(name.split('_')[:-1])
             l += gpcr + '\t' + 'LogRAi'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].shedding:
@@ -193,7 +198,7 @@ def main(input, input_file, assay, path):
                     l += '\t-'
             l += '\n'
             ## Add ebbret information
-            gpcr = name.split('_')[0]
+            gpcr = '_'.join(name.split('_')[:-1])
             l += gpcr + '\t' + 'Emax'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].ebbret:
@@ -223,62 +228,78 @@ def main(input, input_file, assay, path):
     return (uniq_id)
 
 def OtherSources(gpcr_given, gpcrs, homeDir):
-    for line in open(homeDir + '/static/predictor/data_precog/LogRAi_values_final.tsv', 'r'):
+    for line in open(homeDir + '/data/shedding.tsv', 'r'):
         if line[0] != '#':
-            gpcr_found = line.split('\t')[0]
-            if gpcr_found == gpcr_given:
-                values = line.replace('\n', '').split('\t')[1:]
+            gene_found = line.split('\t')[0]
+            acc_found = line.split('\t')[1]
+            if gene_found == gpcr_given or acc_found == gpcr_given:
+                values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
-                    gpcrs[gpcr_found].shedding[gprotein] = str(round(float(value), 2))
+                    gpcrs[gpcr_given].shedding[gprotein] = str(round(float(value), 2))
         else:
-            gproteins = line.replace('\n', '').split('\t')[1:]
+            gproteins = line.replace('\n', '').split('\t')[2:]
 
-    for line in open(homeDir + '/static/predictor/data_precog2/emax.tsv', 'r', encoding="utf-8"):
+    for line in open(homeDir + '/data/ebbret.tsv', 'r', encoding="utf-8"):
         if line[0] != '#':
-            gpcr_found = line.split('\t')[2]
-            if gpcr_found == gpcr_given:
-                values = line.replace('\n', '').split('\t')[5:]
+            gene_found = line.split('\t')[0]
+            acc_found = line.split('\t')[1]
+            if gene_found == gpcr_given or acc_found == gpcr_given:
+                values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
-                    gpcrs[gpcr_found].ebbret[gprotein] = value
+                    gpcrs[gpcr_given].ebbret[gprotein] = value
         else:
-            gproteins = line.replace('\n', '').split('\t')[5:]
+            gproteins = line.replace('\n', '').split('\t')[2:]
 
     dic_gprot_family = {'Gs': ['GNAS', 'GNAL'],
                         'Gi/o': ['GNAI1', 'GNAI2', 'GNAI3', 'GNAZ', 'GoA', 'GoB'],
                         'Gq/11': ['GNAQ', 'GNA11', 'GNA14', 'GNA15'],
                         'G12/13': ['GNA12', 'GNA13']
                         }
-    for line in open(homeDir + '/static/predictor/data_precog2/IUPHAR_couplings.tsv', 'r'):
+    for line in open(homeDir + '/data/iuphar.tsv', 'r'):
         if line[0] != '#':
-            gpcr_found = line.split('\t')[1]
-            if gpcr_found == gpcr_given:
-                pc_values = line.replace('\n', '').split('\t')[5]
-                sc_values = line.replace('\n', '').split('\t')[6]
+            gene_found = line.split('\t')[0]
+            acc_found = line.split('\t')[1]
+            if gene_found == gpcr_given or acc_found == gpcr_given:
+                pc_values = line.replace('\n', '').split('\t')[2]
+                sc_values = line.replace('\n', '').split('\t')[3]
                 for gprot_family in dic_gprot_family:
                     if gprot_family in pc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
-                            gpcrs[gpcr_found].iuphar[gprotein] = 'PC'
+                            gpcrs[gpcr_given].iuphar[gprotein] = 'PC'
                     elif gprot_family in sc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
-                            gpcrs[gpcr_found].iuphar[gprotein] = 'SC'
+                            gpcrs[gpcr_given].iuphar[gprotein] = 'SC'
 
 def formatInputFile(input_file):
     ## if input in FASTA format
     gpcrs = {}
     for line in open(input_file, 'r'):
-        if line[0] == '>':
-            given_name = line.split('>')[1].replace('\n', '').replace(' ','')
-            if '/' in given_name:
-                name = given_name.split('/')[0]
-                variant = given_name.split('/')[1]
-            else:
-                name = given_name
-                variant = 'WT'
+        if line.split != []:
+            if line.split() != []:
+                if line[0] != '#':
+                    given_name = line.replace('\n', '')
+                    '''
+                    pattern = re.compile("\\>sp\\|.*\\|.*_.*")
 
-            if name not in gpcrs:
-                gpcrs[name] = GPCR(name)
+                    if pattern.match(given_name) != None:
+                        given_name = given_name.split('>')[1].split(' ')[0]
+                    else:
+                        #given_name = str(line.split('>')[1].replace('\n', '').replace(' ','').split()[0])
+                        given_name = str(line.split('>')[1])
+                        given_name = ' '.join(given_name.split())
+                    '''
 
-            gpcrs[name].var.append(variant)
+                    if '/' in given_name:
+                        name = given_name.split('/')[0]
+                        variant = given_name.split('/')[1]
+                    else:
+                        name = given_name
+                        variant = 'WT'
+
+                    if name not in gpcrs:
+                        gpcrs[name] = GPCR(name)
+
+                    gpcrs[name].var.append(variant)
         else:
             gpcrs[name].seq += line.replace('\n', '')
 
@@ -302,55 +323,80 @@ def formatInput(input):
     gpcrs = {}
     if '>' in input:
         for line in input.split('\n'):
-            if line[0] == '>':
-                given_name = str(line.split('>')[1].replace('\n', '').replace(' ','').split()[0])
-                if '/' not in given_name:
-                    name = given_name
-                    variant = 'WT'
-                else:
-                    name = given_name.split('/')[0]
-                    variant = given_name.split('/')[1]
-                if name not in gpcrs:
-                    gpcrs[name] = GPCR(name)
+            if line.split() != []:
+                if line[0] != '#':
+                    if line[0] == '>':
+                        given_name = line.replace('\n', '')
+                        '''
+                        pattern = re.compile("\\>sp\\|.*\\|.*_.*")
+                        if pattern.match(given_name) != None:
+                            given_name = given_name.split('>')[1].split(' ')[0]
+                            #print ('match', pattern.match(given_name))
+                        else:
+                            #given_name = line.split('>')[1].replace('\n', '').replace(' ','').split()[0]
+                            given_name = str(line.split('>')[1])
+                            given_name = ' '.join(given_name.split())
+                        '''
+                        if '/' not in given_name:
+                            name = str(given_name)
+                            variant = 'WT'
+                        else:
+                            name = '/'.join(given_name.split('/')[:-1])
+                            variant = given_name.split('/')[-1]
+                        if name not in gpcrs:
+                            gpcrs[name] = GPCR(name)
 
-                gpcrs[name].var.append(variant)
-            else:
-                gpcrs[name].seq += line.replace('\n', '').split()[0]
+                        gpcrs[name].var.append(str(variant))
+                    else:
+                        gpcrs[name].seq += line.replace('\n', '').split()[0]
     else:
         ## if input is uniprot acc or gene name
         for line in input.split('\n'):
-            given_name = str(line.replace('\n', '').replace(' ','').split()[0])
-            if '/' not in given_name:
-                name = given_name
-                variant = 'WT'
-            else:
-                name = given_name.split('/')[0]
-                variant = given_name.split('/')[1]
+            if line.split() != []:
+                if line[0] != '#':
+                    given_name = line.replace('\n', '')
+                    '''
+                    pattern = re.compile("\\>sp\\|.*\\|.*_.*")
+                    if pattern.match(given_name) != None:
+                        given_name = given_name.split(' ')[0]
+                        #print ('match', pattern.match(given_name))
+                    else:
+                        given_name = str(line.replace(' ','').split()[0])
+                        #print ('this one', given_name)
+                        #given_name = ' '.join(given_name.split())
+                    '''
+                    if '/' not in given_name:
+                        name = given_name
+                        variant = 'WT'
+                    else:
+                        name = given_name.split('/')[0]
+                        variant = given_name.split('/')[1]
 
-            if name not in gpcrs:
-                #print (name, variant)
-                gpcrs[name] = GPCR(name)
-                gpcrs[name].seq = fetchSeq(name)
+                    if name not in gpcrs:
+                        #print (name, variant, name.split())
+                        gpcrs[name] = GPCR(name)
+                        gpcrs[name].seq = fetchSeq(name)
 
-            gpcrs[name].var.append(variant)
+                    gpcrs[name].var.append(variant)
 
     new_input = ''
-    for name in gpcrs:
-        if 'WT' not in gpcrs[name].var:
-            gpcrs[name].var.append('WT')
-        for variant in gpcrs[name].var:
-            if gpcrs[name].seq != None:
+    for gpcr in gpcrs:
+        if 'WT' not in gpcrs[gpcr].var:
+            gpcrs[gpcr].var.append('WT')
+        for variant in gpcrs[gpcr].var:
+            if gpcrs[gpcr].seq != None:
                 if variant == 'WT':
-                    new_input += '>'+name+'_WT\n'
-                    new_input += gpcrs[name].seq + '\n'
+                    new_input += '>'+str(gpcr)+'_WT\n'
+                    new_input += str(gpcrs[gpcr].seq) + '\n'
+                    #print (gpcr)
                 else:
-                    new_input += '>'+name+'_'+variant+'\n'
+                    new_input += '>'+gpcr+'_'+variant+'\n'
                     position = int(variant[1:-1]) - 1
                     newAA = variant[-1]
                     #print (position, newAA)
-                    new_input += gpcrs[name].seq[:position] + newAA + gpcrs[name].seq[position+1:] + '\n'
-    #print (new_input)
-    #sys.exit()
+                    new_input += gpcrs[gpcr].seq[:position] + newAA + gpcrs[gpcr].seq[position+1:] + '\n'
+
+    print (new_input)
     return (gpcrs, new_input)
 
 def fetchSeq(name):

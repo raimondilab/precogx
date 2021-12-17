@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for
 import os, sys, json
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from Bio import SearchIO
+from Bio.Blast import NCBIXML
+from matplotlib import cm
 #sys.path.insert(1, 'static/predictor/')
 #from precogxb_app.static.predictor import precogx
 
@@ -17,36 +20,42 @@ import precogx
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 def extract_contacts(gprotein_given, cutoff):
-    dic = {}; positions = []; pair_positions = []; scores = []
-    for line in open(path+'/static/Gprot_contacts/specific_position_score.txt', 'r'):
-        if line.split(' ')[0] != 'TM_pos1':
-            pos1 = line.split(' ')[0]
-            pos2 = line.split(' ')[1]
-            gprotein_found = line.split(' ')[2]
-            score = float(line.replace('\n','').split(' ')[3])
-            if gprotein_given == gprotein_found:
-                if score >= cutoff:
-                    #print (score)
-                    if pos1 not in dic:
-                        dic[pos1] = {}
-                    dic[pos1][pos2] = score
+    assay = ''
+    for line in open(path+'/data/contacts/gprotein_best_layer.txt', 'r'):
+        if gprotein_given == line.split('\t')[0]:
+            assay = line.split('\t')[1]
+    #print (gprotein_given)
+    dic = {}; positions = []; pair_positions = []; scores = [];
+    for line in open(path+'/data/contacts/all_positions_count_'+assay+'_scaled_web.txt', 'r'):
+        gprotein_found = line.split('\t')[0]
+        if gprotein_given == gprotein_found:
+            #print ('here')
+            pos1 = line.split('\t')[-2]
+            pos2 = line.replace('\n', '').split('\t')[-1]
+            score = float(line.replace('\n','').split('\t')[1])
+            if score >= cutoff or score <= (-1.0)*cutoff:
+                if pos1 not in dic:
+                    dic[pos1] = {}
+                dic[pos1][pos2] = score
 
-                    if pos2 not in dic:
-                        dic[pos2] = {}
-                    dic[pos2][pos1] = score
+                if pos2 not in dic:
+                    dic[pos2] = {}
+                dic[pos2][pos1] = score
 
-                    positions.append(pos1)
+                positions.append(pos1)
+                if pos2 not in positions:
                     positions.append(pos2)
-                    pair_positions.append(pos1+':'+pos2+':'+str(score))
-                scores.append(score)
+                pair_positions.append(pos1+':'+pos2+':'+str(score))
+            scores.append(score)
 
     scoresMax = max(scores)
     scoresMin = min(scores)
-    positions = list(set(positions))
-    positions = np.array(np.sort(positions))
+    positions = np.array(positions)
+    #positions = list(set(positions))
+    #positions = np.array(np.sort(positions))
     data = []
     num_contacts = []
     for pos1 in positions:
@@ -62,11 +71,12 @@ def extract_contacts(gprotein_given, cutoff):
     #print (cutoff, gprotein_given)
     #print ('positions', positions)
 
-    scaler = MinMaxScaler(feature_range=(0.25,1.0))
-    num_contacts = scaler.fit_transform(num_contacts)
-    num_contacts = num_contacts.flatten().tolist()
-    for i in range(0, len(num_contacts)):
-        num_contacts[i] = str(num_contacts[i])
+    if num_contacts != []:
+        scaler = MinMaxScaler(feature_range=(0.35,1.0))
+        num_contacts = scaler.fit_transform(num_contacts)
+        num_contacts = num_contacts.flatten().tolist()
+        for i in range(0, len(num_contacts)):
+            num_contacts[i] = str(num_contacts[i])
 
     #print (num_contacts)
 
@@ -91,52 +101,81 @@ def extract_pca(gprotein, assay, pca_type):
     if pca_type != 'GPCRome':
         Xs_train_pca = np.load(path+'/static/best_PCA/'+gprotein+'.npy', allow_pickle=True)
     else:
-        Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
-    Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
+        #Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
+        Xs_train_pca = np.load(path+'/static/best_PCA/GNAZ.npy', allow_pickle=True)
+    score_coupling, score_uncoupling, Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
     #print ('train', Xs_train_pca_coupling)
+    score_coupling = score_coupling.tolist()
+    score_uncoupling = score_uncoupling.tolist()
     x_train_coupling = Xs_train_pca_coupling[:,0].tolist()
     x_train_uncoupling = Xs_train_pca_uncoupling[:,0].tolist()
     x_train_grey = Xs_train_pca_grey[:,0].tolist()
     y_train_coupling = Xs_train_pca_coupling[:,1].tolist()
     y_train_uncoupling = Xs_train_pca_uncoupling[:,1].tolist()
     y_train_grey = Xs_train_pca_grey[:,1].tolist()
-    return x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey
+    return score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey
 
 def filter_gpcr_list(X, assay, gprotein):
     genes_to_consider_coupling = []
+    score_coupling = []
+    score_uncoupling = []
     genes_to_consider_uncoupling = []
     #print (assay)
     #assay = 'ebBRET'
     if assay == 'Shedding':
         num = -1
-        for line in open(path+'/static/predictor/data_precog/LogRAi_values_final.tsv', 'r'):
+        for line in open(path+'/data/shedding.tsv', 'r'):
             if line[0] != '#':
                 gene = line.split('\t')[0]
-                if float(line.split('\t')[num+1]) >= -1.0:
-                    genes_to_consider_coupling.append(gene)
+                acc = line.split('\t')[1]
+                score = float(line.split('\t')[num+2]) + 1
+                #color = cm.get_cmap('RdYlGn', 100)
+                #r,g,b,a = color(score)
+                #print (score,r,g,b)
+                if float(line.split('\t')[num+2]) >= -1.0:
+                    genes_to_consider_coupling.append(gene+'|'+acc)
+                    color = cm.get_cmap('YlGn', 10)
+                    r,g,b,a = color(score)
+                    score_coupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
                 else:
-                    genes_to_consider_uncoupling.append(gene)
+                    genes_to_consider_uncoupling.append(gene+'|'+acc)
+                    color = cm.get_cmap('OrRd', 10)
+                    r,g,b,a = color(score*(-1.0))
+                    score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
             else:
-                header = line.replace('\n', '').split('\t')[1:]
+                flag = 0
+                header = line.replace('\n', '').split('\t')[2:]
                 for num, gprot in enumerate(header):
                     if gprot == gprotein:
+                        flag = 1
                         break
+                if flag == 0:
+                    num = -1
 
     elif assay == 'ebBRET':
         num = -1
-        for line in open(path+'/static/predictor/data_precog2/emax.tsv', 'r', encoding="utf-8"):
+        for line in open(path+'/data/ebbret.tsv', 'r', encoding="utf-8"):
             if line[0] != '#':
-                gene = line.split('\t')[2]
-                if float(line.split('\t')[num+5]) > 0.0:
-                    genes_to_consider_coupling.append(gene)
+                gene = line.split('\t')[0]
+                acc = line.split('\t')[1]
+                score = float(line.split('\t')[num+2])
+
+                if float(line.split('\t')[num+2]) > 0.0:
+                    genes_to_consider_coupling.append(gene+'|'+acc)
+                    color = cm.get_cmap('Greens', 100)
+                    r,g,b,a = color(score)
+                    score_coupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
                 else:
-                    genes_to_consider_uncoupling.append(gene)
+                    genes_to_consider_uncoupling.append(gene+'|'+acc)
+                    #score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
+                    score_uncoupling.append('red')
             else:
-                header = line.replace('\n', '').split('\t')[5:-3]
+                header = line.replace('\n', '').split('\t')[2:]
                 for num, gprot in enumerate(header):
                     if gprot == gprotein:
                         #print (gprot)
                         break
+
     elif assay == 'IUPHAR':
         iuphar_map = {
                       'GNAS': 'Gs', 'GNAL': 'Gs',
@@ -145,19 +184,42 @@ def filter_gpcr_list(X, assay, gprotein):
                       'GNAQ': 'Gq/G11', 'GNA11': 'Gq/G11', 'GNA14': 'Gq/G11', 'GNA15': 'Gq/G11'
                       }
         gprotein_fam = iuphar_map[gprotein]
-        for line in open(path+'/static/predictor/data_precog2/IUPHAR_couplings.tsv', 'r'):
+        for line in open(path+'/data/iuphar.tsv', 'r'):
             if line[0] != '#' and line.split('\t')[1] != '':
-                gene = line.split('\t')[1]
+                gene = line.split('\t')[0]
+                acc = line.split('\t')[1]
                 if gprotein_fam in line:
-                    genes_to_consider_coupling.append(gene)
+                    genes_to_consider_coupling.append(gene+'|'+acc)
+                    score_coupling.append('green')
                 else:
-                    genes_to_consider_uncoupling.append(gene)
+                    genes_to_consider_uncoupling.append(gene+'|'+acc)
+                    score_uncoupling.append('red')
+
+    elif assay == 'STRING':
+        string_map = {
+                      'Barr1-GRK2': 'ARRB1',
+                      'Barr2': 'ARRB2',
+                      'Barr2-GRK2': 'ARRB2'
+                      }
+        barr = string_map[gprotein]
+        num = -1
+        for line in open(path+'/data/string.tsv', 'r', encoding="utf-8"):
+            gene = line.split('\t')[0]
+            acc = line.split('\t')[1]
+            if barr in line:
+                genes_to_consider_coupling.append(gene+'|'+acc)
+                score_coupling.append('green')
+            else:
+                genes_to_consider_uncoupling.append(gene+'|'+acc)
+                score_uncoupling.append('green')
     #print (genes_to_consider_coupling)
     #print (genes_to_consider_uncoupling)
 
     gpcr_list = []
     for line in open(path+'/static/gpcr_list_new_GN.txt', 'r'):
-        gpcr_list.append(line.replace('\n', '').split('\t')[1])
+        gene = line.replace('\n', '').split('\t')[1]
+        acc = line.replace('\n', '').split('\t')[0]
+        gpcr_list.append(gene + '|' + acc)
         #gpcr_list.append(line.replace('\n', '').split('\t')[1])
 
     X_pos = []
@@ -175,7 +237,7 @@ def filter_gpcr_list(X, assay, gprotein):
 
     #print (X_pos)
 
-    return (np.array(X_pos), np.array(X_neg), np.array(X_grey), genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey)
+    return (np.array(score_coupling), np.array(score_uncoupling), np.array(X_pos), np.array(X_neg), np.array(X_grey), genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey)
 
 @app.route('/fetchPCA', methods=['GET', 'POST'])
 def fetchPCA():
@@ -185,17 +247,27 @@ def fetchPCA():
         pca_type = data['pca_type']
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
-        #print ('pca_type', gpcr_given)
+        print (gprotein_given, gpcr_given)
         uniq_id = data['uniq_id']
+
+        if assay == '':
+            ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
+            shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+            both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+
+            if 'Barr' in gprotein_given:
+                assay = 'ebBRET'
+            elif gprotein_given in both:
+                assay = 'Shedding'
+            elif gprotein_given in shedding:
+                assay = 'Shedding'
+            else:
+                assay = 'ebBRET'
         ### MUT
         Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
-        #x_test = Xs_test_pca[:,0].tolist()
-        #y_test = Xs_test_pca[:,1].tolist()
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
-        #print (x_test)
-        #print (y_test)
         ### WT
         if '_WT' not in gpcr_given:
             wt = gpcr_given.split('_')[0] + '_WT'
@@ -211,7 +283,7 @@ def fetchPCA():
             x_wt = '-'
             y_wt = '-'
 
-        x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
+        score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
         #print (x_train, y_train, x_test, y_test)
         #print (genes_to_consider_coupling)
         minX = min(x_train_coupling + x_train_uncoupling + x_train_grey)
@@ -225,6 +297,9 @@ def fetchPCA():
                         'y_train_uncoupling': y_train_uncoupling,
                         'x_train_grey': x_train_grey,
                         'y_train_grey': y_train_grey,
+                        'score_coupling': score_coupling,
+                        'score_uncoupling': score_uncoupling,
+                        'assay': assay,
                         'genes_to_consider_coupling': genes_to_consider_coupling,
                         'genes_to_consider_uncoupling': genes_to_consider_uncoupling,
                         'genes_to_consider_grey': genes_to_consider_grey,
@@ -238,6 +313,28 @@ def fetchPCA():
                         'maxY': maxY})
     else:
         return ("<html><h3>It was a GET request</h3></html>")
+
+def DoBLAST(uniq_id, gpcr_given):
+    handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
+    blast_records = NCBIXML.parse(handle)
+    #print (blast_records)
+
+    GPCRDB2SEQ = {}
+    for blast_record in blast_records:
+        #print (blast_record.query)
+        if gpcr_given == blast_record.query:
+            for alignment in blast_record.alignments:
+                for hsp in alignment.hsps:
+                    bestHIT = alignment.title.split(' ')[1]
+                    for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
+                        if q!='-' and s!='-':
+                            GPCRDB2SEQ[num + hsp.sbjct_start] = num + hsp.query_start
+                    break
+                break
+            #print (bestHIT)
+            #print (GPCRDB2SEQ)
+            break
+    return (GPCRDB2SEQ, bestHIT)
 
 @app.route('/fetchContactsSequence', methods=['GET', 'POST'])
 def fetchContactsSequence():
@@ -264,69 +361,26 @@ def fetchContactsSequence():
             elif flag == 1:
                 fasta_sequence += line.replace('\n', '')
 
-        flag = 0
-        dic = {}
-        for line in open(path+'/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt', 'r'):
-            if line[:2] == '>>':
-                flag = 0
-                gpcr_found = line.split('>>')[1].replace(' ', '').replace('\n', '')
-                if gpcr_found == gpcr_given:
-                    flag = 1
-            elif flag == 1:
-                if len(line.split()) > 0:
-                    if line.split()[0] == '7tm_1':
-                        startDomain = line.split()[1]
-                        domain = line.split()[2]
-                        endDomain = line.split()[3]
-                    elif gpcr_found in line.split()[0]:
-                        startSequence = line.split()[1]
-                        sequence = line.split()[2]
-                        endSequence = line.split()[3]
+        GPCRDB2SEQ, bestHIT = DoBLAST(uniq_id, gpcr_given)
+        bestHIT_ACC = bestHIT.split('|')[1]
 
-                        countDomain = int(startDomain)
-                        countSequence = int(startSequence)
-                        for seq, dom in zip(sequence, domain):
-                            if seq != '-' and dom != '.':
-                                dic[countDomain] = countSequence
-                                countDomain += 1
-                                countSequence += 1
-                            elif seq != '-':
-                                countSequence += 1
-                            else:
-                                countDomain += 1
+        BW2GPCRDB = {}
+        for line in open(path + '/data/GPCRDB/GPCRDB.tsv', 'r'):
+            if 'Name' not in line.split('\t')[0]:
+                acc = line.split('\t')[0].split('_')[1]
+                if acc == bestHIT_ACC:
+                    GPCRDB = int(line.split('\t')[1][1:])
+                    BW = line.split('\t')[2]
+                    BW2GPCRDB[BW] = GPCRDB
 
-        #print (dic)
-
-        '''
-        BW_to_PFAM = {}
-        for count, line in enumerate(open('data/7tm_1_2020_BW_matches.tsv', 'r')):
-            BW_to_PFAM[line.split('\t')[1]] = count+1
-
-        #print (BW_to_PFAM)
-        seq_positions = []
-        for bw_position in positions:
-            #print (bw_position)
-            if bw_position in BW_to_PFAM:
-                pfam_position = BW_to_PFAM[bw_position]
-                if pfam_position in dic:
-                    #print (dic[pfam_position])
-                    seq_positions.append(int(dic[pfam_position]))
-        '''
-        gpcr = gpcr_given.split('_')[0]
-        dic_BW2SEQ = {}
-        for line in open(path+'/data/GPCRDB_numbering.tsv', 'r'):
-            if gpcr == line.split('\t')[0] or gpcr == line.split('\t')[1]:
-                BW = line.split('\t')[-2]
-                SEQ = line.split('\t')[3]
-                if BW != '-' and SEQ != '-':
-                    dic_BW2SEQ[BW] = SEQ
-
+        #print (BW2GPCRDB)
         #print (positions)
-        #print (dic_BW2SEQ)
         seq_positions = []
-        for bw_position in positions:
-            if bw_position in dic_BW2SEQ:
-                seq_positions.append(int(dic_BW2SEQ[bw_position]))
+        for BW in positions:
+            if BW in BW2GPCRDB:
+                GPCRDB = BW2GPCRDB[BW]
+                SEQ = GPCRDB2SEQ[GPCRDB]
+                seq_positions.append(int(SEQ))
 
         return jsonify({'fetch_contacts': scores, 'seq_positions': seq_positions, 'sequence': fasta_sequence})
     else:
@@ -346,92 +400,85 @@ def convertPositionsBW2PDB():
         uniq_id = data['uniq_id']
         #print (pdbID)
         #print (pair_positions)
-        mutation_pfam_position = None
-        if '_WT' not in gpcr_given:
-            mutation_sequence_position = int(gpcr_given.split('_')[1][1:-1])
-            flag = 0
-            dic = {}
-            for line in open(path+'/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt', 'r'):
-                if line[:2] == '>>':
-                    flag = 0
-                    gpcr_found = line.split('>>')[1].replace(' ', '').replace('\n', '')
-                    if gpcr_given == gpcr_found:
-                        flag = 1
-                elif flag == 1:
-                    if len(line.split()) > 0:
-                        if line.split()[0] == '7tm_1':
-                            startDomain = line.split()[1]
-                            domain = line.split()[2]
-                            endDomain = line.split()[3]
-                        elif gpcr_found in line.split()[0]:
-                            startSequence = line.split()[1]
-                            sequence = line.split()[2]
-                            endSequence = line.split()[3]
 
-                            countDomain = int(startDomain)
-                            countSequence = int(startSequence)
-                            for seq, dom in zip(sequence, domain):
-                                if seq != '-' and dom != '.':
-                                    dic[countSequence] = countDomain
-                                    countDomain += 1
-                                    countSequence += 1
-                                elif seq != '-':
-                                    countSequence += 1
-                                else:
-                                    countDomain += 1
+        GPCRDB2PDB = {}
+        for line in open(path + '/data/PDB/GPCRDB/'+pdbID+'.txt', 'r'):
+            GPCRDB2PDB[int(line.split('\t')[3].replace('\n', ''))] = int(line.split('\t')[2])
+            bestHIT_ACC = line.replace('\n', '').split('\t')[4].split('|')[1]
 
-            #print (dic)
-            if mutation_sequence_position in dic:
-                mutation_pfam_position = dic[mutation_sequence_position]
-                #print (mutation_pfam_position)
+        BW2GPCRDB = {}
+        for line in open(path + '/data/GPCRDB/GPCRDB.tsv', 'r'):
+            if 'Name' not in line.split('\t')[0]:
+                acc = line.split('\t')[0].split('_')[1]
+                if acc == bestHIT_ACC:
+                    GPCRDB = int(line.split('\t')[1][1:])
+                    BW = line.split('\t')[2]
+                    BW2GPCRDB[BW] = GPCRDB
 
-        BW_to_PFAM = {}
-        for count, line in enumerate(open(path+'/data/7tm_1_2020_BW_matches.tsv', 'r')):
-            BW_to_PFAM[line.split('\t')[1]] = count+1
-        PFAM_to_PDB = {}
-        for count, line in enumerate(open(path+'/data/hmmsearchPDB/'+pdbID+'.txt', 'r')):
-            PFAM_to_PDB[int(line.split('\t')[3].replace('\n', ''))] = line.split('\t')[2]
-
-        #print (BW_to_PFAM)
-        #print (PFAM_to_PDB)
-        #print (num_contacts)
         modified_positions = []
+        modified_positions_labels = []
         modified_num_contacts = []
-        for num, position in enumerate(positions.split(',')):
-            if position in BW_to_PFAM:
-                #print (BW_to_PFAM[position], end=' ')
-                if BW_to_PFAM[position] in PFAM_to_PDB:
-                    pdbPosition = PFAM_to_PDB[BW_to_PFAM[position]]
-                    modified_positions.append(pdbPosition)
+
+        for num, BW in enumerate(positions.split(',')):
+            if BW in BW2GPCRDB:
+                GPCRDB = BW2GPCRDB[BW]
+                if GPCRDB in GPCRDB2PDB:
+                    pdbPosition = GPCRDB2PDB[GPCRDB]
+                    modified_positions.append(str(pdbPosition))
+                    modified_positions_labels.append(str(BW))
                     modified_num_contacts.append(str(num_contacts.split(',')[num]))
-        #print (modified_num_contacts)
+        #print (modified_positions_labels)
 
         modified_pair_positions = []
-        #print (pair_positions)
-        for position in pair_positions.split(','):
-            pos1 = position.split(':')[0]
-            pos2 = position.split(':')[1]
-            score = position.split(':')[2]
-            if pos1 in BW_to_PFAM and pos2 in BW_to_PFAM:
-                #print (BW_to_PFAM[position], end=' ')
-                if BW_to_PFAM[pos1] in PFAM_to_PDB and BW_to_PFAM[pos2] in PFAM_to_PDB:
-                    pdbPosition1 = PFAM_to_PDB[BW_to_PFAM[pos1]]
-                    pdbPosition2 = PFAM_to_PDB[BW_to_PFAM[pos2]]
-                    modified_pair_positions.append(pdbPosition1+':'+pdbPosition2+':'+score)
+        if pair_positions.split() != []:
+            for pair in pair_positions.split(','):
+                BW1 = pair.split(':')[0]
+                BW2 = pair.split(':')[1]
+                score = pair.split(':')[2]
+                if BW1 in BW2GPCRDB and BW2 in BW2GPCRDB:
+                    GPCRDB1 = BW2GPCRDB[BW1]
+                    GPCRDB2 = BW2GPCRDB[BW2]
+                    if GPCRDB1 in GPCRDB2PDB and GPCRDB2 in GPCRDB2PDB:
+                        pdbPosition1 = str(GPCRDB2PDB[GPCRDB1])
+                        pdbPosition2 = str(GPCRDB2PDB[GPCRDB2])
+                        modified_pair_positions.append(pdbPosition1+':'+pdbPosition2+':'+score)
 
-        #print (modified_positions)
         mutation_position = '-'
-        if mutation_pfam_position != None:
-            for pfamPosition in PFAM_to_PDB:
-                if pfamPosition == mutation_pfam_position:
-                    #print (PFAM_to_PDB[pfamPosition])
-                    mutation_position = PFAM_to_PDB[pfamPosition]
+        mutation_position_label = '-'
+        if '_WT' not in gpcr_given:
+            mutation_sequence_position = int(gpcr_given.split('_')[1][1:-1])
+            handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
+            blast_records = NCBIXML.parse(handle)
+            SEQ2GPCRDB = {}
+            for blast_record in blast_records:
+                #print (blast_record.query)
+                if gpcr_given == blast_record.query:
+                    for alignment in blast_record.alignments:
+                        for hsp in alignment.hsps:
+                            bestHIT = alignment.title.split(' ')[1]
+                            for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
+                                if q!='-' and s!='-':
+                                    SEQ2GPCRDB[num + hsp.query_start] = num + hsp.sbjct_start
+                            break
+                        break
                     break
 
+            if mutation_sequence_position in SEQ2GPCRDB:
+                mutation_GPCRDB_position = SEQ2GPCRDB[mutation_sequence_position]
+                mutation_position_label = mutation_sequence_position
+
+            if mutation_GPCRDB_position in GPCRDB2PDB:
+                mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]
+
+        #print (modified_positions)
+        #print (modified_pair_positions)
+
         return jsonify({'modified_positions': '_'.join(modified_positions),
+                        'modified_positions_labels': '_'.join(modified_positions_labels),
                         'modified_num_contacts': '_'.join(modified_num_contacts),
                         'modified_pair_positions': '_'.join(modified_pair_positions),
-                        'mutation_position': mutation_position
+                        'mutation_position': mutation_position,
+                        'mutation_position_label': mutation_position_label
                         })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
@@ -445,7 +492,8 @@ def fetchContactsPDBStructure():
         cutoff = float(data['cutoff'])
         uniq_id = data['uniq_id']
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
-        ordered_pdbs = reorder_pdbs(gpcr_given, uniq_id) ## return list of reordered PDB IDs based on GPCR
+        print ('print', gprotein_given, pair_positions)
+        ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
         return jsonify({'try': positions.tolist(),
                         'ordered_pdbs': ordered_pdbs,
                         'positions': ','.join(positions.tolist()),
@@ -455,20 +503,39 @@ def fetchContactsPDBStructure():
         return ("<html><h3>It was a GET request</h3></html>")
 
 ## Function to return list of PDB IDs based on GPCR using BLAST
-def reorder_pdbs(gpcr, uniq_id):
+def reorder_pdbs(uniq_id, gpcr, gprotein):
     path_to_fasta = path+"/static/predictor/output/"+uniq_id+"/input.fasta"
     path_to_output = path+"/static/predictor/output/"+uniq_id+"/"
 
-    os.system('blastp -query '+path_to_fasta+' -db '+ path + '/data/fasta/blastdb/all_pdbs -out '+path_to_output+'/blastp_output.txt')
+    os.system('blastp -query '+path_to_fasta+' -db '+ path + '/data/PDB/blastdb/allPDB -out '+path_to_output+'/blastp_output.txt')
 
     chain_info = {}
-    for line in open(path+'/data/pdblist.txt', 'r'):
+    for line in open(path+'/data/PDB/pdblist.txt', 'r'):
         pdbid = line.split(' ')[0]
         gpcr_chain = line.split(' ')[1]
         gprotein_chain = line.split(' ')[2].replace('\n', '')
+        barr_chain = line.split(' ')[3].replace('\n', '')
+
         chain_info[pdbid] = {}
         chain_info[pdbid]['gpcr_chain'] = gpcr_chain
-        chain_info[pdbid]['gprotein_chain'] = gprotein_chain
+        if gprotein_chain != '-':
+            chain_info[pdbid]['gprotein_chain'] = gprotein_chain
+        elif barr_chain != '-':
+            chain_info[pdbid]['gprotein_chain'] = barr_chain
+
+        '''
+        ## Select pdbid depending G-protein or Barrs
+        if 'Barr' in gprotein:
+            if barr_chain != '-':
+                chain_info[pdbid] = {}
+                chain_info[pdbid]['gpcr_chain'] = gpcr_chain
+                chain_info[pdbid]['gprotein_chain'] = barr_chain
+        else:
+            if gprotein_chain != '-':
+                chain_info[pdbid] = {}
+                chain_info[pdbid]['gpcr_chain'] = gpcr_chain
+                chain_info[pdbid]['gprotein_chain'] = gprotein_chain
+        '''
 
     dic = {}
     for line in open(path_to_output+'/blastp_output.txt', 'r'):
@@ -477,13 +544,14 @@ def reorder_pdbs(gpcr, uniq_id):
             dic[name] = []
         elif line[0] == '>':
             pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower()
-            row = []
-            #print (chain_info[pdbid])
-            row.append(pdbid)
-            row.append(chain_info[pdbid]['gpcr_chain'])
-            row.append(chain_info[pdbid]['gprotein_chain'])
-            #dic[name].append(row)
-            dic[name].append(pdbid+'_'+chain_info[pdbid]['gpcr_chain']+'_'+chain_info[pdbid]['gprotein_chain'])
+            if pdbid in chain_info:
+                row = []
+                #print (chain_info[pdbid])
+                row.append(pdbid)
+                row.append(chain_info[pdbid]['gpcr_chain'])
+                row.append(chain_info[pdbid]['gprotein_chain'])
+                #dic[name].append(row)
+                dic[name].append(pdbid+'_'+chain_info[pdbid]['gpcr_chain']+'_'+chain_info[pdbid]['gprotein_chain'])
 
     return(dic[gpcr])
     #return None
@@ -535,7 +603,7 @@ def output(uniq_id):
         #print (first_entry)
         #path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
         #path_to_fasta = "/static/predictor/output/"+uniq_id+"/input.fasta"
-        return render_template('embedded.html',
+        return render_template('result.html',
                                 path_to_json_output=json.dumps(path_to_json_output),
                                 path_to_fasta=json.dumps(path_to_fasta),
                                 first_entry=json.dumps(first_entry),
@@ -543,6 +611,16 @@ def output(uniq_id):
                                 uniq_id=json.dumps(uniq_id))
     else:
         return ("<html><h3>It was a GET request</h3></html>")
+
+# Route to help page
+@app.route('/help')
+def help():
+    return render_template('help.html')
+
+# Route to about page
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

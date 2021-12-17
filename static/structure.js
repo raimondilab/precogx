@@ -1,3 +1,18 @@
+function addElement (el) {
+  Object.assign(el.style, {
+    position: "absolute",
+    zIndex: 10
+  })
+  stage.viewer.container.appendChild(el)
+}
+
+function createElement (name, properties, style) {
+  var el = document.createElement(name)
+  Object.assign(el, properties)
+  Object.assign(el.style, style)
+  return el
+}
+
 // Function to take GPCR/G-protein chains and pdbid and render it to the
 // Structure panel
 function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, num_contacts, pair_positions) {
@@ -13,12 +28,14 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
 				//console.log(response);
         mutation_position = response['mutation_position'];
         modified_positions = response['modified_positions'];
+        modified_positions_labels = response['modified_positions_labels'];
         modified_num_contacts = response['modified_num_contacts'];
         //alert(modified_num_contacts);
         modified_pair_positions = response['modified_pair_positions'];
         modified_positions_array = modified_positions.split('_');
+        modified_positions_labels_array = modified_positions_labels.split('_');
         modified_num_contacts_array = modified_num_contacts.split('_');
-        //alert(modified_pair_positions);
+        //alert(response['modified_positions_labels']);
         // Define format of selection of given positions (contacts)
         /*
         selection = '-';
@@ -31,7 +48,12 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         */
 
         // Define format of selection of mutation position (if any)
-        modified_pair_positions_array = modified_pair_positions.split('_');
+        if (modified_pair_positions == '') {
+          modified_pair_positions_array = []
+        }
+        else {
+          modified_pair_positions_array = modified_pair_positions.split('_');
+        }
         selectionDistanceEnrichment = [];
         selectionDistanceDepletion = [];
         if (modified_pair_positions_array.length) {
@@ -58,21 +80,129 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         }
         stage.removeAllComponents();
         stage.setParameters({backgroundColor: "white"});
+        //alert(modified_positions_array);
 
         stage.loadFile("rcsb://"+pdbid+".cif").then(function (o) {
                   //o.autoView();
-                  o.addRepresentation("cartoon", {
+                  var pa = o.structure.getPrincipalAxes();
+                  stage.animationControls.rotate(pa.getRotationQuaternion(), 1500);
+
+                  var distanceButton = createElement("input", {
+                    class:"custom-control-input",
+                    type: "button",
+                    value: "Toggle distance"
+                  }, { top: "10px", left: "250px" })
+                  distanceButton.onclick = function (e) {
+                    DEPLETION.toggleVisibility();
+                    ENRICHMENT.toggleVisibility()
+                  }
+                  addElement(distanceButton);
+
+                  var labelButton = createElement("input", {
+                    type: "button",
+                    value: "Toggle labels"
+                  }, { top: "10px", left: "390px" })
+                  labelButton.onclick = function (e) {
+                    //stage.autoView()
+                    LABELS.toggleVisibility();
+                  }
+                  addElement(labelButton)
+
+                  var screenButton = createElement("input", {
+                    type: "button",
+                    value: "Toggle fullscreen"
+                  }, { top: "10px", left: "520px" })
+                  screenButton.onclick = function (e) {
+                    //stage.autoView()
+                    stage.toggleFullscreen();
+                    //stage.setParameters({cameraType: 'persepective', zoomSpeed: 10});
+                    //stage.zoomSpeed(10);
+                  }
+                  addElement(screenButton)
+
+                  var centerAllButton = createElement("input", {
+                    type: "button",
+                    value: "Center"
+                  }, { top: "10px", left: "10px" })
+                  centerAllButton.onclick = function (e) {
+                    stage.autoView()
+                  }
+                  addElement(centerAllButton)
+
+                  //alert(mutation_position);
+
+                  var centerMutationButton = createElement("input", {
+                    type: "button",
+                    value: "Center mutation"
+                  }, { top: "10px", left: "100px" })
+                  centerMutationButton.onclick = function (e) {
+                    o.autoView(String(mutation_position)+':'+chainGPCR+'.CA')
+                  }
+                  addElement(centerMutationButton)
+
+
+                  var GPCR = o.addRepresentation("cartoon", {
                       sele: ":"+chainGPCR,
                       name: chainGPCR,
                       color: "silver",
                       //color: schemeId,
                   });
-                  o.addRepresentation("cartoon", {
+                  var GPROTEIN = o.addRepresentation("cartoon", {
                       sele: ":"+chainGPROT,
                       name: chainGPROT,
                       color: "skyblue",
                       //color: schemeId,
                   });
+
+
+                  var bg_color = { }
+                  var sele = new NGL.Selection("")
+                  var view = o.structure.getView(sele)
+                  var labelText = { }
+                  for (var i = 0; i < modified_positions_array.length; i++) {
+                      var seleString = modified_positions_array[i];
+                      sele.setString(seleString+':'+chainGPCR+'.CA')
+                      var atomIndex = view.getAtomIndices()[0];
+                      //alert(atomIndex);
+                      if (atomIndex !== undefined) {
+                          labelText[atomIndex] = modified_positions_labels_array[i];
+                      }
+                  }
+
+                  var LABELS = o.addRepresentation("label", {
+                    labelType: "text",
+                    labelText: labelText,
+                    color: "black",
+                    xOffset: 1,
+                    //showBackground: true,
+                    //backgroundColor: bg_color,
+                    //borderColor: 'blue',
+                  })
+
+                  /*
+                  var mutationText = { };
+                  var sele2 = new NGL.Selection("");
+                  var view2 = o.structure.getView(sele2);
+                  var seleString2 = mutation_position;
+                  sele2.setString(seleString2+':'+chainGPCR+'.CA');
+                  var atomIndex2 = view2.getAtomIndices()[0];
+                  alert(atomIndex2);
+                  if (atomIndex2 !== undefined) {
+                      mutationText[atomIndex2] = response['mutation_position_label'];
+                  }
+
+                  alert(mutationText[atomIndex2]);
+                  var MUTLABELS = o.addRepresentation("label", {
+                    labelType: "text",
+                    labelText: mutationText,
+                    color: "purple",
+                    xOffset: 1,
+                    //showBackground: true,
+                    //backgroundColor: bg_color,
+                    //borderColor: 'blue',
+                  });
+                  */
+
 
                   if (modified_positions_array.length) {
                     for (var i = 0; i < modified_positions_array.length; i++) {
@@ -87,15 +217,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       });
                     }
                   }
-                  /*
-                  o.addRepresentation("ball+stick", {
-                      sele: selection,
-                      name: 'extra',
-                      radius: '0.5',
-                      color: "khaki",
-                      //color: schemeId,
-                  });
-                  */
+
                   o.addRepresentation("ball+stick", {
                       sele: mutation_position+ " and .CA and :" + chainGPCR,
                       name: 'extra',
@@ -103,17 +225,23 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       color: "purple"
                       //color: schemeId,
                   });
-                  o.addRepresentation( "distance", {
-                      //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
-                      atomPair: selectionDistanceEnrichment,
-                      color: "green"
-                  } );
-                  o.addRepresentation( "distance", {
-                      //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
-                      atomPair: selectionDistanceDepletion,
-                      color: "red"
-                  } );
+
+
+                  if (modified_pair_positions_array != []) {
+                    var ENRICHMENT = o.addRepresentation( "distance", {
+                        //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
+                        atomPair: selectionDistanceEnrichment,
+                        color: "green"
+                    } );
+                    var DEPLETION = o.addRepresentation( "distance", {
+                        //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
+                        atomPair: selectionDistanceDepletion,
+                        color: "red"
+                    } );
+                  }
                   o.autoView(':'+chainGPCR);
+                  //o.autoView("49:R.CA");
+                  //o.autoView(mutation_position+ " and .CA and :" + chainGPCR);
                   //o.removeAllRepresentations();
                   //o.center({sele:'1-50',});
                 });

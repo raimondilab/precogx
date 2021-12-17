@@ -2,7 +2,8 @@ $( document ).ready(function() {
 
  $(document).on('click', '#ex1', function() {
 
-      var seq1 = ">DRD1\n";
+      var seq1 = '# Dopamine Receptor 1\n';
+      seq1 += ">DRD1\n";
       seq1 += "MRTLNTSAMDGTGLVVERDFSVRILTACFLSLLILSTLLGNTLVCAAVIRFRHLRSKVTN\n";
       seq1 += "FFVISLAVSDLLVAVLVMPWKAVAEIAGFWPFGSFCNIWVAFDIMCSTASILNLCVISVD\n";
       seq1 += "RYWAISSPFRYERKMTPKAAFILISVAWTLSVLISFIPVQLSWHKAKPTSPSDGNATSLA\n";
@@ -11,23 +12,45 @@ $( document ).ready(function() {
       seq1 += "GETQPFCIDSNTFDVFVWFGWANSSLNPIIYAFNADFRKAFSTLLGCYRLCPATNNAIET\n";
       seq1 += "VSINNNGAAMFSSHHEPRGSISKECNLVYLIPHAVGSSEDLKKEEAAGIARPLEKLSPAL\n";
       seq1 += "SVILDYDTDVSLEKIQPITQNGQHPT\n";
-      seq1 += ">DRD1/N5P\n"
-      var seq2 = ">FFAR2\n";
-      seq2 += "MLPDWKSSLILMAYIIIFLTGLPANLLALRAFVGRIRQPQPAPVHILLLSLTLADLLLLL\n";
-      seq2 += "LLPFKIIEAASNFRWYLPKVVCALTSFGFYSSIYCSTWLLAGISIERYLGVAFPVQYKLS\n";
-      seq2 += "RRPLYGVIAALVAWVMSFGHCTIVIIVQYLNTTEQVRSGNEITCYENFTDNQLDVVLPVR\n";
-      seq2 += "LELCLVLFFIPMAVTIFCYWRFVWIMLSQPLVGAQRRRRAVGLAVVTLLNFLVCFGPYNV\n";
-      seq2 += "SHLVGYHQRKSPWWRSIAVVFSSLNASLDPLLFYFSSSVVRRAFGRGLQVLRNQGSSLLG\n";
-      seq2 += "RRGKDTAEGTNEDRGVGQGEGMPSSDFTTE";
+      seq1 += '# Free fatty acid receptor 2\n'
+      seq1 += ">FFAR2\n";
+      seq1 += "MLPDWKSSLILMAYIIIFLTGLPANLLALRAFVGRIRQPQPAPVHILLLSLTLADLLLLL\n";
+      seq1 += "LLPFKIIEAASNFRWYLPKVVCALTSFGFYSSIYCSTWLLAGISIERYLGVAFPVQYKLS\n";
+      seq1 += "RRPLYGVIAALVAWVMSFGHCTIVIIVQYLNTTEQVRSGNEITCYENFTDNQLDVVLPVR\n";
+      seq1 += "LELCLVLFFIPMAVTIFCYWRFVWIMLSQPLVGAQRRRRAVGLAVVTLLNFLVCFGPYNV\n";
+      seq1 += "SHLVGYHQRKSPWWRSIAVVFSSLNASLDPLLFYFSSSVVRRAFGRGLQVLRNQGSSLLG\n";
+      seq1 += "RRGKDTAEGTNEDRGVGQGEGMPSSDFTTE";
 
       $('#validationTextarea').html(seq1);
     });
 
     $(document).on('click', '#ex2', function() {
-      var seq2 = "DRD1/F61P\n";
-      seq2 += "CXCR3/D278A";
+      var seq2 = '# G-protein coupled receptor 183\n';
+      seq2 += "P32249\n";
+      seq2 += '# Thyrotropin receptor\n';
+      seq2 += "TSHR_HUMAN";
 
       $('#validationTextarea').html(seq2);
+    });
+
+    $(document).on('click', '#ex3', function() {
+      var seq3 = '# Free fatty acid receptor 2\n';
+      seq3 += '#Complete loss of acetate-induced G protein-coupled receptor activity\n';
+      seq3 += "FFAR2/Y90W/F61P\n";
+      seq3 += "# G-protein coupled receptor 183\n";
+      seq3 += "# 10-fold reduction in receptor activation (UniProt)\n";
+      seq3 += "GPR183/Q287A";
+
+      $('#validationTextarea').html(seq3);
+    });
+
+    $(document).on('click', '#ex4', function() {
+      var seq4 = "# Parathyroid hormone/parathyroid hormone-related peptide receptor\n";
+      seq4 += "PTH1R_HUMAN\n";
+      seq4 += "# Metabotropic glutamate receptor 7 (Class C)\n";
+      seq4 += "GRM7_HUMAN";
+
+      $('#validationTextarea').html(seq4);
     });
 
       //$('#validationTextarea').html("DRD1/F61P\nCXCR3/D278A");
@@ -61,4 +84,5 @@ $( document ).ready(function() {
 //      _h1.style.webkitAnimation = 'typing '+speed+'s steps(40, end), blink-caret .75s step-end infinite'; //  switch to the original set of animation
 //      (rank===messages.length-1)?rank=0:rank++; // if you have displayed the last message from the array, go back to the first one, else go to next message
 //    }, 1000);
+//}
 //}
