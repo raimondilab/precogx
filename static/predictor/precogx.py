@@ -283,9 +283,10 @@ def formatInputFile(numseqs, input_file):
                     num += 1
                     given_name = line.replace('\n', '')
 
-                    pattern = re.compile("\\>sp\\|.*\\|.*_.*")
+                    pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
+                    pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
 
-                    if pattern.match(given_name) != None:
+                    if pattern1.match(given_name) != None or pattern2.match(given_name):
                         given_name = given_name.split('>')[1].split(' ')[0]
                     else:
                         #given_name = str(line.split('>')[1].replace('\n', '').replace(' ','').split()[0])
@@ -336,10 +337,12 @@ def formatInput(numseqs, input):
                         num += 1
                         given_name = line.replace('\n', '')
 
-                        pattern = re.compile("\\>sp\\|.*\\|.*_.*")
-                        if pattern.match(given_name) != None:
+                        pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
+                        pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
+
+                        if pattern1.match(given_name) != None or pattern2.match(given_name):
                             given_name = given_name.split('>')[1].split(' ')[0]
-                            #print ('match', pattern.match(given_name))
+
                         else:
                             #given_name = line.split('>')[1].replace('\n', '').replace(' ','').split()[0]
                             given_name = str(line.split('>')[1])
@@ -367,10 +370,12 @@ def formatInput(numseqs, input):
                     num += 1
                     given_name = line.replace('\n', '')
 
-                    pattern = re.compile("\\>sp\\|.*\\|.*_.*")
-                    if pattern.match(given_name) != None:
+                    pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
+                    pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
+
+                    if pattern1.match(given_name) != None or pattern2.match(given_name):
                         given_name = given_name.split(' ')[0]
-                        #print ('match', pattern.match(given_name))
+
                     else:
                         given_name = str(line.replace(' ','').split()[0])
                         #print ('this one', given_name)

@@ -133,7 +133,7 @@ open('data/PDB/pdblist.txt', 'w').write(l)
 os.system("rm -rf data/PDB/allPDB.fasta")
 open ('data/PDB/allPDB.fasta', 'w').write(allPDB)
 if os.path.isfile('data/PDB/blastdb/') == False:
-    os.system("mkdir blastdb/")
+    os.system("mkdir data/PDB/blastdb/")
 os.system("rm -rf data/PDB/blastdb/allPDB*")
 os.system("makeblastdb -in data/PDB/allPDB.fasta -dbtype 'prot' -out data/PDB/blastdb/allPDB")
 print ('complete')
