@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %} PRECOGx | Result {{uniq_id|safe}} {% endblock %}
+
+{% block head %}
+<script src="{{url_for('static', filename='/sequence-viewer.bundle.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.colVis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
+<script src='https://cdn.plot.ly/plotly-2.6.3.min.js'></script>
+<script src="{{url_for('static', filename='/dataT.js')}}"></script>
+<script src="{{url_for('static', filename='/ngl.js')}}"></script>
+<script src="{{url_for('static', filename='/structure.js')}}"></script>
+<script src="{{url_for('static', filename='/sequence.js')}}"></script>
+<script src="{{url_for('static', filename='/heatmap.js')}}"></script>
+<script src="{{url_for('static', filename='/pca.js')}}"></script>
+<link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet" />
+
+<script>
+var selected_gpcr = '';
+
+</script>
+
+<style>
+.dropdown-menu {
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+th, td { white-space: nowrap;
+
+}
+
+div.dataTables_wrapper {
+        margin: 0 auto;
+}
+
+    div.ColVis {
+        float: left;
+    }
+div.checkboxRight {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  font-size:0.75rem;
+}
+</style>
+
+{% endblock%}
+
+{% block content %}
+<section class="pt-8" id="home">
+    <div class="container pb-2">
+
+        <h1 class="fw-bold mb-4">Result</h1>
+
+        <div class="row align-items-center">
+
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="header-title">Coupling probabilites</h2>
+                        <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2" cellspacing="0" width="100%"></table>
+                    </div>  <!-- end card body-->
+                </div> <!-- end card -->
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="header-title">PCA</h2>
+                        <div  class="p-1">
+                            <div class="dropdown" id="labels">
+                                <button type="button" id="AssayButton" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown";>
+                                    Assay
+                                </button>
+                                <ul id="AssayList" class="dropdown-menu">
+                                </ul>
+                                <button type="button" id="PCAButton" class="btn btn-primary  btn-sm dropdown-toggle" data-bs-toggle="dropdown";>PCA </button>
+                                <ul id="PCAList" class="dropdown-menu"></ul>
+                            </div>
+                            <div id='myDiv2'><!-- Plotly chart will be drawn inside this DIV --></div>
+                        </div>
+                    </div>
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div> <!--end row one-->
+
+
+            <!-- Load first GPCR and GNA12 -->
+           <script>
+              makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}})
+              makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
+              makeStructure({{first_entry|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
+              makeHeatmap(0.0, {{first_entry|safe}}, 'GNA12');
+              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, 'GNA12');
+            </script>
+
+        <div class="row align-items-center mb-5">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="header-title" id="panelHeading">Contacts</h2>
+
+                        <!-- SEQUENCE PANEL (neXtprot viewer) -->
+                        <button type="button" class="btn btn-primary btn-sm" onclick="togglePanel()" id="toggleButton">Show sequence</button>
+                        <input type="range" class="form-range" min="-1.0" max="1.0" step="0.1" value="0.0" style="width:25%;" id="slider1">
+                        <span id="slider1_value">0.0</span>
+
+                        <!-- Update panels if slider is changed -->
+                        <script>
+
+                                      $(document).on('input', '#slider1', function() {
+                                          $('#slider1_value').html( $(this).val() );
+                                          var slider1_value = document.getElementById('slider1_value').innerHTML;
+                                          var selected_gpcr = $('#selected').data('gpcr');
+                                          var selected_gprotein = $('#selected').data('gprotein')
+                                          makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
+                                          makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
+                                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
+                                          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                                      });
+                            </script>
+                        <div id="sequence-viewer"  style="display: none;"></div>
+                        <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="header-title">Structure</h2>
+
+                        <div class="dropdown" id="dd-example">
+                            <button type="button" id="PDBbutton" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown";>
+                                PDB-ID
+                            </button>
+                            <ul id="pdblist" class="dropdown-menu"></ul>
+                        </div>
+
+                        <div id="viewport" class="align-items-center"></div>
+                        <script>
+                            var stage = new NGL.Stage( "viewport" );
+                            stage.setParameters( { backgroundColor: "white"} );
+                          </script>
+
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div>
+        </div> <!--end row two-->
+
+
+    </div>
+    </div> <!--end row three-->
+    </div>
+    </div>
+</section>
+{% endblock%}
+

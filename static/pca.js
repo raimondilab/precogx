@@ -2,7 +2,8 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
   //showPCA(uniq_id, assay, gpcr, gprotein);
   var gpcr = gpcr;
   var gprotein = gprotein;
-  //alert(pca_type+'----'+gpcr+'----'+gprotein);
+  //alert(assay+'----'+gpcr+'----'+gprotein);
+  //var assay = showPCA(uniq_id, assay, pca_type, gpcr, gprotein);
   $.ajax({
     url:"/fetchPCA", //the page containing python script
     type: "post", //request type,
@@ -10,6 +11,8 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
     data: JSON.stringify({uniq_id: uniq_id, assay: assay, pca_type: pca_type, gpcr: gpcr, gprotein: gprotein}),
     success: function(response){
 				console.log(response);
+        //alert(assay);
+        var assay = response['assay'];
         showPCA(uniq_id, assay, pca_type, gpcr, gprotein);
         var train_grey = {
           x:response['x_train_grey'],
@@ -95,17 +98,32 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
 }
 
 function showPCA(uniq_id, assay, pca_type, gpcr, gprotein) {
-  //alert(pca_type);
   //alert(gpcr+'--'+gprotein);
-  var options = "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'Shedding\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Shedding</a></li>";
-  options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
-  options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
-  //options += "<li><a class=\"dropdown-item\" onClick=\"makePCA()\">Shedding</a></li>";
-  //options += "<li><a class=\"dropdown-item\" onClick=\"makePCA()\">ebBRET</a></li>";
-  //alert(options);
-  document.getElementById("AssayList").innerHTML = options;
+  var ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
+  var shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
+  var both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
+  var options = '';
+
+  if (gprotein.includes("Barr")) {
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'STRING\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">STRING</a></li>";
+  }
+  else if (both.includes(gprotein)) {
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'Shedding\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Shedding</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
+  }
+  else if (shedding.includes(gprotein)) {
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'Shedding\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Shedding</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
+  }
+  else {
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
+  }
+
   document.getElementById("AssayButton").innerHTML = assay;
-  //showPCA(uniq_id, assay, gpcr, gprotein);
+  document.getElementById("AssayList").innerHTML = options;
 
   var options = "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'"+assay+"\'"+",\'GPCRome\',\'"+gpcr+"\',\'"+gprotein+"\')\">GPCRome</a></li>";
   options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'"+assay+"\'"+",\'Best PCA\',\'"+gpcr+"\',\'"+gprotein+"\')\">Best PCA</a></li>";
