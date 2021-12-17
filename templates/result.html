@@ -67,7 +67,7 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Coupling probabilites</h2>
-                        <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2" cellspacing="0" width="100%"></table>
+                        <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2 fs--2" cellspacing="0" width="100%"></table>
                     </div>  <!-- end card body-->
                 </div> <!-- end card -->
             </div>
@@ -75,7 +75,7 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">PCA</h2>
-                        <div  class="p-1">
+                        <div  class="p-1 fs--2">
                             <div class="dropdown" id="labels">
                                 <button type="button" id="AssayButton" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown";>
                                     Assay
@@ -109,10 +109,22 @@ div.checkboxRight {
                         <h2 class="header-title" id="panelHeading">Contacts</h2>
 
                         <!-- SEQUENCE PANEL (neXtprot viewer) -->
-                        <button type="button" class="btn btn-primary btn-sm" onclick="togglePanel()" id="toggleButton">Show sequence</button>
-                        <input type="range" class="form-range" min="-1.0" max="1.0" step="0.1" value="0.0" style="width:25%;" id="slider1">
-                        <span id="slider1_value">0.0</span>
 
+                         <div class="col-auto">
+                        <div class="float-start">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="togglePanel()" id="toggleButton">Show sequence</button>
+                        </div>
+                         <div class="float-end">
+                             <div class="row g-3 align-items-center">
+                                 <div class="col-auto">
+                                     <label for="slider1" class="col-form-label" id="slider1_value">0.0</label>
+                                 </div>
+                                 <div class="col-auto">
+                                     <input type="range" class="form-range" min="-1.0" max="1.0" step="0.1" value="0.0" style="width:80%;" id="slider1">
+                                 </div>
+                             </div>
+                        </div>
+                       </div>
                         <!-- Update panels if slider is changed -->
                         <script>
 
@@ -145,7 +157,7 @@ div.checkboxRight {
                             <ul id="pdblist" class="dropdown-menu"></ul>
                         </div>
 
-                        <div id="viewport" class="align-items-center"></div>
+                        <div id="viewport" class="align-items-center fs--2"></div>
                         <script>
                             var stage = new NGL.Stage( "viewport" );
                             stage.setParameters( { backgroundColor: "white"} );

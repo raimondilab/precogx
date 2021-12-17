@@ -18652,20 +18652,40 @@ height: 28.125rem;
 }
 
 #myDiv{
-position: relative;
-width: 40ems;
-height: 28.125rem;
-margin-left: 1.25rem;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 95%;
+height: 40rem;
+margin-top: 5rem;
 }
 
 
-#viewport, #sequence-viewer {
+#sequence-viewer {
 position: relative;
 width: 40ems;
-height: 28.125rem;
+height: 40rem;
+margin-top: 5rem;
+}
+
+#viewport{
+position: relative;
+width: 40ems;
+height: 40rem;
 margin-top: 1rem;
 }
 
 .fastaSeq, .charNumbers{
 font-size: 0.75rem !important;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.trans{
+transform: rotate(36deg);
 }

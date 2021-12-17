@@ -93,7 +93,9 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           title: gprotein
         };
 
-        Plotly.newPlot('myDiv2', data, layout, {displayModeBar: true, scrollZoom: true});
+        var config = {responsive: true}
+
+        Plotly.newPlot('myDiv2', data, layout, config);
 			},
 			error: function(error){
 				console.log(error);
