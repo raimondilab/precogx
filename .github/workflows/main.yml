@@ -41,8 +41,8 @@ jobs:
       - name: Install BioPython
         shell: bash -l {0}
         run: |
-        conda install -c conda-forge biopython
-        python test.py
+          conda install -c conda-forge biopython
+          python test.py
 
       # run the test.py to get the latest SIFT and PDB FASTA files
       #- name: execute test.py script
