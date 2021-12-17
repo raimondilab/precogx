@@ -400,8 +400,8 @@ def fetchContactsSequence():
         seq_positions = seq_positions[indexes]
         #print(bw_positions[indexes])
         bw_positions = bw_positions[indexes]
-        print (seq_positions)
-        print (bw_positions)
+        #print (seq_positions)
+        #print (bw_positions)
         '''
         indexes = np.argsort(seq_positions)
         print (indexes)
@@ -619,6 +619,7 @@ def output(uniq_id):
         ## In case VAR is IUPHAR, Emax or LogRAi, gpcr name is sent as GPCR_WT
         ## for sequence, contacts, structure and PCA panels
         first_entry = ''
+        first_gprotein = ''
         gpcr_list = []
         for key1 in d:
             for num, key2 in enumerate(d[key1]):
@@ -627,9 +628,26 @@ def output(uniq_id):
                     variant = '_' + key2[1]
                 else:
                     variant = '_WT'
+
                 if num == 0:
+                    mx = 0
+                    first_gprotein_index = 2
                     first_entry = gpcr+variant
+                    for count, value in enumerate(key2[2:]):
+                        if float(value) > mx:
+                            mx = float(value)
+                            first_gprotein_index = count + 2
+
                     #print (key1, d[key1])
+                    #print (first_gprotein_index)
+                    for line in open(path + "/static/predictor/output/"+uniq_id+"/out.tsv", 'r'):
+                        if '#Input' in line:
+                            header = line.replace('\n', '').replace('#', '').split('\t')
+                            #print (header)
+                            break
+                    #print (header[first_gprotein_index])
+                    first_gprotein = header[first_gprotein_index]
+
                 gpcr_list.append(gpcr+variant)
                 #break
 
@@ -640,6 +658,8 @@ def output(uniq_id):
                                 path_to_json_output=json.dumps(path_to_json_output),
                                 path_to_fasta=json.dumps(path_to_fasta),
                                 first_entry=json.dumps(first_entry),
+                                first_gprotein=json.dumps(first_gprotein),
+                                first_gprotein_index=json.dumps(first_gprotein_index),
                                 gpcr_list=json.dumps(gpcr_list),
                                 uniq_id=json.dumps(uniq_id))
     else:

@@ -1,0 +1,106 @@
+<div class="modal fade" id="dataModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+          <div class="modal-dialog modal-lg" style="z-index: 101;">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Table panel</h4>
+                  </div>
+                  <div class="modal-body" style="font-size: 12px;">
+                  <p>
+                    The table here displays predicted probabilites of the given entries (both Wild type sequences and mutations) by PRECOGx and known values from
+                    <a href="http://www.guidetopharmacology.org/GRAC/ReceptorFamiliesForward?type=GPCR" target="_blank">IUPHAR</a> and the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/" target="_blank">Shedding</a>/<a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1">ebBRET</a> assays.<br>
+                    For rows displaying:<br>
+                    <kbd>VAR = IUPHAR</kbd>: primary coupling is represented by <kbd>PC</kbd> while the secondary ones as <kbd>SC</kbd> and
+                    the unknown ones as <kbd>-</kbd>.<br>
+                    <kbd>VAR = LogRAi (Shedding experiment)</kbd>: values > <kbd>-1.0</kbd> are coupling while others are not coupling (< <kbd>-1.0</kbd>) or unknown <kbd>-</kbd>.<br>
+                    <kbd>VAR = Emax (ebBRET experiment)</kbd>: values > <kbd>0</kbd> are coupling while others are not coupling (= <kbd>0</kbd>) or unknown <kbd>-</kbd>.<br>
+                    <kbd>VAR = WT(Wild Type)/Mutation</kbd>: values with predicted probability (by PRECOGx) greater than 0.5 are coupling while others are not coupling.<br><br>
+                    By clicking on any of the cells:<br>
+                    a) The corresponding input is shown on the PCA panel<br>
+                    b) The enriched/depleted contact positions of the input GPCR are highlighted in the Conact/Sequence panels and mapped onto a 3D structure in the Structure panel.
+                  </p>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                  </div>
+                  </div>
+                </div>
+          </div>
+  </div>
+
+  <div class="modal fade" id="pcaModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+            <div class="modal-dialog modal-lg" style="z-index: 101;">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">PCA panel</h4>
+                    </div>
+                    <div class="modal-body" style="font-size: 12px;">
+                    <p>
+                      This panel displays the first two eigenvectors (X & Y-axis) of the Principal Component Analysis (PCA) applied
+                      on the embeddings of the human GPCRome, comprising a total of 377 receptors
+                      (279 Class A, 33 Class B, 17 class C, 11 class F, 25 Taste receptors and 14 in other classes).
+
+                      Every GPCR and the input (WT/mutation) can be annotated with coupling information from either <kbd>Shedding</kbd>, <kbd>ebBRET</kbd>, <kbd>IUPHAR</kbd> or <kbd>STRING</kbd> (only for B-arrs).
+                    </p>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+    </div>
+
+<div class="modal fade" id="contactModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+              <div class="modal-dialog modal-lg" style="z-index: 101;">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Contact/Sequence panel</h4>
+                      </div>
+                      <div class="modal-body" style="font-size: 12px;">
+                      <p>
+                        This panel displays the computed differential contact maps (Contacts panel) for the selected G-protein group (from the table above),
+                        and the same conacts being mapped to the input GPCR sequence (Sequence Panel).
+                        These conacts are either enriched (log-odds score > 0) or depeleted (log-odds score < 0).<br>
+                        Hover on the sequence to to view the corresponding position's
+                        Ballesteros Weinstein (BW) annotation.<br>
+                        Click on the <kbd>button</kbd> to toggle between the panels.<br>
+                        Use the <kbd>slider</kbd> the set the absolute value cutoff of the Log-odds score. For example, a slider value of 0.3 will display the contacts
+                        that have an enriched (> 0.3) or depeleted (< -0.3) for the given G-potein coupling score.
+                      </p>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                      </div>
+                      </div>
+                    </div>
+              </div>
+      </div>
+
+<div class="modal fade" id="structureModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+          <div class="modal-dialog modal-lg" style="z-index: 101;">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Structure panel</h4>
+                  </div>
+                  <div class="modal-body" style="font-size: 12px;">
+                  <p>
+                  This panel displays the differential contacts mapped to the input GPCR's 3D structure. Zoom-in to view the
+                  Ballesteros Weinstein (BW) annotation of the positions.
+                  </p>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                  </div>
+                  </div>
+                </div>
+          </div>
+  </div>

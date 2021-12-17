@@ -1,5 +1,5 @@
 function attempt(assay, assays, path_to_json_output) {
-  var dataT = initTable(path_to_json_output);
+  var dataT = initTable(path_to_json_output, first_gprotein, first_gprotein_index);
   var string = [];
   //alert(assays.split(',')[2]);
   for (let i = 0; i < assays.split(',').length; i++) {
@@ -16,10 +16,10 @@ function attempt(assay, assays, path_to_json_output) {
   dataT.columns(1).search(regex, true, false).draw();
 }
 
-function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list) {
+function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, first_gprotein, first_gprotein_index) {
   $(document).ready(function() {
     //var dataT = initTable();
-    initTable(path_to_json_output);
+    initTable(path_to_json_output, first_gprotein, first_gprotein_index);
     var assays = ['IUPHAR', 'LogRAi', 'Emax', 'WT'];
     //alert(path_to_json_output);
     var checkB = document.createElement("DIV");
@@ -52,7 +52,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list) {
 
     //firstrow();
     $('#example tbody').on( 'click', 'td', function () {
-      var dataT = initTable(path_to_json_output);
+      var dataT = initTable(path_to_json_output, first_gprotein, first_gprotein_index);
       //alert(dataT.cell( this ).data());
       //alert(dataT.row(this).index());
       $('#example tbody td').css('backgroundColor', 'white').data('gpcr', gpcr).data('gprotein', gprotein);
@@ -83,11 +83,11 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list) {
   });
 }
 
-function firstrow(path_to_json_output) {
+function firstrow(path_to_json_output, first_gprotein, first_gprotein_index) {
   //alert('first row');
-  var dataT = initTable(path_to_json_output);
+  var dataT = initTable(path_to_json_output, first_gprotein, first_gprotein_index);
   var rowIndex = dataT.row(0).index();
-  var colIndex = 14;
+  var colIndex = Number(first_gprotein_index);
   var cell = dataT.cell(rowIndex,colIndex).node();
   $(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
   var gpcr_variant = dataT.cell(0,0).data() + '_';
@@ -95,17 +95,17 @@ function firstrow(path_to_json_output) {
   //alert(d);
   //$(cell).data('gpcr', dataT.cell(0,0).data());
   $(cell).data('gpcr', gpcr_variant);
-  $(cell).data('gprotein', 'GNA12');
+  $(cell).data('gprotein', first_gprotein);
 }
 
-function initTable(path_to_json_output) {
+function initTable(path_to_json_output, first_gprotein, first_gprotein_index) {
   return $('#example').DataTable({
     //"ajax": "static/OL820/out.json",
     "ajax": path_to_json_output,
     "retrieve": true,
     "initComplete": function(  ) {
                     //alert('hello');
-                    firstrow(path_to_json_output);
+                    firstrow(path_to_json_output, first_gprotein, first_gprotein_index);
                     },
     "drawCallback": function( settings ) {
                     //alert('hi');
