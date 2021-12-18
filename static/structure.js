@@ -312,14 +312,14 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                         //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
                         atomPair: selectionDistanceEnrichment,
                         color: "green",
-                        labelSize: 1
+                        labelSize: 0
                       }
                     );
                     var DEPLETION = o.addRepresentation( "distance", {
                         //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
                         atomPair: selectionDistanceDepletion,
                         color: "red",
-                        labelSize: 1
+                        labelSize: 0
                       }
                     );
                   }
