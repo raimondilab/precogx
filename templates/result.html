@@ -23,7 +23,7 @@
 <script src="{{url_for('static', filename='/pca.js')}}"></script>
 <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet" />
+<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">
 
 <script>
 var selected_gpcr = '';
@@ -112,11 +112,12 @@ div.checkboxRight {
 
             <!-- Load first GPCR and GNA12 -->
            <script>
-              makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}})
-              makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
-              makeStructure({{first_entry|safe}}, 'GNA12', 0.0, {{uniq_id|safe}});
-              makeHeatmap(0.0, {{first_entry|safe}}, 'GNA12');
-              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, 'GNA12');
+              makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}}, {{first_gprotein|safe}}, {{first_gprotein_index|safe}})
+              makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, {{uniq_id|safe}});
+              makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, {{uniq_id|safe}});
+              makeHeatmap(0.0, {{first_entry|safe}}, {{first_gprotein|safe}});
+              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, {{first_gprotein|safe}});
+
             </script>
 
         <div class="row align-items-center mb-5">
@@ -183,6 +184,11 @@ div.checkboxRight {
 
                         <div id="viewport" class="align-items-center fs--2"></div>
                         <script>
+                          /*
+                            NGL.setMeasurementDefaultParams = {
+                                 labelSize: 2
+                               };
+                               */
                             var stage = new NGL.Stage( "viewport" );
                             stage.setParameters( { backgroundColor: "white"} );
                           </script>
@@ -194,9 +200,7 @@ div.checkboxRight {
 
 
     </div>
-    </div> <!--end row three-->
-    </div>
-    </div>
+
 
     <div id ="modalCoupling">
     </div>

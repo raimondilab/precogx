@@ -1,3 +1,5 @@
+
+
 function addElement (el) {
   Object.assign(el.style, {
     position: "absolute",
@@ -8,9 +10,50 @@ function addElement (el) {
 
 function createElement (name, properties, style) {
   var el = document.createElement(name)
+  el.className = "btn btn-primary btn-sm";
   Object.assign(el, properties)
   Object.assign(el.style, style)
+  //Object.assign(el.classList.add, "btn btn-primary btn-sm")
+
   return el
+}
+
+function createElement2 (id, name, properties, style, labelName) {
+  var div = document.getElementById("div"+id);
+  divID = 'div' + id
+  if(typeof(div) == 'undefined' || div == null){
+    var div = document.createElement('DIV')
+    div.setAttribute("id", divID);
+    div.className = "form-check form-switch";
+    div.style.font = "bold 15px arial,serif";
+    //div.style.top = "120px";
+    //div.style.left = "10px";
+  }
+  Object.assign(div.style, style);
+
+
+  var el = document.getElementById(id);
+  if(typeof(el) == 'undefined' || el == null){
+    var el = document.createElement(name)
+    el.className = "form-check-input";
+  }
+  el.setAttribute("id", id);
+  Object.assign(el, properties)
+  //Object.assign(el.style, style)
+
+  var label = document.getElementById("label"+id);
+  if(typeof(label) == 'undefined' || label == null){
+    var label = document.createElement("LABEL");
+    label.className ="form-check-label"
+    //label.style.backgroundColor = "red";
+  }
+  label.setAttribute("id", "label"+id);
+  label.htmlFor = id;
+  label.innerHTML = labelName
+
+  div.appendChild(el)
+  div.appendChild(label)
+  return div
 }
 
 // Function to take GPCR/G-protein chains and pdbid and render it to the
@@ -82,8 +125,10 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         stage.setParameters({backgroundColor: "white"});
         //alert(modified_positions_array);
 
+
         stage.loadFile("rcsb://"+pdbid+".cif").then(function (o) {
                   //o.autoView();
+
                   var pa = o.structure.getPrincipalAxes();
                   stage.animationControls.rotate(pa.getRotationQuaternion(), 1500);
 
@@ -91,7 +136,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     class:"custom-control-input",
                     type: "button",
                     value: "Download"
-                  }, { top: "50px", left: "10px" })
+                  }, { top: "10px", left: "10px" })
                   downloadButton.onclick = function (e) {
                     stage.makeImage( {
                         factor: 1,
@@ -104,43 +149,10 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   }
                   addElement(downloadButton);
 
-                  var distanceButton = createElement("input", {
-                    class:"custom-control-input",
-                    type: "button",
-                    value: "Toggle distance"
-                  }, { top: "10px", left: "250px" })
-                  distanceButton.onclick = function (e) {
-                    DEPLETION.toggleVisibility();
-                    ENRICHMENT.toggleVisibility()
-                  }
-                  addElement(distanceButton);
-
-                  var labelButton = createElement("input", {
-                    type: "button",
-                    value: "Toggle labels"
-                  }, { top: "10px", left: "390px" })
-                  labelButton.onclick = function (e) {
-                    //stage.autoView()
-                    LABELS.toggleVisibility();
-                  }
-                  addElement(labelButton)
-
-                  var screenButton = createElement("input", {
-                    type: "button",
-                    value: "Toggle fullscreen"
-                  }, { top: "10px", left: "520px" })
-                  screenButton.onclick = function (e) {
-                    //stage.autoView()
-                    stage.toggleFullscreen();
-                    //stage.setParameters({cameraType: 'persepective', zoomSpeed: 10});
-                    //stage.zoomSpeed(10);
-                  }
-                  addElement(screenButton)
-
                   var centerAllButton = createElement("input", {
                     type: "button",
                     value: "Center"
-                  }, { top: "10px", left: "10px" })
+                  }, { top: "10px", left: "140px" })
                   centerAllButton.onclick = function (e) {
                     stage.autoView()
                   }
@@ -151,11 +163,59 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   var centerMutationButton = createElement("input", {
                     type: "button",
                     value: "Center mutation"
-                  }, { top: "10px", left: "100px" })
+                  }, { top: "10px", left: "250px"})
                   centerMutationButton.onclick = function (e) {
                     o.autoView(String(mutation_position)+':'+chainGPCR+'.CA')
                   }
                   addElement(centerMutationButton)
+
+                  var enrichButton = createElement2("enrich", "input", {
+                    type: "checkbox",
+                    checked: true,
+                    //value: "Enrichment/Depletion"
+                  }, { top: "80px", left: "10px" }, "Enriched contact pairs")
+                  addElement(enrichButton);
+                  document.getElementById('enrich').onclick = function() {
+                    //alert(document.getElementById("el1").checked)
+                    //DEPLETION.toggleVisibility();
+                    ENRICHMENT.toggleVisibility()
+                  }
+
+                  var depleteButton = createElement2("deplete", "input", {
+                    type: "checkbox",
+                    checked: true,
+                    //value: "Enrichment/Depletion"
+                  }, { top: "110px", left: "10px" }, "Depleted contact pairs")
+                  addElement(depleteButton);
+                  document.getElementById('deplete').onclick = function() {
+                    //alert(document.getElementById("el1").checked)
+                    DEPLETION.toggleVisibility();
+                    //ENRICHMENT.toggleVisibility()
+                  }
+
+                  var labelButton = createElement2("labeling", "input", {
+                    type: "checkbox",
+                    checked: true,
+                    //value: "Enrichment/Depletion"
+                  }, { top: "140px", left: "10px" }, "Labels")
+                  addElement(labelButton);
+                  document.getElementById('labeling').onclick = function() {
+                    //alert(document.getElementById("el1").checked)
+                    LABELS.toggleVisibility();
+                    //ENRICHMENT.toggleVisibility()
+                  }
+
+                  var screenButton = createElement2("fullscreen", "input", {
+                    type: "checkbox",
+                    checked: false
+                    //value: "Enrichment/Depletion"
+                  }, { top: "170px", left: "10px" }, "Fullscreen")
+                  addElement(screenButton);
+                  document.getElementById('fullscreen').onclick = function() {
+                    //alert(document.getElementById("el1").checked)
+                    stage.toggleFullscreen();
+                    //ENRICHMENT.toggleVisibility()
+                  }
 
 
                   var GPCR = o.addRepresentation("cartoon", {
@@ -189,8 +249,11 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   var LABELS = o.addRepresentation("label", {
                     labelType: "text",
                     labelText: labelText,
+                    fontWeight: 'normal',
+                    //sdf: true,
                     color: "black",
-                    xOffset: 1,
+                    xOffset: 1.5,
+                    fixedSize: 0.1,
                     //showBackground: true,
                     //backgroundColor: bg_color,
                     //borderColor: 'blue',
@@ -248,13 +311,17 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     var ENRICHMENT = o.addRepresentation( "distance", {
                         //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
                         atomPair: selectionDistanceEnrichment,
-                        color: "green"
-                    } );
+                        color: "green",
+                        labelSize: 1
+                      }
+                    );
                     var DEPLETION = o.addRepresentation( "distance", {
                         //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
                         atomPair: selectionDistanceDepletion,
-                        color: "red"
-                    } );
+                        color: "red",
+                        labelSize: 1
+                      }
+                    );
                   }
                   o.autoView(':'+chainGPCR);
                   //o.autoView("49:R.CA");

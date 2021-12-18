@@ -276,10 +276,12 @@ def fetchPCA():
         #print ('test',Xs_test_pca)
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
+        #print (x_test)
+        #print (y_test)
         ### WT
         if '_WT' not in gpcr_given:
             wt = gpcr_given.split('_')[0] + '_WT'
-            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
             #print (Xs_wt_pca)
             #x_test = Xs_test_pca[:,0].tolist()
             #y_test = Xs_test_pca[:,1].tolist()
@@ -588,6 +590,41 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
     return(dic[gpcr])
     #return None
 
+@app.route('/bestGprotein', methods=['GET', 'POST'])
+def bestGprotein():
+    if request.method == 'POST':
+        data = request.get_json(force=True)
+        gpcr_given = data['gpcr']
+        uniq_id = data['uniq_id']
+        #print ('Given', gpcr_given)
+        gpcr = gpcr_given.split('_')[0]
+        variant = gpcr_given.split('_')[1]
+        bestGprotein = ''
+        colIndex = 2
+        for line in open(path + "/static/predictor/output/"+uniq_id+"/out.tsv", 'r'):
+            if '#Input' in line:
+                header = line.replace('\n', '').replace('#', '').split('\t')
+                #print (header)
+            elif line[0] != '#':
+                row = line.replace('\n','').split('\t')
+                if row[0] == gpcr and row[1] == variant:
+                    mx = 0
+                    bestGprotein = ''
+                    colIndex = None
+                    for num, (value, head) in enumerate(zip(row[2:], header[2:])):
+                        if float(value) > mx:
+                            mx = float(value)
+                            bestGprotein = head
+                            colIndex = num + 2
+                    break
+        #print (bestGprotein)
+        #print (colIndex)
+        return jsonify({'bestGprotein': bestGprotein,
+                        'colIndex': colIndex
+                        })
+    else:
+        return ("<html><h3>It was a GET request</h3></html>")
+
 ## Route to output page
 @app.route('/input', methods=['GET', 'POST'])
 def input():
@@ -651,7 +688,7 @@ def output(uniq_id):
                 gpcr_list.append(gpcr+variant)
                 #break
 
-        #print (first_entry)
+        print (first_gprotein_index)
         #path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
         #path_to_fasta = "/static/predictor/output/"+uniq_id+"/input.fasta"
         return render_template('result.html',

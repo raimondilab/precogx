@@ -18,6 +18,7 @@ function attempt(assay, assays, path_to_json_output) {
 
 function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, first_gprotein, first_gprotein_index) {
   $(document).ready(function() {
+    //alert(first_gprotein_index);
     //var dataT = initTable();
     initTable(path_to_json_output, first_gprotein, first_gprotein_index);
     var assays = ['IUPHAR', 'LogRAi', 'Emax', 'WT'];
@@ -61,16 +62,57 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       var colIndex = dataT.column(this).index();
       //alert(colIndex);
       var cell = dataT.cell(this).node();
-      $(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
+      //$(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
       var rowIndex = dataT.row(this).index();
       header = ['GPCR', 'VAR', 'GNAS', 'GNAL', 'GNAI1', 'GNAI2', 'GNAI3', 'GoA', 'GoB', 'GNAZ', 'GNA11', 'GNA14', 'GNA15', 'GNAQ', 'GNA12', 'GNA13', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
-      //alert (header[index]);
-      //var gpcrs = ['DRD4'];
       var gpcrs = gpcr_list;
-      var gprotein = header[colIndex];
       var gpcr = gpcrs[rowIndex];
       var variant = gpcr_list[rowIndex];
-      //alert(gpcr);
+      if (colIndex == 0 || colIndex == 1) {
+        //colIndex = 2;
+        $.ajax({
+          url:"/bestGprotein", //the page containing python script
+          type: "post", //request type,
+          dataType: 'json',
+          data: JSON.stringify({uniq_id: uniq_id, gpcr: gpcr}),
+          success: function(response){
+            gprotein = response['bestGprotein'];
+            // new colIndex
+            colIndex = Number(response['colIndex']);
+            var cell = dataT.cell(rowIndex, colIndex).node();
+            $(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
+            $(cell).data('gpcr', gpcr);
+            $(cell).data('gprotein', gprotein);
+            var slider1_value = document.getElementById('slider1_value').innerHTML;
+            //alert(document.getElementById('slider1_value').innerHTML);
+            makeSequence(gpcr, path_to_fasta, gprotein, slider1_value, uniq_id);
+            makeStructure(gpcr, gprotein, slider1_value, uniq_id);
+            makeHeatmap(slider1_value, gpcr, gprotein);
+            makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
+          },
+          error: function(error){
+            console.log(error);
+          }
+        });
+      }
+      else {
+        //alert (header[index]);
+        //var gpcrs = ['DRD4']
+        var gprotein = header[colIndex];
+        //var gpcr = gpcrs[rowIndex];
+        //var variant = gpcr_list[rowIndex];
+        //alert(gpcr+variant+rowIndex+colIndex);
+        $(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
+        $(cell).data('gpcr', gpcr);
+        $(cell).data('gprotein', gprotein);
+        var slider1_value = document.getElementById('slider1_value').innerHTML;
+        //alert(document.getElementById('slider1_value').innerHTML);
+        makeSequence(gpcr, path_to_fasta, gprotein, slider1_value, uniq_id);
+        makeStructure(gpcr, gprotein, slider1_value, uniq_id);
+        makeHeatmap(slider1_value, gpcr, gprotein);
+        makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
+      }
+      /*
       $(cell).data('gpcr', gpcr);
       $(cell).data('gprotein', gprotein);
       var slider1_value = document.getElementById('slider1_value').innerHTML;
@@ -79,6 +121,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       makeStructure(gpcr, gprotein, slider1_value, uniq_id);
       makeHeatmap(slider1_value, gpcr, gprotein);
       makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
+      */
     });
   });
 }
@@ -92,7 +135,7 @@ function firstrow(path_to_json_output, first_gprotein, first_gprotein_index) {
   $(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
   var gpcr_variant = dataT.cell(0,0).data() + '_';
   gpcr_variant += dataT.cell(0,1).data();
-  //alert(d);
+  //alert(first_gprotein_index);
   //$(cell).data('gpcr', dataT.cell(0,0).data());
   $(cell).data('gpcr', gpcr_variant);
   $(cell).data('gprotein', first_gprotein);
