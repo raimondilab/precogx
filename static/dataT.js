@@ -65,6 +65,9 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       //$(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
       var rowIndex = dataT.row(this).index();
       header = ['GPCR', 'VAR', 'GNAS', 'GNAL', 'GNAI1', 'GNAI2', 'GNAI3', 'GoA', 'GoB', 'GNAZ', 'GNA11', 'GNA14', 'GNA15', 'GNAQ', 'GNA12', 'GNA13', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
+      //alert(document.getElementById("AssayButton").innerHTML);
+      var pca_type = document.getElementById("PCAButton").innerHTML;
+      var assay = document.getElementById("AssayButton").innerHTML;
       var gpcrs = gpcr_list;
       var gpcr = gpcrs[rowIndex];
       var variant = gpcr_list[rowIndex];
@@ -88,7 +91,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
             makeSequence(gpcr, path_to_fasta, gprotein, slider1_value, uniq_id);
             makeStructure(gpcr, gprotein, slider1_value, uniq_id);
             makeHeatmap(slider1_value, gpcr, gprotein);
-            makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
+            makePCA(uniq_id, assay, pca_type, gpcr, gprotein);
           },
           error: function(error){
             console.log(error);
@@ -110,7 +113,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
         makeSequence(gpcr, path_to_fasta, gprotein, slider1_value, uniq_id);
         makeStructure(gpcr, gprotein, slider1_value, uniq_id);
         makeHeatmap(slider1_value, gpcr, gprotein);
-        makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
+        makePCA(uniq_id, assay, pca_type, gpcr, gprotein);
       }
       /*
       $(cell).data('gpcr', gpcr);

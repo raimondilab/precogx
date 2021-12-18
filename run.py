@@ -184,7 +184,7 @@ def filter_gpcr_list(X, assay, gprotein):
     elif assay == 'IUPHAR':
         iuphar_map = {
                       'GNAS': 'Gs', 'GNAL': 'Gs',
-                      'GNAI1': 'Gi/Go', 'GNAI2': 'Gi/Go', 'GNAI3': 'Gi/Go', 'GNAO1': 'Gi/Go', 'GNAZ': 'Gi/Go',
+                      'GNAI1': 'Gi/Go', 'GNAI2': 'Gi/Go', 'GNAI3': 'Gi/Go', 'GNAO1': 'Gi/Go', 'GNAZ': 'Gi/Go', 'GoA': 'Gi/Go', 'GoB': 'Gi/Go',
                       'GNA12': 'G12/G13', 'GNA13': 'G12/G13',
                       'GNAQ': 'Gq/G11', 'GNA11': 'Gq/G11', 'GNA14': 'Gq/G11', 'GNA15': 'Gq/G11'
                       }
@@ -251,26 +251,36 @@ def filter_gpcr_list(X, assay, gprotein):
 def fetchPCA():
     if request.method == 'POST':
         data = request.get_json(force=True)
-        assay = data['assay']
+        assay_given = data['assay']
         pca_type = data['pca_type']
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
-        print (gprotein_given, gpcr_given)
+        #print (gprotein_given, gpcr_given)
         uniq_id = data['uniq_id']
 
-        if assay == '':
-            ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
-            shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
-            both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+        #if assay == '':
+        assay = '';
+        assayList = []
+        ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
+        shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+        both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
 
-            if 'Barr' in gprotein_given:
-                assay = 'ebBRET'
-            elif gprotein_given in both:
-                assay = 'Shedding'
-            elif gprotein_given in shedding:
-                assay = 'Shedding'
-            else:
-                assay = 'ebBRET'
+        if 'Barr' in gprotein_given:
+            assay = 'ebBRET'
+            assayList = ['ebBRET', 'STRING']
+        elif gprotein_given in both:
+            assay = 'Shedding'
+            assayList = ['Shedding', 'ebBRET', 'IUPHAR']
+        elif gprotein_given in shedding:
+            assay = 'Shedding'
+            assayList = ['Shedding', 'IUPHAR']
+        else:
+            assay = 'ebBRET'
+            assayList = ['ebBRET', 'IUPHAR']
+
+        if assay_given in assayList:
+            assay = assay_given
+
         ### MUT
         Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
@@ -688,7 +698,7 @@ def output(uniq_id):
                 gpcr_list.append(gpcr+variant)
                 #break
 
-        print (first_gprotein_index)
+        #print (first_gprotein_index)
         #path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
         #path_to_fasta = "/static/predictor/output/"+uniq_id+"/input.fasta"
         return render_template('result.html',
