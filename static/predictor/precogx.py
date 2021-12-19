@@ -171,7 +171,7 @@ def main(numseqs, input, input_file, assay, path):
         l += '\t' + str(gprotein)
     l += '\n'
     for name in d:
-        print (name, 'here')
+        #print (name, 'here')
         l += '_'.join(name.split('_')[:-1]) + '\t' + name.split('_')[-1]
         for gprotein in gproteins:
             l += '\t' + str(round(d[name][gprotein],3))
@@ -232,7 +232,16 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
         if line[0] != '#':
             gene_found = line.split('\t')[0]
             acc_found = line.split('\t')[1]
-            if gene_found == gpcr_given or acc_found == gpcr_given:
+
+            pattern1 = re.compile("sp\\|.*\\|.*_.*")
+            pattern2 = re.compile("tr\\|.*\\|.*_.*")
+
+            if pattern1.match(gpcr_given) != None or pattern2.match(gpcr_given) != None:
+                given_name = gpcr_given.split('|')[1]
+            else:
+                given_name = gpcr_given
+
+            if gene_found == given_name or acc_found == given_name:
                 values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
                     gpcrs[gpcr_given].shedding[gprotein] = str(round(float(value), 2))
@@ -243,7 +252,16 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
         if line[0] != '#':
             gene_found = line.split('\t')[0]
             acc_found = line.split('\t')[1]
-            if gene_found == gpcr_given or acc_found == gpcr_given:
+
+            pattern1 = re.compile("sp\\|.*\\|.*_.*")
+            pattern2 = re.compile("tr\\|.*\\|.*_.*")
+
+            if pattern1.match(gpcr_given) != None or pattern2.match(gpcr_given) != None:
+                given_name = gpcr_given.split('|')[1]
+            else:
+                given_name = gpcr_given
+
+            if gene_found == given_name or acc_found == given_name:
                 values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
                     gpcrs[gpcr_given].ebbret[gprotein] = value
@@ -251,15 +269,25 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
             gproteins = line.replace('\n', '').split('\t')[2:]
 
     dic_gprot_family = {'Gs': ['GNAS', 'GNAL'],
-                        'Gi/o': ['GNAI1', 'GNAI2', 'GNAI3', 'GNAZ', 'GoA', 'GoB'],
-                        'Gq/11': ['GNAQ', 'GNA11', 'GNA14', 'GNA15'],
-                        'G12/13': ['GNA12', 'GNA13']
+                        'Gi/Go': ['GNAI1', 'GNAI2', 'GNAI3', 'GNAZ', 'GoA', 'GoB'],
+                        'Gq/G11': ['GNAQ', 'GNA11', 'GNA14', 'GNA15'],
+                        'G12/G13': ['GNA12', 'GNA13']
                         }
     for line in open(homeDir + '/data/iuphar.tsv', 'r'):
         if line[0] != '#':
             gene_found = line.split('\t')[0]
             acc_found = line.split('\t')[1]
-            if gene_found == gpcr_given or acc_found == gpcr_given:
+
+            pattern1 = re.compile("sp\\|.*\\|.*_.*")
+            pattern2 = re.compile("tr\\|.*\\|.*_.*")
+
+            if pattern1.match(gpcr_given) != None or pattern2.match(gpcr_given) != None:
+                given_name = gpcr_given.split('|')[1]
+            else:
+                given_name = gpcr_given
+
+            if gene_found == given_name or acc_found == given_name:
+                #print ('found in IUPHAR')
                 pc_values = line.replace('\n', '').split('\t')[2]
                 sc_values = line.replace('\n', '').split('\t')[3]
                 for gprot_family in dic_gprot_family:

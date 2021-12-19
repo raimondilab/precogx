@@ -164,7 +164,11 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   }
                   else {
                     var mut = document.getElementById("mutation");
-                    mut.style.display = 'none';
+                    //alert(mut);
+                    // if mut is exists
+                    if (typeof(mut) != 'undefined' && mut != null){
+                      mut.style.display = 'none';
+                    }
                   }
 
                   var enrichButton = createElement2("enrich", "input", {
