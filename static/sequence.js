@@ -60,17 +60,19 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, uniq_id) {
           //seq.selection(35,43,"blue");
           seq.coverage(example);
 
+          //alert(variant);
+
           if (variant != 'WT') {
             var exampleLegend = [
-                {name: "Mutation:", color: "violet", underscore: false},
-                {name: "Contact positions", color: "khaki", underscore: false},
+                {name: "Mutation: "+variant, color: "violet", underscore: false},
+                {name: "Predicted contact positions for "+gprotein+" coupling group", color: "khaki", underscore: false},
                 {name: "Hover to view BW annotation"}
                 ];
           }
           else {
             var exampleLegend = [
-                {name: "Contact positions", color: "khaki", underscore: false},
-                {name: "<br>Hover to view BW annotation"}
+                {name: "Predicted contact positions for "+gprotein+" coupling group", color: "khaki", underscore: false},
+                {name: "Hover to view BW annotations"}
                 ];
           }
           seq.addLegend(exampleLegend);

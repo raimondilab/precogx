@@ -73,7 +73,7 @@ function togglePanel() {
     sequencePanel.style.display = 'none';
     //makeHeatmap();
     // change button text
-    toggleButton.innerHTML = 'Show sequence';
+    toggleButton.innerHTML = 'Map the contacts on sequence';
     panelHeading.innerHTML = 'Predicted contacts';
   }
   else {
@@ -81,7 +81,7 @@ function togglePanel() {
     contactPanel.style.display = 'none';
     sequencePanel.style.display = 'block';
     // change button text
-    toggleButton.innerHTML = 'Show predicted contacts';
+    toggleButton.innerHTML = 'Show the contact pairs';
     panelHeading.innerHTML = 'Sequence';
   }
 }
