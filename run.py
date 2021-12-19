@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from Bio import SearchIO
 from Bio.Blast import NCBIXML
 from matplotlib import cm
+import pandas as pd
 #sys.path.insert(1, 'static/predictor/')
 #from precogxb_app.static.predictor import precogx
 
@@ -21,6 +22,60 @@ import precogx
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
+
+def sortPositions(positions):
+    data = []
+    for position in positions:
+        if position not in ['Nterm', 'Cterm']:
+            if '.' in position:
+                base = position.split('.')[0]
+                value = int(position.split('.')[1])
+            else:
+                base = position
+                value = 0
+
+            if 'ICL' in base:
+                if base == 'ICL1':
+                    order = 1.5
+                elif base == 'ICL2':
+                    order = 3.5
+                else:
+                    order = 5.5
+            elif 'ECL' in base:
+                if base == 'ECL1':
+                    order = 2.5
+                elif base == 'ECL2':
+                    order = 4.5
+                else:
+                    order = 6.5
+            else:
+                order = int(base)
+
+        else:
+            if position == 'Nterm':
+                base = 0
+                order = 0
+                value = 0
+            else:
+                base = 9
+                order = 9
+                value = 0
+        #print (position, base, order, value)
+        row = []
+        row.append(position)
+        row.append(order)
+        row.append(base)
+        row.append(value)
+        data.append(row)
+
+    #print (data)
+    df = pd.DataFrame(data, columns = ['position', 'order', 'base', 'value'])
+    df = df.sort_values(['order','value'],ascending=[True, True])
+    positions = []
+    for row in df.to_numpy():
+        positions.append(row[0])
+
+    return (np.array(positions))
 
 def extract_contacts(gprotein_given, cutoff):
     assay = ''
@@ -45,7 +100,9 @@ def extract_contacts(gprotein_given, cutoff):
                     dic[pos2] = {}
                 dic[pos2][pos1] = score
 
-                positions.append(pos1)
+                if pos1 not in positions:
+                    positions.append(pos1)
+                #positions.append(pos1)
                 if pos2 not in positions:
                     positions.append(pos2)
                 pair_positions.append(pos1+':'+pos2+':'+str(score))
@@ -54,6 +111,11 @@ def extract_contacts(gprotein_given, cutoff):
     scoresMax = max(scores)
     scoresMin = min(scores)
     positions = np.array(positions)
+    positions = sortPositions(positions)
+    #print ('----------------')
+    #print (positions)
+    #print ('----------------')
+    #sys.exit()
     #positions = list(set(positions))
     #positions = np.array(np.sort(positions))
     data = []

@@ -37,7 +37,8 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
         ];
 
         var layout = {
-              autosize: true
+              autosize: true,
+              title: gprotein
 
         };
 
@@ -73,14 +74,14 @@ function togglePanel() {
     //makeHeatmap();
     // change button text
     toggleButton.innerHTML = 'Show sequence';
-    panelHeading.innerHTML = 'Contacts';
+    panelHeading.innerHTML = 'Predicted contacts';
   }
   else {
     // clock is hidden. show it
     contactPanel.style.display = 'none';
     sequencePanel.style.display = 'block';
     // change button text
-    toggleButton.innerHTML = 'Show contacts';
+    toggleButton.innerHTML = 'Show predicted contacts';
     panelHeading.innerHTML = 'Sequence';
   }
 }

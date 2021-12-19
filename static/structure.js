@@ -8,9 +8,10 @@ function addElement (el) {
   stage.viewer.container.appendChild(el)
 }
 
-function createElement (name, properties, style) {
+function createElement (id, name, properties, style) {
   var el = document.createElement(name)
   el.className = "btn btn-primary btn-sm";
+  el.setAttribute("id", id);
   Object.assign(el, properties)
   Object.assign(el.style, style)
   //Object.assign(el.classList.add, "btn btn-primary btn-sm")
@@ -80,15 +81,6 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         modified_num_contacts_array = modified_num_contacts.split('_');
         //alert(response['modified_positions_labels']);
         // Define format of selection of given positions (contacts)
-        /*
-        selection = '-';
-        if (modified_positions_array.length) {
-          for (var i = 0; i < modified_positions_array.length; i++) {
-            //alert (modified_positions[i]);
-            selection += '(' + modified_positions_array[i] + " and .CA and :" + chainGPCR + ') or ';
-          }
-        }
-        */
 
         // Define format of selection of mutation position (if any)
         if (modified_pair_positions == '') {
@@ -132,7 +124,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   var pa = o.structure.getPrincipalAxes();
                   stage.animationControls.rotate(pa.getRotationQuaternion(), 1500);
 
-                  var downloadButton = createElement("input", {
+                  var downloadButton = createElement("download", "input", {
                     class:"custom-control-input",
                     type: "button",
                     value: "Download"
@@ -149,7 +141,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   }
                   addElement(downloadButton);
 
-                  var centerAllButton = createElement("input", {
+                  var centerAllButton = createElement("centerall", "input", {
                     type: "button",
                     value: "Center"
                   }, { top: "10px", left: "140px" })
@@ -160,14 +152,20 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
 
                   //alert(mutation_position);
 
-                  var centerMutationButton = createElement("input", {
-                    type: "button",
-                    value: "Center mutation"
-                  }, { top: "10px", left: "250px"})
-                  centerMutationButton.onclick = function (e) {
-                    o.autoView(String(mutation_position)+':'+chainGPCR+'.CA')
+                  if (mutation_position != '-') {
+                    var centerMutationButton = createElement("mutation", "input", {
+                      type: "button",
+                      value: "Center mutation"
+                    }, { top: "10px", left: "250px"})
+                    centerMutationButton.onclick = function (e) {
+                      o.autoView(String(mutation_position)+':'+chainGPCR+'.CA')
+                    }
+                    addElement(centerMutationButton)
                   }
-                  addElement(centerMutationButton)
+                  else {
+                    var mut = document.getElementById("mutation");
+                    mut.style.display = 'none';
+                  }
 
                   var enrichButton = createElement2("enrich", "input", {
                     type: "checkbox",
@@ -253,7 +251,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     //sdf: true,
                     color: "black",
                     xOffset: 1.5,
-                    fixedSize: 0.1,
+                    fixedSize: true,
                     //showBackground: true,
                     //backgroundColor: bg_color,
                     //borderColor: 'blue',
@@ -298,13 +296,15 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     }
                   }
 
-                  o.addRepresentation("ball+stick", {
-                      sele: mutation_position+ " and .CA and :" + chainGPCR,
-                      name: 'extra',
-                      radius: '0.5',
-                      color: "purple"
-                      //color: schemeId,
-                  });
+                  if (mutation_position != '-') {
+                    o.addRepresentation("ball+stick", {
+                        sele: mutation_position+ " and .CA and :" + chainGPCR,
+                        name: 'extra',
+                        radius: '0.5',
+                        color: "purple"
+                        //color: schemeId,
+                    });
+                  }
 
 
                   if (modified_pair_positions_array != []) {
