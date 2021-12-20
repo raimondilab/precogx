@@ -285,8 +285,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   });
                   */
 
-
-                  if (modified_positions_array.length) {
+                  if (modified_positions_array.length>1) {
                     for (var i = 0; i < modified_positions_array.length; i++) {
                       o.addRepresentation("ball+stick", {
                           //sele: selection,

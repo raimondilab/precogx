@@ -23,6 +23,10 @@ import precogx
 def home():
     return render_template('index.html')
 
+@app.route('/error', methods=['GET', 'POST'])
+def error():
+    return render_template('error.html')
+
 def sortPositions(positions):
     data = []
     for position in positions:
@@ -425,6 +429,7 @@ def fetchContactsSequence():
         #print (data['gpcr'])
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
+        print (gpcr_given, gpcr_given.split('_')[1])
         path_to_fasta = data['path_to_fasta']
         uniq_id = data['uniq_id']
         cutoff = float(data['cutoff'])
@@ -465,6 +470,8 @@ def fetchContactsSequence():
                 SEQ = GPCRDB2SEQ[GPCRDB]
                 seq_positions.append(int(SEQ))
                 bw_positions.append(BW)
+            else:
+                print (BW)
 
         #print (list(set(seq_positions)))
         #seq_positions = list(set(seq_positions))
@@ -484,6 +491,24 @@ def fetchContactsSequence():
         '''
         seq_positions = seq_positions.tolist()
         bw_positions = bw_positions.tolist()
+
+        new_seq_positions = []
+        new_bw_positions = []
+        mutation_position = gpcr_given.split('_')[1]
+        if mutation_position != 'WT':
+            position = int(mutation_position[1:-1])
+            if position not in seq_positions:
+                for i in range(0, len(seq_positions)):
+                    if seq_positions[i] < position and seq_positions[i+1] > position:
+                        #print (seq_positions[i], position, seq_positions[i+1])
+                        new_seq_positions.append(position)
+                        new_bw_positions.append('-')
+                    else:
+                        new_seq_positions.append(seq_positions[i])
+                        new_bw_positions.append(bw_positions[i])
+
+            seq_positions = new_seq_positions
+            bw_positions = new_bw_positions
 
         return jsonify({'fetch_contacts': scores,
                         'seq_positions': seq_positions,
@@ -704,9 +729,12 @@ def input():
         input = request.form['input']
         input_file = None ## Upload FASTA file
         ## Run the predictor
-        uniq_id = precogx.main(15, input, input_file, 'all', app.root_path)
-        #uniq_id = 'OXDUB'
-        return redirect('/output/'+uniq_id)
+        try:
+            uniq_id = precogx.main(15, input, input_file, 'all', app.root_path)
+            #uniq_id = 'OXDUB'
+            return redirect('/output/'+uniq_id)
+        except:
+            return render_template('error.html')
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 

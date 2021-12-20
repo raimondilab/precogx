@@ -43,7 +43,7 @@ window.cb_hideCookieBanner = hideCookieBanner;
       seq1 += "CQTTTGNGKPVECSQPESSFKMSFKRETKVLKTLSVIMGVFVCCWLPFFILNCILPFCGS\n";
       seq1 += "GETQPFCIDSNTFDVFVWFGWANSSLNPIIYAFNADFRKAFSTLLGCYRLCPATNNAIET\n";
       seq1 += "VSINNNGAAMFSSHHEPRGSISKECNLVYLIPHAVGSSEDLKKEEAAGIARPLEKLSPAL\n";
-      seq1 += "SVILDYDTDVSLEKIQPITQNGQHPT\n";
+      seq1 += "SVILDYDTDVSLEKIQPITQNGQHPT\n\n";
       seq1 += '# Free fatty acid receptor 2\n'
       seq1 += ">FFAR2\n";
       seq1 += "MLPDWKSSLILMAYIIIFLTGLPANLLALRAFVGRIRQPQPAPVHILLLSLTLADLLLLL\n";
@@ -58,7 +58,7 @@ window.cb_hideCookieBanner = hideCookieBanner;
 
     $(document).on('click', '#ex2', function() {
       var seq2 = '# G-protein coupled receptor 183\n';
-      seq2 += "P32249\n";
+      seq2 += "P32249\n\n";
       seq2 += '# Thyrotropin receptor\n';
       seq2 += "TSHR_HUMAN";
 
@@ -66,19 +66,20 @@ window.cb_hideCookieBanner = hideCookieBanner;
     });
 
     $(document).on('click', '#ex3', function() {
-      var seq3 = '# Free fatty acid receptor 2\n';
-      seq3 += '#Complete loss of acetate-induced G protein-coupled receptor activity\n';
-      seq3 += "FFAR2/Y90W/F61P\n";
-      seq3 += "# G-protein coupled receptor 183\n";
-      seq3 += "# 10-fold reduction in receptor activation (UniProt)\n";
-      seq3 += "GPR183/Q287A";
+      var seq3 = '# Melanocyte-stimulating hormone receptor\n';
+      seq3 += "# D294H mutation associated with a risk for developing melanoma;\n"
+      seq3 += "# unable to stimulate cAMP production as strongly as the wild type receptor\n";
+      seq3 += "# in response to alpha-melanocyte-stimulating hormone stimulation.\n";
+      seq3 += "# PMID: 7581459, 11179997, 17616515, 17999355, 18366057, 19710684, 20585627\n";
+      seq3 += "MC1R/D294H";
 
       $('#validationTextarea').html(seq3);
     });
 
     $(document).on('click', '#ex4', function() {
-      var seq4 = "# Parathyroid hormone/parathyroid hormone-related peptide receptor\n";
-      seq4 += "PTH1R_HUMAN\n";
+      var seq4 = "# Adhesion G protein-coupled receptor E5 (CD7)\n";
+      seq4 += "# Known to couple GNA12 (Ward Y. et al, Cancer Res. 2011; PMID: 21978933)\n"
+      seq4 += "ADGRE5\n\n";
       seq4 += "# Metabotropic glutamate receptor 7 (Class C)\n";
       seq4 += "GRM7_HUMAN";
 

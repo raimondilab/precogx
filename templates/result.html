@@ -61,6 +61,16 @@ div.checkboxRight {
   right: 0;
   font-size:0.75rem;
 }
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
 </style>
 
 {% endblock%}
@@ -137,30 +147,41 @@ div.checkboxRight {
                          <div class="float-end">
                              <div class="row g-3 align-items-center">
                                  <div class="col-auto">
-                                     <label for="slider1" class="col-form-label fs--2" >Filter cutoff</label>
+                                     <label for="slider1" class="col-form-label" >Log odds score</label>
                                  </div>
                                  <div class="col-auto">
-                                     <input type="range" class="form-range fs--2" min="-1.0" max="1.0" step="0.1" value="0.0"  id="slider1">
+                                   <button type="button" class="btn btn-info btn-circle" id="minus1">-</button>
+                                     <input type="range" style="width: 60%;" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" id="slider1">
+                                     <button type="button" class="btn btn-info btn-circle" id="plus1">+</button>
                                  </div>
+
                                  <div class="col-auto">
                                     <span id="slider1_value">0.0</span>
                                  </div>
+
                              </div>
                         </div>
                        </div>
                         <!-- Update panels if slider is changed -->
                         <script>
+                          $(document).ready(function(){
+                            var slider1_value = document.getElementById('slider1_value');
+                            slider1_value.innerHTML = $('#slider1').val();
+                          });
 
-                                      $(document).on('input', '#slider1', function() {
-                                          $('#slider1_value').html($(this).val() );
-                                          var slider1_value = document.getElementById('slider1_value').innerHTML;
-                                          var selected_gpcr = $('#selected').data('gpcr');
-                                          var selected_gprotein = $('#selected').data('gprotein')
-                                          makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
-                                          makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
-                                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
-                                          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
-                                      });
+                          $(document).on('input', '#slider1', function() {
+                              $('#slider1_value').html($(this).val() );
+                              var slider1_value = document.getElementById('slider1_value').innerHTML;
+                              document.getElementById('slider2_value').innerHTML = document.getElementById('slider1_value').innerHTML;
+                              var slider2 = document.getElementById('slider2');
+                              slider2.value = slider1_value;
+                              var selected_gpcr = $('#selected').data('gpcr');
+                              var selected_gprotein = $('#selected').data('gprotein')
+                              makeStructure(selected_gpcr, selected_gprotein, slider1_value, {{uniq_id|safe}});
+                              makeHeatmap(slider1_value, selected_gpcr, selected_gprotein);
+                              makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1_value, {{uniq_id|safe}});
+                              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                          });
                             </script>
                         <div id="sequence-viewer"  style="display: none;"></div>
                         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
@@ -180,7 +201,93 @@ div.checkboxRight {
                                 PDB-ID
                             </button>
                             <ul id="pdblist" class="dropdown-menu"></ul>
+                            <div class="float-end">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                        <label for="slider1" class="col-form-label" >Log odds score</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-info btn-circle" id="minus2">-</button>
+                                        <input type="range" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" style="width:60%;" id="slider2">
+                                        <button type="button" class="btn btn-info btn-circle" id="plus2">+</button>
+                                    </div>
+                                    <div class="col-auto">
+                                       <span id="slider2_value">0.0</span>
+                                    </div>
+                                </div>
+                           </div>
+                           <script>
+                             $(document).ready(function(){
+                               var slider2_value = document.getElementById('slider2_value');
+                               slider2_value.innerHTML = $('#slider2').val();
+                             });
+                               $(document).on('input', '#slider2', function() {
+                                   $('#slider2_value').html($(this).val() );
+                                   var slider2_value = document.getElementById('slider2_value').innerHTML;
+                                   document.getElementById('slider1_value').innerHTML = document.getElementById('slider2_value').innerHTML;
+                                   var slider1 = document.getElementById('slider1');
+                                   slider1.value = slider2_value;
+                                   var selected_gpcr = $('#selected').data('gpcr');
+                                   var selected_gprotein = $('#selected').data('gprotein')
+                                   makeStructure(selected_gpcr, selected_gprotein, slider2_value, {{uniq_id|safe}});
+                                   makeHeatmap(slider2_value, selected_gpcr, selected_gprotein);
+                                   makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider2_value, {{uniq_id|safe}});
+                                   makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                               });
+                            </script>
                         </div>
+                        <script>
+                        $("#minus1").click(function(event) {
+                          zoom("out", "#slider2", "#slider2");
+                        });
+
+                        $("#plus1").click(function(event) {
+                          zoom("in", "#slider1", "#slider2");
+                        });
+
+                        $("#minus2").click(function(event) {
+                          zoom("out", "#slider2", "#slider1");
+                        });
+
+                        $("#plus2").click(function(event) {
+                          zoom("in", "#slider2", "#slider1");
+                        });
+
+                        function zoom(direction, slider, otherSlider) {
+                          var slider = $(slider);
+                          var step = 0.1;
+                          var currentSliderValue = Number(slider.val());
+                          //var newStepValue = currentSliderValue;
+                          //alert(currentSliderValue);
+
+                          if (direction === "out") {
+                            var newStepValue = currentSliderValue - step;
+                          } else {
+                            var newStepValue = currentSliderValue + step;
+                          }
+                          newStepValue = Number(newStepValue.toFixed(1));
+                          //alert(newStepValue);
+
+                          slider.val(newStepValue).change();
+                          //alert(slider.attr("id"));
+                          var sliderValue = $("#"+slider.attr("id")+'_value');
+                          sliderValue.html(newStepValue);
+
+                          var otherSlider = $(otherSlider);
+                          otherSlider.val(newStepValue).change();
+                          var otherSliderValue = $("#"+otherSlider.attr("id")+'_value');
+                          otherSliderValue.html(newStepValue);
+
+                          var slider_value = slider.val();
+                          var selected_gpcr = $('#selected').data('gpcr');
+                          var selected_gprotein = $('#selected').data('gprotein')
+                          makeStructure(selected_gpcr, selected_gprotein, slider_value, {{uniq_id|safe}});
+                          makeHeatmap(slider_value, selected_gpcr, selected_gprotein);
+                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, {{uniq_id|safe}});
+                          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                        };
+
+                        </script>
 
                         <div id="viewport" class="align-items-center fs--2"></div>
                         <script>
