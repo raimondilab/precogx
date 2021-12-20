@@ -79,9 +79,7 @@ window.cb_hideCookieBanner = hideCookieBanner;
     $(document).on('click', '#ex4', function() {
       var seq4 = "# Adhesion G protein-coupled receptor E5 (CD7)\n";
       seq4 += "# Known to couple GNA12 (Ward Y. et al, Cancer Res. 2011; PMID: 21978933)\n"
-      seq4 += "ADGRE5\n\n";
-      seq4 += "# Metabotropic glutamate receptor 7 (Class C)\n";
-      seq4 += "GRM7_HUMAN";
+      seq4 += "ADGRE5";
 
       $('#validationTextarea').html(seq4);
     });
