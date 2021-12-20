@@ -9341,6 +9341,10 @@ fieldset:disabled .btn {
   font-family: var(--bs-font-monospace) !important;
 }
 
+.fs--3 {
+  font-size: 0.49444rem !important;
+}
+
 .fs--2 {
   font-size: 0.69444rem !important;
 }
@@ -18686,8 +18690,15 @@ font-size: 0.75rem !important;
   width: 50%;
 }
 
+<<<<<<< HEAD
 
 
 .fs--3 {
   font-size: 0.49444rem !important;
+=======
+.trans{
+transform: rotate(0deg);
+>>>>>>> 5d9467154b0fff53e3458ee17fc60795e619ae9e
 }
+
+#cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
