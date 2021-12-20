@@ -470,8 +470,8 @@ def fetchContactsSequence():
                 SEQ = GPCRDB2SEQ[GPCRDB]
                 seq_positions.append(int(SEQ))
                 bw_positions.append(BW)
-            else:
-                print (BW)
+            #else:
+            #   print (BW)
 
         #print (list(set(seq_positions)))
         #seq_positions = list(set(seq_positions))
