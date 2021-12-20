@@ -18686,6 +18686,8 @@ font-size: 0.75rem !important;
   width: 50%;
 }
 
-.trans{
-transform: rotate(36deg);
+
+
+.fs--3 {
+  font-size: 0.49444rem !important;
 }
