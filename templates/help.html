@@ -31,70 +31,94 @@
                 <h2 class="fw-bold mb-4">Output Page</h2>
                 <img class="pt-md-0 center" src="static/img/gallery/result.png" alt="result page"/>
                 <p></p>
+
                 <h2 class="fw-bold mb-4">Coupling probabilities panel</h2>
-                <img class="pt-md-0 center" src="static/img/gallery/coupli.png" alt="result page"/>
-                <p class="text-justify fs-0">The table here represents coupling probabilities predicted by PRECOG as well information known from IUPHAR and the Shedding Assay experiment.</p>
-                <p class="text-justify fs-0">Columns:</p>
-                <ul>
-                    <li class="text-justify fs-0">GPCR Input name(s) provided by the user.</li>
-                    <li class="text-justify fs-0">VAR Type of variants - (a)Wild type P(WT); (b)Mutation P(Mutation); (c) IUPHAR; (d)LogRAI; (e) Emax</li>
-                    <li class="text-justify fs-0">Coupling probabilties predicted by PRECOGX (for wild type and mutations) for the G-proteins and β-arrestin instances available;</li>
-                </ul>
-                <p class="text-justify fs-0">Rows:</p>
-                <ul>
-                    <li class="text-justify fs-0">VAR = IUPHAR display information known about the given GPCR known from GtPdb/IUPHAR.</li>
-                    <li class="text-justify fs-0">VAR = LogRAI display information known about the given GPCR from the Shedding Assay experiment. The coupling values (greater than -1.0) are shown in green while the uncoupling ones are shown in red.</li>
-                    <li class="text-justify fs-0">VAR = Emax display information known about the given GPCR from the ebBRET assay.</li>
-                    <li class="text-justify fs-0">VAR = P(WT) display coupling probabilites of the given GPCR predicted by PRECOGX.</li>
-                    <li class="text-justify fs-0">VAR = P(Mutation) (eg: Y90W - Tyrosine at sequence position 90 mutated to Tryptophan) displays coupling probabilites
-                        of the given GPCR's mutation predicted by PRECOGX. The coupling probabilites
-                        (greater than 0.5) are shown in green while the uncoupling ones (less than 0.5) are shown in red.</li>
-                </ul>
-                <p class="text-justify fs-0">Click on probabilities in VAR = P(WT/Mutation) to view the GPCR in the PCA, Sequence and Structure panels.
-                    By default information relating to the coupling with the highest probability will be displayed in the
-                    sequence/contact panel as well as in the 3D structure one. It is possible to visualize features related
-                    to other G-protein (or β-arrestin)couplings by simply clicking on the corresponding cell of the results table.
-                    This action will automatically update the features highlighted in the sequence/contact and structure panel.
-                </p>
+                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/gallery/coupli.png" alt="result page"/>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-justify fs-0">The table here represents coupling probabilities predicted by PRECOG as well information known from IUPHAR and the Shedding Assay experiment.</p>
+                        <p class="text-justify fs-0">Columns:</p>
+                        <ul>
+                            <li class="text-justify fs-0">GPCR Input name(s) provided by the user.</li>
+                            <li class="text-justify fs-0">VAR Type of variants - (a)Wild type P(WT); (b)Mutation P(Mutation); (c) IUPHAR; (d)LogRAI; (e) Emax</li>
+                            <li class="text-justify fs-0">Coupling probabilties predicted by PRECOGX (for wild type and mutations) for the G-proteins and β-arrestin instances available;</li>
+                        </ul>
+                        <p class="text-justify fs-0">Rows:</p>
+                        <ul>
+                            <li class="text-justify fs-0">VAR = IUPHAR display information known about the given GPCR known from GtPdb/IUPHAR.</li>
+                            <li class="text-justify fs-0">VAR = LogRAI display information known about the given GPCR from the Shedding Assay experiment. The coupling values (greater than -1.0) are shown in green while the uncoupling ones are shown in red.</li>
+                            <li class="text-justify fs-0">VAR = Emax display information known about the given GPCR from the ebBRET assay.</li>
+                            <li class="text-justify fs-0">VAR = P(WT) display coupling probabilites of the given GPCR predicted by PRECOGX.</li>
+                            <li class="text-justify fs-0">VAR = P(Mutation) (eg: Y90W - Tyrosine at sequence position 90 mutated to Tryptophan) displays coupling probabilites
+                                of the given GPCR's mutation predicted by PRECOGX. The coupling probabilites
+                                (greater than 0.5) are shown in green while the uncoupling ones (less than 0.5) are shown in red.</li>
+                        </ul>
+                        <p class="text-justify fs-0">Click on probabilities in VAR = P(WT/Mutation) to view the GPCR in the PCA, Sequence and Structure panels.
+                            By default information relating to the coupling with the highest probability will be displayed in the
+                            sequence/contact panel as well as in the 3D structure one. It is possible to visualize features related
+                            to other G-protein (or β-arrestin)couplings by simply clicking on the corresponding cell of the results table.
+                            This action will automatically update the features highlighted in the sequence/contact and structure panel.
+                        </p>
+                    </div>
+                </div>
+
+
                 <h2 class="fw-bold mb-4">PCA panel</h2>
-                <img class="pt-md-0 center" src="static/img/gallery/pca.png" alt="result page"/>
-                <p class="text-justify fs-0">The PCA panel displays the projections of the human GPCRome
-                    sequences on the first two Principal Components obtained by performing the PCA on the embeddings
-                    of the human GPCRome. It is possible to color annotate the human GPCRs in this panel via a drop-down
-                    menu on the basis of coupling mechanisms or class/family classification. If either Shedding or eBRET is
-                    specified, a continuous color gradient, ranging from gray (no binding) to green (maximum binding), will be applied.
-                    If IUPHAR coupling is selected, a discrete color  will be applied: dark green (primary transduction mechanisms) and pale green
-                    (secondary transduction mechanisms).  The input sequences are also displayed and annotated with a different color (e.g. fucsia).
-                </p>
+                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/gallery/pca.png" alt="result page"/>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-justify fs-0">The PCA panel displays the projections of the human GPCRome
+                            sequences on the first two Principal Components obtained by performing the PCA on the embeddings
+                            of the human GPCRome. It is possible to color annotate the human GPCRs in this panel via a drop-down
+                            menu on the basis of coupling mechanisms or class/family classification. If either Shedding or eBRET is
+                            specified, a continuous color gradient, ranging from gray (no binding) to green (maximum binding), will be applied.
+                            If IUPHAR coupling is selected, a discrete color  will be applied: dark green (primary transduction mechanisms) and pale green
+                            (secondary transduction mechanisms).  The input sequences are also displayed and annotated with a different color (e.g. fucsia).
+                        </p>
+                    </div>
+                </div>
+                <p></p>
+
+
                 <h2 class="fw-bold mb-4">Predicted contact Panel</h2>
-                <img class="pt-md-0 center" src="static/img/gallery/contacts.png" alt="result page"/>
-                <p class="text-justify fs-0">The Predicted Contact panel displays differential predicted contacts for a particular
-                    coupling group. The predicted contacts for each individual receptor are pooled together on the basisi
-                    of a specific coupling preferences and summarized via a log-odds ratio statistics, indicating contacts
-                    that are more (colored in greed) or less (red) frequently than expected. Contact statistics is referenced
-                    to Ballesteros-Weinstein numbering scheme obtained from GPCRDB (https://gpcrdb.org/). A filter cutoff
-                    widget allows to visualize contacts with log-odds ratio greater than a certain absolute value threshold.
-                </p>
-                <img class="pt-md-0 center" src="static/img/gallery/sequence.png" alt="result page"/>
-                <p class="text-justify fs-0">The sequence panel shows in 1D at the level of the input GPCR
-                    sequence the positions (in yellow) mediating predicted contacts for a certain coupling group,
-                    selected by clicking on either the “GPCR” or “VAR” fields or any of the predicted coupling probabilites
-                    in the Results panel (see above). Input mutations are highlighted in magenta. Contacts projected in the
-                    sequence are selected through the filter cutoff. Click a significant position to view it on a structure
-                    in the Structure panel and to view its amino acid composition in a modal.
-                </p>
+                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/gallery/contacts.png" alt="result page"/>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-justify fs-0">The Predicted Contact panel displays differential predicted contacts for a particular
+                            coupling group. The predicted contacts for each individual receptor are pooled together on the basisi
+                            of a specific coupling preferences and summarized via a log-odds ratio statistics, indicating contacts
+                            that are more (colored in greed) or less (red) frequently than expected. Contact statistics is referenced
+                            to Ballesteros-Weinstein numbering scheme obtained from GPCRDB (https://gpcrdb.org/). A filter cutoff
+                            widget allows to visualize contacts with log-odds ratio greater than a certain absolute value threshold.
+                        </p>
+                    </div>
+                </div>
+                <p></p>
                 <h2 class="fw-bold mb-4">Structure Panel</h2>
-                <img class="pt-md-0 center" src="static/img/gallery/structure.png" alt="result page"/>
-                <p class="text-justify fs-0">This panel shows in 3D the differential predicted
-                    contacts displayed in the Predicted contact panel. Positions are highlighted as
-                    yellow spheres, whose diameter is proportional to the number of mediated predicted contacts.
-                    Black labels indicate corresponding BW numbering for each sphere.
-                    Green and red edges indicate predicted contact respectively enriched or depleted for a
-                    specific coupling group. Whenever present in the input,  mutations are represented as a magenta sphere.
-                    The PDB structure that best matches to the given GPCR (based on sequence identity using PSI-BLAST) is chosen and displayed.
-                    However, the user has the option of choosing a different PDB structure from the dropdown menu (PDB-ID).
-                    Several center and toggle options are available within the NGL viewer.
-                </p>
+                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/gallery/structure.png" alt="result page"/>
+                    </div>
+                    <div class="col-6">
+                        <p class="text-justify fs-0">This panel shows in 3D the differential predicted
+                            contacts displayed in the Predicted contact panel. Positions are highlighted as
+                            yellow spheres, whose diameter is proportional to the number of mediated predicted contacts.
+                            Black labels indicate corresponding BW numbering for each sphere.
+                            Green and red edges indicate predicted contact respectively enriched or depleted for a
+                            specific coupling group. Whenever present in the input,  mutations are represented as a magenta sphere.
+                            The PDB structure that best matches to the given GPCR (based on sequence identity using PSI-BLAST) is chosen and displayed.
+                            However, the user has the option of choosing a different PDB structure from the dropdown menu (PDB-ID).
+                            Several center and toggle options are available within the NGL viewer.
+                        </p>
+                    </div>
+                </div>
+
                 <h2 class="fw-bold mb-4">Download</h2>
                 <p class="text-justify fs-0">
                     Download is available as TSV format. This gives information of the input and prediction probabilties by PRECOG.
@@ -118,13 +142,25 @@
                     <li class="text-justify fs-0">Mutation_Info: Disease related information(if any) of the mutation retrieved from Uniprot</li>
                 </ul>
                 <h2 class="fw-bold mb-4">Browser compatibility</h2>
-                <ul>
-                    <li class="text-justify fs-0"> OS    Version    Chrome    Firefox    Safari</li>
-                    <li class="text-justify fs-0"> Linux    Ubuntu 16.04    not tested    Quantum 64.0    n/a</li>
-                    <li class="text-justify fs-0"> Linux    CentOS 7.2.1511    not tested    ESR 52.6.0    n/a</li>
-                    <li class="text-justify fs-0"> Windows    10    v71    not tested    n/a</li>
-                    <li class="text-justify fs-0"> MacOS    Mojave 10.14.2    v71    v64.0    12.0</li>
-                </ul>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="text-justify fs-0">OS    Version    Chrome    Firefox    Safari</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>Linux    Ubuntu 16.04    not tested    Quantum 64.0    n/a</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>Linux    CentOS 7.2.1511    not tested    ESR 52.6.0    n/a</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>Windows    10    v71    not tested    n/a</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>MacOS    Mojave 10.14.2    v71    v64.0    12.0</td>
+                    </tr>
+                    </tbody>
+                </table>
                 <h5 class="fw-bold mb-4">Contacts</h5>
                 <p class="text-justify fs-0">Francesco Raimondi - francesco.raimondi@sns.it</p>
                 <p class="text-justify fs-0">Marin Matic - marin.matic@sns.it</p>
