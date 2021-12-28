@@ -2,12 +2,17 @@
 
 {% block title %} PRECOGx | Home {% endblock %}
 
+
+{% block script %}
+<script src="{{url_for('static', filename='/js/index.js')}}"></script>
+{% endblock%}
+
 {% block content %}
 <section class="py-xxl-7" id="home" xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="row min-vh-xl-100 min-vh-xxl-25">
             <div class="col-md-75 col-xl-6 col-xxl-5  order-0 order-md-1 text-end py-4">
-                <img class="pt-7 pt-md-0 center w-100" src="static/img/icons/algorithm_c.png" alt="Machine learning workflow" />
+                <img class="pt-7 pt-md-0 center w-100" src="static/img/gallery/network_concept.png" alt="Deep network" />
             </div>
             <div class="col-md-5 col-xl-6 col-xxl-7 text-md-start text-center py-4">
                 <h1 class="fw-light font-base fs-6 fs-xxl-7"><strong>PRECOGx</strong></h1>
@@ -31,7 +36,7 @@
                              <button class="btn btn-primary  btn-sm rounded-pill fs--2" id="submit" type="submit">Submit</button>
                         </div>
                          <div class="float-end">
-                              <label class="fs--2 mb-8 text-justify">Examples</label>
+                              <label class="fs--2 mb-8 text-justify fs--2">Examples</label>
                               <button class="btn btn-primary btn-sm rounded-pill fs--2" type="button" id="ex1">FASTA</button>
                               <button class="btn btn-primary btn-sm rounded-pill fs--2" type="button" id="ex2">UniProt Acc/ID</button>
                               <button class="btn btn-primary  btn-sm rounded-pill fs--2" type="button" id="ex3">Variants</button>
@@ -50,7 +55,7 @@
 <div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert">
 This website uses cookies to ensure you get the best experience on our website.
 <a href="https://www.cookiesandyou.com/" target="blank">Learn more</a>
-<button type="button" class="btn btn-primary btn-sm ms-3" onclick="window.cb_hideCookieAlert()">
+<button type="button" class="btn btn-primary btn-sm ms-3" onclick="hideCookieBanner()">
 I Got It
 </button>
 </div>
@@ -66,7 +71,3 @@ I Got It
     <!-- end of .container-->
 </section>
 {%  endblock %}
-
-{% block script %}
-<script src="{{url_for('static', filename='/js/index.js')}}"></script>
-{% endblock%}
