@@ -91,11 +91,30 @@ def makeMapFASTA(pdbID, dic):
         for alignment in blast_record.alignments:
             for hsp in alignment.hsps:
                 bestHIT = alignment.title.split(' ')[1]
+
+                num_s = hsp.sbjct_start
+                num_q = hsp.query_start
+                for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
+                    if q!='-' and s!='-':
+                        GPCRDB2SEQ[num_s] = num_q
+                        num_q += 1
+                        num_s += 1
+                    elif q!='-':
+                        num_q += 1
+                    else:
+                        num_s += 1
+                break
+            break
+        '''
+        for alignment in blast_record.alignments:
+            for hsp in alignment.hsps:
+                bestHIT = alignment.title.split(' ')[1]
                 for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
                     if q!='-' and s!='-':
                         GPCRDB2SEQ[num + hsp.sbjct_start] = num + hsp.query_start
                 break
             break
+        '''
 
     #print (SEQ2PDB)
     #print (GPCRDB2SEQ)
@@ -117,7 +136,7 @@ def makeMapFASTA(pdbID, dic):
 l = ''
 pdblist = []; allPDB = ''
 for pdbID in dic:
-    #if pdbID == '6wwz' or pdbID == '6WWZ':
+    #if pdbID == '7f58' or pdbID == '7F58':
     if True:
         if (dic[pdbID]['GPCR'] != '-' and dic[pdbID]['GPROT'] != '-') or (dic[pdbID]['GPCR'] != '-' and dic[pdbID]['BARR'] != '-'):
             l += pdbID + ' ' + dic[pdbID]['GPCR'] + ' ' + dic[pdbID]['GPROT'] + ' ' + dic[pdbID]['BARR'] + '\n'
