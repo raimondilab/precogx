@@ -57,7 +57,7 @@
 body {
   margin: 0;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.5rem;
+  font-size: 0.65rem;
   font-weight: 400;
   line-height: 1.5;
   color:#00819D;
@@ -9346,7 +9346,7 @@ fieldset:disabled .btn {
 }
 
 .fs--2 {
-  font-size: 0.69444rem !important;
+  font-size: 0.5rem !important;
 }
 
 .fs--1 {
@@ -18553,7 +18553,7 @@ text-align: center;
 
 .py-xxl-7 {
     padding-top: 7.5rem !important;
-    padding-bottom: 4.5rem !important;
+    padding-bottom: 1.5rem !important;
 }
 
 .fs--7{
@@ -18663,7 +18663,7 @@ margin-top: 5rem;
 
 #viewport{
 position: relative;
-width: 40ems;
+width: 32ems;
 height: 30rem;
 margin-top: 1rem;
 }
@@ -18689,5 +18689,5 @@ transform: rotate(0deg);
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
 #slider1_value, #slider2_value{
-margin-left: -2.75rem;
+margin-left: -1.2rem;
 }
