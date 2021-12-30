@@ -57,7 +57,7 @@
 body {
   margin: 0;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 400;
   line-height: 1.5;
   color:#00819D;
@@ -18689,7 +18689,7 @@ transform: rotate(0deg);
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
 #slider1_value, #slider2_value{
-margin-left: -1.5rem;
+margin-left: -1.2rem;
 }
 
 li.nav-item {
