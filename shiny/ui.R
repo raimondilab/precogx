@@ -1,0 +1,75 @@
+library(shiny)
+library(plotly)
+library(ggplot2)
+library(shinyjs)
+library(shinythemes)
+library(shinyWidgets)
+library(randomcoloR)
+
+# Define UI for application that draws a scatter plot
+shinyUI(navbarPage("PCA",
+          tabPanel("Scatter plot",
+            fluidPage(
+              tags$style(
+                HTML('
+                     #structure_panel {
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     top: 50%;
+                     }
+                     ')
+                  ),
+              fluidRow(
+                column(2,
+                      align="center",
+                      wellPanel(
+                                useShinyjs(),
+                                style = "height: 650px;",
+                                
+                                div(style="vertical-align:center; padding-bottom: 10%;",
+                                  h1(id="big-heading", "Input"),
+                                  tags$style(HTML("#big-heading{color: black; font-size: 20px; text-align: center; text-decoration: underline;}"))
+                                  ),
+                                
+                                div(style="display: inline-block; vertical-align:top;",
+                                  selectInput("gprotein", "G-proteins/B-arrs",
+                                              choices = c('GoB', 'GNAI2', 'GNA14', 'GNA12', 'GoA', 'Barr2-GRK2', 'GNAI3', 'GNA15', 'Barr2', 'Barr1-GRK2', 'GNAQ', 'GNAO1', 'GNAI1', 'GNAS', 'GNAZ', 'GNA11', 'GNA13', 'GNAL'),
+                                              selected = "GNAI3")
+                                  ),
+                                
+                                div(style="vertical-align:top; width: 150px;",
+                                    selectInput("pca_type", "PCA type",
+                                                choices = c('GPCRome', 'Best'),
+                                                selected = "GPCRome")
+                                ),
+                                
+                                div(style="display: inline-block; padding-left: 3%;", strong('Taste receptors?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
+                                switchInput(inputId = "taste", label="YES", value = TRUE),
+   
+                                div(style="vertical-align:top; width: 150px;",
+                                    selectInput("assay", "Color by",
+                                                choices = c('Shedding', 'IUPHAR', 'ebBRET', 'STRING', 'Family', 'Class'),
+                                                selected = "Shedding")
+                                ),
+                                
+                                hr(style = "border: 1px solid;"),
+                                
+                                div(style="display: inline-block; padding-left: 3%;", strong('All GPCR families?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
+                                switchInput(inputId = "all", label="YES", value = TRUE),
+                                
+                                div(style="display: inline-block; padding-left: 3%;", strong('OR', style="display: inline-block; padding-bottom: 10px; vertical-align:top;")),
+                                selectizeInput("family", "Select one or more families:",
+                                               choices = NULL, multiple = TRUE),
+                            )
+                      ),
+                column(10,
+                       align = "center",
+                       plotlyOutput(outputId = "scatter", width = '100%')
+                       
+                )
+              )
+            )
+            )
+  )
+)
