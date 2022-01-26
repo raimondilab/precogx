@@ -9,6 +9,7 @@
 install.packages("shiny")
 install.packages("plotly")
 install.packages("ggplot")
+install.packages("readr")
 install.packages("shinyjs")
 install.packages("shinythemes")
 install.packages("shinyWidgets")

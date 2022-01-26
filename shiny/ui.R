@@ -1,6 +1,7 @@
 library(shiny)
 library(plotly)
 library(ggplot2)
+library(readr)
 library(shinyjs)
 library(shinythemes)
 library(shinyWidgets)
