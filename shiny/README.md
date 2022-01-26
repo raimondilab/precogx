@@ -2,7 +2,7 @@
 
 #### How to use?
 1. Clone/pull/download the repo to your system
-2. Change directory ```cd shiny/```
+2. Change directory `cd shiny/`
 3. Open the scripts **ui.R** and **server.R** in RStudio
 4. If you are running for the first time on your system, you may have to install the following packages (in the console):
 ```
