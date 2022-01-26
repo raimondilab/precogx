@@ -1,4 +1,5 @@
 library(shiny)
+library(gapminder)
 library(plotly)
 library(ggplot2)
 library(readr)
@@ -8,6 +9,7 @@ library(shinyWidgets)
 library(randomcoloR)
 
 plot <- function(gprotein, assay, family, all, pca_type, taste) {
+  print (taste)
   if (pca_type == "GPCRome" && taste == FALSE){
     gproteinPath <- paste("33layer_PCA_without_taste/", gprotein, "_", pca_type, ".tsv", sep="")
   }
@@ -31,7 +33,7 @@ plot <- function(gprotein, assay, family, all, pca_type, taste) {
   }
   else if (is.null(family) == FALSE && assay %in% c('Family')) {
     new_data <- mutate(data, Selected = ifelse(`Family` %in% family, `Family`, "Others"))
-    print (levels(new_data$Selected))
+    #print (levels(new_data$Selected))
     
     families <- unique(new_data$Selected)
     families <- families[families != "Others"]
@@ -42,14 +44,16 @@ plot <- function(gprotein, assay, family, all, pca_type, taste) {
     families <- c(families, 'Others')
     palette <- c(palette, 'grey')
     names(palette) <- families
+    #print (palette)
     
     p <- new_data %>%
       ggplot(aes_string(text="Gene", "PC1", "PC2", color="Selected")) +
       geom_point()+
-      scale_color_manual(name=new_data$Selected, values=palette) 
+      scale_color_manual(values=palette) 
+      #scale_color_manual(name=new_data$Selected, values=palette) 
   }
   else if (all == TRUE && assay %in% c('Class')) {
-    print ('class')
+    #print ('class')
     p <- data %>%
       ggplot(aes_string(text="Gene", "PC1", "PC2", color=assay)) +
       geom_point() +
@@ -60,12 +64,20 @@ plot <- function(gprotein, assay, family, all, pca_type, taste) {
       ggplot(aes_string(text="Gene", "PC1", "PC2", color=assay)) +
       geom_point()
   }
+  #print (taste)
   return(ggplotly(p, height = 900))
 }
 
 # Define server logic required to draw a scatter plot
 shinyServer(
   function(input, output, session) {
+    observeEvent(input$inputhelp, {
+      showModal(modalDialog(
+        title = "Help",
+        HTML("This will work only when you select Color by as <kbd>Family</kbd>"
+        )
+      ))
+    })
     
     gproteinPath <- paste("33layer_PCA/", "GNAS", "_", "GPCRome", ".tsv", sep="")
     data <- read_tsv(gproteinPath)

@@ -8,6 +8,7 @@
 ```
 install.packages("shiny")
 install.packages("plotly")
+install.packages("gapminder")
 install.packages("ggplot")
 install.packages("readr")
 install.packages("shinyjs")

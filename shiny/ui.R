@@ -1,4 +1,5 @@
 library(shiny)
+library(gapminder)
 library(plotly)
 library(ggplot2)
 library(readr)
@@ -46,7 +47,7 @@ shinyUI(navbarPage("PCA",
                                 ),
                                 
                                 div(style="display: inline-block; padding-left: 3%;", strong('Taste receptors?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
-                                switchInput(inputId = "taste", label="YES", value = TRUE),
+                                switchInput(inputId = "taste", label="Show", value = TRUE, onLabel = "Yes", offLabel = "No"),
    
                                 div(style="vertical-align:top; width: 150px;",
                                     selectInput("assay", "Color by",
@@ -56,8 +57,9 @@ shinyUI(navbarPage("PCA",
                                 
                                 hr(style = "border: 1px solid;"),
                                 
-                                div(style="display: inline-block; padding-left: 3%;", strong('All GPCR families?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
-                                switchInput(inputId = "all", label="YES", value = TRUE),
+                                div(style="display: inline-block; padding-left: 3%;", strong('Color all GPCR families?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
+                                div(style="display: inline-block; padding-left: 3%;", actionButton("inputhelp", "", icon = icon("question-circle"))),
+                                switchInput(inputId = "all", label="All", value = TRUE, onLabel = "Yes", offLabel = "No"),
                                 
                                 div(style="display: inline-block; padding-left: 3%;", strong('OR', style="display: inline-block; padding-bottom: 10px; vertical-align:top;")),
                                 selectizeInput("family", "Select one or more families:",
