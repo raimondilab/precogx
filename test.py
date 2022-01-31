@@ -57,7 +57,7 @@ def makeMapFASTA(pdbID, dic):
         pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False, file_format="pdb")
         parser = PDBParser()
         structure = parser.get_structure(x, 'data/PDB/pdir/pdb'+pdbID+'.ent')
-    print ('pass')
+    print ('pass1')
     for model in structure:
         for chain in model:
             if chain.id == dic[pdbID]['GPCR']:
@@ -77,10 +77,10 @@ def makeMapFASTA(pdbID, dic):
     open('data/PDB/fasta/'+pdbID+'.fasta', 'w').write(fasta)
     os.system('blastp -query data/PDB/fasta/'+pdbID+'.fasta'+' -outfmt 5 -out ' + 'data/PDB/fasta/'+pdbID+'.txt -db data/GPCRDB/blastdb/GPCRDB')
     #print (map)
-
+    print ('pass2')
     handle = open('data/PDB/fasta/'+pdbID+'.txt', 'r')
     blast_records = NCBIXML.parse(handle)
-    #print (blast_records)
+    print (blast_records)
 
     GPCRDB2SEQ = {}
     for blast_record in blast_records:
