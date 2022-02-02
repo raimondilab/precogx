@@ -22,39 +22,33 @@ class GPCR:
 
 path = os.getcwd()
 
-def extract_pca(gprotein, pca_type, taste):
+def extract_pca(gprotein, pca_type, taste, scaled):
+    if scaled == 1:
+        scaledText = "_scaled"
+    else:
+        scaledText = ""
     if pca_type == 'Best' and taste == 1:
-        Xs_train_pca = np.load(path+'/../static/best_PCA/'+gprotein+'.npy', allow_pickle=True)
+        Xs_train_pca = np.load('best_PCA'+scaledText+'/'+gprotein+'.npy', allow_pickle=True)
     elif pca_type == 'GPCRome' and taste == 1:
         #Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
-        Xs_train_pca = np.load(path+'/../static/best_PCA/GNAZ.npy', allow_pickle=True)
+        Xs_train_pca = np.load('33layer_PCA'+scaledText+'/33layer.npy', allow_pickle=True)
     elif pca_type == 'Best' and taste == 0:
-        Xs_train_pca = np.load('best_pca_without_taste/'+gprotein+'.npy', allow_pickle=True)
+        Xs_train_pca = np.load('best_PCA_without_taste'+scaledText+'/'+gprotein+'.npy', allow_pickle=True)
     elif pca_type == 'GPCRome' and taste == 0:
         #Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
-        Xs_train_pca = np.load('33layer_PCA_without_taste/33layer.npy', allow_pickle=True)
+        Xs_train_pca = np.load('33layer_PCA_without_taste'+scaledText+'/33layer.npy', allow_pickle=True)
     #score_coupling, score_uncoupling, Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
-    filter_gpcr_list(Xs_train_pca, gprotein, pca_type, taste)
-    '''
-    #print ('train', Xs_train_pca_coupling)
-    score_coupling = score_coupling.tolist()
-    score_uncoupling = score_uncoupling.tolist()
-    x_train_coupling = Xs_train_pca_coupling[:,0].tolist()
-    x_train_uncoupling = Xs_train_pca_uncoupling[:,0].tolist()
-    x_train_grey = Xs_train_pca_grey[:,0].tolist()
-    y_train_coupling = Xs_train_pca_coupling[:,1].tolist()
-    y_train_uncoupling = Xs_train_pca_uncoupling[:,1].tolist()
-    y_train_grey = Xs_train_pca_grey[:,1].tolist()
-    print (len(x_train_coupling))
-    print (len(y_train_coupling))
-    return score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey
-    '''
+    filter_gpcr_list(Xs_train_pca, gprotein, pca_type, taste, scaled)
 
-def filter_gpcr_list(X, gprotein, pca_type, taste):
+def filter_gpcr_list(X, gprotein, pca_type, taste, scaled):
     gpcr_list = [];
     dic = {};
     if taste == 1:
-        for line in open(path+'/../static/gpcr_list_new_GN.txt', 'r'):
+        if scaled == 1:
+            file = 'gpcr_list_scaled_GN.txt'
+        else:
+            file = 'gpcr_list_unscaled_GN.txt'
+        for line in open(file, 'r'):
             gene = line.replace('\n', '').split('\t')[1]
             acc = line.replace('\n', '').split('\t')[0]
             gpcr_list.append(gene)
@@ -62,8 +56,12 @@ def filter_gpcr_list(X, gprotein, pca_type, taste):
             if gene not in dic:
                 dic[gene] = GPCR(gene, acc)
     else:
+        if scaled == 1:
+            file = 'gpcr_list_scaled_without_taste_GN.txt'
+        else:
+            file = 'gpcr_list_unscaled_without_taste_GN.txt'
         print (path)
-        for line in open(path+'/../static/gpcr_list_new_without_TASTE_GN.txt', 'r'):
+        for line in open(file, 'r'):
             gene = line.replace('\n', '').split('\t')[1]
             acc = line.replace('\n', '').split('\t')[0]
             gpcr_list.append(gene)
@@ -202,6 +200,7 @@ def filter_gpcr_list(X, gprotein, pca_type, taste):
     df = pd.DataFrame(data, columns = ['Gene', 'IUPHAR', 'Shedding', 'ebBRET', 'STRING', 'Family', 'Class', 'PC1', 'PC2'])
     print (df)
     df.to_csv(gprotein+'_'+pca_type+'.tsv', sep='\t', index=False)
+    print (file)
 
 ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
 shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
@@ -209,8 +208,8 @@ interactors = list(set(ebBRET + shedding))
 
 for interactor in interactors:
     print (interactor)
-    #extract_pca(interactor, 'GPCRome')
+    #extract_pca(interactor, 'Best', 0, 0)
     if interactor != 'GNAO1':
-        extract_pca(interactor, 'GPCRome', 0)
+        extract_pca(interactor, 'Best', 0, 1)
 
 print (interactors)

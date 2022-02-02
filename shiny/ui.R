@@ -27,7 +27,7 @@ shinyUI(navbarPage("PCA",
                       align="center",
                       wellPanel(
                                 useShinyjs(),
-                                style = "height: 650px;",
+                                style = "height: 750px;",
                                 
                                 div(style="vertical-align:center; padding-bottom: 10%;",
                                   h1(id="big-heading", "Input"),
@@ -55,6 +55,13 @@ shinyUI(navbarPage("PCA",
                                                 selected = "Shedding")
                                 ),
                                 
+                                div(style="display: inline-block; padding-left: 3%;", strong('Scaled data?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
+                                switchInput(inputId = "scaled", label="Scaled", value = TRUE, onLabel = "Yes", offLabel = "No"),
+                                
+                                div(style="vertical-align:top; width: 150px;",
+                                  numericInput('numClusters', 'Cluster count', 3, min = 1, max = 9)
+                                ),
+                                
                                 hr(style = "border: 1px solid;"),
                                 
                                 div(style="display: inline-block; padding-left: 3%;", strong('Color all GPCR families?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
@@ -69,9 +76,9 @@ shinyUI(navbarPage("PCA",
                 column(10,
                        align = "center",
                        plotlyOutput(outputId = "scatter", width = '100%')
-                       
                 )
               )
+              
             )
             )
   )
