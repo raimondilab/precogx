@@ -210,6 +210,6 @@ for interactor in interactors:
     print (interactor)
     #extract_pca(interactor, 'Best', 0, 0)
     if interactor != 'GNAO1':
-        extract_pca(interactor, 'Best', 0, 1)
+        extract_pca(interactor, 'Best', 1, 1)
 
 print (interactors)

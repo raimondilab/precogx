@@ -15,5 +15,6 @@ install.packages("shinyjs")
 install.packages("shinythemes")
 install.packages("shinyWidgets")
 install.packages("randomcolorR")
+install.packages("tidyverse")
 ```
 5. Click **Run App** in RStdio to open the app in your defalt browser

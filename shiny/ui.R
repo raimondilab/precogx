@@ -29,11 +29,6 @@ shinyUI(navbarPage("PCA",
                                 useShinyjs(),
                                 style = "height: 750px;",
                                 
-                                div(style="vertical-align:center; padding-bottom: 10%;",
-                                  h1(id="big-heading", "Input"),
-                                  tags$style(HTML("#big-heading{color: black; font-size: 20px; text-align: center; text-decoration: underline;}"))
-                                  ),
-                                
                                 div(style="display: inline-block; vertical-align:top;",
                                   selectInput("gprotein", "G-proteins/B-arrs",
                                               choices = c('GoB', 'GNAI2', 'GNA14', 'GNA12', 'GoA', 'Barr2-GRK2', 'GNAI3', 'GNA15', 'Barr2', 'Barr1-GRK2', 'GNAQ', 'GNAO1', 'GNAI1', 'GNAS', 'GNAZ', 'GNA11', 'GNA13', 'GNAL'),
@@ -75,7 +70,8 @@ shinyUI(navbarPage("PCA",
                       ),
                 column(10,
                        align = "center",
-                       plotlyOutput(outputId = "scatter", width = '100%')
+                       plotlyOutput(outputId = "scatter", width = '100%', height = '100%'),
+                       DT::dataTableOutput("table", width = '75%')
                 )
               )
               

@@ -4,9 +4,70 @@ library(plotly)
 library(ggplot2)
 library(readr)
 library(shinyjs)
+library(dplyr)
 library(shinythemes)
 library(shinyWidgets)
 library(randomcoloR)
+library(tidyverse)
+
+RV <- reactiveValues(data = data.frame())
+
+table2 <- function(gprotein, assay, family, all, pca_type, taste, numClusters, scaled) {
+  if (scaled == TRUE) {
+    scaled = "_scaled"
+  }
+  else {
+    scaled = ""
+  }
+  if (pca_type == "GPCRome" && taste == FALSE){
+    gproteinPath <- paste("33layer_PCA_without_taste", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
+  }
+  else if (pca_type == "GPCRome" && taste == TRUE){
+    gproteinPath <- paste("33layer_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
+  }
+  else if (pca_type == "Best" && taste == TRUE){
+    gproteinPath <- paste("best_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
+  }
+  else {
+    gproteinPath <- paste("best_PCA_without_taste", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
+  }
+  
+  data <- read_tsv(gproteinPath)
+  selectedData <- reactive({
+    #iris[, c(input$xcol, input$ycol)]
+    data[, c('PC1', 'PC2')]
+  })
+  
+  clusters <- reactive({
+    kmeans(selectedData(), numClusters)
+  })
+  
+  clust <- clusters()$cluster
+  data <- mutate(data, clust=clust)
+  var <- unique(data[[assay]])
+  print (var)
+  df <- data_frame()
+  for(i in 1:length(var)) {       # for-loop over columns
+    clas <- var[i]
+    newData <- data %>%
+      filter((!!sym(assay)) %in% var[i]) %>%
+      group_by(clust) %>%
+      summarise(n = n()) %>%
+      mutate(Freq = n/sum(n)) %>%
+      mutate(clas = var[i])
+    names(newData)[names(newData) == "Freq"] <- var[i]
+    if (dim(df) == 0){
+      df <- newData[c('clust', var[i])]
+    }
+    else {
+      df <- full_join(df, newData[c('clust', var[i])], by="clust", quiet=TRUE)
+    }
+    
+  }
+  df <- df[order(df$clust),]
+  print (df)
+  return(df)
+}
 
 plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, scaled) {
   print (taste)
@@ -41,6 +102,29 @@ plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, sca
   #print (clusters()$cluster)
   clust <- clusters()$cluster
   data <- mutate(data, clust=clust)
+  ###############################################################################
+  var <- unique(data[[assay]])
+  print (var)
+  df <- data_frame()
+  for(i in 1:length(var)) {       # for-loop over columns
+    clas <- var[i]
+    newData <- data %>%
+      filter((!!sym(assay)) %in% var[i]) %>%
+      group_by(clust) %>%
+      summarise(n = n()) %>%
+      mutate(Freq = round(n/sum(n), digits=2)) %>%
+      mutate(clas = var[i])
+    names(newData)[names(newData) == "Freq"] <- var[i]
+    if (dim(df) == 0){
+      df <- newData[c('clust', var[i])]
+    }
+    else {
+      df <- full_join(df, newData[c('clust', var[i])], by="clust", quiet=TRUE)
+    }
+    
+  }
+  df <- df[order(df$clust),]
+  ###############################################################################
   #print (data)
   print (family)
   if (all == TRUE && assay %in% c('Shedding', 'ebBRET', 'IUPHAR', 'STRING')) {
@@ -90,8 +174,9 @@ plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, sca
       scale_shape_manual(values=c("1" = 15, "2" = 16, "3" = 17, "4" = 18, "5" = 19, "6" = 20, "7" = 21, "8" = 22, "9" = 23)) 
   }
   #print (taste)
-  
-  return(ggplotly(p, height = 900))
+  List <- list('df'= df, 'plot' = ggplotly(p, height = 600))
+  return(List)
+  #return(ggplotly(p, height = 500))
 }
 
 # Define server logic required to draw a scatter plot
@@ -127,9 +212,41 @@ shinyServer(
         shinyjs::enable("family")
       }
     })
-    observeEvent(input$assay, {
-    output$scatter <- renderPlotly({plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
+    observeEvent(c(input$assay, input$gprotein, input$pca_type, input$taste, input$scaled, input$scaled, input$numClusters), {
+    #output$scatter <- renderPlotly({plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
+    X <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)
+    output$scatter <- renderPlotly({X$plot})
+    RV$data <- X$df
     })
+    
+    #observeEvent(c(input$assay, input$gprotein, input$pca_type, input$taste, input$scaled, input$scaled, input$numClusters), {RV$data <- table(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
+    output$table <- DT::renderDataTable({
+      DT::datatable(RV$data,
+                    filter = "top",
+                    height = 1,
+                    class = 'cell-border strip hover',
+                    extensions = list("ColReorder" = NULL,
+                                      "Buttons" = NULL,
+                                      "FixedColumns" = list(leftColumns=1)),
+                    options = list(
+                      dom = 'lBRrftpi',
+                      autoWidth=TRUE,
+                      pageLength = -1,
+                      lengthMenu = list(c(3, 5, 10, 15, 50, -1), c('3', '5', '10', '15','50', 'All')),
+                      ColReorder = TRUE,
+                      buttons =
+                        list(
+                          'copy',
+                          'print',
+                          list(
+                            extend = 'collection',
+                            buttons = c('csv', 'excel', 'pdf'),
+                            text = 'Download'
+                          )
+                        )
+                    )
+      )
+    }, server = TRUE)
     
     }
 )
