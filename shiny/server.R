@@ -103,27 +103,32 @@ plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, sca
   clust <- clusters()$cluster
   data <- mutate(data, clust=clust)
   ###############################################################################
-  var <- unique(data[[assay]])
-  print (var)
-  df <- data_frame()
-  for(i in 1:length(var)) {       # for-loop over columns
-    clas <- var[i]
-    newData <- data %>%
-      filter((!!sym(assay)) %in% var[i]) %>%
-      group_by(clust) %>%
-      summarise(n = n()) %>%
-      mutate(Freq = round(n/sum(n), digits=2)) %>%
-      mutate(clas = var[i])
-    names(newData)[names(newData) == "Freq"] <- var[i]
-    if (dim(df) == 0){
-      df <- newData[c('clust', var[i])]
+  if (TRUE) {
+    var <- unique(data[[assay]])
+    #var <- var[!is.na(var)]
+    #var %>% replace(is.na(.), "Unknown")
+    var[is.na(var)] <- "NA"
+    print (var)
+    df <- data_frame()
+    for(i in 1:length(var)) {       # for-loop over columns
+      clas <- var[i]
+      newData <- data %>%
+        filter((!!sym(assay)) %in% var[i]) %>%
+        group_by(clust) %>%
+        summarise(n = n()) %>%
+        mutate(Freq = round(n/sum(n), digits=2)) %>%
+        mutate(clas = var[i])
+      names(newData)[names(newData) == "Freq"] <- var[i]
+      if (dim(df) == 0){
+        df <- newData[c('clust', var[i])]
+      }
+      else {
+        df <- full_join(df, newData[c('clust', var[i])], by="clust", quiet=TRUE)
+      }
+      
     }
-    else {
-      df <- full_join(df, newData[c('clust', var[i])], by="clust", quiet=TRUE)
-    }
-    
+    df <- df[order(df$clust),]
   }
-  df <- df[order(df$clust),]
   ###############################################################################
   #print (data)
   print (family)
