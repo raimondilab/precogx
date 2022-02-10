@@ -1,0 +1,378 @@
+Gene	IUPHAR	Shedding	ebBRET	STRING	Family	Class	PC1	PC2
+ADGRG2	Coupled	-	-	-	Adhesion Class GPCRs	classB	0.7904872894287109	0.7844296097755432
+LGR6	-	-	-	-	NA	classA	0.6794058084487915	0.577284038066864
+ADGRD2	Not-coupled	-	-	-	Adhesion Class GPCRs	classB	0.6981213092803955	0.8824276924133301
+GABBR1	Not-coupled	-	-	-	GABA<sub>B</sub> receptors	classC	0.5679894685745239	0.8712499737739563
+LGR4	Not-coupled	-	-	-	Class A Orphans	classA	0.6710620522499084	0.5843197703361511
+GABBR2	Not-coupled	-	-	-	GABA<sub>B</sub> receptors	classC	0.6248399615287781	0.8122811913490295
+GPRC6A	Coupled	-	-	-	Calcium-sensing receptors	classC	0.554440975189209	0.8555266857147217
+GRM7	Not-coupled	-	-	-	Metabotropic glutamate receptors	classC	0.5500468611717224	0.7942638397216797
+GRM4	Not-coupled	-	Not-coupled	-	Metabotropic glutamate receptors	classC	0.5490126013755798	0.7992666363716125
+ADGRF1	-	-	-	-	NA	classB	0.6781507134437561	0.8903656601905823
+GRM8	Not-coupled	-	Not-coupled	-	Metabotropic glutamate receptors	classC	0.5488415956497192	0.791825532913208
+LGR5	-	-	-	-	NA	classA	0.6492147445678711	0.5587632060050964
+ADGRE1	-	-	-	-	NA	classB	0.5666683912277222	0.892657995223999
+GRM3	Not-coupled	-	-	-	Metabotropic glutamate receptors	classC	0.5155320763587952	0.8155168294906616
+GRM6	Not-coupled	-	Not-coupled	-	Metabotropic glutamate receptors	classC	0.5286334753036499	0.7980237007141113
+ADGRD1	Not-coupled	-	-	-	Adhesion Class GPCRs	classB	0.6429029703140259	0.9004415273666382
+GRM2	Not-coupled	-	Not-coupled	-	Metabotropic glutamate receptors	classC	0.5102986097335815	0.816067099571228
+TAS1R3	-	-	-	-	NA	classC	0.5276121497154236	0.8731356263160706
+TAS1R1	-	-	-	-	NA	classC	0.48544517159461975	0.8770525455474854
+TAS1R2	-	-	-	-	NA	classC	0.5119509100914001	0.8718411922454834
+ADGRE5	Not-coupled	-	-	-	Adhesion Class GPCRs	classB	0.5519323945045471	0.9123421907424927
+ADGRE2	Coupled	-	-	-	Adhesion Class GPCRs	classB	0.5441133379936218	0.8902276754379272
+GPR156	-	-	-	-	NA	classC	1.0	0.7130457758903503
+ADGRG7	-	-	-	-	NA	classB	0.6269612312316895	0.9048739671707153
+SMO	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.8415495157241821	0.8736417293548584
+TSHR	Coupled	-	-	-	Glycoprotein hormone receptors	classA	0.6813501715660095	0.5580098032951355
+RXFP1	Not-coupled	-	-	-	Relaxin family peptide receptors	classA	0.5559886693954468	0.5377254486083984
+RXFP2	Not-coupled	-	-	-	Relaxin family peptide receptors	classA	0.5538166165351868	0.5487476587295532
+GPR149	-	-	-	-	NA	classA	0.9301941394805908	0.51035475730896
+ADGRF2	-	-	-	-	NA	classB	0.6728492975234985	0.925510585308075
+FZD6	Coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.7437217235565186	0.886944055557251
+LHCGR	Coupled	-	-	-	Glycoprotein hormone receptors	classA	0.6294434666633606	0.5667003393173218
+ADGRF4	-	-	-	-	NA	classB	0.6314886808395386	0.9284446239471436
+FSHR	Coupled	-	-	-	Glycoprotein hormone receptors	classA	0.595288872718811	0.5541765689849854
+FZD8	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.6517688035964966	0.8916583061218262
+ADGRG1	Coupled	-	-	-	Adhesion Class GPCRs	classB	0.7553088068962097	0.9068081378936768
+ADGRL4	-	-	-	-	NA	classB	0.5640594959259033	0.9394400119781494
+FZD3	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.6765444278717041	0.8997393250465393
+ADGRE3	-	-	-	-	NA	classB	0.5422971844673157	0.9249476194381714
+FZD1	Coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.6530287861824036	0.9128275513648987
+GPR50	-	-	-	-	NA	classA	0.5736854672431946	0.377731055021286
+GPR37	Not-coupled	-	-	-	Class A Orphans	classA	0.7076835632324219	0.5173138380050659
+GPR153	-	-	-	-	NA	classA	0.8230183720588684	0.46981894969940186
+GPR107	-	-	-	-	NA	Other	0.8737306594848633	0.7936765551567078
+PTH1R	Coupled	Not-coupled	Coupled	-	Parathyroid hormone receptors	classB	0.6356381177902222	0.8816015720367432
+FZD9	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.6392732262611389	0.9554818272590637
+CHRM3	Coupled	Coupled	Coupled	-	Acetylcholine receptors (muscarinic)	classA	0.6281411051750183	0.22223563492298126
+GPR162	-	-	-	-	NA	classA	0.8424088358879089	0.44808876514434814
+FZD5	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.5999248623847961	0.9367411136627197
+FZD10	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.6335923075675964	0.9599955081939697
+FZD7	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.6084470748901367	0.9503129720687866
+ADRA1D	Coupled	Not-coupled	-	-	Adrenoceptors	classA	0.6370489597320557	0.2318934053182602
+FZD2	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.5964902639389038	0.961277425289154
+ADGRA1	Not-coupled	-	-	-	Adhesion Class GPCRs	classB	0.7822369337081909	0.8544497489929199
+GLP2R	Not-coupled	-	Coupled	-	Glucagon receptor family	classB	0.6194340586662292	0.8767714500427246
+PTH2R	-	Coupled	-	-	NA	classB	0.5849666595458984	0.9019509553909302
+ADGRG3	Not-coupled	-	-	-	Adhesion Class GPCRs	classB	0.613683819770813	0.9810872673988342
+GPR75	Coupled	-	-	-	Class A Orphans	classA	0.7535073757171631	0.274541437625885
+FZD4	Not-coupled	-	-	-	Class Frizzled GPCRs	Frizzeled	0.5838976502418518	0.9818813800811768
+CHRM5	Coupled	Coupled	-	-	Acetylcholine receptors (muscarinic)	classA	0.6029496788978577	0.2019113302230835
+GPR161	-	-	-	-	NA	classA	0.6883373260498047	0.26535868644714355
+ADGRG5	-	-	-	-	NA	classB	0.578176736831665	0.9704974889755249
+NPFFR2	Not-coupled	Not-coupled	Coupled	-	Neuropeptide FF/neuropeptide AF receptors	classA	0.5106828212738037	0.32268786430358887
+ADRA1B	Coupled	Not-coupled	-	-	Adrenoceptors	classA	0.6029330492019653	0.20819517970085144
+GPR176	-	-	-	-	NA	classA	0.6370692253112793	0.33817875385284424
+GPR101	Not-coupled	-	-	-	Class A Orphans	classA	0.580305814743042	0.3336073160171509
+GPR135	-	-	-	-	NA	classA	0.6204118728637695	0.24215838313102722
+PTGER4	Not-coupled	Not-coupled	Coupled	-	Prostanoid receptors	classA	0.7167625427246094	0.519778847694397
+HRH1	Coupled	Coupled	Coupled	-	Histamine receptors	classA	0.588407576084137	0.17151954770088196
+C3AR1	Not-coupled	-	-	-	Complement peptide receptors	classA	0.42212915420532227	0.48711517453193665
+HTR2B	Coupled	Not-coupled	Coupled	-	5-Hydroxytryptamine receptors	classA	0.5819126963615417	0.19039636850357056
+GPR37L1	Not-coupled	-	-	-	Class A Orphans	classA	0.5904147028923035	0.4821050465106964
+CHRM4	Not-coupled	Not-coupled	Coupled	-	Acetylcholine receptors (muscarinic)	classA	0.5212575793266296	0.16860976815223694
+HTR7	Not-coupled	Coupled	-	-	5-Hydroxytryptamine receptors	classA	0.5932388305664062	0.14016211032867432
+OPN4	Coupled	-	-	-	Class A Orphans	classA	0.6542681455612183	0.24880655109882355
+GCGR	Not-coupled	-	Coupled	-	Glucagon receptor family	classB	0.5018484592437744	0.9548875689506531
+DRD5	Not-coupled	Not-coupled	Coupled	-	Dopamine receptors	classA	0.6079906821250916	0.15418675541877747
+ADRB1	Not-coupled	Not-coupled	Coupled	-	Adrenoceptors	classA	0.5708047151565552	0.1760825514793396
+CALCR	Coupled	-	Coupled	-	Calcitonin receptors	classB	0.4846717119216919	0.9777148365974426
+CNR1	Not-coupled	Not-coupled	Coupled	-	Cannabinoid receptors	classA	0.7483693361282349	0.18389686942100525
+HTR2A	Coupled	Not-coupled	Coupled	-	5-Hydroxytryptamine receptors	classA	0.5723353028297424	0.1685076653957367
+GPR152	-	-	-	-	NA	classA	0.45302021503448486	0.5411948561668396
+RXFP3	Not-coupled	-	-	-	Relaxin family peptide receptors	classA	0.3596579134464264	0.4506066143512726
+ADCYAP1R1	Coupled	Not-coupled	-	-	VIP and PACAP receptors	classB	0.4932812750339508	0.9508852958679199
+GIPR	Not-coupled	Not-coupled	Coupled	-	Glucagon receptor family	classB	0.5080931782722473	0.9460206627845764
+ADRA1A	Coupled	Not-coupled	Not-coupled	-	Adrenoceptors	classA	0.5702957510948181	0.16215845942497253
+CHRM2	Coupled	Not-coupled	Coupled	-	Acetylcholine receptors (muscarinic)	classA	0.5196247100830078	0.16858896613121033
+TACR3	Coupled	Not-coupled	-	-	Tachykinin receptors	classA	0.4093594253063202	0.2958499789237976
+ADRA2A	Not-coupled	Not-coupled	Coupled	-	Adrenoceptors	classA	0.56732577085495	0.19377902150154114
+GLP1R	Not-coupled	-	Coupled	-	Glucagon receptor family	classB	0.5028746128082275	0.9383600950241089
+GPR142	-	-	-	-	NA	classA	0.609162449836731	0.37218010425567627
+ADRA2C	Not-coupled	Not-coupled	Coupled	-	Adrenoceptors	classA	0.5208485722541809	0.1630403697490692
+CALCRL	-	-	-	-	NA	classB	0.49035778641700745	1.0
+CHRM1	Coupled	Not-coupled	Coupled	-	Acetylcholine receptors (muscarinic)	classA	0.4908117651939392	0.15766221284866333
+HTR2C	Coupled	Coupled	Coupled	-	5-Hydroxytryptamine receptors	classA	0.5414897799491882	0.14644736051559448
+ADGRE4P	-	-	-	-	NA	classB	0.39770108461380005	0.9615274667739868
+VIPR1	Coupled	-	Not-coupled	-	VIP and PACAP receptors	classB	0.5113343000411987	0.9199825525283813
+GPR39	Coupled	-	Coupled	-	Class A Orphans	classA	0.48324570059776306	0.2578687071800232
+GPR61	Not-coupled	-	-	-	Class A Orphans	classA	0.5899257659912109	0.22210144996643066
+ADRA2B	Not-coupled	Not-coupled	Coupled	-	Adrenoceptors	classA	0.5522423982620239	0.1724035143852234
+CCKBR	Coupled	Coupled	-	-	Cholecystokinin receptors	classA	0.39543387293815613	0.3050727844238281
+DRD1	Not-coupled	Not-coupled	Coupled	-	Dopamine receptors	classA	0.5777432322502136	0.13149848580360413
+NPY5R	Not-coupled	-	Coupled	-	Neuropeptide Y receptors	classA	0.45165565609931946	0.3272162675857544
+HRH3	Not-coupled	Not-coupled	-	-	Histamine receptors	classA	0.4631350338459015	0.15203067660331726
+HCRTR2	Coupled	Not-coupled	Coupled	-	Orexin receptors	classA	0.3533565104007721	0.3289598822593689
+CRHR1	Coupled	-	Coupled	-	Corticotropin-releasing factor receptors	classB	0.45138272643089294	0.9449505805969238
+DRD2	Not-coupled	Not-coupled	Coupled	-	Dopamine receptors	classA	0.5272851586341858	0.1274217665195465
+EDNRB	Coupled	Coupled	-	-	Endothelin receptors	classA	0.39778199791908264	0.4722699522972107
+GPRC5C	-	-	-	-	NA	classC	0.808546781539917	0.8571138978004456
+SCTR	Not-coupled	-	-	-	Glucagon receptor family	classB	0.4877130389213562	0.930762529373169
+HTR6	Coupled	Not-coupled	-	-	5-Hydroxytryptamine receptors	classA	0.59432053565979	0.12547019124031067
+VIPR2	Not-coupled	-	-	-	VIP and PACAP receptors	classB	0.47068148851394653	0.9093681573867798
+GPR150	-	-	-	-	NA	classA	0.5469855070114136	0.4065951406955719
+GPR22	Not-coupled	-	-	-	Class A Orphans	classA	0.6248021721839905	0.21825990080833435
+QRFPR	Coupled	-	-	-	QRFP receptor	classA	0.3599343001842499	0.3084562122821808
+NPFFR1	Not-coupled	Not-coupled	Coupled	-	Neuropeptide FF/neuropeptide AF receptors	classA	0.36764585971832275	0.2895861268043518
+CCKAR	Coupled	Coupled	Coupled	-	Cholecystokinin receptors	classA	0.3574010133743286	0.2788951098918915
+EDNRA	Coupled	Coupled	Coupled	-	Endothelin receptors	classA	0.34127289056777954	0.4417304992675781
+NMUR1	Coupled	Not-coupled	-	-	Neuromedin U receptors	classA	0.32018083333969116	0.22231896221637726
+HCRTR1	Coupled	Coupled	-	-	Orexin receptors	classA	0.32445642352104187	0.3352925777435303
+F2R	-	Coupled	Coupled	-	NA	classA	0.32986360788345337	0.7391754388809204
+AVPR1B	Coupled	Not-coupled	-	-	Vasopressin and oxytocin receptors	classA	0.4459991753101349	0.48874613642692566
+OXER1	Not-coupled	-	-	-	Leukotriene receptors	classA	0.41643181443214417	0.6145029664039612
+GPR83	-	-	-	-	NA	classA	0.37674567103385925	0.31102150678634644
+GHRHR	Not-coupled	-	-	-	Glucagon receptor family	classB	0.46356090903282166	0.9524624347686768
+MCHR1	Coupled	Not-coupled	-	-	Melanin-concentrating hormone receptors	classA	0.3282600939273834	0.3957872986793518
+HTR1A	Not-coupled	Not-coupled	Coupled	-	5-Hydroxytryptamine receptors	classA	0.5349873304367065	0.16073757410049438
+GPR151	-	-	-	-	NA	classA	0.4824318587779999	0.3856547474861145
+DRD4	Not-coupled	Not-coupled	-	-	Dopamine receptors	classA	0.4256257116794586	0.13573116064071655
+GPR63	-	-	-	-	NA	classA	0.5455916523933411	0.23677630722522736
+NTSR1	Coupled	-	-	-	Neurotensin receptors	classA	0.3280286192893982	0.27002012729644775
+SSTR3	Coupled	Not-coupled	-	-	Somatostatin receptors	classA	0.24328307807445526	0.3730742335319519
+AVPR1A	Coupled	Not-coupled	Coupled	-	Vasopressin and oxytocin receptors	classA	0.41985273361206055	0.48538896441459656
+GPR137	-	-	-	-	NA	Other	0.8623825907707214	0.7060228586196899
+NMUR2	Coupled	Coupled	-	-	Neuromedin U receptors	classA	0.3298417329788208	0.23242007195949554
+GPR19	-	-	-	-	NA	classA	0.4299130141735077	0.2689671814441681
+ADRB2	Not-coupled	Not-coupled	Coupled	-	Adrenoceptors	classA	0.5408524870872498	0.12451255321502686
+MLNR	Coupled	Not-coupled	-	-	Motilin receptor	classA	0.25842589139938354	0.30145102739334106
+ADORA2A	Coupled	Not-coupled	Not-coupled	-	Adenosine receptors	classA	0.5657006502151489	0.08559590578079224
+CRHR2	Coupled	-	Coupled	-	Corticotropin-releasing factor receptors	classB	0.40853381156921387	0.978023111820221
+NTSR2	Coupled	-	-	-	Neurotensin receptors	classA	0.3497907221317291	0.2783973217010498
+ADRB3	Not-coupled	Not-coupled	-	-	Adrenoceptors	classA	0.5072810053825378	0.12306904792785645
+TACR1	Coupled	Not-coupled	-	-	Tachykinin receptors	classA	0.33847323060035706	0.2524530291557312
+GPR143	-	-	-	-	NA	Other	0.7379006147384644	0.66596519947052
+GPR182	-	-	-	-	NA	classA	0.24430012702941895	0.5458686947822571
+GPRC5B	-	-	-	-	NA	classC	0.780730128288269	0.8604369163513184
+PTGER1	Coupled	Not-coupled	Not-coupled	-	Prostanoid receptors	classA	0.5914983749389648	0.5178765058517456
+OPN3	-	-	-	-	NA	classA	0.5125231742858887	0.27194082736968994
+DRD3	Not-coupled	Not-coupled	-	-	Dopamine receptors	classA	0.4678981602191925	0.09860438108444214
+OPRM1	Coupled	Not-coupled	Coupled	-	Opioid receptors	classA	0.17673063278198242	0.3414766192436218
+BRS3	Coupled	-	-	-	Class A Orphans	classA	0.2656564712524414	0.3921780288219452
+TACR2	Coupled	Not-coupled	-	-	Tachykinin receptors	classA	0.33258235454559326	0.22956156730651855
+TRHR	Coupled	-	-	-	Thyrotropin-releasing hormone receptors	classA	0.3588240444660187	0.19773435592651367
+S1PR5	Not-coupled	Not-coupled	-	-	Lysophospholipid (S1P) receptors	classA	0.6433286070823669	0.19502726197242737
+KISS1R	Coupled	Not-coupled	-	-	Kisspeptin receptor	classA	0.24259652197360992	0.3678937554359436
+F2RL1	-	Coupled	Coupled	-	NA	classA	0.28939634561538696	0.7295690774917603
+GPR84	Not-coupled	Not-coupled	Not-coupled	-	Class A Orphans	classA	0.5722433924674988	0.2273833453655243
+PTGDR2	Not-coupled	-	-	-	Prostanoid receptors	classA	0.3070707619190216	0.4492225646972656
+PROKR1	Coupled	-	-	-	Prokineticin receptors	classA	0.3422676920890808	0.34360986948013306
+SSTR1	Not-coupled	Not-coupled	-	-	Somatostatin receptors	classA	0.19416533410549164	0.34522563219070435
+BDKRB2	Coupled	Coupled	Coupled	-	Bradykinin receptors	classA	0.2593268156051636	0.48705345392227173
+PTGER3	Coupled	Not-coupled	Not-coupled	-	Prostanoid receptors	classA	0.5865824222564697	0.5173077583312988
+HRH4	Not-coupled	Not-coupled	-	-	Histamine receptors	classA	0.43413886427879333	0.08051615953445435
+NMBR	Coupled	Not-coupled	-	-	Bombesin receptors	classA	0.2475758045911789	0.38619452714920044
+HTR1B	Not-coupled	Not-coupled	Coupled	-	5-Hydroxytryptamine receptors	classA	0.47959262132644653	0.1495216190814972
+OXTR	Coupled	Not-coupled	Coupled	-	Vasopressin and oxytocin receptors	classA	0.37639370560646057	0.4962262511253357
+UTS2R	Coupled	Coupled	-	-	Urotensin receptor	classA	0.2529537081718445	0.4098743796348572
+SSTR4	Not-coupled	Not-coupled	-	-	Somatostatin receptors	classA	0.17917266488075256	0.35057616233825684
+HTR4	Not-coupled	Not-coupled	-	-	5-Hydroxytryptamine receptors	classA	0.46741825342178345	0.108284592628479
+HCAR3	Not-coupled	-	Coupled	-	Hydroxycarboxylic acid receptors	classA	0.33180612325668335	0.6548182368278503
+GALR2	Coupled	Coupled	-	-	Galanin receptors	classA	0.18974685668945312	0.36467444896698
+PTGIR	Coupled	Not-coupled	-	-	Prostanoid receptors	classA	0.6468091011047363	0.5246475338935852
+F2RL3	-	Not-coupled	-	-	NA	classA	0.27760395407676697	0.6710894107818604
+S1PR4	Not-coupled	-	-	-	Lysophospholipid (S1P) receptors	classA	0.6093158721923828	0.2101699411869049
+NPY1R	Not-coupled	-	Coupled	-	Neuropeptide Y receptors	classA	0.30011576414108276	0.29189950227737427
+GRPR	Coupled	Not-coupled	-	-	Bombesin receptors	classA	0.23614756762981415	0.3824456036090851
+GPR88	-	-	-	-	NA	classA	0.603038489818573	0.16506364941596985
+ACKR2	-	-	-	-	NA	classA	0.1650056540966034	0.5871646404266357
+PROKR2	Coupled	-	-	-	Prokineticin receptors	classA	0.337732195854187	0.3474980294704437
+S1PR1	Not-coupled	Not-coupled	Coupled	-	Lysophospholipid (S1P) receptors	classA	0.6182188391685486	0.16796475648880005
+NPY2R	Coupled	-	-	-	Neuropeptide Y receptors	classA	0.2738887667655945	0.2961680293083191
+GPR34	Not-coupled	Not-coupled	-	-	Class A Orphans	classA	0.31441399455070496	0.6645428538322449
+GPR132	Not-coupled	Coupled	-	-	Class A Orphans	classA	0.27853837609291077	0.6976013779640198
+APLNR	Not-coupled	Not-coupled	Coupled	-	Apelin receptor	classA	0.1382894515991211	0.41313567757606506
+OPRK1	Not-coupled	Not-coupled	Coupled	-	Opioid receptors	classA	0.13388067483901978	0.32768797874450684
+CCR7	Not-coupled	-	-	-	Chemokine receptors	classA	0.10666730999946594	0.5436321496963501
+MAS1L	-	-	-	-	NA	classA	0.609996497631073	0.39445143938064575
+S1PR3	Coupled	Coupled	-	-	Lysophospholipid (S1P) receptors	classA	0.619733989238739	0.19898003339767456
+HTR1D	Not-coupled	Not-coupled	Not-coupled	-	5-Hydroxytryptamine receptors	classA	0.4506527781486511	0.12394243478775024
+P2RY2	Coupled	Coupled	Coupled	-	P2Y receptors	classA	0.15582877397537231	0.7019332647323608
+GPR27	Coupled	-	-	-	Class A Orphans	classA	0.5504177808761597	0.2547847032546997
+NPY4R	Coupled	-	-	-	Neuropeptide Y receptors	classA	0.31442588567733765	0.3075190484523773
+GPER1	Not-coupled	-	-	-	G protein-coupled estrogen receptor	classA	0.2531737983226776	0.44115525484085083
+P2RY11	Coupled	Coupled	-	-	P2Y receptors	classA	0.30046361684799194	0.5393530130386353
+CCR6	Not-coupled	-	Coupled	-	Chemokine receptors	classA	0.10049375891685486	0.6016208529472351
+RXFP4	Not-coupled	-	-	-	Relaxin family peptide receptors	classA	0.21699021756649017	0.473994642496109
+CCR2	Not-coupled	-	-	-	Chemokine receptors	classA	0.14551740884780884	0.556190013885498
+F2RL2	-	Coupled	-	-	NA	classA	0.2648460865020752	0.7325013875961304
+GPR173	-	-	-	-	NA	classA	0.5303007960319519	0.2368231564760208
+P2RY1	Coupled	Coupled	-	-	P2Y receptors	classA	0.15178242325782776	0.7473656535148621
+CMKLR1	Not-coupled	-	-	-	Chemerin receptor	classA	0.16592898964881897	0.48503515124320984
+TPRA1	-	-	-	-	NA	Other	0.9416390657424927	0.7201833724975586
+OPRD1	Not-coupled	Not-coupled	Coupled	-	Opioid receptors	classA	0.11490654945373535	0.3071160316467285
+LPAR5	Coupled	Not-coupled	-	-	Lysophospholipid (LPA) receptors	classA	0.19643744826316833	0.7312450408935547
+GPR45	-	-	-	-	NA	classA	0.4399430453777313	0.2140483260154724
+CXCR5	Not-coupled	-	Coupled	-	Chemokine receptors	classA	0.13903695344924927	0.5515515804290771
+NPSR1	Coupled	-	-	-	Neuropeptide S receptor	classA	0.3550243377685547	0.44577619433403015
+AVPR2	Not-coupled	Not-coupled	-	-	Vasopressin and oxytocin receptors	classA	0.4125644564628601	0.5015021562576294
+LPAR4	Coupled	Coupled	-	-	Lysophospholipid (LPA) receptors	classA	0.1664561927318573	0.7487901449203491
+PRLHR	-	Not-coupled	-	-	NA	classA	0.22693172097206116	0.28270223736763
+OPRL1	Not-coupled	Not-coupled	Coupled	-	Opioid receptors	classA	0.12618815898895264	0.31397420167922974
+GPR85	-	-	-	-	NA	classA	0.5193181037902832	0.22501273453235626
+SSTR2	Coupled	Not-coupled	Coupled	-	Somatostatin receptors	classA	0.12338325381278992	0.34561482071876526
+CCR9	Not-coupled	-	-	-	Chemokine receptors	classA	0.08911025524139404	0.5843650102615356
+GALR3	Not-coupled	Not-coupled	-	-	Galanin receptors	classA	0.162110835313797	0.35495737195014954
+CXCR3	Not-coupled	-	-	-	Chemokine receptors	classA	0.10925456881523132	0.5722342729568481
+GPR62	-	-	-	-	NA	classA	0.518895149230957	0.24006976187229156
+GPR17	Coupled	Not-coupled	-	-	Class A Orphans	classA	0.19097982347011566	0.6828804612159729
+HTR1F	Not-coupled	Not-coupled	-	-	5-Hydroxytryptamine receptors	classA	0.4465428590774536	0.10569313168525696
+GHSR	Coupled	Coupled	Coupled	-	Ghrelin receptor	classA	0.17046841979026794	0.2652149200439453
+GPR68	Coupled	-	Coupled	-	Class A Orphans	classA	0.21323533356189728	0.713918924331665
+HTR1E	Not-coupled	Not-coupled	-	-	5-Hydroxytryptamine receptors	classA	0.4341743290424347	0.09862411022186279
+P2RY4	Coupled	Coupled	-	-	P2Y receptors	classA	0.12387081980705261	0.7159390449523926
+SSTR5	Coupled	Not-coupled	-	-	Somatostatin receptors	classA	0.10013541579246521	0.3648795783519745
+OPN1LW	-	-	-	-	NA	classA	0.5009517669677734	0.23892664909362793
+LPAR1	Coupled	Coupled	Coupled	-	Lysophospholipid (LPA) receptors	classA	0.5981911420822144	0.14694780111312866
+OPN1MW	-	-	-	-	NA	classA	0.5003689527511597	0.24009351432323456
+HCAR2	Not-coupled	-	Coupled	-	Hydroxycarboxylic acid receptors	classA	0.27008435130119324	0.6584885120391846
+GPR78	Not-coupled	-	-	-	Class A Orphans	classA	0.4825455844402313	0.296932578086853
+AGTR2	Not-coupled	-	-	-	Angiotensin receptors	classA	0.12488526105880737	0.506956934928894
+MTNR1B	Not-coupled	Not-coupled	Not-coupled	-	Melatonin receptors	classA	0.4145762026309967	0.23463141918182373
+GPR4	Coupled	-	Not-coupled	-	Class A Orphans	classA	0.1831979602575302	0.7201002836227417
+GPR6	Not-coupled	-	-	-	Class A Orphans	classA	0.5941611528396606	0.15425324440002441
+CCR10	Not-coupled	-	-	-	Chemokine receptors	classA	0.19309955835342407	0.5550800561904907
+ACKR3	-	-	-	-	NA	classA	0.08858394622802734	0.5365831851959229
+GPR52	-	-	-	-	NA	classA	0.5361298322677612	0.1794012486934662
+GPR183	Not-coupled	Not-coupled	Coupled	-	Class A Orphans	classA	0.17005380988121033	0.6278095841407776
+GPR25	-	-	-	-	NA	classA	0.19955533742904663	0.48755520582199097
+FFAR4	Coupled	Not-coupled	-	-	Free fatty acid receptors	classA	0.380670428276062	0.35787323117256165
+GPR15	-	-	-	-	NA	classA	0.15714621543884277	0.4717883765697479
+CCR4	Not-coupled	-	-	-	Chemokine receptors	classA	0.07470166683197021	0.601205587387085
+CNR2	Not-coupled	Not-coupled	Coupled	-	Cannabinoid receptors	classA	0.6279587149620056	0.1122204065322876
+CXCR2	Not-coupled	-	Coupled	-	Chemokine receptors	classA	0.0804312527179718	0.5499954223632812
+PTGDR	Not-coupled	Not-coupled	-	-	Prostanoid receptors	classA	0.6473360657691956	0.48583316802978516
+P2RY8	-	-	-	-	NA	classA	0.2027917504310608	0.6433804631233215
+HRH2	Coupled	Not-coupled	Coupled	-	Histamine receptors	classA	0.37405824661254883	0.03572484850883484
+AGTR1	Coupled	Coupled	Coupled	-	Angiotensin receptors	classA	0.08631631731987	0.466664582490921
+PTGFR	Coupled	Not-coupled	Not-coupled	-	Prostanoid receptors	classA	0.5347763895988464	0.5510620474815369
+LTB4R2	Coupled	Not-coupled	Not-coupled	-	Leukotriene receptors	classA	0.22994478046894073	0.48424267768859863
+GPR87	-	-	-	-	NA	classA	0.3040432929992676	0.6387856006622314
+GPR20	Not-coupled	-	-	-	Class A Orphans	classA	0.3349505066871643	0.5859416127204895
+PTGER2	Not-coupled	Not-coupled	Coupled	-	Prostanoid receptors	classA	0.6251753568649292	0.4870118498802185
+GPRC5A	-	-	-	-	NA	classC	0.8412847518920898	0.8375630378723145
+HTR5A	Coupled	-	-	-	5-Hydroxytryptamine receptors	classA	0.45961904525756836	0.11929252743721008
+GPR32	-	-	-	-	NA	classA	0.21803811192512512	0.48808950185775757
+CX3CR1	Not-coupled	-	-	-	Chemokine receptors	classA	0.14132419228553772	0.519576907157898
+CCR3	Not-coupled	-	-	-	Chemokine receptors	classA	0.09697926044464111	0.5566048622131348
+CCR1	Not-coupled	-	-	-	Chemokine receptors	classA	0.08304443955421448	0.5628821849822998
+CMKLR2	-	-	-	-	NA	classA	0.15195277333259583	0.4841395914554596
+CCR8	Not-coupled	-	-	-	Chemokine receptors	classA	0.08735829591751099	0.5473814010620117
+P2RY13	Not-coupled	Coupled	-	-	P2Y receptors	classA	0.35754984617233276	0.6147291660308838
+OPN5	Not-coupled	-	-	-	Class A Orphans	classA	0.5358738899230957	0.2581523060798645
+LPAR3	Coupled	Coupled	-	-	Lysophospholipid (LPA) receptors	classA	0.5828629732131958	0.14336282014846802
+GPR139	Coupled	-	-	-	Class A Orphans	classA	0.36934682726860046	0.26599931716918945
+BDKRB1	Coupled	Coupled	Not-coupled	-	Bradykinin receptors	classA	0.172311931848526	0.44400525093078613
+FPR3	Not-coupled	-	-	-	Formylpeptide receptors	classA	0.12446007132530212	0.4586564302444458
+S1PR2	Coupled	Not-coupled	-	-	Lysophospholipid (S1P) receptors	classA	0.5767375826835632	0.1827983856201172
+LTB4R	Coupled	Not-coupled	Coupled	-	Leukotriene receptors	classA	0.17106837034225464	0.44854095578193665
+CCR5	Not-coupled	-	Coupled	-	Chemokine receptors	classA	0.09403178095817566	0.5541780591011047
+CXCR4	Not-coupled	-	Not-coupled	-	Chemokine receptors	classA	0.05850890278816223	0.5931125283241272
+TAAR2	Not-coupled	-	-	-	Class A Orphans	classA	0.42217713594436646	0.05076494812965393
+LPAR2	Coupled	Coupled	Coupled	-	Lysophospholipid (LPA) receptors	classA	0.5632085800170898	0.11844572424888611
+FPR2	Coupled	Not-coupled	-	-	Leukotriene receptors	classA	0.12389308214187622	0.47169268131256104
+MTNR1A	Coupled	Not-coupled	Coupled	-	Melatonin receptors	classA	0.4155643582344055	0.19153594970703125
+FPR1	Not-coupled	Not-coupled	-	-	Formylpeptide receptors	classA	0.13743743300437927	0.4454602897167206
+CXCR1	Coupled	-	-	-	Chemokine receptors	classA	0.0310593843460083	0.5484633445739746
+C5AR1	Coupled	-	Coupled	-	Complement peptide receptors	classA	0.162744402885437	0.4783295691013336
+ACKR4	-	-	-	-	NA	classA	0.1307489573955536	0.5769754648208618
+GALR1	Not-coupled	Not-coupled	-	-	Galanin receptors	classA	0.09007993340492249	0.37565386295318604
+GPR21	Not-coupled	-	-	-	Class A Orphans	classA	0.5189203023910522	0.1459263563156128
+RHO	-	-	-	-	NA	classA	0.41654661297798157	0.2896978557109833
+OPN1SW	-	-	-	-	NA	classA	0.407832533121109	0.27372270822525024
+TAAR9	-	-	-	-	NA	classA	0.4440633952617645	0.03635150194168091
+GPR148	-	-	-	-	NA	classA	0.6561378240585327	0.3047729730606079
+GPR42	Not-coupled	-	-	-	Free fatty acid receptors	classA	0.2734954357147217	0.6067935824394226
+HCAR1	Not-coupled	-	-	-	Hydroxycarboxylic acid receptors	classA	0.261316180229187	0.6391313076019287
+FFAR3	Not-coupled	Not-coupled	Not-coupled	-	Free fatty acid receptors	classA	0.27538788318634033	0.608162522315979
+CYSLTR2	Coupled	Not-coupled	Coupled	-	Leukotriene receptors	classA	0.09824514389038086	0.6828243136405945
+GPRC5D	-	-	-	-	NA	classC	0.7961491346359253	0.8855446577072144
+TAAR6	Not-coupled	-	-	-	NA	classA	0.42020970582962036	0.02042287588119507
+LPAR6	Not-coupled	Not-coupled	-	-	Lysophospholipid (LPA) receptors	classA	0.06439158320426941	0.7669709324836731
+CCRL2	-	-	-	-	NA	classA	0.22171080112457275	0.5394045114517212
+TAAR3P	-	-	-	-	NA	classA	0.4467664361000061	0.04427269101142883
+MRGPRF	-	-	-	-	NA	classA	0.4989011883735657	0.3784797191619873
+TBXA2R	Coupled	Not-coupled	-	-	Prostanoid receptors	classA	0.5157790780067444	0.5603303909301758
+CXCR6	Not-coupled	-	-	-	Chemokine receptors	classA	0.0939159095287323	0.5596531629562378
+P2RY12	Not-coupled	Not-coupled	-	-	P2Y receptors	classA	0.2790732979774475	0.6216316223144531
+TAAR8	-	-	-	-	NA	classA	0.4275875687599182	0.030313491821289062
+PTAFR	Coupled	Coupled	-	-	Platelet-activating factor receptor	classA	0.19732791185379028	0.7133685946464539
+MCHR2	Coupled	Coupled	-	-	Melanin-concentrating hormone receptors	classA	0.18089285492897034	0.33097195625305176
+P2RY10	-	Not-coupled	-	-	NA	classA	0.11447197198867798	0.8100726008415222
+TAAR1	Coupled	-	-	-	Trace amine receptor	classA	0.4037916958332062	0.008335292339324951
+GPR160	-	-	-	-	NA	classA	0.6326178312301636	0.3354477882385254
+P2RY14	Not-coupled	Not-coupled	-	-	P2Y receptors	classA	0.25045108795166016	0.6563538908958435
+OXGR1	Coupled	Not-coupled	-	-	Oxoglutarate receptor	classA	0.08579456806182861	0.623408317565918
+GPR65	Not-coupled	-	Not-coupled	-	Class A Orphans	classA	0.12283262610435486	0.7129679322242737
+GPR26	Not-coupled	-	-	-	Class A Orphans	classA	0.4384757876396179	0.2088031768798828
+CYSLTR1	Coupled	Coupled	Coupled	-	Leukotriene receptors	classA	0.06984925270080566	0.6985427141189575
+C5AR2	Not-coupled	-	-	-	Complement peptide receptors	classA	0.17417407035827637	0.5232403874397278
+TAAR5	-	-	-	-	NA	classA	0.4110989272594452	0.06035411357879639
+GPR82	-	-	-	-	NA	classA	0.392456591129303	0.5657743811607361
+ACKR1	-	-	-	-	NA	classA	0.5574073791503906	0.5283392667770386
+GPR157	-	-	-	-	NA	classB	0.5240432620048523	0.6277672052383423
+GPR119	Not-coupled	Not-coupled	-	-	GPR18, GPR55 and GPR119	classA	0.5567382574081421	0.09209063649177551
+GPR12	Not-coupled	-	-	-	Class A Orphans	classA	0.5782520771026611	0.12069311738014221
+SUCNR1	Coupled	-	-	-	Succinate receptor	classA	0.13990479707717896	0.503193736076355
+GPR33	Not-coupled	-	-	-	Class A Orphans	classA	0.1848323494195938	0.5102349519729614
+GPR146	-	-	-	-	NA	classA	0.35922157764434814	0.269423246383667
+NPBWR2	Not-coupled	-	-	-	Neuropeptide W/neuropeptide B receptors	classA	0.03484794497489929	0.3596605658531189
+GPR174	-	Not-coupled	-	-	NA	classA	0.1423501968383789	0.7755115628242493
+XCR1	Not-coupled	-	-	-	Chemokine receptors	classA	0.08241844177246094	0.5229564309120178
+MC4R	Not-coupled	Not-coupled	Coupled	-	Melanocortin receptors	classA	0.5598820447921753	0.14256656169891357
+ADORA2B	Coupled	Not-coupled	Not-coupled	-	Adenosine receptors	classA	0.4230270981788635	0.004355937242507935
+GPR18	Coupled	-	-	-	GPR18, GPR55 and GPR119	classA	0.15044739842414856	0.6915409564971924
+MRGPRX2	Coupled	Coupled	-	-	Class A Orphans	classA	0.4596804082393646	0.4198468327522278
+FFAR2	Coupled	Coupled	Not-coupled	-	Free fatty acid receptors	classA	0.23127073049545288	0.6260671615600586
+GPR3	Not-coupled	-	-	-	Class A Orphans	classA	0.5545458793640137	0.12068870663642883
+GPBAR1	Not-coupled	-	Not-coupled	-	Bile acid receptor	classA	0.5451574325561523	0.17037513852119446
+P2RY6	Coupled	Coupled	-	-	P2Y receptors	classA	0.0	0.7495381832122803
+GNRHR	Coupled	Not-coupled	Not-coupled	-	Gonadotrophin-releasing hormone receptors	classA	0.26323264837265015	0.5617842674255371
+NPBWR1	Not-coupled	Not-coupled	-	-	Neuropeptide W/neuropeptide B receptors	classA	0.040216535329818726	0.3490118980407715
+ADORA1	Coupled	Not-coupled	Coupled	-	Adenosine receptors	classA	0.45970019698143005	0.0
+MC5R	Not-coupled	Not-coupled	-	-	Melanocortin receptors	classA	0.5378592014312744	0.14213746786117554
+MAS1	Coupled	-	-	-	Class A Orphans	classA	0.39745503664016724	0.4112594723701477
+MC3R	Not-coupled	Coupled	Coupled	-	Melanocortin receptors	classA	0.551863431930542	0.1525345742702484
+MRGPRX4	Coupled	-	-	-	Class A Orphans	classA	0.4397425353527069	0.4407103955745697
+MRGPRX3	Coupled	-	-	-	Class A Orphans	classA	0.4712141752243042	0.41901150345802307
+MRGPRX1	Coupled	Coupled	-	-	Class A Orphans	classA	0.44666579365730286	0.42713239789009094
+MRGPRD	Coupled	-	-	-	Class A Orphans	classA	0.3982117474079132	0.41408970952033997
+GPR31	Not-coupled	-	-	-	Class A Orphans	classA	0.17241612076759338	0.44740578532218933
+GPR55	Coupled	Not-coupled	-	-	GPR18, GPR55 and GPR119	classA	0.17631849646568298	0.745653510093689
+GPR171	-	-	-	-	NA	classA	0.22606034576892853	0.7238524556159973
+ADORA3	Not-coupled	Not-coupled	Not-coupled	-	Adenosine receptors	classA	0.4589352309703827	0.027106940746307373
+MC1R	Not-coupled	Not-coupled	-	-	Melanocortin receptors	classA	0.5363953113555908	0.23187698423862457
+MRGPRE	-	-	-	-	NA	classA	0.4544607400894165	0.41359180212020874
+GPR35	-	Not-coupled	-	-	NA	classA	0.11715984344482422	0.7405306100845337
+GPR141	-	-	-	-	NA	classA	0.3370618224143982	0.7188855409622192
+FFAR1	Coupled	Not-coupled	-	-	Free fatty acid receptors	classA	0.22327923774719238	0.5179153084754944
+MC2R	Not-coupled	-	-	-	Melanocortin receptors	classA	0.47453221678733826	0.14372384548187256
+GNRHR2	-	-	-	-	NA	classA	0.3819675147533417	0.4345516562461853
+NPY6R	-	-	-	-	NA	classA	0.25175178050994873	0.3761088252067566
+MRGPRG	-	-	-	-	NA	classA	0.381870299577713	0.37697625160217285
+TAS2R38	-	-	-	-	NA	Taste	0.6390340924263	0.37395143508911133
+TAS2R39	-	-	-	-	NA	Taste	0.6606584191322327	0.42414194345474243
+TAS2R40	-	-	-	-	NA	Taste	0.6484760046005249	0.4140223562717438
+TAS2R41	-	-	-	-	NA	Taste	0.5584024786949158	0.3610225021839142
+TAS2R43	-	-	-	-	NA	Taste	0.5805763006210327	0.3577742576599121
+TAS2R31	-	-	-	-	NA	Taste	0.582956850528717	0.3568636476993561
+TAS2R45	-	-	-	-	NA	Taste	0.5590221881866455	0.3452981114387512
+TAS2R46	-	-	-	-	NA	Taste	0.5760124325752258	0.35320019721984863
+TAS2R30	-	-	-	-	NA	Taste	0.5983811616897583	0.34831202030181885
+TAS2R19	-	-	-	-	NA	Taste	0.5847935080528259	0.3648894429206848
+TAS2R20	-	-	-	-	NA	Taste	0.5776773691177368	0.35810035467147827
+TAS2R50	-	-	-	-	NA	Taste	0.5779858827590942	0.3346538245677948
+TAS2R60	-	-	-	-	NA	Taste	0.6117526292800903	0.37916046380996704
+TAS2R42	-	-	-	-	NA	Taste	0.6100829839706421	0.36108067631721497
+TAS2R16	-	-	-	-	NA	Taste	0.6122836470603943	0.3848472833633423
+TAS2R14	-	-	-	-	NA	Taste	0.5954154133796692	0.3688841462135315
+TAS2R13	-	-	-	-	NA	Taste	0.5939753651618958	0.3692522943019867
+TAS2R10	-	-	-	-	NA	Taste	0.5803571343421936	0.3561893701553345
+TAS2R9	-	-	-	-	NA	Taste	0.5756181478500366	0.3546149432659149
+TAS2R8	-	-	-	-	NA	Taste	0.5726755857467651	0.36951500177383423
+TAS2R7	-	-	-	-	NA	Taste	0.5882236957550049	0.36093395948410034
+TAS2R5	-	-	-	-	NA	Taste	0.5831000208854675	0.39850524067878723
+TAS2R4	-	-	-	-	NA	Taste	0.5929403305053711	0.41074541211128235
+TAS2R3	-	-	-	-	NA	Taste	0.588123619556427	0.3828906714916229
+TAS2R1	-	-	-	-	NA	Taste	0.5762522220611572	0.3988393247127533

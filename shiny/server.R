@@ -12,64 +12,18 @@ library(tidyverse)
 
 RV <- reactiveValues(data = data.frame())
 
-table2 <- function(gprotein, assay, family, all, pca_type, taste, numClusters, scaled) {
-  if (scaled == TRUE) {
-    scaled = "_scaled"
-  }
-  else {
-    scaled = ""
-  }
-  if (pca_type == "GPCRome" && taste == FALSE){
-    gproteinPath <- paste("33layer_PCA_without_taste", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
-  }
-  else if (pca_type == "GPCRome" && taste == TRUE){
-    gproteinPath <- paste("33layer_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
-  }
-  else if (pca_type == "Best" && taste == TRUE){
-    gproteinPath <- paste("best_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
-  }
-  else {
-    gproteinPath <- paste("best_PCA_without_taste", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
-  }
-  
-  data <- read_tsv(gproteinPath)
-  selectedData <- reactive({
-    #iris[, c(input$xcol, input$ycol)]
-    data[, c('PC1', 'PC2')]
-  })
-  
-  clusters <- reactive({
-    kmeans(selectedData(), numClusters)
-  })
-  
-  clust <- clusters()$cluster
-  data <- mutate(data, clust=clust)
-  var <- unique(data[[assay]])
-  print (var)
-  df <- data_frame()
-  for(i in 1:length(var)) {       # for-loop over columns
-    clas <- var[i]
-    newData <- data %>%
-      filter((!!sym(assay)) %in% var[i]) %>%
-      group_by(clust) %>%
-      summarise(n = n()) %>%
-      mutate(Freq = n/sum(n)) %>%
-      mutate(clas = var[i])
-    names(newData)[names(newData) == "Freq"] <- var[i]
-    if (dim(df) == 0){
-      df <- newData[c('clust', var[i])]
-    }
-    else {
-      df <- full_join(df, newData[c('clust', var[i])], by="clust", quiet=TRUE)
-    }
-    
-  }
-  df <- df[order(df$clust),]
-  print (df)
-  return(df)
-}
 
-plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, scaled) {
+plot <- function(gprotein, assay, family, all, pca_type, layer, taste, numClusters, scaled) {
+  #layer <- '33'
+  if (is.null(layer) == TRUE){
+    layer = "33"
+  }
+  else if (grepl("Best", layer) == TRUE) {
+    layer = strsplit(layer, split=" ")
+    print ('Here')
+    layer <- layer[[1]][1]
+    print (layer)
+  }
   print (taste)
   if (scaled == TRUE) {
     scaled = "_scaled"
@@ -82,6 +36,12 @@ plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, sca
   }
   else if (pca_type == "GPCRome" && taste == TRUE){
     gproteinPath <- paste("33layer_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
+  }
+  else if (pca_type == "All" && taste == FALSE){
+    gproteinPath <- paste("all_layer_without_taste", scaled, '/', gprotein, "_", pca_type, "_", layer, ".tsv", sep="")
+  }
+  else if (pca_type == "All" && taste == TRUE){
+    gproteinPath <- paste("all_layers", scaled, '/', gprotein, "_", pca_type, "_", layer , ".tsv", sep="")
   }
   else if (pca_type == "Best" && taste == TRUE){
     gproteinPath <- paste("best_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
@@ -108,7 +68,7 @@ plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, sca
     #var <- var[!is.na(var)]
     #var %>% replace(is.na(.), "Unknown")
     var[is.na(var)] <- "NA"
-    print (var)
+    #print (var)
     df <- data_frame()
     for(i in 1:length(var)) {       # for-loop over columns
       clas <- var[i]
@@ -187,6 +147,54 @@ plot <- function(gprotein, assay, family, all, pca_type, taste, numClusters, sca
 # Define server logic required to draw a scatter plot
 shinyServer(
   function(input, output, session) {
+    
+    observeEvent(input$gprotein, {
+      gproteinPath <- paste("layers.txt", sep="")
+      data <- read_tsv(gproteinPath)
+      subData <- subset(data, Gprotein == input$gprotein)
+      print(subData$best_layer)
+      bestLayer <- subData$best_layer
+      print ('best layer')
+      layers <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33')
+      for (layer in layers) {
+        if (layer == bestLayer){
+          layers[as.numeric(bestLayer)+1] <- paste(bestLayer, ' (Best)')
+        }
+      }
+      
+      print (input$layer)
+      print (input$option)
+      if (input$option == 'gpcrome'){
+        defaultLayer = layers[-1]
+      }
+      else if (input$option == 'best') {
+        defaultLayer <- layers[as.numeric(bestLayer)+1]
+      }
+      else {
+        if (is.null(input$layer) == TRUE){
+          defaultLayer <- '0'
+        }
+        else {
+          if (grepl("Best", input$layer) == TRUE) {
+            defaultLayer = strsplit(layer, split=" ")
+            defaultlayer <- defaultLayer[[1]][1]
+          }
+          else {
+            defaultLayer <- input$layer
+          }
+        }
+      }
+      
+      output$layer <- renderUI({
+        selectInput("layer", "Layer",
+                    #choices = c('0 (Best)', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33'),
+                    choices = layers,
+                    selected = defaultLayer
+                    #selected = layers[as.numeric(bestLayer)+1]
+        )
+      })
+    })
+      
     observeEvent(input$inputhelp, {
       showModal(modalDialog(
         title = "Help",
@@ -195,7 +203,7 @@ shinyServer(
       ))
     })
     
-    gproteinPath <- paste("33layer_PCA/", "GNAS", "_", "GPCRome", ".tsv", sep="")
+    gproteinPath <- paste("all_layers/", "GNAS", "_", "All_0", ".tsv", sep="")
     data <- read_tsv(gproteinPath)
     updateSelectizeInput(session, 'family', choices = levels(factor(data$`Family`)), server = TRUE)
     
@@ -217,11 +225,14 @@ shinyServer(
         shinyjs::enable("family")
       }
     })
-    observeEvent(c(input$assay, input$gprotein, input$pca_type, input$taste, input$scaled, input$scaled, input$numClusters), {
-    #output$scatter <- renderPlotly({plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
-    X <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)
-    output$scatter <- renderPlotly({X$plot})
-    RV$data <- X$df
+    observeEvent(c(input$assay, input$gprotein, input$pca_type, input$layer, input$taste, input$scaled, input$scaled, input$numClusters), {
+      
+      
+      
+      #output$scatter <- renderPlotly({plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
+      X <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$layer, input$taste, input$numClusters, input$scaled)
+      output$scatter <- renderPlotly({X$plot})
+      RV$data <- X$df
     })
     
     #observeEvent(c(input$assay, input$gprotein, input$pca_type, input$taste, input$scaled, input$scaled, input$numClusters), {RV$data <- table(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})

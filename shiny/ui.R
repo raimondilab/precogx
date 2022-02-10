@@ -29,29 +29,48 @@ shinyUI(navbarPage("PCA",
                                 useShinyjs(),
                                 style = "height: 750px;",
                                 
-                                div(style="display: inline-block; vertical-align:top;",
-                                  selectInput("gprotein", "G-proteins/B-arrs",
+                                div(style="display: inline-block;vertical-align:top; width: 100px;",
+                                  selectInput("gprotein", "G-prots/B-arrs",
                                               choices = c('GoB', 'GNAI2', 'GNA14', 'GNA12', 'GoA', 'Barr2-GRK2', 'GNAI3', 'GNA15', 'Barr2', 'Barr1-GRK2', 'GNAQ', 'GNAO1', 'GNAI1', 'GNAS', 'GNAZ', 'GNA11', 'GNA13', 'GNAL'),
                                               selected = "GNAI3")
                                   ),
                                 
-                                div(style="vertical-align:top; width: 150px;",
+                                div(style="display: inline-block;vertical-align:top; width: 100px;",
                                     selectInput("pca_type", "PCA type",
-                                                choices = c('GPCRome', 'Best'),
-                                                selected = "GPCRome")
+                                                choices = c('All'),
+                                                selected = "All")
                                 ),
                                 
-                                div(style="display: inline-block; padding-left: 3%;", strong('Taste receptors?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
-                                switchInput(inputId = "taste", label="Show", value = TRUE, onLabel = "Yes", offLabel = "No"),
+                                div(style="vertical-align:top; width: 200px;",
+                                  radioButtons("option", "Default layer to display:",
+                                               c("GPCRome" = "gpcrome",
+                                                 "Best" = "best",
+                                                 "None" = "none")),
+                                ),
+                                
+                                div(style="display: inline-block; width: 100px;",
+                                    uiOutput("layer")
+                                    #selectInput("layer", "Layer",
+                                    #            choices = c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33'),
+                                    #            selected = "33")
+                                ),
    
-                                div(style="vertical-align:top; width: 150px;",
+                                div(style="display: inline-block; width: 100px;",
                                     selectInput("assay", "Color by",
                                                 choices = c('Shedding', 'IUPHAR', 'ebBRET', 'STRING', 'Family', 'Class'),
                                                 selected = "Shedding")
                                 ),
                                 
-                                div(style="display: inline-block; padding-left: 3%;", strong('Scaled data?', style="display: inline-block; padding-bottom: 5px; vertical-align:top;")),
-                                switchInput(inputId = "scaled", label="Scaled", value = TRUE, onLabel = "Yes", offLabel = "No"),
+                                div(style="display: inline-block; width: 100px;",
+                                  div(style="display: inline-block; padding-left: 3%;", strong('Taste recep?', style="display: inline-block; padding-bottom: 5px; vertical-align:top; width: 100px;")),
+                                  switchInput(inputId = "taste", label="Show", value = TRUE, onLabel = "Yes", offLabel = "No")
+                                ),
+                                
+                                div(style="display: inline-block; width: 10px;"),
+                                div(style="display: inline-block; width: 100px;",
+                                  div(style="display: inline-block; padding-left: 3%;", strong('Scaled?', style="display: inline-block; padding-bottom: 5px; vertical-align:top; width: 75px;")),
+                                  switchInput(inputId = "scaled", label="Scaled", value = TRUE, onLabel = "Yes", offLabel = "No")
+                                ),
                                 
                                 div(style="vertical-align:top; width: 150px;",
                                   numericInput('numClusters', 'Cluster count', 3, min = 1, max = 9)
