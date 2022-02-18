@@ -12,23 +12,45 @@ library(tidyverse)
 
 RV <- reactiveValues(data = data.frame())
 
-
-plot <- function(gprotein, assay, family, all, pca_type, layer, taste, numClusters, scaled) {
+plot <- function(gprotein, assay, family, all, pca_type, layer, taste, numClusters, scaled, dimr) {
+  if (is.null(numClusters) == TRUE){
+    numClusters = 1
+  }
+  else if (grepl("Best", numClusters) == TRUE) {
+    numClusters = strsplit(numClusters, split=" ")
+    print ('Here')
+    numClusters <- numClusters[[1]][1]
+    print (numClusters)
+  }
+  print ('We are here')
+  print (numClusters)
   #layer <- '33'
   if (is.null(layer) == TRUE){
     layer = "33"
   }
-  else if (grepl("Best", layer) == TRUE) {
+  else if (grepl("Best KM", layer) == TRUE) {
+    layer = strsplit(layer, split=" ")
+    print ('Here')
+    layer <- layer[[1]][1]
+    print (layer)
+  }
+  else if (grepl("Best ML", layer) == TRUE) {
     layer = strsplit(layer, split=" ")
     print ('Here')
     layer <- layer[[1]][1]
     print (layer)
   }
   print (taste)
-  if (scaled == TRUE) {
-    scaled = "_scaled"
+  
+  if (dimr == "PCA"){
+    if (scaled == TRUE) {
+      scaled = "_scaled"
+    }
+    else {
+      scaled = ""
+    }
   }
-  else {
+  else{
     scaled = ""
   }
   if (pca_type == "GPCRome" && taste == FALSE){
@@ -37,11 +59,27 @@ plot <- function(gprotein, assay, family, all, pca_type, layer, taste, numCluste
   else if (pca_type == "GPCRome" && taste == TRUE){
     gproteinPath <- paste("33layer_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
   }
-  else if (pca_type == "All" && taste == FALSE){
+  else if (pca_type == "All" && taste == FALSE && dimr == "PCA"){
     gproteinPath <- paste("all_layer_without_taste", scaled, '/', gprotein, "_", pca_type, "_", layer, ".tsv", sep="")
   }
-  else if (pca_type == "All" && taste == TRUE){
+  else if (pca_type == "All" && taste == TRUE  && dimr == "PCA"){
     gproteinPath <- paste("all_layers", scaled, '/', gprotein, "_", pca_type, "_", layer , ".tsv", sep="")
+  }
+  else if (pca_type == "All" && taste == TRUE  && dimr == "tSNE"){
+    gproteinPath <- paste("embedding_all", scaled, '/', gprotein, "_", pca_type, "_", layer, '_tSNE', ".tsv", sep="")
+    print ('tSNE')
+  }
+  else if (pca_type == "All" && taste == FALSE  && dimr == "tSNE"){
+    gproteinPath <- paste("embedding_without_taste", scaled, '/', gprotein, "_", pca_type, "_", layer, '_tSNE', ".tsv", sep="")
+    print ('tSNE')
+  }
+  else if (pca_type == "All" && taste == TRUE  && dimr == "UMAP"){
+    gproteinPath <- paste("embedding_all", scaled, '/', gprotein, "_", pca_type, "_", layer, '_UMAP', ".tsv", sep="")
+    print ('tSNE')
+  }
+  else if (pca_type == "All" && taste == FALSE  && dimr == "UMAP"){
+    gproteinPath <- paste("embedding_without_taste", scaled, '/', gprotein, "_", pca_type, "_", layer, '_UMAP', ".tsv", sep="")
+    print ('tSNE')
   }
   else if (pca_type == "Best" && taste == TRUE){
     gproteinPath <- paste("best_PCA", scaled, '/', gprotein, "_", pca_type, ".tsv", sep="")
@@ -149,6 +187,7 @@ shinyServer(
   function(input, output, session) {
     
     observeEvent(input$gprotein, {
+      ## Layers ML
       gproteinPath <- paste("layers.txt", sep="")
       data <- read_tsv(gproteinPath)
       subData <- subset(data, Gprotein == input$gprotein)
@@ -158,7 +197,7 @@ shinyServer(
       layers <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33')
       for (layer in layers) {
         if (layer == bestLayer){
-          layers[as.numeric(bestLayer)+1] <- paste(bestLayer, ' (Best)')
+          layers[as.numeric(bestLayer)+1] <- paste(bestLayer, ' (Best ML)')
         }
       }
       
@@ -175,7 +214,81 @@ shinyServer(
           defaultLayer <- '0'
         }
         else {
-          if (grepl("Best", input$layer) == TRUE) {
+          if (grepl("Best ML", input$layer) == TRUE) {
+            defaultLayer = strsplit(layer, split=" ")
+            defaultlayer <- defaultLayer[[1]][1]
+          }
+          else {
+            defaultLayer <- input$layer
+          }
+        }
+      }
+      
+      #output$layer <- renderUI({
+      #  selectInput("layer", "Layer",
+      #              choices = layers,
+      #              selected = defaultLayer
+      #              #selected = layers[as.numeric(bestLayer)+1]
+      #  )
+      #})
+      
+      print ('clusters')
+      ## Clusters
+      gproteinPath <- paste("optimalClustering.tsv", sep="")
+      data <- read_tsv(gproteinPath)
+      print (data)
+      #subData <- filter(data, Gprotein %in% c(input$gprotein))
+      subData <- data
+      subData <- subData[order(subData$WSS),]
+      optimalCluster <- (subData$Best)[[1]]
+      clusters <- c(1:10)
+      for (cluster in clusters) {
+        if (cluster == optimalCluster){
+          clusters[as.numeric(optimalCluster)] <- paste(optimalCluster, ' (Best)')
+        }
+      }
+      
+      print (optimalCluster)
+      print (clusters)
+      
+      output$numClusters <- renderUI({
+        selectInput("numClusters", "Cluster count",
+                    choices = clusters,
+                    selected = paste(optimalCluster, ' (Best KM)')
+                    #selected = layers[as.numeric(bestLayer)+1]
+        )
+      })
+      
+      ## Layers
+      gproteinPath <- paste("optimalClustering.tsv", sep="")
+      data <- read_tsv(gproteinPath)
+      print (data)
+      #subData <- filter(data, Gprotein %in% c(input$gprotein))
+      subData <- data
+      subData <- subData[order(subData$WSS),]
+      optimalLayer <- (subData$Layer)[[1]]
+      #layers <- c(0:33)
+      for (layer in layers) {
+        if (layer == optimalLayer){
+          layers[as.numeric(optimalLayer)] <- paste(optimalLayer, ' (Best KM)')
+        }
+      }
+      
+      print (optimalLayer)
+      print (layers)
+      
+      if (input$option == 'gpcrome'){
+        defaultLayer = layers[-1]
+      }
+      else if (input$option == 'bestKM') {
+        defaultLayer <- layers[as.numeric(optimalLayer)+1]
+      }
+      else {
+        if (is.null(input$layer) == TRUE){
+          defaultLayer <- '0'
+        }
+        else {
+          if (grepl("Best KM)", input$layer) == TRUE) {
             defaultLayer = strsplit(layer, split=" ")
             defaultlayer <- defaultLayer[[1]][1]
           }
@@ -186,13 +299,14 @@ shinyServer(
       }
       
       output$layer <- renderUI({
-        selectInput("layer", "Layer",
-                    #choices = c('0 (Best)', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33'),
+        selectInput("layer", "Layers",
                     choices = layers,
                     selected = defaultLayer
+                    #selected = paste(optimalLayer, ' (Best)')
                     #selected = layers[as.numeric(bestLayer)+1]
         )
       })
+      
     })
       
     observeEvent(input$inputhelp, {
@@ -203,6 +317,7 @@ shinyServer(
       ))
     })
     
+    print ('We are here')
     gproteinPath <- paste("all_layers/", "GNAS", "_", "All_0", ".tsv", sep="")
     data <- read_tsv(gproteinPath)
     updateSelectizeInput(session, 'family', choices = levels(factor(data$`Family`)), server = TRUE)
@@ -226,18 +341,81 @@ shinyServer(
       }
     })
     observeEvent(c(input$assay, input$gprotein, input$pca_type, input$layer, input$taste, input$scaled, input$scaled, input$numClusters), {
-      
-      
-      
       #output$scatter <- renderPlotly({plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
-      X <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$layer, input$taste, input$numClusters, input$scaled)
+      X <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$layer, input$taste, input$numClusters, input$scaled, 'PCA')
       output$scatter <- renderPlotly({X$plot})
       RV$data <- X$df
+      
+      Y <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$layer, input$taste, input$numClusters, input$scaled, 'tSNE')
+      output$scatter2 <- renderPlotly({Y$plot})
+      RV$data2 <- Y$df
+      
+      Z <- plot(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$layer, input$taste, input$numClusters, input$scaled, 'UMAP')
+      output$scatter3 <- renderPlotly({Z$plot})
+      RV$data3 <- Z$df
     })
+    
+    #output$scatter2 <- renderPlotly(plottSNE(input$gprotein, inmput$assay))
     
     #observeEvent(c(input$assay, input$gprotein, input$pca_type, input$taste, input$scaled, input$scaled, input$numClusters), {RV$data <- table(input$gprotein, input$assay, input$family, input$all, input$pca_type, input$taste, input$numClusters, input$scaled)})
     output$table <- DT::renderDataTable({
       DT::datatable(RV$data,
+                    filter = "top",
+                    height = 1,
+                    class = 'cell-border strip hover',
+                    extensions = list("ColReorder" = NULL,
+                                      "Buttons" = NULL,
+                                      "FixedColumns" = list(leftColumns=1)),
+                    options = list(
+                      dom = 'lBRrftpi',
+                      autoWidth=TRUE,
+                      pageLength = -1,
+                      lengthMenu = list(c(3, 5, 10, 15, 50, -1), c('3', '5', '10', '15','50', 'All')),
+                      ColReorder = TRUE,
+                      buttons =
+                        list(
+                          'copy',
+                          'print',
+                          list(
+                            extend = 'collection',
+                            buttons = c('csv', 'excel', 'pdf'),
+                            text = 'Download'
+                          )
+                        )
+                    )
+      )
+    }, server = TRUE)
+    
+    output$table2 <- DT::renderDataTable({
+      DT::datatable(RV$data2,
+                    filter = "top",
+                    height = 1,
+                    class = 'cell-border strip hover',
+                    extensions = list("ColReorder" = NULL,
+                                      "Buttons" = NULL,
+                                      "FixedColumns" = list(leftColumns=1)),
+                    options = list(
+                      dom = 'lBRrftpi',
+                      autoWidth=TRUE,
+                      pageLength = -1,
+                      lengthMenu = list(c(3, 5, 10, 15, 50, -1), c('3', '5', '10', '15','50', 'All')),
+                      ColReorder = TRUE,
+                      buttons =
+                        list(
+                          'copy',
+                          'print',
+                          list(
+                            extend = 'collection',
+                            buttons = c('csv', 'excel', 'pdf'),
+                            text = 'Download'
+                          )
+                        )
+                    )
+      )
+    }, server = TRUE)
+    
+    output$table3 <- DT::renderDataTable({
+      DT::datatable(RV$data3,
                     filter = "top",
                     height = 1,
                     class = 'cell-border strip hover',
