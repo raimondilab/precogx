@@ -592,8 +592,8 @@ if __name__ == "__main__":
     ## Parser
     parser = argparse.ArgumentParser(description='Script to predict GPCR couplings using ESM and/or seq-based features', epilog='End of help')
     parser.add_argument('assay', help='Input what assay is used (all or ebret or shed)')
-    parser.add_argument('--file', help='Input File (FASTA/Mechismo format)')
-    parser.add_argument('--input', help='Input (Mechismo format)')
+    parser.add_argument('--file', help='Input File (FASTA/Mechismo format). Applicable for both webApp and command-line versions')
+    parser.add_argument('--input', help='Input (Mechismo format). Applicable only when accessed via the webApp')
     parser.add_argument('--numseqs', help='Num of seqs allowed (default: 15)')
     args = parser.parse_args()
     assay = args.assay
@@ -604,6 +604,6 @@ if __name__ == "__main__":
         numseqs = 25
     else:
         numseqs = int(numseqs)
-    #uniq_id = main(numseqs, input, input_file, assay, os.getcwd())
-    uniq_id = main(numseqs, input, input_file, assay, './../../')
+    uniq_id = main(numseqs, input, input_file, assay, os.getcwd())
+    #uniq_id = main(numseqs, input, input_file, assay, '')
     print ('Done')
