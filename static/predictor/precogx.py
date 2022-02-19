@@ -298,16 +298,17 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
                         for gprotein in dic_gprot_family[gprot_family]:
                             gpcrs[gpcr_given].iuphar[gprotein] = 'SC'
 
-def formatInputFile(numseqs, input_file):
+def formatInputFileOld(numseqs, input_file):
     num = 0
     ## if input in FASTA format
     gpcrs = {}
     for line in open(input_file, 'r'):
         if num == numseqs:
             break
-        if line.split != []:
-            if line.split() != []:
-                if line[0] != '#':
+        if line[0] != '#':
+            if line.split != []:
+                if line[0] == '>':
+                    print (line)
                     num += 1
                     given_name = line.replace('\n', '')
 
@@ -333,9 +334,11 @@ def formatInputFile(numseqs, input_file):
                         gpcrs[name] = GPCR(name)
 
                     gpcrs[name].var.append(variant)
-        else:
-            gpcrs[name].seq += line.replace('\n', '')
+                else:
+                    print (line)
+                    gpcrs[name].seq += line.replace('\n', '')
 
+    print (gpcrs[name].seq)
     new_input = ''
     for name in gpcrs:
         for variant in gpcrs[name].var:
@@ -351,8 +354,10 @@ def formatInputFile(numseqs, input_file):
     #sys.exit()
     return (gpcrs, new_input)
 
-def formatInput(numseqs, input):
+def formatInputFile(numseqs, input_file):
     num = 0
+    with open(input_file, 'r') as file:
+        input = file.read()
     ## if input in FASTA format
     gpcrs = {}
     if '>' in input:
@@ -440,7 +445,100 @@ def formatInput(numseqs, input):
                     #print (position, newAA)
                     new_input += gpcrs[gpcr].seq[:position] + newAA + gpcrs[gpcr].seq[position+1:] + '\n'
 
-    print (new_input)
+    #print (new_input)
+    return (gpcrs, new_input)
+
+def formatInput(numseqs, input):
+    num = 0
+    ## if input in FASTA format
+    gpcrs = {}
+    if '>' in input:
+        for line in input.split('\n'):
+            if num == numseqs:
+                break
+            if line.split() != []:
+                if line[0] != '#':
+                    if line[0] == '>':
+                        num += 1
+                        given_name = line.replace('\n', '')
+
+                        pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
+                        pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
+
+                        if pattern1.match(given_name) != None or pattern2.match(given_name):
+                            given_name = given_name.split('>')[1].split(' ')[0]
+
+                        else:
+                            #given_name = line.split('>')[1].replace('\n', '').replace(' ','').split()[0]
+                            given_name = str(line.split('>')[1])
+                            given_name = ' '.join(given_name.split())
+
+                        if '/' not in given_name:
+                            name = str(given_name)
+                            variant = 'WT'
+                        else:
+                            name = '/'.join(given_name.split('/')[:-1])
+                            variant = given_name.split('/')[-1]
+                        if name not in gpcrs:
+                            gpcrs[name] = GPCR(name)
+
+                        gpcrs[name].var.append(str(variant))
+                    else:
+                        gpcrs[name].seq += line.replace('\n', '').split()[0]
+    else:
+        ## if input is uniprot acc or gene name
+        for line in input.split('\n'):
+            if num == numseqs:
+                break
+            if line.split() != []:
+                if line[0] != '#':
+                    num += 1
+                    given_name = line.replace('\n', '')
+
+                    pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
+                    pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
+
+                    if pattern1.match(given_name) != None or pattern2.match(given_name):
+                        given_name = given_name.split(' ')[0]
+
+                    else:
+                        given_name = str(line.replace(' ','').split()[0])
+                        #print ('this one', given_name)
+                        #given_name = ' '.join(given_name.split())
+
+                    if '/' not in given_name:
+                        name = given_name
+                        variant = 'WT'
+                    else:
+                        name = given_name.split('/')[0]
+                        variant = given_name.split('/')[1]
+
+                    if name not in gpcrs:
+                        #print (name, variant, name.split())
+                        gpcrs[name] = GPCR(name)
+                        gpcrs[name].seq = fetchSeq(name)
+
+                    gpcrs[name].var.append(variant)
+
+    #print (name, gpcrs[name].seq)
+    new_input = ''
+    for gpcr in gpcrs:
+        if 'WT' not in gpcrs[gpcr].var:
+            gpcrs[gpcr].var.append('WT')
+        for variant in gpcrs[gpcr].var:
+            if gpcrs[gpcr].seq != None:
+                if variant == 'WT':
+                    new_input += '>'+str(gpcr)+'_WT\n'
+                    new_input += str(gpcrs[gpcr].seq) + '\n'
+                    #print (gpcr)
+                else:
+                    new_input += '>'+gpcr+'_'+variant+'\n'
+                    position = int(variant[1:-1]) - 1
+                    newAA = variant[-1]
+                    #print (position, newAA)
+                    new_input += gpcrs[gpcr].seq[:position] + newAA + gpcrs[gpcr].seq[position+1:] + '\n'
+
+    #print (new_input)
     return (gpcrs, new_input)
 
 def fetchSeq(name):
@@ -493,7 +591,7 @@ def fetchSeq(name):
 if __name__ == "__main__":
     ## Parser
     parser = argparse.ArgumentParser(description='Script to predict GPCR couplings using ESM and/or seq-based features', epilog='End of help')
-    parser.add_argument('assay', help='Input what assay is used (ebret or shed)')
+    parser.add_argument('assay', help='Input what assay is used (all or ebret or shed)')
     parser.add_argument('--file', help='Input File (FASTA/Mechismo format)')
     parser.add_argument('--input', help='Input (Mechismo format)')
     parser.add_argument('--numseqs', help='Num of seqs allowed (default: 15)')
@@ -506,4 +604,6 @@ if __name__ == "__main__":
         numseqs = 25
     else:
         numseqs = int(numseqs)
-    uniq_id = main(numseqs, input, input_file, assay, os.getcwd())
+    #uniq_id = main(numseqs, input, input_file, assay, os.getcwd())
+    uniq_id = main(numseqs, input, input_file, assay, './../../')
+    print ('Done')
