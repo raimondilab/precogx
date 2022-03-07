@@ -18692,23 +18692,3 @@ transform: rotate(0deg);
 margin-left: -2.75rem;
 }
 
-@media screen and (min-width: 1280px) {
-#home.home-margin{
- padding-top: 18.7rem !important;
-  padding-bottom: 18.7rem !important;
-}
-
-@media screen and (min-width: 1920px) {
-//For Projectors or Higher Resolution Screens (Full HD)
-#home.home-margin {
- padding-top: 18.7rem !important;
-  padding-bottom: 18.7rem !important;
-}
-}
-@media screen and (min-width: 3840px) {
-//For 4K Displays (Ultra HD)
-#home.home-margin{
- padding-top: 20rem !important;
-  padding-bottom: 20rem !important;
-}
-}
