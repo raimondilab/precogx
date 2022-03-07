@@ -61,12 +61,17 @@ window.hideCookieBanner = hideCookieBanner;
       $("#running").hide();
 
       $("#submit").click(function(){
-        $("#home").slideUp();
 
-        var element = document.getElementById("footer");
-        element.classList.add("footer");
+       var val = document.querySelector('#validationTextarea').value.trim();
 
-        $("#running").show(1000);
+       if (val != ""){
+           $("#home").slideUp();
+
+            var element = document.getElementById("footer");
+            element.classList.add("footer");
+
+            $("#running").show(1000);
+        }
       });
 });
 
