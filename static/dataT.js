@@ -1,4 +1,4 @@
-function attempt(assay, assays, path_to_json_output) {
+function attempt(assay, assays, path_to_json_output, first_gprotein, first_gprotein_index) {
   var dataT = initTable(path_to_json_output, first_gprotein, first_gprotein_index);
   var string = [];
   //alert(assays.split(',')[2]);
@@ -36,7 +36,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       inP.setAttribute("value", "option1");
       inP.setAttribute("checked", "");
       //inP.setAttribute("onchange", "alert();");
-      inP.setAttribute("onclick", "attempt(\'"+assays[i]+"\',\'"+assays+"\', \'"+path_to_json_output+"\');");
+      inP.setAttribute("onclick", "attempt(\'"+assays[i]+"\',\'"+assays+"\', \'"+path_to_json_output+"\', \'"+first_gprotein+"\', \'"+first_gprotein_index+"\');");
       //inP.onclick = attempt();
       var label = document.createElement("LABEL");
       label.setAttribute("class", "form-check-label");
