@@ -10,7 +10,7 @@
             <div class="col-md-12 text-center text-md-start fs-1 mb-5">
                 <h1 class="fw-bold mb-4">Help</h1>
                 <h2 class="fw-bold mb-4"> Web-server usage</h2>
-                <p class="text-justify fs-0">
+                <p class="text-justify fs-0 mb-4">
 			A user can input either a wild type (WT) or mutated protein sequence. In the latter case, calculation of the WT is also carried out for comparison purposes. Protein embeddings from the pre-trained <a href="https://github.com/facebookresearch/esm" target="_blank">ESM-1b model</a> are calculated for the input sequence. These are used to (i) calculate the coupling preferences of the input to G-protein and β-arrestins  (ii) project them on an embedded space encompassing the human GPCRome, and (iii) visualise predicted contacts enriched/depleted for a given coupling group in 1D (sequence), 2D (contact map) or 3D (structure).
                 </p>
                 <h2 class="fw-bold mb-4">Input format and options</h2>
@@ -24,15 +24,14 @@
 		    <li class="text-justify fs-0"><strong>FASTA format</strong>: A protein specified as <a href = "https://en.wikipedia.org/wiki/FASTA_format" target="_blank">whole sequence</a></li>
                     <li class="text-justify fs-0"><strong>Submit</strong>: Execute the input</li>
                 </ul>
-		<p class="text-justify fs-0">
+		<p class="text-justify fs-0 mb-4">
 		See <a href="https://precogx.bioinfolab.sns.it" target="_blank">examples</a> on home page.
 		</p>
                 <h2 class="fw-bold mb-4">Output Page</h2>
-                <img class="pt-md-0 center" src="static/img/gallery/output_page.png" alt="result page"/>
-                <p></p>
+                <img class="pt-md-0 center mb-4" src="static/img/gallery/output_page.png" alt="result page"/>
 
                 <h2 class="fw-bold mb-4">Coupling probabilities panel</h2>
-                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                <div class="row min-vh-xl-100 min-vh-xxl-25 mb-4">
                     <div class="col-md-6">
                         <img class="pt-md-0 center w-100" src="static/img/gallery/coupling_probabilities.png" alt="result page"/>
                     </div>
@@ -64,7 +63,7 @@
 
 
                 <h2 class="fw-bold mb-4">PCA panel</h2>
-                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                <div class="row min-vh-xl-100 min-vh-xxl-25 mb-4">
                     <div class="col-md-6">
                         <img class="pt-md-0 center w-100" src="static/img/gallery/PCA.png" alt="result page"/>
                     </div>
@@ -75,10 +74,10 @@
                         </p>
                     </div>
                 </div>
-                <p></p>
+
 
                 <h2 class="fw-bold mb-4">Predicted contact Panel</h2>
-                <div class="row min-vh-xl-100 min-vh-xxl-25">
+                <div class="row min-vh-xl-100 min-vh-xxl-25 mb-4">
                     <div class="col-md-6">
                         <img class="pt-md-0 center w-100" src="static/img/gallery/predicted_contacts.png" alt="result page"/>
                     </div>
@@ -87,9 +86,10 @@
 			The Predicted contact panel displays differential predicted contacts for a particular coupling group. The predicted contacts for each individual receptor are grouped together on the basis of a specific coupling preferences and summarised via  log-odds ratio statistics, indicating contacts that are more (shown in green) or less (red) frequently than expected. Contact statistics is referenced to <a href = "https://www.sciencedirect.com/science/article/abs/pii/S1043947105800497" target="_blank">Ballesteros-Weinstein (BW) numbering scheme</a> obtained from <a href="https://gpcrdb.org/" target="blank_">GPCRDB</a>. The user will also find a slider widget, which can be used filter and visualize the predicted contacts with log-odds ratio greater than user-specified absolute value.
                         </p>
                     </div>
-                    <p></p>
+
+                    </div>
                     <h2 class="fw-bold mb-4">Sequence Panel</h2>
-                    <div class="row min-vh-xl-100 min-vh-xxl-25">
+                    <div class="row min-vh-xl-100 min-vh-xxl-25 mb-4">
                         <div class="col-md-6">
                             <img class="pt-md-0 center w-100" src="static/img/gallery/sequence_panel.png" alt="result page"/>
                         </div>
@@ -99,7 +99,7 @@
                             </p>
                         </div>
                     </div>
-                    <p></p>
+
                     <h2 class="fw-bold mb-4">Structure Panel</h2>
                     <div class="row min-vh-xl-100 min-vh-xxl-25">
                         <div class="col-md-6">
@@ -159,7 +159,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <p></p>
+
                     <h5 class="fw-bold mb-4">Contacts</h5>
                     <p class="text-justify fs-0">Francesco Raimondi - francesco.raimondi@sns.it</p>
                     <p class="text-justify fs-0">Marin Matic - marin.matic@sns.it</p>
