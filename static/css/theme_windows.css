@@ -18702,3 +18702,10 @@ div.row:nth-child(4){
 }
 
 
+div.checkboxRight {
+  position: absolute;
+  display: inline-block;
+  right: -10px;
+  font-size: 0.65rem !important;
+  top: -4px;
+}
