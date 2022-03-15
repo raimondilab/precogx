@@ -18692,3 +18692,8 @@ transform: rotate(0deg);
 margin-left: -2.75rem;
 }
 
+#home.home-margin{
+ padding-top: calc(14%) !important;
+  padding-bottom: calc(14%) !important;
+}
+
