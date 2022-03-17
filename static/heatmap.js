@@ -1,4 +1,4 @@
-function makeHeatmap(cutoff, gpcr, gprotein) {
+function makeHeatmap(cutoff, distance, gpcr, gprotein) {
   var gpcr = gpcr;
   var gprotein = gprotein;
   $.ajax({
@@ -6,7 +6,7 @@ function makeHeatmap(cutoff, gpcr, gprotein) {
     type: "post", //request type,
     dataType: 'json',
     //data: JSON.stringify({pdbid: pdbid, chainGPCR: chainGPCR, chainGPROT: chainGPROT, gpcr: gpcr}),
-    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff}),
+    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, distance: distance}),
     success: function(response){
 				console.log(response);
         var data = [

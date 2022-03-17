@@ -1,12 +1,12 @@
 // Function to read the GPCR name from the Results table and fetch it's FASTA
 // and render it in the Sequence Panel
-function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, uniq_id) {
+function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, distance, uniq_id) {
   //alert(gpcr);
   $.ajax({
     url:"/fetchContactsSequence", //the page containing python script
     type: "post", //request type,
     dataType: 'json',
-    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, path_to_fasta: path_to_fasta, uniq_id: uniq_id}),
+    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, distance: distance, path_to_fasta: path_to_fasta, uniq_id: uniq_id}),
     success: function(response){
 				console.log(response);
         sequence = response['sequence']

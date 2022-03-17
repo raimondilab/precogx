@@ -139,6 +139,10 @@ def main(numseqs, input, input_file, assay, path):
         repr_layer=list(set(md))
         repr_layer.sort()
 
+    ##Run for all layers rather than just selected ones.
+    ##This line overwrites the previous FOR loop
+    repr_layer = [i for i in range(0, 34)]
+
     extract.main(model_location,input_file,str(input_embedding),repr_layer)
 
     #print ('Generating hand-creafted features')
@@ -159,6 +163,40 @@ def main(numseqs, input, input_file, assay, path):
         #np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein, Xs_test_pca_copy)
         for name, row in zip(d, Xs_test_pca_copy):
             np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)
+
+    ###########################################################################
+    ###########################################################################
+    print ('Generating all layers')
+    ## Save PCA for all layers
+    ## TEST SET
+    for layer in range(0, 34):
+        TEST_FASTA_PATH = input_file
+        TEST_EMB_PATH = input_embedding
+        Xtest = []
+        gpcr_test = []
+        for header, _seq in esm.data.read_fasta(TEST_FASTA_PATH):
+            if header.split('>')[1]:
+                #print (header)
+                gpcr_test.append(header.split('>')[1])
+                fn = TEST_EMB_PATH+header[1:]+'.pt'
+                embs = torch.load(fn)
+                Xtest.append(embs['mean_representations'][layer])
+                #if len(Xtest) == 50:
+                 #   break
+        Xtest = torch.stack(Xtest, dim=0).numpy()
+        Xs_test = Xtest
+        #print (Xs_test)
+        #print ('outside FOR loop in layer', layer)
+        '''
+        pca = load(homeDir + '/static/33layer_PCA/33layer.npy')
+        Xs_test_pca = pca.transform(Xs_test)
+        print (Xs_test_pca)
+        '''
+        for name, row in zip(d, Xs_test):
+            np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+str(layer)+'layer_'+name, row)
+    print ('Done with generating all layers')
+    ###########################################################################
+    ###########################################################################
 
     for gpcr in gpcrs:
         OtherSources(gpcr, gpcrs, homeDir)

@@ -33,7 +33,8 @@ def sortPositions(positions):
         if position not in ['Nterm', 'Cterm']:
             if '.' in position:
                 base = position.split('.')[0]
-                value = int(position.split('.')[1])
+                #value = int(position.split('.')[1])
+                value = int(position.split('.')[1])*(10**(len(position.split('.')[1])*(-1)))
             else:
                 base = position
                 value = 0
@@ -72,23 +73,24 @@ def sortPositions(positions):
         row.append(value)
         data.append(row)
 
-    #print (data)
     df = pd.DataFrame(data, columns = ['position', 'order', 'base', 'value'])
     df = df.sort_values(['order','value'],ascending=[True, True])
+    #print (df.to_numpy())
     positions = []
     for row in df.to_numpy():
         positions.append(row[0])
 
     return (np.array(positions))
 
-def extract_contacts(gprotein_given, cutoff):
+def extract_contacts(gprotein_given, cutoff, distance):
     assay = ''
     for line in open(path+'/data/contacts/gprotein_best_layer.txt', 'r'):
         if gprotein_given == line.split('\t')[0]:
             assay = line.split('\t')[1]
     #print (gprotein_given)
     dic = {}; positions = []; pair_positions = []; scores = [];
-    for line in open(path+'/data/contacts/all_positions_count_'+assay+'_scaled_web.txt', 'r'):
+    '''
+    for line in open(path+'/data/contacts/all_positions_count_'+assay+'_scaled_web_old.txt', 'r'):
         gprotein_found = line.split('\t')[0]
         if gprotein_given == gprotein_found:
             #print ('here')
@@ -111,7 +113,39 @@ def extract_contacts(gprotein_given, cutoff):
                     positions.append(pos2)
                 pair_positions.append(pos1+':'+pos2+':'+str(score))
             scores.append(score)
+    '''
+    for line in open(path+'/data/contacts/position_'+assay+'_scaled_web_new.txt', 'r'):
+        gprotein_found = line.split('\t')[0]
+        if gprotein_given == gprotein_found:
+            #print ('here')
+            #print (line)
+            pos1 = line.split('\t')[1]
+            pos2 = line.split('\t')[2]
+            score = float(line.split('\t')[3])
+            dis = line.replace('\n', '').split('\t')[-1]
+            if dis == '-':
+                dis = 1000.0 ## set by default a high value so that it is anyway selected
+            else:
+                dis = float(dis)
+            if score >= cutoff or score <= (-1.0)*cutoff and dis >= distance:
+                if pos1 not in dic:
+                    dic[pos1] = {}
+                dic[pos1][pos2] = score
 
+                if pos2 not in dic:
+                    dic[pos2] = {}
+                dic[pos2][pos1] = score
+
+                if pos1 not in positions:
+                    positions.append(pos1)
+                #positions.append(pos1)
+                if pos2 not in positions:
+                    positions.append(pos2)
+                pair_positions.append(pos1+':'+pos2+':'+str(score))
+            scores.append(score)
+
+    print ('positions', len(positions))
+    print ('distance', distance, dis)
     scoresMax = max(scores)
     scoresMin = min(scores)
     positions = np.array(positions)
@@ -156,7 +190,8 @@ def fetchContactsHeatmap():
         #print (data['gpcr'])
         gprotein_given = data['gprotein']
         cutoff = float(data['cutoff'])
-        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
+        distance = float(data['distance'])
+        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
         for i in range(0, len(positions)):
             positions[i] = str(positions[i]).replace('.', 'x')
         return jsonify({'fetch_contactsMin': scoresMin, 'fetch_contactsMax': scoresMax, 'fetch_contacts': scores, 'positions': positions.tolist()})
@@ -164,11 +199,13 @@ def fetchContactsHeatmap():
         return ("<html><h3>It was a GET request</h3></html>")
 
 def extract_pca(gprotein, assay, pca_type):
-    if pca_type != 'GPCRome':
+    if pca_type == 'Best PCA':
         Xs_train_pca = np.load(path+'/static/best_PCA/'+gprotein+'.npy', allow_pickle=True)
+    elif pca_type == 'GPCRome':
+        Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
     else:
-        #Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
-        Xs_train_pca = np.load(path+'/static/best_PCA/GNAZ.npy', allow_pickle=True)
+        Xs_train_pca = np.load(path+'/static/embedding_all/'+pca_type+'.npy', allow_pickle=True)
+        #Xs_train_pca = np.load(path+'/static/best_PCA/GNAZ.npy', allow_pickle=True)
     score_coupling, score_uncoupling, Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
     #print ('train', Xs_train_pca_coupling)
     score_coupling = score_coupling.tolist()
@@ -290,7 +327,7 @@ def filter_gpcr_list(X, assay, gprotein):
     #print (genes_to_consider_uncoupling)
 
     gpcr_list = []
-    for line in open(path+'/static/gpcr_list_new_GN.txt', 'r'):
+    for line in open(path+'/static/gpcr_list_GN.txt', 'r'):
         gene = line.replace('\n', '').split('\t')[1]
         acc = line.replace('\n', '').split('\t')[0]
         gpcr_list.append(gene + '|' + acc)
@@ -301,6 +338,8 @@ def filter_gpcr_list(X, assay, gprotein):
     X_grey = []
     genes_to_consider_grey = []
     for gene, row in zip(gpcr_list, X):
+        if 'MC1R' in gene:
+            print ('couple', gene, row[:2])
         if gene in genes_to_consider_coupling:
             X_pos.append(row)
         elif gene in genes_to_consider_uncoupling:
@@ -333,31 +372,45 @@ def fetchPCA():
 
         if 'Barr' in gprotein_given:
             assay = 'ebBRET'
-            assayList = ['ebBRET', 'STRING']
+            assayList = ['ebBRET', 'STRING', 'Class']
         elif gprotein_given in both:
             assay = 'Shedding'
-            assayList = ['Shedding', 'ebBRET', 'IUPHAR']
+            assayList = ['Shedding', 'ebBRET', 'IUPHAR', 'Class']
         elif gprotein_given in shedding:
             assay = 'Shedding'
-            assayList = ['Shedding', 'IUPHAR']
-        else:
+            assayList = ['Shedding', 'IUPHAR', 'Class']
+        elif gprotein_given in ebBRET:
             assay = 'ebBRET'
-            assayList = ['ebBRET', 'IUPHAR']
+            assayList = ['ebBRET', 'IUPHAR', 'Class']
+        elif assay_given == 'Class':
+            assay = 'Class'
+            assayList = ['Shedding', 'ebBRET', 'IUPHAR', 'Class']
 
         if assay_given in assayList:
             assay = assay_given
 
         ### MUT
-        Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
+        if pca_type == 'GPCRome':
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+gpcr_given+'.npy', allow_pickle=True)
+        elif pca_type == 'Best PCA':
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
+        else:
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
         #print (x_test)
         #print (y_test)
+
         ### WT
         if '_WT' not in gpcr_given:
             wt = gpcr_given.split('_')[0] + '_WT'
-            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
+            if pca_type == 'GPCRome':
+                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
+            elif pca_type == 'Best PCA':
+                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
+            else:
+                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
             #print (Xs_wt_pca)
             #x_test = Xs_test_pca[:,0].tolist()
             #y_test = Xs_test_pca[:,1].tolist()
@@ -400,6 +453,201 @@ def fetchPCA():
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
+@app.route('/fetchPCA2', methods=['GET', 'POST'])
+def fetchPCA2():
+    if request.method == 'POST':
+        data = request.get_json(force=True)
+        assay_given = data['assay']
+        pca_type = data['pca_type']
+        gprotein_given = data['gprotein']
+        gpcr_given = data['gpcr']
+        #print (gprotein_given, gpcr_given)
+        uniq_id = data['uniq_id']
+
+        #if assay == '':
+        assay = assay_given;
+
+        ### MUT
+        if pca_type == 'GPCRome':
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+gpcr_given+'.npy', allow_pickle=True)
+        elif pca_type == 'Best PCA':
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
+        else:
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
+        #print ('test',Xs_test_pca)
+        x_test = Xs_test_pca[0].tolist()
+        y_test = Xs_test_pca[1].tolist()
+        #print (x_test)
+        #print (y_test)
+
+        ### WT
+        if '_WT' not in gpcr_given:
+            wt = gpcr_given.split('_')[0] + '_WT'
+            if pca_type == 'GPCRome':
+                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
+            elif pca_type == 'Best PCA':
+                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
+            else:
+                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
+            #print (Xs_wt_pca)
+            #x_test = Xs_test_pca[:,0].tolist()
+            #y_test = Xs_test_pca[:,1].tolist()
+            x_wt = Xs_wt_pca[0].tolist()
+            y_wt = Xs_wt_pca[1].tolist()
+            #print (x_wt)
+            #print (y_wt)
+        else:
+            x_wt = '-'
+            y_wt = '-'
+
+        #score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
+        if pca_type == 'Best PCA':
+            Xs_train_pca = np.load(path+'/static/best_PCA/'+gprotein_given+'.npy', allow_pickle=True)
+        elif pca_type == 'GPCRome':
+            Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
+        else:
+            Xs_train_pca = np.load(path+'/static/embedding_all/'+pca_type+'.npy', allow_pickle=True)
+
+        classes = {}
+        for line in open(path+'/data/classification.txt', 'r'):
+            if 'Uniprot_acc' not in line:
+                acc = line.split('\t')[0]
+                cls = line.split('\t')[-1].replace('\n', '')
+                classes[acc] = cls
+
+        gpcr_list = []
+        for line in open(path+'/static/gpcr_list_GN.txt', 'r'):
+            gene = line.replace('\n', '').split('\t')[1]
+            acc = line.replace('\n', '').split('\t')[0]
+            gpcr_list.append(gene + '|' + acc)
+            #gpcr_list.append(line.replace('\n', '').split('\t')[1])
+
+        X_classA = []
+        classA = []
+        X_classB = []
+        classB = []
+        X_classC = []
+        classC = []
+        X_frizzeled = []
+        frizzeled = []
+        X_taste = []
+        taste = []
+        X_other = []
+        other = []
+        for gpcr, row in zip(gpcr_list, Xs_train_pca):
+            if 'MC1R' in gpcr:
+                print ('class', gpcr, row[:2])
+            acc = gpcr.split('|')[1]
+            if classes[acc] == 'classA':
+                X_classA.append(row.tolist())
+                classA.append(gpcr)
+            elif classes[acc] == 'classB':
+                X_classB.append(row)
+                classB.append(gpcr)
+            elif classes[acc] == 'classC':
+                X_classC.append(row)
+                classC.append(gpcr)
+            elif classes[acc] == 'Frizzeled':
+                X_frizzeled.append(row)
+                frizzeled.append(gpcr)
+            elif classes[acc] == 'Taste':
+                X_taste.append(row)
+                taste.append(gpcr)
+            else:
+                X_other.append(row.tolist())
+                other.append(gpcr)
+
+        X_classA = np.array(X_classA)
+        X_classB = np.array(X_classB)
+        X_classC = np.array(X_classC)
+        X_frizzeled = np.array(X_frizzeled)
+        X_taste = np.array(X_taste)
+        X_other = np.array(X_other)
+        #print (X_classA)
+
+        x_classA = X_classA[:,0].tolist()
+        y_classA = X_classA[:,1].tolist()
+        x_classB = X_classB[:,0].tolist()
+        y_classB = X_classB[:,1].tolist()
+        x_classC = X_classC[:,0].tolist()
+        y_classC = X_classC[:,1].tolist()
+        x_frizzeled = X_frizzeled[:,0].tolist()
+        y_frizzeled = X_frizzeled[:,1].tolist()
+        x_taste = X_taste[:,0].tolist()
+        y_taste = X_taste[:,1].tolist()
+        x_other = X_other[:,0].tolist()
+        y_other = X_other[:,1].tolist()
+
+        for gpcr, x, y in zip(classA, x_classA, y_classA):
+            if 'MC1R' in gpcr:
+                print ('classA', gpcr, x, y)
+                print (len(x_classA), len(y_classA))
+
+        #print (y_classA)
+        #print (genes_to_consider_coupling)
+        minX = min(x_classA + x_classB + x_classC + x_frizzeled + x_taste + x_other)
+        maxX = max(x_classA + x_classB + x_classC + x_frizzeled + x_taste + x_other)
+        minY = min(y_classA + y_classB + y_classC + y_frizzeled + y_taste + y_other)
+        maxY = max(y_classA + y_classB + y_classC + y_frizzeled + y_taste + y_other)
+        print(minX, maxX)
+        return jsonify({'x_classA': x_classA,
+                        'x_classB': x_classB,
+                        'x_classC': x_classC,
+                        'x_frizzeled': x_frizzeled,
+                        'x_taste': x_taste,
+                        'x_other': x_other,
+                        'y_classA': y_classA,
+                        'y_classB': y_classB,
+                        'y_classC': y_classC,
+                        'y_frizzeled': y_frizzeled,
+                        'y_taste': y_taste,
+                        'y_other': y_other,
+                        'assay': assay,
+                        'classA': classA,
+                        'classB': classB,
+                        'classC': classC,
+                        'frizzeled': frizzeled,
+                        'taste': taste,
+                        'other': other,
+                        'x_test': x_test,
+                        'y_test': y_test,
+                        'x_wt': x_wt,
+                        'y_wt': y_wt,
+                        'minX': minX,
+                        'maxX': maxX,
+                        'minY': minY,
+                        'maxY': maxY})
+    else:
+        return ("<html><h3>It was a GET request</h3></html>")
+
+
+@app.route('/assignOptions', methods=['GET', 'POST'])
+def assignOptions():
+    if request.method == 'POST':
+        data = request.get_json(force=True)
+        assay_given = data['assay']
+        pca_type = data['pca_type']
+        gprotein_given = data['gprotein']
+        gpcr_given = data['gpcr']
+        #print (gprotein_given, gpcr_given)
+        uniq_id = data['uniq_id']
+
+        for line in open(path+'/data/contacts/gprotein_best_layer.txt', 'r'):
+            if gprotein_given == line.split('\t')[0]:
+                assay = line.split('\t')[1]
+                bestPCA = line.split('\t')[2].replace('\n', '')
+                break
+
+        layers = []
+        for i in range(0,34):
+            if str(i) == bestPCA:
+                layers.append(str(i)+' ('+'best)')
+            else:
+                layers.append(str(i))
+
+        return jsonify({'layers': layers})
+
+
 def DoBLAST(uniq_id, gpcr_given):
     handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
     blast_records = NCBIXML.parse(handle)
@@ -412,9 +660,22 @@ def DoBLAST(uniq_id, gpcr_given):
             for alignment in blast_record.alignments:
                 for hsp in alignment.hsps:
                     bestHIT = alignment.title.split(' ')[1]
+                    q_num = 0
+                    s_num = 0
+                    for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
+                        if q!='-' and s!='-':
+                            GPCRDB2SEQ[s_num + hsp.sbjct_start] = q_num + hsp.query_start
+                            q_num += 1
+                            s_num += 1
+                        elif q!='-':
+                            q_num += 1
+                        else:
+                            s_num += 1
+                    '''
                     for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
                         if q!='-' and s!='-':
                             GPCRDB2SEQ[num + hsp.sbjct_start] = num + hsp.query_start
+                    '''
                     break
                 break
             #print (bestHIT)
@@ -433,7 +694,8 @@ def fetchContactsSequence():
         path_to_fasta = data['path_to_fasta']
         uniq_id = data['uniq_id']
         cutoff = float(data['cutoff'])
-        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
+        distance = float(data['distance'])
+        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
 
         #print ('fetch_seq', positions)
         fasta_sequence = ''; flag = 0
@@ -497,18 +759,30 @@ def fetchContactsSequence():
         mutation_position = gpcr_given.split('_')[1]
         if mutation_position != 'WT':
             position = int(mutation_position[1:-1])
+            #print (position)
             if position not in seq_positions:
                 for i in range(0, len(seq_positions)):
-                    if seq_positions[i] < position and seq_positions[i+1] > position:
-                        #print (seq_positions[i], position, seq_positions[i+1])
-                        new_seq_positions.append(position)
-                        new_bw_positions.append('-')
+                    #print (seq_positions[i])
+                    if seq_positions[i] < position:
+                        if i == len(seq_positions)-1:
+                            new_seq_positions.append(position)
+                            new_bw_positions.append('-')
+                        elif seq_positions[i+1] > position:
+                            #print (seq_positions[i], position, seq_positions[i+1])
+                            new_seq_positions.append(position)
+                            new_bw_positions.append('-')
+                        else:
+                            new_seq_positions.append(seq_positions[i])
+                            new_bw_positions.append(bw_positions[i])
                     else:
                         new_seq_positions.append(seq_positions[i])
                         new_bw_positions.append(bw_positions[i])
 
             seq_positions = new_seq_positions
             bw_positions = new_bw_positions
+
+        #print (seq_positions)
+        #print (bw_positions)
 
         return jsonify({'fetch_contacts': scores,
                         'seq_positions': seq_positions,
@@ -585,13 +859,24 @@ def convertPositionsBW2PDB():
                 #print (blast_record.query)
                 if gpcr_given == blast_record.query:
                     for alignment in blast_record.alignments:
-                        for hsp in alignment.hsps:
-                            bestHIT = alignment.title.split(' ')[1]
-                            for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
-                                if q!='-' and s!='-':
-                                    SEQ2GPCRDB[num + hsp.query_start] = num + hsp.sbjct_start
+                        bestHIT = alignment.title.split(' ')[1]
+                        print (bestHIT)
+                        if bestHIT_ACC == bestHIT.split('|')[1]:
+                            for hsp in alignment.hsps:
+                                q_num = 0
+                                s_num = 0
+                                for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
+                                    if q!='-' and s!='-':
+                                        SEQ2GPCRDB[q_num + hsp.query_start] = s_num + hsp.sbjct_start
+                                        q_num += 1
+                                        s_num += 1
+                                    elif q!='-':
+                                        q_num += 1
+                                    else:
+                                        s_num += 1
+
+                                break
                             break
-                        break
                     break
 
             if mutation_sequence_position in SEQ2GPCRDB:
@@ -604,12 +889,22 @@ def convertPositionsBW2PDB():
         #print (modified_positions)
         #print (modified_pair_positions)
 
+        print (mutation_position)
+        print (mutation_position_label)
+
+        pdbData = ''
+        if 'AF:' in pdbID:
+            for line in open(path+'/data/PDB/AlphaFold/'+pdbID+'.pdb', 'r'):
+                pdbData += line
+            #print (data)
+
         return jsonify({'modified_positions': '_'.join(modified_positions),
                         'modified_positions_labels': '_'.join(modified_positions_labels),
                         'modified_num_contacts': '_'.join(modified_num_contacts),
                         'modified_pair_positions': '_'.join(modified_pair_positions),
                         'mutation_position': mutation_position,
-                        'mutation_position_label': mutation_position_label
+                        'mutation_position_label': mutation_position_label,
+                        'pdbData': pdbData
                         })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
@@ -621,8 +916,9 @@ def fetchContactsPDBStructure():
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
         cutoff = float(data['cutoff'])
+        distance = float(data['distance'])
         uniq_id = data['uniq_id']
-        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff)
+        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
         #print ('print', gprotein_given, pair_positions)
         ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
         return jsonify({'try': positions.tolist(),
@@ -668,13 +964,19 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
                 chain_info[pdbid]['gprotein_chain'] = gprotein_chain
         '''
 
+    #print (chain_info)
     dic = {}
     for line in open(path_to_output+'/blastp_output.txt', 'r'):
         if 'Query=' in line:
             name = line.split('Query=')[1].replace('\n', '').replace(' ', '')
             dic[name] = []
         elif line[0] == '>':
-            pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower()
+            #print (line)
+            if 'AF:' in line:
+                pdbid = line.split('>')[1].split('|')[0]
+            else:
+                pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower()
+            #print (pdbid)
             if pdbid in chain_info:
                 row = []
                 #print (chain_info[pdbid])
@@ -684,6 +986,7 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
                 #dic[name].append(row)
                 dic[name].append(pdbid+'_'+chain_info[pdbid]['gpcr_chain']+'_'+chain_info[pdbid]['gprotein_chain'])
 
+    #print ('PDBs', dic[gpcr])
     return(dic[gpcr])
     #return None
 

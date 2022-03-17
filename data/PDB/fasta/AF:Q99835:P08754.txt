@@ -1,0 +1,1117 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastp</BlastOutput_program>
+  <BlastOutput_version>BLASTP 2.10.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>data/GPCRDB/blastdb/GPCRDB</BlastOutput_db>
+  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
+  <BlastOutput_query-def>AF:Q99835:P08754|A</BlastOutput_query-def>
+  <BlastOutput_query-len>787</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_matrix>BLOSUM62</Parameters_matrix>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_gap-open>11</Parameters_gap-open>
+      <Parameters_gap-extend>1</Parameters_gap-extend>
+      <Parameters_filter>F</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_1</Iteration_query-ID>
+  <Iteration_query-def>AF:Q99835:P08754|A</Iteration_query-def>
+  <Iteration_query-len>787</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|209</Hit_id>
+  <Hit_def>sp|Q99835|SMO_HUMAN Smoothened homolog OS=Homo sapiens OX=9606 GN=SMO PE=1 SV=1</Hit_def>
+  <Hit_accession>209</Hit_accession>
+  <Hit_len>787</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>1621.29</Hsp_bit-score>
+      <Hsp_score>4197</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>787</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>787</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>787</Hsp_identity>
+      <Hsp_positive>787</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>787</Hsp_align-len>
+      <Hsp_qseq>MAAARPARGPELPLLGLLLLLLLGDPGRGAASSGNATGPGPRSAGGSARRSAAVTGPPPPLSHCGRAAPCEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVELPSRTLCQATRGPCAIVERERGWPDFLRCTPDRFPEGCTNEVQNIKFNSSGQCEVPLVRTDNPKSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDEPKRIKKSKMIAKAFSKRHELLQNPGQELSFSMHTVSHDGPVAGLAFDLNEPSADVSSAWAQHVTKMVARRGAILPQDISVTPVATPVPPEEQANLWLVEAEISPELQKRLGRKKKRRKRKKEVCPLAPPPELHPPAPAPSTIPRLPQLPRQKCLVAAGAWGAGDSCRQGAWTLVSNPFCPEPSPPQDPFLPSAPAPVAWAHGRRQGLGPIHSRTNLMDTELMDADSDF</Hsp_qseq>
+      <Hsp_hseq>MAAARPARGPELPLLGLLLLLLLGDPGRGAASSGNATGPGPRSAGGSARRSAAVTGPPPPLSHCGRAAPCEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVELPSRTLCQATRGPCAIVERERGWPDFLRCTPDRFPEGCTNEVQNIKFNSSGQCEVPLVRTDNPKSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDEPKRIKKSKMIAKAFSKRHELLQNPGQELSFSMHTVSHDGPVAGLAFDLNEPSADVSSAWAQHVTKMVARRGAILPQDISVTPVATPVPPEEQANLWLVEAEISPELQKRLGRKKKRRKRKKEVCPLAPPPELHPPAPAPSTIPRLPQLPRQKCLVAAGAWGAGDSCRQGAWTLVSNPFCPEPSPPQDPFLPSAPAPVAWAHGRRQGLGPIHSRTNLMDTELMDADSDF</Hsp_hseq>
+      <Hsp_midline>MAAARPARGPELPLLGLLLLLLLGDPGRGAASSGNATGPGPRSAGGSARRSAAVTGPPPPLSHCGRAAPCEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVELPSRTLCQATRGPCAIVERERGWPDFLRCTPDRFPEGCTNEVQNIKFNSSGQCEVPLVRTDNPKSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDEPKRIKKSKMIAKAFSKRHELLQNPGQELSFSMHTVSHDGPVAGLAFDLNEPSADVSSAWAQHVTKMVARRGAILPQDISVTPVATPVPPEEQANLWLVEAEISPELQKRLGRKKKRRKRKKEVCPLAPPPELHPPAPAPSTIPRLPQLPRQKCLVAAGAWGAGDSCRQGAWTLVSNPFCPEPSPPQDPFLPSAPAPVAWAHGRRQGLGPIHSRTNLMDTELMDADSDF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|203</Hit_id>
+  <Hit_def>sp|Q13467|FZD5_HUMAN Frizzled-5 OS=Homo sapiens OX=9606 GN=FZD5 PE=1 SV=2</Hit_def>
+  <Hit_accession>203</Hit_accession>
+  <Hit_len>585</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>181.415</Hsp_bit-score>
+      <Hsp_score>459</Hsp_score>
+      <Hsp_evalue>1.83455e-50</Hsp_evalue>
+      <Hsp_query-from>66</Hsp_query-from>
+      <Hsp_query-to>566</Hsp_query-to>
+      <Hsp_hit-from>29</Hsp_hit-from>
+      <Hsp_hit-to>547</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>152</Hsp_identity>
+      <Hsp_positive>249</Hsp_positive>
+      <Hsp_gaps>90</Hsp_gaps>
+      <Hsp_align-len>555</Hsp_align-len>
+      <Hsp_qseq>RAAPCEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVEL--PSRTLCQATRGPCAIVERERG--WPDFLRCTPDRFPE-GCTNEVQNIKFN--------------------------SSGQCE-------------VPLVRTDNP---KSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTY--QPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKS--NHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLP---TKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDEPKRIKKS</Hsp_qseq>
+      <Hsp_hseq>KAPVCQEITVPMCRG--IGYNLTHMPNQFNHDTQDEAGLEVHQFWPLVEI-QCSPDLRFFLCSMYTPICLPDYHKPLPPCRSVCERAKAGCSPLMRQYGFAWPERMSC--DRLPVLGRDAEVLCMDYNRSEATTAPPRPFPAKPTLPGPPGAPASGGECPAGGPFVCKCREPFVPILKESHPLYNKVRTGQVPNCAVPCYQPSFSADERTFATFWIGLWSVLCFISTSTTVATFLID-MERFRYPERPIIFLSACYLCVSLGFLVRLVVG-HASVACSREHNHIHYETTGPAL--CTIVFLLVYFFGMASSIWWVILSLTW---FLAAGMKWGNEAIAGYAQYFHLAAWLIPSVKSITALALSSVDGDPVAGICYVGNQNLNSLRGFVLGPLVLYLLVGTLFLLAGFVSLFRIRSVIKQGGTKTD----KLEKLMIRIGIFTLLYTVPASIVVACYLYEQHYRESWE----------AALTCACPGHDTGQP------RAKPEYWVLMLKYFMCLVVGITSGVWIWSGKTVESWR----RFTSRCCCRPRRGHKS</Hsp_hseq>
+      <Hsp_midline>+A  C+ +   +C G  + Y  T      + D+Q+EA  ++  +  L    +C   ++  LC++Y P C  D  +   P R++C+  +  C+ + R+ G  WP+ + C  DR P  G   EV  + +N                          S G+C              VP+++  +P   K     V  C + C  P F+  E      +I  +  +  + T  T+ATF+ D     RYP   + +++AC+   S+G+L + + G    + C  +      E T      C I+F++VY+  MA  +W+V+L+  W   F A G  +  + ++G   YFHL  W +P V ++  LA++ VDGD V+GIC+VG +N     GFVL P+ L L+VG  FL+ G ++LF I+S     G  ++    K+ + M+R+GIF  L      I  +C+ Y+   +  WE          A +T   P   T QP      + +P   V  +  F     GI    W+W+  T+  WR    R T +    P+R  KS</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|199</Hit_id>
+  <Hit_def>sp|Q9UP38|FZD1_HUMAN Frizzled-1 OS=Homo sapiens OX=9606 GN=FZD1 PE=1 SV=2</Hit_def>
+  <Hit_accession>199</Hit_accession>
+  <Hit_len>647</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>179.874</Hsp_bit-score>
+      <Hsp_score>455</Hsp_score>
+      <Hsp_evalue>1.63212e-49</Hsp_evalue>
+      <Hsp_query-from>117</Hsp_query-from>
+      <Hsp_query-to>559</Hsp_query-to>
+      <Hsp_hit-from>160</Hsp_hit-from>
+      <Hsp_hit-to>644</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>141</Hsp_identity>
+      <Hsp_positive>228</Hsp_positive>
+      <Hsp_gaps>88</Hsp_gaps>
+      <Hsp_align-len>508</Hsp_align-len>
+      <Hsp_qseq>RCWAVIQPLLCAVYMPKCENDRVELP-SRTLCQATRGPCAIVERERG--WPDFLRC-----------------------TPDRFPEGCTNEVQNI------------------KFNSSGQCEVPLVRTDNPKSWYEDVEGCGIQCQNP------LFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCR----ADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTT--YQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKS--NHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSF-----RDYVL-C-QANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDE</Hsp_qseq>
+      <Hsp_hseq>QCSAELKFFLCSMYAPVCTVLEQALPPCRSLCERARQGCEALMNKFGFQWPDTLKCEKFPVHGAGELCVGQNTSDKGTPTPSLLPEFWTSNPQHGGGGHRGGFPGGAGASERGKFSCPRALKVPSYLNYH----FLGEKDCGAPCEPTKVYGLMYFGPEELRFSRTWIGIWSVLCCASTLFTVLTYLVDMRRFS-YPERPIIFLSGCYTAVAVAYIAGFLLEDR--VVCNDKFAEDGARTVAQGTKKE--GCTILFMMLYFFSMASSIWWVILSLTW---FLAAGMKWGHEAIEANSQYFHLAAWAVPAIKTITILALGQVDGDVLSGVCFVGLNNVDALRGFVLAPLFVYLFIGTSFLLAGFVSLFRIRTIMKHDGTKTE----KLEKLMVRIGVFSVLYTVPATIVIACYFYEQAFRDQWERSWVAQSCKSYAIPCPHLQAGGGAPPHPPM-------SPDFTVFMIKYLMTLIVGITSGFWIWSGKTLNSWRKFYTRLTNSKQGE</Hsp_hseq>
+      <Hsp_midline>+C A ++  LC++Y P C      LP  R+LC+  R  C  +  + G  WPD L+C                       TP   PE  T+  Q+                   KF+     +VP     +    +   + CG  C+         F   E +   ++I  +  +    TLFT+ T++ D R  + YP   + +++ C+   ++ ++A F+   R  +VC      DG   + + T  E   C I+F+++Y+  MA  +W+V+L+  W   F A G    ++ +   + YFHL  W++P + T+ ILA+ QVDGD +SG+CFVG  N     GFVLAP+ + L +G  FL+ G ++LF I++   H G  +E    K+ + M+R+G+F  L      I  +C+FY+   + +WERS+     + Y + C       G P   P+        P   V  I        GI    W+W+  TL  WR+ + RLT     E</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|205</Hit_id>
+  <Hit_def>sp|O75084|FZD7_HUMAN Frizzled-7 OS=Homo sapiens OX=9606 GN=FZD7 PE=1 SV=2</Hit_def>
+  <Hit_accession>205</Hit_accession>
+  <Hit_len>574</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>176.792</Hsp_bit-score>
+      <Hsp_score>447</Hsp_score>
+      <Hsp_evalue>6.88862e-49</Hsp_evalue>
+      <Hsp_query-from>70</Hsp_query-from>
+      <Hsp_query-to>559</Hsp_query-to>
+      <Hsp_hit-from>49</Hsp_hit-from>
+      <Hsp_hit-to>571</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>150</Hsp_identity>
+      <Hsp_positive>244</Hsp_positive>
+      <Hsp_gaps>77</Hsp_gaps>
+      <Hsp_align-len>545</Hsp_align-len>
+      <Hsp_qseq>CEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCEN-DRVELPSRTLCQATRGPCAIVERERG--WPDFLRCTPDRFPEGCTNEVQNIKFNSSGQCEVPLVRTDNPKSWY-------------EDVEG---------------------------CGIQCQ----NPL--FTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCR--ADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTT--YQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKS--NHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDE</Hsp_qseq>
+      <Hsp_hseq>CQPISIPLC--TDIAYNQTILPNLLGHTNQEDAGLEVHQFYPLVKV-QCSPELRFFLCSMYAPVCTVLDQAIPPCRSLCERARQGCEALMNKFGFQWPERLRC--ENFPVHGAGEICVGQNTSDGSGGPGGGPTAYPTAPYLPDLPFTALPPGASDGRGRPAFPFSCPRQLKVPPYLGYRFLGERDCGAPCEPGRANGLMYFKEEERRFARLWVGVWSVLCCASTLFTVLTYLVDMRRFS-YPERPIIFLSGCYFMVAVAHVAGFLLEDRAVCVERFSDDGYRTVAQGTKKE--GCTILFMVLYFFGMASSIWWVILSLTW---FLAAGMKWGHEAIEANSQYFHLAAWAVPAVKTITILAMGQVDGDLLSGVCYVGLSSVDALRGFVLAPLFVYLFIGTSFLLAGFVSLFRIRTIMKHDGTKTE----KLEKLMVRIGVFSVLYTVPATIVLACYFYEQAFREHWERTW----LLQTCKSYAVPCP---PGHFPPMSPDFTVFMIKYLMTMIVGITTGFWIWSGKTLQSWRRFYHRLSHSSKGE</Hsp_hseq>
+      <Hsp_midline>C+P+   +C  + + Y  T         +QE+A  ++  +  L    +C   ++  LC++Y P C   D+   P R+LC+  R  C  +  + G  WP+ LRC  + FP     E+   +  S G        T  P + Y              D  G                           CG  C+    N L  F E E +    ++  +  +    TLFT+ T++ D R  + YP   + +++ C+F+ ++  +A F+   R   V R   DG   + + T  E   C I+F+++Y+  MA  +W+V+L+  W   F A G    ++ +   + YFHL  W++P V T+ ILA+ QVDGD +SG+C+VG  +     GFVLAP+ + L +G  FL+ G ++LF I++   H G  +E    K+ + M+R+G+F  L      I  +C+FY+   +  WER++    L Q   +  +P     P       P   V  I        GI    W+W+  TL  WRR + RL+  S  E</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|202</Hit_id>
+  <Hit_def>sp|Q9ULV1|FZD4_HUMAN Frizzled-4 OS=Homo sapiens OX=9606 GN=FZD4 PE=1 SV=2</Hit_def>
+  <Hit_accession>202</Hit_accession>
+  <Hit_len>537</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>168.703</Hsp_bit-score>
+      <Hsp_score>426</Hsp_score>
+      <Hsp_evalue>2.06078e-46</Hsp_evalue>
+      <Hsp_query-from>70</Hsp_query-from>
+      <Hsp_query-to>567</Hsp_query-to>
+      <Hsp_hit-from>45</Hsp_hit-from>
+      <Hsp_hit-to>521</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>133</Hsp_identity>
+      <Hsp_positive>240</Hsp_positive>
+      <Hsp_gaps>71</Hsp_gaps>
+      <Hsp_align-len>523</Hsp_align-len>
+      <Hsp_qseq>CEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVELP---SRTLCQATRGPCAIVERERG--WPDFLRCTPDRFPEGCTNEVQNIKFNSSGQCEVPL--------------VRTDNPKS-WYEDVEGCGIQC--QNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVC---RADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDEPKRIKKSK</Hsp_qseq>
+      <Hsp_hseq>CDPIRISMCQN--LGYNVTKMPNLVGHELQTDAELQLTTFTPLIQYG-CSSQLQFFLCSVYVPMC-TEKINIPIGPCGGMCLSVKRRCEPVLKEFGFAWPESLNCS--KFPP--QNDHNHMCMEGPGDEEVPLPHKTPIQPGEECHSVGTNSDQYIWVKRSLNCVLKCGYDAGLYSRSAKEFTDIWMAVWASLCFISTAFTVLTFLID-SSRFSYPERPIIFLSMCYNIYSIAYIVRLTVG-RERISCDFEEAAEPVLIQEGLKNT--GCAIIFLLMYFFGMASSIWWVILTLTWFLA-AGLKWGHEAIEMHSSYFHIAAWAIPAVKTIVILIMRLVDADELTGLCYVGNQNLDALTGFVVAPLFTYLVIGTLFIAAGLVALFKIRSNLQK--DGTKTDKLERLMVKIGVFSVLYTVPATCVIACYFYEISNWALFRYSADD--------------------------SNMAVEMLKIFMSLLVGITSGMWIWSAKTLHTWQKCSNRLVNSG-----KVKREK</Hsp_hseq>
+      <Hsp_midline>C+P+R ++C    L Y  T        + Q +A  +L  ++ L     C + +Q  LC+VY+P C  +++ +P      +C + +  C  V +E G  WP+ L C+  +FP    N+  ++     G  EVPL              V T++ +  W +    C ++C     L++ +  +    ++A + ++  + T FT+ TF+ D  +   YP   + +++ C+ + SI ++ +   G R  I C    A   + + E   N    C IIF+++Y+  MA  +W+V+LT  W  +   L   ++ +   +SYFH+  W++P V T+ IL +  VD D ++G+C+VG +N     GFV+AP+   L++G  F+  G++ LF I+SN           K+   M+++G+F  L         +C+FY+  N A +  S  D                           ++ VE + +F     GI    W+W+  TL  W++   RL         ++K+ K</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|200</Hit_id>
+  <Hit_def>sp|Q14332|FZD2_HUMAN Frizzled-2 OS=Homo sapiens OX=9606 GN=FZD2 PE=1 SV=1</Hit_def>
+  <Hit_accession>200</Hit_accession>
+  <Hit_len>565</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>164.081</Hsp_bit-score>
+      <Hsp_score>414</Hsp_score>
+      <Hsp_evalue>1.52639e-44</Hsp_evalue>
+      <Hsp_query-from>221</Hsp_query-from>
+      <Hsp_query-to>559</Hsp_query-to>
+      <Hsp_hit-from>235</Hsp_hit-from>
+      <Hsp_hit-to>562</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>104</Hsp_identity>
+      <Hsp_positive>175</Hsp_positive>
+      <Hsp_gaps>27</Hsp_gaps>
+      <Hsp_align-len>347</Hsp_align-len>
+      <Hsp_qseq>LFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRA----DGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTT--YQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKS--NHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRTWCRLTGQSDDE</Hsp_qseq>
+      <Hsp_hseq>FFSQEETRFARLWILTWSVLCCASTFFTVTTYLVDMQRF-RYPERPIIFLSGCYTMVSVAYIAGFVLQER--VVCNERFSEDGYRTVVQGTKKE--GCTILFMMLYFFSMASSIWWVILSLTW---FLAAGMKWGHEAIEANSQYFHLAAWAVPAVKTITILAMGQIDGDLLSGVCFVGLNSLDPLRGFVLAPLFVYLFIGTSFLLAGFVSLFRIRTIMKHDGTKTE----KLERLMVRIGVFSVLYTVPATIVIACYFYEQAFREHWERSW----VSQHCKSLAIPCPAHYTP---RMSPDFTVYMIKYLMTLIVGITSGFWIWSGKTLHSWRKFYTRLTNSRHGE</Hsp_hseq>
+      <Hsp_midline> F++ E +    +I  +  +    T FT+ T++ D +   RYP   + +++ C+ + S+ ++A F+   R  +VC      DG   + + T  E   C I+F+++Y+  MA  +W+V+L+  W   F A G    ++ +   + YFHL  W++P V T+ ILA+ Q+DGD +SG+CFVG  +     GFVLAP+ + L +G  FL+ G ++LF I++   H G  +E    K+   M+R+G+F  L      I  +C+FY+   +  WERS+    + Q   ++ +P          +  P   V  I        GI    W+W+  TL  WR+ + RLT     E</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>33.113</Hsp_bit-score>
+      <Hsp_score>74</Hsp_score>
+      <Hsp_evalue>0.0122458</Hsp_evalue>
+      <Hsp_query-from>70</Hsp_query-from>
+      <Hsp_query-to>182</Hsp_query-to>
+      <Hsp_hit-from>39</Hsp_hit-from>
+      <Hsp_hit-to>149</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>28</Hsp_identity>
+      <Hsp_positive>54</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>116</Hsp_align-len>
+      <Hsp_qseq>CEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCEN-DRVELPSRTLCQATRGPCAIVERERG--WPDFLRCTPDRFPEGCTNEV</Hsp_qseq>
+      <Hsp_hseq>CQPISIPLC--TDIAYNQTIMPNLLGHTNQEDAGLEVHQFYPLVKV-QCSPELRFFLCSMYAPVCTVLEQAIPPCRSICERARQGCEALMNKFGFQWPERLRC--EHFPRHGAEQI</Hsp_hseq>
+      <Hsp_midline>C+P+   +C  + + Y  T         +QE+A  ++  +  L    +C   ++  LC++Y P C   ++   P R++C+  R  C  +  + G  WP+ LRC  + FP     ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|201</Hit_id>
+  <Hit_def>sp|Q9NPG1|FZD3_HUMAN Frizzled-3 OS=Homo sapiens OX=9606 GN=FZD3 PE=1 SV=1</Hit_def>
+  <Hit_accession>201</Hit_accession>
+  <Hit_len>666</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>164.851</Hsp_bit-score>
+      <Hsp_score>416</Hsp_score>
+      <Hsp_evalue>2.61412e-44</Hsp_evalue>
+      <Hsp_query-from>70</Hsp_query-from>
+      <Hsp_query-to>545</Hsp_query-to>
+      <Hsp_hit-from>28</Hsp_hit-from>
+      <Hsp_hit-to>507</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>135</Hsp_identity>
+      <Hsp_positive>222</Hsp_positive>
+      <Hsp_gaps>54</Hsp_gaps>
+      <Hsp_align-len>505</Hsp_align-len>
+      <Hsp_qseq>CEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKC-ENDRVELPSRTLCQATRGPCAIVERERG--WPDFLRCTPDRFPEGCTNEVQNIKFNSSGQ----------------CEVPLVRTDNPKSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNE---TLSCVIIFVIVYYALMAGVVWFVVLTYAWH-TSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSF-----RDYVL-CQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIW</Hsp_qseq>
+      <Hsp_hseq>CEPITLRMCQD--LPYNTTFMPNLLNHYDQQTAALAMEPFHPMVNLD-CSRDFRPFLCALYAPICMEYGRVTLPCRRLCQRAYSECSKLMEMFGVPWPEDMECS--RFPDCDEPYPRLVDLNLAGEPTEGAPVAVQRDYGFWCPRELKIDPDLGYSFLHVRDCSPPCPNMYFRREELSFARYFIGLISIICLSATLFTFLTFLID-VTRFRYPERPIIFYAVCYMMVSLIFFIGFLLEDR--VACNASIPAQYKASTVTQGSHNKACTMLFMILYFFTMAGSVWWVILTITWFLAAVPKWGS--EAIEKKALLFHASAWGIPGTLTIILLAMNKIEGDNISGVCFVGLYDVDALRYFVLAPLCLYVVVGVSLLLAGIISLNRVRIEIP--LEKENQDKLVKFMIRIGVFSILYLVPLLVVIGCYFYEQAYRGIWETTWIQERCREYHIPCPYQVT-------------QMSRPDLILFLMKYLMALIVGIPSVFWVGSKKTCFEW</Hsp_hseq>
+      <Hsp_midline>CEP+   +C    LPY  T      +   Q+ A   +  +  + N   C    +P LCA+Y P C E  RV LP R LCQ     C+ +    G  WP+ + C+  RFP+      + +  N +G+                C   L    +    +  V  C   C N  F   E      +I     +    TLFT  TF+ D     RYP   + +   C+ + S+ +   F+   R  + C A    +    T  +     +C ++F+I+Y+  MAG VW+V+LT  W   +    G+  + +  K   FH   W +P  LT+ +LA+ +++GD++SG+CFVG  +      FVLAP+ L ++VG   L+ G+++L  ++   P  L ++   K+ + M+R+G+F  L    +L+   C+FY+   +  WE ++     R+Y + C   VT               +RP L++  +        GI    WV +K T   W</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|204</Hit_id>
+  <Hit_def>sp|O60353|FZD6_HUMAN Frizzled-6 OS=Homo sapiens OX=9606 GN=FZD6 PE=1 SV=2</Hit_def>
+  <Hit_accession>204</Hit_accession>
+  <Hit_len>706</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>161.77</Hsp_bit-score>
+      <Hsp_score>408</Hsp_score>
+      <Hsp_evalue>3.93929e-43</Hsp_evalue>
+      <Hsp_query-from>117</Hsp_query-from>
+      <Hsp_query-to>545</Hsp_query-to>
+      <Hsp_hit-from>68</Hsp_hit-from>
+      <Hsp_hit-to>503</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>126</Hsp_identity>
+      <Hsp_positive>205</Hsp_positive>
+      <Hsp_gaps>51</Hsp_gaps>
+      <Hsp_align-len>458</Hsp_align-len>
+      <Hsp_qseq>RCWAVIQPLLCAVYMPKC-ENDRVELPSRTLCQATRGPCAIVERERG--WPDFLRCTPDRF-----------------PEGCTNEVQ-NIKFNSSGQCEVPLVRTDNPKSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVC-RADGTMRLGEPT--SNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTY--QPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKS--NHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIP-DCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIW</Hsp_qseq>
+      <Hsp_hseq>ECSPNIETFLCKAFVPTCIEQIHVVPPCRKLCEKVYSDCKKLIDTFGIRWPEELECDRLQYCDETVPVTFDPHTEFLGPQKKTEQVQRDIGF----WCPRHLKTSGGQGYKFLGIDQCAPPCPNMYFKSDELEFAKSFIGTVSIFCLCATLFTFLTFLIDVRRF-RYPERPIIYYSVCYSIVSLMYFIGFLLG--DSTACNKADEKLELGDTVVLGSQNKACTVLFMLLYFFTMAGTVWWVILTITW---FLAAGRKWSCEAIEQKAVWFHAVAWGTPGFLTVMLLAMNKVEGDNISGVCFVGLYDLDASRYFVLLPLCLCVFVGLSLLLAGIISLNHVRQVIQHDG----RNQEKLKKFMIRIGVFSGLYLVPLVTLLGCYVYEQVNRITWEITWVSDHCRQYHI--------PCPYQAKAKARPELALFMIKYLMTLIVGISAVFWVGSKKTCTEW</Hsp_hseq>
+      <Hsp_midline> C   I+  LC  ++P C E   V  P R LC+     C  +    G  WP+ L C   ++                 P+  T +VQ +I F     C   L  +      +  ++ C   C N  F   E +   S+I          TLFT  TF+ D R   RYP   + Y + C+ + S+ +   F+ G      C +AD  + LG+     ++  +C ++F+++Y+  MAG VW+V+LT  W   F A G  +  + +  K  +FH + W  P  LTV +LA+ +V+GD++SG+CFVG  +      FVL P+ L + VG   L+ G+++L  ++    H G    +   K+ + M+R+G+F  L    ++    C+ Y+  N+  WE ++      Q ++        P P   + K RP L +  I        GI+   WV +K T   W</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|208</Hit_id>
+  <Hit_def>sp|Q9ULW2|FZD10_HUMAN Frizzled-10 OS=Homo sapiens OX=9606 GN=FZD10 PE=1 SV=1</Hit_def>
+  <Hit_accession>208</Hit_accession>
+  <Hit_len>581</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>158.688</Hsp_bit-score>
+      <Hsp_score>400</Hsp_score>
+      <Hsp_evalue>1.02548e-42</Hsp_evalue>
+      <Hsp_query-from>70</Hsp_query-from>
+      <Hsp_query-to>548</Hsp_query-to>
+      <Hsp_hit-from>34</Hsp_hit-from>
+      <Hsp_hit-to>534</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>129</Hsp_identity>
+      <Hsp_positive>226</Hsp_positive>
+      <Hsp_gaps>60</Hsp_gaps>
+      <Hsp_align-len>520</Hsp_align-len>
+      <Hsp_qseq>CEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVELP---SRTLCQATRGPCAIVERERG--WPDFLRC-------TPDRFPEGCTNEVQNIKFNSSGQCEVPLVR---------------------TDNPKSWY--EDVEGCGIQCQ---NPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTT--YQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEI-KNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWRRT</Hsp_qseq>
+      <Hsp_hseq>CQPIEIPMC--KDIGYNMTRMPNLMGHENQREAAIQLHEFAPLVEY-GCHGHLRFFLCSLYAPMC-TEQVSTPIPACRVMCEQARLKCSPIMEQFNFKWPDSLDCRKLPNKNDPNYLCMEAPNNGSDEPTRGSGLFP-PLFRPQRPHSAQEHPLKDGGPGRGGCDNPGKFHHVEKSASCAPLCTPGVDVYWSREDKRFAVVWLAIWAVLCFFSSAFTVLTFLID-PARFRYPERPIIFLSMCYCVYSVGYLIRLFAGAE-SIACDRDSGQLYVIQEGLESTGCTLVFLVLYYFGMASSLWWVVLTLTW---FLAAGKKWGHEAIEANSSYFHLAAWAIPAVKTILILVMRRVAGDELTGVCYVGSMDVNALTGFVLIPLACYLVIGTSFILSGFVALFHIRRVMKT--GGENTDKLEKLMVRIGLFSVLYTVPATCVIACYFYERLNMDYWK-------ILAAQHKCKMNNQTKTLDCLMAASIPAVEIFMVKIFMLLVVGITSGMWIWTSKTLQSWQQV</Hsp_hseq>
+      <Hsp_midline>C+P+   +C    + Y  T        ++Q EA  +L  ++ L     C   ++  LC++Y P C  ++V  P    R +C+  R  C+ +  +    WPD L C        P+       N   +     SG    PL R                      DNP  ++  E    C   C    +  ++  + +    ++A +  +    + FT+ TF+ D     RYP   + +++ C+ V S+G+L +   GA   I C  D           E+  C ++F+++YY  MA  +W+VVLT  W   F A G    ++ +   +SYFHL  W++P V T+ IL + +V GD ++G+C+VG  +     GFVL P+   L++G  F++ G + LF I+         +   K+ + M+R+G+F  L         +C+FY+  N   W+       +  A     +  +    DC +  + P++ +  + +F +   GI    W+WT  TL  W++ </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|206</Hit_id>
+  <Hit_def>sp|Q9H461|FZD8_HUMAN Frizzled-8 OS=Homo sapiens OX=9606 GN=FZD8 PE=1 SV=1</Hit_def>
+  <Hit_accession>206</Hit_accession>
+  <Hit_len>694</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>152.91</Hsp_bit-score>
+      <Hsp_score>385</Hsp_score>
+      <Hsp_evalue>2.50919e-40</Hsp_evalue>
+      <Hsp_query-from>192</Hsp_query-from>
+      <Hsp_query-to>546</Hsp_query-to>
+      <Hsp_hit-from>233</Hsp_hit-from>
+      <Hsp_hit-to>614</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>110</Hsp_identity>
+      <Hsp_positive>180</Hsp_positive>
+      <Hsp_gaps>63</Hsp_gaps>
+      <Hsp_align-len>400</Hsp_align-len>
+      <Hsp_qseq>QCEVPLVRTDNPKS-WYEDVE-----GCGIQCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTM-------------------------------RLG---EPTSNETLS---CVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTY--QPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIWR</Hsp_qseq>
+      <Hsp_hseq>QCRAPMVSVSSERHPLYNRVKTGQIANCALPCHNPFFSQDERAFTVFWIGLWSVLCFVSTFATVSTFLID-MERFKYPERPIIFLSACYLFVSVGYLVRLVAG-HEKVACSGGAPGAGGAGGAGGAAAGAGAAGAGAGGPGGRGEYEELGAVEQHVRYETTGPALCTVVFLLVYFFGMASSIWWVILSLTW---FLAAGMKWGNEAIAGYSQYFHLAAWLVPSVKSIAVLALSSVDGDPVAGICYVGNQSLDNLRGFVLAPLVIYLFIGTMFLLAGFVSLFRIRSVIKQQDGPTKTHKLEKLMIRLGLFTVLYTVPAAVVVACLFYEQHNRPRWEATHN----CPC-----LRDLQP----DQARRPDYAVFMLKYFMCLVVGITSGVWVWSGKTLESWR</Hsp_hseq>
+      <Hsp_midline>QC  P+V   + +   Y  V+      C + C NP F++ E      +I  +  +  + T  T++TF+ D     +YP   + +++AC+   S+G+L + + G   ++ C                                      LG   +    ET     C ++F++VY+  MA  +W+V+L+  W   F A G  +  + ++G + YFHL  W +P V ++A+LA++ VDGD V+GIC+VG ++     GFVLAP+ + L +G  FL+ G ++LF I+S            K+ + M+RLG+F  L      +  +C FY+  N+  WE +      C       L   QP    +   RP   V  +  F     GI    WVW+  TL  WR</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>43.8986</Hsp_bit-score>
+      <Hsp_score>102</Hsp_score>
+      <Hsp_evalue>5.45402e-06</Hsp_evalue>
+      <Hsp_query-from>70</Hsp_query-from>
+      <Hsp_query-to>190</Hsp_query-to>
+      <Hsp_hit-from>35</Hsp_hit-from>
+      <Hsp_hit-to>154</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>61</Hsp_positive>
+      <Hsp_gaps>9</Hsp_gaps>
+      <Hsp_align-len>125</Hsp_align-len>
+      <Hsp_qseq>CEPLRYNVCLGSVLPYGATSTLLAGDSDSQEEAHGKLVLWSGLRNAPRCWAVIQPLLCAVYMPKCENDRVEL--PSRTLCQATRGPCAIVERERG--WPDFLRCTPDRFPEGCTNEVQNIKFNSS</Hsp_qseq>
+      <Hsp_hseq>CQEITVPLCKG--IGYNYTYMPNQFNHDTQDEAGLEVHQFWPLVEI-QCSPDLKFFLCSMYTPICLEDYKKPLPPCRSVCERAKAGCAPLMRQYGFAWPDRMRC--DRLPEQGNPDTLCMDYNRT</Hsp_hseq>
+      <Hsp_midline>C+ +   +C G  + Y  T      + D+Q+EA  ++  +  L    +C   ++  LC++Y P C  D  +   P R++C+  +  CA + R+ G  WPD +RC  DR PE    +   + +N +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>11</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|207</Hit_id>
+  <Hit_def>sp|O00144|FZD9_HUMAN Frizzled-9 OS=Homo sapiens OX=9606 GN=FZD9 PE=2 SV=1</Hit_def>
+  <Hit_accession>207</Hit_accession>
+  <Hit_len>591</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>141.739</Hsp_bit-score>
+      <Hsp_score>356</Hsp_score>
+      <Hsp_evalue>6.23178e-37</Hsp_evalue>
+      <Hsp_query-from>118</Hsp_query-from>
+      <Hsp_query-to>583</Hsp_query-to>
+      <Hsp_hit-from>84</Hsp_hit-from>
+      <Hsp_hit-to>588</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>127</Hsp_identity>
+      <Hsp_positive>211</Hsp_positive>
+      <Hsp_gaps>73</Hsp_gaps>
+      <Hsp_align-len>522</Hsp_align-len>
+      <Hsp_qseq>CWAVIQPLLCAVYMPKCENDRVELP---SRTLCQATRGPCA-IVER-ERGWPDFLRCT---------------PDRFPEGCTNEVQNIKF------------------NSSGQCEVPLVRTDNPKSWYEDVEGCGIQCQ--NPLFTEAEHQDMH-SYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTT--YQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANVTIGLPTKQPIPDCEIKNRPSLLVEKINLFAMFGTGIAMSTWVWTKATLLIW-------------RRTWCRLTGQSDDEPKRIKKSKMIAKAFSKRHELLQNP</Hsp_qseq>
+      <Hsp_hseq>CHSHLRFFLCSLYAPMC-TDQVSTPIPACRPMCEQARLRCAPIMEQFNFGWPDSLDCARLPTRNDPHALCMEAPENATAGPAEPHKGLGMLPVAPRPARPPGDLGPGAGGSGTCENP-----EKFQYVEKSRSCAPRCGPGVEVFWSRRDKDFALVWMAVWSALCFFSTAFTVLTFLLE-PHRFQYPERPIIFLSMCYNVYSLAFLIRAVAGAQ-SVACDQEAGALYVIQEGLENTGCTLVFLLLYYFGMASSLWWVVLTLTW---FLAAGKKWGHEAIEAHGSYFHMAAWGLPALKTIVILTLRKVAGDELTGLCYVASTDAAALTGFVLVPLSGYLVLGSSFLLTGFVALFHIRKIMK--TGGTNTEKLEKLMVKIGVFSILYTVPATCVIVCYVYERLNMDFWRLRATEQP-CAAAAGPGGRRDCSLPGGSV---PTVAVFMLKIFMSLVVGITSGVWVWSSKTFQTWQSLCYRKIAAGRARAKACRAPGSYGRGTHCHYKAPTVVLHMTKTDPSLENP</Hsp_hseq>
+      <Hsp_midline>C + ++  LC++Y P C  D+V  P    R +C+  R  CA I+E+   GWPD L C                P+    G     + +                      SG CE P         + E    C  +C     +F     +D    ++A + A+    T FT+ TF+ +  +  +YP   + +++ C+ V S+ +L + + GA+  + C  +           E   C ++F+++YY  MA  +W+VVLT  W   F A G    ++ +    SYFH+  W LP + T+ IL + +V GD ++G+C+V   +     GFVL P+   L++G  FL+ G + LF I+             K+ + M+++G+F  L          C+ Y+  N   W     +   C A    G      +P   +   P++ V  + +F     GI    WVW+  T   W             R   CR  G          K+  +    +K    L+NP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>12</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|30</Hit_id>
+  <Hit_def>sp|O14514|AGRB1_HUMAN Adhesion G protein-coupled receptor B1 OS=Homo sapiens OX=9606 GN=ADGRB1 PE=1 SV=2</Hit_def>
+  <Hit_accession>30</Hit_accession>
+  <Hit_len>1584</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.4242</Hsp_bit-score>
+      <Hsp_score>80</Hsp_score>
+      <Hsp_evalue>0.00264606</Hsp_evalue>
+      <Hsp_query-from>239</Hsp_query-from>
+      <Hsp_query-to>464</Hsp_query-to>
+      <Hsp_hit-from>956</Hsp_hit-from>
+      <Hsp_hit-to>1155</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>44</Hsp_identity>
+      <Hsp_positive>82</Hsp_positive>
+      <Hsp_gaps>26</Hsp_gaps>
+      <Hsp_align-len>226</Hsp_align-len>
+      <Hsp_qseq>AVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVL</Hsp_qseq>
+      <Hsp_hseq>GVSSLTLLMLVIIYVSVWRYIRSERSVIL--INFCLSIIS------------------SNALILIGQTQTRNKVVCTLVAAFLHFFFLSSFCW--VLTEAWQSYMAVTGHLRNRLIRK--RFLCLGWGLPALVVAISVGFTKAKGYSTMNYCWLSLEGGLLYA--FVGPAAAVVLVNMVIGILVFNKLVSKDGITDKKLKERAGASLWSSCVVLPLLALTWMSAVL</Hsp_hseq>
+      <Hsp_midline> V+ L  L  +  +V+ WR      +VIL  +N C  + S                  ++  + +G+  +   + C ++   +++  ++   W  VLT AW +     G     L  K   F  L W LP ++    +   +  G S    C++  +     A   + P   V++V     I     L S        L E+A + +  + + L +        VL</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>5.73285</Hsp_evalue>
+      <Hsp_query-from>23</Hsp_query-from>
+      <Hsp_query-to>43</Hsp_query-to>
+      <Hsp_hit-from>1439</Hsp_hit-from>
+      <Hsp_hit-to>1459</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>11</Hsp_identity>
+      <Hsp_positive>14</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>21</Hsp_align-len>
+      <Hsp_qseq>LGDPGRGAASSGNATGPGPRS</Hsp_qseq>
+      <Hsp_hseq>LGDPGEPAAHPGPSTGPSTKN</Hsp_hseq>
+      <Hsp_midline>LGDPG  AA  G +TGP  ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>13</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|57</Hit_id>
+  <Hit_def>sp|Q9HAR2|AGRL3_HUMAN Adhesion G protein-coupled receptor L3 OS=Homo sapiens OX=9606 GN=ADGRL3 PE=1 SV=2</Hit_def>
+  <Hit_accession>57</Hit_accession>
+  <Hit_len>1447</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>32.7278</Hsp_bit-score>
+      <Hsp_score>73</Hsp_score>
+      <Hsp_evalue>0.0192378</Hsp_evalue>
+      <Hsp_query-from>303</Hsp_query-from>
+      <Hsp_query-to>494</Hsp_query-to>
+      <Hsp_hit-from>916</Hsp_hit-from>
+      <Hsp_hit-to>1108</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>36</Hsp_identity>
+      <Hsp_positive>80</Hsp_positive>
+      <Hsp_gaps>21</Hsp_gaps>
+      <Hsp_align-len>203</Hsp_align-len>
+      <Hsp_qseq>LGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFL-------AFGFVLITFS----CHFYDFFNQAEWERSFRDYVLCQANV</Hsp_qseq>
+      <Hsp_hseq>IGINRTDQPIACAVFAALLHFFFLAAFTWMFLEGVQL---YIMLVEVFESEHSRRKYFYLVGYGMP-ALIVAVSAAVDYRSYGTDKVCWLRLDTY-FIWSFI-GPATLIIMLNVIFLGIALYKMF----HHTAILKPESGCLDNIKSWVIGAIALLCLLGLTWAFGLMYINESTVIMAYLFTIFNSLQGMFIFIFHCVLQKKV</Hsp_hseq>
+      <Hsp_midline>+G   +++ ++C +   ++++  +A   W  +        +  L   ++    +  YF+L+ + +P  L VA+ A           +C++    Y +   F+  P  L++++   FL   +  +F    +H  +L  ++    N     +G    L       AFG + I  S     + +  FN  +    F  + + Q  V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>14</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|213</Hit_id>
+  <Hit_def>sp|Q13324|CRFR2_HUMAN Corticotropin-releasing factor receptor 2 OS=Homo sapiens OX=9606 GN=CRHR2 PE=1 SV=2</Hit_def>
+  <Hit_accession>213</Hit_accession>
+  <Hit_len>411</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>31.9574</Hsp_bit-score>
+      <Hsp_score>71</Hsp_score>
+      <Hsp_evalue>0.0275158</Hsp_evalue>
+      <Hsp_query-from>216</Hsp_query-from>
+      <Hsp_query-to>460</Hsp_query-to>
+      <Hsp_hit-from>97</Hsp_hit-from>
+      <Hsp_hit-to>327</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>63</Hsp_identity>
+      <Hsp_positive>99</Hsp_positive>
+      <Hsp_gaps>44</Hsp_gaps>
+      <Hsp_align-len>260</Hsp_align-len>
+      <Hsp_qseq>QCQNPLFTEAEHQDMHSYIAAFGAVTGLCTLFTLATFVADW------RNSNRYPAVILFYVNACFFVGSIGW-LAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYK-----NYRYRAGFVLAPIGLVLIVGGYFL---IRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAF</Hsp_qseq>
+      <Hsp_hseq>QCEPILDDKQRKYDLHYRIALVVNYLGHCV--SVAALVAAFLLFLALRSIRCLRNVIHWNLITTFILRNVMWFLLQLVDHEVHE---------------SNEVW-CRCITTIFNYFVVTNFFWMFVEGCYLHT---AIVMTYSTERLRKCLFLFIGWCIPFPIIVA-WAIGKLYYENEQ--CWFGKEPGDLVDYIYQ-----GPIILVLLINFVFLFNIVRILMTKLRASTTSETIQYRKAVKATLVLLPLLGITYMLFF</Hsp_hseq>
+      <Hsp_midline>QC+  L  +    D+H  IA      G C   ++A  VA +      R+      VI + +   F + ++ W L Q +D    E               SNE   C  I  I  Y ++    W  V     HT   A+  TY     +   F  + W +PF + VA  A+ ++  ++    C+ G +     +Y Y+      PI LVL++   FL   +R +MT     +    +   KA       +  LGI   L F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>15</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|321</Hit_id>
+  <Hit_def>sp|Q5UAW9|GP157_HUMAN G-protein coupled receptor 157 OS=Homo sapiens OX=9606 GN=GPR157 PE=2 SV=2</Hit_def>
+  <Hit_accession>321</Hit_accession>
+  <Hit_len>335</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.0314</Hsp_bit-score>
+      <Hsp_score>66</Hsp_score>
+      <Hsp_evalue>0.103481</Hsp_evalue>
+      <Hsp_query-from>360</Hsp_query-from>
+      <Hsp_query-to>392</Hsp_query-to>
+      <Hsp_hit-from>124</Hsp_hit-from>
+      <Hsp_hit-to>159</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>14</Hsp_identity>
+      <Hsp_positive>25</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>36</Hsp_align-len>
+      <Hsp_qseq>FHLLTWSLPFVLTVAILAVAQV--DGDSVS-GICFV</Hsp_qseq>
+      <Hsp_hseq>FHVVSWGVPLVITVAAVALKKIGYDASDVSVGWCWI</Hsp_hseq>
+      <Hsp_midline>FH+++W +P V+TVA +A+ ++  D   VS G C++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>16</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|37</Hit_id>
+  <Hit_def>sp|Q7Z7M1|AGRD2_HUMAN Adhesion G-protein coupled receptor D2 OS=Homo sapiens OX=9606 GN=ADGRD2 PE=2 SV=1</Hit_def>
+  <Hit_accession>37</Hit_accession>
+  <Hit_len>963</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>29.6462</Hsp_bit-score>
+      <Hsp_score>65</Hsp_score>
+      <Hsp_evalue>0.139441</Hsp_evalue>
+      <Hsp_query-from>297</Hsp_query-from>
+      <Hsp_query-to>440</Hsp_query-to>
+      <Hsp_hit-from>704</Hsp_hit-from>
+      <Hsp_hit-to>841</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>33</Hsp_identity>
+      <Hsp_positive>56</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>146</Hsp_align-len>
+      <Hsp_qseq>ADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVL-TYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVS-GICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEK</Hsp_qseq>
+      <Hsp_hseq>AEGFLMTSEWAKANEVACVAVTVAMHFLFLVAFSWMLVEGLLLWR---KVVAVSMHPGPGMRLY-HATGWGVPVGIVAVTLAM--LPHDYVAPGHCWLNVHTNAIWA--FVGPVLFVLTANTCILARVVMITVSSARRRARMLSPQ</Hsp_hseq>
+      <Hsp_midline>A+G +   E      ++CV + V +++  +    W +V     W    K +  +  P  G   Y H   W +P  +    LA+  +  D V+ G C++        A   + P+  VL      L R VM   S       +LS +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>17</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|49</Hit_id>
+  <Hit_def>sp|Q8IZP9|AGRG2_HUMAN Adhesion G-protein coupled receptor G2 OS=Homo sapiens OX=9606 GN=ADGRG2 PE=1 SV=2</Hit_def>
+  <Hit_accession>49</Hit_accession>
+  <Hit_len>1017</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>29.261</Hsp_bit-score>
+      <Hsp_score>64</Hsp_score>
+      <Hsp_evalue>0.216263</Hsp_evalue>
+      <Hsp_query-from>314</Hsp_query-from>
+      <Hsp_query-to>494</Hsp_query-to>
+      <Hsp_hit-from>694</Hsp_hit-from>
+      <Hsp_hit-to>886</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>39</Hsp_identity>
+      <Hsp_positive>75</Hsp_positive>
+      <Hsp_gaps>22</Hsp_gaps>
+      <Hsp_align-len>198</Hsp_align-len>
+      <Hsp_qseq>CVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVA----------QVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASK----INETMLRLGI---FGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLCQANV</Hsp_qseq>
+      <Hsp_hseq>CISVAVFLHYFLLVSFTWMGLEAFHMYLALVKVFNTY--IRKYILKFCIVGWGVPAVVVTIILTISPDNYGLGSYGKFPNGSPDDFCWINNNAVFYIT--VVGYFCVIFLLNVSMFIVVLVQLCRIKKKKQLGAQRKTSIQDLRSIAGLTFLLGITWGFAFFAWGPVNVTF-MYLFAIFNTLQGFFIFIFYCVAKENV</Hsp_hseq>
+      <Hsp_midline>C+ + V ++Y L+    W  +  +  + +   +  TY  +      F ++ W +P V+   IL ++          +    S    C++      Y    V+    ++ ++     I  ++ L  IK         K + +    I      LGI   F F A+G V +TF  + +  FN  +    F  Y + + NV</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>6.84707</Hsp_evalue>
+      <Hsp_query-from>551</Hsp_query-from>
+      <Hsp_query-to>620</Hsp_query-to>
+      <Hsp_hit-from>396</Hsp_hit-from>
+      <Hsp_hit-to>468</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>36</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>73</Hsp_align-len>
+      <Hsp_qseq>RLTGQSDDEPKRIKKS--KMIAKAFSKRHELLQNPGQELSFSMHTVSHDGPVAGLA-FDLNEPSADVSSAWAQ</Hsp_qseq>
+      <Hsp_hseq>NLAGEMINQVSRLLHSPPDMLAPLAQRLLKVVDDIGLQLNFSNTTISLTSPSLALAVIRVNASSFNTTTFVAQ</Hsp_hseq>
+      <Hsp_midline> L G+  ++  R+  S   M+A    +  +++ + G +L+FS  T+S   P   LA   +N  S + ++  AQ</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>18</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|31</Hit_id>
+  <Hit_def>sp|O60241|AGRB2_HUMAN Adhesion G protein-coupled receptor B2 OS=Homo sapiens OX=9606 GN=ADGRB2 PE=1 SV=2</Hit_def>
+  <Hit_accession>31</Hit_accession>
+  <Hit_len>1585</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.4906</Hsp_bit-score>
+      <Hsp_score>62</Hsp_score>
+      <Hsp_evalue>0.316912</Hsp_evalue>
+      <Hsp_query-from>334</Hsp_query-from>
+      <Hsp_query-to>426</Hsp_query-to>
+      <Hsp_hit-from>1014</Hsp_hit-from>
+      <Hsp_hit-to>1099</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>20</Hsp_identity>
+      <Hsp_positive>37</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>93</Hsp_align-len>
+      <Hsp_qseq>VLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTL</Hsp_qseq>
+      <Hsp_hseq>VLTEAWQSYLAVIGRMRTRLVRK--RFLCLGWGLPALVVAVSVGFTRTKGYGTSSYCWLSLE-----GGLLYAFVGPAAVIVLVNMLIGIIVF</Hsp_hseq>
+      <Hsp_midline>VLT AW +    +G     L  K   F  L W LP ++    +   +  G   S  C++  +      G + A +G   ++    ++ G++  </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>19</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|35</Hit_id>
+  <Hit_def>sp|Q9NYQ7|CELR3_HUMAN Cadherin EGF LAG seven-pass G-type receptor 3 OS=Homo sapiens OX=9606 GN=CELSR3 PE=1 SV=2</Hit_def>
+  <Hit_accession>35</Hit_accession>
+  <Hit_len>3312</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.4906</Hsp_bit-score>
+      <Hsp_score>62</Hsp_score>
+      <Hsp_evalue>0.335189</Hsp_evalue>
+      <Hsp_query-from>303</Hsp_query-from>
+      <Hsp_query-to>371</Hsp_query-to>
+      <Hsp_hit-from>2591</Hsp_hit-from>
+      <Hsp_hit-to>2656</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>15</Hsp_identity>
+      <Hsp_positive>30</Hsp_positive>
+      <Hsp_gaps>5</Hsp_gaps>
+      <Hsp_align-len>70</Hsp_align-len>
+      <Hsp_qseq>LGEPTSNETLSCVIIFVIVYYALMAGVVW-FVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVL</Hsp_qseq>
+      <Hsp_hseq>LGIHRTHNQLVCTAVAILLHYFFLSTFAWLFVQGLHLYRMQVEPRNVD----RGAMRFYHALGWGVPAVL</Hsp_hseq>
+      <Hsp_midline>LG   ++  L C  + ++++Y  ++   W FV   + +    +          G   ++H L W +P VL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>20</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|36</Hit_id>
+  <Hit_def>sp|Q6QNK2|AGRD1_HUMAN Adhesion G-protein coupled receptor D1 OS=Homo sapiens OX=9606 GN=ADGRD1 PE=1 SV=1</Hit_def>
+  <Hit_accession>36</Hit_accession>
+  <Hit_len>874</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.1054</Hsp_bit-score>
+      <Hsp_score>61</Hsp_score>
+      <Hsp_evalue>0.465124</Hsp_evalue>
+      <Hsp_query-from>311</Hsp_query-from>
+      <Hsp_query-to>471</Hsp_query-to>
+      <Hsp_hit-from>629</Hsp_hit-from>
+      <Hsp_hit-to>791</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>71</Hsp_positive>
+      <Hsp_gaps>16</Hsp_gaps>
+      <Hsp_align-len>170</Hsp_align-len>
+      <Hsp_qseq>TLSCVIIFVIVYYALMAGVVWFVVL-TYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLR-----LG---IFGFLAFGFVLITFSCHF</Hsp_qseq>
+      <Hsp_hseq>TTPCQVMAVLLHYFFLSAFAWMLVEGLHLYSMVIKVFGSE----DSKHRYYYGMGWGFPLLICIISLSFA-MDSYGTSNNCWLSLASGAIWA--FVAPALFVIVVNIGILIAVTRVISQISADNYKIHGDPSAFKLTAKAVAVLLPILGTSWVFGVLAVNGCAVVFQYMF</Hsp_hseq>
+      <Hsp_midline>T  C ++ V+++Y  ++   W +V   + +    K  G+       K  Y++ + W  P ++ +  L+ A +D    S  C++   +    A   +AP   V++V    LI     +  I +++  +  + +A K+    +      LG   +FG LA     + F   F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>21</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|53</Hit_id>
+  <Hit_def>sp|Q86SQ4|AGRG6_HUMAN Adhesion G-protein coupled receptor G6 OS=Homo sapiens OX=9606 GN=ADGRG6 PE=1 SV=3</Hit_def>
+  <Hit_accession>53</Hit_accession>
+  <Hit_len>1221</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.1054</Hsp_bit-score>
+      <Hsp_score>61</Hsp_score>
+      <Hsp_evalue>0.522104</Hsp_evalue>
+      <Hsp_query-from>224</Hsp_query-from>
+      <Hsp_query-to>429</Hsp_query-to>
+      <Hsp_hit-from>857</Hsp_hit-from>
+      <Hsp_hit-to>1037</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>41</Hsp_identity>
+      <Hsp_positive>87</Hsp_positive>
+      <Hsp_gaps>45</Hsp_gaps>
+      <Hsp_align-len>216</Hsp_align-len>
+      <Hsp_qseq>EAEHQDMHSYIAAFG-AVTGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSI-----GWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAG----FVLAPIGLVLIVGGYFLIRGVMTLFSI</Hsp_qseq>
+      <Hsp_hseq>DARNTKVLTFISYIGCGISAIFSAATLLTYVAFEKLRRDYPSKILMNLSTALLFLNLLFLLDGWITSF----------NVDGL-------------CIAVAVLLHFFLLATFTWMGLEAIHMYIALVKVFNTY--IRRYILKFCIIGWGLP-ALVVSVVLASRNNNE------VYGKESYGKEKGDEFCWIQDPVIFYVTCAGYF---GVMFFLNI</Hsp_hseq>
+      <Hsp_midline>+A +  + ++I+  G  ++ + +  TL T+VA  +    YP+ IL  ++      ++     GW+  F            DG              C+ + V++++ L+A   W  +     + +   +  TY  +      F ++ W LP  L V+++  ++ + +        G ++Y    G    ++  P+   +   GYF   GVM   +I</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>22</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|353</Hit_id>
+  <Hit_def>sp|Q9NSD7|RL3R1_HUMAN Relaxin-3 receptor 1 OS=Homo sapiens OX=9606 GN=RXFP3 PE=1 SV=1</Hit_def>
+  <Hit_accession>353</Hit_accession>
+  <Hit_len>469</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.7202</Hsp_bit-score>
+      <Hsp_score>60</Hsp_score>
+      <Hsp_evalue>0.568363</Hsp_evalue>
+      <Hsp_query-from>17</Hsp_query-from>
+      <Hsp_query-to>55</Hsp_query-to>
+      <Hsp_hit-from>288</Hsp_hit-from>
+      <Hsp_hit-to>325</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>17</Hsp_identity>
+      <Hsp_positive>21</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>39</Hsp_align-len>
+      <Hsp_qseq>LLLLLLLGDPGRGAASSGNATGPGPRSAGGSARRSAAVT</Hsp_qseq>
+      <Hsp_hseq>LLLVRFIADR-RAAGTKGGAAVAGGRPTGASARRLSKVT</Hsp_hseq>
+      <Hsp_midline>LLL+  + D  R A + G A   G R  G SARR + VT</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>23</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|65</Hit_id>
+  <Hit_def>sp|P18825|ADA2C_HUMAN Alpha-2C adrenergic receptor OS=Homo sapiens OX=9606 GN=ADRA2C PE=1 SV=2</Hit_def>
+  <Hit_accession>65</Hit_accession>
+  <Hit_len>462</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.7202</Hsp_bit-score>
+      <Hsp_score>60</Hsp_score>
+      <Hsp_evalue>0.576273</Hsp_evalue>
+      <Hsp_query-from>35</Hsp_query-from>
+      <Hsp_query-to>58</Hsp_query-to>
+      <Hsp_hit-from>19</Hsp_hit-from>
+      <Hsp_hit-to>42</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>15</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>24</Hsp_align-len>
+      <Hsp_qseq>NATGPGPRSAGGSARRSAAVTGPP</Hsp_qseq>
+      <Hsp_hseq>NASGAGERGSGGVANASGASWGPP</Hsp_hseq>
+      <Hsp_midline>NA+G G R +GG A  S A  GPP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>24</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|78</Hit_id>
+  <Hit_def>sp|P30988|CALCR_HUMAN Calcitonin receptor OS=Homo sapiens OX=9606 GN=CALCR PE=1 SV=3</Hit_def>
+  <Hit_accession>78</Hit_accession>
+  <Hit_len>474</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.9498</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.994687</Hsp_evalue>
+      <Hsp_query-from>304</Hsp_query-from>
+      <Hsp_query-to>460</Hsp_query-to>
+      <Hsp_hit-from>209</Hsp_hit-from>
+      <Hsp_hit-to>359</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>62</Hsp_positive>
+      <Hsp_gaps>14</Hsp_gaps>
+      <Hsp_align-len>161</Hsp_align-len>
+      <Hsp_qseq>GEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSF-KALGTTYQPLSGKTSYFHLLTWSLPFV-LTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFG--FLAF</Hsp_qseq>
+      <Hsp_hseq>GELVRRDPVSCKILHFFHQYMMACNYFWMLCEGIYLHTLIVVAVFTEKQRL----RWYYLLGWGFPLVPTTIHAITRAVYFNDN----CWLSVET--HLLYIIHGPVMAALVVNFFFLLNIVRVLVTKMRETHEAESHMYLKAVKATMILVPLLGIQFVVF</Hsp_hseq>
+      <Hsp_midline>GE    + +SC I+     Y +     W +      HT    A+ T  Q L     +++LL W  P V  T+  +  A    D+    C++  +   +    +  P+   L+V  +FL+  V  L +         S      +  TM+ + + G  F+ F</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>3.82062</Hsp_evalue>
+      <Hsp_query-from>224</Hsp_query-from>
+      <Hsp_query-to>279</Hsp_query-to>
+      <Hsp_hit-from>329</Hsp_hit-from>
+      <Hsp_hit-to>390</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>62</Hsp_align-len>
+      <Hsp_qseq>EAEHQDMHSYIAAFGAVTGLCTLFTLATFVADWRNSNRYPAVILFYVNAC------FFVGSI</Hsp_qseq>
+      <Hsp_hseq>ETHEAESHMYLKAVKATMILVPLLGIQFVVFPWRPSNKMLGKIYDYVMHSLIHFQGFFVATI</Hsp_hseq>
+      <Hsp_midline>E    + H Y+ A  A   L  L  +   V  WR SN+    I  YV         FFV +I</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>25</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|155</Hit_id>
+  <Hit_def>sp|Q8TDV2|GP148_HUMAN Probable G-protein coupled receptor 148 OS=Homo sapiens OX=9606 GN=GPR148 PE=1 SV=2</Hit_def>
+  <Hit_accession>155</Hit_accession>
+  <Hit_len>347</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5646</Hsp_bit-score>
+      <Hsp_score>57</Hsp_score>
+      <Hsp_evalue>1.28847</Hsp_evalue>
+      <Hsp_query-from>197</Hsp_query-from>
+      <Hsp_query-to>326</Hsp_query-to>
+      <Hsp_hit-from>105</Hsp_hit-from>
+      <Hsp_hit-to>225</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>28</Hsp_identity>
+      <Hsp_positive>55</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>133</Hsp_align-len>
+      <Hsp_qseq>LVRTDNPKSWYEDVEGCGIQCQNPLFTEAEHQDMHSYIAAFGAV---TGLCTLFTLATFVADWRNSNRYPAVILFYVNACFFVGSIGWLAQFMDGARREIVCRADGTMRLGEPTSNETLSCVIIFVIVYYALM</Hsp_qseq>
+      <Hsp_hseq>LISSSSLGGWELGRMACGI------LTDAVFAACTSTILSFTAIVLHTYLAVIHPL-RYLSFMSHGAAWKAVALIWLVACCFPTFLIWLSKWQDAQLEE-----QGASYILPPSMGTQPGCGLLVIVTYTSIL</Hsp_hseq>
+      <Hsp_midline>L+ + +   W      CGI       T+A      S I +F A+   T L  +  L  +++   +   + AV L ++ AC F   + WL+++ D    E      G   +  P+      C ++ ++ Y +++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>26</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|237</Hit_id>
+  <Hit_def>sp|O95838|GLP2R_HUMAN Glucagon-like peptide 2 receptor OS=Homo sapiens OX=9606 GN=GLP2R PE=2 SV=1</Hit_def>
+  <Hit_accession>237</Hit_accession>
+  <Hit_len>553</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.7942</Hsp_bit-score>
+      <Hsp_score>55</Hsp_score>
+      <Hsp_evalue>2.19119</Hsp_evalue>
+      <Hsp_query-from>308</Hsp_query-from>
+      <Hsp_query-to>466</Hsp_query-to>
+      <Hsp_hit-from>254</Hsp_hit-from>
+      <Hsp_hit-to>405</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>60</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>159</Hsp_align-len>
+      <Hsp_qseq>SNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLIT</Hsp_qseq>
+      <Hsp_hseq>SEMSTSCRSVQVLLHYFVGANYLWLLVEGLYLHT---LLEPTVLPERRLWPRYLLLGWAFP-VLFVVPWGFARAHLENTGCWTTNGNKKIWW---IIRGPMMLCVTVNFFIFLKILKLLISKLKAHQMCFRDYKYRLAKSTLVLIPLLGVHEILFSFIT</Hsp_hseq>
+      <Hsp_midline>S  + SC  + V+++Y + A  +W +V     HT    L  T  P       + LL W+ P VL V     A+   ++       G K   +    +  P+ L + V  +  ++ +  L S    H     +        T++ + + G     F  IT</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>27</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|38</Hit_id>
+  <Hit_def>sp|Q14246|AGRE1_HUMAN Adhesion G protein-coupled receptor E1 OS=Homo sapiens OX=9606 GN=ADGRE1 PE=2 SV=3</Hit_def>
+  <Hit_accession>38</Hit_accession>
+  <Hit_len>886</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.7942</Hsp_bit-score>
+      <Hsp_score>55</Hsp_score>
+      <Hsp_evalue>2.26348</Hsp_evalue>
+      <Hsp_query-from>304</Hsp_query-from>
+      <Hsp_query-to>415</Hsp_query-to>
+      <Hsp_hit-from>655</Hsp_hit-from>
+      <Hsp_hit-to>765</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>45</Hsp_positive>
+      <Hsp_gaps>11</Hsp_gaps>
+      <Hsp_align-len>117</Hsp_align-len>
+      <Hsp_qseq>GEPTSNETLSCVIIFVIVYYALMAGVVWFVVLTYAWHTSFKALGTTYQPLSGKTSYFHLLT--WSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFV---LAPIGLVLIVG</Hsp_qseq>
+      <Hsp_hseq>GIHKTDNKMGCAIIAGFLHYLFLACFFWMLVEAVILFLMVRNLKVVNYFSSRNIKMLHICAFGYGLP-MLVVVISASVQPQGYGMHNRCWLNTE-----TGFIWSFLGPVCTVIVIN</Hsp_hseq>
+      <Hsp_midline>G   ++  + C II   ++Y  +A   W +V         + L       S      H+    + LP +L V I A  Q  G  +   C++  +      GF+   L P+  V+++ </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>28</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|236</Hit_id>
+  <Hit_def>sp|P43220|GLP1R_HUMAN Glucagon-like peptide 1 receptor OS=Homo sapiens OX=9606 GN=GLP1R PE=1 SV=2</Hit_def>
+  <Hit_accession>236</Hit_accession>
+  <Hit_len>463</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>2.69985</Hsp_evalue>
+      <Hsp_query-from>304</Hsp_query-from>
+      <Hsp_query-to>334</Hsp_query-to>
+      <Hsp_hit-from>216</Hsp_hit-from>
+      <Hsp_hit-to>246</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>9</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>31</Hsp_align-len>
+      <Hsp_qseq>GEPTSNETLSCVIIFVIVYYALMAGVVWFVV</Hsp_qseq>
+      <Hsp_hseq>GLLSYQDSLSCRLVFLLMQYCVAANYYWLLV</Hsp_hseq>
+      <Hsp_midline>G  +  ++LSC ++F+++ Y + A   W +V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>29</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|332</Hit_id>
+  <Hit_def>sp|P49190|PTH2R_HUMAN Parathyroid hormone 2 receptor OS=Homo sapiens OX=9606 GN=PTH2R PE=1 SV=1</Hit_def>
+  <Hit_accession>332</Hit_accession>
+  <Hit_len>550</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>2.85355</Hsp_evalue>
+      <Hsp_query-from>309</Hsp_query-from>
+      <Hsp_query-to>469</Hsp_query-to>
+      <Hsp_hit-from>231</Hsp_hit-from>
+      <Hsp_hit-to>381</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>40</Hsp_identity>
+      <Hsp_positive>61</Hsp_positive>
+      <Hsp_gaps>12</Hsp_gaps>
+      <Hsp_align-len>162</Hsp_align-len>
+      <Hsp_qseq>NETLSCVIIFVIVYYALMAGVVWFVVLTYAWHT-SFKALGTTYQPLSGKTSYFHLLTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSC</Hsp_qseq>
+      <Hsp_hseq>SQYIGCKIAVVMFIYFLATNYYWILVEGLYLHNLIFVAFFSDTKYLWG----FILIGWGFPAAFVAAWAVARATLADARCWELSAGDIKWIYQAP-ILAAIGLNFIL--FLNTVRVLATKIWETNAVGHDTRKQYRKLAKSTLVL----VLVFGVHYIVFVC</Hsp_hseq>
+      <Hsp_midline>++ + C I  V+  Y L     W +V     H   F A  +  + L G    F L+ W  P     A         D+       G   + Y+A  +LA IGL  I+  +     V+     ++N  G  + K   K+ ++ L L     L FG   I F C</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>30</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|286</Hit_id>
+  <Hit_def>sp|O15303|GRM6_HUMAN Metabotropic glutamate receptor 6 OS=Homo sapiens OX=9606 GN=GRM6 PE=1 SV=2</Hit_def>
+  <Hit_accession>286</Hit_accession>
+  <Hit_len>877</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>2.96805</Hsp_evalue>
+      <Hsp_query-from>363</Hsp_query-from>
+      <Hsp_query-to>479</Hsp_query-to>
+      <Hsp_hit-from>579</Hsp_hit-from>
+      <Hsp_hit-to>683</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>28</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
+      <Hsp_gaps>12</Hsp_gaps>
+      <Hsp_align-len>117</Hsp_align-len>
+      <Hsp_qseq>LTWSLPFVLTVAILAVAQVDGDSVSGICFVGYKNYRYRAGFVLAPIGLVLIVGGYFLIRGVMTLFSIKSNHPGLLSEKAASKINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAE</Hsp_qseq>
+      <Hsp_hseq>LSWSSPWAAPPLLLAVLGIVATTTVVATFVRYNNTP-----IVRASGREL---SYVLLTGIFLIYAITFL---MVAEPGAAVCAARRLFLGLGTTLSYS-ALLTKTNRIYRIFEQGK</Hsp_hseq>
+      <Hsp_midline>L+WS P+     +LAV  +   +     FV Y N       ++   G  L    Y L+ G+  +++I      +++E  A+      L LG+   L++   L+T +   Y  F Q +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>31</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|13</Hit_id>
+  <Hit_def>sp|P28335|5HT2C_HUMAN 5-hydroxytryptamine receptor 2C OS=Homo sapiens OX=9606 GN=HTR2C PE=1 SV=1</Hit_def>
+  <Hit_accession>13</Hit_accession>
+  <Hit_len>458</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>5.30458</Hsp_evalue>
+      <Hsp_query-from>413</Hsp_query-from>
+      <Hsp_query-to>522</Hsp_query-to>
+      <Hsp_hit-from>312</Hsp_hit-from>
+      <Hsp_hit-to>441</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>29</Hsp_identity>
+      <Hsp_positive>55</Hsp_positive>
+      <Hsp_gaps>30</Hsp_gaps>
+      <Hsp_align-len>135</Hsp_align-len>
+      <Hsp_qseq>IVGGYFLIRGVMTLFSIKSNHPGLLSEKAAS-KINETMLRLGIFGFLAFGFVLITFSCHFYDFFNQAEWERSFRDYVLC------------------------QANVTIGLPTKQPIPDCEIKNRPSLLVEKINL</Hsp_qseq>
+      <Hsp_hseq>VLGIVFFVFLIMWCPFFITNILSVLCEKSCNQKLMEKLLNV----FVWIGYVCSGINPLVYTLFNKI-YRRAFSNYLRCNYKVEKKPPVRQIPRVAATALSGRELNVNIYRHTNEPVIEKASDNEPGIEMQVENL</Hsp_hseq>
+      <Hsp_midline>++G  F +  +M      +N   +L EK+ + K+ E +L +    F+  G+V    +   Y  FN+  + R+F +Y+ C                        + NV I   T +P+ +    N P + ++  NL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>32</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|29</Hit_id>
+  <Hit_def>sp|Q8IWK6|AGRA3_HUMAN Adhesion G protein-coupled receptor A3 OS=Homo sapiens OX=9606 GN=ADGRA3 PE=1 SV=2</Hit_def>
+  <Hit_accession>29</Hit_accession>
+  <Hit_len>1321</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>6.67223</Hsp_evalue>
+      <Hsp_query-from>114</Hsp_query-from>
+      <Hsp_query-to>132</Hsp_query-to>
+      <Hsp_hit-from>905</Hsp_hit-from>
+      <Hsp_hit-to>923</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>10</Hsp_identity>
+      <Hsp_positive>11</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>NAPRCWAVIQPLLCAVYMP</Hsp_qseq>
+      <Hsp_hseq>NAPYCWMAWEPSLGAFYGP</Hsp_hseq>
+      <Hsp_midline>NAP CW   +P L A Y P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>33</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|59</Hit_id>
+  <Hit_def>sp|Q8WXG9|AGRV1_HUMAN Adhesion G-protein coupled receptor V1 OS=Homo sapiens OX=9606 GN=ADGRV1 PE=1 SV=2</Hit_def>
+  <Hit_accession>59</Hit_accession>
+  <Hit_len>6306</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>7.70385</Hsp_evalue>
+      <Hsp_query-from>135</Hsp_query-from>
+      <Hsp_query-to>176</Hsp_query-to>
+      <Hsp_hit-from>1158</Hsp_hit-from>
+      <Hsp_hit-to>1198</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>12</Hsp_identity>
+      <Hsp_positive>18</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>42</Hsp_align-len>
+      <Hsp_qseq>ENDRVELPSRTLCQATRGPCAIVERERGWPDFLRCTPDRFPE</Hsp_qseq>
+      <Hsp_hseq>QNDSALQPGQEFYE-TSGTVNFMDGEEAKPIILHAFPDKIPE</Hsp_hseq>
+      <Hsp_midline>+ND    P +   + T G    ++ E   P  L   PD+ PE</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>34</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|5</Hit_id>
+  <Hit_def>tr|G1SGD4|G1SGD4_RABIT Glucagon like peptide 1 receptor OS=Oryctolagus cuniculus OX=9986 GN=GLP1R PE=1 SV=2</Hit_def>
+  <Hit_accession>5</Hit_accession>
+  <Hit_len>462</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.8682</Hsp_bit-score>
+      <Hsp_score>50</Hsp_score>
+      <Hsp_evalue>8.5862</Hsp_evalue>
+      <Hsp_query-from>304</Hsp_query-from>
+      <Hsp_query-to>334</Hsp_query-to>
+      <Hsp_hit-from>216</Hsp_hit-from>
+      <Hsp_hit-to>246</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>8</Hsp_identity>
+      <Hsp_positive>18</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>31</Hsp_align-len>
+      <Hsp_qseq>GEPTSNETLSCVIIFVIVYYALMAGVVWFVV</Hsp_qseq>
+      <Hsp_hseq>GLLSYQDSLGCRLVFLLMQYCVAANYYWLLV</Hsp_hseq>
+      <Hsp_midline>G  +  ++L C ++F+++ Y + A   W +V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>35</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|28</Hit_id>
+  <Hit_def>sp|Q96PE1|AGRA2_HUMAN Adhesion G protein-coupled receptor A2 OS=Homo sapiens OX=9606 GN=ADGRA2 PE=1 SV=2</Hit_def>
+  <Hit_accession>28</Hit_accession>
+  <Hit_len>1338</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.8682</Hsp_bit-score>
+      <Hsp_score>50</Hsp_score>
+      <Hsp_evalue>8.68219</Hsp_evalue>
+      <Hsp_query-from>114</Hsp_query-from>
+      <Hsp_query-to>132</Hsp_query-to>
+      <Hsp_hit-from>913</Hsp_hit-from>
+      <Hsp_hit-to>931</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>9</Hsp_identity>
+      <Hsp_positive>13</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>NAPRCWAVIQPLLCAVYMP</Hsp_qseq>
+      <Hsp_hseq>HSPYCWLVWRPSLGAFYIP</Hsp_hseq>
+      <Hsp_midline>++P CW V +P L A Y+P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>401</Statistics_db-num>
+      <Statistics_db-len>206602</Statistics_db-len>
+      <Statistics_hsp-len>79</Statistics_hsp-len>
+      <Statistics_eff-space>123845484</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+

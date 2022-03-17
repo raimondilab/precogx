@@ -74,6 +74,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         modified_positions = response['modified_positions'];
         modified_positions_labels = response['modified_positions_labels'];
         modified_num_contacts = response['modified_num_contacts'];
+        pdbData = response['pdbData'];
         //alert(modified_num_contacts);
         modified_pair_positions = response['modified_pair_positions'];
         modified_positions_array = modified_positions.split('_');
@@ -117,8 +118,20 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         stage.setParameters({backgroundColor: "white"});
         //alert(modified_positions_array);
 
+        //stage.loadFile("rcsb://3sn6.cif").then(function (o) {});
+        if (pdbid.includes('AF:')){
+          loadValue = new Blob([pdbData], {type: 'text/plain'});
+          extValue = { ext:'pdb'};
+        }
+        else {
+          loadValue = "rcsb://"+pdbid+".cif";
+          extValue = { ext:'cif'};
+        }
 
-        stage.loadFile("rcsb://"+pdbid+".cif").then(function (o) {
+        //alert(window.location.pathname);
+        //stage.loadFile("rcsb://"+pdbid+".cif").then(function (o) {
+        stage.loadFile(loadValue, extValue).then(function (o) {
+        //stage.loadFile("data/PDB/AlphaFold/AF:Q9Y5Y4:P63096.pdb").then(function (o) {
                   //o.autoView();
 
                   var pa = o.structure.getPrincipalAxes();
@@ -261,29 +274,6 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     //borderColor: 'blue',
                   })
 
-                  /*
-                  var mutationText = { };
-                  var sele2 = new NGL.Selection("");
-                  var view2 = o.structure.getView(sele2);
-                  var seleString2 = mutation_position;
-                  sele2.setString(seleString2+':'+chainGPCR+'.CA');
-                  var atomIndex2 = view2.getAtomIndices()[0];
-                  alert(atomIndex2);
-                  if (atomIndex2 !== undefined) {
-                      mutationText[atomIndex2] = response['mutation_position_label'];
-                  }
-
-                  alert(mutationText[atomIndex2]);
-                  var MUTLABELS = o.addRepresentation("label", {
-                    labelType: "text",
-                    labelText: mutationText,
-                    color: "purple",
-                    xOffset: 1,
-                    //showBackground: true,
-                    //backgroundColor: bg_color,
-                    //borderColor: 'blue',
-                  });
-                  */
 
                   if (modified_positions_array.length>1) {
                     for (var i = 0; i < modified_positions_array.length; i++) {
@@ -332,6 +322,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   //o.removeAllRepresentations();
                   //o.center({sele:'1-50',});
                 });
+
         //alert(response['modified_positions']);
 			},
 			error: function(error){
@@ -367,7 +358,7 @@ function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, nu
 }
 
 // Function to take GPCR as input and make new PDB ordered list
-function makeStructure(gpcr, gprotein, cutoff, uniq_id) {
+function makeStructure(gpcr, gprotein, cutoff, distance, uniq_id) {
   //alert(gprotein);
   //var cutoff =0.0;
   $.ajax({
@@ -375,10 +366,10 @@ function makeStructure(gpcr, gprotein, cutoff, uniq_id) {
     type: "post", //request type,
     dataType: 'json',
     //data: JSON.stringify({pdbid: pdbid, chainGPCR: chainGPCR, chainGPROT: chainGPROT, gpcr: gpcr}),
-    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, uniq_id: uniq_id}),
+    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, distance: distance, uniq_id: uniq_id}),
     success: function(response){
 				console.log(response);
-        //alert(response['num_contacts']);
+        //alert (response['ordered_pdbs']);
         //alert(response['try'][0]+'--'+response['try']);
         resetPDBlist(uniq_id, gpcr, response['ordered_pdbs'], response['positions'], response['pair_positions'], response['num_contacts']);
 

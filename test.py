@@ -43,21 +43,36 @@ for line in gzip.open('data/SIFTS/pdb_chain_pfam.tsv.gz', 'rt'):
                 dic[pdbID]['BARR'] = line.split('\t')[1]
                 #print (pfam)
 
+## Extract ID, GPCR and G-prot chain information from AlphaFold data
+for files in os.listdir('data/PDB/AlphaFold/'):
+    if files.endswith('.pdb'):
+        pdbID = files.split('.pdb')[0]
+        dic[pdbID] = {}
+        dic[pdbID]['GPCR'] = 'A'
+        dic[pdbID]['GPROT'] = 'B'
+        dic[pdbID]['BARR'] = '-'
+
 def makeMapFASTA(pdbID, dic):
     print (pdbID)
     SEQ2PDB = {};
     fasta = ''
     x = ''
-    pdbl = PDBList()
-    try:
-        pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False)
-        parser = MMCIFParser()
-        structure = parser.get_structure(x, 'data/PDB/pdir/'+pdbID+'.cif')
-    except:
-        pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False, file_format="pdb")
+    if pdbID[:3] == 'AF:':
+        #parser = MMCIFParser()
         parser = PDBParser()
-        structure = parser.get_structure(x, 'data/PDB/pdir/pdb'+pdbID+'.ent')
+        structure = parser.get_structure(x, 'data/PDB/AlphaFold/'+pdbID + '.pdb')
+    else:
+        pdbl = PDBList()
+        try:
+            pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False)
+            parser = MMCIFParser()
+            structure = parser.get_structure(x, 'data/PDB/pdir/'+pdbID+'.cif')
+        except:
+            pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False, file_format="pdb")
+            parser = PDBParser()
+            structure = parser.get_structure(x, 'data/PDB/pdir/pdb'+pdbID+'.ent')
     print ('pass1')
+
     for model in structure:
         for chain in model:
             if chain.id == dic[pdbID]['GPCR']:
@@ -80,7 +95,7 @@ def makeMapFASTA(pdbID, dic):
     print ('pass2')
     handle = open('data/PDB/fasta/'+pdbID+'.txt', 'r')
     blast_records = NCBIXML.parse(handle)
-    print (blast_records)
+    #print (blast_records)
 
     GPCRDB2SEQ = {}
     for blast_record in blast_records:
@@ -145,6 +160,7 @@ for pdbID in dic:
             pdblist.append(pdbID)
             #break
 
+#sys.exit()
 #print (l)
 open('data/PDB/pdblist.txt', 'w').write(l)
 
