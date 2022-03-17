@@ -18693,7 +18693,7 @@ margin-left: -2.75rem;
 }
 
 #home.home-margin{
- padding-top: calc(10%) !important;
-  padding-bottom: calc(10%) !important;
+ padding-top: calc(5% + 10px) !important;
+  padding-bottom: calc(10% + 10px) !important;
 }
 
