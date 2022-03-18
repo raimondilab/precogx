@@ -109,7 +109,7 @@ def main(numseqs, input, input_file, assay, path):
         data = [['GNAS_0.95_28_shed_esm1b.joblib', 0],['GNAL_0.95_33_shed_esm1b.joblib', 0],['GNAI1_0.95_31_ebret_esm1b.joblib', 0],
             ['GNAI2_0.95_20_ebret_esm1b.joblib', 0],['GNAI3_0.95_29_shed_esm1b.joblib',0],
             ['GoA_0.95_20_ebret_esm1b.joblib', 0],['GoB_0.95_33_ebret_esm1b.joblib', 0],['GNAZ_0.95_32_ebret_esm1b.joblib', 0],['GNA11_0.95_25_ebret_esm1b.joblib', 0],
-            ['GNA14_0.95_18_shed_esm1b.joblib', 0],['GNA15_0.95_29_shed_esm1b.joblib', 0],['GNAQ_0.95_31_shed_esm1b.joblib', 0],['GNA12_0.95_18_shed_esm1b.joblib',0],
+            ['GNA14_0.95_18_shed_esm1b.joblib', 0],['GNA15_0.95_22_ebret_esm1b.joblib', 0],['GNAQ_0.95_31_shed_esm1b.joblib', 0],['GNA12_0.95_18_shed_esm1b.joblib',0],
             ['GNA13_0.95_18_shed_esm1b.joblib',0],['Barr1-GRK2_0.95_0_ebret_esm1b.joblib',0],
             ['Barr2_0.95_33_ebret_esm1b.joblib',0],['Barr2-GRK2_0.95_0_ebret_esm1b.joblib',0]]
 
