@@ -652,12 +652,15 @@ def assignOptions():
                 bestPCA = line.split('\t')[2].replace('\n', '')
                 break
 
+        layers = [str(i) for i in range(0,34)]
+        '''
         layers = []
         for i in range(0,34):
             if str(i) == bestPCA:
                 layers.append(str(i)+' ('+'best)')
             else:
                 layers.append(str(i))
+        '''
 
         return jsonify({'layers': layers})
 
