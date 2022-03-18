@@ -18688,7 +18688,7 @@ transform: rotate(0deg);
 
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
-#slider1_value, #slider2_value{
+#slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
 margin-left: -2.75rem;
 }
 
