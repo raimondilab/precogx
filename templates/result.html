@@ -15,12 +15,12 @@
 <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
 <script src='https://cdn.plot.ly/plotly-2.6.3.min.js'></script>
 <script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
-<script src="{{url_for('static', filename='/dataT.js')}}"></script>
-<script src="{{url_for('static', filename='/ngl.js')}}"></script>
-<script src="{{url_for('static', filename='/structure.js')}}"></script>
-<script src="{{url_for('static', filename='/sequence.js')}}"></script>
-<script src="{{url_for('static', filename='/heatmap.js')}}"></script>
-<script src="{{url_for('static', filename='/pca.js')}}"></script>
+<script src="{{url_for('static', filename='/js/dataT.js')}}"></script>
+<script src="{{url_for('static', filename='/js/ngl.js')}}"></script>
+<script src="{{url_for('static', filename='/js/structure.js')}}"></script>
+<script src="{{url_for('static', filename='/js/sequence.js')}}"></script>
+<script src="{{url_for('static', filename='/js/heatmap.js')}}"></script>
+<script src="{{url_for('static', filename='/js/pca.js')}}"></script>
 <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="{{url_for('static', filename='/css/reset.css')}}" rel="stylesheet" />
@@ -134,8 +134,7 @@ div.checkboxRight {
               makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
               makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
               makeHeatmap(0.0, 0.0, {{first_entry|safe}}, {{first_gprotein|safe}});
-              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', {{first_entry|safe}}, {{first_gprotein|safe}});
-
+              makePCA({{uniq_id|safe}}, 'Shedding', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
             </script>
 
         <div class="row align-items-center mb-5">
@@ -212,7 +211,7 @@ div.checkboxRight {
                               makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}});
                               makeHeatmap(slider1A_value, slider1B_value, selected_gpcr, selected_gprotein);
                               makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}});
-                              makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                              makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
                           });
                         </script>
                         <div id="sequence-viewer"  style="display: none;"></div>
@@ -278,7 +277,7 @@ div.checkboxRight {
                                    makeStructure(selected_gpcr, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
                                    makeHeatmap(slider2A_value, slider2B_value, selected_gpcr, selected_gprotein);
                                    makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
-                                   makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                                   makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
                                });
                             </script>
                         </div>
@@ -347,7 +346,7 @@ div.checkboxRight {
                           makeStructure(selected_gpcr, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}});
                           makeHeatmap(slider_value, slider1B_value, selected_gpcr, selected_gprotein);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}});
-                          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
                         };
 
                         function zoomB(direction, slider, otherSlider) {
@@ -383,7 +382,7 @@ div.checkboxRight {
                           makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}});
                           makeHeatmap(slider1A_value, slider_value, selected_gpcr, selected_gprotein);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}});
-                          makePCA({{uniq_id|safe}}, 'Shedding', 'GPCRome', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
 
                         };
 

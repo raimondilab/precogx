@@ -166,7 +166,7 @@ def main(numseqs, input, input_file, assay, path):
 
     ###########################################################################
     ###########################################################################
-    print ('Generating all layers')
+    print ('Generating all layers for the unsupervised part')
     ## Save PCA for all layers
     ## TEST SET
     for layer in range(0, 34):
@@ -184,15 +184,9 @@ def main(numseqs, input, input_file, assay, path):
                 #if len(Xtest) == 50:
                  #   break
         Xtest = torch.stack(Xtest, dim=0).numpy()
-        Xs_test = Xtest
-        #print (Xs_test)
-        #print ('outside FOR loop in layer', layer)
-        '''
-        pca = load(homeDir + '/static/33layer_PCA/33layer.npy')
-        Xs_test_pca = pca.transform(Xs_test)
-        print (Xs_test_pca)
-        '''
-        for name, row in zip(d, Xs_test):
+        pca = load(homeDir + '/static/pca_all/pca_'+str(layer))
+        Xs_test_pca = pca.transform(Xtest)
+        for name, row in zip(d, Xs_test_pca):
             np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+str(layer)+'layer_'+name, row)
     print ('Done with generating all layers')
     ###########################################################################

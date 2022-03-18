@@ -6,26 +6,31 @@ A Flask-based webApp to visualize PRECOGx predictions. Source code and analysiso
 PRECOG (legacy version) can be found ![here](https://github.com/gurdeep330/precog)
 
 ## File organization
-```data```: Files/folders requried to run the app
+```data```: Files/folders requried to run the app (mostly loaded in the run.py script)
 
-```templates```: HTML templates to load the home and output page
+```templates```: HTML templates to load the home, output, result, etc pages
 
-```static```: JS files to load Navigation bar as well as sequence and structure panels
+```static```: JS, css, .py files to implement the front-end
 
-```.github/workflows```: Workflows
-
-```test.py```: Python script (caled in the workflow) to fetch latest SIFT Pfam/Chain files and annotates each PDB-ID with GPCR and G-protein chains
+```.github/workflows```: Workflow to fetch the latest 3D complexes of GPCR/G-protein and generate mappings/annotations, which are used by various functions in the run.py script
 
 ## How to use?
-```
-git clone <repo>
+```git clone <repo>
 pip install Flask
 python3 run.py
 ```
-
 Open the URL on your browser ```http://129.206.245.88:5000```
 
-It currently runs using a sample output file ```static/OL820/out.tsv```
+# Output page
+
+## Coupling probabilites
+1. The predicted probabilites are displayed in the top left panel
+2. Each cell is clickable, and every click will call for functions to update other panels
+
+## PCA
+1. For every layer, embeddings of 377 GPCRs were generated and their PCA was calculated
+2. The PC1 and PC2 are showed in this panel
+3. From the dropdown, the user can select the layer as well as the type of annotation
 
 ## Features enabled
 1. Load FASTA (in Sequence panel) and 3D strucrture (Structure panel) of the first entry

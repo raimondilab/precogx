@@ -199,13 +199,15 @@ def fetchContactsHeatmap():
         return ("<html><h3>It was a GET request</h3></html>")
 
 def extract_pca(gprotein, assay, pca_type):
+    '''
     if pca_type == 'Best PCA':
         Xs_train_pca = np.load(path+'/static/best_PCA/'+gprotein+'.npy', allow_pickle=True)
     elif pca_type == 'GPCRome':
         Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
     else:
-        Xs_train_pca = np.load(path+'/static/embedding_all/'+pca_type+'.npy', allow_pickle=True)
-        #Xs_train_pca = np.load(path+'/static/best_PCA/GNAZ.npy', allow_pickle=True)
+    '''
+    Xs_train_pca = np.load(path+'/static/pca_all/'+pca_type+'.npy', allow_pickle=True)
+    #Xs_train_pca = np.load(path+'/static/best_PCA/GNAZ.npy', allow_pickle=True)
     score_coupling, score_uncoupling, Xs_train_pca_coupling, Xs_train_pca_uncoupling, Xs_train_pca_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = filter_gpcr_list(Xs_train_pca, assay, gprotein)
     #print ('train', Xs_train_pca_coupling)
     score_coupling = score_coupling.tolist()
@@ -327,7 +329,7 @@ def filter_gpcr_list(X, assay, gprotein):
     #print (genes_to_consider_uncoupling)
 
     gpcr_list = []
-    for line in open(path+'/static/gpcr_list_GN.txt', 'r'):
+    for line in open(path+'/static/pca_all/gpcr_list_unscaled_all_layer_GN.txt', 'r'):
         gene = line.replace('\n', '').split('\t')[1]
         acc = line.replace('\n', '').split('\t')[0]
         gpcr_list.append(gene + '|' + acc)
@@ -338,8 +340,8 @@ def filter_gpcr_list(X, assay, gprotein):
     X_grey = []
     genes_to_consider_grey = []
     for gene, row in zip(gpcr_list, X):
-        if 'MC1R' in gene:
-            print ('couple', gene, row[:2])
+        #if 'MC1R' in gene:
+        #    print ('couple', gene, row[:2])
         if gene in genes_to_consider_coupling:
             X_pos.append(row)
         elif gene in genes_to_consider_uncoupling:
@@ -390,12 +392,14 @@ def fetchPCA():
             assay = assay_given
 
         ### MUT
+        '''
         if pca_type == 'GPCRome':
             Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+gpcr_given+'.npy', allow_pickle=True)
         elif pca_type == 'Best PCA':
             Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
         else:
-            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
+        '''
+        Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
@@ -405,12 +409,14 @@ def fetchPCA():
         ### WT
         if '_WT' not in gpcr_given:
             wt = gpcr_given.split('_')[0] + '_WT'
+            '''
             if pca_type == 'GPCRome':
                 Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
             elif pca_type == 'Best PCA':
                 Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
             else:
-                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
+            '''
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
             #print (Xs_wt_pca)
             #x_test = Xs_test_pca[:,0].tolist()
             #y_test = Xs_test_pca[:,1].tolist()
@@ -468,12 +474,14 @@ def fetchPCA2():
         assay = assay_given;
 
         ### MUT
+        '''
         if pca_type == 'GPCRome':
             Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+gpcr_given+'.npy', allow_pickle=True)
         elif pca_type == 'Best PCA':
             Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
         else:
-            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
+        '''
+        Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
@@ -483,12 +491,14 @@ def fetchPCA2():
         ### WT
         if '_WT' not in gpcr_given:
             wt = gpcr_given.split('_')[0] + '_WT'
+            '''
             if pca_type == 'GPCRome':
                 Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
             elif pca_type == 'Best PCA':
                 Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
             else:
-                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
+            '''
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
             #print (Xs_wt_pca)
             #x_test = Xs_test_pca[:,0].tolist()
             #y_test = Xs_test_pca[:,1].tolist()
@@ -501,12 +511,14 @@ def fetchPCA2():
             y_wt = '-'
 
         #score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
+        '''
         if pca_type == 'Best PCA':
             Xs_train_pca = np.load(path+'/static/best_PCA/'+gprotein_given+'.npy', allow_pickle=True)
         elif pca_type == 'GPCRome':
             Xs_train_pca = np.load(path+'/static/33layer_PCA/33layer.npy', allow_pickle=True)
         else:
-            Xs_train_pca = np.load(path+'/static/embedding_all/'+pca_type+'.npy', allow_pickle=True)
+            '''
+        Xs_train_pca = np.load(path+'/static/pca_all/'+pca_type+'.npy', allow_pickle=True)
 
         classes = {}
         for line in open(path+'/data/classification.txt', 'r'):
@@ -516,7 +528,7 @@ def fetchPCA2():
                 classes[acc] = cls
 
         gpcr_list = []
-        for line in open(path+'/static/gpcr_list_GN.txt', 'r'):
+        for line in open(path+'/static/pca_all/gpcr_list_unscaled_all_layer_GN.txt', 'r'):
             gene = line.replace('\n', '').split('\t')[1]
             acc = line.replace('\n', '').split('\t')[0]
             gpcr_list.append(gene + '|' + acc)
@@ -578,10 +590,12 @@ def fetchPCA2():
         x_other = X_other[:,0].tolist()
         y_other = X_other[:,1].tolist()
 
+        '''
         for gpcr, x, y in zip(classA, x_classA, y_classA):
             if 'MC1R' in gpcr:
                 print ('classA', gpcr, x, y)
                 print (len(x_classA), len(y_classA))
+        '''
 
         #print (y_classA)
         #print (genes_to_consider_coupling)
@@ -589,7 +603,7 @@ def fetchPCA2():
         maxX = max(x_classA + x_classB + x_classC + x_frizzeled + x_taste + x_other)
         minY = min(y_classA + y_classB + y_classC + y_frizzeled + y_taste + y_other)
         maxY = max(y_classA + y_classB + y_classC + y_frizzeled + y_taste + y_other)
-        print(minX, maxX)
+        #print(minX, maxX)
         return jsonify({'x_classA': x_classA,
                         'x_classB': x_classB,
                         'x_classC': x_classC,
