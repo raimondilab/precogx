@@ -144,8 +144,8 @@ def extract_contacts(gprotein_given, cutoff, distance):
                 pair_positions.append(pos1+':'+pos2+':'+str(score))
             scores.append(score)
 
-    print ('positions', len(positions))
-    print ('distance', distance, dis)
+    #print ('positions', len(positions))
+    #print ('distance', distance, dis)
     scoresMax = max(scores)
     scoresMin = min(scores)
     positions = np.array(positions)
@@ -704,7 +704,7 @@ def fetchContactsSequence():
         #print (data['gpcr'])
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
-        print (gpcr_given, gpcr_given.split('_')[1])
+        #print (gpcr_given, gpcr_given.split('_')[1], 'sequence')
         path_to_fasta = data['path_to_fasta']
         uniq_id = data['uniq_id']
         cutoff = float(data['cutoff'])
@@ -874,7 +874,7 @@ def convertPositionsBW2PDB():
                 if gpcr_given == blast_record.query:
                     for alignment in blast_record.alignments:
                         bestHIT = alignment.title.split(' ')[1]
-                        print (bestHIT)
+                        #print (bestHIT)
                         if bestHIT_ACC == bestHIT.split('|')[1]:
                             for hsp in alignment.hsps:
                                 q_num = 0
@@ -903,8 +903,8 @@ def convertPositionsBW2PDB():
         #print (modified_positions)
         #print (modified_pair_positions)
 
-        print (mutation_position)
-        print (mutation_position_label)
+        #print (mutation_position)
+        #print (mutation_position_label)
 
         pdbData = ''
         if 'AF:' in pdbID:
