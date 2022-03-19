@@ -1,18 +1,18 @@
-Gprotein	assay	best_layer
-GoA	ebret	20
-GoB	ebret	33
-GNAZ	ebret	32
-GNAS	shed	28
-GNAQ	shed	31
-GNAL	shed	33
-GNAI3	shed	29
-GNAI2	ebret	20
-GNAI1	ebret	31
-GNA15	ebret	22
-GNA14	shed	18
-GNA13	shed	18
-GNA12	shed	18
-GNA11	ebret	25
-Barr1-GRK2	ebret	0
-Barr2	ebret	33
-Barr2-GRK2	ebret	0
+Gprotein	assay	best_layer  best_head
+GoA	ebret	20  10
+GoB	ebret	33  0
+GNAZ	ebret	32  14
+GNAS	shed	28  10
+GNAQ	shed	31  10
+GNAL	shed	33  14
+GNAI3	shed	29  13
+GNAI2	ebret	20  7
+GNAI1	ebret	31  10
+GNA15	ebret	22  10
+GNA14	shed	18  10
+GNA13	shed	18  10
+GNA12	shed	18  7
+GNA11	ebret	25  7
+Barr1-GRK2	ebret	0   0
+Barr2	ebret	33  14
+Barr2-GRK2	ebret	0   0
