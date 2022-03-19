@@ -72,7 +72,9 @@ def main(numseqs, input, input_file, assay, path):
             os.system('mkdir ' + homeDir +'/static/predictor/output/'+uniq_id+'/ebret/seq_features/')
             os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/embed/')
             os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/PCA/')
-            input_embedding = homeDir + '/static/predictor/output/'+uniq_id+'/embed/'
+            os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/attentions/')
+            save_path = homeDir + '/static/predictor/output/'+uniq_id
+            input_embedding = homeDir + '/static/predictor/output/' + uniq_id + '/embed/'
             '''
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id)
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/shed/')
@@ -81,7 +83,7 @@ def main(numseqs, input, input_file, assay, path):
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/ebret/seq_features/')
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/embed/')
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/PCA/')
-            input_embedding = '/static/predictor/output/'+uniq_id+'/embed/'
+            #input_embedding = '/static/predictor/output/'+uniq_id+'/embed/'
             '''
             break
 
@@ -143,7 +145,7 @@ def main(numseqs, input, input_file, assay, path):
     ##This line overwrites the previous FOR loop
     repr_layer = [i for i in range(0, 34)]
 
-    extract.main(model_location,input_file,str(input_embedding),repr_layer)
+    extract.main(model_location,input_file,save_path,repr_layer)
 
     #print ('Generating hand-creafted features')
     #os.system('./precog.py '+input_file+' '+str(uniq_id))
