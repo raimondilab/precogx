@@ -13,7 +13,8 @@ from esm import Alphabet, FastaBatchedDataset, ProteinBertModel, pretrained
 
 
 
-def main(model_location,input_file,input_embedding,repr_layer):
+#def main(model_location,input_file,input_embedding,repr_layer):
+def main(model_location,input_file,save_path,repr_layer):
     #repr_layer=[*range(0,34,1)]
     nogpu='--nogpu'
     toks_per_batch=4096
@@ -46,7 +47,7 @@ def main(model_location,input_file,input_embedding,repr_layer):
 
             # The model is trained on truncated sequences and passing longer ones in at
             # infernce will cause an error. See https://github.com/facebookresearch/esm/issues/21
-            
+
             out = model(toks, repr_layers=repr_layers,need_head_weights=True, return_contacts=return_contacts)
 
             logits = out["logits"].to(device="cpu")
@@ -89,5 +90,3 @@ def main(model_location,input_file,input_embedding,repr_layer):
 
                 #saving the information about attention maps of shape: nlayers x nheads x seqsize x seqsize
                 torch.save(out['attentions'].squeeze(0).clone(),attention_file)
-
-
