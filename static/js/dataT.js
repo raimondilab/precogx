@@ -89,9 +89,12 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
             var slider1A_value = document.getElementById('slider1A_value').innerHTML;
             var slider1B_value = document.getElementById('slider1B_value').innerHTML;
             //alert(document.getElementById('slider1_value').innerHTML);
-            makeSequence(gpcr, path_to_fasta, gprotein, slider1A_value, slider1B_value, uniq_id);
             makeStructure(gpcr, gprotein, slider1A_value, slider1B_value, uniq_id);
-            makeHeatmap(slider1A_value, slider1B_value, gpcr, gprotein);
+            var displayName = document.getElementById('displayName').innerHTML
+            makeSequence(gpcr, path_to_fasta, gprotein, slider1A_value, slider1B_value, uniq_id, displayName);
+            makeHeatmap(slider1A_value, slider1B_value, gpcr, gprotein, displayName);
+            makeAttentionmap(uniq_id, gpcr, gprotein, displayName);
+            setDisplayMenu(path_to_fasta, slider1A_value, slider1B_value, uniq_id, gpcr, gprotein, displayName);
             if (assay != 'Class') {
               makePCA(uniq_id, assay, pca_type, gpcr, gprotein);
             }
@@ -117,9 +120,12 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
         var slider1A_value = document.getElementById('slider1A_value').innerHTML;
         var slider1B_value = document.getElementById('slider1B_value').innerHTML;
         //alert(document.getElementById('slider1_value').innerHTML);
-        makeSequence(gpcr, path_to_fasta, gprotein, slider1A_value, slider1B_value,  uniq_id);
         makeStructure(gpcr, gprotein, slider1A_value, slider1B_value, uniq_id);
-        makeHeatmap(slider1A_value, slider1B_value, gpcr, gprotein);
+        var displayName = document.getElementById('displayName').innerHTML;
+        makeSequence(gpcr, path_to_fasta, gprotein, slider1A_value, slider1B_value,  uniq_id, displayName);
+        makeHeatmap(slider1A_value, slider1B_value, gpcr, gprotein, displayName);
+        makeAttentionmap(uniq_id, gpcr, gprotein, displayName);
+        setDisplayMenu(path_to_fasta, slider1A_value, slider1B_value, uniq_id, gpcr, gprotein, displayName);
         if (assay != 'Class') {
           makePCA(uniq_id, assay, pca_type, gpcr, gprotein);
         }
@@ -135,6 +141,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       makeSequence(gpcr, path_to_fasta, gprotein, slider1_value, uniq_id);
       makeStructure(gpcr, gprotein, slider1_value, uniq_id);
       makeHeatmap(slider1_value, gpcr, gprotein);
+      setDisplayMenu(uniq_id, gpcr, gprotein);
       makePCA(uniq_id, '', 'GPCRome', gpcr, gprotein);
       */
     });

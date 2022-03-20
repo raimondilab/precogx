@@ -75,6 +75,7 @@ def main(numseqs, input, input_file, assay, path):
             os.system('mkdir ' + homeDir + '/static/predictor/output/'+uniq_id+'/attentions/')
             save_path = homeDir + '/static/predictor/output/'+uniq_id
             input_embedding = homeDir + '/static/predictor/output/' + uniq_id + '/embed/'
+            input_attentions = homeDir + '/static/predictor/output/' + uniq_id + '/attentions/'
             '''
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id)
             os.system('mkdir ' + '/static/predictor/output/'+uniq_id+'/shed/')
@@ -161,7 +162,7 @@ def main(numseqs, input, input_file, assay, path):
         feature_type = row[1]
         embedding = row[0].split('.')[1].split('_')[-1]
 
-        Xs_test_pca_copy = predict.main(path, d, uniq_id, gprotein, input_file, input_embedding, model, int(feature_type), str(embedding))
+        Xs_test_pca_copy = predict.main(path, d, uniq_id, gprotein, input_file, input_embedding, input_attentions, model, int(feature_type), str(embedding))
         #np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein, Xs_test_pca_copy)
         for name, row in zip(d, Xs_test_pca_copy):
             np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)

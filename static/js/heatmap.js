@@ -1,4 +1,4 @@
-function makeHeatmap(cutoff, distance, gpcr, gprotein) {
+function makeHeatmap(cutoff, distance, gpcr, gprotein, chosen) {
   var gpcr = gpcr;
   var gprotein = gprotein;
   $.ajax({
@@ -9,6 +9,7 @@ function makeHeatmap(cutoff, distance, gpcr, gprotein) {
     data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, distance: distance}),
     success: function(response){
 				console.log(response);
+        togglePanel(chosen);
         var data = [
           {
             //z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
@@ -38,7 +39,8 @@ function makeHeatmap(cutoff, distance, gpcr, gprotein) {
 
         var layout = {
               autosize: true,
-              title: gprotein
+              //title: gprotein
+              title: 'Differential Contact Map of <b>'+gpcr.replace('_', '/')+'</b> with the <b>'+gprotein+'</b> coupling group'
 
         };
 
@@ -53,6 +55,7 @@ function makeHeatmap(cutoff, distance, gpcr, gprotein) {
     });
 }
 
+/*
 function togglePanel() {
   // get the clock
   var contactPanel = document.getElementById('myDiv');
@@ -85,3 +88,4 @@ function togglePanel() {
     panelHeading.innerHTML = 'Sequence';
   }
 }
+*/

@@ -20,13 +20,18 @@ from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from joblib import dump, load
 
-def main(path, d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_type,embedding):
+def main(path, d, uniq_id, gprotein, input_fasta,input_embedding, input_attentions, model,feature_type,embedding):
     homeDir = path
     train_set = model.split('/')[-1].split('_')[3]
     EMB_LAYER = int(model.split('/')[-1].split('_')[2])
     num_pca = float(model.split('/')[-1].split('_')[1])
     if num_pca > 1.0:
         num_pca = int(num_pca)
+
+    for line in open(homeDir + '/data/contacts/gprotein_best_layer.txt', 'r'):
+        if line.split('\t')[0] == gprotein:
+            ATTN_HEAD = int(line.replace('\n', '').split()[3])
+            break
 
     ## TRAIN SET PATH
     if train_set == 'shed':
@@ -44,19 +49,41 @@ def main(path, d, uniq_id, gprotein, input_fasta,input_embedding,model,feature_t
 
     TEST_FASTA_PATH = input_fasta
     TEST_EMB_PATH = input_embedding
+    TEST_ATTN_PATH = input_attentions
 
     ## TEST SET
     Xtest = []
+    XtestA = []
     gpcr_test = []
+    num = 0
     for header, _seq in esm.data.read_fasta(TEST_FASTA_PATH):
         if header.split('>')[1]:
             gpcr_test.append(header.split('>')[1])
             fn = TEST_EMB_PATH+header[1:]+'.pt'
             embs = torch.load(fn)
             Xtest.append(embs['mean_representations'][EMB_LAYER])
+            ## attentions
+            attns = TEST_ATTN_PATH + header[1:]+'.pt'
+            embsA = torch.load(attns)
+            #print (embsA.size(dim=0))
+            #print (len(embsA.size()))
+            if len(embsA.size()) == 5:
+                XtestA.append(embsA[num][32][ATTN_HEAD])
+                #print (len(embsA[num][32][ATTN_HEAD].size()))
+                #print (embsA[num][32][ATTN_HEAD])
+            else:
+                XtestA.append(embsA[32][ATTN_HEAD])
+                #print (len(embsA[32][ATTN_HEAD].size()))
+            num += 1
             #if len(Xtest) == 50:
              #   break
     Xtest = torch.stack(Xtest, dim=0).numpy()
+    XtestA = torch.stack(XtestA, dim=0).numpy()
+    for num, gpcr in enumerate(gpcr_test):
+        #print (XtestA[0][0])
+        #print (XtestA[0][1])
+        #print (len(XtestA))
+        np.save(homeDir+ '/static/predictor/output/'+uniq_id+'/attentions/'+gpcr+'_'+gprotein, XtestA[num])
 
     ###Xs_train = Xs
     Xs_test = Xtest

@@ -20,6 +20,7 @@
 <script src="{{url_for('static', filename='/js/structure.js')}}"></script>
 <script src="{{url_for('static', filename='/js/sequence.js')}}"></script>
 <script src="{{url_for('static', filename='/js/heatmap.js')}}"></script>
+<script src="{{url_for('static', filename='/js/attentionmap.js')}}"></script>
 <script src="{{url_for('static', filename='/js/pca.js')}}"></script>
 <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -127,21 +128,11 @@ div.checkboxRight {
             </div> <!-- end card -->
         </div> <!--end row one-->
 
-
-            <!-- Load first GPCR and GNA12 -->
-           <script>
-              makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}}, {{first_gprotein|safe}}, {{first_gprotein_index|safe}})
-              makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
-              makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
-              makeHeatmap(0.0, 0.0, {{first_entry|safe}}, {{first_gprotein|safe}});
-              makePCA({{uniq_id|safe}}, 'Shedding', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
-            </script>
-
         <div class="row align-items-center mb-5">
             <div class="col-xl-6" data-intro='This panel displays differential conctacts of a G-protein groups and the same contacts mapped on the input GPCR sequence.' data-step="3">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="header-title" id="panelHeading">Predicted contacts
+                        <h2 class="header-title" id="panelHeading">Contacts
                         <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#contactModal">?</span>
                         </h2>
 
@@ -149,9 +140,16 @@ div.checkboxRight {
 
                          <div class="col-auto">
                         <div class="float-start">
+                            <!--
                             <button type="button" class="btn btn-primary btn-sm fs--2" onclick="togglePanel()" id="toggleButton">Map the contacts on sequence</button>
+                            -->
+                            <button type="button" id="displayName" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown";>
+                              Select display
+                            </button>
+                            <ul id="displayList" class="dropdown-menu"></ul>
                         </div>
                          <div class="float-end">
+                            <div id="slider1Div">
                             <!-- slider1A starts -->
                              <div class="row g-3 align-items-center" style="margin-top: -33px;">
                                  <div class="col-auto">
@@ -185,6 +183,7 @@ div.checkboxRight {
                                  </div>
                              </div>
                              <!-- slider1B ends -->
+                             </div>
                         </div>
                        </div>
                         <!-- Update panels if slider is changed -->
@@ -201,6 +200,7 @@ div.checkboxRight {
                               $('#slider1A_value').html($(this).val() );
                               var slider1A_value = document.getElementById('slider1A_value').innerHTML;
                               var slider1B_value = document.getElementById('slider1B_value').innerHTML;
+                              var displayName = document.getElementById('displayName').innerHTML
                               /* Slider 2A */
                               document.getElementById('slider2A_value').innerHTML = document.getElementById('slider1A_value').innerHTML;
                               var slider2A = document.getElementById('slider2A');
@@ -209,13 +209,16 @@ div.checkboxRight {
                               var selected_gpcr = $('#selected').data('gpcr');
                               var selected_gprotein = $('#selected').data('gprotein')
                               makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}});
-                              makeHeatmap(slider1A_value, slider1B_value, selected_gpcr, selected_gprotein);
-                              makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}});
+                              makeHeatmap(slider1A_value, slider1B_value, selected_gpcr, selected_gprotein, displayName);
+                              makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
+                              setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
+                              makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}}, displayName);
                               makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
                           });
                         </script>
                         <div id="sequence-viewer"  style="display: none;"></div>
                         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+                        <div id='attentionMap'style="margin-top: 100px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
@@ -273,10 +276,14 @@ div.checkboxRight {
                                    var slider1A = document.getElementById('slider1A');
                                    slider1A.value = slider2A_value;
                                    var selected_gpcr = $('#selected').data('gpcr');
-                                   var selected_gprotein = $('#selected').data('gprotein')
+                                   var selected_gprotein = $('#selected').data('gprotein');
+                                   var displayName = document.getElementById('displayName').innerHTML;
+
                                    makeStructure(selected_gpcr, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
-                                   makeHeatmap(slider2A_value, slider2B_value, selected_gpcr, selected_gprotein);
-                                   makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
+                                   makeHeatmap(slider2A_value, slider2B_value, selected_gpcr, selected_gprotein, displayName);
+                                   makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
+                                   setDisplayMenu({{path_to_fasta|safe}}, slider2A_value, slider2B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
+                                   makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}}, displayName);
                                    makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
                                });
                             </script>
@@ -343,9 +350,13 @@ div.checkboxRight {
                           var selected_gpcr = $('#selected').data('gpcr');
                           var selected_gprotein = $('#selected').data('gprotein')
                           var slider1B_value = document.getElementById('slider1B_value').innerHTML;
+                          var displayName = document.getElementById('displayName').innerHTML;
+
                           makeStructure(selected_gpcr, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}});
-                          makeHeatmap(slider_value, slider1B_value, selected_gpcr, selected_gprotein);
-                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}});
+                          makeHeatmap(slider_value, slider1B_value, selected_gpcr, selected_gprotein, displayName);
+                          makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
+                          setDisplayMenu({{path_to_fasta|safe}}, slider_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
+                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}}, displayName);
                           makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
                         };
 
@@ -378,10 +389,13 @@ div.checkboxRight {
                           var selected_gpcr = $('#selected').data('gpcr');
                           var selected_gprotein = $('#selected').data('gprotein')
                           var slider1A_value = document.getElementById('slider1A_value').innerHTML;
+                          var displayName = document.getElementById('displayName').innerHTML;
 
                           makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}});
-                          makeHeatmap(slider1A_value, slider_value, selected_gpcr, selected_gprotein);
-                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}});
+                          makeHeatmap(slider1A_value, slider_value, selected_gpcr, selected_gprotein, displayName);
+                          makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
+                          setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
+                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}}, displayName);
                           makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
 
                         };
@@ -403,6 +417,17 @@ div.checkboxRight {
                 </div> <!-- end card -->
             </div>
         </div> <!--end row two-->
+
+        <!-- Load first GPCR and GNA12 -->
+       <script>
+          makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}}, {{first_gprotein|safe}}, {{first_gprotein_index|safe}})
+          makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
+          makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}}, 'Differential Contact Map');
+          makeHeatmap(0.0, 0.0, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Differential Contact Map');
+          makeAttentionmap({{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Differential Contact Map')
+          setDisplayMenu({{path_to_fasta|safe}}, 0.0, 0.0, {{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Differential Contact Map');
+          makePCA({{uniq_id|safe}}, 'Shedding', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
+        </script>
 
 
     </div>

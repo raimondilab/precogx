@@ -23,14 +23,19 @@ Open the URL on your browser ```http://129.206.245.88:5000```
 
 # Output page
 
-## Coupling probabilites
+## Coupling probabilites (top-left panel)
 1. The predicted probabilites are displayed in the top left panel
 2. Each cell is clickable, and every click will call for functions to update other panels
 
-## PCA
-1. For every layer, embeddings of 377 GPCRs were generated and their PCA was calculated
-2. The PC1 and PC2 are showed in this panel
-3. From the dropdown, the user can select the layer as well as the type of annotation
+## PCA (top-right panel)
+1. The plot shows decomposed PC1 vs PC2 values of 377 Human GPCR embeddings in the background
+2. The dropdown enables the user to select the layer and the type of functional label (coupling information, IUPHAR class, etc)
+3. User specified input (clickable in the table) is shown on the plot with the 377 GPCRs in background
+
+## Contacts/Sequence (bottom-left panel)
+1. Differential Contact Pairs (coupled vs not-coupled receptors for a given G-protein) are obtained using he ESM library,mapped to their BW annotations, and shown in the heatmap
+2. User can use the slider to filter the contact pairs based on their log-odds scores
+3. Contact pairs enriched for a coupling group (observed in coupled receptors) are colored in green and the depleted (observed in not-coupled receptors) ones in red
 
 ## Features enabled
 1. Load FASTA (in Sequence panel) and 3D strucrture (Structure panel) of the first entry
