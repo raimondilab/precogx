@@ -18650,7 +18650,7 @@ margin-left: auto;
 margin-right: auto;
 width: 95%;
 height: 40rem;
-margin-top: 4.5rem;
+margin-top: 5rem;
 }
 
 
@@ -18661,11 +18661,19 @@ height: 40rem;
 margin-top: 5rem;
 }
 
+
+#attentionMap{
+position: relative;
+width: 40ems;
+height: 40rem;
+margin-top: 5rem !important;
+}
+
 #viewport{
 position: relative;
 width: 40ems;
 height: 40rem;
-margin-top: 1rem;
+margin-top:1rem;
 }
 
 .fastaSeq, .charNumbers{
@@ -18694,6 +18702,6 @@ margin-left: -2.75rem;
 
 #home.home-margin{
  padding-top: calc(5% + 10px) !important;
-  padding-bottom: calc(13% + 10px) !important;
+ padding-bottom: calc(18.5%) !important;
 }
 
