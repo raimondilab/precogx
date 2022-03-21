@@ -21,6 +21,7 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
             //x: response['positions'],
             //y: response['positions'],
             type: 'heatmap',
+            colorscale: 'Reds',
             /*
             colorscale: [
               ['0.0', 'rgb(165,0,0)'],

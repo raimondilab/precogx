@@ -67,12 +67,17 @@ def main(path, d, uniq_id, gprotein, input_fasta,input_embedding, input_attentio
             embsA = torch.load(attns)
             #print (embsA.size(dim=0))
             #print (len(embsA.size()))
+            if EMB_LAYER == 0:
+                EMB_LAYER_FOR_ATTN = 0
+            else:
+                EMB_LAYER_FOR_ATTN = EMB_LAYER - 1
+
             if len(embsA.size()) == 5:
-                XtestA.append(embsA[num][32][ATTN_HEAD])
+                XtestA.append(embsA[num][EMB_LAYER_FOR_ATTN][ATTN_HEAD])
                 #print (len(embsA[num][32][ATTN_HEAD].size()))
                 #print (embsA[num][32][ATTN_HEAD])
             else:
-                XtestA.append(embsA[32][ATTN_HEAD])
+                XtestA.append(embsA[EMB_LAYER_FOR_ATTN][ATTN_HEAD])
                 #print (len(embsA[32][ATTN_HEAD].size()))
             num += 1
             #if len(Xtest) == 50:
