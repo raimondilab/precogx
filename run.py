@@ -191,7 +191,7 @@ def fetchAttentionMap():
         gpcr_given = data['gpcr']
         uniq_id = data['uniq_id']
         #scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
-        Xtest = np.load('static/predictor/output/'+uniq_id+'/attentions/'+gpcr_given+'_'+gprotein_given+'.npy')
+        Xtest = np.load(path+'/static/predictor/output/'+uniq_id+'/attentions/'+gpcr_given+'_'+gprotein_given+'.npy')
         #print (Xtest[0])
         #return jsonify({'fetch_contactsMin': scoresMin, 'fetch_contactsMax': scoresMax, 'fetch_contacts': scores, 'positions': positions.tolist()})
         return jsonify({'zaxis': Xtest.tolist(), 'xaxis': Xtest[0].tolist(), 'yaxis': Xtest[1].tolist()})
