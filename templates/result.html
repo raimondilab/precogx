@@ -229,7 +229,13 @@ div.checkboxRight {
                         <h2 class="header-title">Structure
                         <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal" data-intro='Click on help buttons to know more about each panel.' data-step="5">?</span>
                         </h2>
-
+                        
+                        <div class="col-auto">
+                          <input type="checkbox" id="PDBsource" name="PDBsource" onchange="click3Dsource(this)" checked>
+                          <label for="PDBsource">PDB</label>
+                          <input type="checkbox" id="AFsource" name="AFsource" onchange="click3Dsource(this)">
+                          <label for="AFsource">AlphaFold</label>
+                        </div>
                         <div class="dropdown" id="dd-example">
                             <button type="button" id="PDBbutton" class="btn btn-primary btn-sm dropdown-toggle fs--1" data-bs-toggle="dropdown";>
                                 PDB-ID
@@ -263,6 +269,21 @@ div.checkboxRight {
                                     </div>
                                 </div>
                            </div>
+
+                           <script>
+                             // Function to reload structure panel if user selects different 3D strcture AFsource
+                             // and insert in the pdblist ID
+                             function click3Dsource(element){
+                               //alert(element.name);
+                               var selected_gpcr = $('#selected').data('gpcr');
+                               var selected_gprotein = $('#selected').data('gprotein');
+                               var slider2A_value = document.getElementById('slider2A_value').innerHTML;
+                               var slider2B_value = document.getElementById('slider2B_value').innerHTML;
+                               //var displayName = document.getElementById('displayName').innerHTML;
+                               makeStructure(selected_gpcr, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
+                             }
+                            </script>
+
                            <script>
                              $(document).ready(function(){
                                var slider2A_value = document.getElementById('slider2A_value');

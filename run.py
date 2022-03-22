@@ -687,6 +687,7 @@ def DoBLAST(uniq_id, gpcr_given):
     #print (blast_records)
 
     GPCRDB2SEQ = {}
+    SEQ2GPCRDB = {}
     for blast_record in blast_records:
         #print (blast_record.query)
         if gpcr_given == blast_record.query:
@@ -698,6 +699,7 @@ def DoBLAST(uniq_id, gpcr_given):
                     for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
                         if q!='-' and s!='-':
                             GPCRDB2SEQ[s_num + hsp.sbjct_start] = q_num + hsp.query_start
+                            SEQ2GPCRDB[q_num + hsp.query_start] = s_num + hsp.sbjct_start
                             q_num += 1
                             s_num += 1
                         elif q!='-':
@@ -714,7 +716,7 @@ def DoBLAST(uniq_id, gpcr_given):
             #print (bestHIT)
             #print (GPCRDB2SEQ)
             break
-    return (GPCRDB2SEQ, bestHIT)
+    return (GPCRDB2SEQ, SEQ2GPCRDB, bestHIT)
 
 @app.route('/fetchContactsSequence', methods=['GET', 'POST'])
 def fetchContactsSequence():
@@ -743,10 +745,11 @@ def fetchContactsSequence():
             elif flag == 1:
                 fasta_sequence += line.replace('\n', '')
 
-        GPCRDB2SEQ, bestHIT = DoBLAST(uniq_id, gpcr_given)
+        GPCRDB2SEQ, SEQ2GPCRDB, bestHIT = DoBLAST(uniq_id, gpcr_given)
         bestHIT_ACC = bestHIT.split('|')[1]
 
         BW2GPCRDB = {}
+        GPCRDB2BW = {}
         for line in open(path + '/data/GPCRDB/GPCRDB.tsv', 'r'):
             if 'Name' not in line.split('\t')[0]:
                 acc = line.split('\t')[0].split('_')[1]
@@ -754,6 +757,7 @@ def fetchContactsSequence():
                     GPCRDB = int(line.split('\t')[1][1:])
                     BW = line.split('\t')[2]
                     BW2GPCRDB[BW] = GPCRDB
+                    GPCRDB2BW[GPCRDB] = BW
 
         #print (BW2GPCRDB)
         #print (positions)
@@ -770,6 +774,23 @@ def fetchContactsSequence():
 
         #print (list(set(seq_positions)))
         #seq_positions = list(set(seq_positions))
+        #print (seq_positions)
+        #print (bw_positions)
+        ## Insert mutation
+        mutation_position = gpcr_given.split('_')[1]
+        if mutation_position not in seq_positions:
+            if mutation_position != 'WT':
+                SEQ = int(mutation_position[1:-1])
+                if SEQ in SEQ2GPCRDB:
+                    GPCRDB = SEQ2GPCRDB[SEQ]
+                    if GPCRDB in GPCRDB2BW:
+                        BW = GPCRDB2BW[GPCRDB]
+                        seq_positions.append(int(SEQ))
+                        bw_positions.append(BW)
+                    else:
+                        seq_positions.append(int(SEQ))
+                        bw_positions.append('-')
+
         seq_positions = np.array(seq_positions)
         bw_positions = np.array(bw_positions)
         indexes = np.unique(seq_positions, return_index=True)[1]
@@ -787,6 +808,10 @@ def fetchContactsSequence():
         seq_positions = seq_positions.tolist()
         bw_positions = bw_positions.tolist()
 
+        #print (seq_positions)
+        #print (bw_positions)
+
+        '''
         new_seq_positions = []
         new_bw_positions = []
         mutation_position = gpcr_given.split('_')[1]
@@ -813,6 +838,7 @@ def fetchContactsSequence():
 
             seq_positions = new_seq_positions
             bw_positions = new_bw_positions
+        '''
 
         #print (seq_positions)
         #print (bw_positions)
@@ -845,6 +871,7 @@ def convertPositionsBW2PDB():
             bestHIT_ACC = line.replace('\n', '').split('\t')[4].split('|')[1]
 
         BW2GPCRDB = {}
+        GPCRDB2BW = {}
         for line in open(path + '/data/GPCRDB/GPCRDB.tsv', 'r'):
             if 'Name' not in line.split('\t')[0]:
                 acc = line.split('\t')[0].split('_')[1]
@@ -852,6 +879,7 @@ def convertPositionsBW2PDB():
                     GPCRDB = int(line.split('\t')[1][1:])
                     BW = line.split('\t')[2]
                     BW2GPCRDB[BW] = GPCRDB
+                    GPCRDB2BW[GPCRDB] = BW
 
         modified_positions = []
         modified_positions_labels = []
@@ -914,7 +942,9 @@ def convertPositionsBW2PDB():
 
             if mutation_sequence_position in SEQ2GPCRDB:
                 mutation_GPCRDB_position = SEQ2GPCRDB[mutation_sequence_position]
-                mutation_position_label = mutation_sequence_position
+                #print (mutation_GPCRDB_position)
+                if mutation_GPCRDB_position in GPCRDB2BW:
+                    mutation_position_label = GPCRDB2BW[mutation_GPCRDB_position]
 
             if mutation_GPCRDB_position in GPCRDB2PDB:
                 mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]

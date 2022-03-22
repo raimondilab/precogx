@@ -71,15 +71,35 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
     success: function(response){
 				//console.log(response);
         mutation_position = response['mutation_position'];
+        mutation_position_label = response['mutation_position_label'];
+        //alert(mutation_position_label);
         modified_positions = response['modified_positions'];
         modified_positions_labels = response['modified_positions_labels'];
         modified_num_contacts = response['modified_num_contacts'];
+        modified_num_contacts_array = modified_num_contacts.split('_');
         pdbData = response['pdbData'];
         //alert(modified_num_contacts);
         modified_pair_positions = response['modified_pair_positions'];
+
         modified_positions_array = modified_positions.split('_');
         modified_positions_labels_array = modified_positions_labels.split('_');
-        modified_num_contacts_array = modified_num_contacts.split('_');
+        new_modified_positions_array = [];
+        new_modified_positions_labels_array = [];
+        for (var i = 0; i < modified_positions_array.length; i++) {
+          var row = [];
+          if (mutation_position != modified_positions_array[i]) {
+            //alert(score+'up');
+            new_modified_positions_array.push(modified_positions_array[i]);
+            new_modified_positions_labels_array.push(modified_positions_labels_array[i]);
+          }
+          /*
+          else {
+            alert('In'+pos+mutation_position);
+          }
+          */
+        }
+        modified_positions_array = new_modified_positions_array;
+        modified_positions_labels_array = new_modified_positions_labels_array;
         //alert(response['modified_positions_labels']);
         // Define format of selection of given positions (contacts)
 
@@ -177,11 +197,14 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   }
                   else {
                     var mut = document.getElementById("mutation");
+                    mut.remove();
                     //alert(mut);
                     // if mut is exists
+                    /*
                     if (typeof(mut) != 'undefined' && mut != null){
                       mut.style.display = 'none';
                     }
+                    */
                   }
 
                   var enrichButton = createElement2("enrich", "input", {
@@ -261,6 +284,15 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       }
                   }
 
+                  var seleString = mutation_position;
+                  sele.setString(seleString+':'+chainGPCR+'.CA')
+                  var atomIndex = view.getAtomIndices()[0];
+                  //alert(atomIndex);
+                  if (atomIndex !== undefined) {
+                      //labelText[atomIndex] = modified_positions_labels_array[i];
+                      labelText[atomIndex] = mutation_position_label;
+                  }
+
                   var LABELS = o.addRepresentation("label", {
                     labelType: "text",
                     labelText: labelText,
@@ -336,7 +368,32 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
 // Function to take GPCR and orde PDB list as input,
 // and insert in the pdblist ID
 function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, num_contacts) {
-  //alert(positions);
+  //alert(ordered_pdbs);
+  if (document.getElementById('PDBsource').checked == false && document.getElementById('AFsource').checked == false)
+    {
+    alert('You must select either of the two sources.');
+    document.getElementById('PDBsource').checked = true;
+    document.getElementById('AFsource').checked = true;
+    }
+  var newOrderedPDBs = [];
+  for (var i = 0; i < ordered_pdbs.length; i++) {
+    if (ordered_pdbs[i].includes('AF:'))
+      {
+        if (document.getElementById('AFsource').checked)
+          {
+          newOrderedPDBs.push(ordered_pdbs[i]);
+          }
+      }
+    if (ordered_pdbs[i].includes('AF:') == false)
+      {
+        if (document.getElementById('PDBsource').checked)
+          {
+          newOrderedPDBs.push(ordered_pdbs[i]);
+          }
+      }
+  }
+  //alert(newOrderedPDBs);
+  ordered_pdbs = newOrderedPDBs;
   var new_options = '';
   var new_options = "<input class=\"form-control\" type=\"text\" id=\"PDBsearch\" placeholder=\"Search..\">";
   //alert(gpcr);
