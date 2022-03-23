@@ -42,11 +42,22 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
 
         var layout = {
               autosize: true,
-              title: 'Attention Map of <b>'+gpcr.replace('_', '/')+'</b> with the <b>'+gprotein+'</b> coupling group'
+              title: 'Attention Map of <b>'+gpcr.replace('_', '/')+'</b> with the <b>'+gprotein+'</b> coupling group',
+              font: {
+                size: 10
+               }
 
         };
 
-        var config = {responsive: true}
+        var icon1 = {
+            'width': 500,
+            'height': 600
+
+}
+        var config = {responsive: true,
+        displaylogo: false
+
+        }
 
 
         Plotly.newPlot('attentionMap', data, layout, config);

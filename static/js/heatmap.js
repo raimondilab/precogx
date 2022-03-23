@@ -40,11 +40,15 @@ function makeHeatmap(cutoff, distance, gpcr, gprotein, chosen) {
         var layout = {
               autosize: true,
               //title: gprotein
-              title: 'Differential Contact Map of <b>'+gpcr.replace('_', '/')+'</b> with the <b>'+gprotein+'</b> coupling group'
+              title: 'Differential Contact Map of <b>'+gpcr.replace('_', '/')+'</b> with the <b>'+gprotein+'</b> coupling group',
+               font: {
+                    size: 10
+               }
 
         };
 
-        var config = {responsive: true}
+        var config = {responsive: true,
+        displaylogo: false}
 
         Plotly.newPlot('myDiv', data, layout, config);
 
