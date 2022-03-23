@@ -18681,29 +18681,3 @@ margin-right: -0.75rem;
 }
 
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    #PDBbutton{
-       font-size: 0.69444rem !important;
-    }
-
-    #slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
-	margin-left: -2.095rem ;
-    }
-
-    #slider1Div > div{
-        margin-left: -5rem !important;
-    	margin-right: -2rem !important;
-    }
-
-    #slider1Div > div > div:nth-child(4) > label{
-	    margin-left: -1.45rem !important;
-    
-    }
-
-   #attentionMap, #sequence-viewer, #myDiv{ 
-         margin-top: 4.2rem !important;
-   }
-
-}
-
