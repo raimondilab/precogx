@@ -18665,9 +18665,11 @@ transform: rotate(0deg);
 
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
+
 #slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
 margin-left: -1.095rem;
 }
+
 
 #home.home-margin, #running{
  margin-top: 10vh !important;
@@ -18677,3 +18679,31 @@ margin-left: -1.095rem;
 #slider1Div > div:nth-child(1) > div:nth-child(1) > label:nth-child(1), #slider1Div > div:nth-child(1) > div:nth-child(4) > label:nth-child(1){
 margin-right: -0.75rem;
 }
+
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    #PDBbutton{
+       font-size: 0.69444rem !important;
+    }
+
+    #slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
+	margin-left: -2.095rem ;
+    }
+
+    #slider1Div > div{
+        margin-left: -5rem !important;
+    	margin-right: -2rem !important;
+    }
+
+    #slider1Div > div > div:nth-child(4) > label{
+	    margin-left: -1.45rem !important;
+    
+    }
+
+   #attentionMap, #sequence-viewer, #myDiv{ 
+         margin-top: 4.2rem !important;
+   }
+
+}
+
