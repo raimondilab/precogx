@@ -18666,10 +18666,14 @@ transform: rotate(0deg);
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
 #slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
-margin-left: -2.75rem;
+margin-left: -1.095rem;
 }
 
-#home.home-margin{
- padding-top: calc(5% + 10px) !important;
-height: 100vh;
+#home.home-margin, #running{
+ margin-top: 10vh !important;
+ height: 100vh;
+}
+
+#slider1Div > div:nth-child(1) > div:nth-child(1) > label:nth-child(1), #slider1Div > div:nth-child(1) > div:nth-child(4) > label:nth-child(1){
+margin-right: -0.75rem;
 }
