@@ -73,13 +73,12 @@ div.checkboxRight {
 }
 
 .btn-circle {
-    width: 30px;
-    height: 30px;
-    padding: 6px 0px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.42857;
+  width: 1.45rem;
+  height: 1.45rem;
+  padding: 0px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 0.65rem;
 }
 </style>
 
@@ -89,8 +88,8 @@ div.checkboxRight {
 <section class="pt-8" id="home">
     <div class="container pb-2">
         <h1 class="fw-bold mb-4">Result
-           <!--<button type="button" class="btn btn-info btn-md" onclick="loadIntro()">Need a quick intro?</button>-->
-        <span class="btn btn-info btn-sm" onclick="loadIntro()">Need a quick intro?</span>
+            <!--<button type="button" class="btn btn-info btn-md" onclick="loadIntro()">Need a quick intro?</button>-->
+            <span class="btn btn-info btn-sm" onclick="loadIntro()">Need a quick intro?</span>
         </h1>
 
         <div class="row align-items-center">
@@ -99,7 +98,7 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Coupling probabilites
-                         <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#dataModal">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#dataModal">?</span>
                         </h2>
                         <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2 fs--2" cellspacing="0" width="100%"></table>
                     </div>  <!-- end card body-->
@@ -109,7 +108,7 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">PCA
-                         <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#pcaModal">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#pcaModal">?</span>
                         </h2>
                         <div  class="p-1 fs--3">
                             <div class="dropdown" id="labels">
@@ -133,59 +132,58 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title" id="panelHeading">Contacts
-                        <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#contactModal">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#contactModal">?</span>
                         </h2>
 
                         <!-- SEQUENCE PANEL (neXtprot viewer) -->
 
-                         <div class="col-auto">
-                        <div class="float-start">
-                            <!--
-                            <button type="button" class="btn btn-primary btn-sm fs--2" onclick="togglePanel()" id="toggleButton">Map the contacts on sequence</button>
-                            -->
-                            <button type="button" id="displayName" class="btn btn-primary btn-sm dropdown-toggle fs--1" data-bs-toggle="dropdown";>
-                              Select display
-                            </button>
-                            <ul id="displayList" class="dropdown-menu"></ul>
+                        <div class="col-auto">
+                            <div class="float-start">
+                                <!--
+                                <button type="button" class="btn btn-primary btn-sm fs--2" onclick="togglePanel()" id="toggleButton">Map the contacts on sequence</button>
+                                -->
+                                <button type="button" id="displayName" class="btn btn-primary btn-sm dropdown-toggle fs--2" data-bs-toggle="dropdown";>
+                                    Select display
+                                </button>
+                                <ul id="displayList" class="dropdown-menu"></ul>
+                            </div>
+                            <div class="float-end">
+                                <div id="slider1Div">
+                                    <!-- slider1A starts -->
+                                    <div class="row g-3 align-items-center" style="margin-top: -1.75rem;">
+                                        <div class="col-auto" style="padding-top: 0.65rem;">
+                                            <label for="slider1A" class="col-form-label fs--2" style="font-weight: bold !import">Log odds score</label>
+                                        </div>
+                                        <div class="col-auto fs--3">
+                                            <button type="button" class="btn btn-info btn-circle" id="minus1A">-</button>
+                                            <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" id="slider1A">
+                                            <button type="button" class="btn btn-info btn-circle" id="plus1A">+</button>
+                                        </div>
+
+                                        <div class="col-auto fs--1" style="padding-top: 0.65rem;">
+                                            <span id="slider1A_value">0.0</span>
+                                        </div>
+                                        <div class="col-auto" style="padding-top: 0.65rem;">
+                                            <label for="slider1B" class="col-form-label fs--2" style="margin-left: -0.45rem;font-weight: bold !import">Distance</label>
+                                        </div>
+                                        <div class="col-auto fs--3">
+                                            <button type="button" class="btn btn-info btn-circle" id="minus1B">-</button>
+                                            <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0" max="20" step="1" value="0" id="slider1B">
+                                            <button type="button" class="btn btn-info btn-circle" id="plus1B">+</button>
+                                        </div>
+
+                                        <div class="col-auto fs--1" style="padding-top: 0.65rem;">
+                                            <span id="slider1B_value">0</span>
+                                        </div>
+                                    </div>
+                                    <!-- slider1A ends -->
+
+                                    <!-- slider1B starts -->
+
+                                    <!-- slider1B ends -->
+                                </div>
+                            </div>
                         </div>
-                         <div class="float-end">
-                            <div id="slider1Div">
-                            <!-- slider1A starts -->
-                             <div class="row g-3 align-items-center" style="margin-top: -33px;">
-                                 <div class="col-auto">
-                                     <label for="slider1A" class="col-form-label" >Log odds score</label>
-                                 </div>
-                                 <div class="col-auto">
-                                   <button type="button" class="btn btn-info btn-circle" id="minus1A">-</button>
-                                     <input type="range" style="width: 60%;" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" id="slider1A">
-                                     <button type="button" class="btn btn-info btn-circle" id="plus1A">+</button>
-                                 </div>
-
-                                 <div class="col-auto">
-                                    <span id="slider1A_value">0.0</span>
-                                 </div>
-                              </div>
-                              <!-- slider1A ends -->
-
-                              <!-- slider1B starts -->
-                              <div class="row g-3 align-items-center" style="margin-top: -37px;">
-                                 <div class="col-auto">
-                                     <label for="slider1B" class="col-form-label">Distance</label>
-                                 </div>
-                                 <div class="col-auto">
-                                   <button type="button" class="btn btn-info btn-circle" id="minus1B">-</button>
-                                     <input type="range" style="width: 60%;" class="form-range" min="0" max="20" step="1" value="0" id="slider1B">
-                                     <button type="button" class="btn btn-info btn-circle" id="plus1B">+</button>
-                                 </div>
-
-                                 <div class="col-auto">
-                                    <span id="slider1B_value">0</span>
-                                 </div>
-                             </div>
-                             <!-- slider1B ends -->
-                             </div>
-                        </div>
-                       </div>
                         <!-- Update panels if slider is changed -->
                         <script>
                           $(document).ready(function(){
@@ -227,50 +225,51 @@ div.checkboxRight {
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Structure
-                        <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal" data-intro='Click on help buttons to know more about each panel.' data-step="5">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal" data-intro='Click on help buttons to know more about each panel.' data-step="5">?</span>
                         </h2>
-                        
-                        <div class="col-auto">
-                          <input type="checkbox" id="PDBsource" name="PDBsource" onchange="click3Dsource(this)" checked>
-                          <label for="PDBsource">PDB</label>
-                          <input type="checkbox" id="AFsource" name="AFsource" onchange="click3Dsource(this)">
-                          <label for="AFsource">AlphaFold</label>
-                        </div>
                         <div class="dropdown" id="dd-example">
                             <button type="button" id="PDBbutton" class="btn btn-primary btn-sm dropdown-toggle fs--1" data-bs-toggle="dropdown";>
                                 PDB-ID
                             </button>
                             <ul id="pdblist" class="dropdown-menu"></ul>
                             <div class="float-end">
-                                <div class="row g-3 align-items-center" style="margin-top: -33px;">
-                                    <div class="col-auto">
-                                        <label for="slider2A" class="col-form-label" >Log odds score</label>
+                                <div class="col-auto fs--2">
+                                    <label>Protein Structure Database: </label>
+                                    <input class="form-check-input" type="checkbox" id="PDBsource" name="PDBsource" onchange="click3Dsource(this)" checked>
+                                    <label for="PDBsource">PDB</label>
+                                    <input class="form-check-input" type="checkbox" id="AFsource" name="AFsource" onchange="click3Dsource(this)">
+                                    <label for="AFsource">AlphaFold</label>
+                                </div>
+                                <div class="row g-3 align-items-center" style="margin-top: -2.75rem;">
+                                    <div class="col-auto" style="padding-top: 0.65rem;">
+                                        <label for="slider1A" class="col-form-label fs--2" style="font-weight: bold !import;margin-right: -0.75rem;">Log odds score</label>
                                     </div>
-                                    <div class="col-auto">
+                                    <div class="col-auto fs--3">
                                         <button type="button" class="btn btn-info btn-circle" id="minus2A">-</button>
-                                        <input type="range" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" style="width:60%;" id="slider2A">
+                                        <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" id="slider2A">
                                         <button type="button" class="btn btn-info btn-circle" id="plus2A">+</button>
                                     </div>
-                                    <div class="col-auto">
-                                       <span id="slider2A_value">0.0</span>
+
+                                    <div class="col-auto fs--1" style="padding-top: 0.65rem;">
+                                        <span id="slider2A_value">0.0</span>
                                     </div>
-                                </div>
-                                <div class="row g-3 align-items-center" style="margin-top: -37px;">
-                                    <div class="col-auto">
-                                        <label for="slider2B" class="col-form-label" >Distance</label>
+                                    <div class="col-auto" style="padding-top: 0.65rem;">
+                                        <label for="slider1B" class="col-form-label fs--2" style="margin-left: -0.45rem;font-weight: bold !import;margin-right: -0.75rem;">Distance</label>
                                     </div>
-                                    <div class="col-auto">
+                                    <div class="col-auto fs--3">
                                         <button type="button" class="btn btn-info btn-circle" id="minus2B">-</button>
-                                        <input type="range" class="form-range" min="0" max="20" step="1" value="0" style="width:60%;" id="slider2B">
+                                        <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0" max="20" step="1" value="0" id="slider2B">
                                         <button type="button" class="btn btn-info btn-circle" id="plus2B">+</button>
                                     </div>
-                                    <div class="col-auto">
-                                       <span id="slider2B_value">0</span>
+
+                                    <div class="col-auto fs--1" style="padding-top: 0.65rem;">
+                                        <span id="slider2B_value">0</span>
                                     </div>
                                 </div>
-                           </div>
 
-                           <script>
+                            </div>
+
+                            <script>
                              // Function to reload structure panel if user selects different 3D strcture AFsource
                              // and insert in the pdblist ID
                              function click3Dsource(element){
@@ -284,7 +283,7 @@ div.checkboxRight {
                              }
                             </script>
 
-                           <script>
+                            <script>
                              $(document).ready(function(){
                                var slider2A_value = document.getElementById('slider2A_value');
                                slider2A_value.innerHTML = $('#slider2A').val();
@@ -440,7 +439,7 @@ div.checkboxRight {
         </div> <!--end row two-->
 
         <!-- Load first GPCR and GNA12 -->
-       <script>
+        <script>
           makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}}, {{first_gprotein|safe}}, {{first_gprotein_index|safe}})
           makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
           makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}}, 'Differential Contact Map');
