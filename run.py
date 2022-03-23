@@ -777,7 +777,7 @@ def fetchContactsSequence():
         #print (seq_positions)
         #print (bw_positions)
         ## Insert mutation
-        mutation_position = gpcr_given.split('_')[1]
+        mutation_position = gpcr_given.split('_')[-1]
         if mutation_position not in seq_positions:
             if mutation_position != 'WT':
                 SEQ = int(mutation_position[1:-1])
@@ -912,7 +912,7 @@ def convertPositionsBW2PDB():
         mutation_position = '-'
         mutation_position_label = '-'
         if '_WT' not in gpcr_given:
-            mutation_sequence_position = int(gpcr_given.split('_')[1][1:-1])
+            mutation_sequence_position = int(gpcr_given.split('_')[-1][1:-1])
             handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
             blast_records = NCBIXML.parse(handle)
             SEQ2GPCRDB = {}
@@ -982,8 +982,8 @@ def fetchContactsPDBStructure():
         distance = float(data['distance'])
         uniq_id = data['uniq_id']
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
-        #print ('print', gprotein_given, pair_positions)
         ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
+        #print (ordered_pdbs)
         return jsonify({'try': positions.tolist(),
                         'ordered_pdbs': ordered_pdbs,
                         'positions': ','.join(positions.tolist()),
@@ -997,7 +997,7 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
     path_to_fasta = path+"/static/predictor/output/"+uniq_id+"/input.fasta"
     path_to_output = path+"/static/predictor/output/"+uniq_id+"/"
 
-    os.system('blastp -query '+path_to_fasta+' -db '+ path + '/data/PDB/blastdb/allPDB -out '+path_to_output+'/blastp_output.txt')
+    os.system('blastp -query '+path_to_fasta+' -num_alignments 5000 -db '+ path + '/data/PDB/blastdb/allPDB -out '+path_to_output+'/blastp_output.txt')
 
     chain_info = {}
     for line in open(path+'/data/PDB/pdblist.txt', 'r'):
@@ -1027,11 +1027,11 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
                 chain_info[pdbid]['gprotein_chain'] = gprotein_chain
         '''
 
-    #print (chain_info)
     dic = {}
     for line in open(path_to_output+'/blastp_output.txt', 'r'):
         if 'Query=' in line:
             name = line.split('Query=')[1].replace('\n', '').replace(' ', '')
+            #print (name)
             dic[name] = []
         elif line[0] == '>':
             #print (line)
@@ -1039,7 +1039,7 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
                 pdbid = line.split('>')[1].split('|')[0]
             else:
                 pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower()
-            #print (pdbid)
+                #print (pdbid)
             if pdbid in chain_info:
                 row = []
                 #print (chain_info[pdbid])
@@ -1048,8 +1048,11 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
                 row.append(chain_info[pdbid]['gprotein_chain'])
                 #dic[name].append(row)
                 dic[name].append(pdbid+'_'+chain_info[pdbid]['gpcr_chain']+'_'+chain_info[pdbid]['gprotein_chain'])
+            else:
+                print ('not found', pdbid)
 
     #print ('PDBs', dic[gpcr])
+    #print ('PDBs', dic[name])
     return(dic[gpcr])
     #return None
 

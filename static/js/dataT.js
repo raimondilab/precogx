@@ -73,6 +73,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       var variant = gpcr_list[rowIndex];
       if (colIndex == 0 || colIndex == 1) {
         //colIndex = 2;
+        //alert(gpcr);
         $.ajax({
           url:"/bestGprotein", //the page containing python script
           type: "post", //request type,
