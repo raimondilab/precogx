@@ -18725,10 +18725,31 @@ margin-bottom: -6rem !important;
     }
 
    #attentionMap, #sequence-viewer, #myDiv{
-         margin-top: 4.2rem !important;
+         margin-top: 4rem !important;
    }
 
 
    div.g-3:nth-child(1) > div:nth-child(4){
        margin-left: -1rem ;
    }
+
+   #minus2B {
+    margin-left: -2rem;
+    }
+
+    div.g-3:nth-child(2) > div:nth-child(4) > label:nth-child(1) {
+        margin-left: -3.25rem;
+
+}
+
+div.fs--2:nth-child(1) {
+margin-bottom: 0.25rem;
+}
+
+div.row:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2){
+       margin-right: -4rem;
+}
+
+#slider2B_value{
+margin-left: -3.85rem;
+}
