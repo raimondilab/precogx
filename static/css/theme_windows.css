@@ -18724,11 +18724,6 @@ margin-bottom: -6rem !important;
 
     }
 
-   #attentionMap, #sequence-viewer, #myDiv{
-         margin-top: 4rem !important;
-   }
-
-
    div.g-3:nth-child(1) > div:nth-child(4){
        margin-left: -1rem ;
    }
