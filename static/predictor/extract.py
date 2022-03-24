@@ -49,6 +49,8 @@ def main(model_location,input_file,save_path,repr_layer):
             # infernce will cause an error. See https://github.com/facebookresearch/esm/issues/21
 
             out = model(toks, repr_layers=repr_layers,need_head_weights=True, return_contacts=return_contacts)
+            attention_file = save_path + f"/attentions/attentions.pt"
+            torch.save(out['attentions'].squeeze(0).clone(),attention_file)
 
             logits = out["logits"].to(device="cpu")
             representations = {
@@ -59,7 +61,7 @@ def main(model_location,input_file,save_path,repr_layer):
 
             for i, label in enumerate(labels):
                 embed_file = save_path + f"/embed/{label}.pt"
-                attention_file = save_path + f"/attentions/{label}.pt"
+                #attention_file = save_path + f"/attentions/{label}.pt"
                 result = {"label": label}
                 # Call clone on tensors to ensure tensors are not views into a larger representation
                 # See https://github.com/pytorch/pytorch/issues/1995
@@ -80,13 +82,17 @@ def main(model_location,input_file,save_path,repr_layer):
                 if return_contacts:
                     result["contacts"] = contacts[i, : len(strs[i]), : len(strs[i])].clone()
 
+                '''
                 ##the line below could be removed, saving redundant information
                 result["attentions"] = out['attentions'].squeeze(0).clone()
+                '''
 
                 torch.save(
                     result,
                     embed_file,
                 )
 
+                '''
                 #saving the information about attention maps of shape: nlayers x nheads x seqsize x seqsize
                 torch.save(out['attentions'].squeeze(0).clone(),attention_file)
+                '''

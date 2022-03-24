@@ -197,14 +197,15 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   }
                   else {
                     var mut = document.getElementById("mutation");
-                    mut.remove();
+                    //mut.remove();
                     //alert(mut);
                     // if mut is exists
-                    /*
+
                     if (typeof(mut) != 'undefined' && mut != null){
-                      mut.style.display = 'none';
+                      //mut.style.display = 'none';
+                      mut.remove();
                     }
-                    */
+
                   }
 
                   var enrichButton = createElement2("enrich", "input", {

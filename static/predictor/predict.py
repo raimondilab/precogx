@@ -63,7 +63,8 @@ def main(path, d, uniq_id, gprotein, input_fasta,input_embedding, input_attentio
             embs = torch.load(fn)
             Xtest.append(embs['mean_representations'][EMB_LAYER])
             ## attentions
-            attns = TEST_ATTN_PATH + header[1:]+'.pt'
+            #attns = TEST_ATTN_PATH + header[1:]+'.pt'
+            attns = TEST_ATTN_PATH + 'attentions.pt'
             embsA = torch.load(attns)
             #print (embsA.size(dim=0))
             #print (len(embsA.size()))

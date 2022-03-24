@@ -259,6 +259,10 @@ def main(numseqs, input, input_file, assay, path):
     with open(homeDir + '/static/predictor/output/'+uniq_id+'/out.json', 'w') as f:
         json.dump(dic, f)
 
+    ## Delete the .pt files (embeddings) from the folders embed and attentions
+    print ('Deleting .pt files from the folders embed and attentions')
+    os.system('rm -rf '+ homeDir + '/static/predictor/output/'+uniq_id+'/embed/*.pt')
+    os.system('rm -rf '+ homeDir + '/static/predictor/output/'+uniq_id+'/attentions/*.pt')
     #shutil.rmtree('output/'+uniq_id+'/')
     return (uniq_id)
 
