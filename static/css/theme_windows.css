@@ -18698,7 +18698,7 @@ margin-bottom: -6rem !important;
 
 #home.home-margin, #running{
  margin-top: 2.5vh !important;
- height: 100vh;
+ height: 100vh + 10px;
 }
 
 #PDBbutton{
