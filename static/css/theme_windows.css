@@ -18734,11 +18734,12 @@ margin-bottom: -6rem !important;
    }
 
    #minus2B {
-    margin-left: -2rem;
+    margin-left: -1rem !important;
     }
 
     div.g-3:nth-child(2) > div:nth-child(4) > label:nth-child(1) {
-        margin-left: -3.25rem;
+        margin-left: -3.25rem !important;
+        margin-right: 0rem !important;
 
 }
 
@@ -18747,9 +18748,6 @@ margin-bottom: 0.25rem;
 }
 
 div.row:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2){
-       margin-right: -4rem;
+       margin-right: -2rem;
 }
 
-#slider2B_value{
-margin-left: -3.85rem;
-}
