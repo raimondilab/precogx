@@ -18,8 +18,8 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
             //zmax: Number(response['fetch_contactsMax']),
             //zmin: -1.0,
             //zmax: 1.0,
-            //x: response['positions'],
-            //y: response['positions'],
+            x: response['xaxis'],
+            y: response['yaxis'],
             type: 'heatmap',
             colorscale: 'Reds',
             /*
