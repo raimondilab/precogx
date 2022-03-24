@@ -18572,38 +18572,6 @@ color: #00819D !important;
 color: #AFAEBC !important;
 }
 
-
-.typewriter h1 {
-  overflow: hidden !important; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange !important; /* The typwriter cursor */
-  white-space: nowrap !important; /* Keeps the content on a single line */
-  margin: 0 auto !important; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .12em !important; /* Adjust as needed */
-  animation:
-  typing 3.5s steps(40, end),
-  blink-caret .75s step-end infinite;
-  color: #00819D !important;
-  font-weight:inherit !important;
-  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
-}
-
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: blue; }
-}
-
-.tywriterdiv {
-margin-top: -5em;
-margin-left: 5rem;
-
-}
 .toolbar {
     float: left;
 }
@@ -18721,9 +18689,6 @@ div.checkboxRight {
 margin-left: -0.99rem;
 }
 
-#slider1Div > div:nth-child(2), div.float-end:nth-child(3) > div:nth-child(2){
-margin-top: -28px !important;;
-}
 
 
 div.row:nth-child(3){
@@ -18732,28 +18697,26 @@ margin-bottom: -6rem !important;
 }
 
 #home.home-margin, #running{
- margin-top: 3vh !important;
+ margin-top: 2.5vh !important;
  height: 100vh;
 }
+
 #PDBbutton{
-       font-size: 0.69444rem !important;
+       font-size: 0.59444rem !important;
    }
 
-    #slider1A_value, #slider1B_value{
-	margin-left: -4.095rem ;
+    #slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
+	margin-left: -3.095rem ;
+	font-size: 0.69444rem !important;
     }
 
-     #slider2A_value, #slider2B_value{
-	        margin-left: -2.095rem ;
-    }
-
+   
      #slider1A, #slider1B,#slider2A, #slider2B{
-	      width: 30% !important ;
+	    width: 40% !important ;
     }
 
     #slider1Div > div{
-        margin-left: -5rem !important;
-    	margin-right: -2rem !important;
+    	margin-right: -3.5rem !important;
     }
 
     #slider1Div > div > div:nth-child(4) > label{
@@ -18763,4 +18726,9 @@ margin-bottom: -6rem !important;
 
    #attentionMap, #sequence-viewer, #myDiv{
          margin-top: 4.2rem !important;
+   }
+
+
+   div.g-3:nth-child(1) > div:nth-child(4){
+       margin-left: -1rem ;
    }
