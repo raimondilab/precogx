@@ -41,7 +41,11 @@ if (navigator.userAgent.indexOf("Linux") !== -1){
     $('head').append('<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">');
 }  else {
     $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-} 
+}
+
+if (!navigator.userAgent.includes("Firefox")) {
+    $('head').append('<link href="{{url_for('static', filename='/css/theme_chrome.css')}}" rel="stylesheet">');
+}
 
 </script>
 
