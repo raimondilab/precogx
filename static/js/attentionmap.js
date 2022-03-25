@@ -87,7 +87,7 @@ function togglePanel(chosen) {
   //var toggleButton = document.getElementById('toggleButton');
 
   // now toggle the clock and the button text, depending on current state
-  if (chosen == 'Differential Contact Map') {
+  if (chosen == 'Contact Map') {
     // clock is visible. hide it
     contactPanel.style.display = 'block';
     sequencePanel.style.display = 'none';
@@ -125,7 +125,7 @@ function togglePanel(chosen) {
 
 function setDisplayMenu(path_to_fasta, cutoff, distance, uniq_id, gpcr, gprotein) {
   var new_options = '';
-  new_options += "<li><a class=\"dropdown-item\" onClick=\"makeHeatmap(\'"+cutoff+"\',\'"+distance+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Differential Contact Map\')\">Differential Contact Map</a></li>";
+  new_options += "<li><a class=\"dropdown-item\" onClick=\"makeHeatmap(\'"+cutoff+"\',\'"+distance+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Contact Map\')\">Contact Map</a></li>";
   new_options += "<li><a class=\"dropdown-item\" onClick=\"makeAttentionmap(\'"+uniq_id+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Attention Map\')\">Attention Map</a></li>";
   new_options += "<li><a class=\"dropdown-item\" onClick=\"makeSequence(\'"+gpcr+"\',\'"+path_to_fasta+"\',\'"+gprotein+"\',\'"+cutoff+"\',\'"+distance+"\',\'"+uniq_id+"\',\'Sequence\')\">Sequence</a></li>";
 
