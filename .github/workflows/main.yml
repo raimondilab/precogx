@@ -38,12 +38,12 @@ jobs:
           auto-update-conda: true
 
       # Install and run MAKEDB
-      - name: Install BioPython & run test.py
+      - name: Install BioPython & run 3dStructureWorkflow.py
         shell: bash -l {0}
         run: |
           conda install biopython
           conda install -c bioconda blast
-          python test.py
+          python static/pyScripts/3dStructureWorkflow.py
 
       # run the test.py to get the latest SIFT and PDB FASTA files
       #- name: execute test.py script
