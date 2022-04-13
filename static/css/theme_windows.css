@@ -18639,7 +18639,7 @@ margin-top: 3.75rem !important;
 #viewport{
 position: relative;
 width: 32ems;
-height: 30rem;
+height: 29.96rem;
 margin-top: 1rem;
 }
 
@@ -18760,4 +18760,44 @@ margin-bottom: 0.25rem;
 div.row:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2){
        margin-right: -4rem;
 }
+
+
+@media (min-width: 1540px) {
+  .fs--2 {
+    font-size: 0.65rem !important; 
+  }
+
+  .fs--1 {
+    font-size: 0.85rem !important;
+  }
+
+#home.home-margin, #running{
+ margin-top: 10vh !important;
+ padding-bottom: calc(50%) !important;
+}
+
+ #slider1A_value, #slider1B_value{
+        margin-left: -3.095rem ;
+        font-size: 0.85rem !important;
+    }
+#slider2A_value, #slider2B_value{
+        margin-left: -4.095rem ;
+        font-size: 0.85rem !important;
+    }
+
+
+#PDBbutton{
+       font-size: 0.85rem !important;
+   }
+
+#viewport{
+position: relative;
+width: 32ems;
+height: 29.5rem;
+margin-top: 1rem;
+}
+
+
+}
+
 
