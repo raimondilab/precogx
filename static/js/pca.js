@@ -39,15 +39,27 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
           marker: { size: 12, color: 'lightgreen' }
         };
 
-        var classB = {
-          x:response['x_classB'],
-          y:response['y_classB'],
+        var classB1 = {
+          x:response['x_classB1'],
+          y:response['y_classB1'],
           mode: 'markers',
           type: 'scatter',
           //name: assay + ' grey',
-          name: 'Class B',
+          name: 'Class B1',
           //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
-          text: response['classB'],
+          text: response['classB1'],
+          marker: { size: 12, color: 'steelblue' }
+        };
+
+        var classB2 = {
+          x:response['x_classB2'],
+          y:response['y_classB2'],
+          mode: 'markers',
+          type: 'scatter',
+          //name: assay + ' grey',
+          name: 'Class B2',
+          //text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
+          text: response['classB2'],
           marker: { size: 12, color: 'cyan' }
         };
 
@@ -88,10 +100,14 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
         };
 
         if (response['x_wt'] != '-') {
-          var testColor = "fuchsia";
+          //var testColor = "fuchsia";
+          //var testColor = "#0000FF";
+          var testColor = "#FF0000";
         }
         else {
-          var testColor = "darkorange";
+          //var testColor = "darkorange";
+          //var testColor = "#FF0000";
+          var testColor = "#0000FF";
         }
         var test = {
           x: [response['x_test']],
@@ -111,13 +127,14 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
             type: 'scatter',
             name: gpcr.split('_')[0]+'_WT',
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-            marker: { size: 12, color: "darkorange" }
+            //marker: { size: 12, color: "darkorange" }
+            marker: { size: 12, color: "#0000FF" }
           };
-          var data = [ other, classA, classB, classC, frizzeled, taste, test, wt ];
+          var data = [ other, classA, classB1, classB2, classC, frizzeled, taste, test, wt ];
           //var data = [ classA, test, wt ];
         }
         else {
-          var data = [ other, classA, classB, classC, frizzeled, taste, test ];
+          var data = [ other, classA, classB1, classB2, classC, frizzeled, taste, test ];
           //var data = [ classA, test ];
         }
 
@@ -128,7 +145,7 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
           yaxis: {
             range: [ response['minY'], response['maxY'] ]
           },
-          title: gprotein
+          title: gprotein+'--'
         };
 
         var config = {responsive: true,
@@ -155,9 +172,9 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
     data: JSON.stringify({uniq_id: uniq_id, assay: assay, pca_type: pca_type, gpcr: gpcr, gprotein: gprotein}),
     success: function(response){
 				console.log(response);
-        //alert(assay);
         //alert(response['score_coupling']);
         var assay = response['assay'];
+        //alert(assay);
         showPCA(uniq_id, assay, pca_type, gpcr, gprotein);
         var train_grey = {
           x:response['x_train_grey'],
@@ -196,10 +213,12 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
         };
 
         if (response['x_wt'] != '-') {
-          var testColor = "fuchsia";
+          //var testColor = "fuchsia";
+          var testColor = "#FF0000";
         }
         else {
-          var testColor = "darkorange";
+          //var testColor = "darkorange";
+          var testColor = "#0000FF";
         }
         var test = {
           x: [response['x_test']],
@@ -219,7 +238,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
             type: 'scatter',
             name: gpcr.split('_')[0]+'_WT',
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-            marker: { size: 12, color: "darkorange" }
+            marker: { size: 12, color: "#0000FF" }
           };
           var data = [ train_grey, train_uncoupling, train_coupling, test, wt ];
         }
@@ -249,30 +268,30 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
 
 function showPCA(uniq_id, assay, pca_type, gpcr, gprotein) {
   //alert(gpcr+'--'+gprotein);
-  var ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
-  var shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
+  var gemta = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
+  var tgf = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
   var both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
   var options = '';
 
   if (gprotein.includes("Barr")) {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
     options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'STRING\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">STRING</a></li>";
     options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
   else if (both.includes(gprotein)) {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'Shedding\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Shedding</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'TGF\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">TGF</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
     options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
-  else if (shedding.includes(gprotein)) {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'Shedding\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Shedding</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
+  else if (tgf.includes(gprotein)) {
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'TGF\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">TGF</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
     options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
   else {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'ebBRET\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">ebBRET</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'IUPHAR\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">IUPHAR</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
     options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
 

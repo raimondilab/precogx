@@ -31,10 +31,19 @@ def sortPositions(positions):
     data = []
     for position in positions:
         if position not in ['Nterm', 'Cterm']:
+            '''
             if '.' in position:
                 base = position.split('.')[0]
                 #value = int(position.split('.')[1])
                 value = int(position.split('.')[1])*(10**(len(position.split('.')[1])*(-1)))
+            else:
+                base = position
+                value = 0
+            '''
+            if 'x' in position:
+                base = position.split('x')[0]
+                #value = int(position.split('.')[1])
+                value = int(position.split('x')[1])*(10**(len(position.split('x')[1])*(-1)))
             else:
                 base = position
                 value = 0
@@ -114,7 +123,8 @@ def extract_contacts(gprotein_given, cutoff, distance):
                 pair_positions.append(pos1+':'+pos2+':'+str(score))
             scores.append(score)
     '''
-    for line in open(path+'/data/contacts/position_'+assay+'_scaled_web_new.txt', 'r'):
+    #for line in open(path+'/data/contacts/position_'+assay+'_scaled_web_new.txt', 'r'):
+    for line in open(path+'/data/contacts/position_'+assay+'_scaled_web_new2.txt', 'r'):
         gprotein_found = line.split('\t')[0]
         if gprotein_given == gprotein_found:
             #print ('here')
@@ -244,7 +254,7 @@ def filter_gpcr_list(X, assay, gprotein):
     genes_to_consider_uncoupling = []
     #print (assay)
     #assay = 'ebBRET'
-    if assay == 'Shedding':
+    if assay == 'TGF':
         num = -1
         for line in open(path+'/data/shedding.tsv', 'r'):
             if line[0] != '#':
@@ -279,7 +289,7 @@ def filter_gpcr_list(X, assay, gprotein):
                 if flag == 0:
                     num = -1
 
-    elif assay == 'ebBRET':
+    elif assay == 'GEMTA':
         num = -1
         for line in open(path+'/data/ebbret.tsv', 'r', encoding="utf-8"):
             if line[0] != '#':
@@ -303,7 +313,7 @@ def filter_gpcr_list(X, assay, gprotein):
                         #print (gprot)
                         break
 
-    elif assay == 'IUPHAR':
+    elif assay == 'GtoPdb':
         iuphar_map = {
                       'GNAS': 'Gs', 'GNAL': 'Gs',
                       'GNAI1': 'Gi/Go', 'GNAI2': 'Gi/Go', 'GNAI3': 'Gi/Go', 'GNAO1': 'Gi/Go', 'GNAZ': 'Gi/Go', 'GoA': 'Gi/Go', 'GoB': 'Gi/Go',
@@ -311,6 +321,7 @@ def filter_gpcr_list(X, assay, gprotein):
                       'GNAQ': 'Gq/G11', 'GNA11': 'Gq/G11', 'GNA14': 'Gq/G11', 'GNA15': 'Gq/G11'
                       }
         gprotein_fam = iuphar_map[gprotein]
+        print (gprotein_fam)
         for line in open(path+'/data/iuphar.tsv', 'r'):
             if line[0] != '#' and line.split('\t')[1] != '':
                 gene = line.split('\t')[0]
@@ -385,25 +396,25 @@ def fetchPCA():
         #if assay == '':
         assay = '';
         assayList = []
-        ebBRET = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
-        shedding = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+        gemta = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
+        tgf = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
         both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
 
         if 'Barr' in gprotein_given:
-            assay = 'ebBRET'
-            assayList = ['ebBRET', 'STRING', 'Class']
+            assay = 'GEMTA'
+            assayList = ['GEMTA', 'STRING', 'Class']
         elif gprotein_given in both:
-            assay = 'Shedding'
-            assayList = ['Shedding', 'ebBRET', 'IUPHAR', 'Class']
-        elif gprotein_given in shedding:
-            assay = 'Shedding'
-            assayList = ['Shedding', 'IUPHAR', 'Class']
-        elif gprotein_given in ebBRET:
-            assay = 'ebBRET'
-            assayList = ['ebBRET', 'IUPHAR', 'Class']
+            assay = 'TGF'
+            assayList = ['TGF', 'GEMTA', 'GtoPdb', 'Class']
+        elif gprotein_given in tgf:
+            assay = 'TGF'
+            assayList = ['TGF', 'GtoPdb', 'Class']
+        elif gprotein_given in gemta:
+            assay = 'GEMTA'
+            assayList = ['GEMTA', 'GtoPdb', 'Class']
         elif assay_given == 'Class':
             assay = 'Class'
-            assayList = ['Shedding', 'ebBRET', 'IUPHAR', 'Class']
+            assayList = ['TGF', 'GEMTA', 'GtoPdb', 'Class']
 
         if assay_given in assayList:
             assay = assay_given
@@ -447,7 +458,7 @@ def fetchPCA():
 
         score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
         #print (x_train, y_train, x_test, y_test)
-        #print (genes_to_consider_coupling)
+        #print (assay,genes_to_consider_coupling)
         minX = min(x_train_coupling + x_train_uncoupling + x_train_grey)
         maxX = max(x_train_coupling + x_train_uncoupling + x_train_grey)
         minY = min(y_train_coupling + y_train_uncoupling + x_train_grey)
@@ -538,7 +549,8 @@ def fetchPCA2():
         Xs_train_pca = np.load(path+'/static/pca_all/'+pca_type+'.npy', allow_pickle=True)
 
         classes = {}
-        for line in open(path+'/data/classification.txt', 'r'):
+        #for line in open(path+'/data/classification.txt', 'r'):
+        for line in open(path+'/data/classification2.txt', 'r'):
             if 'Uniprot_acc' not in line:
                 acc = line.split('\t')[0]
                 cls = line.split('\t')[-1].replace('\n', '')
@@ -553,8 +565,10 @@ def fetchPCA2():
 
         X_classA = []
         classA = []
-        X_classB = []
-        classB = []
+        X_classB1 = []
+        classB1 = []
+        X_classB2 = []
+        classB2 = []
         X_classC = []
         classC = []
         X_frizzeled = []
@@ -570,9 +584,12 @@ def fetchPCA2():
             if classes[acc] == 'classA':
                 X_classA.append(row.tolist())
                 classA.append(gpcr)
-            elif classes[acc] == 'classB':
-                X_classB.append(row)
-                classB.append(gpcr)
+            elif classes[acc] == 'classB1':
+                X_classB1.append(row)
+                classB1.append(gpcr)
+            elif classes[acc] == 'classB2':
+                X_classB2.append(row)
+                classB2.append(gpcr)
             elif classes[acc] == 'classC':
                 X_classC.append(row)
                 classC.append(gpcr)
@@ -587,7 +604,8 @@ def fetchPCA2():
                 other.append(gpcr)
 
         X_classA = np.array(X_classA)
-        X_classB = np.array(X_classB)
+        X_classB1 = np.array(X_classB1)
+        X_classB2 = np.array(X_classB2)
         X_classC = np.array(X_classC)
         X_frizzeled = np.array(X_frizzeled)
         X_taste = np.array(X_taste)
@@ -596,8 +614,10 @@ def fetchPCA2():
 
         x_classA = X_classA[:,0].tolist()
         y_classA = X_classA[:,1].tolist()
-        x_classB = X_classB[:,0].tolist()
-        y_classB = X_classB[:,1].tolist()
+        x_classB1 = X_classB1[:,0].tolist()
+        y_classB1 = X_classB1[:,1].tolist()
+        x_classB2 = X_classB2[:,0].tolist()
+        y_classB2 = X_classB2[:,1].tolist()
         x_classC = X_classC[:,0].tolist()
         y_classC = X_classC[:,1].tolist()
         x_frizzeled = X_frizzeled[:,0].tolist()
@@ -616,26 +636,29 @@ def fetchPCA2():
 
         #print (y_classA)
         #print (genes_to_consider_coupling)
-        minX = min(x_classA + x_classB + x_classC + x_frizzeled + x_taste + x_other)
-        maxX = max(x_classA + x_classB + x_classC + x_frizzeled + x_taste + x_other)
-        minY = min(y_classA + y_classB + y_classC + y_frizzeled + y_taste + y_other)
-        maxY = max(y_classA + y_classB + y_classC + y_frizzeled + y_taste + y_other)
+        minX = min(x_classA + x_classB1 + x_classB2 + x_classC + x_frizzeled + x_taste + x_other)
+        maxX = max(x_classA + x_classB1 + x_classB2 + x_classC + x_frizzeled + x_taste + x_other)
+        minY = min(y_classA + y_classB1 + y_classB2 + y_classC + y_frizzeled + y_taste + y_other)
+        maxY = max(y_classA + y_classB1 + y_classB2 + y_classC + y_frizzeled + y_taste + y_other)
         #print(minX, maxX)
         return jsonify({'x_classA': x_classA,
-                        'x_classB': x_classB,
+                        'x_classB1': x_classB1,
+                        'x_classB1': x_classB2,
                         'x_classC': x_classC,
                         'x_frizzeled': x_frizzeled,
                         'x_taste': x_taste,
                         'x_other': x_other,
                         'y_classA': y_classA,
-                        'y_classB': y_classB,
+                        'y_classB1': y_classB1,
+                        'y_classB2': y_classB2,
                         'y_classC': y_classC,
                         'y_frizzeled': y_frizzeled,
                         'y_taste': y_taste,
                         'y_other': y_other,
                         'assay': assay,
                         'classA': classA,
-                        'classB': classB,
+                        'classB1': classB1,
+                        'classB2': classB2,
                         'classC': classC,
                         'frizzeled': frizzeled,
                         'taste': taste,
@@ -726,6 +749,7 @@ def fetchContactsSequence():
         #print (data['gpcr'])
         gprotein_given = data['gprotein']
         gpcr_given = data['gpcr']
+        #print (gpcr_given)
         #print (gpcr_given, gpcr_given.split('_')[1], 'sequence')
         path_to_fasta = data['path_to_fasta']
         uniq_id = data['uniq_id']
@@ -740,7 +764,8 @@ def fetchContactsSequence():
                 if flag == 1:
                     break
                 flag = 0
-                gpcr_found = line.split('>')[1].replace('\n', '').replace(' ', '')
+                #gpcr_found = line.split('>')[1].replace('\n', '').replace(' ', '')
+                gpcr_found = line.split('>')[1].replace('\n', '').lstrip().rstrip()
                 if gpcr_found == gpcr_given:
                     flag = 1
             elif flag == 1:
@@ -748,6 +773,7 @@ def fetchContactsSequence():
 
         GPCRDB2SEQ, SEQ2GPCRDB, bestHIT = DoBLAST(uniq_id, gpcr_given)
         bestHIT_ACC = bestHIT.split('|')[1]
+        #print (bestHIT)
 
         BW2GPCRDB = {}
         GPCRDB2BW = {}
@@ -756,20 +782,24 @@ def fetchContactsSequence():
                 acc = line.split('\t')[0].split('_')[1]
                 if acc == bestHIT_ACC:
                     GPCRDB = int(line.split('\t')[1][1:])
-                    BW = line.split('\t')[2]
+                    #BW = line.split('\t')[2]
+                    ## convert . to x in GPCRDB numbering
+                    BW = line.split('\t')[2].replace('.', 'x')
                     BW2GPCRDB[BW] = GPCRDB
                     GPCRDB2BW[GPCRDB] = BW
 
         #print (BW2GPCRDB)
+        #print (GPCRDB2SEQ)
         #print (positions)
         seq_positions = []
         bw_positions = []
         for BW in positions:
             if BW in BW2GPCRDB:
                 GPCRDB = BW2GPCRDB[BW]
-                SEQ = GPCRDB2SEQ[GPCRDB]
-                seq_positions.append(int(SEQ))
-                bw_positions.append(BW)
+                if GPCRDB in GPCRDB2SEQ:
+                    SEQ = GPCRDB2SEQ[GPCRDB]
+                    seq_positions.append(int(SEQ))
+                    bw_positions.append(BW)
             #else:
             #   print (BW)
 
@@ -878,7 +908,9 @@ def convertPositionsBW2PDB():
                 acc = line.split('\t')[0].split('_')[1]
                 if acc == bestHIT_ACC:
                     GPCRDB = int(line.split('\t')[1][1:])
-                    BW = line.split('\t')[2]
+                    #BW = line.split('\t')[2]
+                    ## convert . to x in GPCRDB numbering
+                    BW = line.split('\t')[2].replace('.', 'x')
                     BW2GPCRDB[BW] = GPCRDB
                     GPCRDB2BW[GPCRDB] = BW
 
@@ -1031,7 +1063,8 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
     dic = {}
     for line in open(path_to_output+'/blastp_output.txt', 'r'):
         if 'Query=' in line:
-            name = line.split('Query=')[1].replace('\n', '').replace(' ', '')
+            #name = line.split('Query=')[1].replace('\n', '').replace(' ', '')
+            name = line.split('Query=')[1].replace('\n', '').lstrip().rstrip()
             #print (name)
             dic[name] = []
         elif line[0] == '>':
@@ -1100,7 +1133,13 @@ def input():
         input_file = None ## Upload FASTA file
         ## Run the predictor
         try:
-            uniq_id = precogx.main(15, input, input_file, 'all', app.root_path)
+            uniq_id, errorCode, flaggedGPCR = precogx.main(15, input, input_file, 'all', app.root_path)
+            print (errorCode)
+            if errorCode == 1:
+                return render_template('error1.html', flaggedGPCR=json.dumps(flaggedGPCR))
+                #return render_template('error1.html')
+            elif errorCode == 2:
+                return render_template('error1.html', flaggedGPCR=json.dumps(flaggedGPCR))
             #uniq_id = 'OXDUB'
             return redirect('/output/'+uniq_id)
         except:
@@ -1131,7 +1170,7 @@ def output(uniq_id):
         for key1 in d:
             for num, key2 in enumerate(d[key1]):
                 gpcr = key2[0]
-                if key2[1] == 'WT' or key2[1] not in ['IUPHAR', 'LogRAi', 'Emax']:
+                if key2[1] == 'WT' or key2[1] not in ['GtoPdb', 'LogRAi', 'Emax']:
                     variant = '_' + key2[1]
                 else:
                     variant = '_WT'

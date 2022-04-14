@@ -21,7 +21,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
     //alert(first_gprotein_index);
     //var dataT = initTable();
     initTable(path_to_json_output, first_gprotein, first_gprotein_index);
-    var assays = ['IUPHAR', 'LogRAi', 'Emax', 'WT'];
+    var assays = ['GtoPdb', 'LogRAi-TGF', 'Emax-GEMTA', 'WT'];
     //alert(path_to_json_output);
     var checkB = document.createElement("DIV");
     checkB.setAttribute("class", "checkboxRight");
@@ -64,7 +64,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       var cell = dataT.cell(this).node();
       //$(cell).css('backgroundColor', 'darkgrey').css( "border", "3px solid black" ).attr('id', 'selected');
       var rowIndex = dataT.row(this).index();
-      header = ['GPCR', 'VAR', 'GNAS', 'GNAL', 'GNAI1', 'GNAI2', 'GNAI3', 'GoA', 'GoB', 'GNAZ', 'GNA11', 'GNA14', 'GNA15', 'GNAQ', 'GNA12', 'GNA13', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
+      header = ['GPCR', 'VARIANT', 'GNAS', 'GNAL', 'GNAI1', 'GNAI2', 'GNAI3', 'GoA', 'GoB', 'GNAZ', 'GNA11', 'GNA14', 'GNA15', 'GNAQ', 'GNA12', 'GNA13', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
       //alert(document.getElementById("AssayButton").innerHTML);
       var pca_type = document.getElementById("PCAButton").innerHTML;
       var assay = document.getElementById("AssayButton").innerHTML;
@@ -187,7 +187,7 @@ function initTable(path_to_json_output, first_gprotein, first_gprotein_index) {
             {
                 extend: 'spacer',
                 style: 'bar',
-                text: '<div>G-protein groups'
+                text: '<div>Transducer groups'
             },
             {
                 extend: 'colvisGroup',
@@ -215,7 +215,7 @@ function initTable(path_to_json_output, first_gprotein, first_gprotein_index) {
             },
             {
                 extend: 'colvisGroup',
-                text: 'B-arrs',
+                text: '\u03B2-arrs',
                 show: [ 0, 1, 16, 17, 18],
                 hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
             },
@@ -252,7 +252,7 @@ function initTable(path_to_json_output, first_gprotein, first_gprotein_index) {
 
     columns: [
         { title: "GPCR" },
-        { title: "VAR" },
+        { title: "VARIANT" },
         { title: "GNAS" },
         { title: "GNAL" },
         { title: "GNAI1" },

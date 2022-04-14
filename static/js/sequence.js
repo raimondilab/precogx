@@ -26,7 +26,7 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, distance, uniq_id, 
           }
         seq_positions = [... new Set(seq_positions)];
         */
-        //alert(seq_positions);
+        //alert(sequence);
         //alert(variantPosition);
         var seq = new Sequence(sequence);
         seq.render('#sequence-viewer', {

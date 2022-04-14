@@ -47,6 +47,7 @@ from Bio import SeqIO
 class GPCR:
     def __init__(self, name):
         self.name = name
+        self.hits = 0
         self.seq = ''
         self.var = []
         self.shedding = {}
@@ -90,9 +91,9 @@ def main(numseqs, input, input_file, assay, path):
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
     if input_file == None:
-        gpcrs, input = formatInput(numseqs, input)
+        gpcrs, input = formatInput(homeDir, numseqs, input)
     else:
-        gpcrs, input = formatInputFile(numseqs, input_file)
+        gpcrs, input = formatInputFile(homeDir, numseqs, input_file)
 
     open(homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta', 'w').write(input)
     input_file = homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta'
@@ -120,6 +121,54 @@ def main(numseqs, input, input_file, assay, path):
     #os.system('hmmsearch data/7tm_1.hmm '+input_file+' > static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
     os.system('hmmsearch ' + homeDir + '/data/7tm_1.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
     #os.system('hmmsearch ' + homeDir + '/data/SCOP_7TM_348.hmm '+input_file+' > ' + homeDir + '/static/predictor/output/'+uniq_id+'/temp_hmm_file.txt')
+
+    errorCode = 0
+    # Check with BLAST GPCRDB
+    flaggedGPCR = []
+    ##
+    checkGPCR = {}
+    flag = 0
+    os.system('blastp -query ' + input_file + ' -outfmt 7 -out ' + homeDir + '/static/predictor/output/' + uniq_id + '/flagCheckGPCR.txt -db ' + homeDir + '/data/GPCRDB/blastdb/GPCRDB')
+    for line in open(homeDir + '/static/predictor/output/' + uniq_id + '/flagCheckGPCR.txt', 'r'):
+        if 'Query: ' in line and line[0] == '#':
+            gpcr = line.split('Query:')[1].replace('\n', '').lstrip().rstrip()
+        elif 'hits found' in line and line[0] == '#':
+            num = line.split('hits found')[0].split('#')[1].lstrip().rstrip()
+            num = int(num)
+            checkGPCR[gpcr] = num
+            if num == 0:
+                errorCode = 1
+
+    for gpcr in checkGPCR:
+        if checkGPCR[gpcr] == 0:
+            flaggedGPCR.append(gpcr)
+
+    if errorCode == 1:
+        print ('Exiting from program with error code 1 i.e. the following sequences did not align to any of the known GPCRs:')
+        print (';'.join(flaggedGPCR))
+        print ('Please remove these sequences from the input and re-sbmit.')
+        return(uniq_id, errorCode, ';'.join(flaggedGPCR))
+
+    record = {}
+    for line in open(input_file, 'r'):
+        if line[0] == '>':
+            gpcr = line.split('>')[1].replace('\n', '')
+            record[gpcr] = 0
+        else:
+            record[gpcr] += len(line.replace('\n', ''))
+
+
+    for gpcr in record:
+        #print (gpcr, record[gpcr])
+        if int(record[gpcr]) > 1024:
+            errorCode = 2
+            flaggedGPCR.append(gpcr)
+    #sys.exit()
+    if errorCode == 2:
+        print ('Exiting from program with error code 2 i.e. the following sequences were longer than 1024:')
+        print (';'.join(flaggedGPCR))
+        print ('Please remove these sequences from the input and re-sbmit.')
+        return(uniq_id, errorCode, ';'.join(flaggedGPCR))
 
     # BLAST GPCRDB
     os.system('blastp -query ' + input_file + ' -outfmt 5 -out ' + homeDir + '/static/predictor/output/' + uniq_id + '/GPCRDBblast.txt -db ' + homeDir + '/data/GPCRDB/blastdb/GPCRDB')
@@ -201,7 +250,7 @@ def main(numseqs, input, input_file, assay, path):
     name=str(input_file)
     #name1=name.split('/')[7].split('.')[0]
     l = '#PRECOGx\n'
-    l += '#Input\tVAR'
+    l += '#Input\tVariant'
     for gprotein in gproteins:
         l += '\t' + str(gprotein)
     l += '\n'
@@ -216,7 +265,7 @@ def main(numseqs, input, input_file, assay, path):
         if name.split('_')[-1] == 'WT':
             ## Add ebbret information
             gpcr = '_'.join(name.split('_')[:-1])
-            l += gpcr + '\t' + 'IUPHAR'
+            l += gpcr + '\t' + 'GtoPdb'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].iuphar:
                     l += '\t' + gpcrs[gpcr].iuphar[gprotein]
@@ -225,7 +274,7 @@ def main(numseqs, input, input_file, assay, path):
             l += '\n'
             ## Add shedding information
             gpcr = '_'.join(name.split('_')[:-1])
-            l += gpcr + '\t' + 'LogRAi'
+            l += gpcr + '\t' + 'LogRAi-TGF'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].shedding:
                     l += '\t' + gpcrs[gpcr].shedding[gprotein]
@@ -234,7 +283,7 @@ def main(numseqs, input, input_file, assay, path):
             l += '\n'
             ## Add ebbret information
             gpcr = '_'.join(name.split('_')[:-1])
-            l += gpcr + '\t' + 'Emax'
+            l += gpcr + '\t' + 'Emax-GEMTA'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].ebbret:
                     l += '\t' + gpcrs[gpcr].ebbret[gprotein]
@@ -264,7 +313,7 @@ def main(numseqs, input, input_file, assay, path):
     os.system('rm -rf '+ homeDir + '/static/predictor/output/'+uniq_id+'/embed/*.pt')
     os.system('rm -rf '+ homeDir + '/static/predictor/output/'+uniq_id+'/attentions/*.pt')
     #shutil.rmtree('output/'+uniq_id+'/')
-    return (uniq_id)
+    return (uniq_id, errorCode, flaggedGPCR)
 
 def OtherSources(gpcr_given, gpcrs, homeDir):
     for line in open(homeDir + '/data/shedding.tsv', 'r'):
@@ -393,7 +442,7 @@ def formatInputFileOld(numseqs, input_file):
     #sys.exit()
     return (gpcrs, new_input)
 
-def formatInputFile(numseqs, input_file):
+def formatInputFile(homeDir, numseqs, input_file):
     num = 0
     with open(input_file, 'r') as file:
         input = file.read()
@@ -449,7 +498,8 @@ def formatInputFile(numseqs, input_file):
                         given_name = given_name.split(' ')[0]
 
                     else:
-                        given_name = str(line.replace(' ','').split()[0])
+                        #given_name = str(line.replace(' ','').split()[0])
+                        given_name = str(line)
                         #print ('this one', given_name)
                         #given_name = ' '.join(given_name.split())
 
@@ -463,7 +513,7 @@ def formatInputFile(numseqs, input_file):
                     if name not in gpcrs:
                         #print (name, variant, name.split())
                         gpcrs[name] = GPCR(name)
-                        gpcrs[name].seq = fetchSeq(name)
+                        gpcrs[name].seq = fetchSeq(homeDir, name)
 
                     gpcrs[name].var.append(variant)
 
@@ -487,7 +537,7 @@ def formatInputFile(numseqs, input_file):
     #print (new_input)
     return (gpcrs, new_input)
 
-def formatInput(numseqs, input):
+def formatInput(homeDir, numseqs, input):
     num = 0
     ## if input in FASTA format
     gpcrs = {}
@@ -541,7 +591,8 @@ def formatInput(numseqs, input):
                         given_name = given_name.split(' ')[0]
 
                     else:
-                        given_name = str(line.replace(' ','').split()[0])
+                        #given_name = str(line.replace(' ','').split()[0])
+                        given_name = str(line)
                         #print ('this one', given_name)
                         #given_name = ' '.join(given_name.split())
 
@@ -555,7 +606,7 @@ def formatInput(numseqs, input):
                     if name not in gpcrs:
                         #print (name, variant, name.split())
                         gpcrs[name] = GPCR(name)
-                        gpcrs[name].seq = fetchSeq(name)
+                        gpcrs[name].seq = fetchSeq(homeDir, name)
 
                     gpcrs[name].var.append(variant)
 
@@ -580,8 +631,28 @@ def formatInput(numseqs, input):
     #print (new_input)
     return (gpcrs, new_input)
 
-def fetchSeq(name):
-    #print ('here')
+def fetchSeq(homeDir, name):
+    #print (name)
+    gtopdbACC = ''
+    for line in open(homeDir + '/data/GtP_to_UniProt_mapping.tsv', 'r'):
+        l = line.replace('"', '')
+        if l[0] != '#' and l.split('\t')[0] != 'UniProtKB ID' and l.split('\t')[1] == 'Human':
+            gtopdbName = l.split('\t')[2]
+            import re
+            # as per recommendation from @freylis, compile once only
+            CLEANR = re.compile('<.*?>')
+            gtopdbName = re.sub(CLEANR, '', gtopdbName)
+            #gtopdbName = gtopdbName.replace(' ','')
+            #print (gtopdbName.split(), name.split(  ))
+            if gtopdbName == name:
+                #print (gtopdbName)
+                gtopdbACC = l.split('\t')[0]
+                #print (name, gtopdbName, gtopdbACC)
+                break
+    if gtopdbACC != '':
+        name = gtopdbACC
+    #print(name)
+    #sys.exit()
     response = requests.get('https://www.uniprot.org/uniprot/'+str(name))
     #print (response.status_code)
     if response.status_code == 200:
@@ -625,13 +696,15 @@ def fetchSeq(name):
                         if line[0] != '>':
                             seq += line.replace('\n', '')
 
+    #print(seq)
+    #sys,exit()
     return seq
 
 if __name__ == "__main__":
     ## Parser
-    parser = argparse.ArgumentParser(description='Script to predict GPCR couplings using ESM and/or seq-based features', epilog='End of help')
-    parser.add_argument('assay', help='Input what assay is used (all or ebret or shed)')
-    parser.add_argument('--file', help='Input File (FASTA/Mechismo format). Applicable for both webApp and command-line versions')
+    parser = argparse.ArgumentParser(description='PRECOGx', epilog='End of help')
+    parser.add_argument('assay', help='Input assay/biosensor used (all or ebret or shed)')
+    parser.add_argument('--file', help='Input file (FASTA/Mechismo format). Applicable for both webApp and command-line versions')
     parser.add_argument('--input', help='Input (Mechismo format). Applicable only when accessed via the webApp')
     parser.add_argument('--numseqs', help='Num of seqs allowed (default: 15)')
     args = parser.parse_args()

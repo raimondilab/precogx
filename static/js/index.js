@@ -58,6 +58,14 @@ window.hideCookieBanner = hideCookieBanner;
       $('#validationTextarea').html(seq4);
     });
 
+    $(document).on('click', '#ex5', function() {
+      var seq5 = "# GtoPdb nomenclature\n";
+      seq5 += '# Vasoactive intestinal peptide receptor 2\n';
+      seq5 += "VPAC2 receptor";
+
+      $('#validationTextarea').html(seq5);
+    });
+
       //$('#validationTextarea').html("DRD1/F61P\nCXCR3/D278A");
       $("#running").hide();
 
@@ -102,6 +110,3 @@ function initializeCookieBanner(){
   showCookieBanner();
  }
 }
-
-
-

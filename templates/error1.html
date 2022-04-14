@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %} PRECOGx | Error {% endblock %}
+
+{% block content %}
+<section class="pt-8 py-0 home-margin" id="home" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="row min-vh-xl-100 min-vh-xxl-25">
+            <div class="col-md-75 col-xl-6 col-xxl-5  order-0 order-md-1 text-end py-4">
+                <img class="pt-7 pt-md-0 center w-100 trans" src="static/img/icons/precogx.png" alt="Machine learning workflow" />
+            </div>
+            <div class="col-md-5 col-xl-6 col-xxl-7 text-md-start text-center py-4">
+                <div class="col-md-12">
+                  <p>
+                  <h4>Your input raised an error because the following sequence(s) is not a potential GPCR:</h4>
+                  </p>
+                  <p>
+                    {{flaggedGPCR}}
+                  </p>
+                  <p>
+                  If you beleive that is not the case, please feel free to reach us at:
+                  francesco <strong>[dot]</strong> raimondi <strong>[at]</strong> sns <strong>[dot]</strong> it.
+                  </p>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section> begin ============================-->
+<section class="py-xxl-7" id="running">
+    <div class="container">
+        <div class="row py-11 justify-content-lg-evenly">
+            <h1 class="fw-bold font-base fs-6 fs-xxl-7 text-center"> Running...</h1>
+        </div>
+    </div>
+    <!-- end of .container-->
+</section>
+{%  endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='/js/index.js')}}"></script>
+{% endblock%}
