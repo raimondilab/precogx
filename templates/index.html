@@ -6,16 +6,7 @@
 {% block script %}
 <script src="{{url_for('static', filename='/js/index.js')}}"></script>
 
-<script>
-    if (navigator.appVersion.indexOf("Win")==-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">');
-} else if (navigator.appVersion.indexOf("Mac")!=-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}  else {
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}
 
-</script>
 {% endblock%}
 
 {% block content %}
