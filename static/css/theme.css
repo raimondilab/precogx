@@ -18602,52 +18602,13 @@ padding-bottom: 1.25rem!important;
 }
 
 
-div.col-xl-6{
-height: 40rem !important;
-
-}
-
-#myDiv2{
-position: relative;
-width: 40ems;
-height: 27.5rem;
-}
-
 #myDiv{
 display: block;
 margin-left: auto;
 margin-right: auto;
-width: 95%;
-height: 40rem;
-margin-top: 4rem;
 }
 
 
-#sequence-viewer {
-position: relative;
-width: 40ems;
-height: 40rem;
-margin-top: 4rem;
-}
-
-
-#attentionMap{
-position: relative;
-width: 40ems;
-height: 40rem;
-margin-top: 4rem !important;
-}
-
-#viewport{
-position: relative;
-width: 40ems;
-height: 40rem;
-margin-top:1rem;
-}
-
-.fastaSeq, .charNumbers{
-font-size: 0.75rem !important;
-}
 
 .center {
   display: block;
@@ -18659,6 +18620,7 @@ font-size: 0.75rem !important;
 .fs--3 {
   font-size: 0.49444rem !important;
 }
+
 .trans{
 transform: rotate(0deg);
 }
@@ -18666,20 +18628,42 @@ transform: rotate(0deg);
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
 
-#slider1A_value, #slider1B_value,#slider2A_value, #slider2B_value{
-margin-left: -1.095rem;
-}
-
-
 #home.home-margin, #running{
  margin-top: 5vh !important;
  height: 100vh;
 }
 
-#slider1Div > div:nth-child(1) > div:nth-child(1) > label:nth-child(1), #slider1Div > div:nth-child(1) > div:nth-child(4) > label:nth-child(1){
-margin-right: -0.75rem;
+.dropdown-menu {
+    max-height: 280px;
+    overflow-y: auto;
 }
 
+th, td { white-space: nowrap;
+
+}
+
+div.dataTables_wrapper {
+        margin: 0 auto;
+}
+
+div.ColVis {
+        float: left;
+}
+
+div.checkboxRight {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+}
+
+.btn-circle {
+  width: 1.45rem;
+  height: 1.45rem;
+  padding: 0px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 0.65rem;
+}
 
 
 

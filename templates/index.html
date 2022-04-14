@@ -30,31 +30,27 @@
                 <p class="fs-1 mb-5 text-justify">
                     Delving deep into <strong>GPCR</strong> signaling mechanisms with <strong> protein embeddings</strong> (ESM-1b)
                 </p>
-                 <form class="row g-3" method="POST" action='/input'>
-                {% if error %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ error }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endif %}
-                <div class="col-md-12">
+                <form method="POST" action='/input'>
+                <div class="col-md-12 mb-2">
                     <label class="form-label visually-hidden" for="validationTextarea"></label>
                     <textarea name="input" class="form-control form-livedoc-control" id="validationTextarea" placeholder="Paste/Upload Gene-symbol(s) or UniProt-ID(s) or FASTA sequence(s)&#10;Max. 15 inputs permitted" rows="10" required="required"></textarea>
                 </div>
-                <div class="col-12">
-                    <div class="col-auto">
-                        <div class="float-start">
-                             <button class="btn btn-primary  btn-sm rounded-pill fs--2" id="submit" type="submit">Submit</button>
-                        </div>
-                         <div class="float-end">
-                              <label class="fs--2 mb-8 text-justify fs--2">Examples</label>
+                <div class="col-md-12 row g-3">
+                         <div class="col-auto">
+                              <button class="btn btn-primary  btn-sm rounded-pill fs--1" id="submit" type="submit">Submit</button>
+                              <label class="fs--1"></label>
+                              <label class="fs--1"></label>
+                             <label class="fs--1"></label>
+                             <label class="fs--1"></label>
+                              <label class="fs--1"></label>
+                             <label class="fs--1"></label>
+                              <label class="mb-8 fs--1">Examples</label>
                               <button class="btn btn-primary btn-sm rounded-pill fs--2" type="button" id="ex1">FASTA</button>
                               <button class="btn btn-primary btn-sm rounded-pill fs--2" type="button" id="ex2">UniProt Acc/ID</button>
                               <button class="btn btn-primary  btn-sm rounded-pill fs--2" type="button" id="ex3">Variants</button>
                               <button class="btn btn-primary  btn-sm rounded-pill fs--2" type="button" id="ex4">Oher/Adhesion GPCR</button>
                               <button class="btn btn-primary  btn-sm rounded-pill fs--2" type="button" id="ex5">GtoPdb nomenclature</button>
                         </div>
-                    </div>
                 </div>
             </form>
             </div>

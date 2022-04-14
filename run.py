@@ -1200,7 +1200,7 @@ def output(uniq_id):
         #print (first_gprotein_index)
         #path_to_json_output = "/static/predictor/output/"+uniq_id+"/out.json"
         #path_to_fasta = "/static/predictor/output/"+uniq_id+"/input.fasta"
-        return render_template('result.html',
+        return render_template('result2.html',
                                 path_to_json_output=json.dumps(path_to_json_output),
                                 path_to_fasta=json.dumps(path_to_fasta),
                                 first_entry=json.dumps(first_entry),
@@ -1222,4 +1222,4 @@ def about():
     return render_template('about.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)
