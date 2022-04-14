@@ -18608,11 +18608,12 @@ margin-left: auto;
 margin-right: auto;
 }
 
-#viewport{
+#viewport,#sequence-viewer,#attentionMap {
 position: relative;
-height: calc(100% - 10px);
+height: 40rem !important;
 margin-top:1rem;
 }
+
 
 .center {
   display: block;
