@@ -4,25 +4,25 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                    <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Coupling probabilites panel</h4>
                   </div>
-                  <div class="modal-body" style="font-size: 12px;">
-                  <p>
+                  <div class="modal-body" style="font-size: inherit;">
+                  <p class="text-justify fs-0">
                     The table here displays predicted probabilites of the given entries (both wild type sequences and/or mutations) by PRECOGx and known values from
                     <a href="http://www.guidetopharmacology.org/GRAC/ReceptorFamiliesForward?type=GPCR" target="_blank">IUPHAR</a> and the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/" target="_blank">Shedding</a>/<a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1">ebBRET</a> assays.<br>
-                    For rows displaying:<br>
-                    <kbd>VAR = IUPHAR</kbd>: primary coupling is represented by <kbd>PC</kbd> while the secondary ones as <kbd>SC</kbd> and
-                    the unknown ones as <kbd>-</kbd>.<br>
-                    <kbd>VAR = LogRAi (Shedding experiment)</kbd>: values > <kbd>-1.0</kbd> are coupling while others are not coupling (< <kbd>-1.0</kbd>) or unknown <kbd>-</kbd>.<br>
-                    <kbd>VAR = Emax (ebBRET experiment)</kbd>: values > <kbd>0</kbd> are coupling while others are not coupling (= <kbd>0</kbd>) or unknown <kbd>-</kbd>.<br>
-                    <kbd>VAR = WT(Wild Type)/Mutation</kbd>: values with predicted probability (by PRECOGx) greater than 0.5 are coupling while others are not coupling.<br><br>
-                    By clicking on any of the cells:<br>
-                    a) The corresponding input is shown in the PCA panel<br>
-                    b) The enriched/depleted contact positions of the input GPCR are highlighted in the Conacts panels and mapped onto a 3D structure in the Structure panel.
-                  </p>
+                      <p class="text-justify fs-0">For rows displaying:</p>
+                    <p class="text-justify fs-0"><kbd>VAR = IUPHAR</kbd>: primary coupling is represented by <kbd>PC</kbd> while the secondary ones as <kbd>SC</kbd> and
+                        the unknown ones as <kbd>-</kbd>.</p>
+                     <p class="text-justify fs-0"><kbd>VAR = LogRAi (Shedding experiment)</kbd>: values > <kbd>-1.0</kbd> are coupling while others are not coupling (< <kbd>-1.0</kbd>) or unknown <kbd>-</kbd>.</p>
+                     <p class="text-justify fs-0"><kbd>VAR = Emax (ebBRET experiment)</kbd>: values > <kbd>0</kbd> are coupling while others are not coupling (= <kbd>0</kbd>) or unknown <kbd>-</kbd>.</p>
+                     <p class="text-justify fs-0"><kbd>VAR = WT(Wild Type)/Mutation</kbd>: values with predicted probability (by PRECOGx) greater than 0.5 are coupling while others are not coupling.</p>
+                     <p class="text-justify fs-0">By clicking on any of the cells:</p>
+                     <p class="text-justify fs-0">a) The corresponding input is shown in the PCA panel</p>
+                     <p class="text-justify fs-0">b) The enriched/depleted contact positions of the input GPCR are highlighted in the Conacts panels and mapped onto a 3D structure in the Structure panel.</p>
+
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
                   </div>
                   </div>
                 </div>
@@ -35,10 +35,10 @@
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                      <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
                       <h4 class="modal-title">PCA panel</h4>
                     </div>
-                    <div class="modal-body" style="font-size: 12px;">
+                    <div class="modal-body" style="font-size: inherit;">
                     <p>
                       The PCA panel displays the projections of the human GPCRome sequences along
                       with the first two principal components obtained by performing the
@@ -50,7 +50,7 @@
                     </p>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                      <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                     </div>
                   </div>
@@ -63,30 +63,48 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
-                        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                        <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Contacts panel</h4>
                       </div>
-                      <div class="modal-body" style="font-size: 12px;">
-
-                        This panel provides three options:<br>
-                        <p>
-                        1. <kbd>Contact Map</kbd> displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).<br>
+                      <div class="modal-body" style="font-size: inherit;">
+                        <p class="text-justify fs-0">
+                        This panel displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).<br>
                         </p>
-                        <p>
-                        2. The same conacts are mapped to the input <kbd>Sequence</kbd>.<br><br>
-                        These conacts are either enriched (log-odds score > 0) or depeleted (log-odds score < 0).<br>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                      </div>
+                      </div>
+                    </div>
+              </div>
+      </div>
+
+<div class="modal fade" id="sequenceModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+              <div class="modal-dialog modal-lg" style="z-index: 101;">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
+                        <h4 class="modal-title header-title">Sequence panel</h4>
+                      </div>
+                      <div class="modal-body" style="font-size: inherit;">
+                          <p class="text-justify fs-0">This panel provides two options:</p>
+                        <p class="text-justify fs-0">
+                        1. The same contacts are mapped to the input <kbd>Sequence</kbd>.<br><br>
+                        These contacts are either enriched (log-odds score > 0) or depeleted (log-odds score < 0).<br>
                         Place the cursor over a selected position to view its naming in the
                         GPCRdb generic numbering system.<br>
                         Use the <strong>slider</strong> to set the absolute value cutoff of the Log-odds score. For example, a slider value of 0.3 will display the contacts
                         that have an enriched (> 0.3) or depeleted (< 0.3) for the given G-potein coupling score.
                         </p>
-                        <p>
-                        3. <kbd>Attention map</kbd> obtained from the most important attention head of the best performing embedding layer during the classification.<br>
+                        <p class="text-justify fs-0">
+                        2. <kbd>Attention map</kbd> obtained from the most important attention head of the best performing embedding layer during the classification.<br>
                         </p>
-                        Choose between the different options using the dropdown.<br>
+                         <p class="text-justify fs-0">
+                        Choose between the different options using the dropdown.</p>
 
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
                       </div>
                       </div>
                     </div>
@@ -99,19 +117,19 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                    <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Structure panel</h4>
                   </div>
-                  <div class="modal-body" style="font-size: 12px;">
-                  <p>
+                  <div class="modal-body" style="font-size: inherit;">
+                  <p class="text-justify fs-0">
                   This panel displays the predicted contacts mapped to the 3D structure of the input obtained from either <kbd>PDB</kbd> or <kbd>AlphaFold</kbd>. Zoom-in to view the
                   GPCRdb generic numbering system of the selected positions.
                   </p>
-                  <p>
+                  <p class="text-justify fs-0">
                     Can't see any position? Try lowering the log-odds score threshold.
-                  <p>
+                  </p>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
                   </div>
                   </div>
                 </div>
