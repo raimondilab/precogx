@@ -71,6 +71,8 @@ h2.fw-bold:nth-child(17),h2.fw-bold:nth-child(19), h2.fw-bold:nth-child(21){
 
 @media(min-width:1540px){
 
+}
+
 .fs--1{
        font-size: 0.85rem !important;
     }
