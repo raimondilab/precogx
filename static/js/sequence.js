@@ -34,7 +34,7 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, distance, uniq_id, 
                     'wrapAminoAcids': true,
                     'charsPerLine': 70,
                     'toolbar': true,
-                    'title' : gpcr,
+                    'title' : gpcr+' ('+gprotein+')',
                     'search': true,
                     'badge': false,
                     'header' : {

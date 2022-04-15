@@ -42,7 +42,7 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
 
         var layout = {
               autosize: true,
-              title: 'Attention Map of <b>'+gpcr+'</b> with the <b>'+gprotein+'</b> coupling group',
+              title: 'Attention Map of <b>'+gpcr+'</b> with the <b>'+gprotein+'</b> transducer group',
               font: {
                 size: 10
                }

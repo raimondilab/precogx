@@ -267,9 +267,9 @@ function initTable(path_to_json_output, first_gprotein, first_gprotein_index) {
         { title: "GNAQ" },
         { title: "GNA12" },
         { title: "GNA13" },
-        { title: "Barr1-GRK2" },
-        { title: "Barr2" },
-        { title: "Barr2-GRK2" }
+        { title: "\u03B2-arr1-GRK2" },
+        { title: "\u03B2-arr2" },
+        { title: "\u03B2-arr2-GRK2" }
       ]
   });
 }

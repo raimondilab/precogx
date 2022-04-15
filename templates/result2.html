@@ -60,7 +60,7 @@ function loadIntro() {
 
         <div class="row align-items-center mb-5">
             <div class="col-xl-12"
-                 data-intro='This panel displays results obtained from PRECOGx, and the information known about the input(s) in IUPHAR, Shedding/ebBRET assays or STRING (for B-arrs).'
+                 data-intro='This panel displays PRECOGx-predicted probabilites, and the information known about the input(s) in GtoPdb, TGF/GEMTA assays or STRING (for B-arrs).'
                  data-step="1">
                 <div class="card">
                     <div class="card-body">
@@ -78,8 +78,7 @@ function loadIntro() {
 
         <div class="row align-items-center">
             <!--PCA-->
-            <div class="col-xl-6 mb-5"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+            <div class="col-xl-6 mb-5" data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">PCA
@@ -105,7 +104,8 @@ function loadIntro() {
             </div> <!-- end pca -->
             <!--Contacts-->
             <div class="col-xl-6 mb-5"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+                 data-intro='This panel displays the predicted differential conctacts for a given transducer group.'
+                 data-step="3">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Contacts
@@ -161,7 +161,7 @@ function loadIntro() {
                               makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
                               setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                               makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}}, displayName);
-                              makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
+                              makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
                           });
                         </script>
                     </div><!-- end card body-->
@@ -172,7 +172,8 @@ function loadIntro() {
         <div class="row align-items-center">
             <!--Sequence-->
             <div class="col-xl-6 mb-2"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+                 data-intro='This panel displays the predicted differential conctacts for a given transducer group mapped on the input GPCR sequence. Using the dropdown menu, one can view the attention map.'
+                 data-step="4">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title" id="panelHeading">Sequence
@@ -194,7 +195,7 @@ function loadIntro() {
                                 <input type="range" style="width: 4rem;vertical-align: middle;" class="form-range"
                                        min="0.0" max="1.0" step="0.1" value="0.2" id="slider3A">
                                 <button type="button" class="btn btn-info btn-circle" id="plus3A">+</button>
-                                <span id="slider3A_value">0.0</span>
+                                <span id="slider3A_value">0.2</span>
                             </div>
                             <div class="col-auto" id="slider_dis">
                                 <label for="slider1B" class="col-form-label">Distance</label>
@@ -213,13 +214,13 @@ function loadIntro() {
 
             <!--Structure-->
             <div class="col-xl-6 mb-2"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+                 data-intro='This panel displays the predicted differential contacts for a transducer group mapped on a 3D structure of the input.' data-step="5">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Structure
                             <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal"
                                   data-intro='Click on help buttons to know more about each panel.'
-                                  data-step="5">?</span>
+                                  data-step="6">?</span>
                         </h2>
                           <div class="row g-3 align-items-center">
                              <div class="col-auto">
@@ -231,13 +232,13 @@ function loadIntro() {
                                 <ul id="pdblist" class="dropdown-menu"></ul>
                              </div>
                              <div class="col-auto">
-                     
+
                             <label for="PDBsource">PDB</label>
                             <input class="form-check-input" type="checkbox" id="PDBsource" name="PDBsource"
                                    onchange="click3Dsource(this)" checked>
+                            <label for="AFsource">AlphaFold</label>
                             <input class="form-check-input" type="checkbox" id="AFsource" name="AFsource"
                                    onchange="click3Dsource(this)">
-                            <label for="AFsource">AlphaFold</label>
                              </div>
                         </div>
                         <div class="row g-3 align-items-center">
@@ -297,61 +298,61 @@ function loadIntro() {
                                    makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
                                    setDisplayMenu({{path_to_fasta|safe}}, slider2A_value, slider2B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                                    makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}}, displayName);
-                                   makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
+                                   makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
                                });
 
                         </script>
                     </div>
                     <script>
                         $("#minus1A").click(function(event) {
-                          zoomA("out", "#slider1A", "#slider2A");
+                          zoomA("out", "#slider1A", "#slider2A", "#slider3A");
                         });
 
                         $("#plus1A").click(function(event) {
-                          zoomA("in", "#slider1A", "#slider2A");
+                          zoomA("in", "#slider1A", "#slider2A", "#slider3A");
                         });
 
                         $("#minus1B").click(function(event) {
-                          zoomB("out", "#slider1B", "#slider2B");
+                          zoomB("out", "#slider1B", "#slider2B", "#slider3B");
                         });
 
                         $("#plus1B").click(function(event) {
-                          zoomB("in", "#slider1B", "#slider2B");
+                          zoomB("in", "#slider1B", "#slider2B", "#slider3B");
                         });
 
                         $("#minus2A").click(function(event) {
-                          zoomA("out", "#slider2A", "#slider1A");
+                          zoomA("out", "#slider2A", "#slider3A", "#slider1A");
                         });
 
                         $("#plus2A").click(function(event) {
-                          zoomA("in", "#slider2A", "#slider1A");
+                          zoomA("in", "#slider2A", "#slider3A", "#slider1A");
                         });
 
                         $("#minus2B").click(function(event) {
-                          zoomB("out", "#slider2B", "#slider1B");
+                          zoomB("out", "#slider2B", "#slider3B", "#slider1B");
                         });
 
                         $("#plus2B").click(function(event) {
-                          zoomB("in", "#slider2B", "#slider1B");
+                          zoomB("in", "#slider2B", "#slider3B", "#slider1B");
                         });
 
-                         $("#minus3A").click(function(event) {
-                          zoomA("out", "#slider2A", "#slider1A");
-                        });
+                        $("#minus3A").click(function(event) {
+                          zoomA("out", "#slider3A", "#slider2A", "#slider1A");
 
+                        });
                         $("#plus3A").click(function(event) {
-                          zoomA("in", "#slider2A", "#slider1A");
+                          zoomA("in", "#slider3A", "#slider2A", "#slider1A");
                         });
 
                         $("#minus3B").click(function(event) {
-                          zoomB("out", "#slider2B", "#slider1B");
+                          zoomB("out", "#slider3B", "#slider2B", "#slider1B");
                         });
 
                         $("#plus3B").click(function(event) {
-                          zoomB("in", "#slider2B", "#slider1B");
+                          zoomB("in", "#slider3B", "#slider2B", "#slider1B");
                         });
 
-                        function zoomA(direction, slider, otherSlider) {
+                        function zoomA(direction, slider, otherSlider1, otherSlider2) {
                           var slider = $(slider);
                           var step = 0.1;
                           var currentSliderValue = Number(slider.val());
@@ -371,10 +372,15 @@ function loadIntro() {
                           var sliderValue = $("#"+slider.attr("id")+'_value');
                           sliderValue.html(newStepValue);
 
-                          var otherSlider = $(otherSlider);
-                          otherSlider.val(newStepValue).change();
-                          var otherSliderValue = $("#"+otherSlider.attr("id")+'_value');
-                          otherSliderValue.html(newStepValue);
+                          var otherSlider1 = $(otherSlider1);
+                          otherSlider1.val(newStepValue).change();
+                          var otherSlider1Value = $("#"+otherSlider1.attr("id")+'_value');
+                          otherSlider1Value.html(newStepValue);
+
+                          var otherSlider2 = $(otherSlider2);
+                          otherSlider2.val(newStepValue).change();
+                          var otherSlider2Value = $("#"+otherSlider2.attr("id")+'_value');
+                          otherSlider2Value.html(newStepValue);
 
                           var slider_value = slider.val();
                           var selected_gpcr = $('#selected').data('gpcr');
@@ -387,10 +393,10 @@ function loadIntro() {
                           makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
                           setDisplayMenu({{path_to_fasta|safe}}, slider_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
                         };
 
-                        function zoomB(direction, slider, otherSlider) {
+                        function zoomB(direction, slider, otherSlider1, otherSlider2) {
                           var slider = $(slider);
                           var step = 1;
                           var currentSliderValue = Number(slider.val());
@@ -410,10 +416,15 @@ function loadIntro() {
                           var sliderValue = $("#"+slider.attr("id")+'_value');
                           sliderValue.html(newStepValue);
 
-                          var otherSlider = $(otherSlider);
-                          otherSlider.val(newStepValue).change();
-                          var otherSliderValue = $("#"+otherSlider.attr("id")+'_value');
-                          otherSliderValue.html(newStepValue);
+                          var otherSlider1 = $(otherSlider1);
+                          otherSlider1.val(newStepValue).change();
+                          var otherSlider1Value = $("#"+otherSlider1.attr("id")+'_value');
+                          otherSlider1Value.html(newStepValue);
+
+                          var otherSlider2 = $(otherSlider2);
+                          otherSlider2.val(newStepValue).change();
+                          var otherSlider2Value = $("#"+otherSlider2.attr("id")+'_value');
+                          otherSlider2Value.html(newStepValue);
 
                           var slider_value = slider.val();
                           var selected_gpcr = $('#selected').data('gpcr');
@@ -426,14 +437,14 @@ function loadIntro() {
                           makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
                           setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
 
                         };
 
 
                     </script>
 
-                 
+
                     <script>
                             /*
                             NGL.setMeasurementDefaultParams = {
@@ -460,7 +471,7 @@ function loadIntro() {
           makeHeatmap(0.0, 0.0, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Sequence');
           makeAttentionmap({{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Sequence')
           setDisplayMenu({{path_to_fasta|safe}}, 0.0, 0.0, {{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Sequence');
-          makePCA({{uniq_id|safe}}, 'Shedding', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
+          makePCA({{uniq_id|safe}}, 'TGF', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
 
 </script>
 
