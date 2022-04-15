@@ -59,7 +59,7 @@ function loadIntro() {
         </h1>
 
         <div class="row align-items-center mb-5">
-            <div class="col-xl-12"
+            <div class="col-xl-12 text-justify"
                  data-intro='This panel displays results obtained from PRECOGx, and the information known about the input(s) in IUPHAR, Shedding/ebBRET assays or STRING (for B-arrs).'
                  data-step="1">
                 <div class="card">
@@ -78,7 +78,7 @@ function loadIntro() {
 
         <div class="row align-items-center">
             <!--PCA-->
-            <div class="col-xl-6 mb-5"
+            <div class="col-xl-6 mb-5 text-justify"
                  data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
@@ -104,8 +104,8 @@ function loadIntro() {
                 </div> <!-- end card -->
             </div> <!-- end pca -->
             <!--Contacts-->
-            <div class="col-xl-6 mb-5"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+            <div class="col-xl-6 mb-5 text-justify"
+                 data-intro='This panel displays differential contacts of a G-protein groups and the same contacts mapped on the input GPCR sequence.' data-step="3">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Contacts
@@ -171,13 +171,13 @@ function loadIntro() {
 
         <div class="row align-items-center">
             <!--Sequence-->
-            <div class="col-xl-6 mb-2"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+            <div class="col-xl-6 mb-2 text-justify"
+                 data-intro='This panel displays differential contacts of a G-protein groups mapped on the input GPCR sequence and the attention map derived from the most important attention head of the best performing embedding layer during classification.' data-step="4">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title" id="panelHeading">Sequence
                             <span class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                  data-bs-target="#contactModal">?</span>
+                                  data-bs-target="#sequenceModal">?</span>
                         </h2>
                         <div class="row g-3 align-items-center pb-5">
                             <div class="col-auto">
@@ -212,8 +212,8 @@ function loadIntro() {
             </div> <!-- end Sequence -->
 
             <!--Structure-->
-            <div class="col-xl-6 mb-2"
-                 data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+            <div class="col-xl-6 mb-2 text-justify"
+                 data-intro='This panel displays differential contacts mapped on the input&#39s 3D structure.' data-step="5">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Structure
