@@ -51,7 +51,7 @@ function loadIntro() {
 
 {% block content %}
 <section class="pt-8" id="home">
-    <div class="container pb-2">
+    <div class="container">
 
         <h1 class="fw-bold mb-4">Result
             <!--<button type="button" class="btn btn-info btn-md" onclick="loadIntro()">Need a quick intro?</button>-->
@@ -76,9 +76,9 @@ function loadIntro() {
             </div>
         </div> <!--end row one-->
 
-        <div class="row align-items-center mb-5">
+        <div class="row align-items-center">
             <!--PCA-->
-            <div class="col-xl-6"
+            <div class="col-xl-6 mb-5"
                  data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
@@ -104,7 +104,7 @@ function loadIntro() {
                 </div> <!-- end card -->
             </div> <!-- end pca -->
             <!--Contacts-->
-            <div class="col-xl-6"
+            <div class="col-xl-6 mb-5"
                  data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
@@ -117,7 +117,7 @@ function loadIntro() {
                                 <label for="slider1A" class="col-form-label" style="font-weight: bold !important">Log
                                     odds score</label>
                                 <button type="button" class="btn btn-info btn-circle" id="minus1A">-</button>
-                                <input type="range" style="width: 10rem;;padding-top: 1.25rem;" class="form-range"
+                                <input type="range" style="width: 8rem;padding-top: 1.25rem;" class="form-range"
                                        min="0.0" max="1.0" step="0.1" value="0.2" id="slider1A">
                                 <button type="button" class="btn btn-info btn-circle" id="plus1A">+</button>
                                 <span id="slider1A_value">0.0</span>
@@ -125,7 +125,7 @@ function loadIntro() {
                             <div class="col-auto">
                                 <label for="slider1B" class="col-form-label">Distance</label>
                                 <button type="button" class="btn btn-info btn-circle" id="minus1B">-</button>
-                                <input type="range" style="width: 10rem;;padding-top: 1.25rem;" class="form-range"
+                                <input type="range" style="width: 8rem;padding-top: 1.25rem;" class="form-range"
                                        min="0" max="20" step="1" value="0" id="slider1B">
                                 <button type="button" class="btn btn-info btn-circle" id="plus1B">+</button>
                                 <span id="slider1B_value">0</span>
@@ -169,9 +169,9 @@ function loadIntro() {
             </div> <!-- end contacts -->
         </div> <!--end row two-->
 
-        <div class="row align-items-center mb-5">
+        <div class="row align-items-center">
             <!--Sequence-->
-            <div class="col-xl-6"
+            <div class="col-xl-6 mb-2"
                  data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
@@ -191,7 +191,7 @@ function loadIntro() {
                                 <label for="slider1A" class="col-form-label" style="font-weight: bold !important">Log
                                     odds score</label>
                                 <button type="button" class="btn btn-info btn-circle" id="minus3A">-</button>
-                                <input type="range" style="width: 5rem;;padding-top: 1.25rem;" class="form-range"
+                                <input type="range" style="width: 4rem;padding-top: 1.25rem;" class="form-range"
                                        min="0.0" max="1.0" step="0.1" value="0.2" id="slider3A">
                                 <button type="button" class="btn btn-info btn-circle" id="plus3A">+</button>
                                 <span id="slider3A_value">0.0</span>
@@ -199,7 +199,7 @@ function loadIntro() {
                             <div class="col-auto" id="slider_dis">
                                 <label for="slider1B" class="col-form-label">Distance</label>
                                 <button type="button" class="btn btn-info btn-circle" id="minus3B">-</button>
-                                <input type="range" style="width: 5rem;;padding-top: 1.25rem;" class="form-range"
+                                <input type="range" style="width: 4rem;padding-top: 1.25rem;" class="form-range"
                                        min="0" max="20" step="1" value="0" id="slider3B">
                                 <button type="button" class="btn btn-info btn-circle" id="plus3B">+</button>
                                 <span id="slider3B_value">0</span>
@@ -212,7 +212,7 @@ function loadIntro() {
             </div> <!-- end Sequence -->
 
             <!--Structure-->
-            <div class="col-xl-6"
+            <div class="col-xl-6 mb-2"
                  data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
@@ -231,7 +231,7 @@ function loadIntro() {
                                 <ul id="pdblist" class="dropdown-menu"></ul>
                              </div>
                              <div class="col-auto">
-                                  <label>Protein Structure Database: </label>
+                     
                             <label for="PDBsource">PDB</label>
                             <input class="form-check-input" type="checkbox" id="PDBsource" name="PDBsource"
                                    onchange="click3Dsource(this)" checked>
@@ -245,7 +245,7 @@ function loadIntro() {
                                 <label for="slider1A" class="col-form-label" style="font-weight: bold !important">Log
                                     odds score</label>
                                 <button type="button" class="btn btn-info btn-circle" id="minus2A">-</button>
-                                <input type="range" style="width: 10rem;padding-top: 1.25rem;" class="form-range"
+                                <input type="range" style="width: 8rem;padding-top: 1.25rem;" class="form-range"
                                        min="0.0" max="1.0" step="0.1" value="0.2" id="slider2A">
                                 <button type="button" class="btn btn-info btn-circle" id="plus2A">+</button>
                                 <span id="slider2A_value">0.0</span>
@@ -253,12 +253,13 @@ function loadIntro() {
                             <div class="col-auto">
                                 <label for="slider1B" class="col-form-label">Distance</label>
                                 <button type="button" class="btn btn-info btn-circle" id="minus2B">-</button>
-                                <input type="range" style="width: 10rem;padding-top: 1.25rem;" class="form-range"
+                                <input type="range" style="width: 8rem;padding-top: 1.25rem;" class="form-range"
                                        min="0" max="20" step="1" value="0" id="slider2B">
                                 <button type="button" class="btn btn-info btn-circle" id="plus2B">+</button>
                                 <span id="slider2B_value">0</span>
                             </div>
                         </div>
+                        <div id="viewport" class="align-items-center fs--2 w-100"></div>
 
                         <script>
                              // Function to reload structure panel if user selects different 3D strcture AFsource
@@ -432,7 +433,7 @@ function loadIntro() {
 
                     </script>
 
-                    <div id="viewport" class="align-items-center fs--2 w-100"></div>
+                 
                     <script>
                             /*
                             NGL.setMeasurementDefaultParams = {

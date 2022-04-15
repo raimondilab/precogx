@@ -57,7 +57,7 @@
 body {
   margin: 0;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.80rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color:#00819D;
@@ -18609,8 +18609,8 @@ margin-right: auto;
 }
 
 #viewport,#sequence-viewer,#attentionMap {
-position: relative;
-height: 40rem !important;
+position: relative; 
+height: 25rem !important;
 margin-top:1rem;
 }
 
@@ -18631,11 +18631,6 @@ transform: rotate(0deg);
 
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
-
-#home.home-margin, #running{
- margin-top: 5vh !important;
- height: 100vh;
-}
 
 .dropdown-menu {
     max-height: 280px;
@@ -18671,3 +18666,14 @@ div.checkboxRight {
 
 
 
+#viewport > div:nth-child(1) > canvas:nth-child(1){
+width: 600px  !important;
+}
+
+
+@media(min-width:1540px){
+#viewport > div:nth-child(1) > canvas:nth-child(1){
+width: 800px  !important;
+}
+
+}

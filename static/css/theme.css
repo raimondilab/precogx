@@ -18610,7 +18610,7 @@ margin-right: auto;
 
 #viewport,#sequence-viewer,#attentionMap {
 position: relative;
-height: 40rem !important;
+height: 25rem !important;
 margin-top:1rem;
 }
 
@@ -18632,11 +18632,6 @@ transform: rotate(0deg);
 
 #cb-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-radius: 0; display: none; }
 
-
-#home.home-margin, #running{
- margin-top: 5vh !important;
- height: 100vh;
-}
 
 .dropdown-menu {
     max-height: 280px;
@@ -18669,6 +18664,7 @@ div.checkboxRight {
   text-align: center;
   font-size: 0.65rem;
 }
+
 
 
 
