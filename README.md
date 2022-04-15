@@ -14,12 +14,22 @@ PRECOG (legacy version) can be found ![here](https://github.com/gurdeep330/preco
 
 ```.github/workflows```: Workflow to fetch the latest 3D complexes of GPCR/G-protein and generate mappings/annotations, which are used by various functions in the run.py script
 
-## How to use?
+## How to run the webApp?
 ```git clone <repo>
 pip install Flask
 python3 run.py
 ```
-Open the URL on your browser ```http://129.206.245.88:5000```
+
+## How to run the command-line?
+Go intto the precogx directory, and run:
+```
+./static/predictor/precogx.py all --file <inputFile>
+```
+or try:
+```
+./static/predictor/precogx.py --help
+```
+to know more.
 
 # Output page
 

@@ -152,7 +152,7 @@ def main(numseqs, input, input_file, assay, path):
     record = {}
     for line in open(input_file, 'r'):
         if line[0] == '>':
-            gpcr = line.split('>')[1].replace('\n', '')
+            gpcr = line.split('>')[1].replace('\n', '').rstrip()
             record[gpcr] = 0
         else:
             record[gpcr] += len(line.replace('\n', ''))
@@ -214,7 +214,7 @@ def main(numseqs, input, input_file, assay, path):
         Xs_test_pca_copy = predict.main(path, d, uniq_id, gprotein, input_file, input_embedding, input_attentions, model, int(feature_type), str(embedding))
         #np.save('static/predictor/output/'+uniq_id+'/PCA/'+gprotein, Xs_test_pca_copy)
         for name, row in zip(d, Xs_test_pca_copy):
-            np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name, row)
+            np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+gprotein+'_'+name.rstrip(), row)
 
     ###########################################################################
     ###########################################################################
@@ -229,8 +229,8 @@ def main(numseqs, input, input_file, assay, path):
         for header, _seq in esm.data.read_fasta(TEST_FASTA_PATH):
             if header.split('>')[1]:
                 #print (header)
-                gpcr_test.append(header.split('>')[1])
-                fn = TEST_EMB_PATH+header[1:]+'.pt'
+                gpcr_test.append(header.split('>')[1].rstrip())
+                fn = TEST_EMB_PATH+header[1:].rstrip()+'.pt'
                 embs = torch.load(fn)
                 Xtest.append(embs['mean_representations'][layer])
                 #if len(Xtest) == 50:
@@ -239,15 +239,16 @@ def main(numseqs, input, input_file, assay, path):
         pca = load(homeDir + '/static/pca_all/pca_'+str(layer))
         Xs_test_pca = pca.transform(Xtest)
         for name, row in zip(d, Xs_test_pca):
-            np.save(homeDir + '/static/predictor/output/'+uniq_id+'/PCA/'+str(layer)+'layer_'+name, row)
+            np.save(homeDir + '/static/predictor/output/'+uniq_id.rstrip()+'/PCA/'+str(layer).rstrip()+'layer_'+name.rstrip(), row)
     print ('Done with generating all layers')
     ###########################################################################
     ###########################################################################
-
+    print ('Looking into other sources')
     for gpcr in gpcrs:
-        OtherSources(gpcr, gpcrs, homeDir)
+        OtherSources(gpcr.rstrip(), gpcrs, homeDir)
 
-    name=str(input_file)
+    print ('Preparing output')
+    name=str(input_file.rstrip())
     #name1=name.split('/')[7].split('.')[0]
     l = '#PRECOGx\n'
     l += '#Input\tVariant'
@@ -255,16 +256,15 @@ def main(numseqs, input, input_file, assay, path):
         l += '\t' + str(gprotein)
     l += '\n'
     for name in d:
-        #print (name, 'here')
-        l += '_'.join(name.split('_')[:-1]) + '\t' + name.split('_')[-1]
+        l += '_'.join(name.rstrip().split('_')[:-1]) + '\t' + name.split('_')[-1].rstrip()
         for gprotein in gproteins:
-            l += '\t' + str(round(d[name][gprotein],3))
+            l += '\t' + str(round(d[name.rstrip()][gprotein],3))
         l += '\n'
 
         ## Put other information after WT
-        if name.split('_')[-1] == 'WT':
+        if name.rstrip().split('_')[-1] == 'WT':
             ## Add ebbret information
-            gpcr = '_'.join(name.split('_')[:-1])
+            gpcr = '_'.join(name.rstrip().split('_')[:-1])
             l += gpcr + '\t' + 'GtoPdb'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].iuphar:
@@ -273,7 +273,7 @@ def main(numseqs, input, input_file, assay, path):
                     l += '\t-'
             l += '\n'
             ## Add shedding information
-            gpcr = '_'.join(name.split('_')[:-1])
+            gpcr = '_'.join(name.rstrip().split('_')[:-1])
             l += gpcr + '\t' + 'LogRAi-TGF'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].shedding:
@@ -282,7 +282,7 @@ def main(numseqs, input, input_file, assay, path):
                     l += '\t-'
             l += '\n'
             ## Add ebbret information
-            gpcr = '_'.join(name.split('_')[:-1])
+            gpcr = '_'.join(name.rstrip().split('_')[:-1])
             l += gpcr + '\t' + 'Emax-GEMTA'
             for gprotein in gproteins:
                 if gprotein in gpcrs[gpcr].ebbret:
@@ -293,7 +293,7 @@ def main(numseqs, input, input_file, assay, path):
 
     #print (l)
     #shutil.rmtree('output/'+uniq_id+'/')
-    open(homeDir + '/static/predictor/output/'+uniq_id+'/out.tsv', 'w').write(l)
+    open(homeDir + '/static/predictor/output/'+uniq_id.rstrip()+'/out.tsv', 'w').write(l)
     #print ('The output is saved at static/predictor/output/'+uniq_id)
 
     data = []
@@ -318,41 +318,41 @@ def main(numseqs, input, input_file, assay, path):
 def OtherSources(gpcr_given, gpcrs, homeDir):
     for line in open(homeDir + '/data/shedding.tsv', 'r'):
         if line[0] != '#':
-            gene_found = line.split('\t')[0]
-            acc_found = line.split('\t')[1]
+            gene_found = line.split('\t')[0].rstrip()
+            acc_found = line.split('\t')[1].rstrip()
 
             pattern1 = re.compile("sp\\|.*\\|.*_.*")
             pattern2 = re.compile("tr\\|.*\\|.*_.*")
 
-            if pattern1.match(gpcr_given) != None or pattern2.match(gpcr_given) != None:
-                given_name = gpcr_given.split('|')[1]
+            if pattern1.match(gpcr_given.rstrip()) != None or pattern2.match(gpcr_given.rstrip()) != None:
+                given_name = gpcr_given.split('|')[1].rstrip()
             else:
-                given_name = gpcr_given
+                given_name = gpcr_given.rstrip()
 
             if gene_found == given_name or acc_found == given_name:
-                values = line.replace('\n', '').split('\t')[2:]
+                values = line.rstrip().replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
-                    gpcrs[gpcr_given].shedding[gprotein] = str(round(float(value), 2))
+                    gpcrs[str(gpcr_given.rstrip())].shedding[str(gprotein.rstrip())] = str(round(float(value.rstrip()), 2))
         else:
             gproteins = line.replace('\n', '').split('\t')[2:]
 
     for line in open(homeDir + '/data/ebbret.tsv', 'r', encoding="utf-8"):
         if line[0] != '#':
-            gene_found = line.split('\t')[0]
-            acc_found = line.split('\t')[1]
+            gene_found = line.split('\t')[0].rstrip()
+            acc_found = line.split('\t')[1].rstrip()
 
             pattern1 = re.compile("sp\\|.*\\|.*_.*")
             pattern2 = re.compile("tr\\|.*\\|.*_.*")
 
-            if pattern1.match(gpcr_given) != None or pattern2.match(gpcr_given) != None:
-                given_name = gpcr_given.split('|')[1]
+            if pattern1.match(gpcr_given.rstrip()) != None or pattern2.match(gpcr_given.rstrip()) != None:
+                given_name = gpcr_given.split('|')[1].rstrip()
             else:
-                given_name = gpcr_given
+                given_name = gpcr_given.rstrip()
 
             if gene_found == given_name or acc_found == given_name:
                 values = line.replace('\n', '').split('\t')[2:]
                 for value, gprotein in zip(values, gproteins):
-                    gpcrs[gpcr_given].ebbret[gprotein] = value
+                    gpcrs[gpcr_given.rstrip()].ebbret[gprotein] = value
         else:
             gproteins = line.replace('\n', '').split('\t')[2:]
 
@@ -363,16 +363,16 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
                         }
     for line in open(homeDir + '/data/iuphar.tsv', 'r'):
         if line[0] != '#':
-            gene_found = line.split('\t')[0]
-            acc_found = line.split('\t')[1]
+            gene_found = line.split('\t')[0].rstrip()
+            acc_found = line.split('\t')[1].rstrip()
 
             pattern1 = re.compile("sp\\|.*\\|.*_.*")
             pattern2 = re.compile("tr\\|.*\\|.*_.*")
 
-            if pattern1.match(gpcr_given) != None or pattern2.match(gpcr_given) != None:
-                given_name = gpcr_given.split('|')[1]
+            if pattern1.match(gpcr_given.rstrip()) != None or pattern2.match(gpcr_given.rstrip()) != None:
+                given_name = gpcr_given.split('|')[1].rstrip()
             else:
-                given_name = gpcr_given
+                given_name = gpcr_given.rstrip()
 
             if gene_found == given_name or acc_found == given_name:
                 #print ('found in IUPHAR')
@@ -381,10 +381,10 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
                 for gprot_family in dic_gprot_family:
                     if gprot_family in pc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
-                            gpcrs[gpcr_given].iuphar[gprotein] = 'PC'
+                            gpcrs[gpcr_given.rstrip()].iuphar[gprotein] = 'PC'
                     elif gprot_family in sc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
-                            gpcrs[gpcr_given].iuphar[gprotein] = 'SC'
+                            gpcrs[gpcr_given.rstrip()].iuphar[gprotein] = 'SC'
 
 def formatInputFileOld(numseqs, input_file):
     num = 0
@@ -456,7 +456,7 @@ def formatInputFile(homeDir, numseqs, input_file):
                 if line[0] != '#':
                     if line[0] == '>':
                         num += 1
-                        given_name = line.replace('\n', '')
+                        given_name = line.replace('\n', '').rstrip()
 
                         pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
                         pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
@@ -489,7 +489,7 @@ def formatInputFile(homeDir, numseqs, input_file):
             if line.split() != []:
                 if line[0] != '#':
                     num += 1
-                    given_name = line.replace('\n', '')
+                    given_name = line.replace('\n', '').rstrip()
 
                     pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
                     pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
@@ -499,12 +499,12 @@ def formatInputFile(homeDir, numseqs, input_file):
 
                     else:
                         #given_name = str(line.replace(' ','').split()[0])
-                        given_name = str(line)
+                        given_name = str(line.rstrip())
                         #print ('this one', given_name)
                         #given_name = ' '.join(given_name.split())
 
                     if '/' not in given_name:
-                        name = given_name
+                        name = given_name.rstrip()
                         variant = 'WT'
                     else:
                         name = given_name.split('/')[0]
@@ -512,8 +512,8 @@ def formatInputFile(homeDir, numseqs, input_file):
 
                     if name not in gpcrs:
                         #print (name, variant, name.split())
-                        gpcrs[name] = GPCR(name)
-                        gpcrs[name].seq = fetchSeq(homeDir, name)
+                        gpcrs[name.rstrip()] = GPCR(name.rstrip())
+                        gpcrs[name.rstrip()].seq = fetchSeq(homeDir, name.rstrip())
 
                     gpcrs[name].var.append(variant)
 
@@ -549,7 +549,7 @@ def formatInput(homeDir, numseqs, input):
                 if line[0] != '#':
                     if line[0] == '>':
                         num += 1
-                        given_name = line.replace('\n', '')
+                        given_name = line.replace('\n', '').rstrip()
 
                         pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
                         pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
@@ -563,17 +563,17 @@ def formatInput(homeDir, numseqs, input):
                             given_name = ' '.join(given_name.split())
 
                         if '/' not in given_name:
-                            name = str(given_name)
+                            name = str(given_name.rstrip())
                             variant = 'WT'
                         else:
-                            name = '/'.join(given_name.split('/')[:-1])
-                            variant = given_name.split('/')[-1]
-                        if name not in gpcrs:
-                            gpcrs[name] = GPCR(name)
+                            name = '/'.join(given_name.rstrip().split('/')[:-1])
+                            variant = given_name.rstrip().split('/')[-1]
+                        if name.rstrip() not in gpcrs:
+                            gpcrs[name.rstrip()] = GPCR(name.rstrip())
 
-                        gpcrs[name].var.append(str(variant))
+                        gpcrs[name.rstrip()].var.append(str(variant.rstrip()))
                     else:
-                        gpcrs[name].seq += line.replace('\n', '').split()[0]
+                        gpcrs[name.rstrip()].seq += line.replace('\n', '').split()[0]
     else:
         ## if input is uniprot acc or gene name
         for line in input.split('\n'):
@@ -582,7 +582,7 @@ def formatInput(homeDir, numseqs, input):
             if line.split() != []:
                 if line[0] != '#':
                     num += 1
-                    given_name = line.replace('\n', '')
+                    given_name = line.replace('\n', '').rstrip()
 
                     pattern1 = re.compile("\\>sp\\|.*\\|.*_.*")
                     pattern2 = re.compile("\\>tr\\|.*\\|.*_.*")
@@ -592,41 +592,41 @@ def formatInput(homeDir, numseqs, input):
 
                     else:
                         #given_name = str(line.replace(' ','').split()[0])
-                        given_name = str(line)
+                        given_name = str(line.rstrip())
                         #print ('this one', given_name)
                         #given_name = ' '.join(given_name.split())
 
                     if '/' not in given_name:
-                        name = given_name
+                        name = given_name.rstrip()
                         variant = 'WT'
                     else:
-                        name = given_name.split('/')[0]
-                        variant = given_name.split('/')[1]
+                        name = given_name.rstrip().split('/')[0]
+                        variant = given_name.rstrip().split('/')[1]
 
                     if name not in gpcrs:
                         #print (name, variant, name.split())
-                        gpcrs[name] = GPCR(name)
-                        gpcrs[name].seq = fetchSeq(homeDir, name)
+                        gpcrs[name.rstrip()] = GPCR(name.rstrip())
+                        gpcrs[name.rstrip()].seq = fetchSeq(homeDir, str(name.rstrip()))
 
-                    gpcrs[name].var.append(variant)
+                    gpcrs[name.rstrip()].var.append(variant.rstrip())
 
     #print (name, gpcrs[name].seq)
     new_input = ''
     for gpcr in gpcrs:
-        if 'WT' not in gpcrs[gpcr].var:
-            gpcrs[gpcr].var.append('WT')
-        for variant in gpcrs[gpcr].var:
-            if gpcrs[gpcr].seq != None:
+        if 'WT' not in gpcrs[gpcr.rstrip()].var:
+            gpcrs[gpcr.rstrip()].var.append('WT')
+        for variant in gpcrs[gpcr.rstrip()].var:
+            if gpcrs[gpcr.rstrip()].seq != None:
                 if variant == 'WT':
-                    new_input += '>'+str(gpcr)+'_WT\n'
-                    new_input += str(gpcrs[gpcr].seq) + '\n'
+                    new_input += '>'+str(gpcr.rstrip())+'_WT\n'
+                    new_input += str(gpcrs[gpcr.rstrip()].seq) + '\n'
                     #print (gpcr)
                 else:
-                    new_input += '>'+gpcr+'_'+variant+'\n'
+                    new_input += '>'+gpcr.rstrip()+'_'+variant+'\n'
                     position = int(variant[1:-1]) - 1
                     newAA = variant[-1]
                     #print (position, newAA)
-                    new_input += gpcrs[gpcr].seq[:position] + newAA + gpcrs[gpcr].seq[position+1:] + '\n'
+                    new_input += gpcrs[gpcr.rstrip()].seq[:position] + newAA + gpcrs[gpcr.rstrip()].seq[position+1:] + '\n'
 
     #print (new_input)
     return (gpcrs, new_input)
@@ -656,7 +656,7 @@ def fetchSeq(homeDir, name):
     response = requests.get('https://www.uniprot.org/uniprot/'+str(name))
     #print (response.status_code)
     if response.status_code == 200:
-        response = urllib.request.urlopen('https://www.uniprot.org/uniprot/'+name+'.fasta')
+        response = urllib.request.urlopen('https://www.uniprot.org/uniprot/'+str(name)+'.fasta')
         seq = ''
         for line in str(response.read().decode('utf-8')).split('\n'):
             if len(line.split())>0:
