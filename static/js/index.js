@@ -7,7 +7,7 @@ window.hideCookieBanner = hideCookieBanner;
 
 
  $(document).on('click', '#ex1', function() {
-
+      /*
       var seq1 = '# Dopamine Receptor 1\n';
       seq1 += ">DRD1\n";
       seq1 += "MRTLNTSAMDGTGLVVERDFSVRILTACFLSLLILSTLLGNTLVCAAVIRFRHLRSKVTN\n";
@@ -28,7 +28,29 @@ window.hideCookieBanner = hideCookieBanner;
       seq1 += "RRGKDTAEGTNEDRGVGQGEGMPSSDFTTE";
 
       $('#validationTextarea').html(seq1);
+      */
+      var seq1 = "# Example of alternative splicing in Thromboxane A2 receptor\n\n"
+      seq1 += "# Canonical isoform of Thromboxane A2 receptor\n"
+      seq1 += ">P21731|TA2R_HUMAN\n"
+      seq1 += "MWPNGSSLGPCFRPTNITLEERRLIASPWFAASFCVVGLASNLLALSVLAGARQGGSHTR\n"
+      seq1 += "SSFLTFLCGLVLTDFLGLLVTGTIVVSQHAALFEWHAVDPGCRLCRFMGVVMIFFGLSPL\n"
+      seq1 += "LLGAAMASERYLGITRPFSRPAVASQRRAWATVGLVWAAALALGLLPLLGVGRYTVQYPG\n"
+      seq1 += "SWCFLTLGAESGDVAFGLLFSMLGGLSVGLSFLLNTVSVATLCHVYHGQEAAQQRPRDSE\n"
+      seq1 += "VEMMAQLLGIMVVASVCWLPLLVFIAQTVLRNPPAMSPAGQLSRTTEKELLIYLRVATWN\n"
+      seq1 += "QILDPWVYILFRRAVLRRLQPRLSTRPRSLSLQPQLTQRSGLQ\n\n"
+      seq1 += "# Isoform 2 of Thromboxane A2 receptor\n"
+      seq1 += ">P21731-2|TA2R_HUMAN\n"
+      seq1 += "MWPNGSSLGPCFRPTNITLEERRLIASPWFAASFCVVGLASNLLALSVLAGARQGGSHTR\n"
+      seq1 += "SSFLTFLCGLVLTDFLGLLVTGTIVVSQHAALFEWHAVDPGCRLCRFMGVVMIFFGLSPL\n"
+      seq1 += "LLGAAMASERYLGITRPFSRPAVASQRRAWATVGLVWAAALALGLLPLLGVGRYTVQYPG\n"
+      seq1 += "SWCFLTLGAESGDVAFGLLFSMLGGLSVGLSFLLNTVSVATLCHVYHGQEAAQQRPRDSE\n"
+      seq1 += "VEMMAQLLGIMVVASVCWLPLLVFIAQTVLRNPPAMSPAGQLSRTTEKELLIYLRVATWN\n"
+      seq1 += "QILDPWVYILFRRAVLRRLQPRLSTRPRRSLTLWPSLEYSGTISAHCNLRLPGSSDSRAS\n"
+      seq1 += "ASRAAGITGVSHCARPCMLFDPEFDLLAGVQLLPFEPPTGKALSRKD\n"
+
+      $('#validationTextarea').html(seq1);
     });
+
 
     $(document).on('click', '#ex2', function() {
       var seq2 = '# G-protein coupled receptor 183\n';
