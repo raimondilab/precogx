@@ -18677,3 +18677,28 @@ width: 800px  !important;
 }
 
 }
+
+.btn-link {
+  font-weight: inherit;
+  color: #283779 !important;
+  text-decoration: none !important;
+}
+
+.btn-link:hover {
+  color: #1b71a1 !important;
+  text-decoration: none !important;
+}
+
+
+@keyframes loading-text
+  0%
+    content: "Running"
+
+  25%
+    content: "Running."
+
+  50%
+    content: "Running.."
+
+  75%
+    content: "Running..."

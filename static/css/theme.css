@@ -880,6 +880,11 @@ progress {
   margin-left: 91.66667%;
 }
 
+.offset-12 {
+  margin-left: 2.5rem;
+}
+
+
 .g-0,
 .gx-0 {
   --bs-gutter-x: 0;
@@ -18665,6 +18670,29 @@ div.checkboxRight {
   font-size: 0.65rem;
 }
 
+.btn-link {
+  font-weight: inherit;
+  color: #283779 !important;
+  text-decoration: none !important;
+}
+
+.btn-link:hover {
+  color: #1b71a1 !important;
+  text-decoration: none !important;
+}
+
+@keyframes loading-text
+  0%
+    content: "Running"
+
+  25%
+    content: "Running."
+
+  50%
+    content: "Running.."
+
+  75%
+    content: "Running..."
 
 
 
