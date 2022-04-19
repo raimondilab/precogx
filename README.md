@@ -173,8 +173,8 @@ Rows information:<br>
 |<strong>VAR</strong>|<strong>Description</strong>|
 |-----|----|
 | GtoPdb | Information known about the given GPCR known from GtoPdb/IUPHAR|
-|LogRAi-TGF| Information known about the input GPCR from the <strong>TGFɑ shedding assay experiment|
-|Emax-GEMTAI|Information known about the input GPCR from the <strong>ebBRET assay</strong> experiment|
+|LogRAi-TGF| Information known about the input GPCR from the <strong>TGFɑ shedding assay</strong> experiment|
+|Emax-GEMTA|Information known about the input GPCR from the <strong>ebBRET assay</strong> experiment|
 |P(WT)| PRECOGx-predicted coupling probabilities of the given GPCR|
 |P(variant)| PRECOGx-predicted coupling probabilities of the variant in the given GPCR (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine)|
 
