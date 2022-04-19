@@ -260,11 +260,17 @@ def filter_gpcr_list(X, assay, gprotein):
             if line[0] != '#':
                 gene = line.split('\t')[0]
                 acc = line.split('\t')[1]
-                score = float(line.split('\t')[num+2]) + 1
+                id = line.split('\t')[2]
+                name = line.split('\t')[3]
+                # Make the range -1 to +1
+                score = float(line.split('\t')[num+4]) + 1
+                #print (score)
                 #color = cm.get_cmap('RdYlGn', 100)
                 #r,g,b,a = color(score)
                 #print (score,r,g,b)
-                if float(line.split('\t')[num+2]) >= -1.0:
+                #if score >= -1.0:
+                # Move the center (-1.0) to 0.0
+                if score >= 0.0:
                     genes_to_consider_coupling.append(gene+'|'+acc)
                     color = cm.get_cmap('Greens', 100)
                     r,g,b,a = color(score)
@@ -281,23 +287,28 @@ def filter_gpcr_list(X, assay, gprotein):
                     score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
             else:
                 flag = 0
-                header = line.replace('\n', '').split('\t')[2:]
+                # Replace GNAO1 by GoA
+                header = line.replace('\n', '').replace('GNAO1', 'GoA').split('\t')[4:]
                 for num, gprot in enumerate(header):
                     if gprot == gprotein:
                         flag = 1
                         break
+                #print (num, gprot)
+                #print (header)
                 if flag == 0:
                     num = -1
 
     elif assay == 'GEMTA':
-        num = -1
+        num = 0
         for line in open(path+'/data/ebbret.tsv', 'r', encoding="utf-8"):
             if line[0] != '#':
                 gene = line.split('\t')[0]
                 acc = line.split('\t')[1]
-                score = float(line.split('\t')[num+2])
+                id = line.split('\t')[2]
+                name = line.split('\t')[3]
+                score = float(line.split('\t')[num+4])
 
-                if float(line.split('\t')[num+2]) > 0.0:
+                if score > 0.0:
                     genes_to_consider_coupling.append(gene+'|'+acc)
                     color = cm.get_cmap('Greens', 100)
                     r,g,b,a = color(score)
@@ -307,7 +318,7 @@ def filter_gpcr_list(X, assay, gprotein):
                     #score_uncoupling.append('rgb('+str(r)+','+str(g)+','+str(b)+')')
                     score_uncoupling.append('grey')
             else:
-                header = line.replace('\n', '').split('\t')[2:]
+                header = line.replace('\n', '').split('\t')[4:]
                 for num, gprot in enumerate(header):
                     if gprot == gprotein:
                         #print (gprot)
@@ -321,14 +332,16 @@ def filter_gpcr_list(X, assay, gprotein):
                       'GNAQ': 'Gq/G11', 'GNA11': 'Gq/G11', 'GNA14': 'Gq/G11', 'GNA15': 'Gq/G11'
                       }
         gprotein_fam = iuphar_map[gprotein]
-        print (gprotein_fam)
+        #print (gprotein_fam)
         for line in open(path+'/data/iuphar.tsv', 'r'):
             if line[0] != '#' and line.split('\t')[1] != '':
                 gene = line.split('\t')[0]
                 acc = line.split('\t')[1]
+                id = line.split('\t')[2]
+                name = line.split('\t')[3]
                 if gprotein_fam in line:
                     genes_to_consider_coupling.append(gene+'|'+acc)
-                    if gprotein_fam in line.split('\t')[2]:
+                    if gprotein_fam in line.split('\t')[4]:
                         score_coupling.append('forestgreen')
                     else:
                         score_coupling.append('lightgreen')
@@ -347,6 +360,8 @@ def filter_gpcr_list(X, assay, gprotein):
         for line in open(path+'/data/string.tsv', 'r', encoding="utf-8"):
             gene = line.split('\t')[0]
             acc = line.split('\t')[1]
+            id = line.split('\t')[2]
+            name = line.split('\t')[3]
             if barr in line:
                 genes_to_consider_coupling.append(gene+'|'+acc)
                 score_coupling.append('green')
@@ -396,9 +411,9 @@ def fetchPCA():
         #if assay == '':
         assay = '';
         assayList = []
-        gemta = ['GNAS', 'GNAI1', 'GNAI2', 'GoA', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
-        tgf = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAO1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
-        both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+        gemta = ['GNAS', 'GNAI1', 'GNAI2', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2']
+        tgf = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15']
+        both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15', 'GoA']
 
         if 'Barr' in gprotein_given:
             assay = 'GEMTA'
@@ -1139,7 +1154,7 @@ def input():
                 return render_template('error1.html', flaggedGPCR=json.dumps(flaggedGPCR))
                 #return render_template('error1.html')
             elif errorCode == 2:
-                return render_template('error1.html', flaggedGPCR=json.dumps(flaggedGPCR))
+                return render_template('error2.html', flaggedGPCR=json.dumps(flaggedGPCR))
             #uniq_id = 'OXDUB'
             return redirect('/output/'+uniq_id)
         except:
@@ -1170,7 +1185,7 @@ def output(uniq_id):
         for key1 in d:
             for num, key2 in enumerate(d[key1]):
                 gpcr = key2[0]
-                if key2[1] == 'WT' or key2[1] not in ['GtoPdb', 'LogRAi', 'Emax']:
+                if key2[1] == 'WT' or key2[1] not in ['GtoPdb', 'LogRAi-TGF', 'Emax-GEMTA']:
                     variant = '_' + key2[1]
                 else:
                     variant = '_WT'

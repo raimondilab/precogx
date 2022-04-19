@@ -132,21 +132,29 @@ def main(numseqs, input, input_file, assay, path):
     for line in open(homeDir + '/static/predictor/output/' + uniq_id + '/flagCheckGPCR.txt', 'r'):
         if 'Query: ' in line and line[0] == '#':
             gpcr = line.split('Query:')[1].replace('\n', '').lstrip().rstrip()
+            checkGPCR[gpcr] = 0
+        elif line[0] != '#':
+            identity = float(line.split('\t')[2])
+            if identity >= 50.0:
+                checkGPCR[gpcr] = 1
+        '''
         elif 'hits found' in line and line[0] == '#':
             num = line.split('hits found')[0].split('#')[1].lstrip().rstrip()
             num = int(num)
-            checkGPCR[gpcr] = num
             if num == 0:
                 errorCode = 1
+        '''
 
     for gpcr in checkGPCR:
         if checkGPCR[gpcr] == 0:
             flaggedGPCR.append(gpcr)
 
+    errorCode = 1 if len(flaggedGPCR) > 0 else 0
+
     if errorCode == 1:
-        print ('Exiting from program with error code 1 i.e. the following sequences did not align to any of the known GPCRs:')
-        print (';'.join(flaggedGPCR))
-        print ('Please remove these sequences from the input and re-sbmit.')
+        print ('Exiting from program with error code 1: the following sequences did not align to any of the known GPCRs:')
+        print ('; '.join(flaggedGPCR))
+        print ('Please remove these sequences from the input and re-submit.')
         return(uniq_id, errorCode, ';'.join(flaggedGPCR))
 
     record = {}
@@ -320,6 +328,8 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
         if line[0] != '#':
             gene_found = line.split('\t')[0].rstrip()
             acc_found = line.split('\t')[1].rstrip()
+            id_found = line.split('\t')[2].rstrip()
+            name_found = line.split('\t')[3].rstrip()
 
             pattern1 = re.compile("sp\\|.*\\|.*_.*")
             pattern2 = re.compile("tr\\|.*\\|.*_.*")
@@ -329,17 +339,19 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
             else:
                 given_name = gpcr_given.rstrip()
 
-            if gene_found == given_name or acc_found == given_name:
-                values = line.rstrip().replace('\n', '').split('\t')[2:]
+            if gene_found == given_name or acc_found == given_name or id_found == given_name or name_found == given_name:
+                values = line.rstrip().replace('\n', '').split('\t')[4:]
                 for value, gprotein in zip(values, gproteins):
                     gpcrs[str(gpcr_given.rstrip())].shedding[str(gprotein.rstrip())] = str(round(float(value.rstrip()), 2))
         else:
-            gproteins = line.replace('\n', '').split('\t')[2:]
+            gproteins = line.replace('\n', '').replace('GNAO1', 'GoA').split('\t')[4:]
 
     for line in open(homeDir + '/data/ebbret.tsv', 'r', encoding="utf-8"):
         if line[0] != '#':
             gene_found = line.split('\t')[0].rstrip()
             acc_found = line.split('\t')[1].rstrip()
+            id_found = line.split('\t')[2].rstrip()
+            name_found = line.split('\t')[3].rstrip()
 
             pattern1 = re.compile("sp\\|.*\\|.*_.*")
             pattern2 = re.compile("tr\\|.*\\|.*_.*")
@@ -349,12 +361,12 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
             else:
                 given_name = gpcr_given.rstrip()
 
-            if gene_found == given_name or acc_found == given_name:
-                values = line.replace('\n', '').split('\t')[2:]
+            if gene_found == given_name or acc_found == given_name or id_found == given_name or name_found == given_name:
+                values = line.replace('\n', '').split('\t')[4:]
                 for value, gprotein in zip(values, gproteins):
                     gpcrs[gpcr_given.rstrip()].ebbret[gprotein] = value
         else:
-            gproteins = line.replace('\n', '').split('\t')[2:]
+            gproteins = line.replace('\n', '').split('\t')[4:]
 
     dic_gprot_family = {'Gs': ['GNAS', 'GNAL'],
                         'Gi/Go': ['GNAI1', 'GNAI2', 'GNAI3', 'GNAZ', 'GoA', 'GoB'],
@@ -365,6 +377,8 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
         if line[0] != '#':
             gene_found = line.split('\t')[0].rstrip()
             acc_found = line.split('\t')[1].rstrip()
+            id_found = line.split('\t')[2].rstrip()
+            name_found = line.split('\t')[3].rstrip()
 
             pattern1 = re.compile("sp\\|.*\\|.*_.*")
             pattern2 = re.compile("tr\\|.*\\|.*_.*")
@@ -374,10 +388,10 @@ def OtherSources(gpcr_given, gpcrs, homeDir):
             else:
                 given_name = gpcr_given.rstrip()
 
-            if gene_found == given_name or acc_found == given_name:
+            if gene_found == given_name or acc_found == given_name or id_found == given_name or name_found == given_name:
                 #print ('found in IUPHAR')
-                pc_values = line.replace('\n', '').split('\t')[2]
-                sc_values = line.replace('\n', '').split('\t')[3]
+                pc_values = line.replace('\n', '').split('\t')[4]
+                sc_values = line.replace('\n', '').split('\t')[5]
                 for gprot_family in dic_gprot_family:
                     if gprot_family in pc_values:
                         for gprotein in dic_gprot_family[gprot_family]:
@@ -426,7 +440,7 @@ def formatInputFileOld(numseqs, input_file):
                     print (line)
                     gpcrs[name].seq += line.replace('\n', '')
 
-    print (gpcrs[name].seq)
+    #print (gpcrs[name].seq)
     new_input = ''
     for name in gpcrs:
         for variant in gpcrs[name].var:
