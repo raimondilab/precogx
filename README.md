@@ -1,6 +1,6 @@
 <div align="center">
-<div style="font-size:75px; text-align: center; vertical-align: center;">PRECOGx</div>
-<img src="static/img/gallery/logo.png" alt="logo" width="150"/>
+<div style="font-size:150px; text-align: center; vertical-align: center;">PRECOGx</div>
+<img src="static/img/gallery/logo.png" alt="logo" width="225"/>
 </div>
 
 ![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
