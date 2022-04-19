@@ -161,16 +161,22 @@ ___
 ### Output of the command-line application <a name="outputPageOfTheCommanLineApplication"></a>
 
 This is the description of the output you will obtain if you run the command-line application or download the output from the web application.<br>
+
 Column information:<br>
+
 <strong>GPCR</strong>: Input name(s) provided by the user<br>
 <strong>VAR</strong>: Type of variants - (a) Wild type; (b) Variant; (c) GtoPdb; (d) LogRAi-TGF; (e) Emax-GEMTA<br>
 <strong>[GNAS - β-arr/GRK2]</strong>: PRECOGx-predicted coupling probabilities (both wild type and variants) for the available G-proteins and β-arrestins groups<br><br>
-Rows with:<br>
-<strong>VAR = GtoPdb</strong> displays information known about the given GPCR known from GtPdb/IUPHAR<br>
-<strong>VAR = LogRAi-TGF</strong> displays information known about the input GPCR from the <strong>TGFɑ shedding assay</strong> experiment<br>
-<strong>VAR = Emax-GEMTA</strong> displays information known about the input GPCR from the <strong>ebBRET assay</strong> experiment<br>
-<strong>VAR = P(WT)</strong> displays the PRECOGx-predicted coupling probabilities of the given GPCR<br>
-<strong>VAR = P(variant)</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) displays the PRECOGx-predicted coupling probabilities of the mutation in the given GPCR<br>
+
+Rows information:<br>
+
+|<strong>VAR</strong>|<strong>Description</strong>|
+|-----|----|
+| GtoPdb | Information known about the given GPCR known from GtoPdb/IUPHAR|
+|LogRAi-TGF| Information known about the input GPCR from the <strong>TGFɑ shedding assay experiment|
+|Emax-GEMTAI|Information known about the input GPCR from the <strong>ebBRET assay</strong> experiment|
+|P(WT)| PRECOGx-predicted coupling probabilities of the given GPCR|
+|P(variant)| PRECOGx-predicted coupling probabilities of the variant in the given GPCR (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine)|
 
 ___
 
