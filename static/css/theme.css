@@ -18681,18 +18681,5 @@ div.checkboxRight {
   text-decoration: none !important;
 }
 
-@keyframes loading-text
-  0%
-    content: "Running"
-
-  25%
-    content: "Running."
-
-  50%
-    content: "Running.."
-
-  75%
-    content: "Running..."
-
 
 
