@@ -370,12 +370,20 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
 // and insert in the pdblist ID
 function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, num_contacts) {
   //alert(ordered_pdbs);
+  /*
   if (document.getElementById('PDBsource').checked == false && document.getElementById('AFsource').checked == false)
     {
     alert('You must select either of the two sources.');
     document.getElementById('PDBsource').checked = true;
     document.getElementById('AFsource').checked = true;
     }
+  else if (document.getElementById('PDBsource').checked == true && document.getElementById('AFsource').checked == true)
+      {
+      alert('You must select either of the two sources.');
+      document.getElementById('PDBsource').checked = true;
+      document.getElementById('AFsource').checked = false;
+      }
+  */
   var newOrderedPDBs = [];
   for (var i = 0; i < ordered_pdbs.length; i++) {
     if (ordered_pdbs[i].includes('AF:'))
