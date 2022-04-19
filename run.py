@@ -1231,15 +1231,18 @@ def output(uniq_id):
 def help():
     return render_template('help.html')
 
+
 # Route to about page
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
 # Route to about page
 @app.route('/faqs')
 def faqs():
     return render_template('faqs.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
