@@ -1,11 +1,14 @@
+![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
+
+
 <div align="center">
 <div style="font-size:150px; text-align: center; vertical-align: center;">PRECOGx</div>
 <img src="static/img/gallery/logo.png" alt="logo" width="225"/>
 </div>
 
-![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
-
 PRECOGx is an ML-based predictor of GPCR/G-protein(β-arrestin) coupling. This repository contains the code required to run the command line as well as the web application of PRECOGx.
+
+___
 
 ### Table of Contents
 1. [File organization](#fileOrganization)
@@ -15,6 +18,8 @@ PRECOGx is an ML-based predictor of GPCR/G-protein(β-arrestin) coupling. This r
 5. [Legacy version](#legacy)
 6. [Contacts](#contacts)
 
+___
+
 ### File organization <a name='fileOrganization'></a>
 ```data```: Files/folders required to run the applications (mostly loaded in the run.py script)
 
@@ -23,6 +28,8 @@ PRECOGx is an ML-based predictor of GPCR/G-protein(β-arrestin) coupling. This r
 ```static```: JS, CSS, .py files to implement the web and the command-line applications
 
 ```.github/workflows```: Workflow to fetch the latest 3D complexes (from PDB) of GPCR/G-protein (β-arrestins) and generate mappings/annotations, which are used by various functions of the web application.
+
+___
 
 ### How to run PRECOGx? <a name='howToRunPRECOGx'></a>
 
@@ -84,6 +91,8 @@ to know more.
 python3 run.py
 ```
 </details>
+
+___
 
 ### Output page of the web application (local or via the webserver) <a name="outputPageOfTheApplication"></a>
 
@@ -148,6 +157,8 @@ python3 run.py
 
 ![Structure panel](data/GIFs/structure.gif)
 
+___
+
 ### Output of the command-line application <a name="outputPageOfTheCommanLineApplication"></a>
 
 This is the description of the output you will obtain if you run the command-line application or download the output from the web application.<br>
@@ -162,8 +173,12 @@ Rows with:<br>
 <strong>VAR = P(WT)</strong> displays the PRECOGx-predicted coupling probabilities of the given GPCR<br>
 <strong>VAR = P(variant)</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) displays the PRECOGx-predicted coupling probabilities of the mutation in the given GPCR<br>
 
+___
+
 ### Legacy version <a name="legacy"></a>
 PRECOG (legacy version) can be found [here]("https://github.com/russelllab/precog")
+
+___
 
 ### Contacts <a name="contacts"></a>
 Francesco Raimondi: francesco.raimondi@sns.it<br>
