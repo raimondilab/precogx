@@ -1,7 +1,7 @@
-<p align="center">
-<span style="font-size:50px; text-align: center; vertical-align: center;">PRECOGx</span>
-<img src="static/img/gallery/network_concept.png" alt="drawing" width="150"/>
-</p>
+<div align="center">
+<div style="font-size:75px; text-align: center; vertical-align: center;">PRECOGx</div>
+<img src="static/img/gallery/logo.png" alt="logo" width="150"/>
+</div>
 
 ![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
 
@@ -26,12 +26,12 @@ PRECOGx is an ML-based predictor of GPCR/G-protein(β-arrestin) coupling. This r
 
 ### How to run PRECOGx? <a name='howToRunPRECOGx'></a>
 
-<details><summary>If you wish to access the webserver.</summary>
+<details><summary>If you wish to access the webserver</summary>
 
 Open the [URL]("https://precogx.bioinfolab.sns.it")
 </details>
 
-<details><summary>If you wish to run the web application locally on your system.</summary>
+<details><summary>If you wish to run the web application locally on your system</summary>
 
 1. Clone the repository and install Flask.
 
@@ -53,7 +53,7 @@ python3 run.py
 ```
 </details>
 
-<details><summary>If you wish to run the command-line application locally.</summary>
+<details><summary>If you wish to run the command-line application locally</summary>
 
 1. Clone the repository and install Flask.
 
