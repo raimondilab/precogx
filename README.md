@@ -97,13 +97,13 @@ ___
 
 <details><summary>Coupling probabilities</summary>
 
-1. This panel displays the predicted probabilities of each input sequence as well as the experimental information provided by [GtoPdb](”https://www.guidetopharmacology.org/”), [TGF](”https://pubmed.ncbi.nlm.nih.gov/31160049/”), and [GEMTA](”https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1”) biosensors.
+1. This panel displays the predicted probabilities of each input sequence as well as the experimental information provided by ![GtoPdb](https://www.guidetopharmacology.org/), ![TGF](https://pubmed.ncbi.nlm.nih.gov/31160049/), and ![GEMTA](https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1) biosensors.
 2. To visualise information related to a G-protein/β-arrestin coupling, simply click the corresponding cell in the table, and other panels will update accordingly.
 </details>
 
 <br>
 
-![Coupling probabilities table](data/GIFs/couplingProbabilities.gif)
+![Coupling probabilities table](static/img/GIFs/couplingProbabilities.gif)
 
 <details><summary>PCA</summary>
 
@@ -116,7 +116,7 @@ ___
 </details>
 <br>
 
-![PCA panel](data/GIFs/PCA.gif)
+![PCA panel](static/img/GIFs/PCA.gif)
 
 <details><summary>Contacts</summary>
 
@@ -130,7 +130,7 @@ ___
 </details>
 <br>
 
-![Contacts panel](data/GIFs/contacts.gif)
+![Contacts panel](static/img/GIFs/contacts.gif)
 
 <details><summary>Sequence/Attention map</summary>
 
@@ -140,7 +140,7 @@ ___
 </details>
 <br>
 
-![Sequence panel](data/GIFs/sequence.gif)
+![Sequence panel](static/img/GIFs/sequence.gif)
 
 <details><summary>Structure</summary>
 
@@ -154,7 +154,7 @@ ___
 </details>
 <br>
 
-![Structure panel](data/GIFs/structure.gif)
+![Structure panel](static/img/GIFs/structure.gif)
 
 ___
 
@@ -181,7 +181,7 @@ Rows information:<br>
 ___
 
 ### Legacy version <a name="legacy"></a>
-PRECOG (legacy version) can be found [here]("https://github.com/russelllab/precog")
+PRECOG (legacy version) can be found ![here](https://github.com/russelllab/precog)
 
 ___
 
