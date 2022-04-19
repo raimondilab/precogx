@@ -2,7 +2,7 @@
 
 
 <div align="center">
-<img src="static/img/gallery/logo.png" alt="logo" width="350"/>
+<img src="static/img/gallery/logo.png" alt="logo" width="500"/>
 </div>
 
 PRECOGx is an ML-based predictor of GPCR/G-protein(β-arrestin) coupling. This repository contains the code required to run the command line as well as the web application of PRECOGx.
