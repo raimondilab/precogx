@@ -18671,9 +18671,21 @@ width: 600px  !important;
 }
 
 
+
 @media(min-width:1540px){
 #viewport > div:nth-child(1) > canvas:nth-child(1){
 width: 800px  !important;
+}
+
+#home, #running, #faqs{
+height: 100vh !important;
+}
+
+}
+
+@media(min-width:1200px){
+#home, #running, #faqs{
+height: 100vh !important;
 }
 
 }

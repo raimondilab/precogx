@@ -18681,5 +18681,15 @@ div.checkboxRight {
   text-decoration: none !important;
 }
 
+@media(min-width:1200px){
+#home, #running, #faqs{
+height: 100vh !important;
+}
+
+@media(min-width:1540px){
+#home, #running, #faqs{
+height: 100vh !important;
+}
+}
 
 

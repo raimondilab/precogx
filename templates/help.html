@@ -13,7 +13,7 @@
     $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
 }  else {
     $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-       
+
 }
 
 </script>
@@ -21,7 +21,7 @@
 
 
 {% block content %}
-<section class="pt-xxl-8" id="home">
+<section class="pt-xxl-8" id="help">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-3 order-lg-1 mb-5 mb-lg-0"></div>
@@ -29,7 +29,7 @@
                 <h1 class="fw-bold mb-4">Help</h1>
                 <h2 class="fw-bold mb-4"> Web-server usage</h2>
                 <p class="text-justify fs-0 mb-4">
-			     A user can input either a wild type (WT) or mutated protein sequence In the latter case, calculation
+                    A user can input either a wild type (WT) or mutated protein sequence In the latter case, calculation
                     of the WT is also carried out for comparison purposes. Protein embeddings from the pre-trained
                     <a href="https://github.com/facebookresearch/esm">ESM-1b model</a> are calculated for the input sequence.
                     These are used to (i) calculate the coupling preferences of the input to G-protein/β-arrestins  (ii)
@@ -38,7 +38,7 @@
                 </p>
                 <h2 class="fw-bold mb-4">Input format and options</h2>
                 <p class="text-justify fs-0">
-		           PRECOGx requires a list of protein identifiers (UniProt Accession or Gene symbols),
+                    PRECOGx requires a list of protein identifiers (UniProt Accession or Gene symbols),
                     whole sequence in FASTA format, or variants/mutations, by simply
                     appending the positional information (e.g. D294H), separated by a forward slash (/), to the protein ID. On the forms there are some additional options:
                 </p>
@@ -59,43 +59,46 @@
                     </div>
                     <div class="col-md-6">
                         <p class="text-justify fs-0">
-			The table here represents coupling probabilities predicted by PRECOGx as well experimental information provided by <a href ="https://www.guidetopharmacology.org/" target="_blank">GtoPdb/IUPHAR</a>, the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/" target="_blank">TGFɑ shedding</a> and the <a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1" target="_blank">ebBRET</a> assays.
-			</p>
+                            The table here represents coupling probabilities predicted by PRECOGx as well experimental information provided by
+                            <a href ="https://www.guidetopharmacology.org/">GtoPdb/IUPHAR</a>, the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/">TGF</a>
+                            and the <a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1">GEMTA</a> assays.
+                        </p>
+
 
                         <p class="text-justify fs-0">Columns:</p>
                         <ul>
                             <li class="text-justify fs-0"><strong>GPCR</strong>: Input name(s) provided by the user.</li>
-                            <li class="text-justify fs-0"><strong>VAR</strong>: Type of variants - (a) Wild type ;(b) Mutation ;(c) IUPHAR;(d) LogRAi;(e) Emax
-</li>
+                            <li class="text-justify fs-0"><strong>VAR</strong>: Type of variants - (a) Wild type; (b) Mutation; (c) GtoPdb; (d) TGF(LogRAi); (e) GEMTA(dnorm Emax)
+                            </li>
                             <li class="text-justify fs-0"><strong>[GNAS - β-arr/GRK2]</strong>: Coupling probability predicted by PRECOGx (for wild type and mutations) for the G-proteins and β-arrestins instances available;</li>
                         </ul>
                         <p class="text-justify fs-0">Rows with:</p>
                         <ul>
-				<li class="text-justify fs-0"><strong>VAR = IUPHAR</strong> display information known about the given GPCR known from GtPdb/IUPHAR.</li>
-        	                <li class="text-justify fs-0"><strong>VAR = LogRAi</strong> display information known about the input GPCR from the <strong>TGFɑ shedding assay</strong> experiment.</li>
-                	        <li class="text-justify fs-0"><strong>VAR = Emax</strong> display information known about the input GPCR from the <strong>ebBRET assay</strong>.</li>
-                        	<li class="text-justify fs-0"><strong>VAR = WT</strong> display coupling probabilities of the given GPCR predicted by PRECOGx.</li>
-	                        <li class="text-justify fs-0"><strong>VAR = Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) displays coupling probabilities of the input GPCR's mutation predicted by PRECOGx.</li>
+                            <li class="text-justify fs-0"><strong>VAR = GtoPdb</strong> display information known about the given GPCR known from GtPdb/IUPHAR.</li>
+                            <li class="text-justify fs-0"><strong>VAR = LogRAi</strong> display information known about the input GPCR from the <strong>TGF assay</strong> experiment.</li>
+                            <li class="text-justify fs-0"><strong>VAR = Emax</strong> display information known about the input GPCR from the <strong>GEMTA assay(dnorm Emax)</strong>.</li>
+                            <li class="text-justify fs-0"><strong>VAR = WT</strong> display coupling probabilities of the given GPCR predicted by PRECOGx.</li>
+                            <li class="text-justify fs-0"><strong>VAR = Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) displays coupling probabilities of the input GPCR's mutation predicted by PRECOGx.</li>
                         </ul>
-			<p class="text-justify fs-0">
-			<strong>Click</strong> cells with  VAR = WT or Mutation to view the input GPCR in the PCA, Sequence/Predicted contacts and Structure panels (see below). By default information related to the coupling with  highest probability will be displayed in the panels. To visualise information related to other G-protein/β-arrestin couplings, simply click the corresponding cell in the table.
-			</p>
+                        <p class="text-justify fs-0">
+                            <strong>Click</strong> cells with  VAR = WT or Mutation to view the input GPCR in the PCA, Sequence/Predicted contacts and Structure panels (see below). By default information related to the coupling with  highest probability will be displayed in the panels. To visualise information related to other G-protein/β-arrestin couplings, simply click the corresponding cell in the table.
+                        </p>
                     </div>
                 </div>
 
 
                 <h2 class="fw-bold mb-4">PCA panel</h2>
-                 <div class="row mb-4">
+                <div class="row mb-4">
 
-                        <div class="col-md-6">
-                            <p class="text-justify fs-0">
-                                The PCA panel displays the projections of the human GPCRome sequences along with the first two principal components obtained by performing the Principal Component Analysis (PCA) on the embeddings of the human GPCRome for different  layers. The user can label the human GPCRome based on their  known functional information with the help of a drop-down menu. If either the Shedding or ebBRET assay is selected from the drop down, a continuous colour gradient, ranging from dark grey (no binding) to green (maximum binding), will be applied. If IUPHAR is selected, a discrete color  will be applied: dark green (primary transduction mechanisms) and pale green (secondary transduction mechanisms). If Class is selected, a discrete set of colors will be applied to display different GPCR classes. Wild type and mutated (if provided) sequences are highlighted in , khaki and fuchsia, respectively.
-                            </p>
-                        </div>
-                     <div class="col-md-6">
-                            <img class="pt-md-0 center w-100" src="static/img/GIFs/PCA.gif" alt="result page"/>
-                        </div>
+                    <div class="col-md-6">
+                        <p class="text-justify fs-0">
+                            The PCA panel displays the projections of the human GPCRome sequences along with the first two principal components obtained by performing the Principal Component Analysis (PCA) on the embeddings of the human GPCRome for different  layers. The user can label the human GPCRome based on their  known functional information with the help of a drop-down menu. If either the Shedding or ebBRET assay is selected from the drop down, a continuous colour gradient, ranging from dark grey (no binding) to green (maximum binding), will be applied. If IUPHAR is selected, a discrete color  will be applied: dark green (primary transduction mechanisms) and pale green (secondary transduction mechanisms). If Class is selected, a discrete set of colors will be applied to display different GPCR classes. Wild type and mutated (if provided) sequences are highlighted in , khaki and fuchsia, respectively.
+                        </p>
                     </div>
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/GIFs/PCA.gif" alt="result page"/>
+                    </div>
+                </div>
 
                 <h2 class="fw-bold mb-4">Differential Contact Map</h2>
                 <div class="row mb-4">
@@ -103,118 +106,122 @@
                         <img class="pt-md-0 center w-100" src="static/img/GIFs/contacts.gif" alt="result page"/>
                     </div>
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">This  panel displays predicted differential contacts for a given coupling group (G-protein/β-arrestin), which can selected by clicking on any cell in the Coupling probabilities table (see above). The predicted contacts for each input receptor are grouped together on the basis of a specific coupling preferences and summarised via log-odds ratio, indicating contacts that are more (shown in green) or less (red) frequently than expected observed. Contact statistics is referenced to <a href="https://www.sciencedirect.com/science/article/abs/pii/S1043947105800497">Ballesteros-Weinstein (BW) numbering scheme</a> obtained from <a href="https://gpcrdb.org/">GPCRDB</a>. The Log Odds score slider  can be used filter and visualize the predicted contacts with log-odds ratio greater than user-specified absolute value. The Distance slider can be used to filter close contact pairs inside the same secondary structural element(helices).
+                        <p class="text-justify fs-0">This  panel displays predicted differential contacts for a given coupling group (G-protein/β-arrestin),
+                            which can selected by clicking on any cell in the Coupling probabilities table (see above). The predicted contacts for each input receptor are grouped together on the basis of a
+                            specific coupling preferences and summarised via log-odds ratio, indicating contacts that are more (shown in green) or less (red) frequently than expected observed. Contact statistics is referenced to
+                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S1043947105800497">GPCRdb generic residue numbering</a> obtained from <a href="https://gpcrdb.org/">GPCRDB</a>.
+                            The Log Odds score slider  can be used filter and visualize the predicted contacts with log-odds ratio greater than user-specified absolute value. The Distance slider can be used to filter close contact pairs inside the same secondary structural element(helices).
 
                         </p>
                     </div>
 
-                    </div>
-                    <h2 class="fw-bold mb-4">Sequence Panel</h2>
-                    <div class="row mb-4">
-
-                        <div class="col-md-6">
-                            <p class="text-justify fs-0">
-                                The sequence panel shows the positions mediating predicted contacts (highlighted in <span style="background-color: yellow;">yellow</span>) for the given coupling group (G-protein/β-arrestin),
-                                which can selected by clicking on any cell in the Coupling probabilities table  (see above). The Log odds score slider can be used to filter and
-                                visualize the predicted contacts with log-odds ratio greater than user-specified absolute value.
-                                Hovering over any highlighted position to view its BW numbering. Mutation, if provided , is highlighted in <span style="background-color: violet;">magenta</span>.
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <img class="pt-md-0 center w-100" src="static/img/GIFs/sequence.gif" alt="result page"/>
-                        </div>
-                    </div>
-                 <h2 class="fw-bold mb-4">Attention map</h2>
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <img class="pt-md-0 center w-100" src="static/img/GIFs/attentionMap.gif" alt="result page"/>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="text-justify fs-0">
-                                This panel displays the attention map derived from the most important attention head of the best performing embedding layer during classification. The user can these compare the attention network of mutation with the wild type. The labels on the X- and Y-axis represent the input sequence positions.
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <h2 class="fw-bold mb-4">Structure Panel</h2>
-                    <div class="row mb-4">
-
-                        <div class="col-md-6">
-                            <p class="text-justify fs-0">
-                                This panel displays the differential predicted contacts of the input sequence on a 3D structure of GPCR -
-                                G-protein/β-arrestin complex. The predicted contacts positions are highlighted as <span style="background-color: yellow;">yellow</span> spheres with their
-                                diameter proportional to the number of predicted contacts they mediate. The <span style="background-color: black;">black</span>labels indicate the corresponding
-                                BW numbering for each predicted contact. The <span style="background-color: lightgreen;">green</span>  and <span style="background-color: lightcoral;">red</span> edges
-                                represent predicted contact pairs that enriched or
-                                depleted, respectively, for the given coupling group (G-protein/β-arrestin). Mutation, if provided, is highlighted as
-                                <span style="background-color: violet;">magenta-colored</span> sphere. The 3D structure with highest sequence identity to the input GPCR (using PSI-BLAST against PDB-derived and AlphaFold complexes)
-                                is chosen and displayed by default. The user can also choose another 3D  structure from the dropdown menu, which has the list of 3D structures (PDB-ID/AlphaFold pairs)
-                                in descending order of sequence identity with the input receptor.  The user can also use the Log odds score slider to filter and visualize the predicted contacts
-                                with log-odds ratio greater than user-specified absolute value.
-                                The Distance slider can be used to filter close contact pairs inside the same secondary structural element(helices).Additional toggle options are available within the NGL viewer.
-                            </p>
-                        </div>
-                         <div class="col-md-6">
-                            <img class="pt-md-0 center w-100" src="static/img/GIFs/structure.gif" alt="result page"/>
-                        </div>
-                    </div>
-
-                    <h2 class="fw-bold mb-4">Download</h2>
-                    <p class="text-justify fs-0">
-                        Download is available as TSV format. This gives information of the input and prediction probabilties by PRECOGx.
-                    </p>
-                    <p class="text-justify fs-0"> Column information: </p>
-		    <ul>
-                            <li class="text-justify fs-0"><strong>GPCR</strong>: Input name(s) provided by the user.</li>
-                            <li class="text-justify fs-0"><strong>VAR</strong>: Type of variants - (a) Wild type ;(b) Mutation ;(c) IUPHAR ;(d) LogRAi;(e) Emax
-</li>
-                            <li class="text-justify fs-0"><strong>[GNAS - β-arr/GRK2]</strong>: Coupling probability predicted by PRECOGx (for wild type and mutations) for the G-proteins and β-arrestins instances available;</li>
-                        </ul>
-
-                        <p class="text-justify fs-0">Rows with:</p>
-			<ul>
-				<li class="text-justify fs-0"><strong>VAR = IUPHAR</strong> display information known about the given GPCR known from GtPdb/IUPHAR.</li>
-                	        <li class="text-justify fs-0"><strong>VAR = LogRAi</strong> display information known about the input GPCR from the <strong>TGFɑ shedding assay</strong> experiment.</li>
-        	                <li class="text-justify fs-0"><strong>VAR = Emax</strong> display information known about the input GPCR from the <strong>ebBRET assay</strong>.</li>
-	                        <li class="text-justify fs-0"><strong>VAR = WT</strong> display coupling probabilities of the given GPCR predicted by PRECOGx.</li>
-                        	<li class="text-justify fs-0"><strong>VAR = Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) displays coupling probabilities of the input GPCR's mutation predicted by PRECOGx.</li>
-                    </ul>
-                    <h2 class="fw-bold mb-4">Browser compatibility</h2>
-                    <table class="table table-bordered table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table-responsive-xxl fs-0">
-                        <thead>
-                        <th>OS</th>
-                        <th>Version</th>
-                        <th>Chrome</th>
-                        <th>Firefox</th>
-                        <th>Safari</th>
-                        </thead>
-                        <tbody>
-                        <tr class="text-justify fs-0">
-                            <td>Linux</td>    <td>Ubuntu 20.04.3 LTS</td>    <td>not tested</td>    <td>95.0</td>    <td>n/a</td>
-                        </tr>
-                        <tr class="text-justify fs-0">
-                            <td>Linux</td>    <td>CentOS 7.2.1511</td>  <td>not tested</td>    <td>ESR 52.6.0</td>    <td>n/a</td>
-                        </tr>
-                        <tr class="text-justify fs-0">
-                            <td>Windows</td>    <td>10</td>    <td>v96.0.4664.110</td>    <td>n/a</td>   <td></td>
-                        </tr>
-                        <tr class="text-justify fs-0">
-                            <td>MacOS</td>    <td>BigSur v11.5.2</td>    <td>v96.0.4664.110</td>    <td>v95.0.2</td>    <td>14.1.2</td>
-                        </tr>
-                        <tr class="text-justify fs-0">
-                            <td>MacOS</td>    <td>BigSur v11.6</td>    <td>v96.0.4664.110</td>    <td>v95.0.2</td>    <td>14.1.2</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <h5 class="fw-bold mb-4">Contacts</h5>
-                    <p class="text-justify fs-0">Francesco Raimondi - francesco.raimondi@sns.it</p>
-                    <p class="text-justify fs-0">Marin Matic - marin.matic@sns.it</p>
-                    <p class="text-justify fs-0">Gurdeep Singh - gurdeep.singh@bioquant.uni-heidelberg.de</p>
-                    <p class="text-justify fs-0"> If you are facing any issues in viewing the result page, please provide the URL of your results page in the email.</p>
                 </div>
+                <h2 class="fw-bold mb-4">Sequence Panel</h2>
+                <div class="row mb-4">
+
+                    <div class="col-md-6">
+                        <p class="text-justify fs-0">
+                            The sequence panel shows the positions mediating predicted contacts (highlighted in <span style="background-color: yellow;">yellow</span>) for the given coupling group (G-protein/β-arrestin),
+                            which can selected by clicking on any cell in the Coupling probabilities table  (see above). The Log odds score slider can be used to filter and
+                            visualize the predicted contacts with log-odds ratio greater than user-specified absolute value.
+                            Hovering over any highlighted position to view its GPCRdb generic residue numbering. Mutation, if provided , is highlighted in <span style="background-color: violet;">magenta</span>.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/GIFs/sequence.gif" alt="result page"/>
+                    </div>
+                </div>
+                <h2 class="fw-bold mb-4">Attention map</h2>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/GIFs/attentionMap.gif" alt="result page"/>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-justify fs-0">
+                            This panel displays the attention map derived from the most important attention head of the best performing embedding layer during classification. The user can these compare the attention network of mutation with the wild type. The labels on the X- and Y-axis represent the input sequence positions.
+                        </p>
+                    </div>
+                </div>
+
+
+                <h2 class="fw-bold mb-4">Structure Panel</h2>
+                <div class="row mb-4">
+
+                    <div class="col-md-6">
+                        <p class="text-justify fs-0">
+                            This panel displays the differential predicted contacts of the input sequence on a 3D structure of GPCR -
+                            G-protein/β-arrestin complex. The predicted contacts positions are highlighted as <span style="background-color: yellow;">yellow</span> spheres with their
+                            diameter proportional to the number of predicted contacts they mediate. The <span style="background-color: black;">black</span>labels indicate the corresponding
+                            BW numbering for each predicted contact. The <span style="background-color: lightgreen;">green</span>  and <span style="background-color: lightcoral;">red</span> edges
+                            represent predicted contact pairs that enriched or
+                            depleted, respectively, for the given coupling group (G-protein/β-arrestin). Mutation, if provided, is highlighted as
+                            <span style="background-color: violet;">magenta-colored</span> sphere. The 3D structure with highest sequence identity to the input GPCR (using PSI-BLAST against PDB-derived and AlphaFold complexes)
+                            is chosen and displayed by default. The user can also choose another 3D  structure from the dropdown menu, which has the list of 3D structures (PDB-ID/AlphaFold pairs)
+                            in descending order of sequence identity with the input receptor.  The user can also use the Log odds score slider to filter and visualize the predicted contacts
+                            with log-odds ratio greater than user-specified absolute value.
+                            The Distance slider can be used to filter close contact pairs inside the same secondary structural element(helices).Additional toggle options are available within the NGL viewer.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="pt-md-0 center w-100" src="static/img/GIFs/structure.gif" alt="result page"/>
+                    </div>
+                </div>
+
+                <h2 class="fw-bold mb-4">Download</h2>
+                <p class="text-justify fs-0">
+                    Download is available as TSV format. This gives information of the input and prediction probabilties by PRECOGx.
+                </p>
+                <p class="text-justify fs-0"> Column information: </p>
+                <ul>
+                    <li class="text-justify fs-0"><strong>GPCR</strong>: Input name(s) provided by the user.</li>
+                    <li class="text-justify fs-0"><strong>VAR</strong>: Type of variants - (a) Wild type; (b) Mutation; (c) GtoPdb; (d) TGF(LogRAi); (e) GEMTA(dnorm Emax)
+                    </li>
+                    <li class="text-justify fs-0"><strong>[GNAS - β-arr/GRK2]</strong>: Coupling probability predicted by PRECOGx (for wild type and mutations) for the G-proteins and β-arrestins instances available;</li>
+                </ul>
+
+                <p class="text-justify fs-0">Rows with:</p>
+                <ul>
+                    <li class="text-justify fs-0"><strong>VAR = GtoPdb</strong> display information known about the given GPCR known from GtPdb/IUPHAR.</li>
+                    <li class="text-justify fs-0"><strong>VAR = LogRAi</strong> display information known about the input GPCR from the <strong>TGF assay</strong> experiment.</li>
+                    <li class="text-justify fs-0"><strong>VAR = Emax</strong> display information known about the input GPCR from the <strong>GEMTA(dnorm Emax) assay</strong>.</li>
+                    <li class="text-justify fs-0"><strong>VAR = WT</strong> display coupling probabilities of the given GPCR predicted by PRECOGx.</li>
+                    <li class="text-justify fs-0"><strong>VAR = Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) displays coupling probabilities of the input GPCR's mutation predicted by PRECOGx.</li>
+                </ul>
+                <h2 class="fw-bold mb-4">Browser compatibility</h2>
+                <table class="table table-bordered table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table-responsive-xxl fs-0">
+                    <thead>
+                    <th>OS</th>
+                    <th>Version</th>
+                    <th>Chrome</th>
+                    <th>Firefox</th>
+                    <th>Safari</th>
+                    </thead>
+                    <tbody>
+                    <tr class="text-justify fs-0">
+                        <td>Linux</td>    <td>Ubuntu 20.04.3 LTS</td>    <td>not tested</td>    <td>95.0</td>    <td>n/a</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>Linux</td>    <td>CentOS 7.2.1511</td>  <td>not tested</td>    <td>ESR 52.6.0</td>    <td>n/a</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>Windows</td>    <td>10</td>    <td>v96.0.4664.110</td>    <td>n/a</td>   <td></td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>MacOS</td>    <td>BigSur v11.5.2</td>    <td>v96.0.4664.110</td>    <td>v95.0.2</td>    <td>14.1.2</td>
+                    </tr>
+                    <tr class="text-justify fs-0">
+                        <td>MacOS</td>    <td>BigSur v11.6</td>    <td>v96.0.4664.110</td>    <td>v95.0.2</td>    <td>14.1.2</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="fw-bold mb-4">Contacts</h5>
+                <p class="text-justify fs-0">Francesco Raimondi - francesco.raimondi@sns.it</p>
+                <p class="text-justify fs-0">Marin Matic - marin.matic@sns.it</p>
+                <p class="text-justify fs-0">Gurdeep Singh - gurdeep.singh@bioquant.uni-heidelberg.de</p>
+                <p class="text-justify fs-0"> If you are facing any issues in viewing the result page, please provide the URL of your results page in the email.</p>
             </div>
         </div>
+    </div>
 </section>
 {% endblock%}
