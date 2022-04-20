@@ -2,23 +2,23 @@
 
 
 <div align="center">
-<img src="static/img/gallery/logo.png" alt="logo" width="500"/>
+<img src="static/img/gallery/logo.png" alt="logo" width="400"/>
 </div>
 
-PRECOGx is an ML-based predictor of GPCR/G-protein(β-arrestin) coupling. The new features of the webserver,
-such as protein embeddings, PCA panel, contact and attention heatmaps, provide the
-user with new ways of e<strong>X</strong>ploring the signalling mechanisms of this important class
-of receptors.
+The protein language models encode structural and functional information of GPCR sequences that can be used to predict their signaling and functional repertoire. Here, we used the ESM1b protein embeddings as features and the binding information known from publicly available datasets to develop PRECOG<strong style="color: darkorange">x</strong>, an ML-guided tool of exploring GPCR signaling mechanisms with deep protein representations. PRECOG<strong style="color: darkorange">x</strong> allows users to:
+1. Predict GPCR (all classes) interactions with G protein and β-arrestin
+2. Project input sequences on an low-dimensional embedded space describing essential features of the human GPCRome
+3. Inspect sequence and structural determinants responsible for coupling via the analysis of the most important attention maps used by the models and through predicted intramolecular contacts
+4. Assess the impact of disease variants and alternative splice forms of human GPCRs
 
-This repository contains the code required to run the command line as well as the web application of PRECOGx.
-
+Explore [PRECOG<strong style="color: darkorange">x</strong>]("https://precogx.bioinfolab.sns.it").
 ___
 
 ### Table of Contents
 1. [File organization](#fileOrganization)
-2. [How to run PRECOGx](#howToRunPRECOGx)
+2. [How to run PRECOGx?](#howToRunPRECOGx)
 3. [Output page of the web application](#outputPageOfTheWebApplication)
-4. [Output page of the command-line application](#outputPageOfTheCommanLineApplication)
+4. [Output of the command-line application](#outputPageOfTheCommanLineApplication)
 5. [Legacy version](#legacy)
 6. [Contacts](#contacts)
 
