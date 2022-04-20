@@ -11,7 +11,7 @@ The protein language models encode structural and functional information of GPCR
 3. Inspect sequence and structural determinants responsible for coupling via the analysis of the most important attention maps used by the models and through predicted intramolecular contacts
 4. Assess the impact of disease variants and alternative splice forms of human GPCRs
 
-Explore [PRECOG<strong style="color: darkorange">x</strong>]("https://precogx.bioinfolab.sns.it").
+Explore ![PRECOG<strong style="color: darkorange">x</strong>]("https://precogx.bioinfolab.sns.it").
 ___
 
 ### Table of Contents
