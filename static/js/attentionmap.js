@@ -46,8 +46,8 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
               font: {
                 size: 10
               },
-              width: 700,
-              height: 700
+              width: 675,
+              height: 675
             }
 
         var config = {responsive: true,

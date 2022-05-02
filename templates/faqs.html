@@ -10,7 +10,6 @@
     $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
 }  else {
     $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-
 }
 
 </script>
@@ -27,14 +26,16 @@
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Can I input a GPCR sequence longer than 1204 amino acids?
+                                    Can I input a GPCR sequence longer than 1024 amino acids?
                                 </button>
                             </h5>
                         </div>
 
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">Yes, by truncating the input fasta sequence, e.g. at the N-terminal.</p>
+                                <p class="text-justify fs-0 offset-12">
+                                  Yes, by truncating the input fasta sequence, e.g. at the N-terminal.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -48,7 +49,7 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">No, this feature is not yet included in the model.</p>
+                                <p class="text-justify fs-0 offset-12">No, this feature is not yet included in PRECOGx.</p>
                             </div>
                         </div>
                     </div>
@@ -56,13 +57,13 @@
                         <div class="card-header" id="headingThree">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Does Precogx perform any in-silico design?
+                                    Does PRECOGx perform any in-silico design?
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">Precogx can predict effect of mutated sequences. But the actual design strategy to select new mutations should be carried out outside the webserver.</p>
+                                <p class="text-justify fs-0 offset-12">PRECOGx can predict effect of mutated sequences. But the actual design strategy to select new mutations should be carried out outside the webserver.</p>
                             </div>
                         </div>
                     </div>
@@ -76,7 +77,8 @@
                         </div>
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">Yes, see <a href="https://github.com/raimondilab/precogx">here</a>.</p>
+                                <p class="text-justify fs-0 offset-12">
+                                  Yes, check out our GitHub page <a href="https://github.com/raimondilab/precogx">here</a>.</p>
                             </div>
                         </div>
                     </div>

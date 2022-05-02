@@ -88,7 +88,7 @@ function loadIntro() {
             <div class="col-xl-6 mb-2"
                  data-intro='This panel displays the predicted differential conctacts for a given transducer group.
                  Using the dropdown menu, one can select to view the contacts in 1D or 2D format.'
-                 data-step="4">
+                 data-step="2">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title" id="panelHeading">Contacts
@@ -141,13 +141,11 @@ function loadIntro() {
             Start Structure
             -->
             <div class="col-xl-6 mb-2"
-                 data-intro='This panel displays the predicted differential contacts for a transducer group mapped on a 3D structure of the input.' data-step="5">
+                 data-intro='This panel displays the predicted differential contacts for a transducer group mapped on a 3D structure of the input.' data-step="3">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Structure
-                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal"
-                                  data-intro='Click on help buttons to know more about each panel.'
-                                  data-step="6">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal">?</span>
                         </h2>
                           <div class="row g-3 align-items-center">
                              <div class="col-auto">
@@ -392,7 +390,7 @@ function loadIntro() {
     <!--start row three-->
     <div class="row align-items-center">
         <!--PCA-->
-        <div class="col-xl-6 mb-5" data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+        <div class="col-xl-6 mb-5" data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="4">
             <div class="card">
                 <div class="card-body">
                     <h2 class="header-title">PCA
@@ -420,12 +418,14 @@ function loadIntro() {
         <!--Attention Map-->
         <div class="col-xl-6 mb-5"
              data-intro='This panel displays the attention map.'
-             data-step="3">
+             data-step="5">
             <div class="card">
                 <div class="card-body">
                     <h2 class="header-title">Attention Map
                         <span class="btn btn-info btn-sm" data-bs-toggle="modal"
-                              data-bs-target="#attentionMapModal">?</span>
+                              data-bs-target="#attentionMapModal"
+                              data-intro='Click on help buttons to know more about each panel.'
+                              data-step="6">?</span>
                     </h2>
                     <!--
                     <div class="row g-3 align-items-center" id="slider1Div">

@@ -8,30 +8,41 @@
                     <h4 class="modal-title">Coupling probabilites panel</h4>
                   </div>
                   <div class="modal-body" style="font-size: inherit;">
-                  <p class="text-justify fs-0">
-                    The table here displays predicted probabilites of the given entries (both wild type sequences and/or mutations) by PRECOGx and known values from
-                    <a href="http://www.guidetopharmacology.org/GRAC/ReceptorFamiliesForward?type=GPCR" target="_blank">IUPHAR</a> and the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/" target="_blank">Shedding</a>/<a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1">ebBRET</a> assays.<br>
-                      <p class="text-justify fs-0">For rows displaying:</p>
-                    <p class="text-justify fs-0"><kbd>VAR = IUPHAR</kbd>: primary coupling is represented by <kbd>PC</kbd> while the secondary ones as <kbd>SC</kbd> and
-                        the unknown ones as <kbd>-</kbd>.</p>
-                     <p class="text-justify fs-0"><kbd>VAR = LogRAi (Shedding experiment)</kbd>: values > <kbd>-1.0</kbd> are coupling while others are not coupling (< <kbd>-1.0</kbd>) or unknown <kbd>-</kbd>.</p>
-                     <p class="text-justify fs-0"><kbd>VAR = Emax (ebBRET experiment)</kbd>: values > <kbd>0</kbd> are coupling while others are not coupling (= <kbd>0</kbd>) or unknown <kbd>-</kbd>.</p>
-                     <p class="text-justify fs-0"><kbd>VAR = WT(Wild Type)/Mutation</kbd>: values with predicted probability (by PRECOGx) greater than 0.5 are coupling while others are not coupling.</p>
-                     <p class="text-justify fs-0">By clicking on any of the cells:</p>
-                     <p class="text-justify fs-0">a) The corresponding input is shown in the PCA panel</p>
-                     <p class="text-justify fs-0">b) The enriched/depleted contact positions of the input GPCR are highlighted in the Conacts panels and mapped onto a 3D structure in the Structure panel.</p>
-
+                    <p class="text-justify fs-0">
+                    The table displays PRECOGx-predicted probabilites of the given entries (both wild type and/or variants) as well as the known binding affinities from
+                    <a href="http://www.guidetopharmacology.org/GRAC/ReceptorFamiliesForward?type=GPCR" target="_blank">GtoPdb</a>
+                    and the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/" target="_blank">TGF</a>/<a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1">GEMTA</a> assays.
+                    </p>
+                    <p class="text-justify fs-0">For rows displaying:<br>
+                       <kbd>VARIANT = GtoPdb</kbd>: primary coupling is represented by <strong>PC</strong> while the secondary ones as <strong>SC</strong> and
+                        the unknown ones as <strong>-</strong>.<br>
+                       <kbd>VARIANT = LogRAi-TGF</kbd>: values > <strong>-1.0</strong> imply coupled while others are not-coupled (< <strong>-1.0</strong>) or unknown <strong>-</strong>.<br>
+                       <kbd>VARINAT = Emax-GEMTA</kbd>: values > <strong>0</strong> imply coupled while others are not-coupled (= <strong>0</strong>) or unknown <strong>-</strong>.<br>
+                       <kbd>VARIANT = WT (wild type)/Variant</kbd>: values with PRECOGx-predicted probability > 0.5 are coupled while others are not-coupled.
+                    </p>
+                    <p class="text-justify fs-0">
+                       By clicking on any of the cells:<br>
+                       a) The enriched/depleted contact positions of the corresponding input (under the column GPCR) are highlighted in the Conacts panels and mapped onto a 3D structure in the Structure panel.<br>
+                       b) The corresponding input (under the column GPCR) is shown in the PCA panel.<br>
+                       c) The best attention head of the corresponding transducer group (G-protein/&#946;-arrestin) is mapped onto the corresponding input (under the column GPCR) in the Attention Map panel.<br>
+                    </p>
+                    <p class="text-justify fs-0">
+                      <strong><u>Note</u>: This table acts as the master control. Clicking the cells in the table will automatically update the rest of the panels.</strong>
+                      </p>
+                    <p class="text-justify fs-0">
+                      For more information, please refer to the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank">help section</a> of this panel.
+                    </p>
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
                   </div>
-                  </div>
+
                 </div>
           </div>
   </div>
 
   <div class="modal fade" id="pcaModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
             <div class="modal-dialog modal-lg" style="z-index: 101;">
-
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
@@ -39,14 +50,21 @@
                       <h4 class="modal-title">PCA panel</h4>
                     </div>
                     <div class="modal-body" style="font-size: inherit;">
-                    <p>
-                      The PCA panel displays the projections of the human GPCRome sequences along
-                      with the first two principal components obtained by performing the
-                      Principal Component Analysis (PCA) on the embeddings of the human GPCRome for different layers.<br><br>
-                      The human GPCRome has a total of 377 receptors
-                      (279 Class A, 33 Class B, 17 class C, 11 class F, 25 Taste receptors and 14 in other classes).<br><br>
-
-                      Every input (WT/mutation) can be annotated with coupling information obtained from either <kbd>Shedding</kbd>, <kbd>ebBRET</kbd>, <kbd>IUPHAR</kbd> or <kbd>STRING</kbd> (only for B-arrs), or with class membership in <kbd>IUPHAR</kbd>.
+                    <p class="text-justify fs-0">
+                      This panel displays the projections of the human GPCRome sequences obtained by performing the
+                      Principal Component Analysis (PCA) on the embeddings of the human GPCRome (shown as dots) for different Transformer layers (can be selected from the dropdown menu).
+                      The first two components, PC1 and PC2, of the PCA are shown on the X- and Y-axis, respectively. The human GPCRome has a total of 377 receptors
+                      (279 Class A, 15 Class B1, 17 Class B2, 17 Class C, 11 Class F, 25 Taste receptors and 14 Others). Place the cursor over a dot to view the GPCR information.
+                    </p>
+                    <p class="text-justify fs-0">
+                      Using the dropdown menu, the human GPCRome as well as the input (WT/variant) can be colored (annotated) <strong>either</strong> with the coupling information obtained from <kbd>GtoPdb</kbd>, <kbd>STRING</kbd> (only for &#946;-arrestins),
+                      <kbd>TGF</kbd>/<kbd>GEMTA</kbd> assays; <<strong>or</strong>> with class membership in <kbd>GtoPdb</kbd>.
+                    </p>
+                    <p class="text-justify fs-0">
+                      <strong><u>Note</u>: Any activity in this panel will not affect the rendering of other panels.</strong>
+                      </p>
+                    <p class="text-justify fs-0">
+                      For more information, please refer to the <a href="https://precogx.bioinfolab.sns.it/help#pca_panel" target="_blank">help section</a> of this panel.
                     </p>
 
                     <div class="modal-footer">
@@ -69,7 +87,15 @@
                       <div class="modal-body" style="font-size: inherit;">
                         <p class="text-justify fs-0">
                         <!--This panel displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).<br>-->
-                        Attention Map obtained from the most important attention head of the best performing embedding layer during the classification.
+                        This panel displays the most important attention head of the best performing embedding layer (not shown) during training of the given transducer group (G-protein/&#946;-arrestin).
+                        The labels on the X- and Y-axis represent the the input sequence positions. Darker the color, higher is the importance of the pair of positions in the input.
+                        The user can compare the attention network of one or more variants (by specifying in the input) with the wild type.
+                        </p>
+                        <p class="text-justify fs-0">
+                          <strong><u>Note</u>: Any activity in this panel will not affect the rendering of other panels.</strong>
+                        </p>
+                        <p class="text-justify fs-0">
+                          For more information, please refer to the <a href="https://precogx.bioinfolab.sns.it/help#attention_map" target="_blank">help section</a> of this panel.
                         </p>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
@@ -89,21 +115,26 @@
                         <h4 class="modal-title header-title">Contacts panel</h4>
                       </div>
                       <div class="modal-body" style="font-size: inherit;">
-                          <p class="text-justify fs-0">This panel provides two options:</p>
-                        <p class="text-justify fs-0">
-                        1. The same contacts are mapped to the input <kbd>Sequence</kbd>.<br><br>
-                        These contacts are either enriched (log-odds score > 0) or depeleted (log-odds score < 0).<br>
-                        Place the cursor over a selected position to view its naming in the
-                        GPCRdb generic numbering system.<br>
-                        Use the <strong>slider</strong> to set the absolute value cutoff of the Log-odds score. For example, a slider value of 0.3 will display the contacts
-                        that have an enriched (> 0.3) or depeleted (< 0.3) for the given G-potein coupling score.
-                        </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify fs-0">This panel maps the predicted differential conctacts for a given transducer group (G-protein/&#946;-arrestin) onto the input GPCR.
+                        Using the dropdown menu, one can select to view the contacts in the following formats:<br>
+                        1. <kbd>Sequence (1D)</kbd>: The positions mediating the contacts (shown in <span style="background-color: gold; border: 1px solid black">yellow</span>) are mapped to the input sequence.
+                        Place the cursor over a position to view its naming in the <a href="http://docs.gpcrdb.org/generic_numbering.html" target="_blank">GPCRdb generic residue numbering scheme</a>.<br>
                         <!--2. <kbd>Attention map</kbd> obtained from the most important attention head of the best performing embedding layer during the classification.<br>-->
-                        2. <kbd>Contacts Map</kbd> displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).
+                        2. <kbd>Contacts Map (2D)</kbd>: The position pairs mediating the contacts are shown in a 2D format on a heatmap. Both X-and Y-axis display the names of positions of the input
+                        in the <a href="http://docs.gpcrdb.org/generic_numbering.html" target="_blank">GPCRdb generic residue numbering scheme</a>.
+                        The contacts enriched for the selected transducer group (by clicking a cell in the Coupling probabilites panel) are shown in <span style="background-color: lightgreen; border: 1px solid black">green</span>
+                        while the depleted ones are shown in <span style="background-color: salmon; border: 1px solid black">red</span>.
                         </p>
-                         <p class="text-justify fs-0">
-                        Choose between the different options using the dropdown.</p>
+                       <p class="text-justify fs-0">
+                         Use the <strog>slider</<strong> to set the absolute value cutoff of the Log-odds score. For example, a slider value of 0.3 will display the contacts
+                         that are <span style="background-color: lightgreen; border: 1px solid black">enriched (&gt; 0.3)</span> or
+                         <span style="background-color: salmon; border: 1px solid black">depeleted (&lt; 0.3)</span> for the given transducer group.
+                         Variant (if any) is shown in <span style="background-color: violet; border: 1px solid black">violet</span>.<br>
+                         <strong><u>Note</u>: Updating any or both the sliders of this panel will automatically update the sliders and structure of the Structure panel.</strong>
+                       </p>
+                       <p class="text-justify fs-0">
+                         For more information, please refer to the <a href="https://precogx.bioinfolab.sns.it/help#differential_panel" target="_blank">help section</a> of this panel.
+                       </p>
 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
@@ -124,11 +155,24 @@
                   </div>
                   <div class="modal-body" style="font-size: inherit;">
                   <p class="text-justify fs-0">
-                  This panel displays the predicted contacts mapped to the 3D structure of the input obtained from either <kbd>PDB</kbd> or <kbd>AlphaFold</kbd>. Zoom-in to view the
-                  GPCRdb generic numbering system of the selected positions.
+                  This panel displays the predicted contacts mapped to the 3D structure of the input obtained from either <kbd>PDB</kbd> or <kbd>AlphaFold</kbd>.
+                  The contact pairs enriched for the selected transducer group (by clicking a cell in the Coupling probabilites panel) are shown in <span style="background-color: lightgreen; border: 1px solid black">green</span>
+                  while the depleted ones are shown in <span style="background-color: salmon; border: 1px solid black">red</span>.
+                  Use the dropdown menu, to select the structure.
+                  Zoom-in to view the <a href="http://docs.gpcrdb.org/generic_numbering.html" target="_blank">GPCRdb generic residue numbering scheme</a> of the selected positions.
+                  </p>
+                  <p class="text-justify fs-0">
+                    Use the <strog>slider</<strong> to set the absolute value cutoff of the Log-odds score. For example, a slider value of 0.3 will display the contacts
+                    that are <span style="background-color: lightgreen; border: 1px solid black">enriched (&gt; 0.3)</span> or
+                    <span style="background-color: salmon; border: 1px solid black">depeleted (&lt; 0.3)</span> for the given transducer group.
+                    Variant (if any) is shown in <span style="background-color: violet; border: 1px solid black">violet</span>.<br>
+                    <strong><u>Note</u>: Updating any or both the sliders of this panel will automatically update the sliders and rendering of the Contacts panel.</strong>
                   </p>
                   <p class="text-justify fs-0">
                     Can't see any position? Try lowering the log-odds score threshold.
+                  </p>
+                  <p class="text-justify fs-0">
+                    For more information, please refer to the <a href="https://precogx.bioinfolab.sns.it/help#structure_panel" target="_blank">help section</a> of this panel.
                   </p>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
