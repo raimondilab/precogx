@@ -42,18 +42,14 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
 
         var layout = {
               autosize: true,
-              title: 'Attention Map of <b>'+gpcr+'</b> with the <b>'+gprotein+'</b> transducer group',
+              title: 'Attention Map of <b>'+gprotein+'-coupled receptors</b> projected on <b>'+gpcr+'</b>',
               font: {
                 size: 10
-               }
+              },
+              width: 700,
+              height: 700
+            }
 
-        };
-
-        var icon1 = {
-            'width': 500,
-            'height': 600
-
-}
         var config = {responsive: true,
         displaylogo: false
 
@@ -73,14 +69,15 @@ function togglePanel(chosen) {
   // get the clock
   //var contactPanel = document.getElementById('myDiv');
   var sequencePanel = document.getElementById('sequence-viewer');
-  var attentionPanel = document.getElementById('attentionMap');
+  //var attentionPanel = document.getElementById('attentionMap');
+  var heatmapPanel = document.getElementById('myDiv');
   var panelHeading = document.getElementById('panelHeading');
   //var slider1Div = document.getElementById('slider1Div');
 
   // get the current value of the clock's display property
   //var contactDisplaySetting = contactPanel.style.display;
   var sequenceDisplaySetting = sequencePanel.style.display;
-  var attentionDisplaySetting = attentionMap.style.display;
+  var heatmapDisplaySetting = heatmapPanel.style.display;
   //var slider1DisplaySetting = slider1Div.style.display;
 
   // also get the clock button, so we can change what it says
@@ -100,14 +97,14 @@ function togglePanel(chosen) {
 //    displayName.innerHTML = chosen;
 //  }
 //  else
-  if (chosen == 'Attention Map') {
+  if (chosen == 'Contacts Map') {
     // clock is hidden. show it
     //contactPanel.style.display = 'none';
     sequencePanel.style.display = 'none';
-    attentionPanel.style.display = 'block';
+    heatmapPanel.style.display = 'block';
     //slider1Div.style.display = 'none';
-    slider_log.style.display = 'none';
-    slider_dis.style.display = 'none';
+    //slider_log.style.display = 'none';
+    //slider_dis.style.display = 'none';
     // change button text
     //toggleButton.innerHTML = 'Show the contact pairs';
     //panelHeading.innerHTML = 'Attention Map';
@@ -117,10 +114,10 @@ function togglePanel(chosen) {
     // clock is hidden. show it
 //    contactPanel.style.display = 'none';
     sequencePanel.style.display = 'block';
-    attentionPanel.style.display = 'none';
+    heatmapPanel.style.display = 'none';
     //slider1Div.style.display = 'flex';
-    slider_log.style.display = 'block';
-    slider_dis.style.display = 'block';
+    //slider_log.style.display = 'block';
+    //slider_dis.style.display = 'block';
     // change button text
     //toggleButton.innerHTML = 'Show the contact pairs';
     //panelHeading.innerHTML = 'Sequence';
@@ -130,8 +127,8 @@ function togglePanel(chosen) {
 
 function setDisplayMenu(path_to_fasta, cutoff, distance, uniq_id, gpcr, gprotein) {
   var new_options = '';
-  //new_options += "<li><a class=\"dropdown-item\" onClick=\"makeHeatmap(\'"+cutoff+"\',\'"+distance+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Contact Map\')\">Contact Map</a></li>";
-  new_options += "<li><a class=\"dropdown-item\" onClick=\"makeAttentionmap(\'"+uniq_id+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Attention Map\')\">Attention Map</a></li>";
+  new_options += "<li><a class=\"dropdown-item\" onClick=\"makeHeatmap(\'"+cutoff+"\',\'"+distance+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Contacts Map\')\">Contacts Map</a></li>";
+  //new_options += "<li><a class=\"dropdown-item\" onClick=\"makeAttentionmap(\'"+uniq_id+"\',\'"+gpcr+"\',\'"+gprotein+"\',\'Attention Map\')\">Attention Map</a></li>";
   new_options += "<li><a class=\"dropdown-item\" onClick=\"makeSequence(\'"+gpcr+"\',\'"+path_to_fasta+"\',\'"+gprotein+"\',\'"+cutoff+"\',\'"+distance+"\',\'"+uniq_id+"\',\'Sequence\')\">Sequence</a></li>";
 
   //alert(document.getElementById("pdblist").innerHTML);

@@ -57,18 +57,19 @@
             </div>
     </div>
 
-<div class="modal fade" id="contactModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+<div class="modal fade" id="attentionMapModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
               <div class="modal-dialog modal-lg" style="z-index: 101;">
 
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Contacts panel</h4>
+                        <h4 class="modal-title">Attention Map panel</h4>
                       </div>
                       <div class="modal-body" style="font-size: inherit;">
                         <p class="text-justify fs-0">
-                        This panel displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).<br>
+                        <!--This panel displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).<br>-->
+                        Attention Map obtained from the most important attention head of the best performing embedding layer during the classification.
                         </p>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-info btn-sm" data-bs-dismiss="modal" aria-label="Close">Close</button>
@@ -78,14 +79,14 @@
               </div>
       </div>
 
-<div class="modal fade" id="sequenceModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
+<div class="modal fade" id="contactsModal" role="dialog" style="margin-top: 50px; margin-right: 60%;">
               <div class="modal-dialog modal-lg" style="z-index: 101;">
 
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close btn-info btn-sm" data-bs-dismiss="modal">&times;</button>
-                        <h4 class="modal-title header-title">Sequence panel</h4>
+                        <h4 class="modal-title header-title">Contacts panel</h4>
                       </div>
                       <div class="modal-body" style="font-size: inherit;">
                           <p class="text-justify fs-0">This panel provides two options:</p>
@@ -98,7 +99,8 @@
                         that have an enriched (> 0.3) or depeleted (< 0.3) for the given G-potein coupling score.
                         </p>
                         <p class="text-justify fs-0">
-                        2. <kbd>Attention map</kbd> obtained from the most important attention head of the best performing embedding layer during the classification.<br>
+                        <!--2. <kbd>Attention map</kbd> obtained from the most important attention head of the best performing embedding layer during the classification.<br>-->
+                        2. <kbd>Contacts Map</kbd> displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).
                         </p>
                          <p class="text-justify fs-0">
                         Choose between the different options using the dropdown.</p>

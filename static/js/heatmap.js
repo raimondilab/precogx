@@ -40,10 +40,12 @@ function makeHeatmap(cutoff, distance, gpcr, gprotein, chosen) {
         var layout = {
               autosize: true,
               //title: gprotein
-              title: 'Differential Contact Map of <b>'+gpcr+'</b> with the <b>'+gprotein+'</b> transducer group',
-               font: {
+              title: 'Differential contact map of <b>'+gprotein+'-coupled receptors</b> projected on <b>'+gpcr+'</b>',
+              font: {
                     size: 10
-               }
+              },
+              width: 600,
+              height: 600
 
         };
 
