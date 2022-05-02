@@ -18607,15 +18607,16 @@ padding-bottom: 1.25rem!important;
 }
 
 
-#myDiv{
+#myDiv,#myDiv2{
 display: block;
 margin-left: auto;
 margin-right: auto;
+height: 40rem !important;
 }
 
 #viewport,#sequence-viewer,#attentionMap {
 position: relative;
-height: 25rem !important;
+height: 40rem !important;
 margin-top:1rem;
 }
 
