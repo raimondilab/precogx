@@ -18684,14 +18684,14 @@ width: 600px  !important;
 width: 800px  !important;
 }
 
-#home, #running, #faqs{
+#home, #running{
 height: 100vh !important;
 }
 
 }
 
 @media(min-width:1200px){
-#home, #running, #faqs{
+#home, #running{
 height: 100vh !important;
 }
 
