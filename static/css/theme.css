@@ -18682,12 +18682,12 @@ div.checkboxRight {
 }
 
 @media(min-width:1200px){
-#home, #running, #faqs{
+#home, #running{
 height: 100vh !important;
 }
 
 @media(min-width:1540px){
-#home, #running, #faqs{
+#home, #running{
 height: 100vh !important;
 }
 }

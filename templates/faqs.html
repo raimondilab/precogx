@@ -12,6 +12,7 @@
     $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
 }
 
+
 </script>
 {% endblock%}
 
@@ -25,16 +26,20 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
                                     Can I input a GPCR sequence longer than 1024 amino acids?
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
-                                  Yes, by truncating the input fasta sequence, e.g. at the N-terminal.
+                                    No, you can enter only sequences of length 1024. Butyou may truncate the input
+                                    sequence to reduce its length(for e.g. truncate the N-terminal such that the length
+                                    of the truncated sequence is <= 1024.
                                 </p>
                             </div>
                         </div>
@@ -42,35 +47,47 @@
                     <div class="card">
                         <div class="card-header" id="headingTwo">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Can I predict ligand binding?
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Can PRECOGx predict ligand binding?
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">No, this feature is not yet included in PRECOGx.</p>
+                                <p class="text-justify fs-0 offset-12">No, this feature is not yet included in the
+                                    model.</p>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingThree">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
                                     Does PRECOGx perform any in-silico design?
                                 </button>
                             </h5>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                             data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">PRECOGx can predict effect of mutated sequences. But the actual design strategy to select new mutations should be carried out outside the webserver.</p>
+                                <p class="text-justify fs-0 offset-12">
+                                    No, there is no in-built feature PRECOGx to perform any in-silico design. However,
+                                    PRECOGx can predict the coupling probabilities of any GPCR sequence. So the user can
+                                    perform an in-silco design by themselves and then feed the mutated sequence to
+                                    PRECOGx as input.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingFour">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
                                     Can I run PRECOGx from the command line?
                                 </button>
                             </h5>
@@ -78,7 +95,213 @@
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
-                                  Yes, check out our GitHub page <a href="https://github.com/raimondilab/precogx">here</a>.</p>
+                                    Yes, check out our GitHub page <a
+                                        href="https://github.com/raimondilab/precogx">here</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                    Can PRECOGx predict more than multiple mutations (insertions/deletions) in a single
+                                    sequence other than the wild type?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    No, PRECOGx can make predictions only for point mutations other than the wild type.
+                                    However, the user can generate sequences (FASTA-formatted) with more than one
+                                    insertion (or deletions), and feed PRECOGx as input.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingSix">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    Can PRECOGx make predictions for non-GPCR inputs (eg: p53)?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    No, PRECOGx was trained and tested only by considering only GPCR sequences. PRECOGx
+                                    will eliminate any non-GPCR sequence(s) from the input.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingSeven">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSeven" aria-expanded="false"
+                                        aria-controls="collapseSeven">
+                                    Can PRECOGx make predictions for all classes of GPCRs?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    Yes, PRECOGx can make predictions for all the classes of GPCRs. However, the user
+                                    must remember that majority of receptors used to develop PRECOGx came from Class
+                                    A.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingEight">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseEight" aria-expanded="false"
+                                        aria-controls="collapseEight">
+                                    Can I map my sequence to any available 3D structure from PDB?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    PRECOGx displays only the 3D structure complexes of GPCR/G-proteins or
+                                    GPCR/Beta-arrestins available in PDB. Currently, PRECOGx does not display 3D
+                                    structures with only GPCRs as polypeptides.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingNine">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseNine" aria-expanded="false"
+                                        aria-controls="collapseNine">
+                                    I am unable to view my input on a 3D structure complex that is available on PDB.
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    We update PRECOGx structures once every month. If you are looking for a structure
+                                    that was released over a month ago, please drop us an email, and we will make it
+                                    available as soon as we can.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                    I am unable to view a 3D structure complex (AlphaFold-predicted) with a specific
+                                    transducer group.
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    Currently, PRECOGx displays only the 3D structure complexes with a GPCR/G-protein
+                                    (Beta-arr) pair that is known to be coupled through TGF/GEMTA experimental assays.
+                                    In the future, we plan to introduce AlphaFold-predicted complexes for any input
+                                    sequence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingEleven">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseEleven" aria-expanded="false"
+                                        aria-controls="collapseEleven">
+                                    Is the GPCRdb numbering scheme the same as the Ballesteros-Weinstein (B/W) numbering
+                                    scheme?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    No, these numbering schemes are different. Check this page to know more.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwelve">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwelve" aria-expanded="false"
+                                        aria-controls="collapseTwelve">
+                                    Can I also view my input in the B/W or PFAM numbering scheme?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    Currently, PRECOGx displays only the GPCRdb numbering scheme. In the future, we plan
+                                    to introduce other schemes too.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThirteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThirteen" aria-expanded="false"
+                                        aria-controls="collapseThirteen">
+                                    Can I view more than one input (for ex: multiple sequences of the same protein with
+                                    different point mutations) in the PCA panel?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    No, this feature is not yet available in PRECOGx. But we understand the importance
+                                    of this feature and plan to introduce it in the next version.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFourteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFourteen" aria-expanded="false"
+                                        aria-controls="collapseFourteen">
+                                    How can my input be still shown in the Structure panel though there is no 3D
+                                    structure complex available in PDB?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="text-justify fs-0 offset-12">
+                                    We find the best 3D structure for input by computing the sequence identity (using
+                                    PSI-BLAST) of the input against all 3D structure complexes available from PDB and
+                                    (selected) predicted by AlphaFold. The 3D structures are ranked in the decreasing
+                                    order of sequence identity, and the one with the highest value is displayed by
+                                    default. As a result, you may still see a 3D structure of input even if its 3D
+                                    structure is unavailable in PDB.
+                                </p>
                             </div>
                         </div>
                     </div>

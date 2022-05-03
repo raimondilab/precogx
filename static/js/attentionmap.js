@@ -45,9 +45,7 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
               title: 'Attention Map of <b>'+gprotein+'-coupled receptors</b> projected on <b>'+gpcr+'</b>',
               font: {
                 size: 10
-              },
-              width: 675,
-              height: 675
+              }
             }
 
         var config = {responsive: true,
