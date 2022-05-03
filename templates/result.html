@@ -22,446 +22,208 @@
 <script src="{{url_for('static', filename='/js/heatmap.js')}}"></script>
 <script src="{{url_for('static', filename='/js/attentionmap.js')}}"></script>
 <script src="{{url_for('static', filename='/js/pca.js')}}"></script>
+<script src="{{url_for('static', filename='/js/result.js')}}"></script>
 <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="{{url_for('static', filename='/css/reset.css')}}" rel="stylesheet" />
+<link href="{{url_for('static', filename='/css/reset.css')}}" rel="stylesheet"/>
+<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet"/>
 
-<script>
-var selected_gpcr = '';
 
-$(function(){
-        $("#modalCoupling").load("/static/html/modals.html");
-});
-
-function loadIntro() {
-            introJs().start();
-};
-
-if (navigator.userAgent.indexOf("Linux") !== -1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">');
-
-    if (!navigator.userAgent.includes("Firefox")) {
-        $('head').append('<link href="{{url_for('static', filename='/css/theme_chrome.css')}}" rel="stylesheet">');
-     }
-
-}  else {
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-
-     if (!navigator.userAgent.includes("Firefox")) {
-        $('head').append('<link href="{{url_for('static', filename='/css/theme_chrome2.css')}}" rel="stylesheet">');
-     }
-}
-
-</script>
-
-<style>
-.dropdown-menu {
-    max-height: 280px;
-    overflow-y: auto;
-}
-
-th, td { white-space: nowrap;
-
-}
-
-div.dataTables_wrapper {
-        margin: 0 auto;
-}
-
-div.ColVis {
-        float: left;
-}
-
-div.checkboxRight {
-  position: absolute;
-  display: inline-block;
-  right: 0;
-  font-size:0.75rem;
-}
-
-.btn-circle {
-  width: 1.45rem;
-  height: 1.45rem;
-  padding: 0px;
-  border-radius: 20px;
-  text-align: center;
-  font-size: 0.65rem;
-}
-</style>
 
 {% endblock%}
 
 {% block content %}
-<section class="pt-8" id="home">
-    <div class="container pb-2">
+<section class="pt-8" id="result">
+    <div class="container">
+        <input type="hidden" value="{{uniq_id}}" id="uniq_id">
+        <input type="hidden" value="{{path_to_fasta}}" id="path_to_fasta">
+        <input type="hidden" value="{{path_to_json_output}}" id="path_to_json_output">
+        <input type="hidden" value="{{gpcr_list}}" id="gpcr_list">
+        <input type="hidden" value="{{first_gprotein}}" id="first_gprotein">
+        <input type="hidden" value="{{first_gprotein_index}}" id="first_gprotein_index">
+        <input type="hidden" value="{{first_entry}}" id="first_entry">
         <h1 class="fw-bold mb-4">Result
             <!--<button type="button" class="btn btn-info btn-md" onclick="loadIntro()">Need a quick intro?</button>-->
             <span class="btn btn-info btn-sm" onclick="loadIntro()">Need a quick intro?</span>
         </h1>
 
-        <div class="row align-items-center">
-
-            <div class="col-xl-6" data-intro='This panel displays results obtained from PRECOGx, and the information known about the input(s) in IUPHAR, Shedding/ebBRET assays or STRING (for B-arrs).' data-step="1">
+        <div class="row align-items-center mb-5">
+            <div class="col-xl-12"
+                 data-intro='This panel displays PRECOGx-predicted probabilites, and the information known about the input(s) in GtoPdb, TGF/GEMTA assays or STRING (for B-arrs).'
+                 data-step="1">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Coupling probabilites
-                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#dataModal">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                  data-bs-target="#dataModal">?</span>
                         </h2>
-                        <table id="example" class="table display table-striped table-bordered stripe row-border order-column pb-2 " cellspacing="0" width="100%"></table>
+                        <table id="example"
+                               class="table display table-striped table-bordered stripe row-border order-column pb-2"
+                               cellspacing="0" width="100%"></table>
                     </div>  <!-- end card body-->
                 </div> <!-- end card -->
             </div>
-            <div class="col-xl-6" data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
+        </div> <!--end row one-->
+
+        <div class="row align-items-center">
+            <!--PCA-->
+            <div class="col-xl-6 mb-5" data-intro='This panel displays embeddings of all GPCRs mapped onto 2D space using PCA.' data-step="2">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">PCA
                             <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#pcaModal">?</span>
                         </h2>
-                        <div  class="p-1 fs--3">
+                        <div class="p-1 fs--3">
                             <div class="dropdown" id="labels">
-                                <button type="button" id="AssayButton" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown";>
+                                <button type="button" id="AssayButton" class="btn btn-primary btn-sm dropdown-toggle"
+                                        data-bs-toggle="dropdown" ;>
                                     Assay
                                 </button>
                                 <ul id="AssayList" class="dropdown-menu">
                                 </ul>
-                                <button type="button" id="PCAButton" class="btn btn-primary  btn-sm dropdown-toggle" data-bs-toggle="dropdown";>PCA </button>
+                                <button type="button" id="PCAButton" class="btn btn-primary  btn-sm dropdown-toggle"
+                                        data-bs-toggle="dropdown" ;>PCA
+                                </button>
                                 <ul id="PCAList" class="dropdown-menu"></ul>
                             </div>
                             <div id='myDiv2'><!-- Plotly chart will be drawn inside this DIV --></div>
                         </div>
-                    </div>
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div> <!--end row one-->
-
-        <div class="row align-items-center mb-5">
-            <div class="col-xl-6" data-intro='This panel displays differential conctacts of a G-protein groups and the same contacts mapped on the input GPCR sequence.' data-step="3">
+                    </div><!-- end card body-->
+                </div> <!-- end card -->
+            </div> <!-- end pca -->
+            <!--Contacts-->
+            <div class="col-xl-6 mb-5"
+                 data-intro='This panel displays the predicted differential conctacts for a given transducer group.'
+                 data-step="3">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="header-title" id="panelHeading">Contacts
-                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#contactModal">?</span>
+                        <h2 class="header-title">Contacts
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                  data-bs-target="#contactModal">?</span>
                         </h2>
-
-                        <!-- SEQUENCE PANEL (neXtprot viewer) -->
-
-                        <div class="col-auto">
-                            <div class="float-start">
-                                <!--
-                                <button type="button" class="btn btn-primary btn-sm fs--2" onclick="togglePanel()" id="toggleButton">Map the contacts on sequence</button>
-                                -->
-                                <button type="button" id="displayName" class="btn btn-primary btn-sm dropdown-toggle fs--1" data-bs-toggle="dropdown";>
-                                    Select display
-                                </button>
-                                <ul id="displayList" class="dropdown-menu"></ul>
+                        <div class="row g-3 align-items-center" id="slider1Div">
+                            <div class="col-auto">
+                                <label for="slider1A" class="col-form-label" style="font-weight: bold !important">Log
+                                    odds score</label>
+                                <button type="button" class="btn btn-info btn-circle" id="minus1A">-</button>
+                                <input type="range" style="width: 8rem;vertical-align: middle;" class="form-range"
+                                       min="0.0" max="1.0" step="0.1" value="0.2" id="slider1A">
+                                <button type="button" class="btn btn-info btn-circle" id="plus1A">+</button>
+                                <span id="slider1A_value">0.0</span>
                             </div>
-                            <div class="float-end">
-                                <div id="slider1Div">
-                                    <!-- slider1A starts -->
-                                    <div class="row g-3 align-items-center" style="margin-top: -1.75rem;">
-                                        <div class="col-auto" style="padding-top: 0.65rem;">
-                                            <label for="slider1A" class="col-form-label fs--1" style="font-weight: bold !important">Log odds score</label>
-                                        </div>
-                                        <div class="col-auto fs--3">
-                                            <button type="button" class="btn btn-info btn-circle" id="minus1A">-</button>
-                                            <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" id="slider1A">
-                                            <button type="button" class="btn btn-info btn-circle" id="plus1A">+</button>
-                                        </div>
-
-                                        <div class="col-auto fs--1" style="padding-top: 0.65rem;">
-                                            <span id="slider1A_value">0.0</span>
-                                        </div>
-                                        <div class="col-auto" style="padding-top: 0.65rem;">
-                                            <label for="slider1B" class="col-form-label fs--1" style="margin-left: -0.45rem;font-weight: bold !important">Distance</label>
-                                        </div>
-                                        <div class="col-auto fs--3">
-                                            <button type="button" class="btn btn-info btn-circle" id="minus1B">-</button>
-                                            <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0" max="20" step="1" value="0" id="slider1B">
-                                            <button type="button" class="btn btn-info btn-circle" id="plus1B">+</button>
-                                        </div>
-
-                                        <div class="col-auto fs--1" style="padding-top: 0.65rem;">
-                                            <span id="slider1B_value">0</span>
-                                        </div>
-                                    </div>
-                                    <!-- slider1A ends -->
-
-                                    <!-- slider1B starts -->
-
-                                    <!-- slider1B ends -->
-                                </div>
+                            <div class="col-auto">
+                                <label for="slider1B" class="col-form-label">Distance</label>
+                                <button type="button" class="btn btn-info btn-circle" id="minus1B">-</button>
+                                <input type="range" style="width: 8rem;vertical-align: middle;" class="form-range"
+                                       min="0" max="20" step="1" value="0" id="slider1B">
+                                <button type="button" class="btn btn-info btn-circle" id="plus1B">+</button>
+                                <span id="slider1B_value">0</span>
                             </div>
                         </div>
-                        <!-- Update panels if slider is changed -->
-                        <script>
-                          $(document).ready(function(){
-                            var slider1A_value = document.getElementById('slider1A_value');
-                            slider1A_value.innerHTML = $('#slider1A').val();
-
-                            var slider1B_value = document.getElementById('slider1B_value');
-                            slider1B_value.innerHTML = $('#slider1B').val();
-                          });
-
-                          $(document).on('input', '#slider1A', function() {
-                              $('#slider1A_value').html($(this).val() );
-                              var slider1A_value = document.getElementById('slider1A_value').innerHTML;
-                              var slider1B_value = document.getElementById('slider1B_value').innerHTML;
-                              var displayName = document.getElementById('displayName').innerHTML
-                              /* Slider 2A */
-                              document.getElementById('slider2A_value').innerHTML = document.getElementById('slider1A_value').innerHTML;
-                              var slider2A = document.getElementById('slider2A');
-                              slider2A.value = slider1A_value;
-
-                              var selected_gpcr = $('#selected').data('gpcr');
-                              var selected_gprotein = $('#selected').data('gprotein')
-                              makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}});
-                              makeHeatmap(slider1A_value, slider1B_value, selected_gpcr, selected_gprotein, displayName);
-                              makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
-                              setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
-                              makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}}, displayName);
-                              makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
-                          });
-                        </script>
-                        <div id="sequence-viewer"  style="display: none;"></div>
                         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
-                        <div id='attentionMap'style="margin-top: 100px; display: block;margin-left: auto;margin-right: auto;"><!-- Plotly chart will be drawn inside this DIV --></div>
-
-                    </div> <!-- end card body-->
+                    </div><!-- end card body-->
                 </div> <!-- end card -->
-            </div>
-            <div class="col-xl-6" data-intro='This panel displays differential contacts mapped on the input&#39s 3D structure.' data-step="4">
+            </div> <!-- end contacts -->
+        </div> <!--end row two-->
+
+        <div class="row align-items-center">
+            <!--Sequence-->
+            <div class="col-xl-6 mb-2"
+                 data-intro='This panel displays the predicted differential conctacts for a given transducer group mapped on the input GPCR sequence. Using the dropdown menu, one can view the attention map.'
+                 data-step="4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="header-title" id="panelHeading">Sequence
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                  data-bs-target="#sequenceModal">?</span>
+                        </h2>
+                        <div class="row g-3 align-items-center pb-5">
+                            <div class="col-auto">
+                                <button type="button" id="displayName" class="btn btn-primary btn-sm dropdown-toggle"
+                                        data-bs-toggle="dropdown";>
+                                    Select display
+                                </button>
+                                 <ul id="displayList" class="dropdown-menu"></ul>
+                            </div>
+                            <div class="col-auto" id="slider_log">
+                                <label for="slider1A" class="col-form-label" style="font-weight: bold !important">Log
+                                    odds score</label>
+                                <button type="button" class="btn btn-info btn-circle" id="minus3A">-</button>
+                                <input type="range" style="width: 4rem;vertical-align: middle;" class="form-range"
+                                       min="0.0" max="1.0" step="0.1" value="0.2" id="slider3A">
+                                <button type="button" class="btn btn-info btn-circle" id="plus3A">+</button>
+                                <span id="slider3A_value">0.2</span>
+                            </div>
+                            <div class="col-auto" id="slider_dis">
+                                <label for="slider1B" class="col-form-label">Distance</label>
+                                <button type="button" class="btn btn-info btn-circle" id="minus3B">-</button>
+                                <input type="range" style="width: 4rem;vertical-align: middle;" class="form-range"
+                                       min="0" max="20" step="1" value="0" id="slider3B">
+                                <button type="button" class="btn btn-info btn-circle" id="plus3B">+</button>
+                                <span id="slider3B_value">0</span>
+                            </div>
+                        </div>
+                        <div id="sequence-viewer"></div>
+                        <div id='attentionMap' style="center"><!-- Plotly chart will be drawn inside this DIV --></div>
+                    </div><!-- end card body-->
+                </div> <!-- end card -->
+            </div> <!-- end Sequence -->
+
+            <!--Structure-->
+            <div class="col-xl-6 mb-2"
+                 data-intro='This panel displays the predicted differential contacts for a transducer group mapped on a 3D structure of the input.' data-step="5">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="header-title">Structure
-                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal" data-intro='Click on help buttons to know more about each panel.' data-step="5">?</span>
+                            <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#structureModal"
+                                  data-intro='Click on help buttons to know more about each panel.'
+                                  data-step="6">?</span>
                         </h2>
-                         <div class="col-auto">
-                            <div class="float-start">
-                               <button type="button" id="PDBbutton" class="btn btn-primary btn-sm dropdown-toggle fs--1" data-bs-toggle="dropdown";>
-                                PDB-ID
-                            </button>
-                            <ul id="pdblist" class="dropdown-menu"></ul>
-                            </div>
-                            <div class="float-end">
-                                <div class="col-auto fs--1">
-                                    <label>Protein Structure Database: </label>
-                                    <input class="form-check-input" type="checkbox" id="PDBsource" name="PDBsource" onchange="click3Dsource(this)" checked>
-                                    <label for="PDBsource">PDB</label>
-                                    <input class="form-check-input" type="checkbox" id="AFsource" name="AFsource" onchange="click3Dsource(this)">
-                                    <label for="AFsource">AlphaFold</label>
-                                </div>
-                                <div class="row g-3 align-items-center" style="margin-top: -2.75rem;">
-                                    <div class="col-auto" style="padding-top: 0.65rem;">
-                                        <label for="slider1A" class="col-form-label fs--1" style="font-weight: bold !important;margin-right: -0.75rem;">Log odds score</label>
-                                    </div>
-                                    <div class="col-auto fs--3">
-                                        <button type="button" class="btn btn-info btn-circle" id="minus2A">-</button>
-                                        <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0.0" max="1.0" step="0.1" value="0.2" id="slider2A">
-                                        <button type="button" class="btn btn-info btn-circle" id="plus2A">+</button>
-                                    </div>
+                          <div class="row g-3 align-items-center">
+                             <div class="col-auto">
+                             <button type="button" id="PDBbutton"
+                                        class="btn btn-primary btn-sm dropdown-toggle fs--1" data-bs-toggle="dropdown"
+                                        ;>
+                                    PDB-ID
+                                </button>
+                                <ul id="pdblist" class="dropdown-menu"></ul>
+                             </div>
+                             <div class="col-auto">
 
-                                    <div class="col-auto fs--1" style="padding-top: 0.65rem;">
-                                        <span id="slider2A_value">0.0</span>
-                                    </div>
-                                    <div class="col-auto" style="padding-top: 0.65rem;">
-                                        <label for="slider1B" class="col-form-label fs--1" style="margin-left: -0.45rem;font-weight: bold !important;margin-right: -0.75rem;">Distance</label>
-                                    </div>
-                                    <div class="col-auto fs--3">
-                                        <button type="button" class="btn btn-info btn-circle" id="minus2B">-</button>
-                                        <input type="range" style="width: 60%;padding-top: 1.25rem;" class="form-range" min="0" max="20" step="1" value="0" id="slider2B">
-                                        <button type="button" class="btn btn-info btn-circle" id="plus2B">+</button>
-                                    </div>
-
-                                    <div class="col-auto fs--1" style="padding-top: 0.65rem;">
-                                        <span id="slider2B_value">0</span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <script>
-                             // Function to reload structure panel if user selects different 3D strcture AFsource
-                             // and insert in the pdblist ID
-                             function click3Dsource(element){
-                               //alert(element.name);
-                               var selected_gpcr = $('#selected').data('gpcr');
-                               var selected_gprotein = $('#selected').data('gprotein');
-                               var slider2A_value = document.getElementById('slider2A_value').innerHTML;
-                               var slider2B_value = document.getElementById('slider2B_value').innerHTML;
-                               //var displayName = document.getElementById('displayName').innerHTML;
-                               makeStructure(selected_gpcr, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
-                             }
-                            </script>
-
-                            <script>
-                             $(document).ready(function(){
-                               var slider2A_value = document.getElementById('slider2A_value');
-                               slider2A_value.innerHTML = $('#slider2A').val();
-                             });
-                               $(document).on('input', '#slider2A', function() {
-                                   $('#slider2A_value').html($(this).val() );
-                                   var slider2A_value = document.getElementById('slider2A_value').innerHTML;
-                                   var slider2B_value = document.getElementById('slider2B_value').innerHTML;
-                                   document.getElementById('slider1A_value').innerHTML = document.getElementById('slider2A_value').innerHTML;
-                                   var slider1A = document.getElementById('slider1A');
-                                   slider1A.value = slider2A_value;
-                                   var selected_gpcr = $('#selected').data('gpcr');
-                                   var selected_gprotein = $('#selected').data('gprotein');
-                                   var displayName = document.getElementById('displayName').innerHTML;
-
-                                   makeStructure(selected_gpcr, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}});
-                                   makeHeatmap(slider2A_value, slider2B_value, selected_gpcr, selected_gprotein, displayName);
-                                   makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
-                                   setDisplayMenu({{path_to_fasta|safe}}, slider2A_value, slider2B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
-                                   makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider2A_value, slider2B_value, {{uniq_id|safe}}, displayName);
-                                   makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
-                               });
-                            </script>
+                            <label for="PDBsource">PDB</label>
+                            <input class="form-check-input" type="radio" id="PDBsource" name="3Dsource"
+                                   onchange="click3Dsource(this)" checked>
+                            <label for="AFsource">AlphaFold</label>
+                            <input class="form-check-input" type="radio" id="AFsource" name="3Dsource"
+                                   onchange="click3Dsource(this)">
+                             </div>
                         </div>
-                        <script>
-                        $("#minus1A").click(function(event) {
-                          zoomA("out", "#slider1A", "#slider2A");
-                        });
-
-                        $("#plus1A").click(function(event) {
-                          zoomA("in", "#slider1A", "#slider2A");
-                        });
-
-                        $("#minus1B").click(function(event) {
-                          zoomB("out", "#slider1B", "#slider2B");
-                        });
-
-                        $("#plus1B").click(function(event) {
-                          zoomB("in", "#slider1B", "#slider2B");
-                        });
-
-                        $("#minus2A").click(function(event) {
-                          zoomA("out", "#slider2A", "#slider1A");
-                        });
-
-                        $("#plus2A").click(function(event) {
-                          zoomA("in", "#slider2A", "#slider1A");
-                        });
-
-                        $("#minus2B").click(function(event) {
-                          zoomB("out", "#slider2B", "#slider1B");
-                        });
-
-                        $("#plus2B").click(function(event) {
-                          zoomB("in", "#slider2B", "#slider1B");
-                        });
-
-                        function zoomA(direction, slider, otherSlider) {
-                          var slider = $(slider);
-                          var step = 0.1;
-                          var currentSliderValue = Number(slider.val());
-                          //var newStepValue = currentSliderValue;
-                          //alert(currentSliderValue);
-
-                          if (direction === "out") {
-                            var newStepValue = currentSliderValue - step;
-                          } else {
-                            var newStepValue = currentSliderValue + step;
-                          }
-                          newStepValue = Number(newStepValue.toFixed(1));
-                          //alert(newStepValue);
-
-                          slider.val(newStepValue).change();
-                          //alert(slider.attr("id"));
-                          var sliderValue = $("#"+slider.attr("id")+'_value');
-                          sliderValue.html(newStepValue);
-
-                          var otherSlider = $(otherSlider);
-                          otherSlider.val(newStepValue).change();
-                          var otherSliderValue = $("#"+otherSlider.attr("id")+'_value');
-                          otherSliderValue.html(newStepValue);
-
-                          var slider_value = slider.val();
-                          var selected_gpcr = $('#selected').data('gpcr');
-                          var selected_gprotein = $('#selected').data('gprotein')
-                          var slider1B_value = document.getElementById('slider1B_value').innerHTML;
-                          var displayName = document.getElementById('displayName').innerHTML;
-
-                          makeStructure(selected_gpcr, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}});
-                          makeHeatmap(slider_value, slider1B_value, selected_gpcr, selected_gprotein, displayName);
-                          makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
-                          setDisplayMenu({{path_to_fasta|safe}}, slider_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
-                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
-                        };
-
-                        function zoomB(direction, slider, otherSlider) {
-                          var slider = $(slider);
-                          var step = 1;
-                          var currentSliderValue = Number(slider.val());
-                          //var newStepValue = currentSliderValue;
-                          //alert(currentSliderValue);
-
-                          if (direction === "out") {
-                            var newStepValue = currentSliderValue - step;
-                          } else {
-                            var newStepValue = currentSliderValue + step;
-                          }
-                          newStepValue = Number(newStepValue.toFixed(1));
-                          //alert(newStepValue);
-
-                          slider.val(newStepValue).change();
-                          //alert(slider.attr("id"));
-                          var sliderValue = $("#"+slider.attr("id")+'_value');
-                          sliderValue.html(newStepValue);
-
-                          var otherSlider = $(otherSlider);
-                          otherSlider.val(newStepValue).change();
-                          var otherSliderValue = $("#"+otherSlider.attr("id")+'_value');
-                          otherSliderValue.html(newStepValue);
-
-                          var slider_value = slider.val();
-                          var selected_gpcr = $('#selected').data('gpcr');
-                          var selected_gprotein = $('#selected').data('gprotein')
-                          var slider1A_value = document.getElementById('slider1A_value').innerHTML;
-                          var displayName = document.getElementById('displayName').innerHTML;
-
-                          makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}});
-                          makeHeatmap(slider1A_value, slider_value, selected_gpcr, selected_gprotein, displayName);
-                          makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
-                          setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
-                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'Shedding', '33', selected_gpcr, selected_gprotein);
-
-                        };
-
-                        </script>
-
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="slider1A" class="col-form-label" style="font-weight: bold !important">Log
+                                    odds score</label>
+                                <button type="button" class="btn btn-info btn-circle" id="minus2A">-</button>
+                                <input type="range" style="width: 8rem;vertical-align: middle;" class="form-range"
+                                       min="0.0" max="1.0" step="0.1" value="0.2" id="slider2A">
+                                <button type="button" class="btn btn-info btn-circle" id="plus2A">+</button>
+                                <span id="slider2A_value">0.0</span>
+                            </div>
+                            <div class="col-auto">
+                                <label for="slider1B" class="col-form-label">Distance</label>
+                                <button type="button" class="btn btn-info btn-circle" id="minus2B">-</button>
+                                <input type="range" style="width: 8rem;vertical-align: middle;" class="form-range"
+                                       min="0" max="20" step="1" value="0" id="slider2B">
+                                <button type="button" class="btn btn-info btn-circle" id="plus2B">+</button>
+                                <span id="slider2B_value">0</span>
+                            </div>
+                        </div>
                         <div id="viewport" class="align-items-center fs--2 w-100"></div>
-                        <script>
-                            /*
-                            NGL.setMeasurementDefaultParams = {
-                                 labelSize: 0.2
-                               };
-                              */
-                            var stage = new NGL.Stage( "viewport" );
-                            stage.setParameters( { backgroundColor: "white"} );
-                          </script>
-
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div>
-        </div> <!--end row two-->
-
-        <!-- Load first GPCR and GNA12 -->
-        <script>
-          makeDatatable({{path_to_json_output|safe}}, {{path_to_fasta|safe}}, {{uniq_id|safe}}, {{gpcr_list|safe}}, {{first_gprotein|safe}}, {{first_gprotein_index|safe}})
-          makeStructure({{first_entry|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}});
-          makeSequence({{first_entry|safe}}, {{path_to_fasta|safe}}, {{first_gprotein|safe}}, 0.0, 0.0, {{uniq_id|safe}}, 'Contact Map');
-          makeHeatmap(0.0, 0.0, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Contact Map');
-          makeAttentionmap({{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Contact Map')
-          setDisplayMenu({{path_to_fasta|safe}}, 0.0, 0.0, {{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Contact Map');
-          makePCA({{uniq_id|safe}}, 'Shedding', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
-        </script>
-
-
+                    </div>
+                </div><!-- end card body-->
+            </div> <!-- end card -->
+        </div> <!-- end Structure -->
+    </div><!--end row three-->
     </div>
-
-    <div id ="modalCoupling">
-    </div>
+    <div id="modalCoupling"></div>
 </section>
 {% endblock%}
