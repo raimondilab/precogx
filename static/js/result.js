@@ -10,15 +10,15 @@ $(function(){
 
 
 <!-- Load the first input and GNA12 pair-->
-var path_to_json_output = document.getElementById('path_to_json_output').value;
-var path_to_fasta = document.getElementById('path_to_fasta').value;
-var uniq_id = document.getElementById('uniq_id').value;
-var gpcr_list = document.getElementById('gpcr_list').value;
-var first_gprotein = document.getElementById('first_gprotein').value;
-var first_gprotein_index = document.getElementById('first_gprotein_index').value;
-var first_entry = document.getElementById('first_entry').value;
+var path_to_json_output = document.getElementById('path_to_json_output').value.replace('"', "").replace('"', '');
+var path_to_fasta = document.getElementById('path_to_fasta').value.replace('"', "").replace('"', '');
+var uniq_id = document.getElementById('uniq_id').value.replace('"', "").replace('"', '');
+var gpcr_list = document.getElementById('gpcr_list').value.replace('"', "").replace('"', '');
+var first_gprotein = document.getElementById('first_gprotein').value.replace('"', "").replace('"', '');
+var first_gprotein_index = document.getElementById('first_gprotein_index').value.replace('"', "").replace('"', '');
+var first_entry = document.getElementById('first_entry').value.replace('"', "").replace('"', '');
 
-console.log(path_to_fasta);
+console.log(uniq_id);
 
 makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, first_gprotein, first_gprotein_index);
 makeStructure(first_entry, first_gprotein, 0.0, 0.0, uniq_id);
@@ -45,8 +45,8 @@ $(document).on('input', '#slider2A', function() {
       var selected_gpcr = $('#selected').data('gpcr');
       var selected_gprotein = $('#selected').data('gprotein');
       var displayName = document.getElementById('displayName').innerHTML;
-      var uniq_id = document.getElementById('uniq_id').value;
-      var path_to_fasta = document.getElementById('path_to_fasta').value;
+      var uniq_id = document.getElementById('uniq_id').value.replace('"', "").replace('"', '');
+      var path_to_fasta = document.getElementById('path_to_fasta').value.replace('"', "").replace('"', '');
 
       makeStructure(selected_gpcr, selected_gprotein, slider2A_value, slider2B_value,uniq_id);
       makeHeatmap(slider2A_value, slider2B_value, selected_gpcr, selected_gprotein, displayName);
