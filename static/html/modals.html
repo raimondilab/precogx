@@ -17,18 +17,18 @@
                        <kbd>VARIANT = GtoPdb</kbd>: primary coupling is represented by <strong>PC</strong> while the secondary ones as <strong>SC</strong> and
                         the unknown ones as <strong>-</strong>.<br>
                        <kbd>VARIANT = LogRAi-TGF</kbd>: values > <strong>-1.0</strong> imply coupled while others are not-coupled (< <strong>-1.0</strong>) or unknown <strong>-</strong>.<br>
-                       <kbd>VARINAT = Emax-GEMTA</kbd>: values > <strong>0</strong> imply coupled while others are not-coupled (= <strong>0</strong>) or unknown <strong>-</strong>.<br>
+                       <kbd>VARIANT = Emax-GEMTA</kbd>: values > <strong>0</strong> imply coupled while others are not-coupled (= <strong>0</strong>) or unknown <strong>-</strong>.<br>
                        <kbd>VARIANT = WT (wild type)/Variant</kbd>: values with PRECOGx-predicted probability > 0.5 are coupled while others are not-coupled.
                     </p>
                     <p class="text-justify fs-0">
+                      <strong><u>Note</u>: This table acts as the master control. Clicking the cells in the table will automatically update the rest of the panels.</strong>
+                    </p>
+                    <p class="text-justify fs-0">
                        By clicking on any of the cells:<br>
-                       a) The enriched/depleted contact positions of the corresponding input (under the column GPCR) are highlighted in the Conacts panels and mapped onto a 3D structure in the Structure panel.<br>
+                       a) The enriched/depleted contact positions of the corresponding input (under the column GPCR) are highlighted in the Contacts panels and mapped onto a 3D structure in the Structure panel.<br>
                        b) The corresponding input (under the column GPCR) is shown in the PCA panel.<br>
                        c) The best attention head of the corresponding transducer group (G-protein/&#946;-arrestin) is mapped onto the corresponding input (under the column GPCR) in the Attention Map panel.<br>
                     </p>
-                    <p class="text-justify fs-0">
-                      <strong><u>Note</u>: This table acts as the master control. Clicking the cells in the table will automatically update the rest of the panels.</strong>
-                      </p>
                     <p class="text-justify fs-0">
                       For more information, please refer to the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank">help section</a> of this panel.
                     </p>
@@ -52,7 +52,7 @@
                     <div class="modal-body" style="font-size: inherit;">
                     <p class="text-justify fs-0">
                       This panel displays the projections of the human GPCRome sequences obtained by performing the
-                      Principal Component Analysis (PCA) on the embeddings of the human GPCRome (shown as dots) for different Transformer layers (can be selected from the dropdown menu).
+                      Principal Component Analysis (PCA) on the embeddings of the human GPCRome (shown as dots) for different ESM1b layers (can be selected from the dropdown menu).
                       The first two components, PC1 and PC2, of the PCA are shown on the X- and Y-axis, respectively. The human GPCRome has a total of 377 receptors
                       (279 Class A, 15 Class B1, 17 Class B2, 17 Class C, 11 Class F, 25 Taste receptors and 14 Others). Place the cursor over a dot to view the GPCR information.
                     </p>
@@ -88,7 +88,7 @@
                         <p class="text-justify fs-0">
                         <!--This panel displays the positions mediating the predicted contacts for the selected G-protein/B-arr group (from the table <strong>Coupling probabilties</strong>).<br>-->
                         This panel displays the most important attention head of the best performing embedding layer (not shown) during training of the given transducer group (G-protein/&#946;-arrestin).
-                        The labels on the X- and Y-axis represent the the input sequence positions. Darker the color, higher is the importance of the pair of positions in the input.
+                        The labels on the X- and Y-axis represent the input sequence positions. Darker the color, higher is the importance of the pair of positions in the input.
                         The user can compare the attention network of one or more variants (by specifying in the input) with the wild type.
                         </p>
                         <p class="text-justify fs-0">
@@ -115,7 +115,7 @@
                         <h4 class="modal-title header-title">Contacts panel</h4>
                       </div>
                       <div class="modal-body" style="font-size: inherit;">
-                        <p class="text-justify fs-0">This panel maps the predicted differential conctacts for a given transducer group (G-protein/&#946;-arrestin) onto the input GPCR.
+                        <p class="text-justify fs-0">This panel maps the predicted differential conctacts for a given transducer group (G-protein/&#946;-arrestin) on the input GPCR.
                         Using the dropdown menu, one can select to view the contacts in the following formats:<br>
                         1. <kbd>Sequence (1D)</kbd>: The positions mediating the contacts (shown in <span style="background-color: gold; border: 1px solid black">yellow</span>) are mapped to the input sequence.
                         Place the cursor over a position to view its naming in the <a href="http://docs.gpcrdb.org/generic_numbering.html" target="_blank">GPCRdb generic residue numbering scheme</a>.<br>

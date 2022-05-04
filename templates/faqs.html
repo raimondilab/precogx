@@ -76,7 +76,7 @@
                                 <p class="text-justify fs-0 offset-12">
                                     No, there is no in-built feature PRECOGx to perform any in-silico design. However,
                                     PRECOGx can predict the coupling probabilities of any GPCR sequence. So the user can
-                                    perform an in-silco design by themselves and then feed the mutated sequence to
+                                    perform an in-silico design by themselves and then feed the mutated sequence to
                                     PRECOGx as input.
                                 </p>
                             </div>
@@ -95,7 +95,7 @@
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
-                                    Yes, check out our GitHub page <a
+                                    Yes, please check out our GitHub page <a
                                         href="https://github.com/raimondilab/precogx">here</a>.</p>
                             </div>
                         </div>
@@ -106,17 +106,16 @@
                                 <button class="btn btn-link collapsed" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
-                                    Can PRECOGx predict more than multiple mutations (insertions/deletions) in a single
-                                    sequence other than the wild type?
+                                    Does PRECOGx accept insertions or deletions in the mutation format style (i.e. identifier/AA substitution)?
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
-                                    No, PRECOGx can make predictions only for point mutations other than the wild type.
-                                    However, the user can generate sequences (FASTA-formatted) with more than one
-                                    insertion (or deletions), and feed PRECOGx as input.</p>
+                                    No, PRECOGx only accepts  point mutations in the mutation format style.
+                                    However, the user can generate sequences (FASTA-formatted) with more than one insertion (or deletions),
+                                    and feed them to PRECOGx as input.</p>
                             </div>
                         </div>
                     </div>
@@ -152,7 +151,7 @@
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
                                     Yes, PRECOGx can make predictions for all the classes of GPCRs. However, the user
-                                    must remember that majority of receptors used to develop PRECOGx came from Class
+                                    must remember that the majority of receptors used to develop PRECOGx belong to Class
                                     A.</p>
                             </div>
                         </div>
@@ -211,10 +210,12 @@
                         <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
-                                    Currently, PRECOGx displays only the 3D structure complexes with a GPCR/G-protein
-                                    (Beta-arr) pair that is known to be coupled through TGF/GEMTA experimental assays.
-                                    In the future, we plan to introduce AlphaFold-predicted complexes for any input
-                                    sequence.
+                                    Currently, PRECOGx displays only the 3D structure complexes with a GPCR/G-protein pair
+                                    that is known to be coupled in TGF/GEMTA experimental assays.
+                                    We didn’t predict GPCR/β-arrestins complexes as one of the key factors determining
+                                    β-arrestin recruitment, i.e. PTM (post translation modification),
+                                    cannot yet be included in AlphaFold2 predictions. In the future,
+                                    we plan to introduce AlphaFold-predicted complexes for any input sequence.
                                 </p>
                             </div>
                         </div>
@@ -295,12 +296,11 @@
                              data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify fs-0 offset-12">
-                                    We find the best 3D structure for input by computing the sequence identity (using
-                                    PSI-BLAST) of the input against all 3D structure complexes available from PDB and
-                                    (selected) predicted by AlphaFold. The 3D structures are ranked in the decreasing
-                                    order of sequence identity, and the one with the highest value is displayed by
-                                    default. As a result, you may still see a 3D structure of input even if its 3D
-                                    structure is unavailable in PDB.
+                                    We find the best 3D structure for input by computing the sequence identity (using PSI-BLAST)
+                                    of the input against all the 3D structure complexes available from PDB and predicted by AlphaFold.
+                                    The 3D structures are ranked in  decreasing order of sequence identity,
+                                    and the one with the highest value is displayed by default. As a result,
+                                    you may still see a 3D structure for your input even from a homologous template.
                                 </p>
                             </div>
                         </div>
