@@ -1085,9 +1085,9 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
         elif line[0] == '>':
             #print (line)
             if 'AF:' in line:
-                pdbid = line.split('>')[1].split('|')[0]
+                pdbid = line.split('>')[1].split('|')[0].split()[0]
             else:
-                pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower()
+                pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower().split()[0]
                 #print (pdbid)
             if pdbid in chain_info:
                 row = []
