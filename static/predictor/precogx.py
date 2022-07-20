@@ -33,6 +33,7 @@ from sklearn.metrics import matthews_corrcoef
 from sklearn.preprocessing import MinMaxScaler
 from xgboost import XGBClassifier, plot_importance
 from xgboost import plot_tree, to_graphviz
+import callUniProtAPI
 import numpy as np
 from joblib import dump, load
 import time, random, string
@@ -667,16 +668,17 @@ def fetchSeq(homeDir, name):
         name = gtopdbACC
     #print(name)
     #sys.exit()
-    response = requests.get('https://www.uniprot.org/uniprot/'+str(name))
-    #print (response.status_code)
+    response = requests.get('https://www.uniprot.org/uniprotkb/'+str(name)+'.fasta')
+    #print (response.status_code, '--------------')
     if response.status_code == 200:
-        response = urllib.request.urlopen('https://www.uniprot.org/uniprot/'+str(name)+'.fasta')
+        response = urllib.request.urlopen('https://www.uniprot.org/uniprotkb/'+str(name)+'.fasta')
         seq = ''
         for line in str(response.read().decode('utf-8')).split('\n'):
             if len(line.split())>0:
                 if line[0] != '>':
                     seq += line.replace('\n', '')
     else:
+        '''
         url = 'https://www.uniprot.org/uploadlists/'
         #print (name)
         params = {
@@ -700,6 +702,10 @@ def fetchSeq(homeDir, name):
                     acc = str(line.split('\t')[1].replace('\n', ''))
                     break
         #print (acc)
+        '''
+        GN2ACC = callUniProtAPI.runAPI([name])
+        acc = GN2ACC[name]
+        #print (name, acc)
         if acc != None:
             response = requests.get('https://www.uniprot.org/uniprot/'+acc+'.fasta')
             if response.status_code == 200:
