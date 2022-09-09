@@ -59,7 +59,7 @@ function createElement2 (id, name, properties, style, labelName) {
 
 // Function to take GPCR/G-protein chains and pdbid and render it to the
 // Structure panel
-function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, num_contacts, pair_positions) {
+function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, num_contacts, pair_positions, AMpositions, AMpair_positions) {
   document.getElementById("PDBbutton").innerHTML = pdbid;
   var cutoff = 0.0;
   $.ajax({
@@ -67,7 +67,14 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
     type: "post", //request type,
     dataType: 'json',
     //data: JSON.stringify({pdbid: pdbid, chainGPCR: chainGPCR, chainGPROT: chainGPROT, gpcr: gpcr}),
-    data: JSON.stringify({pdbID: pdbid, positions: positions, pair_positions: pair_positions, num_contacts: num_contacts, gpcr: gpcr, uniq_id: uniq_id}),
+    data: JSON.stringify({pdbID: pdbid,
+                          positions: positions,
+                          pair_positions: pair_positions,
+                          num_contacts: num_contacts,
+                          AMpositions: AMpositions,
+                          AMpair_positions: AMpair_positions,
+                          gpcr: gpcr,
+                          uniq_id: uniq_id}),
     success: function(response){
 				//console.log(response);
         mutation_position = response['mutation_position'];
@@ -80,6 +87,11 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
         pdbData = response['pdbData'];
         //alert(modified_num_contacts);
         modified_pair_positions = response['modified_pair_positions'];
+
+        //Attetion map positions
+        AMmodified_positions = response['AMmodified_positions'];
+        AMmodified_pair_positions = response['AMmodified_pair_positions'];
+        AMmodified_positions_labels = response['AMmodified_positions_labels'];
 
         modified_positions_array = modified_positions.split('_');
         modified_positions_labels_array = modified_positions_labels.split('_');
@@ -134,6 +146,33 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
             }
           }
         }
+
+        AMmodified_positions_array = AMmodified_positions.split('_');
+        AMmodified_positions_labels_array = AMmodified_positions_labels.split('_');
+        
+        if (AMmodified_pair_positions == '') {
+          AMmodified_pair_positions_array = []
+        }
+        else {
+          AMmodified_pair_positions_array = AMmodified_pair_positions.split('_');
+        }
+        selectionDistanceAttention = [];
+        if (AMmodified_pair_positions_array.length) {
+          for (var i = 0; i < AMmodified_pair_positions_array.length; i++) {
+            var row = [];
+            var pos1 = AMmodified_pair_positions_array[i].split(':')[0];
+            var pos2 = AMmodified_pair_positions_array[i].split(':')[1];
+            var score = Number(AMmodified_pair_positions_array[i].split(':')[2]);
+            if (score >= 0.0) {
+              //alert(score+'up');
+              row.push(pos1+'.CA and :'+chainGPCR);
+              row.push(pos2+'.CA and :'+chainGPCR);
+              //alert(row);
+              selectionDistanceAttention.push(row);
+            }
+          }
+        }
+
         stage.removeAllComponents();
         stage.setParameters({backgroundColor: "white"});
         //alert(modified_positions_array);
@@ -240,15 +279,53 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   addElement(labelButton);
                   document.getElementById('labeling').onclick = function() {
                     //alert(document.getElementById("el1").checked)
-                    LABELS.toggleVisibility();
+                    if (document.getElementById("attention").checked == false) {
+                      CONTACT_LABELS.toggleVisibility();
+                    }
+                    else {
+                      AM_LABELS.toggleVisibility();
+                    }
                     //ENRICHMENT.toggleVisibility()
+                  }
+
+                  var attentionButton = createElement2("attention", "input", {
+                    type: "checkbox",
+                    checked: false,
+                    //value: "Enrichment/Depletion"
+                  }, { top: "170px", left: "10px" }, "Attention map")
+                  addElement(attentionButton);
+                  document.getElementById('attention').onclick = function() {
+                    //alert(document.getElementById("el1").checked)
+                    ATTENTION.toggleVisibility();
+                    if (document.getElementById("deplete").checked == true) {
+                      document.getElementById("enrich").checked = false;
+                      document.getElementById("deplete").checked = false;
+                      //document.getElementById("labeling").checked = false;
+                    }
+                    else if (document.getElementById("deplete").checked == false) {
+                      document.getElementById("enrich").checked = true;
+                      document.getElementById("deplete").checked = true;
+                      //document.getElementById("labeling").checked = true;
+                    }                    
+                    AM_LABELS.toggleVisibility();
+                    // Disable other contacts
+                    ENRICHMENT.toggleVisibility();
+                    DEPLETION.toggleVisibility();
+                    CONTACT_LABELS.toggleVisibility();
+                    //MUTATION_POSITION.toggleVisibility();
+                    for (var i = 0; i < CONTACT_POSITIONS.length; i++) {
+                      CONTACT_POSITIONS[i].toggleVisibility();
+                    };
+                    for (var i = 0; i < AM_POSITIONS.length; i++) {
+                      AM_POSITIONS[i].toggleVisibility();
+                    };
                   }
 
                   var screenButton = createElement2("fullscreen", "input", {
                     type: "checkbox",
                     checked: false
                     //value: "Enrichment/Depletion"
-                  }, { top: "170px", left: "10px" }, "Fullscreen")
+                  }, { top: "200px", left: "10px" }, "Fullscreen")
                   addElement(screenButton);
                   document.getElementById('fullscreen').onclick = function() {
                     //alert(document.getElementById("el1").checked)
@@ -294,7 +371,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       labelText[atomIndex] = mutation_position_label;
                   }
 
-                  var LABELS = o.addRepresentation("label", {
+                  var CONTACT_LABELS = o.addRepresentation("label", {
                     labelType: "text",
                     labelText: labelText,
                     fontWeight: 'normal',
@@ -306,11 +383,53 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     //backgroundColor: bg_color,
                     //borderColor: 'blue',
                   })
+                  //CONTACT_LABELS.toggleVisibility();
+
+                  //////////////////////////////////////////////////
+                  //alert(AMmodified_positions_labels_array);
+                  var sele2 = new NGL.Selection("")
+                  var view2 = o.structure.getView(sele2)
+                  var labelText2 = { }
+                  for (var i = 0; i < AMmodified_positions_array.length; i++) {
+                      var seleString2 = AMmodified_positions_array[i];
+                      sele2.setString(seleString2+':'+chainGPCR+'.CA')
+                      var atomIndex2 = view2.getAtomIndices()[0];
+                      //alert(atomIndex, AMmodified_positions_labels_array[i]);
+                      if (atomIndex2 !== undefined) {
+                          labelText2[atomIndex2] = AMmodified_positions_labels_array[i];
+                      }
+                  }
+                  /*
+                  var seleString2 = AMmutation_position;
+                  sele.setString(seleString2+':'+chainGPCR+'.CA')
+                  var atomIndex2 = view.getAtomIndices()[0];
+                  //alert(atomIndex);
+                  if (atomIndex2 !== undefined) {
+                      //labelText2[atomIndex2] = AMmodified_positions_labels_array[i];
+                      labelText2[atomIndex2] = AMmutation_position_label;
+                  }
+                  */
+
+                  var AM_LABELS = o.addRepresentation("label", {
+                    labelType: "text",
+                    labelText: labelText2,
+                    fontWeight: 'normal',
+                    //sdf: true,
+                    color: "black",
+                    xOffset: 1.5,
+                    fixedSize: true,
+                    //showBackground: true,
+                    //backgroundColor: bg_color,
+                    //borderColor: 'blue',
+                  })
+                  AM_LABELS.toggleVisibility();
+                  //////////////////////////////////////////////////////
 
 
                   if (modified_positions_array.length>1) {
+                    var CONTACT_POSITIONS = [];
                     for (var i = 0; i < modified_positions_array.length; i++) {
-                      o.addRepresentation("ball+stick", {
+                      CONTACT_POSITIONS[i] = o.addRepresentation("ball+stick", {
                           //sele: selection,
                           sele: modified_positions_array[i] + " and .CA and :" + chainGPCR,
                           name: 'extra',
@@ -322,8 +441,24 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     }
                   }
 
+                  if (AMmodified_positions_array.length>1) {
+                    var AM_POSITIONS = [];
+                    for (var i = 0; i < AMmodified_positions_array.length; i++) {
+                      AM_POSITIONS[i] = o.addRepresentation("ball+stick", {
+                          //sele: selection,
+                          sele: AMmodified_positions_array[i] + " and .CA and :" + chainGPCR,
+                          name: 'AMpositions',
+                          //radius: '0.5',
+                          radius: 0.5,
+                          color: "khaki"
+                          //color: schemeId,
+                      });
+                      AM_POSITIONS[i].toggleVisibility();
+                    }
+                  }
+
                   if (mutation_position != '-') {
-                    o.addRepresentation("ball+stick", {
+                    var MUTATION_POSITION = o.addRepresentation("ball+stick", {
                         sele: mutation_position+ " and .CA and :" + chainGPCR,
                         name: 'extra',
                         radius: '0.5',
@@ -354,6 +489,19 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                   //o.autoView(mutation_position+ " and .CA and :" + chainGPCR);
                   //o.removeAllRepresentations();
                   //o.center({sele:'1-50',});
+
+                  if (AMmodified_pair_positions_array != []) {
+                    var ATTENTION = o.addRepresentation( "distance", {
+                        //atomPair: [ [ "280.CA and :R", "325.CA and :R" ] ],
+                        atomPair: selectionDistanceAttention,
+                        color: "blue",
+                        labelSize: 0
+                      }
+                    );
+                    //By default hide AM
+                    ATTENTION.toggleVisibility();
+                  }
+                  //o.autoView(':'+chainGPCR);
                 });
 
         //alert(response['modified_positions']);
@@ -368,7 +516,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
 
 // Function to take GPCR and orde PDB list as input,
 // and insert in the pdblist ID
-function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, num_contacts) {
+function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, num_contacts, AMpositions, AMpair_positions) {
   //alert(ordered_pdbs);
   /*
   if (document.getElementById('PDBsource').checked == false && document.getElementById('AFsource').checked == false)
@@ -412,11 +560,11 @@ function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, nu
     var chainGPCR = x[1];
     var chainGPROT = x[2];
     //var positions = '1.5';
-    new_options += "<li><a class=\"dropdown-item\" onClick=\"showStructure(\'"+uniq_id+"\',\'"+gpcr+"\',\'"+chainGPCR+"\',\'"+chainGPROT+"\',\'"+pdbid+"\',\'"+positions+"\',\'"+num_contacts+"\',\'"+pair_positions+"\')\">"+pdbid+"</a></li>";
+    new_options += "<li><a class=\"dropdown-item\" onClick=\"showStructure(\'"+uniq_id+"\',\'"+gpcr+"\',\'"+chainGPCR+"\',\'"+chainGPROT+"\',\'"+pdbid+"\',\'"+positions+"\',\'"+num_contacts+"\',\'"+pair_positions+"\',\'"+AMpositions+"\',\'"+AMpair_positions+"\')\">"+pdbid+"</a></li>";
     // return only the first values as default to display
     if (i == 0) {
       var first_values = [chainGPCR, chainGPROT, pdbid];
-      showStructure(uniq_id, gpcr, first_values[0], first_values[1], first_values[2], positions, num_contacts, pair_positions);
+      showStructure(uniq_id, gpcr, first_values[0], first_values[1], first_values[2], positions, num_contacts, pair_positions, AMpositions, AMpair_positions);
     }
     //alert('hello');
   }
@@ -437,7 +585,7 @@ function makeStructure(gpcr, gprotein, cutoff, distance, uniq_id) {
 				console.log(response);
         //alert (response['ordered_pdbs']);
         //alert(response['try'][0]+'--'+response['try']);
-        resetPDBlist(uniq_id, gpcr, response['ordered_pdbs'], response['positions'], response['pair_positions'], response['num_contacts']);
+        resetPDBlist(uniq_id, gpcr, response['ordered_pdbs'], response['positions'], response['pair_positions'], response['num_contacts'], response['AMpositions'], response['AMpair_positions']);
 
         //set search filter
         $("#PDBsearch").on("keyup", function() {

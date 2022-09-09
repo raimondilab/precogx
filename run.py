@@ -906,6 +906,8 @@ def convertPositionsBW2PDB():
         positions = data['positions']
         pair_positions = data['pair_positions']
         num_contacts = data['num_contacts']
+        AMpositions = data['AMpositions']
+        AMpair_positions = data['AMpair_positions']
         gpcr_given = data['gpcr']
         uniq_id = data['uniq_id']
         #print (pdbID)
@@ -959,35 +961,37 @@ def convertPositionsBW2PDB():
 
         mutation_position = '-'
         mutation_position_label = '-'
+        
+        ## Map sequence to GPCRDB
+        handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
+        blast_records = NCBIXML.parse(handle)
+        SEQ2GPCRDB = {}
+        for blast_record in blast_records:
+            #print (blast_record.query)
+            if gpcr_given == blast_record.query:
+                for alignment in blast_record.alignments:
+                    bestHIT = alignment.title.split(' ')[1]
+                    #print (bestHIT)
+                    if bestHIT_ACC == bestHIT.split('|')[1]:
+                        for hsp in alignment.hsps:
+                            q_num = 0
+                            s_num = 0
+                            for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
+                                if q!='-' and s!='-':
+                                    SEQ2GPCRDB[q_num + hsp.query_start] = s_num + hsp.sbjct_start
+                                    q_num += 1
+                                    s_num += 1
+                                elif q!='-':
+                                    q_num += 1
+                                else:
+                                    s_num += 1
+
+                            break
+                        break
+                break
+        
         if '_WT' not in gpcr_given:
             mutation_sequence_position = int(gpcr_given.split('_')[-1][1:-1])
-            handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
-            blast_records = NCBIXML.parse(handle)
-            SEQ2GPCRDB = {}
-            for blast_record in blast_records:
-                #print (blast_record.query)
-                if gpcr_given == blast_record.query:
-                    for alignment in blast_record.alignments:
-                        bestHIT = alignment.title.split(' ')[1]
-                        #print (bestHIT)
-                        if bestHIT_ACC == bestHIT.split('|')[1]:
-                            for hsp in alignment.hsps:
-                                q_num = 0
-                                s_num = 0
-                                for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
-                                    if q!='-' and s!='-':
-                                        SEQ2GPCRDB[q_num + hsp.query_start] = s_num + hsp.sbjct_start
-                                        q_num += 1
-                                        s_num += 1
-                                    elif q!='-':
-                                        q_num += 1
-                                    else:
-                                        s_num += 1
-
-                                break
-                            break
-                    break
-
             if mutation_sequence_position in SEQ2GPCRDB:
                 mutation_GPCRDB_position = SEQ2GPCRDB[mutation_sequence_position]
                 #print (mutation_GPCRDB_position)
@@ -997,11 +1001,37 @@ def convertPositionsBW2PDB():
             if mutation_GPCRDB_position in GPCRDB2PDB:
                 mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]
 
-        #print (modified_positions)
-        #print (modified_pair_positions)
+        #print (AMpositions)
+        #print (SEQ2GPCRDB)
+        AMmodified_positions = []
+        AMmodified_positions_labels = []
 
-        #print (mutation_position)
-        #print (mutation_position_label)
+        for num, SEQ in enumerate(AMpositions.split(',')):
+            SEQ = int(SEQ)
+            if SEQ in SEQ2GPCRDB:
+                GPCRDB = SEQ2GPCRDB[SEQ]
+                if GPCRDB in GPCRDB2PDB:
+                    pdbPosition = GPCRDB2PDB[GPCRDB]
+                    AMmodified_positions.append(str(pdbPosition))
+                    AMmodified_positions_labels.append(str(SEQ))
+        #print (modified_positions_labels)
+
+        AMmodified_pair_positions = []
+        if AMpair_positions.split() != []:
+            for pair in AMpair_positions.split(','):
+                SEQ1 = int(pair.split(':')[0])
+                SEQ2 = int(pair.split(':')[1])
+                score = pair.split(':')[2]
+                if SEQ1 in SEQ2GPCRDB and SEQ2 in SEQ2GPCRDB:
+                    GPCRDB1 = SEQ2GPCRDB[SEQ1]
+                    GPCRDB2 = SEQ2GPCRDB[SEQ2]
+                    if GPCRDB1 in GPCRDB2PDB and GPCRDB2 in GPCRDB2PDB:
+                        pdbPosition1 = str(GPCRDB2PDB[GPCRDB1])
+                        pdbPosition2 = str(GPCRDB2PDB[GPCRDB2])
+                        AMmodified_pair_positions.append(pdbPosition1+':'+pdbPosition2+':'+score)
+
+        #print (AMmodified_positions)
+        #print (AMmodified_pair_positions)
 
         pdbData = ''
         if 'AF:' in pdbID:
@@ -1015,10 +1045,27 @@ def convertPositionsBW2PDB():
                         'modified_pair_positions': '_'.join(modified_pair_positions),
                         'mutation_position': mutation_position,
                         'mutation_position_label': mutation_position_label,
+                        'AMmodified_pair_positions': '_'.join(AMmodified_pair_positions),
+                        'AMmodified_positions_labels': '_'.join(AMmodified_positions_labels),
+                        'AMmodified_positions': '_'.join(AMmodified_positions),
                         'pdbData': pdbData
                         })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
+
+def extract_attention_contacts(uniq_id, gpcr_given, gprotein_given, AMcutoff):
+    AMvector = np.load(path + "/static/predictor/output/"+uniq_id+"/attentions/"+gpcr_given+"_"+gprotein_given+".npy")
+    AMpair_positions = []; AMpositions = []
+    for i, row in enumerate(AMvector):
+        for j, score in enumerate(row):
+            if score >= AMcutoff:
+                AMpair_positions.append(str(i+1)+':'+str(j+1)+':'+str(score))
+                if str(i+1) not in AMpositions:
+                    AMpositions.append(str(i+1))
+                if str(j+1) not in AMpositions:
+                    AMpositions.append(str(j+1))
+    print (AMpositions, AMpair_positions)
+    return AMpositions, AMpair_positions
 
 @app.route('/fetchContactsPDBStructure', methods=['GET', 'POST'])
 def fetchContactsPDBStructure():
@@ -1029,14 +1076,19 @@ def fetchContactsPDBStructure():
         cutoff = float(data['cutoff'])
         distance = float(data['distance'])
         uniq_id = data['uniq_id']
+        AMcutoff = 0.15
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
+        AMpositions, AMpair_positions = extract_attention_contacts(uniq_id, gpcr_given, gprotein_given, AMcutoff)
         ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
         #print (ordered_pdbs)
         return jsonify({'try': positions.tolist(),
                         'ordered_pdbs': ordered_pdbs,
                         'positions': ','.join(positions.tolist()),
                         'num_contacts': ','.join(num_contacts),
-                        'pair_positions': ','.join(pair_positions)})
+                        'pair_positions': ','.join(pair_positions),
+                        'AMpositions': ','.join(AMpositions),
+                        'AMpair_positions': ','.join(AMpair_positions)
+                        })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
