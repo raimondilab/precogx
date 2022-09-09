@@ -301,11 +301,15 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       document.getElementById("enrich").checked = false;
                       document.getElementById("deplete").checked = false;
                       //document.getElementById("labeling").checked = false;
+                      enrichButton.style.display = 'none';
+                      depleteButton.style.display = 'none';
                     }
                     else if (document.getElementById("deplete").checked == false) {
                       document.getElementById("enrich").checked = true;
                       document.getElementById("deplete").checked = true;
                       //document.getElementById("labeling").checked = true;
+                      enrichButton.style.display = 'block';
+                      depleteButton.style.display = 'block';
                     }                    
                     AM_LABELS.toggleVisibility();
                     // Disable other contacts
