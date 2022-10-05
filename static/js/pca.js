@@ -99,7 +99,7 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
           marker: { size: 12, color: 'khaki' }
         };
 
-        if (response['x_wt'] != '-') {
+        if (response['x_test'].length != 0) {
           //var testColor = "fuchsia";
           //var testColor = "#0000FF";
           var testColor = "#FF0000";
@@ -109,6 +109,26 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
           //var testColor = "#FF0000";
           var testColor = "#0000FF";
         }
+
+        var testColors = ['#880808', '#AA4A44', '#EE4B2B', '#DE3163',
+                        '#954535', '#F88379', '#FF3131', '#FAA0A0',
+                        '#A95C68', '#E30B5C', '#FA5F55'];
+        var data = [ other, classA, classB1, classB2, classC, frizzeled, taste ];
+        for (let i=0; i<response['x_test'].length; i++){
+          //alert (response['x_test'][i]);
+          var test = {
+            x: [response['x_test'][i]],
+            y: [response['y_test'][i]],
+            mode: 'markers',
+            type: 'scatter',
+            name: response['test_names'][i],
+            //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
+            marker: { size: 12, color: testColors[i] }
+          };
+          data.push(test);
+        }
+        //alert (tests.length);
+        /*
         var test = {
           x: [response['x_test']],
           y: [response['y_test']],
@@ -118,7 +138,7 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
           //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
           marker: { size: 12, color: testColor }
         };
-
+        */
         if (response['x_wt'] != '-') {
           var wt = {
             x: [response['x_wt']],
@@ -130,12 +150,15 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
             //marker: { size: 12, color: "darkorange" }
             marker: { size: 12, color: "#0000FF" }
           };
-          var data = [ other, classA, classB1, classB2, classC, frizzeled, taste, test, wt ];
+          //alert ('here');
+          data.push(wt);
+          //var data = [ other, classA, classB1, classB2, classC, frizzeled, taste, tests, wt ];
           //var data = [ classA, test, wt ];
         }
         else {
-          var data = [ other, classA, classB1, classB2, classC, frizzeled, taste, test ];
+          //var data = [ other, classA, classB1, classB2, classC, frizzeled, taste, test ];
           //var data = [ classA, test ];
+          data = data;
         }
 
         var layout = {
@@ -212,7 +235,7 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           marker: { size: 12, color: response['score_coupling'] }
         };
 
-        if (response['x_wt'] != '-') {
+        if (response['x_test'].length != 0) {
           //var testColor = "fuchsia";
           var testColor = "#FF0000";
         }
@@ -220,6 +243,8 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           //var testColor = "darkorange";
           var testColor = "#0000FF";
         }
+
+        /*
         var test = {
           x: [response['x_test']],
           y: [response['y_test']],
@@ -229,6 +254,26 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
           marker: { size: 12, color: testColor }
         };
+        */
+
+        var data = [ train_grey, train_uncoupling, train_coupling  ];
+        var testColors = ['#880808', '#AA4A44', '#EE4B2B', '#DE3163',
+                        '#954535', '#F88379', '#FF3131', '#FAA0A0',
+                        '#A95C68', '#E30B5C', '#FA5F55'];
+
+        for (let i=0; i<response['x_test'].length; i++){
+          //alert (response['x_test'][i]);
+          var test = {
+            x: [response['x_test'][i]],
+            y: [response['y_test'][i]],
+            mode: 'markers',
+            type: 'scatter',
+            name: response['test_names'][i],
+            //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
+            marker: { size: 12, color: testColors[i] }
+          };
+          data.push(test);
+        }
 
         if (response['x_wt'] != '-') {
           var wt = {
@@ -240,10 +285,12 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
             marker: { size: 12, color: "#0000FF" }
           };
-          var data = [ train_grey, train_uncoupling, train_coupling, test, wt ];
+          //var data = [ train_grey, train_uncoupling, train_coupling, test, wt ];
+          data.push(wt);
         }
         else {
-          var data = [ train_grey, train_uncoupling, train_coupling, test ];
+          //var data = [ train_grey, train_uncoupling, train_coupling, test ];
+          data = data;
         }
 
         var layout = {

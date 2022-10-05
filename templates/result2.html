@@ -165,7 +165,7 @@ function loadIntro() {
                                    onchange="click3Dsource(this)">
                              </div>
                         </div>
-                        <div class="row g-3 align-items-center">
+                        <div class="row g-3 align-items-center" id="slider2Contacts">
                             <div class="col-auto">
                                 <label for="slider2A" class="col-form-label" style="font-weight: bold !important">Log
                                     odds score</label>
@@ -183,6 +183,16 @@ function loadIntro() {
                                 <button type="button" class="btn btn-info btn-circle" id="plus2B">+</button>
                                 <span id="slider2B_value">0</span>
                             </div>
+                        </div>
+                        <div class="row g-3 align-items-center" id="slider2Attention" style="display: none;">
+                          <div class="col-auto">
+                              <label for="slider2C" class="col-form-label" style="font-weight: bold !important">AM score</label>
+                              <button type="button" class="btn btn-info btn-circle" id="minus2C">-</button>
+                              <input type="range" style="width: 8rem;vertical-align: middle;" class="form-range"
+                                     min="0.0" max="1.0" step="0.1" value="0.2" id="slider2C">
+                              <button type="button" class="btn btn-info btn-circle" id="plus2C">+</button>
+                              <span id="slider2C_value">0.2</span>
+                          </div>
                         </div>
                         <div id="viewport" class="align-items-center fs--2 w-100"></div>
                     </div> <!-- end card body-->
@@ -231,6 +241,17 @@ function loadIntro() {
 
                     <script>
                       //Change all sliders if any of the slider button us clicked
+
+                      //AM sliders
+                        $("#minus2C").click(function(event) {
+                          zoomC("out", "#slider2C");
+                        });
+
+                        $("#plus2C").click(function(event) {
+                          zoomC("in", "#slider2C");
+                        });
+                      
+                      //Contacts sliders
                         $("#minus1A").click(function(event) {
                           zoomA("out", "#slider1A", "#slider2A", "#slider3A");
                         });
@@ -368,6 +389,43 @@ function loadIntro() {
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}}, displayName);
                           makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
 
+                        };
+
+                        //Function to update slider C i.e. AM scores
+                        function zoomC(direction, slider) {
+                          var slider = $(slider);
+                          var step = 0.1;
+                          var currentSliderValue = Number(slider.val());
+                          //var newStepValue = currentSliderValue;
+                          //alert(currentSliderValue);
+
+                          if (direction === "out") {
+                            var newStepValue = currentSliderValue - step;
+                          } else {
+                            var newStepValue = currentSliderValue + step;
+                          }
+                          newStepValue = Number(newStepValue.toFixed(1));
+                          //alert(newStepValue);
+
+                          slider.val(newStepValue).change();
+                          //alert(slider.attr("id"));
+                          var sliderValue = $("#"+slider.attr("id")+'_value');
+                          sliderValue.html(newStepValue);
+
+                          var selected_gpcr = $('#selected').data('gpcr');
+                          var selected_gprotein = $('#selected').data('gprotein')
+                          var slider1A_value = document.getElementById('slider1A_value').innerHTML;
+                          var slider1B_value = document.getElementById('slider1B_value').innerHTML;
+                          var displayName = document.getElementById('displayName').innerHTML;
+                          makeStructure(selected_gpcr, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}});
+                          /*
+                          makeStructure(selected_gpcr, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}});
+                          makeHeatmap(slider_value, slider1B_value, selected_gpcr, selected_gprotein, displayName);
+                          makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
+                          setDisplayMenu({{path_to_fasta|safe}}, slider_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
+                          makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}}, displayName);
+                          makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
+                          */
                         };
                     </script>
                     <script>

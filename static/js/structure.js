@@ -259,6 +259,17 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     ENRICHMENT.toggleVisibility()
                   }
 
+                  // Decide the fate of enrichButton
+                  var slider2 = document.getElementById('slider2Attention');
+                  if (slider2.style.display === "none") {
+                    //document.getElementById('enrich').checked = true;
+                    enrichButton.style.display = "block";
+                  }
+                  else {
+                    //document.getElementById('enrich').checked = false;
+                    enrichButton.style.display = "none";
+                  }
+
                   var depleteButton = createElement2("deplete", "input", {
                     type: "checkbox",
                     checked: true,
@@ -269,6 +280,17 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     //alert(document.getElementById("el1").checked)
                     DEPLETION.toggleVisibility();
                     //ENRICHMENT.toggleVisibility()
+                  }
+
+                  // Decide the fate of depleteButton
+                  var slider2 = document.getElementById('slider2Attention');
+                  if (slider2.style.display === "none") {
+                    //depleteButton.checked = true;
+                    depleteButton.style.display = "block";
+                  }
+                  else {
+                    //depleteButton.checked = false;
+                    depleteButton.style.display = "none";
                   }
 
                   var labelButton = createElement2("labeling", "input", {
@@ -292,37 +314,120 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     type: "checkbox",
                     checked: false,
                     //value: "Enrichment/Depletion"
-                  }, { top: "170px", left: "10px" }, "Attention map")
+                  }, { top: "170px", left: "10px" }, "Attention positions")
                   addElement(attentionButton);
+                  
+                  // Decide the fate of attentionButton
+                  var slider2 = document.getElementById('slider2Attention');
+                  if (slider2.style.display === "block") {
+                    document.getElementById('attention').checked = true;
+                  }
+
+                  // On click attentionButton
                   document.getElementById('attention').onclick = function() {
                     //alert(document.getElementById("el1").checked)
-                    ATTENTION.toggleVisibility();
-                    if (document.getElementById("deplete").checked == true) {
-                      document.getElementById("enrich").checked = false;
-                      document.getElementById("deplete").checked = false;
+                    //console.log(document.getElementById("enrich").checked);
+                    //ATTENTION.toggleVisibility();
+                    //alert('here'+document.getElementById("deplete").checked);
+
+                    //Show/Hide contact sliders
+                    var slider2Contacts = document.getElementById('slider2Contacts');
+                    var slider2Attention = document.getElementById('slider2Attention');
+                    //alert(slider2A_value.style.display);
+                    if (slider2Contacts.style.display === "none") {
+                      slider2Contacts.style.display = "block";
+                      slider2Attention.style.display = "none";
+                    } else {
+                      slider2Contacts.style.display = "none";
+                      slider2Attention.style.display = "block";
+                    }
+                    if (slider2Attention.style.display === "block") {
+                      for (var i = 0; i < AM_POSITIONS.length; i++) {
+                        AM_POSITIONS[i].setVisibility(true);
+                      };
+
+                      if (document.getElementById("labeling").checked == true){
+                        AM_LABELS.setVisibility(true);
+                      }
+                      else{
+                        AM_LABELS.setVisibility(false);
+                      }
+
+                      //Turn of evrything related to contatcs
+                      CONTACT_LABELS.setVisibility(false);
+                      for (var i = 0; i < CONTACT_POSITIONS.length; i++) {  
+                          CONTACT_POSITIONS[i].setVisibility(false);
+                      };
+                      ENRICHMENT.setVisibility(false);
+                      DEPLETION.setVisibility(false);
+                    }
+                    else {
+                      for (var i = 0; i < AM_POSITIONS.length; i++) {
+                        AM_POSITIONS[i].setVisibility(false);
+                      };
+                      AM_LABELS.setVisibility(false);
+
+                      //Check label status
+                      if (document.getElementById("labeling").checked == true){
+                        CONTACT_LABELS.setVisibility(true);
+                      }
+                      else {
+                        CONTACT_LABELS.setVisibility(false);
+                      }
+
+                      //Make contacts visible
+                      for (var i = 0; i < CONTACT_POSITIONS.length; i++) {  
+                        CONTACT_POSITIONS[i].setVisibility(true);
+                      };
+
+                      //Check deplete button status
+                      if (document.getElementById("deplete").checked == true) {
+                        DEPLETION.setVisibility(true);
+                      }
+                      else {
+                        DEPLETION.setVisibility(false);
+                      }
+
+                      //Check enrich button status
+                      if (document.getElementById("enrich").checked == true) {
+                        ENRICHMENT.setVisibility(true);
+                      }
+                      else {
+                        ENRICHMENT.setVisibility(false);
+                      }
+                    }
+
+                    if (depleteButton.style.display === "block") {
+                      //document.getElementById("enrich").checked = false;
+                      //document.getElementById("deplete").checked = false;
                       //document.getElementById("labeling").checked = false;
                       enrichButton.style.display = 'none';
                       depleteButton.style.display = 'none';
                     }
-                    else if (document.getElementById("deplete").checked == false) {
-                      document.getElementById("enrich").checked = true;
-                      document.getElementById("deplete").checked = true;
+                    //else if (document.getElementById("deplete").checked == false) {
+                    else {
+                      //document.getElementById("enrich").checked = true;
+                      //document.getElementById("deplete").checked = true;
                       //document.getElementById("labeling").checked = true;
                       enrichButton.style.display = 'block';
                       depleteButton.style.display = 'block';
                     }                    
-                    AM_LABELS.toggleVisibility();
+                    //AM_LABELS.toggleVisibility();
                     // Disable other contacts
-                    ENRICHMENT.toggleVisibility();
-                    DEPLETION.toggleVisibility();
-                    CONTACT_LABELS.toggleVisibility();
+                    //ENRICHMENT.toggleVisibility();
+                    //DEPLETION.toggleVisibility();
+                    //CONTACT_LABELS.toggleVisibility();
                     //MUTATION_POSITION.toggleVisibility();
+                    /*
                     for (var i = 0; i < CONTACT_POSITIONS.length; i++) {
                       CONTACT_POSITIONS[i].toggleVisibility();
                     };
                     for (var i = 0; i < AM_POSITIONS.length; i++) {
                       AM_POSITIONS[i].toggleVisibility();
                     };
+                    */
+                    //console.log(document.getElementById("enrich").checked);
+                    
                   }
 
                   var screenButton = createElement2("fullscreen", "input", {
@@ -387,6 +492,10 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     //backgroundColor: bg_color,
                     //borderColor: 'blue',
                   })
+                  var slider2 = document.getElementById('slider2Attention');
+                  if (slider2.style.display === "block") {
+                    CONTACT_LABELS.toggleVisibility();
+                  }
                   //CONTACT_LABELS.toggleVisibility();
 
                   //////////////////////////////////////////////////
@@ -426,7 +535,10 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                     //backgroundColor: bg_color,
                     //borderColor: 'blue',
                   })
-                  AM_LABELS.toggleVisibility();
+                  var slider2 = document.getElementById('slider2Attention');
+                  if (slider2.style.display === "none") {
+                    AM_LABELS.toggleVisibility();
+                  }
                   //////////////////////////////////////////////////////
 
 
@@ -442,6 +554,10 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                           color: "khaki"
                           //color: schemeId,
                       });
+                      var slider2 = document.getElementById('slider2Attention');
+                      if (slider2.style.display === "block") {
+                        CONTACT_POSITIONS[i].toggleVisibility();
+                      }
                     }
                   }
 
@@ -457,7 +573,10 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                           color: "khaki"
                           //color: schemeId,
                       });
-                      AM_POSITIONS[i].toggleVisibility();
+                      var slider2 = document.getElementById('slider2Attention');
+                      if (slider2.style.display === "none") {
+                        AM_POSITIONS[i].toggleVisibility();
+                      }
                     }
                   }
 
@@ -502,8 +621,23 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                         labelSize: 0
                       }
                     );
-                    //By default hide AM
-                    ATTENTION.toggleVisibility();
+
+                    //By default turn off AM
+                    //ATTENTION.toggleVisibility();
+                    //By default hide AM (first load) else
+                    //else show AM based on if its slider
+                    //is visible or not
+                    var slider2 = document.getElementById('slider2Attention');
+                    if (slider2.style.display === "block") {
+                      ENRICHMENT.toggleVisibility();
+                      DEPLETION.toggleVisibility();
+                    }
+                    else {
+                      ATTENTION.toggleVisibility();
+                      document.getElementById('attention').checked = false;
+                    }
+                    //alert(ATTENTION.getVisibility()+'-'+ENRICHMENT.getVisibility());
+                    
                   }
                   //o.autoView(':'+chainGPCR);
                 });
@@ -579,12 +713,20 @@ function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, nu
 function makeStructure(gpcr, gprotein, cutoff, distance, uniq_id) {
   //alert(gprotein);
   //var cutoff =0.0;
+  var slider2C_value = document.getElementById('slider2C_value');
+  var AMcutoff = slider2C_value.innerHTML;
   $.ajax({
     url:"/fetchContactsPDBStructure", //to fetch contacts and ordered PDB list based on G-protein
     type: "post", //request type,
     dataType: 'json',
     //data: JSON.stringify({pdbid: pdbid, chainGPCR: chainGPCR, chainGPROT: chainGPROT, gpcr: gpcr}),
-    data: JSON.stringify({gpcr: gpcr, gprotein: gprotein, cutoff: cutoff, distance: distance, uniq_id: uniq_id}),
+    data: JSON.stringify({gpcr: gpcr,
+                          gprotein: gprotein,
+                          cutoff: cutoff,
+                          distance: distance,
+                          uniq_id: uniq_id,
+                          AMcutoff: AMcutoff
+                          }),
     success: function(response){
 				console.log(response);
         //alert (response['ordered_pdbs']);

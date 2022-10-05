@@ -442,35 +442,51 @@ def fetchPCA():
             Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
         else:
         '''
+        '''
         Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
         #print (x_test)
         #print (y_test)
+        '''
+
+        ## fetch all variants of the given GPCR
+        gpcrName = gpcr_given.split('_')[0]
+        variantsToConsider = []; x_test = []; y_test = []; test_names = [];
+        if '_WT' not in gpcr_given:
+            for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
+                if files.endswith('.npy') and 'layer' in files  and '_WT' not in files:
+                    if int(pca_type) == int(files.split('layer')[0]):
+                        if gpcrName == files.split('_')[1]:
+                            variantsToConsider.append(files)
+            
+            for files in variantsToConsider:
+                Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+files, allow_pickle=True)
+                #print ('test',Xs_test_pca)
+                x_test.append(Xs_test_pca[0].tolist())
+                y_test.append(Xs_test_pca[1].tolist())
+                test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+
 
         ### WT
-        if '_WT' not in gpcr_given:
-            wt = gpcr_given.split('_')[0] + '_WT'
-            '''
-            if pca_type == 'GPCRome':
-                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
-            elif pca_type == 'Best PCA':
-                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
-            else:
-            '''
-            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
-            #print (Xs_wt_pca)
-            #x_test = Xs_test_pca[:,0].tolist()
-            #y_test = Xs_test_pca[:,1].tolist()
-            x_wt = Xs_wt_pca[0].tolist()
-            y_wt = Xs_wt_pca[1].tolist()
-            #print (x_wt)
-            #print (y_wt)
+        wt = gpcr_given.split('_')[0] + '_WT'
+        '''
+        if pca_type == 'GPCRome':
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
+        elif pca_type == 'Best PCA':
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
         else:
-            x_wt = '-'
-            y_wt = '-'
-
+        '''
+        Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
+        #print (Xs_wt_pca)
+        #x_test = Xs_test_pca[:,0].tolist()
+        #y_test = Xs_test_pca[:,1].tolist()
+        x_wt = Xs_wt_pca[0].tolist()
+        y_wt = Xs_wt_pca[1].tolist()
+        #print (x_wt)
+        #print (y_wt)
+        
         score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
         #print (x_train, y_train, x_test, y_test)
         #print (assay,genes_to_consider_coupling)
@@ -493,6 +509,7 @@ def fetchPCA():
                         'genes_to_consider_grey': genes_to_consider_grey,
                         'x_test': x_test,
                         'y_test': y_test,
+                        'test_names': test_names,
                         'x_wt': x_wt,
                         'y_wt': y_wt,
                         'minX': minX,
@@ -524,35 +541,50 @@ def fetchPCA2():
             Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
         else:
         '''
+        '''
         Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
         #print ('test',Xs_test_pca)
         x_test = Xs_test_pca[0].tolist()
         y_test = Xs_test_pca[1].tolist()
         #print (x_test)
         #print (y_test)
+        '''
+        ## fetch all variants of the given GPCR
+        gpcrName = gpcr_given.split('_')[0]
+        variantsToConsider = []; x_test = []; y_test = []; test_names = [];
+        if '_WT' not in gpcr_given:
+            for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
+                if files.endswith('.npy') and 'layer' in files  and '_WT' not in files:
+                    if int(pca_type) == int(files.split('layer')[0]):
+                        if gpcrName == files.split('_')[1]:
+                            variantsToConsider.append(files)
+                
+            for files in variantsToConsider:
+                Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+files, allow_pickle=True)
+                #print ('test',Xs_test_pca)
+                x_test.append(Xs_test_pca[0].tolist())
+                y_test.append(Xs_test_pca[1].tolist())
+                test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+
 
         ### WT
-        if '_WT' not in gpcr_given:
-            wt = gpcr_given.split('_')[0] + '_WT'
-            '''
-            if pca_type == 'GPCRome':
-                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
-            elif pca_type == 'Best PCA':
-                Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
-            else:
-            '''
-            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
-            #print (Xs_wt_pca)
-            #x_test = Xs_test_pca[:,0].tolist()
-            #y_test = Xs_test_pca[:,1].tolist()
-            x_wt = Xs_wt_pca[0].tolist()
-            y_wt = Xs_wt_pca[1].tolist()
-            #print (x_wt)
-            #print (y_wt)
+        wt = gpcr_given.split('_')[0] + '_WT'
+        '''
+        if pca_type == 'GPCRome':
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
+        elif pca_type == 'Best PCA':
+            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
         else:
-            x_wt = '-'
-            y_wt = '-'
-
+        '''
+        Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
+        #print (Xs_wt_pca)
+        #x_test = Xs_test_pca[:,0].tolist()
+        #y_test = Xs_test_pca[:,1].tolist()
+        x_wt = Xs_wt_pca[0].tolist()
+        y_wt = Xs_wt_pca[1].tolist()
+        #print (x_wt)
+        #print (y_wt)
+        
         #score_coupling, score_uncoupling, x_train_coupling, x_train_uncoupling, x_train_grey, y_train_coupling, y_train_uncoupling, y_train_grey, genes_to_consider_coupling, genes_to_consider_uncoupling, genes_to_consider_grey = extract_pca(gprotein_given, assay, pca_type)
         '''
         if pca_type == 'Best PCA':
@@ -656,6 +688,8 @@ def fetchPCA2():
         minY = min(y_classA + y_classB1 + y_classB2 + y_classC + y_frizzeled + y_taste + y_other)
         maxY = max(y_classA + y_classB1 + y_classB2 + y_classC + y_frizzeled + y_taste + y_other)
         #print(minX, maxX)
+
+        #print (x_test, y_test)
         return jsonify({'x_classA': x_classA,
                         'x_classB1': x_classB1,
                         'x_classB1': x_classB2,
@@ -680,6 +714,7 @@ def fetchPCA2():
                         'other': other,
                         'x_test': x_test,
                         'y_test': y_test,
+                        'test_names': test_names,
                         'x_wt': x_wt,
                         'y_wt': y_wt,
                         'minX': minX,
@@ -1011,9 +1046,11 @@ def convertPositionsBW2PDB():
             if SEQ in SEQ2GPCRDB:
                 GPCRDB = SEQ2GPCRDB[SEQ]
                 if GPCRDB in GPCRDB2PDB:
+                    #print (GPCRDB, GPCRDB2BW[GPCRDB])
                     pdbPosition = GPCRDB2PDB[GPCRDB]
                     AMmodified_positions.append(str(pdbPosition))
-                    AMmodified_positions_labels.append(str(SEQ))
+                    #AMmodified_positions_labels.append(str(SEQ))
+                    AMmodified_positions_labels.append(GPCRDB2BW[GPCRDB])
         #print (modified_positions_labels)
 
         AMmodified_pair_positions = []
@@ -1064,7 +1101,7 @@ def extract_attention_contacts(uniq_id, gpcr_given, gprotein_given, AMcutoff):
                     AMpositions.append(str(i+1))
                 if str(j+1) not in AMpositions:
                     AMpositions.append(str(j+1))
-    print (AMpositions, AMpair_positions)
+    #print (AMpositions, AMpair_positions)
     return AMpositions, AMpair_positions
 
 @app.route('/fetchContactsPDBStructure', methods=['GET', 'POST'])
@@ -1076,7 +1113,7 @@ def fetchContactsPDBStructure():
         cutoff = float(data['cutoff'])
         distance = float(data['distance'])
         uniq_id = data['uniq_id']
-        AMcutoff = 0.15
+        AMcutoff = float(data['AMcutoff'])
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
         AMpositions, AMpair_positions = extract_attention_contacts(uniq_id, gpcr_given, gprotein_given, AMcutoff)
         ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
