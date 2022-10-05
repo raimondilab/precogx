@@ -342,6 +342,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       slider2Attention.style.display = "block";
                     }
                     if (slider2Attention.style.display === "block") {
+                      ATTENTION.setVisibility(true);
                       for (var i = 0; i < AM_POSITIONS.length; i++) {
                         AM_POSITIONS[i].setVisibility(true);
                       };
@@ -362,6 +363,7 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
                       DEPLETION.setVisibility(false);
                     }
                     else {
+                      ATTENTION.setVisibility(false);
                       for (var i = 0; i < AM_POSITIONS.length; i++) {
                         AM_POSITIONS[i].setVisibility(false);
                       };
