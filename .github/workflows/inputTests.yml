@@ -41,10 +41,10 @@ jobs:
       - name: Run
         shell: bash -l {0}
         run: |
-        conda env create -f environment.yml
-        conda activate precogx
-        cd static/predictor/
-        pytest
+          conda env create -f environment.yml
+          conda activate precogx
+          cd static/predictor/
+          pytest
         
 
       # run the test.py to get the latest SIFT and PDB FASTA files
