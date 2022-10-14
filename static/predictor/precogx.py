@@ -33,7 +33,6 @@ from sklearn.metrics import matthews_corrcoef
 from sklearn.preprocessing import MinMaxScaler
 from xgboost import XGBClassifier, plot_importance
 from xgboost import plot_tree, to_graphviz
-import callUniProtAPI
 import numpy as np
 from joblib import dump, load
 import time, random, string
@@ -62,6 +61,7 @@ def main(numseqs, input, input_file, assay, path):
     sys.path.insert(1, path + '/static/predictor/')
     import extract
     import predict
+    import callUniProtAPI
     #print ('hello', homeDir, os.getcwd(), os.listdir('.'), path)
     while True:
         uniq_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))
@@ -92,9 +92,9 @@ def main(numseqs, input, input_file, assay, path):
 
     print ('Your output will be stored at: static/predictor/output/'+uniq_id)
     if input_file == None:
-        gpcrs, input = formatInput(homeDir, numseqs, input)
+        gpcrs, input = formatInput(homeDir, numseqs, input, callUniProtAPI)
     else:
-        gpcrs, input = formatInputFile(homeDir, numseqs, input_file)
+        gpcrs, input = formatInputFile(homeDir, numseqs, input_file, callUniProtAPI)
 
     open(homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta', 'w').write(input)
     input_file = homeDir + '/static/predictor/output/'+uniq_id+'/input.fasta'
@@ -457,7 +457,7 @@ def formatInputFileOld(numseqs, input_file):
     #sys.exit()
     return (gpcrs, new_input)
 
-def formatInputFile(homeDir, numseqs, input_file):
+def formatInputFile(homeDir, numseqs, input_file, callUniProtAPI):
     num = 0
     with open(input_file, 'r') as file:
         input = file.read()
@@ -528,7 +528,7 @@ def formatInputFile(homeDir, numseqs, input_file):
                     if name not in gpcrs:
                         #print (name, variant, name.split())
                         gpcrs[name.rstrip()] = GPCR(name.rstrip())
-                        gpcrs[name.rstrip()].seq = fetchSeq(homeDir, name.rstrip())
+                        gpcrs[name.rstrip()].seq = fetchSeq(homeDir, name.rstrip(), callUniProtAPI)
 
                     gpcrs[name].var.append(variant)
 
@@ -552,7 +552,7 @@ def formatInputFile(homeDir, numseqs, input_file):
     #print (new_input)
     return (gpcrs, new_input)
 
-def formatInput(homeDir, numseqs, input):
+def formatInput(homeDir, numseqs, input, callUniProtAPI):
     num = 0
     ## if input in FASTA format
     gpcrs = {}
@@ -621,7 +621,7 @@ def formatInput(homeDir, numseqs, input):
                     if name not in gpcrs:
                         #print (name, variant, name.split())
                         gpcrs[name.rstrip()] = GPCR(name.rstrip())
-                        gpcrs[name.rstrip()].seq = fetchSeq(homeDir, str(name.rstrip()))
+                        gpcrs[name.rstrip()].seq = fetchSeq(homeDir, str(name.rstrip()), callUniProtAPI)
 
                     gpcrs[name.rstrip()].var.append(variant.rstrip())
 
@@ -646,7 +646,7 @@ def formatInput(homeDir, numseqs, input):
     #print (new_input)
     return (gpcrs, new_input)
 
-def fetchSeq(homeDir, name):
+def fetchSeq(homeDir, name, callUniProtAPI):
     #print (name)
     gtopdbACC = ''
     for line in open(homeDir + '/data/GtP_to_UniProt_mapping.tsv', 'r'):
