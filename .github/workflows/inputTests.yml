@@ -39,12 +39,19 @@ jobs:
           auto-update-conda: true
 
       # Activate environment.yml and run test
-      - name: Run
+      - name: Create env
         shell: bash -l {0}
-        run: |
-          conda env create -f environment.yml
-          conda activate precogx
-          pytest
+        run: conda env create -f environment.yml
+      
+      # Activate env
+      - name: Create env
+        shell: bash -l {0}
+        run: conda activate precogx
+      
+      # run pytest
+      - name: Create env
+        shell: bash -l {0}
+        run: pytest
         
 
       # run the test.py to get the latest SIFT and PDB FASTA files
