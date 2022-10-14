@@ -28,6 +28,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Switch to branch beta
+      - name: Switch to branch beta
+        run: git checkout beta
+
       # Setup Miniconda
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2.1.1
