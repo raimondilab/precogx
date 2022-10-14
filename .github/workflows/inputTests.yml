@@ -8,9 +8,8 @@ on:
   # schedule:
   #  - cron: '30 16 * * 5'
   push:
-  #  branches: [ main, beta ]
-    branches:
-      - '!main'
+    branches: [ beta ]
+    branches-ignore: [ main ]
 #  pull_request:
 #    branches: [ main ]
 
