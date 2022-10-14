@@ -63,6 +63,9 @@ def main(numseqs, input, input_file, assay, path):
     import predict
     import callUniProtAPI
     #print ('hello', homeDir, os.getcwd(), os.listdir('.'), path)
+    ## Create output folder if not existing (useful when running tests)
+    if os.path.exists('output/') == False:
+            os.system('mkdir ' + homeDir + '/static/predictor/output/')
     while True:
         uniq_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))
         if os.path.exists('output/'+uniq_id) == False:
