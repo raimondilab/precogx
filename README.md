@@ -1,5 +1,5 @@
 ![action main](https://github.com/raimondilab/precogx/actions/workflows/main.yml/badge.svg)
-
+[![testInputs](https://github.com/raimondilab/precogx/actions/workflows/inputTests.yml/badge.svg?branch=beta)](https://github.com/raimondilab/precogx/actions/workflows/inputTests.yml)
 
 <div align="center">
 <img src="static/img/gallery/logo.png" alt="logo" width="400"/>
