@@ -205,7 +205,11 @@ def fetchAttentionMap():
         seqPositions = [str(i) for i in range(1, len(Xtest[0])+1)]
         #print (seqPositions)
         #return jsonify({'fetch_contactsMin': scoresMin, 'fetch_contactsMax': scoresMax, 'fetch_contacts': scores, 'positions': positions.tolist()})
-        return jsonify({'zaxis': Xtest.tolist(), 'xaxis': seqPositions, 'yaxis': seqPositions})
+        return jsonify({'zaxis': Xtest.tolist(),
+                        'xaxis': seqPositions,
+                        'yaxis': seqPositions,
+                        'gpcr_name': '_'.join(gpcr_given.split('_')[:-1]) + '/' + gpcr_given.split('_')[-1]
+                        })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
@@ -216,12 +220,18 @@ def fetchContactsHeatmap():
         data = request.get_json(force=True)
         #print (data['gpcr'])
         gprotein_given = data['gprotein']
+        gpcr_given = data['gpcr']
         cutoff = float(data['cutoff'])
         distance = float(data['distance'])
         scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
         for i in range(0, len(positions)):
             positions[i] = str(positions[i]).replace('.', 'x')
-        return jsonify({'fetch_contactsMin': scoresMin, 'fetch_contactsMax': scoresMax, 'fetch_contacts': scores, 'positions': positions.tolist()})
+        return jsonify({'fetch_contactsMin': scoresMin,
+                        'fetch_contactsMax': scoresMax,
+                        'fetch_contacts': scores,
+                        'positions': positions.tolist(),
+                        'gpcr_name': '_'.join(gpcr_given.split('_')[:-1]) + '/' + gpcr_given.split('_')[-1]
+                        })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
@@ -452,13 +462,14 @@ def fetchPCA():
         '''
 
         ## fetch all variants of the given GPCR
-        gpcrName = gpcr_given.split('_')[0]
+        gpcrName = '_'.join(gpcr_given.split('_')[:-1])
+        #print (gpcrName)
         variantsToConsider = []; x_test = []; y_test = []; test_names = [];
-        if '_WT' not in gpcr_given:
+        if gpcr_given[:-3] != '_WT':
             for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
-                if files.endswith('.npy') and 'layer' in files  and '_WT' not in files:
+                if files.endswith('.npy') and 'layer' in files  and files.split('_')[-1].split('.')[0] != 'WT':
                     if int(pca_type) == int(files.split('layer')[0]):
-                        if gpcrName == files.split('_')[1]:
+                        if gpcrName == '_'.join(files.split('_')[1:-1]):
                             variantsToConsider.append(files)
             
             for files in variantsToConsider:
@@ -466,11 +477,17 @@ def fetchPCA():
                 #print ('test',Xs_test_pca)
                 x_test.append(Xs_test_pca[0].tolist())
                 y_test.append(Xs_test_pca[1].tolist())
-                test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+                #test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+                test_names.append('_'.join(files.split('_')[1:-1]) + '/' + files.split('_')[-1].split('.')[0])
 
 
         ### WT
-        wt = gpcr_given.split('_')[0] + '_WT'
+        #wt = gpcr_given.split('_')[0] + '_WT'
+        #print ('_'.join(gpcr_given.split('_')[:-1]))
+        wt = '_'.join(gpcr_given.split('_')[:-1]) + '_WT'
+        wt_name = '_'.join(gpcr_given.split('_')[:-1]) + '/WT'
+        #print (wt_name)
+        #print (test_names)
         '''
         if pca_type == 'GPCRome':
             Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
@@ -510,6 +527,7 @@ def fetchPCA():
                         'x_test': x_test,
                         'y_test': y_test,
                         'test_names': test_names,
+                        'wt_name': wt_name,
                         'x_wt': x_wt,
                         'y_wt': y_wt,
                         'minX': minX,
@@ -550,25 +568,30 @@ def fetchPCA2():
         #print (y_test)
         '''
         ## fetch all variants of the given GPCR
-        gpcrName = gpcr_given.split('_')[0]
+        gpcrName = '_'.join(gpcr_given.split('_')[:-1])
+        #print (gpcrName)
         variantsToConsider = []; x_test = []; y_test = []; test_names = [];
-        if '_WT' not in gpcr_given:
+        if gpcr_given[:-3] != '_WT':
             for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
-                if files.endswith('.npy') and 'layer' in files  and '_WT' not in files:
+                if files.endswith('.npy') and 'layer' in files  and files.split('_')[-1].split('.')[0] != 'WT':
                     if int(pca_type) == int(files.split('layer')[0]):
-                        if gpcrName == files.split('_')[1]:
+                        if gpcrName == '_'.join(files.split('_')[1:-1]):
                             variantsToConsider.append(files)
-                
+            
             for files in variantsToConsider:
                 Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+files, allow_pickle=True)
                 #print ('test',Xs_test_pca)
                 x_test.append(Xs_test_pca[0].tolist())
                 y_test.append(Xs_test_pca[1].tolist())
-                test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+                #test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+                test_names.append('_'.join(files.split('_')[1:-1]) + '/' + files.split('_')[-1].split('.')[0])
 
 
         ### WT
-        wt = gpcr_given.split('_')[0] + '_WT'
+        #wt = gpcr_given.split('_')[0] + '_WT'
+        #print ('_'.join(gpcr_given.split('_')[:-1]))
+        wt = '_'.join(gpcr_given.split('_')[:-1]) + '_WT'
+        wt_name = '_'.join(gpcr_given.split('_')[:-1]) + '/WT'
         '''
         if pca_type == 'GPCRome':
             Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
@@ -715,6 +738,7 @@ def fetchPCA2():
                         'x_test': x_test,
                         'y_test': y_test,
                         'test_names': test_names,
+                        'wt_name': wt_name,
                         'x_wt': x_wt,
                         'y_wt': y_wt,
                         'minX': minX,
@@ -927,7 +951,9 @@ def fetchContactsSequence():
         return jsonify({'fetch_contacts': scores,
                         'seq_positions': seq_positions,
                         'bw_positions': bw_positions,
-                        'sequence': fasta_sequence})
+                        'sequence': fasta_sequence,
+                        'gpcr_name': '_'.join(gpcr_given.split('_')[:-1]) + '/' + gpcr_given.split('_')[-1]
+                        })
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
@@ -1025,7 +1051,7 @@ def convertPositionsBW2PDB():
                         break
                 break
         
-        if '_WT' not in gpcr_given:
+        if gpcr_given[-3:] != '_WT':
             mutation_sequence_position = int(gpcr_given.split('_')[-1][1:-1])
             if mutation_sequence_position in SEQ2GPCRDB:
                 mutation_GPCRDB_position = SEQ2GPCRDB[mutation_sequence_position]
@@ -1201,8 +1227,9 @@ def bestGprotein():
         gpcr_given = data['gpcr']
         uniq_id = data['uniq_id']
         #print ('Given', gpcr_given)
-        gpcr = gpcr_given.split('_')[0]
-        variant = gpcr_given.split('_')[1]
+        gpcr = '_'.join(gpcr_given.split('_')[:-1])
+        #print (gpcr, gpcr_given, 'here')
+        variant = gpcr_given.split('_')[-1]
         bestGprotein = ''
         colIndex = 2
         for line in open(path + "/static/predictor/output/"+uniq_id+"/out.tsv", 'r'):
@@ -1221,8 +1248,8 @@ def bestGprotein():
                             bestGprotein = head
                             colIndex = num + 2
                     break
-        #print (bestGprotein)
-        #print (colIndex)
+        # print (bestGprotein)
+        # print (colIndex)
         return jsonify({'bestGprotein': bestGprotein,
                         'colIndex': colIndex
                         })

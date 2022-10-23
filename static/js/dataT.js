@@ -71,6 +71,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       var gpcrs = gpcr_list;
       var gpcr = gpcrs[rowIndex];
       var variant = gpcr_list[rowIndex];
+      //alert (gpcr);
       if (colIndex == 0 || colIndex == 1) {
         //colIndex = 2;
         //alert(gpcr);
@@ -81,6 +82,7 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
           data: JSON.stringify({uniq_id: uniq_id, gpcr: gpcr}),
           success: function(response){
             gprotein = response['bestGprotein'];
+            // alert (response['bestGprotein']);
             // new colIndex
             colIndex = Number(response['colIndex']);
             var cell = dataT.cell(rowIndex, colIndex).node();

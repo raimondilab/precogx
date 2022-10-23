@@ -6,6 +6,7 @@ the code using pytest
 #from urllib import response
 import json, sys, os
 import pytest
+import urllib.request
 from flask import Flask
 #sys.path.insert(0, os.getcwd())
 from static.predictor import precogx
@@ -24,3 +25,10 @@ class TestClass():
             except:
                 if input != 'P046':
                     pytest.fail("PRECOGx failed to run for "+input)
+    
+    def test_precogx_is_up(self):
+        ''''
+        Check if precogx is up, else throw an error
+        '''
+        getCode = urllib.request.urlopen("https://precogx.bioinfolab.sns.it/").getcode()
+        assert getCode == 200

@@ -13,7 +13,7 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, distance, uniq_id, 
         sequence = response['sequence']
         seq_positions = response['seq_positions']
         bw_positions = response['bw_positions']
-        var variant = gpcr.split('_')[1];
+        var variant = gpcr.split('_').pop();
         var numberPattern = /\d+/g;
         var variantPosition = Number(variant.match( numberPattern ));
         /*
@@ -34,7 +34,7 @@ function makeSequence(gpcr, path_to_fasta, gprotein, cutoff, distance, uniq_id, 
                     'wrapAminoAcids': true,
                     'charsPerLine': 70,
                     'toolbar': true,
-                    'title' : gpcr+' ('+gprotein+')',
+                    'title' : response['gpcr_name']+' ('+gprotein+')',
                     'search': true,
                     'badge': false,
                     'header' : {

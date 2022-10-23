@@ -42,7 +42,7 @@ function makeAttentionmap(uniq_id, gpcr, gprotein, chosen) {
 
         var layout = {
               autosize: true,
-              title: 'Attention Map of <b>'+gprotein+'-coupled receptors</b> projected on <b>'+gpcr+'</b>',
+              title: 'Attention Map of <b>'+gprotein+'-coupled receptors</b> projected on <b>'+response['gpcr_name']+'</b>',
               font: {
                 size: 10
               }

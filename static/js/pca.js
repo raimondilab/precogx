@@ -145,7 +145,8 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
             y: [response['y_wt']],
             mode: 'markers',
             type: 'scatter',
-            name: gpcr.split('_')[0]+'_WT',
+            //name: gpcr+'/WT',
+            name: response['wt_name'],
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
             //marker: { size: 12, color: "darkorange" }
             marker: { size: 12, color: "#0000FF" }
@@ -281,7 +282,8 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
             y: [response['y_wt']],
             mode: 'markers',
             type: 'scatter',
-            name: gpcr.split('_')[0]+'_WT',
+            //name: gpcr+'/WT',
+            name: response['wt_name'],
             //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
             marker: { size: 12, color: "#0000FF" }
           };
