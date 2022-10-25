@@ -1,4 +1,4 @@
-function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
+function makePCA2(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein) {
   //showPCA(uniq_id, assay, gpcr, gprotein);
   var gpcr = gpcr;
   var gprotein = gprotein;
@@ -8,7 +8,7 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
     url:"/fetchPCA2", //the page containing python script
     type: "post", //request type,
     dataType: 'json',
-    data: JSON.stringify({uniq_id: uniq_id, assay: assay, pca_type: pca_type, gpcr: gpcr, gprotein: gprotein}),
+    data: JSON.stringify({uniq_id: uniq_id, assay: assay, pca_type: pca_type, displayPCAOption: displayPCAOption, gpcr: gpcr, gprotein: gprotein}),
     success: function(response){
 				console.log(response);
         //alert(assay);
@@ -169,7 +169,7 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
           yaxis: {
             range: [ response['minY'], response['maxY'] ]
           },
-          title: gprotein+'--'
+          title: gprotein
         };
 
         var config = {responsive: true,
@@ -183,17 +183,18 @@ function makePCA2(uniq_id, assay, pca_type, gpcr, gprotein) {
     });
 }
 
-function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
+function makePCA(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein) {
   //showPCA(uniq_id, assay, gpcr, gprotein);
   var gpcr = gpcr;
   var gprotein = gprotein;
+  // var displayPCAOption = 1;
   //alert(assay+'----'+gpcr+'----'+gprotein);
   //var assay = showPCA(uniq_id, assay, pca_type, gpcr, gprotein);
   $.ajax({
     url:"/fetchPCA", //the page containing python script
     type: "post", //request type,
     dataType: 'json',
-    data: JSON.stringify({uniq_id: uniq_id, assay: assay, pca_type: pca_type, gpcr: gpcr, gprotein: gprotein}),
+    data: JSON.stringify({uniq_id: uniq_id, assay: assay, pca_type: pca_type, displayPCAOption: displayPCAOption, gpcr: gpcr, gprotein: gprotein}),
     success: function(response){
 				console.log(response);
         //alert(response['score_coupling']);
@@ -259,8 +260,8 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
 
         var data = [ train_grey, train_uncoupling, train_coupling  ];
         var testColors = ['#880808', '#AA4A44', '#EE4B2B', '#DE3163',
-                        '#954535', '#F88379', '#FF3131', '#FAA0A0',
-                        '#A95C68', '#E30B5C', '#FA5F55'];
+                          '#954535', '#F88379', '#FF3131', '#FAA0A0',
+                          '#A95C68', '#E30B5C', '#FA5F55', '#FF0000'];
 
         for (let i=0; i<response['x_test'].length; i++){
           //alert (response['x_test'][i]);
@@ -316,34 +317,43 @@ function makePCA(uniq_id, assay, pca_type, gpcr, gprotein) {
 }
 
 function showPCA(uniq_id, assay, pca_type, gpcr, gprotein) {
-  //alert(gpcr+'--'+gprotein);
+  // fetch pcaButtonToggle status
+  var pcaToggle = document.getElementById("flexSwitchVariants");
+  if (pcaToggle.checked == false){
+    var displayPCAOption = '1';
+  }
+  else{
+    var displayPCAOption = '2';
+  }
+  
   var gemta = ['GNAS', 'GNAI1', 'GNAI2', 'GoB', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA11', 'GNA14', 'GNA15', 'Barr1-GRK2', 'Barr2', 'Barr2-GRK2'];
   var tgf = ['GNAS', 'GNAL', 'GNAI1', 'GNAI3', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15'];
   var both = ['GNAS', 'GNAI1', 'GNAZ', 'GNA12', 'GNA13', 'GNAQ', 'GNA14', 'GNA15', 'GoA'];
   var options = '';
 
   if (gprotein.includes("Barr")) {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'STRING\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">STRING</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'STRING\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">STRING</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
   else if (both.includes(gprotein)) {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'TGF\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">TGF</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'TGF\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">TGF</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
   else if (tgf.includes(gprotein)) {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'TGF\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">TGF</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'TGF\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">TGF</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
   else {
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
-    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GEMTA\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GEMTA</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'GtoPdb\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">GtoPdb</a></li>";
+    options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'Class\'"+",\'"+pca_type+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">Class</a></li>";
   }
 
+  //alert (options);
   document.getElementById("AssayButton").innerHTML = assay;
   document.getElementById("AssayList").innerHTML = options;
 
@@ -383,7 +393,7 @@ function showPCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           //var options = "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'"+assay+"\'"+",\'GPCRome\',\'"+gpcr+"\',\'"+gprotein+"\')\">GPCRome</a></li>";
           //options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'"+assay+"\'"+",\'Best PCA\',\'"+gpcr+"\',\'"+gprotein+"\')\">Best PCA</a></li>";
           for (let i = 0; i < layers.length; i++) {
-            options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'"+assay+"\'"+",\'"+i+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">"+layers[i]+"</a></li>";
+            options += "<li><a class=\"dropdown-item\" onClick=\"makePCA2(\'"+uniq_id+"\',\'"+assay+"\',\'"+i+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">"+layers[i]+"</a></li>";
           }
         }
         else {
@@ -391,14 +401,13 @@ function showPCA(uniq_id, assay, pca_type, gpcr, gprotein) {
           //var options = "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'"+assay+"\'"+",\'GPCRome\',\'"+gpcr+"\',\'"+gprotein+"\')\">GPCRome</a></li>";
           //options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'"+assay+"\'"+",\'Best PCA\',\'"+gpcr+"\',\'"+gprotein+"\')\">Best PCA</a></li>";
           for (let i = 0; i < layers.length; i++) {
-            options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'"+assay+"\'"+",\'"+i+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">"+layers[i]+"</a></li>";
+            options += "<li><a class=\"dropdown-item\" onClick=\"makePCA(\'"+uniq_id+"\',\'"+assay+"\',\'"+i+"\',\'"+displayPCAOption+"\',\'"+gpcr+"\',\'"+gprotein+"\')\">"+layers[i]+"</a></li>";
           }
         }
         //options += "<li><a class=\"dropdown-item\" onClick=\"makePCA()\">Shedding</a></li>";
         //options += "<li><a class=\"dropdown-item\" onClick=\"makePCA()\">ebBRET</a></li>";
         document.getElementById("PCAList").innerHTML = options;
         document.getElementById("PCAButton").innerHTML = pca_type;
-
 			},
 			error: function(error){
 				console.log(error);

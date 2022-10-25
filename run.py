@@ -1,3 +1,4 @@
+from optparse import Option
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import os, sys, json
 import numpy as np
@@ -417,6 +418,8 @@ def fetchPCA():
         gpcr_given = data['gpcr']
         #print (gprotein_given, gpcr_given)
         uniq_id = data['uniq_id']
+        display_option = int(data['displayPCAOption'])
+        # print (display_option)
 
         #if assay == '':
         assay = '';
@@ -444,57 +447,47 @@ def fetchPCA():
         if assay_given in assayList:
             assay = assay_given
 
-        ### MUT
-        '''
-        if pca_type == 'GPCRome':
-            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+gpcr_given+'.npy', allow_pickle=True)
-        elif pca_type == 'Best PCA':
-            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+gpcr_given+'.npy', allow_pickle=True)
-        else:
-        '''
-        '''
-        Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+gpcr_given+'.npy', allow_pickle=True)
-        #print ('test',Xs_test_pca)
-        x_test = Xs_test_pca[0].tolist()
-        y_test = Xs_test_pca[1].tolist()
-        #print (x_test)
-        #print (y_test)
-        '''
-
-        ## fetch all variants of the given GPCR
-        gpcrName = '_'.join(gpcr_given.split('_')[:-1])
-        #print (gpcrName)
+        gpcrName = '_'.join(gpcr_given.split('_')[:-1]) ## Exclude _WT or _MUT
         variantsToConsider = []; x_test = []; y_test = []; test_names = [];
-        if gpcr_given[:-3] != '_WT':
+
+        if display_option == 1:
+            '''
+            Option 1: Fetch all point mutations of a given GPCR
+            '''            
+            if gpcr_given[:-3] != '_WT':
+                for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
+                    if files.endswith('.npy') and 'layer' in files  and files.split('_')[-1].split('.')[0] != 'WT':
+                        if int(pca_type) == int(files.split('layer')[0]):
+                            if gpcrName == '_'.join(files.split('_')[1:-1]):
+                                variantsToConsider.append(files)
+            '''
+            End of Option 1
+            '''
+        else:
+            '''
+            Option 2: Fetch all input sequences
+            '''
             for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
-                if files.endswith('.npy') and 'layer' in files  and files.split('_')[-1].split('.')[0] != 'WT':
+                if files.endswith('.npy') and 'layer' in files :
                     if int(pca_type) == int(files.split('layer')[0]):
-                        if gpcrName == '_'.join(files.split('_')[1:-1]):
+                        if '_'.join(files.split('_')[1:]).split('.')[0] != gpcrName+'_WT': #Ignore the WT of the selected coz it is cover below
                             variantsToConsider.append(files)
-            
-            for files in variantsToConsider:
-                Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+files, allow_pickle=True)
-                #print ('test',Xs_test_pca)
-                x_test.append(Xs_test_pca[0].tolist())
-                y_test.append(Xs_test_pca[1].tolist())
-                #test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
-                test_names.append('_'.join(files.split('_')[1:-1]) + '/' + files.split('_')[-1].split('.')[0])
-
-
+            '''
+            End of Option2
+            '''
+        
+        for files in variantsToConsider:
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+files, allow_pickle=True)
+            #print ('test',Xs_test_pca)
+            x_test.append(Xs_test_pca[0].tolist())
+            y_test.append(Xs_test_pca[1].tolist())
+            #test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+            test_names.append('_'.join(files.split('_')[1:-1]) + '/' + files.split('_')[-1].split('.')[0])
+        
         ### WT
-        #wt = gpcr_given.split('_')[0] + '_WT'
-        #print ('_'.join(gpcr_given.split('_')[:-1]))
         wt = '_'.join(gpcr_given.split('_')[:-1]) + '_WT'
         wt_name = '_'.join(gpcr_given.split('_')[:-1]) + '/WT'
-        #print (wt_name)
-        #print (test_names)
-        '''
-        if pca_type == 'GPCRome':
-            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
-        elif pca_type == 'Best PCA':
-            Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+gprotein_given+'_'+wt+'.npy', allow_pickle=True)
-        else:
-        '''
+        
         Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+pca_type+'layer_'+wt+'.npy', allow_pickle=True)
         #print (Xs_wt_pca)
         #x_test = Xs_test_pca[:,0].tolist()
@@ -547,6 +540,7 @@ def fetchPCA2():
         gpcr_given = data['gpcr']
         #print (gprotein_given, gpcr_given)
         uniq_id = data['uniq_id']
+        display_option = int(data['displayPCAOption'])
 
         #if assay == '':
         assay = assay_given;
@@ -566,6 +560,7 @@ def fetchPCA2():
         y_test = Xs_test_pca[1].tolist()
         #print (x_test)
         #print (y_test)
+        '''
         '''
         ## fetch all variants of the given GPCR
         gpcrName = '_'.join(gpcr_given.split('_')[:-1])
@@ -592,6 +587,48 @@ def fetchPCA2():
         #print ('_'.join(gpcr_given.split('_')[:-1]))
         wt = '_'.join(gpcr_given.split('_')[:-1]) + '_WT'
         wt_name = '_'.join(gpcr_given.split('_')[:-1]) + '/WT'
+        '''
+        gpcrName = '_'.join(gpcr_given.split('_')[:-1]) ## Exclude _WT or _MUT
+        variantsToConsider = []; x_test = []; y_test = []; test_names = [];
+
+        if display_option == 1:
+            '''
+            Option 1: Fetch all point mutations of a given GPCR
+            '''            
+            if gpcr_given[:-3] != '_WT':
+                for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
+                    if files.endswith('.npy') and 'layer' in files  and files.split('_')[-1].split('.')[0] != 'WT':
+                        if int(pca_type) == int(files.split('layer')[0]):
+                            if gpcrName == '_'.join(files.split('_')[1:-1]):
+                                variantsToConsider.append(files)
+            '''
+            End of Option 1
+            '''
+        else:
+            '''
+            Option 2: Fetch all input sequences
+            '''
+            for files in os.listdir(path+'/static/predictor/output/'+uniq_id+'/PCA/'):
+                if files.endswith('.npy') and 'layer' in files :
+                    if int(pca_type) == int(files.split('layer')[0]):
+                        if '_'.join(files.split('_')[1:]).split('.')[0] != gpcrName+'_WT': #Ignore the WT of the selected coz it is cover below
+                            variantsToConsider.append(files)
+            '''
+            End of Option2
+            '''
+
+        for files in variantsToConsider:
+            Xs_test_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/'+files, allow_pickle=True)
+            #print ('test',Xs_test_pca)
+            x_test.append(Xs_test_pca[0].tolist())
+            y_test.append(Xs_test_pca[1].tolist())
+            #test_names.append(files.split('_')[1]+'_'+files.split('_')[-1].split('.')[0])
+            test_names.append('_'.join(files.split('_')[1:-1]) + '/' + files.split('_')[-1].split('.')[0])
+        
+        ### WT
+        wt = '_'.join(gpcr_given.split('_')[:-1]) + '_WT'
+        wt_name = '_'.join(gpcr_given.split('_')[:-1]) + '/WT'
+        # print (test_names)
         '''
         if pca_type == 'GPCRome':
             Xs_wt_pca = np.load(path+'/static/predictor/output/'+uniq_id+'/PCA/33layer_'+wt+'.npy', allow_pickle=True)
@@ -648,8 +685,10 @@ def fetchPCA2():
         X_other = []
         other = []
         for gpcr, row in zip(gpcr_list, Xs_train_pca):
+            '''
             if 'MC1R' in gpcr:
                 print ('class', gpcr, row[:2])
+            '''
             acc = gpcr.split('|')[1]
             if classes[acc] == 'classA':
                 X_classA.append(row.tolist())
@@ -1059,8 +1098,8 @@ def convertPositionsBW2PDB():
                 if mutation_GPCRDB_position in GPCRDB2BW:
                     mutation_position_label = GPCRDB2BW[mutation_GPCRDB_position]
 
-            if mutation_GPCRDB_position in GPCRDB2PDB:
-                mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]
+                if mutation_GPCRDB_position in GPCRDB2PDB:
+                    mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]
 
         #print (AMpositions)
         #print (SEQ2GPCRDB)

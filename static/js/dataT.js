@@ -68,6 +68,13 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
       //alert(document.getElementById("AssayButton").innerHTML);
       var pca_type = document.getElementById("PCAButton").innerHTML;
       var assay = document.getElementById("AssayButton").innerHTML;
+      var pcaToggle = document.getElementById("flexSwitchVariants");
+      if (pcaToggle.checked == false){
+        var displayPCAOption = '1';
+      }
+      else{
+        var displayPCAOption = '2';
+      }
       var gpcrs = gpcr_list;
       var gpcr = gpcrs[rowIndex];
       var variant = gpcr_list[rowIndex];
@@ -99,10 +106,10 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
             makeAttentionmap(uniq_id, gpcr, gprotein, displayName);
             setDisplayMenu(path_to_fasta, slider1A_value, slider1B_value, uniq_id, gpcr, gprotein, displayName);
             if (assay != 'Class') {
-              makePCA(uniq_id, assay, pca_type, gpcr, gprotein);
+              makePCA(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein);
             }
             else {
-              makePCA2(uniq_id, assay, pca_type, gpcr, gprotein);
+              makePCA2(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein);
             }
           },
           error: function(error){
@@ -130,10 +137,10 @@ function makeDatatable(path_to_json_output, path_to_fasta, uniq_id, gpcr_list, f
         makeAttentionmap(uniq_id, gpcr, gprotein, displayName);
         setDisplayMenu(path_to_fasta, slider1A_value, slider1B_value, uniq_id, gpcr, gprotein, displayName);
         if (assay != 'Class') {
-          makePCA(uniq_id, assay, pca_type, gpcr, gprotein);
+          makePCA(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein);
         }
         else {
-          makePCA2(uniq_id, assay, pca_type, gpcr, gprotein);
+          makePCA2(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein);
         }
       }
       /*

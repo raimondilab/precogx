@@ -342,7 +342,7 @@ function loadIntro() {
                           makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
                           setDisplayMenu({{path_to_fasta|safe}}, slider_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider_value, slider1B_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'TGF', '33', '1', selected_gpcr, selected_gprotein);
                         };
 
                         //Function to update slider B i.e. distance
@@ -387,7 +387,7 @@ function loadIntro() {
                           makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName)
                           setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'TGF', '33', '1', selected_gpcr, selected_gprotein);
 
                         };
 
@@ -465,12 +465,38 @@ function loadIntro() {
                                     data-bs-toggle="dropdown" ;>PCA
                             </button>
                             <ul id="PCAList" class="dropdown-menu"></ul>
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="flexSwitchVariants" onclick="displayPCAButton()">
+                              <label class="form-check-label" for="flexSwitchVariants">Show all inputs</label>
+                            </div>
                         </div>
                         <div id='myDiv2'><!-- Plotly chart will be drawn inside this DIV --></div>
                     </div>
                 </div><!-- end card body-->
             </div> <!-- end card -->
         </div> <!-- end pca -->
+        <script>
+          function displayPCAButton() {
+            var selected_gpcr = $('#selected').data('gpcr');
+            var selected_gprotein = $('#selected').data('gprotein')
+            var pca_type = document.getElementById("PCAButton").innerHTML;
+            var assay = document.getElementById("AssayButton").innerHTML;
+            var pcaToggle = document.getElementById("flexSwitchVariants");
+            var option = null;
+            if (pcaToggle.checked == false){
+              var option = '1';
+            }
+            else{
+              var option = '2';
+            }
+            if (assay.includes('Class')) {
+              makePCA2({{uniq_id|safe}}, assay, pca_type, option, selected_gpcr, selected_gprotein);
+            }
+            else{
+              makePCA({{uniq_id|safe}}, assay, pca_type, option, selected_gpcr, selected_gprotein);
+            }
+          }
+        </script>
 
         <!--Attention Map-->
         <div class="col-xl-6 mb-5"
@@ -541,7 +567,7 @@ function loadIntro() {
                           makeAttentionmap({{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                           setDisplayMenu({{path_to_fasta|safe}}, slider1A_value, slider1B_value, {{uniq_id|safe}}, selected_gpcr, selected_gprotein, displayName);
                           makeSequence(selected_gpcr, {{path_to_fasta|safe}}, selected_gprotein, slider1A_value, slider1B_value, {{uniq_id|safe}}, displayName);
-                          makePCA({{uniq_id|safe}}, 'TGF', '33', selected_gpcr, selected_gprotein);
+                          makePCA({{uniq_id|safe}}, 'TGF', '33', '1', selected_gpcr, selected_gprotein);
                       });
                     </script>
                 </div><!-- end card body-->
@@ -560,7 +586,7 @@ function loadIntro() {
   makeHeatmap(0.0, 0.0, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Sequence');
   makeAttentionmap({{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Sequence')
   setDisplayMenu({{path_to_fasta|safe}}, 0.0, 0.0, {{uniq_id|safe}}, {{first_entry|safe}}, {{first_gprotein|safe}}, 'Sequence');
-  makePCA({{uniq_id|safe}}, 'TGF', '33', {{first_entry|safe}}, {{first_gprotein|safe}});
+  makePCA({{uniq_id|safe}}, 'TGF', '33', '1', {{first_entry|safe}}, {{first_gprotein|safe}});
 
 </script>
 
