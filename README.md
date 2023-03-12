@@ -21,6 +21,7 @@ ___
 4. [Output of the command-line application](#outputPageOfTheCommanLineApplication)
 5. [Legacy version](#legacy)
 6. [Contacts](#contacts)
+7. [Cite](#cite)
 
 ___
 
@@ -195,4 +196,11 @@ Francesco Raimondi: francesco.raimondi@sns.it<br>
 Marin Matic: marin.matic@sns.it<br>
 Gurdeep Singh: gurdeep.singh@bioquant.uni-heidelberg.de
 
-Use [Issues](https://github.com/raimondilab/precogx/issues) to suggest features or report errors/problems.
+### Cite <a name="cite"></a>
+Marin Matic*, Gurdeep Singh*, Francesco Carli, Natalia De Oliveira Rosa, Pasquale Miglionico, Lorenzo Magni, J Silvio Gutkind, Robert B Russell, Asuka Inoue, Francesco Raimondi
+*PRECOGx: exploring GPCR signaling mechanisms with deep protein representations*
+***Nucleic Acids Research*** (2022), https://doi.org/10.1093/nar/gkac426
+
+**equal contribution*
+
+Use [Issues](https://github.com/raimondilab/precogx/issues) to suggest features or report errors.
