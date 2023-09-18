@@ -81,7 +81,18 @@
 <!-- ===============================================-->
 <!--    JavaScripts-->
 <!-- ===============================================-->
-
+<script
+  src="https://js.sentry-cdn.com/0dfd0acd8737051502d17032f1180a3a.min.js"
+  crossorigin="anonymous"
+></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      // Performance Monitoring
+      tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+    });
+  });
+</script>
 <script src=" {{url_for('static', filename='/assets/@popperjs/popper.min.js')}}"></script>
 <script src="{{url_for('static', filename='/assets/bootstrap/bootstrap.min.js')}}"></script>
 <script src="{{url_for('static', filename='/assets/is/is.min.js')}}"></script>
