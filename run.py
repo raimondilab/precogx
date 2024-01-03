@@ -1037,19 +1037,20 @@ def convertPositionsBW2PDB():
 def fetchContactsPDBStructure():
     if request.method == 'POST':
         data = request.get_json(force=True)
-        gprotein_given = data['gprotein']
-        gpcr_given = data['gpcr']
-        cutoff = float(data['cutoff'])
-        distance = float(data['distance'])
-        uniq_id = data['uniq_id']
-        scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
-        ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
-        #print (ordered_pdbs)
-        return jsonify({'try': positions.tolist(),
-                        'ordered_pdbs': ordered_pdbs,
-                        'positions': ','.join(positions.tolist()),
-                        'num_contacts': ','.join(num_contacts),
-                        'pair_positions': ','.join(pair_positions)})
+        if data:
+            gprotein_given = data['gprotein']
+            gpcr_given = data['gpcr']
+            cutoff = float(data['cutoff'])
+            distance = float(data['distance'])
+            uniq_id = data['uniq_id']
+            scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
+            ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
+            #print (ordered_pdbs)
+            return jsonify({'try': positions.tolist(),
+                            'ordered_pdbs': ordered_pdbs,
+                            'positions': ','.join(positions.tolist()),
+                            'num_contacts': ','.join(num_contacts),
+                            'pair_positions': ','.join(pair_positions)})
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
@@ -1115,8 +1116,9 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
 
     #print ('PDBs', dic[gpcr])
     #print ('PDBs', dic[name])
-    return(dic[gpcr])
-    #return None
+    if gpcr in dic.keys():
+        return(dic[gpcr])
+    return None
 
 @app.route('/bestGprotein', methods=['GET', 'POST'])
 def bestGprotein():
