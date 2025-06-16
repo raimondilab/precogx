@@ -67,6 +67,7 @@ def makeMapFASTA(pdbID, dic):
             pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False)
             parser = MMCIFParser()
             ## Check file
+            cif_path = f'data/PDB/pdir/{pdbID}.cif'
             if not os.path.isfile(cif_path):
                 os.system(f'wget https://www.ebi.ac.uk/pdbe/entry-files/{pdbID}.cif -O {cif_path}')
                 
