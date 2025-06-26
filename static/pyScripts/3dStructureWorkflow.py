@@ -147,7 +147,7 @@ def makeMapFASTA(pdbID, dic):
             l += str(pdbID) + '\t' + chainID + '\t' + str(pdbPosition) + '\t' + str(s) + '\t' + bestHIT + '\n'
     open('data/PDB/GPCRDB/'+pdbID+'.txt', 'w').write(l)
 
-    #print (l)
+    print (l)
     #sys.exit()
     return fasta
 
