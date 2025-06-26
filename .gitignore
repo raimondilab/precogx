@@ -1,1 +1,5 @@
 /data
+
+!data/PDB/GPCRDB/*.txt
+!data/PDB/fasta/*.txt
+!data/PDB/pdir/*.txt
