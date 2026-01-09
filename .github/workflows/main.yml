@@ -62,6 +62,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git add -f data/PDB/fasta/*.fasta data/PDB/fasta/*.txt
           git add -f data/PDB/GPCRDB/*.txt data/PDB/pdir/*.cif 
           git add -A
           git commit -m "update data" -a
