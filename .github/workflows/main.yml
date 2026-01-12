@@ -64,6 +64,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          mkdir -p static/pdir
+          cp data/PDB/pdir/*.cif static/pdir/ || :
           git add -f data/PDB/fasta/*.fasta data/PDB/fasta/*.txt
           git add -f data/PDB/GPCRDB/*.txt data/PDB/pdir/*.cif static/pdir/*.cif
           git add -A
