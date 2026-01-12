@@ -1,0 +1,1218 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastp</BlastOutput_program>
+  <BlastOutput_version>BLASTP 2.12.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>data/GPCRDB/blastdb/GPCRDB</BlastOutput_db>
+  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
+  <BlastOutput_query-def>8vy9|R</BlastOutput_query-def>
+  <BlastOutput_query-len>280</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_matrix>BLOSUM62</Parameters_matrix>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_gap-open>11</Parameters_gap-open>
+      <Parameters_gap-extend>1</Parameters_gap-extend>
+      <Parameters_filter>F</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_1</Iteration_query-ID>
+  <Iteration_query-def>8vy9|R</Iteration_query-def>
+  <Iteration_query-len>280</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|376</Hit_id>
+  <Hit_def>sp|Q9NYV8|T2R14_HUMAN Taste receptor type 2 member 14 OS=Homo sapiens OX=9606 GN=TAS2R14 PE=1 SV=1</Hit_def>
+  <Hit_accession>376</Hit_accession>
+  <Hit_len>317</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>524.628</Hsp_bit-score>
+      <Hsp_score>1350</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>280</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>302</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>279</Hsp_identity>
+      <Hsp_positive>280</Hsp_positive>
+      <Hsp_gaps>22</Hsp_gaps>
+      <Hsp_align-len>302</Hsp_align-len>
+      <Hsp_qseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR-------------RFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKIS-----RAHRGVKSVITFFLLYAIFSLSFFISVWTS----ENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRYMF</Hsp_qseq>
+      <Hsp_hseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYRRNKTCSSDSSNFTRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISGDASTKAHRGVKSVITFFLLYAIFSLSFFISVWTSERLEENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRYMF</Hsp_hseq>
+      <Hsp_midline>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR             RFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKIS     +AHRGVKSVITFFLLYAIFSLSFFISVWTS    ENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRYMF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|375</Hit_id>
+  <Hit_def>sp|Q9NYV9|T2R13_HUMAN Taste receptor type 2 member 13 OS=Homo sapiens OX=9606 GN=TAS2R13 PE=1 SV=1</Hit_def>
+  <Hit_accession>375</Hit_accession>
+  <Hit_len>303</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>231.491</Hsp_bit-score>
+      <Hsp_score>589</Hsp_score>
+      <Hsp_evalue>7.20966e-77</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>272</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>295</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>144</Hsp_identity>
+      <Hsp_positive>184</Hsp_positive>
+      <Hsp_gaps>25</Hsp_gaps>
+      <Hsp_align-len>296</Hsp_align-len>
+      <Hsp_qseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYRR-------------FSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAHR------GVKSVITFFLLYAIFSLSFFISVWTSE---NLII--LSQVMGMAYPSCHSCVLILGNKKLRQASLSV</Hsp_qseq>
+      <Hsp_hseq>MESALPSIFTLVIIAEFIIGNLSNGFIVLINCIDWVSKRELSSVDKLLIILAISRIGLIWEILVSWFLALHYLAIFVSGTGLRIMIFSWIVSNHFNLWLATIFSIFYLLKIASFSSPAFLYLKWRVNKVILMILLGTLVFLFLNLIQINMHIKDWLDRYERNTTWNFSMSDFETFSVSVKFTMTMFSLTPFTVAFISFLLLIFSLQKHLQKMQLNYKGHRDPRTKVHTNALKIVISFLLFYASFFLCVLIS-WISELYQNTVIYMLCETIGVFSPSSHSFLLILGNAKLRQAFLLV</Hsp_hseq>
+      <Hsp_midline>M   + SIFT V+I EFIIGNL N FI L+NCIDWV  R++SSVD++L  LAISRI L+W I  SW +++ + A+F +    R++   W V NHF++WLAT    FY LKIA+FS+  FLYLKWRV KV+L++LL T VFLFLN+  IN+HI   ++ Y R             FS  +  T T+F   PFT++   FLLLIFS+ KH +KMQ   K  R  R       +K VI+F L YA F L   IS W SE   N +I  L + +G+  PS HS +LILGN KLRQA L V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|389</Hit_id>
+  <Hit_def>sp|P59540|T2R46_HUMAN Taste receptor type 2 member 46 OS=Homo sapiens OX=9606 GN=TAS2R46 PE=2 SV=2</Hit_def>
+  <Hit_accession>389</Hit_accession>
+  <Hit_len>309</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>201.06</Hsp_bit-score>
+      <Hsp_score>510</Hsp_score>
+      <Hsp_evalue>5.28319e-65</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>278</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>130</Hsp_identity>
+      <Hsp_positive>179</Hsp_positive>
+      <Hsp_gaps>23</Hsp_gaps>
+      <Hsp_align-len>293</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR-------RFSSLIVLTSTVFI----FIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVWTSENL-----IILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRY</Hsp_qseq>
+      <Hsp_hseq>IFSILIVVTFVIGNFANGFIALVNSIEWFKRQKISFADQILTALAVSRVGLLWVLVLNWYATELNPAFNSIEVRITAY-NVWAVINHFSNWLATSLSIFYLLKIANFSNLIFLHLKRRVKSVVLVILLGPLLFLVCHLFVINMNQIIWTKEYEGNMTWKIKLRSAMYLSNTTVTILANLVPFTLTLISFLLLICSLCKHLKKMQLHGKGSQDPSMKVHIKALQTVTSFLLLCAIYFLSIIMSVWSFESLENKPVFMFCEAIAFSYPSTHPFILIWGNKKLKQTFLSVLWHVRY</Hsp_hseq>
+      <Hsp_midline>IF+ +++V F+IGN  N FIALVN I+W K +KIS  D+ILTALA+SR+ L+W++  +W  +   PA  + E       N+W VINHFS WLAT L  FY LKIANFSN IFL+LK RVK VVLV+LL   +FL  ++ +IN++       Y        +  S + L++T        +PFTL+L  FLLLI S+ KH KKMQ   K S+        + +++V +F LL AI+ LS  +SVW+ E+L      +  + +  +YPS H  +LI GNKKL+Q  LSVL  +RY</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|387</Hit_id>
+  <Hit_def>sp|P59537|T2R43_HUMAN Taste receptor type 2 member 43 OS=Homo sapiens OX=9606 GN=TAS2R43 PE=2 SV=2</Hit_def>
+  <Hit_accession>387</Hit_accession>
+  <Hit_len>309</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>197.978</Hsp_bit-score>
+      <Hsp_score>502</Hsp_score>
+      <Hsp_evalue>7.60311e-64</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>278</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>129</Hsp_identity>
+      <Hsp_positive>182</Hsp_positive>
+      <Hsp_gaps>27</Hsp_gaps>
+      <Hsp_align-len>295</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR-------------RFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVWT-----SENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRY</Hsp_qseq>
+      <Hsp_hseq>IFSSLVVVTFVIGNFANGFIALVNSIEWFKRQKISFADQILTALAVSRVGLLWVLLLNWYSTVLNPA-FNSVEVRTTAYNIWAVINHFSNWLATTLSIFYLLKIANFSNFIFLHLKRRVKSVILVMLLGPLLFLACHLFVINMNEIVRTKEFEGNMTWKIKLKSAMYFSNMTV--TMVANLVPFTLTLLSFMLLICSLCKHLKKMQLHGKGSQDPSTKVHIKALQTVISFLLLCAIYFLSIMISVWSFGSLENKPVFMFCKAIRFSYPSIHPFILIWGNKKLKQTFLSVFWQMRY</Hsp_hseq>
+      <Hsp_midline>IF+ +++V F+IGN  N FIALVN I+W K +KIS  D+ILTALA+SR+ L+W++  +W  +V  PA F + ++     NIW VINHFS WLAT L  FY LKIANFSN IFL+LK RVK V+LV+LL   +FL  ++ +IN++       +               FS++ V  + V   +PFTL+L  F+LLI S+ KH KKMQ   K S+        + +++VI+F LL AI+ LS  ISVW+     ++ + +  + +  +YPS H  +LI GNKKL+Q  LSV   +RY</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|380</Hit_id>
+  <Hit_def>sp|P59541|T2R30_HUMAN Taste receptor type 2 member 30 OS=Homo sapiens OX=9606 GN=TAS2R30 PE=2 SV=3</Hit_def>
+  <Hit_accession>380</Hit_accession>
+  <Hit_len>319</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>195.667</Hsp_bit-score>
+      <Hsp_score>496</Hsp_score>
+      <Hsp_evalue>1.07007e-62</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>278</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>129</Hsp_identity>
+      <Hsp_positive>175</Hsp_positive>
+      <Hsp_gaps>25</Hsp_gaps>
+      <Hsp_align-len>294</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR------------RFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVW-----TSENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRY</Hsp_qseq>
+      <Hsp_hseq>IFSILIVVIFVIGNFANGFIALVNSIEWVKRQKISFVDQILTALAVSRVGLLWVLLLHWYATQLNPAFYSVEVRITAY-NVWAVTNHFSSWLATSLSMFYLLRIANFSNLIFLRIKRRVKSVVLVILLGPLLFLVCHLFVINMDETVWTKEYEGNVTWKIKLRSAMYHSNMTLT-MLANFVPLTLTLISFLLLICSLCKHLKKMQLHGKGSQDPSTKVHIKALQTVTSFLLLCAIYFLSMIISVCNFGRLEKQPVFMFCQAIIFSYPSTHPFILILGNKKLKQIFLSVLRHVRY</Hsp_hseq>
+      <Hsp_midline>IF+ +++V F+IGN  N FIALVN I+WVK +KIS VD+ILTALA+SR+ L+W++   W  +   PA ++ E       N+W V NHFS WLAT L  FY L+IANFSN IFL +K RVK VVLV+LL   +FL  ++ +IN+        Y              + S + LT  +  F+P TL+L  FLLLI S+ KH KKMQ   K S+        + +++V +F LL AI+ LS  ISV        + + +  Q +  +YPS H  +LILGNKKL+Q  LSVL  +RY</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|388</Hit_id>
+  <Hit_def>sp|P59539|T2R45_HUMAN Taste receptor type 2 member 45 OS=Homo sapiens OX=9606 GN=TAS2R45 PE=2 SV=1</Hit_def>
+  <Hit_accession>388</Hit_accession>
+  <Hit_len>299</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>192.971</Hsp_bit-score>
+      <Hsp_score>489</Hsp_score>
+      <Hsp_evalue>5.55149e-62</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>278</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>128</Hsp_identity>
+      <Hsp_positive>178</Hsp_positive>
+      <Hsp_gaps>23</Hsp_gaps>
+      <Hsp_align-len>293</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGY----------RRFSSLIVLTSTVFI-FIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVWTSENL-----IILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRY</Hsp_qseq>
+      <Hsp_hseq>IFSILVVVTFVIGNFANGFIALVNSTEWVKRQKISFADQIVTALAVSRVGLLWVLLLNWYSTVLNPA-FCSVELRTTAYNIWAVTGHFSNWPATSLSIFYLLKIANFSNLIFLRLKRRVKSVILVVLLGPLLFLACHLFVVNMNQIVWTKEYEGNMTWKIKLRRAMYLSDTTVTMLANLVPFTVTLISFLLLVCSLCKHLKKMQLHGKGSQDPSTKVHIKVLQTVISFFLLRAIYFVSVIISVWSFKNLENKPVFMFCQAIGFSCSSAHPFILIWGNKKLKQTYLSVLWQMRY</Hsp_hseq>
+      <Hsp_midline>IF+ +++V F+IGN  N FIALVN  +WVK +KIS  D+I+TALA+SR+ L+W++  +W  +V  PA F + ++     NIW V  HFS W AT L  FY LKIANFSN IFL LK RVK V+LV+LL   +FL  ++ ++N++       Y          RR   L   T T+    +PFT++L  FLLL+ S+ KH KKMQ   K S+        + +++VI+FFLL AI+ +S  ISVW+ +NL      +  Q +G +  S H  +LI GNKKL+Q  LSVL  +RY</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|378</Hit_id>
+  <Hit_def>sp|P59542|T2R19_HUMAN Taste receptor type 2 member 19 OS=Homo sapiens OX=9606 GN=TAS2R19 PE=1 SV=1</Hit_def>
+  <Hit_accession>378</Hit_accession>
+  <Hit_len>299</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>192.586</Hsp_bit-score>
+      <Hsp_score>488</Hsp_score>
+      <Hsp_evalue>8.36522e-62</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>273</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>294</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>126</Hsp_identity>
+      <Hsp_positive>174</Hsp_positive>
+      <Hsp_gaps>27</Hsp_gaps>
+      <Hsp_align-len>290</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR-------------RFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVWT-----SENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVL</Hsp_qseq>
+      <Hsp_hseq>ISSILVVFAFVLGNVANGFIALVNVIDWVNTRKISSAEQILTALVVSRIGLLWVMLFLWYATVFNSALYGLEVRI-VASNAWAVTNHFSMWLAASLSIFCLLKIANFSNLISLHLKKRIKSVVLVILLGPLVFLICNLAVITMDERVWTKEYEGNVTWKIKLRNAIHLSSLTV--TTLANLIPFTLSLICFLLLICSLCKHLKKMRLHSKGSQDPSTKVHIKALQTVTSFLMLFAIYFLCIITSTWNLRTQQSKLVLLLCQTVAIMYPSFHSFILIMGSRKLKQTFLSVL</Hsp_hseq>
+      <Hsp_midline>I + +++  F++GN+ N FIALVN IDWV  RKISS ++ILTAL +SRI L+W++   W  +VF  AL+  E    + +N W V NHFS+WLA  L  F  LKIANFSN I L+LK R+K VVLV+LL   VFL  N+A+I +        Y                SSL V  +T+   IPFTLSL  FLLLI S+ KH KKM+   K S+        + +++V +F +L+AI+ L    S W      S+ +++L Q + + YPS HS +LI+G++KL+Q  LSVL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|390</Hit_id>
+  <Hit_def>sp|P59544|T2R50_HUMAN Taste receptor type 2 member 50 OS=Homo sapiens OX=9606 GN=TAS2R50 PE=2 SV=2</Hit_def>
+  <Hit_accession>390</Hit_accession>
+  <Hit_len>299</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>189.119</Hsp_bit-score>
+      <Hsp_score>479</Hsp_score>
+      <Hsp_evalue>1.86855e-60</Hsp_evalue>
+      <Hsp_query-from>9</Hsp_query-from>
+      <Hsp_query-to>277</Hsp_query-to>
+      <Hsp_hit-from>9</Hsp_hit-from>
+      <Hsp_hit-to>298</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>123</Hsp_identity>
+      <Hsp_positive>183</Hsp_positive>
+      <Hsp_gaps>25</Hsp_gaps>
+      <Hsp_align-len>292</Hsp_align-len>
+      <Hsp_qseq>FTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLT-NIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINI-------HINASINGYRRFSSLIVLT----STVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKIS-----RAH-RGVKSVITFFLLYAIFSLSFFISVWTSENL-----IILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLR</Hsp_qseq>
+      <Hsp_hseq>FSILIMVLFVLGNFANGFIALVNFIDWVKRKKISSADQILTALAVSRIGLLWALLLNWYLTVLNPAFYSVE--LRITSYNAWVVTNHFSMWLAANLSIFYLLKIANFSNLLFLHLKRRVRSVILVILLGTLIFLVCHLLVANMDESMWAEEYEGNMTGKMKLRNTVHLSYLTVTTLWSFIPFTLSLISFLMLICSLCKHLKKMQLHGEGSQDLSTKVHIKALQTLISFLLLCAIFFLFLIVSVWSPRRLRNDPVVMVSKAVGNIYLAFDSFILIWRTKKLKHTFLLILCQIR</Hsp_hseq>
+      <Hsp_midline>F+ +++V F++GN  N FIALVN IDWVK +KISS D+ILTALA+SRI L+W +  +W ++V  PA ++ E   R+ + N W V NHFS+WLA  L  FY LKIANFSN +FL+LK RV+ V+LV+LL T +FL  ++ + N+           ++ G  +  + + L+    +T++ FIPFTLSL  FL+LI S+ KH KKMQ   + S     + H + ++++I+F LL AIF L   +SVW+   L     +++S+ +G  Y +  S +LI   KKL+   L +L  +R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|379</Hit_id>
+  <Hit_def>sp|P59543|T2R20_HUMAN Taste receptor type 2 member 20 OS=Homo sapiens OX=9606 GN=TAS2R20 PE=2 SV=2</Hit_def>
+  <Hit_accession>379</Hit_accession>
+  <Hit_len>309</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>183.726</Hsp_bit-score>
+      <Hsp_score>465</Hsp_score>
+      <Hsp_evalue>3.42646e-58</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>273</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>294</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>120</Hsp_identity>
+      <Hsp_positive>171</Hsp_positive>
+      <Hsp_gaps>27</Hsp_gaps>
+      <Hsp_align-len>290</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINA-------------SINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVWT-----SENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVL</Hsp_qseq>
+      <Hsp_hseq>VFSILVVVAFILGNFANGFIALINFIAWVKRQKISSADQIIAALAVSRVGLLWVILLHWYSTVLNPT-SSNLKVIIFISNAWAVTNHFSIWLATSLSIFYLLKIVNFSRLIFHHLKRKAKSVVLVIVLGSLFFLVCHLVMKHTYINVWTEECEGNVTWKIKLRNAMHLSNLTV--AMLANLIPFTLTLISFLLLIYSLCKHLKKMQLHGKGSQDPSTKIHIKALQTVTSFLILLAIYFLCLIISFWNFKMRPKEIVLMLCQAFGIIYPSFHSFILIWGNKTLKQTFLSVL</Hsp_hseq>
+      <Hsp_midline>+F+ +++V FI+GN  N FIAL+N I WVK +KISS D+I+ ALA+SR+ L+W+I   W  +V  P   +  K+   ++N W V NHFS+WLAT L  FY LKI NFS  IF +LK + K VVLV++L +  FL  ++ + + +IN               +      S+L V  + +   IPFTL+L  FLLLI+S+ KH KKMQ   K S+        + +++V +F +L AI+ L   IS W       E +++L Q  G+ YPS HS +LI GNK L+Q  LSVL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|371</Hit_id>
+  <Hit_def>sp|Q9NYW3|TA2R7_HUMAN Taste receptor type 2 member 7 OS=Homo sapiens OX=9606 GN=TAS2R7 PE=1 SV=1</Hit_def>
+  <Hit_accession>371</Hit_accession>
+  <Hit_len>318</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>183.341</Hsp_bit-score>
+      <Hsp_score>464</Hsp_score>
+      <Hsp_evalue>4.98259e-58</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>273</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>300</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>116</Hsp_identity>
+      <Hsp_positive>175</Hsp_positive>
+      <Hsp_gaps>31</Hsp_gaps>
+      <Hsp_align-len>302</Hsp_align-len>
+      <Hsp_qseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLL---VTSVFLFLNIAL---------------INIHINASINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISR-----AH-RGVKSVITFFLLYAIFSLSFFISVWT-----SENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVL</Hsp_qseq>
+      <Hsp_hseq>MADKVQTTLLFLAVGEFSVGILGNAFIGLVNCMDWVKKRKIASIDLILTSLAISRICLLCVILLDCFILVLYPDVYATGKEMRIIDFFWTLTNHLSIWFATCLSIYYFFKIGNFFHPLFLWMKWRIDRVISWILLGCVVLSVFISLPATENLNADFRFCVKAKRKTNLTWSCRVNKTQHASTKLFL--NLATLLPFCVCLMSFFLLILSLRRHIRRMQLSATGCRDPSTEAHVRALKAVISFLLLFIAYYLSFLIATSSYFMPETELAVIFGESIALIYPSSHSFILILGNNKLRHASLKVI</Hsp_hseq>
+      <Hsp_midline>M   +++   F+ + EF +G LGN+FI LVNC+DWVK RKI+S+D ILT+LAISRI L+ +I     + V +P ++AT K  R++   WT+ NH S+W AT L  +YF KI NF + +FL++KWR+ +V+  +LL   V SVF+ L                    N+  +  +N  +  S+ + L   +   +PF + L  F LLI S+ +H ++MQ +    R     AH R +K+VI+F LL+  + LSF I+  +     +E  +I  + + + YPS HS +LILGN KLR ASL V+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>11</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|381</Hit_id>
+  <Hit_def>sp|P59538|T2R31_HUMAN Taste receptor type 2 member 31 OS=Homo sapiens OX=9606 GN=TAS2R31 PE=2 SV=2</Hit_def>
+  <Hit_accession>381</Hit_accession>
+  <Hit_len>309</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>171.4</Hsp_bit-score>
+      <Hsp_score>433</Hsp_score>
+      <Hsp_evalue>1.92413e-53</Hsp_evalue>
+      <Hsp_query-from>19</Hsp_query-from>
+      <Hsp_query-to>278</Hsp_query-to>
+      <Hsp_hit-from>19</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>124</Hsp_identity>
+      <Hsp_positive>171</Hsp_positive>
+      <Hsp_gaps>23</Hsp_gaps>
+      <Hsp_align-len>282</Hsp_align-len>
+      <Hsp_qseq>IGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYR-------RFSSLIVLT----STVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLSFFISVWT-----SENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLRY</Hsp_qseq>
+      <Hsp_hseq>IGNFANGFIALVNSIERVKRQKISFADQILTALAVSRVGLLWVLLLNWYSTVFNPAFYSVE-VRTTAYNVWAVTGHFSNWLATSLSIFYLLKIANFSNLIFLHLKRRVKSVILVMLLGPLLFLACQLFVINMKEIVRTKEYEGNLTWKIKLRSAVYLSDATVTTLGNLVPFTLTLLCFLLLICSLCKHLKKMQLHGKGSQDPSTKVHIKALQTVIFFLLLCAVYFLSIMISVWSFGSLENKPVFMFCKAIRFSYPSIHPFILIWGNKKLKQTFLSVLRQVRY</Hsp_hseq>
+      <Hsp_midline>IGN  N FIALVN I+ VK +KIS  D+ILTALA+SR+ L+W++  +W  +VF PA ++ E +     N+W V  HFS WLAT L  FY LKIANFSN IFL+LK RVK V+LV+LL   +FL   + +IN+        Y        +  S + L+    +T+   +PFTL+L  FLLLI S+ KH KKMQ   K S+        + +++VI F LL A++ LS  ISVW+     ++ + +  + +  +YPS H  +LI GNKKL+Q  LSVL  +RY</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>12</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|374</Hit_id>
+  <Hit_def>sp|Q9NYW0|T2R10_HUMAN Taste receptor type 2 member 10 OS=Homo sapiens OX=9606 GN=TAS2R10 PE=1 SV=3</Hit_def>
+  <Hit_accession>374</Hit_accession>
+  <Hit_len>307</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>164.081</Hsp_bit-score>
+      <Hsp_score>414</Hsp_score>
+      <Hsp_evalue>1.10636e-50</Hsp_evalue>
+      <Hsp_query-from>4</Hsp_query-from>
+      <Hsp_query-to>277</Hsp_query-to>
+      <Hsp_hit-from>4</Hsp_hit-from>
+      <Hsp_hit-to>296</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>121</Hsp_identity>
+      <Hsp_positive>176</Hsp_positive>
+      <Hsp_gaps>29</Hsp_gaps>
+      <Hsp_align-len>298</Hsp_align-len>
+      <Hsp_qseq>VIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKV---VLVLLLVTSVFLFLNIA-LINIHINA-----SINGYRR--FSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTV-----KISRAH-RGVKSVITFFLLYAIF--SLSFFISVWT-SENLIILSQVMGMA----YPSCHSCVLILGNKKLRQASLSVLLWLR</Hsp_qseq>
+      <Hsp_hseq>VVEGIFIFVVVSESVFGVLGNGFIGLVNCIDCAK-NKLSTIGFILTGLAISRIFLIWIIITDGFIQIFSPNIYASGNLIEYISYFWVIGNQSSMWFATSLSIFYFLKIANFSNYIFLWLKSRTNMVLPFMIVFLLISSLLNFAYIAKILNDYKTKNDTVWDLNMYKSEYFIKQILLNLGVIFF--FTLSLITCIFLIISLWRHNRQMQSNVTGLRDSNTEAHVKAMKVLISFIILFILYFIGMAIEISCFTVRENKLLL--MFGMTTTAIYPWGHSFILILGNSKLKQASLRVLQQLK</Hsp_hseq>
+      <Hsp_midline>V++ IF FV++ E + G LGN FI LVNCID  K  K+S++  ILT LAISRI L+W+I     + +F P ++A+  +   ++  W + N  S+W AT L  FYFLKIANFSN IFL+LK R   V   ++V LL++S+  F  IA ++N +         +N Y+   F   I+L   V  F  FTLSL   + LI S+W+H ++MQ  V       + AH + +K +I+F +L+ ++   ++  IS +T  EN ++L  + GM     YP  HS +LILGN KL+QASL VL  L+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>13</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|386</Hit_id>
+  <Hit_def>sp|Q7RTR8|T2R42_HUMAN Taste receptor type 2 member 42 OS=Homo sapiens OX=9606 GN=TAS2R42 PE=2 SV=1</Hit_def>
+  <Hit_accession>386</Hit_accession>
+  <Hit_len>314</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>132.88</Hsp_bit-score>
+      <Hsp_score>333</Hsp_score>
+      <Hsp_evalue>1.35093e-38</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>277</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>303</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>111</Hsp_identity>
+      <Hsp_positive>177</Hsp_positive>
+      <Hsp_gaps>38</Hsp_gaps>
+      <Hsp_align-len>309</Hsp_align-len>
+      <Hsp_qseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRI-SLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLL-----------LVTSVFLFLNIALIN-----IHINASINGYRRFS---SLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISR-----AH-RGVKSVITFFLLYAI--FSLS----FFISVWTSENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLR</Hsp_qseq>
+      <Hsp_hseq>MATELDKIFLILAIAEFIISMLGNVFIGLVNCSEGIKNQKVFSADFILTCLAISTIGQLLVILFDSFLVGLA-SHLYTTYRLGKTVIMLWHMTNHLTTWLATCLSIFYFFKIAHFPHSLFLWLRWRMNGMIVMLLILSLFLLIFDSLVLEIFIDISLNIIDKSNLTLYLDESKTLYDKLSILKTLLSLTS----FIPFSLFLTSLLFLFLSLVRHTRNLKLSSLGSRDSSTEAHRRAMKMVMSFLFLFIVHFFSLQVANGIFFMLWNNKYIKFVMLALN-AFPSCHSFILILGNSKLRQTAVRLLWHLR</Hsp_hseq>
+      <Hsp_midline>M   +  IF  + I EFII  LGN FI LVNC + +K +K+ S D ILT LAIS I  L+ ++F S+ V +    L+ T ++ + +  +W + NH + WLAT L  FYF KIA+F +S+FL+L+WR+  ++++LL           LV  +F+ +++ +I+     ++++ S   Y + S   +L+ LTS    FIPF+L L   L L  S+ +H + ++ +   SR     AH R +K V++F  L+ +  FSL      F  +W ++ +  +   +  A+PSCHS +LILGN KLRQ ++ +L  LR</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>14</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|372</Hit_id>
+  <Hit_def>sp|Q9NYW2|TA2R8_HUMAN Taste receptor type 2 member 8 OS=Homo sapiens OX=9606 GN=TAS2R8 PE=1 SV=1</Hit_def>
+  <Hit_accession>372</Hit_accession>
+  <Hit_len>309</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>129.413</Hsp_bit-score>
+      <Hsp_score>324</Hsp_score>
+      <Hsp_evalue>2.33522e-37</Hsp_evalue>
+      <Hsp_query-from>6</Hsp_query-from>
+      <Hsp_query-to>268</Hsp_query-to>
+      <Hsp_hit-from>6</Hsp_hit-from>
+      <Hsp_hit-to>295</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>95</Hsp_identity>
+      <Hsp_positive>157</Hsp_positive>
+      <Hsp_gaps>27</Hsp_gaps>
+      <Hsp_align-len>290</Hsp_align-len>
+      <Hsp_qseq>KSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLL---VTSVFLFLNIALI---NIHINASINGYRRFSSLIVLTS----------TVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAH------RGVKSVITFFLLYAIFSLS----FFISVWTSENLII-LSQVMGMAYPSCHSCVLILGNKKLRQA</Hsp_qseq>
+      <Hsp_hseq>DNIFIILITGEFILGILGNGYIALVNWIDWIKKKKISTVDYILTNLVIARICLISVMVVNGIVIVLNPDVYTKNKQQIVIFTFWTFANYLNMWITTCLNVFYFLKIASSSHPLFLWLKWKIDMVVHWILLGCFAISLLVSLIAAIVLSCDYRFHAIAKHKRNITEMFHVSKIPYFEPLTLFNLFAIVPFIVSLISFFLLVRSLWRHTKQIKLYATGSRDPSTEVHVRAIKTMTSFIFFFFLYYISSILMTFSYLMTKYKLAVEFGEIAAILYPLGHSLILIVLNNKLRQT</Hsp_hseq>
+      <Hsp_midline> +IF  ++  EFI+G LGN +IALVN IDW+K +KIS+VD ILT L I+RI L+ ++  +  V V  P ++   K   ++   WT  N+ ++W+ T L  FYFLKIA+ S+ +FL+LKW++  VV  +LL     S+ + L  A++   +   +A     R  + +  ++            +F  +PF +SL  F LL+ S+W+H K+++     SR        R +K++ +F   + ++ +S     F  + T   L +   ++  + YP  HS +LI+ N KLRQ </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>15</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|373</Hit_id>
+  <Hit_def>sp|Q9NYW1|TA2R9_HUMAN Taste receptor type 2 member 9 OS=Homo sapiens OX=9606 GN=TAS2R9 PE=1 SV=1</Hit_def>
+  <Hit_accession>373</Hit_accession>
+  <Hit_len>312</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>124.02</Hsp_bit-score>
+      <Hsp_score>310</Hsp_score>
+      <Hsp_evalue>2.88893e-35</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>277</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>301</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>105</Hsp_identity>
+      <Hsp_positive>164</Hsp_positive>
+      <Hsp_gaps>36</Hsp_gaps>
+      <Hsp_align-len>307</Hsp_align-len>
+      <Hsp_qseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASI-----------NGYRRF------SSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQ-HTVKI----SRAH-RGVKSVITFFLLYAIFSLSFFISVWTSENLI-------ILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLR</Hsp_qseq>
+      <Hsp_hseq>MPSAIEAIYIILIAGELTIGIWGNGFIVLVNCIDWLKRRDISLIDIILISLAISRICLLCVISLDGFFMLLFPGTYGNSVLVSIVNVVWTFANNSSLWFTSCLSIFYLLKIANISHPFFFWLKLKINKVMLAILLGS----FLISLIISVPKNDDMWYHLFKVSHEENITWKFKVSKIPGTFKQLTLNLGVMVPFILCLISFFLLLFSLVRHTKQIRLHATGFRDPSTEAHMRAIKAVIIFLLLLIVYYPVFL--VMTSSALIPQGKLVLMIGDIVTVIFPSSHSFILIMGNSKLREAFLKMLRFVK</Hsp_hseq>
+      <Hsp_midline>M   I++I+  ++  E  IG  GN FI LVNCIDW+K R IS +D IL +LAISRI L+ +I       + FP  +    +  ++  +WT  N+ S+W  + L  FY LKIAN S+  F +LK ++ KV+L +LL +    FL   +I++  N  +           N   +F       +   LT  + + +PF L L  F LL+FS+ +H K+++ H        + AH R +K+VI F LL  ++   F   V TS  LI       ++  ++ + +PS HS +LI+GN KLR+A L +L +++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>16</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|368</Hit_id>
+  <Hit_def>sp|Q9NYW6|TA2R3_HUMAN Taste receptor type 2 member 3 OS=Homo sapiens OX=9606 GN=TAS2R3 PE=2 SV=3</Hit_def>
+  <Hit_accession>368</Hit_accession>
+  <Hit_len>316</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>107.842</Hsp_bit-score>
+      <Hsp_score>268</Hsp_score>
+      <Hsp_evalue>3.03665e-29</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>268</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>294</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>102</Hsp_identity>
+      <Hsp_positive>151</Hsp_positive>
+      <Hsp_gaps>30</Hsp_gaps>
+      <Hsp_align-len>296</Hsp_align-len>
+      <Hsp_qseq>MGGVIKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIA-LINI--------HINASINGYRRFSS------LIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISR-----AHRGVKSVI--------TFFLLYAIFSLSFFISVWTSENLIILSQVMGMAYPSCHSCVLILGNKKLRQA</Hsp_qseq>
+      <Hsp_hseq>MMGLTEGVFLILSGTQFTLGILVNCFIELVNGSSWFKTKRMSLSDFIITTLALLRIILLCIILTDSFLIEFSPNTHDSGIIMQIIDVSWTFTNHLSIWLATCLGVLYCLKIASFSHPTFLWLKWRVSRVMVWMLLGALLLSCGSTASLINEFKLYSVFRGIEATRNVTEHFRKKRSEYYLIHVLGTLWYLPPLIVSLASYSLLIFSLGRHTRQMLQNGTSSRDPTTEAHKRAIRIILSFFFLFLLYFLAFLIASFGNFLPKTKMAKMI--GEVMTMFYPAGHSFILILGNSKLKQT</Hsp_hseq>
+      <Hsp_midline>M G+ + +F  +   +F +G L N FI LVN   W K +++S  D I+T LA+ RI L+ +I     +  F P    +  + +++   WT  NH S+WLAT LG  Y LKIA+FS+  FL+LKWRV +V++ +LL   +    + A LIN          I A+ N    F        LI +  T++   P  +SLA + LLIFS+ +H ++M      SR     AH+    +I         +FL + I S   F+       +I   +VM M YP+ HS +LILGN KL+Q </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>17</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|383</Hit_id>
+  <Hit_def>sp|P59534|T2R39_HUMAN Taste receptor type 2 member 39 OS=Homo sapiens OX=9606 GN=TAS2R39 PE=2 SV=3</Hit_def>
+  <Hit_accession>383</Hit_accession>
+  <Hit_len>338</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>97.8265</Hsp_bit-score>
+      <Hsp_score>242</Hsp_score>
+      <Hsp_evalue>2.50582e-25</Hsp_evalue>
+      <Hsp_query-from>12</Hsp_query-from>
+      <Hsp_query-to>268</Hsp_query-to>
+      <Hsp_hit-from>40</Hsp_hit-from>
+      <Hsp_hit-to>321</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>87</Hsp_identity>
+      <Hsp_positive>146</Hsp_positive>
+      <Hsp_gaps>37</Hsp_gaps>
+      <Hsp_align-len>288</Hsp_align-len>
+      <Hsp_qseq>VLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIAL--INI---------HINASINGYRRFSSLIVLTSTVFIF-----IPFTLSLAMFLLLIFSMWKHRKKMQHTVKIS-----RAHRGVKSVITFFLLYAIF-SLSFFI---------SVWTSENLIILSQVMGMAYPSCHSCVLILGNKKLRQA</Hsp_qseq>
+      <Hsp_hseq>VLLAEYLIGIIANGFIMAIHAAEWVQNKAVSTSGRILVFLSVSRIALQSLMMLEITISSTSLSFYSEDAVYYAFKISFIFLNFCSLWFAAWLSFFYFVKIANFSYPLFLKLRWRITGLIPWLLWL-SVFISFSHSMFCINICTVYCNNSFPIHSSNSTKKTYLSEINVVGLAFFFNLGIVTPLIMFILTATLLILSLKRHTLHMGSNATGSNDPSMEAHMGAIKAISYFLILYIFNAVALFIYLSNMFDINSLWNN-----LCQIIMAAYPASHSILLIQDNPGLRRA</Hsp_hseq>
+      <Hsp_midline>VL+ E++IG + N FI  ++  +WV+ + +S+  RIL  L++SRI+L  L+     +S    + ++ + ++      +  +N  S+W A  L  FYF+KIANFS  +FL L+WR+  ++  LL + SVF+  + ++  INI          I++S +  + + S I +    F F      P  + +    LLI S+ +H   M      S      AH G    I++FL+  IF +++ FI         S+W +     L Q++  AYP+ HS +LI  N  LR+A</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>18</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|382</Hit_id>
+  <Hit_def>sp|P59533|T2R38_HUMAN Taste receptor type 2 member 38 OS=Homo sapiens OX=9606 GN=TAS2R38 PE=2 SV=3</Hit_def>
+  <Hit_accession>382</Hit_accession>
+  <Hit_len>333</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>93.5893</Hsp_bit-score>
+      <Hsp_score>231</Hsp_score>
+      <Hsp_evalue>9.06419e-24</Hsp_evalue>
+      <Hsp_query-from>5</Hsp_query-from>
+      <Hsp_query-to>277</Hsp_query-to>
+      <Hsp_hit-from>14</Hsp_hit-from>
+      <Hsp_hit-to>316</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>89</Hsp_identity>
+      <Hsp_positive>152</Hsp_positive>
+      <Hsp_gaps>30</Hsp_gaps>
+      <Hsp_align-len>303</Hsp_align-len>
+      <Hsp_qseq>IKSIFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFAT-EKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYL-KWRVKKVVLVLL---------LVTSVFLFLNIALINIHINASINGYRRFS----SLIVLTSTVFIFI----PFTLSLAMFLLLIFSMWKHRKKMQHTVKISR-----AH-RGVKSVITFFLLYAIFSLSFFISV-----WTSENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLLWLR</Hsp_qseq>
+      <Hsp_hseq>VRSTFLFISVLEFAVGFLTNAFVFLVNFWDVVKRQALSNSDCVLLCLSISRLFLHGLLFLSAIQLTHFQKLSEPLNHSYQAIIMLWMIANQANLWLAACLSLLYCSKLIRFSHTFLICLASWVSRKISQMLLGIILCSCICTVLCVWCFFSRPHFTVTTVLFMNNNTRLNWQIKDLNLFYSFLFCYLWSVPPFLLFLVSSGMLTVSLGRHMRTMKVYTRNSRDPSLEAHIKALKSLVSFFCFFVISSCAAFISVPLLILWRDKIGVMVCVGIMAACPSGHAAILISGNAKLRRAVMTILLWAQ</Hsp_hseq>
+      <Hsp_midline>++S F F+ ++EF +G L N+F+ LVN  D VK + +S+ D +L  L+ISR+ L  L+F S      F  L       ++ +  +W + N  ++WLA  L   Y  K+  FS++  + L  W  +K+  +LL          V  V+ F +     +     +N   R +     L +  S +F ++    PF L L    +L  S+ +H + M+   + SR     AH + +KS+++FF  + I S + FISV     W  +  +++   +  A PS H+ +LI GN KLR+A +++LLW +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>19</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|367</Hit_id>
+  <Hit_def>sp|Q9NYW7|TA2R1_HUMAN Taste receptor type 2 member 1 OS=Homo sapiens OX=9606 GN=TAS2R1 PE=1 SV=1</Hit_def>
+  <Hit_accession>367</Hit_accession>
+  <Hit_len>299</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>91.6633</Hsp_bit-score>
+      <Hsp_score>226</Hsp_score>
+      <Hsp_evalue>2.74723e-23</Hsp_evalue>
+      <Hsp_query-from>8</Hsp_query-from>
+      <Hsp_query-to>274</Hsp_query-to>
+      <Hsp_hit-from>8</Hsp_hit-from>
+      <Hsp_hit-to>293</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>94</Hsp_identity>
+      <Hsp_positive>153</Hsp_positive>
+      <Hsp_gaps>39</Hsp_gaps>
+      <Hsp_align-len>296</Hsp_align-len>
+      <Hsp_qseq>IFTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGY------RRFSSL-------IVLTSTVFIFI-PFTLSLAMF----LLLIFSMWKHRKKMQHTVKISRAHRGVKSVITFFLLYAIFSLSFF----ISVWTS------ENLIILSQVMGMA-YPSCHSCVLILGNKKLRQASLSVLL</Hsp_qseq>
+      <Hsp_hseq>IYFLLAVIQFLLGIFTNGIIVVVNGIDLIKHRKMAPLDLLLSCLAVSRIFLQLFIFYVNVIVIFFIEFI----MCSANCAILLFINELELWLATWLGVFYCAKVASVRHPLFIWLKMRISKLVPWMILGS----LLYVSMICV-FHSKYAGFMVPYFLRKFFSQNATIQKEDTLAIQIFSFVAEFSVPLLIFLFAVLLLIFSLGRHTRQMRNTVAGSRV-PGRGAPISALLSILSFLILYFSHCMIKVFLSSLKFHIRRFIFLFFILVIGIYPSGHSLILILGNPKLKQNAKKFLL</Hsp_hseq>
+      <Hsp_midline>I+  + +++F++G   N  I +VN ID +K RK++ +D +L+ LA+SRI L   IF    + +FF        M      I   IN   +WLAT LG FY  K+A+  + +F++LK R+ K+V  ++L +     L +++I +  ++   G+      R+F S          L   +F F+  F++ L +F    LLLIFS+ +H ++M++TV  SR   G  + I+  L    F + +F    I V+ S         I L  ++ +  YPS HS +LILGN KL+Q +   LL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>20</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|370</Hit_id>
+  <Hit_def>sp|Q9NYW4|TA2R5_HUMAN Taste receptor type 2 member 5 OS=Homo sapiens OX=9606 GN=TAS2R5 PE=1 SV=1</Hit_def>
+  <Hit_accession>370</Hit_accession>
+  <Hit_len>299</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>87.4261</Hsp_bit-score>
+      <Hsp_score>215</Hsp_score>
+      <Hsp_evalue>8.34395e-22</Hsp_evalue>
+      <Hsp_query-from>12</Hsp_query-from>
+      <Hsp_query-to>273</Hsp_query-to>
+      <Hsp_hit-from>12</Hsp_hit-from>
+      <Hsp_hit-to>287</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>82</Hsp_identity>
+      <Hsp_positive>141</Hsp_positive>
+      <Hsp_gaps>24</Hsp_gaps>
+      <Hsp_align-len>281</Hsp_align-len>
+      <Hsp_qseq>VLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLL---VTSVFLFLNIALINIHI---NASIN-GYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQ-HTVK----ISRAH-RGVKSVITFFLLYAIFSLSFFISVWTSENL------IILSQVMGMAYPSCHSCVLILGNKKLRQASLSVL</Hsp_qseq>
+      <Hsp_hseq>VAVVEFLIGLIGNGSLVVWSFREWIRKFNWSSYNLIILGLAGCRFLLQWLIILD--LSLF--PLFQSSRWLRYLSIFWVLVSQASLWFATFLSVFYCKKITTFDRPAYLWLKQRAYNLSLWCLLGYFIINLLLTVQIGLTFYHPPQGNSSIRYPFESWQYLYAFQLNSGSYLPLVVFLVSSGMLIVSLYTHHKKMKVHSAGRRDVRAKAHITALKSLGCFLLLHLVYIMASPFSI-TSKTYPPDLTSVFIWETLMAAYPSLHSLILIMGIPRVKQTCQKIL</Hsp_hseq>
+      <Hsp_midline>V +VEF+IG +GN  + + +  +W++    SS + I+  LA  R  L WLI     +S+F   LF + +  R L+  W +++  S+W AT L  FY  KI  F    +L+LK R   + L  LL   + ++ L + I L   H    N+SI   +  +  L         ++P  + L    +LI S++ H KKM+ H+       ++AH   +KS+  F LL+ ++ ++   S+ TS+        + + + +  AYPS HS +LI+G  +++Q    +L</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>21</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|384</Hit_id>
+  <Hit_def>sp|P59535|T2R40_HUMAN Taste receptor type 2 member 40 OS=Homo sapiens OX=9606 GN=TAS2R40 PE=2 SV=1</Hit_def>
+  <Hit_accession>384</Hit_accession>
+  <Hit_len>323</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>86.6557</Hsp_bit-score>
+      <Hsp_score>213</Hsp_score>
+      <Hsp_evalue>2.24371e-21</Hsp_evalue>
+      <Hsp_query-from>10</Hsp_query-from>
+      <Hsp_query-to>268</Hsp_query-to>
+      <Hsp_hit-from>19</Hsp_hit-from>
+      <Hsp_hit-to>306</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>86</Hsp_identity>
+      <Hsp_positive>154</Hsp_positive>
+      <Hsp_gaps>41</Hsp_gaps>
+      <Hsp_align-len>294</Hsp_align-len>
+      <Hsp_qseq>TFVLIV---EFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISL-VWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVL-------LLVTSVFLF-LNIALINIHI------NASINGYRRFSSLIVLTSTVF-----IFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISR-----AHRGVKSVITFFLLYAIF-SLSFFIS------VWTSENLIILSQVMGMAYPSCHSCVLILGNKKLRQA</Hsp_qseq>
+      <Hsp_hseq>TFTLVVSGIECITGILGSGFITAIYGAEWARGKTLPTGDRIMLMLSFSRLLLQIWMMLEN-IFSLLFRIVYNQNSVYILFKVITVFLNHSNLWFAAWLKVFYCLRIANFNHPLFFLMK---RKIIVLMPWLLRLSVLVSLSFSFPLSRDVFNVYVNSSIPIPSSNSTEKKYFSETNMVNLVFFYNMGIFVPLIMFILAATLLILSLKRHTLHMGSNATGSRDPSMKAHIGAIKATSYFLILYIFNAIALFLSTSNIFDTYSSWN--ILCKIIMAAYPAGHSVQLILGNPGLRRA</Hsp_hseq>
+      <Hsp_midline>TF L+V   E I G LG+ FI  +   +W +G+ + + DRI+  L+ SR+ L +W++  +   S+ F  ++    ++ +   I   +NH ++W A  L  FY L+IANF++ +F  +K   +K+++++       +LV+  F F L+  + N+++       +S +  +++ S   + + VF     IF+P  + +    LLI S+ +H   M      SR     AH G     ++FL+  IF +++ F+S       ++S N  IL +++  AYP+ HS  LILGN  LR+A</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>22</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|369</Hit_id>
+  <Hit_def>sp|Q9NYW5|TA2R4_HUMAN Taste receptor type 2 member 4 OS=Homo sapiens OX=9606 GN=TAS2R4 PE=1 SV=1</Hit_def>
+  <Hit_accession>369</Hit_accession>
+  <Hit_len>299</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>72.4034</Hsp_bit-score>
+      <Hsp_score>176</Hsp_score>
+      <Hsp_evalue>1.81303e-16</Hsp_evalue>
+      <Hsp_query-from>19</Hsp_query-from>
+      <Hsp_query-to>277</Hsp_query-to>
+      <Hsp_hit-from>19</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>79</Hsp_identity>
+      <Hsp_positive>135</Hsp_positive>
+      <Hsp_gaps>42</Hsp_gaps>
+      <Hsp_align-len>291</Hsp_align-len>
+      <Hsp_qseq>IGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISR--------ISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLLV--------TSVFLFLNIA-----LINIHINASINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTV-----KISRAHRGVKSVITFFLL----YAIFSLSFFISVWTSENLIILSQVMGMA--YPSCHSCVLILGNKKLRQASLSVLLWLR</Hsp_qseq>
+      <Hsp_hseq>VGIIMNLFITVVNCKTWVKSHRISSSDRILFSLGITRFLMLGLFLVNTIYFVSSNTERSVYLSAFFVLCFMF---------LDSSSVWFVTLLNILYCVKITNFQHSVFLLLKRNISPKIPRLLLACVLISAFTTCLYITLSQASPFPELVTTRNNTSFNISEGILSLVVSLVLS-SSLQFIINVTSASLLIHSLRRHIQKMQKNATGFWNPQTEAHVGAMKLMVYFLILYIPYSVATLVQYLPFYAGMDMGTKSICLIFATLYSPGHSVLIIITHPKLKTTAKKILCFKK</Hsp_hseq>
+      <Hsp_midline>+G + N FI +VNC  WVK  +ISS DRIL +L I+R        ++ ++ +  +   SV+  A F    MF         ++  SVW  T L   Y +KI NF +S+FL LK  +   +  LLL         T +++ L+ A     L+    N S N      SL+V        + F +++    LLI S+ +H +KMQ          + AH G   ++ +FL+    Y++ +L  ++  +   ++   S  +  A  Y   HS ++I+ + KL+  +  +L + +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>23</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|385</Hit_id>
+  <Hit_def>sp|P59536|T2R41_HUMAN Taste receptor type 2 member 41 OS=Homo sapiens OX=9606 GN=TAS2R41 PE=1 SV=2</Hit_def>
+  <Hit_accession>385</Hit_accession>
+  <Hit_len>307</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>68.5514</Hsp_bit-score>
+      <Hsp_score>166</Hsp_score>
+      <Hsp_evalue>4.87667e-15</Hsp_evalue>
+      <Hsp_query-from>20</Hsp_query-from>
+      <Hsp_query-to>274</Hsp_query-to>
+      <Hsp_hit-from>20</Hsp_hit-from>
+      <Hsp_hit-to>299</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>83</Hsp_identity>
+      <Hsp_positive>132</Hsp_positive>
+      <Hsp_gaps>43</Hsp_gaps>
+      <Hsp_align-len>289</Hsp_align-len>
+      <Hsp_qseq>GNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATE---KMFRMLTNI-WTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKKVVLVLLL--------VTSVFLFLNIALINIHI------------NASINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHT-----VKISRAH-RGVKSVITFFLLYAIFSLSFFIS----VWTSENLIILSQVMGMAYPSCHSCVLILGNKKLRQASLSVLL</Hsp_qseq>
+      <Hsp_hseq>GIAANGFIVLVLGREWLRYGRLLPLDMILISLGASRFCLQ--LVGT--VHNFYYSAQKVEYSGGLGRQFFHLHWHFLNSATFWFCSWLSVLFCVKIANITHSTFLWLKWRFPGWVPWLLLGSVLISFIITLLFFWVNYPVYQEFLIRKFSGNMTYKWNTRIETYYFPSLKLVIWS-----IPFSVFLVSIMLLINSLRRHTQRMQHNGHSLQDPSTQAHTRALKSLISFLILYALSFLSLIIDAAKFISMQNDFYWPWQIAVYLCISVHPFILIFSNLKLRSVFSQLLL</Hsp_hseq>
+      <Hsp_midline>G   N FI LV   +W++  ++  +D IL +L  SR  L   + G+  V  F+ +    E    + R   ++ W  +N  + W  + L   + +KIAN ++S FL+LKWR    V  LLL        +T +F ++N  +    +            N  I  Y   S  +V+ S     IPF++ L   +LLI S+ +H ++MQH         ++AH R +KS+I+F +LYA+  LS  I     +    +     Q+      S H  +LI  N KLR     +LL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>24</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|377</Hit_id>
+  <Hit_def>sp|Q9NYV7|T2R16_HUMAN Taste receptor type 2 member 16 OS=Homo sapiens OX=9606 GN=TAS2R16 PE=1 SV=1</Hit_def>
+  <Hit_accession>377</Hit_accession>
+  <Hit_len>291</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>61.6178</Hsp_bit-score>
+      <Hsp_score>148</Hsp_score>
+      <Hsp_evalue>8.3427e-13</Hsp_evalue>
+      <Hsp_query-from>9</Hsp_query-from>
+      <Hsp_query-to>247</Hsp_query-to>
+      <Hsp_hit-from>10</Hsp_hit-from>
+      <Hsp_hit-to>249</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>70</Hsp_identity>
+      <Hsp_positive>127</Hsp_positive>
+      <Hsp_gaps>31</Hsp_gaps>
+      <Hsp_align-len>255</Hsp_align-len>
+      <Hsp_qseq>FTFVLIVEFIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWL-IFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLKWRVKK----VVLVLLLVTSVFL-------FLNIALINI-HI--NASI-NGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAHRGVKSVITFFLLYAIFSLSFFISVWTSENLIILSQVMG</Hsp_qseq>
+      <Hsp_hseq>FMIIYVLESLTIIVQSSLIVAVLGREWLQVRRLMPVDMILISLGISRFCLQWASMLNNFC------SYFNLNYVLCNLTITWEFFNILTFWLNSLLTVFYCIKVSSFTHHIFLWLRWRILRLFPWILLGSLMITCVTIIPSAIGNYIQIQLLTMEHLPRNSTVTDKLENFHQYQFQAHTVALVIPFILFLASTIFLMASL---TKQIQHH-STGHCNPSMKARFT-----ALRSLAVLFIVFTSYFLTILITIIG</Hsp_hseq>
+      <Hsp_midline>F  + ++E +   + +S I  V   +W++ R++  VD IL +L ISR  L W  +  ++C      + F    +   LT  W   N  + WL + L  FY +K+++F++ IFL+L+WR+ +    ++L  L++T V +       ++ I L+ + H+  N+++ +    F        TV + IPF L LA  + L+ S+    K++QH       +  +K+  T     A+ SL+    V+TS  L IL  ++G</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>25</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|391</Hit_id>
+  <Hit_def>sp|P59551|T2R60_HUMAN Taste receptor type 2 member 60 OS=Homo sapiens OX=9606 GN=TAS2R60 PE=2 SV=1</Hit_def>
+  <Hit_accession>391</Hit_accession>
+  <Hit_len>318</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>60.4622</Hsp_bit-score>
+      <Hsp_score>145</Hsp_score>
+      <Hsp_evalue>2.94183e-12</Hsp_evalue>
+      <Hsp_query-from>23</Hsp_query-from>
+      <Hsp_query-to>266</Hsp_query-to>
+      <Hsp_hit-from>34</Hsp_hit-from>
+      <Hsp_hit-to>304</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>68</Hsp_identity>
+      <Hsp_positive>116</Hsp_positive>
+      <Hsp_gaps>41</Hsp_gaps>
+      <Hsp_align-len>278</Hsp_align-len>
+      <Hsp_qseq>GNSFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKIANFSNSIFLYLK--------WRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYRRFSSLIVLTSTVFIFIP-----FTLSLAMF----LLLIFSMWKHRKKMQHTVKISR-----AH-RGVKSVITFFLLYAIFSLSFFISV-----------WTSENLIILSQVMGMAYPSCHSCVLILGNKKLR</Hsp_qseq>
+      <Hsp_hseq>GNGFITAALGVEWVLRRMLLPCDKLLVSLGASRFCLQSVVMGKTIYVFLHPMAFPYNPVLQFLAFQWDFLNAATLWSSTWLSVFYCVKIATFTHPVFFWLKHKLSGWLPWMLFSSVGLSSFTTILFFIGNHRMYQNYLRNHLQPWNVTGDSIRSYCEKFYLFPLKMITWTMPTAVFFICMILLITSLGRHRKKALLTTSGFREPSVQAHIKALLALLSFAMLFISYFLSLVFSAAGIFPPLDFKFWVWESVIYLCAAV-------HPIILLFSNCRLR</Hsp_hseq>
+      <Hsp_midline>GN FI     ++WV  R +   D++L +L  SR  L  ++ G        P  F    + + L   W  +N  ++W +T L  FY +KIA F++ +F +LK        W +   V +    T +F   N  +   ++   +  +      I      F   P     +T+  A+F    +LLI S+ +HRKK   T    R     AH + + ++++F +L+  + LS   S            W  E++I L   +       H  +L+  N +LR</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>26</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|288</Hit_id>
+  <Hit_def>sp|O00222|GRM8_HUMAN Metabotropic glutamate receptor 8 OS=Homo sapiens OX=9606 GN=GRM8 PE=1 SV=2</Hit_def>
+  <Hit_accession>288</Hit_accession>
+  <Hit_len>908</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.9498</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.318625</Hsp_evalue>
+      <Hsp_query-from>18</Hsp_query-from>
+      <Hsp_query-to>111</Hsp_query-to>
+      <Hsp_hit-from>749</Hsp_hit-from>
+      <Hsp_hit-to>838</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>43</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>97</Hsp_align-len>
+      <Hsp_qseq>IIGNLGNSFIALVNCIDW-VKGRKISSVDRILTALAISRIS--LVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKI</Hsp_qseq>
+      <Hsp_hseq>LICSLGYSILLMVTCTVYAIKTRGVPETFNEAKPIGFTMYTTCIIWLAF----IPIFFGTAQSAEKMYIQTT---TLTVSMSLSASVSLGMLYMPKV</Hsp_hseq>
+      <Hsp_midline>+I +LG S + +V C  + +K R +         +  +  +  ++WL F    + +FF    + EKM+   T   T+    S+  +  LG  Y  K+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>27</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|192</Hit_id>
+  <Hit_def>sp|Q5T848|GP158_HUMAN Probable G-protein coupled receptor 158 OS=Homo sapiens OX=9606 GN=GPR158 PE=1 SV=1</Hit_def>
+  <Hit_accession>192</Hit_accession>
+  <Hit_len>1215</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5646</Hsp_bit-score>
+      <Hsp_score>57</Hsp_score>
+      <Hsp_evalue>0.412</Hsp_evalue>
+      <Hsp_query-from>25</Hsp_query-from>
+      <Hsp_query-to>193</Hsp_query-to>
+      <Hsp_hit-from>422</Hsp_hit-from>
+      <Hsp_hit-to>595</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>40</Hsp_identity>
+      <Hsp_positive>77</Hsp_positive>
+      <Hsp_gaps>9</Hsp_gaps>
+      <Hsp_align-len>176</Hsp_align-len>
+      <Hsp_qseq>SFIALVNCIDWVKGRKISSVDRILTALAISRISLVWLIFGSWCVSVFFPA--LFATEKMFRMLTNIWTVINHF-SVWLATGLGTFYFLKI--ANFSNSIFLYLKWRVKKVVLVLLLVTSVFL--FLNIALINIHINASINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMW</Hsp_qseq>
+      <Hsp_hseq>SFQALCMLLDFVSMLVVYHFRKAKSIRASGLILLETILFGS--LLLYFPVVILYFEPSTFRCILLRWARLLGFATVYGTVTLKLHRVLKVFLSRTAQRIPYMTGGRVMRMLAVILLVVFWFLIGWTSSVCQNLEKQISLIGQGKTSDHLIFNMCLIDRWDYMTAVAEFLFLLWGVY</Hsp_hseq>
+      <Hsp_midline>SF AL   +D+V    +    +  +  A   I L  ++FGS  + ++FP   L+     FR +   W  +  F +V+    L     LK+  +  +  I      RV +++ V+LLV   FL  + +    N+    S+ G  + S  ++    +     +  ++A FL L++ ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>28</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|287</Hit_id>
+  <Hit_def>sp|Q14831|GRM7_HUMAN Metabotropic glutamate receptor 7 OS=Homo sapiens OX=9606 GN=GRM7 PE=1 SV=1</Hit_def>
+  <Hit_accession>287</Hit_accession>
+  <Hit_len>915</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.7942</Hsp_bit-score>
+      <Hsp_score>55</Hsp_score>
+      <Hsp_evalue>0.650786</Hsp_evalue>
+      <Hsp_query-from>18</Hsp_query-from>
+      <Hsp_query-to>111</Hsp_query-to>
+      <Hsp_hit-from>756</Hsp_hit-from>
+      <Hsp_hit-to>845</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>43</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>97</Hsp_align-len>
+      <Hsp_qseq>IIGNLGNSFIALVNCIDW-VKGRKISSVDRILTALAISRIS--LVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVINHFSVWLATGLGTFYFLKI</Hsp_qseq>
+      <Hsp_hseq>IICSLGYSILLMVTCTVYAIKTRGVPENFNEAKPIGFTMYTTCIVWLAF----IPIFFGTAQSAEKLYIQTTTLTISMN---LSASVALGMLYMPKV</Hsp_hseq>
+      <Hsp_midline>II +LG S + +V C  + +K R +         +  +  +  +VWL F    + +FF    + EK++   T +   +N   +  +  LG  Y  K+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>29</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|280</Hit_id>
+  <Hit_def>sp|P49286|MTR1B_HUMAN Melatonin receptor type 1B OS=Homo sapiens OX=9606 GN=MTNR1B PE=1 SV=1</Hit_def>
+  <Hit_accession>280</Hit_accession>
+  <Hit_len>362</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.707342</Hsp_evalue>
+      <Hsp_query-from>120</Hsp_query-from>
+      <Hsp_query-to>252</Hsp_query-to>
+      <Hsp_hit-from>151</Hsp_hit-from>
+      <Hsp_hit-to>287</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>27</Hsp_identity>
+      <Hsp_positive>57</Hsp_positive>
+      <Hsp_gaps>14</Hsp_gaps>
+      <Hsp_align-len>142</Hsp_align-len>
+      <Hsp_qseq>LYLKWRVKKVVLVLLLVTSVFLFLNIALINIHINASINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMW----KHRKKMQHTVKISRAHRGVKSVITFFLLYAIFSLSFFISVWTSENLIILS-----QVMGMAYPS</Hsp_qseq>
+      <Hsp_hseq>IYRRWHTPLHICLIWLLTVVALLPNFFVGSLEYDPRIYSCTFIQTASTQYTAAVVVIHFLLPIAVVSFCYLRIWVLVLQARRKAKPESRLCLKPSDLRSFLTMFVVFVIFAI-----CWAPLNCIGLAVAINPQEMAPQIPE</Hsp_hseq>
+      <Hsp_midline>+Y +W     + ++ L+T V L  N  + ++  +  I       +     +   + I F L +A+       +W    + R+K +   ++      ++S +T F+++ IF++      W   N I L+     Q M    P </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>30</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|286</Hit_id>
+  <Hit_def>sp|O15303|GRM6_HUMAN Metabotropic glutamate receptor 6 OS=Homo sapiens OX=9606 GN=GRM6 PE=1 SV=2</Hit_def>
+  <Hit_accession>286</Hit_accession>
+  <Hit_len>877</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.7942</Hsp_bit-score>
+      <Hsp_score>55</Hsp_score>
+      <Hsp_evalue>0.719778</Hsp_evalue>
+      <Hsp_query-from>18</Hsp_query-from>
+      <Hsp_query-to>88</Hsp_query-to>
+      <Hsp_hit-from>751</Hsp_hit-from>
+      <Hsp_hit-to>820</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>18</Hsp_identity>
+      <Hsp_positive>34</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>74</Hsp_align-len>
+      <Hsp_qseq>IIGNLGNSFIALVNCIDW-VKGRKISSVDRILTALAISRIS--LVWLIFGSWCVSVFFPALFATEKMFRMLTNI</Hsp_qseq>
+      <Hsp_hseq>LIGCLGYSLLLMVTCTVYAIKARGVPETFNEAKPIGFTMYTTCIIWLAF----VPIFFGTAQSAEKIYIQTTTL</Hsp_hseq>
+      <Hsp_midline>+IG LG S + +V C  + +K R +         +  +  +  ++WL F    V +FF    + EK++   T +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>31</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|252</Hit_id>
+  <Hit_def>sp|Q9BXC0|HCAR1_HUMAN Hydroxycarboxylic acid receptor 1 OS=Homo sapiens OX=9606 GN=HCAR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>252</Hit_accession>
+  <Hit_len>346</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.827169</Hsp_evalue>
+      <Hsp_query-from>2</Hsp_query-from>
+      <Hsp_query-to>25</Hsp_query-to>
+      <Hsp_hit-from>11</Hsp_hit-from>
+      <Hsp_hit-to>34</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>10</Hsp_identity>
+      <Hsp_positive>14</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>24</Hsp_align-len>
+      <Hsp_qseq>GGVIKSIFTFVLIVEFIIGNLGNS</Hsp_qseq>
+      <Hsp_hseq>GDTISQVMPPLLIVAFVLGALGNG</Hsp_hseq>
+      <Hsp_midline>G  I  +   +LIV F++G LGN </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>32</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|215</Hit_id>
+  <Hit_def>sp|P14416|DRD2_HUMAN D(2) dopamine receptor OS=Homo sapiens OX=9606 GN=DRD2 PE=1 SV=2</Hit_def>
+  <Hit_accession>215</Hit_accession>
+  <Hit_len>443</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>0.98575</Hsp_evalue>
+      <Hsp_query-from>163</Hsp_query-from>
+      <Hsp_query-to>211</Hsp_query-to>
+      <Hsp_hit-from>187</Hsp_hit-from>
+      <Hsp_hit-to>234</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>14</Hsp_identity>
+      <Hsp_positive>30</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>49</Hsp_align-len>
+      <Hsp_qseq>SSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAHRG</Hsp_qseq>
+      <Hsp_hseq>PAFVVYSSIVSFYVPFIVTLLVY-IKIYIVLRRRRKRVNTKRSSRAFRA</Hsp_hseq>
+      <Hsp_midline> + +V +S V  ++PF ++L ++ + I+ + + R+K  +T + SRA R </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>33</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|93</Hit_id>
+  <Hit_def>sp|P51686|CCR9_HUMAN C-C chemokine receptor type 9 OS=Homo sapiens OX=9606 GN=CCR9 PE=1 SV=2</Hit_def>
+  <Hit_accession>93</Hit_accession>
+  <Hit_len>369</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.14289</Hsp_evalue>
+      <Hsp_query-from>17</Hsp_query-from>
+      <Hsp_query-to>56</Hsp_query-to>
+      <Hsp_hit-from>59</Hsp_hit-from>
+      <Hsp_hit-to>95</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>16</Hsp_identity>
+      <Hsp_positive>21</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>40</Hsp_align-len>
+      <Hsp_qseq>FIIGNLGNSFIALVNCIDWVKGRKISSVDRILTALAISRI</Hsp_qseq>
+      <Hsp_hseq>FIVGALGNSLVILVY---WYCTRVKTMTDMFLLNLAIADL</Hsp_hseq>
+      <Hsp_midline>FI+G LGNS + LV    W   R  +  D  L  LAI+ +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>34</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|289</Hit_id>
+  <Hit_def>sp|O43193|MTLR_HUMAN Motilin receptor OS=Homo sapiens OX=9606 GN=MLNR PE=2 SV=1</Hit_def>
+  <Hit_accession>289</Hit_accession>
+  <Hit_len>412</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.483</Hsp_bit-score>
+      <Hsp_score>49</Hsp_score>
+      <Hsp_evalue>3.09622</Hsp_evalue>
+      <Hsp_query-from>170</Hsp_query-from>
+      <Hsp_query-to>210</Hsp_query-to>
+      <Hsp_hit-from>252</Hsp_hit-from>
+      <Hsp_hit-to>294</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>10</Hsp_identity>
+      <Hsp_positive>20</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>43</Hsp_align-len>
+      <Hsp_qseq>STVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKI--SRAHR</Hsp_qseq>
+      <Hsp_hseq>TTAYFFLPFLCLSILYGLIGRELWSSRRPLRGPAASGRERGHR</Hsp_hseq>
+      <Hsp_midline>+T + F+PF     ++ L+   +W  R+ ++        R HR</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>35</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|324</Hit_id>
+  <Hit_def>sp|P41231|P2RY2_HUMAN P2Y purinoceptor 2 OS=Homo sapiens OX=9606 GN=P2RY2 PE=2 SV=4</Hit_def>
+  <Hit_accession>324</Hit_accession>
+  <Hit_len>377</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.483</Hsp_bit-score>
+      <Hsp_score>49</Hsp_score>
+      <Hsp_evalue>3.41473</Hsp_evalue>
+      <Hsp_query-from>130</Hsp_query-from>
+      <Hsp_query-to>229</Hsp_query-to>
+      <Hsp_hit-from>159</Hsp_hit-from>
+      <Hsp_hit-to>258</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>104</Hsp_align-len>
+      <Hsp_qseq>VLVLLLVTSVFLFLNIAL----INIHINASINGYRRFSSLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAHRGVKSVITFFLLYAIFSLSF</Hsp_qseq>
+      <Hsp_hseq>VLVLACQAPVLYFVTTSARGGRVTCHDTSAPELFSRFVAYSSVMLGLLFAVPFAVILVCYVLMARRLLK--PAYGTSGGLPRAKR--KSVRTIAVVLAVFALCF</Hsp_hseq>
+      <Hsp_midline>VLVL     V  F+  +     +  H  ++   + RF +   +   +   +PF + L  ++L+   + K       +  + RA R  KSV T  ++ A+F+L F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>36</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|274</Hit_id>
+  <Hit_def>sp|Q01726|MSHR_HUMAN Melanocyte-stimulating hormone receptor OS=Homo sapiens OX=9606 GN=MC1R PE=1 SV=2</Hit_def>
+  <Hit_accession>274</Hit_accession>
+  <Hit_len>317</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>3.65903</Hsp_evalue>
+      <Hsp_query-from>182</Hsp_query-from>
+      <Hsp_query-to>253</Hsp_query-to>
+      <Hsp_hit-from>197</Hsp_hit-from>
+      <Hsp_hit-to>273</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>40</Hsp_positive>
+      <Hsp_gaps>23</Hsp_gaps>
+      <Hsp_align-len>86</Hsp_align-len>
+      <Hsp_qseq>LAMFLLLIFSMWKH--RKKMQHTVKISRAHR---------GVKSVITFFLLYAIFSL---SFFISVWTSENLIILSQVMGMAYPSC</Hsp_qseq>
+      <Hsp_hseq>LAM-LVLMAVLYVHMLARACQHAQGIARLHKRQRPVHQGFGLKGAVTLTILLGIFFLCWGPFFLHL----TLIVLCP----EHPTC</Hsp_hseq>
+      <Hsp_midline>LAM L+L+  ++ H   +  QH   I+R H+         G+K  +T  +L  IF L    FF+ +     LI+L       +P+C</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>37</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|260</Hit_id>
+  <Hit_def>sp|Q8TDS5|OXER1_HUMAN Oxoeicosanoid receptor 1 OS=Homo sapiens OX=9606 GN=OXER1 PE=1 SV=1</Hit_def>
+  <Hit_accession>260</Hit_accession>
+  <Hit_len>423</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.7126</Hsp_bit-score>
+      <Hsp_score>47</Hsp_score>
+      <Hsp_evalue>5.4969</Hsp_evalue>
+      <Hsp_query-from>4</Hsp_query-from>
+      <Hsp_query-to>33</Hsp_query-to>
+      <Hsp_hit-from>90</Hsp_hit-from>
+      <Hsp_hit-to>119</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>9</Hsp_identity>
+      <Hsp_positive>18</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>30</Hsp_align-len>
+      <Hsp_qseq>VIKSIFTFVLIVEFIIGNLGNSFIALVNCI</Hsp_qseq>
+      <Hsp_hseq>LVSAFLAPILALEFVLGLVGNSLALFIFCI</Hsp_hseq>
+      <Hsp_midline>++ +    +L +EF++G +GNS    + CI</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>38</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|348</Hit_id>
+  <Hit_def>sp|O00254|PAR3_HUMAN Proteinase-activated receptor 3 OS=Homo sapiens OX=9606 GN=F2RL2 PE=1 SV=1</Hit_def>
+  <Hit_accession>348</Hit_accession>
+  <Hit_len>374</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.7126</Hsp_bit-score>
+      <Hsp_score>47</Hsp_score>
+      <Hsp_evalue>6.14094</Hsp_evalue>
+      <Hsp_query-from>124</Hsp_query-from>
+      <Hsp_query-to>158</Hsp_query-to>
+      <Hsp_hit-from>298</Hsp_hit-from>
+      <Hsp_hit-to>332</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>14</Hsp_identity>
+      <Hsp_positive>18</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>35</Hsp_align-len>
+      <Hsp_qseq>WRVKKVVLVLLLVTSVFLFLNIALINIHINASING</Hsp_qseq>
+      <Hsp_hseq>WYVKASLLILVIFTICFAPSNIILIIHHANYYYNN</Hsp_hseq>
+      <Hsp_midline>W VK  +L+L++ T  F   NI LI  H N   N </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>39</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|51</Hit_id>
+  <Hit_def>sp|Q8IZF6|AGRG4_HUMAN Adhesion G-protein coupled receptor G4 OS=Homo sapiens OX=9606 GN=ADGRG4 PE=2 SV=2</Hit_def>
+  <Hit_accession>51</Hit_accession>
+  <Hit_len>3080</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.7126</Hsp_bit-score>
+      <Hsp_score>47</Hsp_score>
+      <Hsp_evalue>7.04817</Hsp_evalue>
+      <Hsp_query-from>164</Hsp_query-from>
+      <Hsp_query-to>230</Hsp_query-to>
+      <Hsp_hit-from>2892</Hsp_hit-from>
+      <Hsp_hit-to>2958</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>32</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>67</Hsp_align-len>
+      <Hsp_qseq>SLIVLTSTVFIFIPFTLSLAMFLLLIFSMWKHRKKMQHTVKISRAHRGVKSVITFFLLYAIFSLSFF</Hsp_qseq>
+      <Hsp_hseq>SIFYISVVAYFCLIFLMNLSMFCTVLVQLNSVKSQIQKTRRKMILHDLKGTMSLTFLLGLTWGFAFF</Hsp_hseq>
+      <Hsp_midline>S+  ++   +  + F ++L+MF  ++  +   + ++Q T +    H    ++   FLL   +  +FF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>40</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|86</Hit_id>
+  <Hit_def>sp|P41597|CCR2_HUMAN C-C chemokine receptor type 2 OS=Homo sapiens OX=9606 GN=CCR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>86</Hit_accession>
+  <Hit_len>374</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>7.44916</Hsp_evalue>
+      <Hsp_query-from>206</Hsp_query-from>
+      <Hsp_query-to>242</Hsp_query-to>
+      <Hsp_hit-from>236</Hsp_hit-from>
+      <Hsp_hit-to>264</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>11</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>37</Hsp_align-len>
+      <Hsp_qseq>SRAHRGVKSVITFFLLYAIFSLSFFISVWTSENLIIL</Hsp_qseq>
+      <Hsp_hseq>KKRHRAVRVIFTIMIVYFLF--------WTPYNIVIL</Hsp_hseq>
+      <Hsp_midline> + HR V+ + T  ++Y +F        WT  N++IL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>41</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|246</Hit_id>
+  <Hit_def>sp|Q8TDV5|GP119_HUMAN Glucose-dependent insulinotropic receptor OS=Homo sapiens OX=9606 GN=GPR119 PE=1 SV=1</Hit_def>
+  <Hit_accession>246</Hit_accession>
+  <Hit_len>335</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>7.6928</Hsp_evalue>
+      <Hsp_query-from>188</Hsp_query-from>
+      <Hsp_query-to>222</Hsp_query-to>
+      <Hsp_hit-from>277</Hsp_hit-from>
+      <Hsp_hit-to>307</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>12</Hsp_identity>
+      <Hsp_positive>20</Hsp_positive>
+      <Hsp_gaps>4</Hsp_gaps>
+      <Hsp_align-len>35</Hsp_align-len>
+      <Hsp_qseq>LIFSMWKHRKKMQHTVKISRAHRGVKSVITFFLLY</Hsp_qseq>
+      <Hsp_hseq>LIYAYWQKEVRLQ----LYHMALGVKKVLTSFLLF</Hsp_hseq>
+      <Hsp_midline>LI++ W+   ++Q    +     GVK V+T FLL+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>42</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|177</Hit_id>
+  <Hit_def>sp|Q96AM1|MRGRF_HUMAN Mas-related G-protein coupled receptor member F OS=Homo sapiens OX=9606 GN=MRGPRF PE=2 SV=1</Hit_def>
+  <Hit_accession>177</Hit_accession>
+  <Hit_len>343</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>8.07581</Hsp_evalue>
+      <Hsp_query-from>41</Hsp_query-from>
+      <Hsp_query-to>102</Hsp_query-to>
+      <Hsp_hit-from>115</Hsp_hit-from>
+      <Hsp_hit-to>188</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>34</Hsp_positive>
+      <Hsp_gaps>12</Hsp_gaps>
+      <Hsp_align-len>74</Hsp_align-len>
+      <Hsp_qseq>ISSVDRILT-ALAISRISLVWLIFGSWCVSVFFPALFATEKMFRMLTNIWTVI-----------NHFSVWLATG</Hsp_qseq>
+      <Hsp_hseq>IRSVCRVLGLCMFLTGVSLLPAVSAERCASVIFPAWYWRRRPKRLSAVVCALLWVLSLLVTCLHNYFCVFLGRG</Hsp_hseq>
+      <Hsp_midline>I SV R+L   + ++ +SL+  +    C SV FPA +   +  R+   +  ++           N+F V+L  G</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>401</Statistics_db-num>
+      <Statistics_db-len>206602</Statistics_db-len>
+      <Statistics_hsp-len>71</Statistics_hsp-len>
+      <Statistics_eff-space>37229379</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+

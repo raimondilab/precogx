@@ -1,0 +1,3001 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastp</BlastOutput_program>
+  <BlastOutput_version>BLASTP 2.12.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>data/GPCRDB/blastdb/GPCRDB</BlastOutput_db>
+  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
+  <BlastOutput_query-def>8zw0|D</BlastOutput_query-def>
+  <BlastOutput_query-len>305</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_matrix>BLOSUM62</Parameters_matrix>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_gap-open>11</Parameters_gap-open>
+      <Parameters_gap-extend>1</Parameters_gap-extend>
+      <Parameters_filter>F</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_1</Iteration_query-ID>
+  <Iteration_query-def>8zw0|D</Iteration_query-def>
+  <Iteration_query-len>305</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|337</Hit_id>
+  <Hit_def>sp|Q13258|PD2R_HUMAN Prostaglandin D2 receptor OS=Homo sapiens OX=9606 GN=PTGDR PE=2 SV=2</Hit_def>
+  <Hit_accession>337</Hit_accession>
+  <Hit_len>359</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>595.504</Hsp_bit-score>
+      <Hsp_score>1534</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>305</Hsp_query-to>
+      <Hsp_hit-from>4</Hsp_hit-from>
+      <Hsp_hit-to>335</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>305</Hsp_identity>
+      <Hsp_positive>305</Hsp_positive>
+      <Hsp_gaps>27</Hsp_gaps>
+      <Hsp_align-len>332</Hsp_align-len>
+      <Hsp_qseq>PFYRCQNTTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLG--------PLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRH-------------------PQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_qseq>
+      <Hsp_hseq>PFYRCQNTTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGWCSRRPLRPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPRSCTRDCAEPRADGREASPQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_hseq>
+      <Hsp_midline>PFYRCQNTTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLG        PLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRH                   PQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|340</Hit_id>
+  <Hit_def>sp|P43116|PE2R2_HUMAN Prostaglandin E2 receptor EP2 subtype OS=Homo sapiens OX=9606 GN=PTGER2 PE=2 SV=2</Hit_def>
+  <Hit_accession>340</Hit_accession>
+  <Hit_len>358</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>232.646</Hsp_bit-score>
+      <Hsp_score>592</Hsp_score>
+      <Hsp_evalue>2.25591e-76</Hsp_evalue>
+      <Hsp_query-from>5</Hsp_query-from>
+      <Hsp_query-to>303</Hsp_query-to>
+      <Hsp_hit-from>13</Hsp_hit-from>
+      <Hsp_hit-to>325</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>144</Hsp_identity>
+      <Hsp_positive>196</Hsp_positive>
+      <Hsp_gaps>46</Hsp_gaps>
+      <Hsp_align-len>329</Hsp_align-len>
+      <Hsp_qseq>CQNTTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPLP---------SVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHP---------------------QPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFRI</Hsp_qseq>
+      <Hsp_hseq>CETRQWLPPGESPAISSVMFSAGVLGNLIALALLARRWRGDVGCSAGRRSSLSLFHVLVTELVFTDLLGTCLISPVVLASYARNQTLVALAP--ESRACTYFAFAMTFFSLATMLMLFAMALERYLSIGHPYFYQRRVSRSGGLAVLPVIYAVSLLFCSLPLLDYGQYVQYCPGTWCFIR--HGRTA-----YLQLYATLLLLLIVSVLACNFSVILNLIRMHRRSRRSRCGPSLGSGRGGPGARRRGERVSMAEETDHLILLAIMTITFAVCSLPFTIFAYMNETSSRKEK-------WDLQALRFLSINSIIDPWVFAILRPPVLRL</Hsp_hseq>
+      <Hsp_midline>C+    +  G S  +  V+FS G+LGNL+AL LLAR   G +          S+F++LV  L  TDLLG CL+SPVVLA+YA+N++L  LAP  ++  C  FAF M+FF L++ L L AMALE +LS+GHP+FY+R ++   G  V PV+ A SL FC+LP + +G++VQYCPGTWCFI+  H   +     Y  LY++L+ LL+++ + CN   + NL  MHRR +R                          EE DHL+LLA+MT+ F +CSLP    AY       KEK        DL+ALRFLS+ SI+DPW+F I R PV R+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|344</Hit_id>
+  <Hit_def>sp|P43119|PI2R_HUMAN Prostacyclin receptor OS=Homo sapiens OX=9606 GN=PTGIR PE=1 SV=1</Hit_def>
+  <Hit_accession>344</Hit_accession>
+  <Hit_len>386</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>218.394</Hsp_bit-score>
+      <Hsp_score>555</Hsp_score>
+      <Hsp_evalue>1.92792e-70</Hsp_evalue>
+      <Hsp_query-from>5</Hsp_query-from>
+      <Hsp_query-to>302</Hsp_query-to>
+      <Hsp_hit-from>5</Hsp_hit-from>
+      <Hsp_hit-to>301</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>135</Hsp_identity>
+      <Hsp_positive>181</Hsp_positive>
+      <Hsp_gaps>19</Hsp_gaps>
+      <Hsp_align-len>307</Hsp_align-len>
+      <Hsp_qseq>CQNTTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPL-PSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRH-----PQPL---EELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFR</Hsp_qseq>
+      <Hsp_hseq>CRNLTYVRGSVGPATSTLMFVAGVVGNGLALGIL--SARRPARPSAFAVLVTGLAATDLLGTSFLSPAVFVAYARNSSLLGLARG-GPALCDAFAFAMTFFGLASMLILFAMAVERCLALSHPYLYAQLDGPRCARLALPAIYAFCVLFCALPLLGLGQHQQYCPGSWCFLRMRWAQPGGAA--FSLAYAGLVALLVAAIFLCNGSVTLSLCRMYRQQKRHQGSLGPRPRTGEDEVDHLILLALMTVVMAVCSLPLTIRCFTQAVAP-----DSSSEMGDLLAFRFYAFNPILDPWVFILFRKAVFQ</Hsp_hseq>
+      <Hsp_midline>C+N T V          ++F  G++GN LALG+L  S   P  PS F +LV GL  TDLLG   LSP V  AYA+N SL  LA     +LC AFAF M+FFGL+S L L AMA+E  L+L HP+ Y +    R   L  P + AF + FCALP +G G+  QYCPG+WCF++M   +   +   +S+ Y+ L+ALLV A  LCN     +L  M+R+ +RH     P+P    +E+DHL+LLALMTV+  +CSLP+  R +  A         +S E  DL A RF +   I+DPW+FI+FR  VF+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|342</Hit_id>
+  <Hit_def>sp|P35408|PE2R4_HUMAN Prostaglandin E2 receptor EP4 subtype OS=Homo sapiens OX=9606 GN=PTGER4 PE=1 SV=1</Hit_def>
+  <Hit_accession>342</Hit_accession>
+  <Hit_len>488</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>148.673</Hsp_bit-score>
+      <Hsp_score>374</Hsp_score>
+      <Hsp_evalue>7.90577e-43</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>301</Hsp_query-to>
+      <Hsp_hit-from>4</Hsp_hit-from>
+      <Hsp_hit-to>337</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>107</Hsp_identity>
+      <Hsp_positive>162</Hsp_positive>
+      <Hsp_gaps>51</Hsp_gaps>
+      <Hsp_align-len>343</Hsp_align-len>
+      <Hsp_qseq>PFYRCQNTTSVEKGNSAV-MGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQR---------------------HPQPL--------------------EELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVF</Hsp_qseq>
+      <Hsp_hseq>PGVNSSASLSPDRLNSPVTIPAVMFIFGVVGNLVAIVVLCKSRKEQKETTFYTLVCGLAVTDLLGTLLVSPVTIATYMKGQ-----WPG-GQPLCEYSTFILLFFSLSGLSIICAMSVERYLAINHAYFYSHYVDKRLAGLTLFAVYASNVLFCALPNMGLGSSRLQYPDTWCFIDWTTNVTAHA--AYSYMYAGFSSFLILATVLCNVLVCGALLRMHRQFMRRTSLGTEQHHAAAAASVASRGHPAASPALPRLSDFRRRRSFRRIAGAEIQMVILLIATSLVVLICSIPLVVRVFVNQLYQPSLEREVSKNP-DLQAIRIASVNPILDPWIYILLRKTVL</Hsp_hseq>
+      <Hsp_midline>P      + S ++ NS V +  V+F  G++GNL+A+ +L +S      + FY LVCGL VTDLLG  L+SPV +A Y + +      P     LC+   F + FF LS    + AM++E +L++ H +FY  ++  RL  L    V A ++ FCALP MG G      P TWCFI       + +   YS +Y+   + L+LATVLCN+     L  MHR+  R                     HP                        E+  ++LL   +++  +CS+P++ R +         +   S+   DL+A+R  SV  I+DPWI+I+ R  V </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|341</Hit_id>
+  <Hit_def>sp|P43115|PE2R3_HUMAN Prostaglandin E2 receptor EP3 subtype OS=Homo sapiens OX=9606 GN=PTGER3 PE=1 SV=1</Hit_def>
+  <Hit_accession>341</Hit_accession>
+  <Hit_len>390</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>96.6709</Hsp_bit-score>
+      <Hsp_score>239</Hsp_score>
+      <Hsp_evalue>1.68187e-24</Hsp_evalue>
+      <Hsp_query-from>26</Hsp_query-from>
+      <Hsp_query-to>293</Hsp_query-to>
+      <Hsp_hit-from>61</Hsp_hit-from>
+      <Hsp_hit-to>346</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>84</Hsp_identity>
+      <Hsp_positive>129</Hsp_positive>
+      <Hsp_gaps>28</Hsp_gaps>
+      <Hsp_align-len>291</Hsp_align-len>
+      <Hsp_qseq>TGLLGNLLALGLLARS---GLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQM---------VHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLPVIY--------RAYYGAFKDVKEKNRTSEEAED---LRALRFLSVISIVDPWIF</Hsp_qseq>
+      <Hsp_hseq>TGFVGNALAMLLVSRSYRRRESKRKKSFLLCIGWLALTDLVGQLLTTPVVIVVYLSKQRWEHIDPS--GRLCTFFGLTMTVFGLSSLFIASAMAVERALAIRAPHWYASHMKTRATRAVLLGVWLAVLAFALLPVLGVGQYTVQWPGTWCFISTGRGGNGTSSSHNWGNL-FFASAFAFLGLLALTV--TFSCNLATIKALVSRCRAKATASQSSAQWGRITTETAIQLMGIMCVLSVCWSPLLIMMLKMIFNQTSVEHCKTHTEKQKECNFFLIAVRLASLNQILDPWVY</Hsp_hseq>
+      <Hsp_midline>TG +GN LA+ L++RS           F + +  L +TDL+G+ L +PVV+  Y   +    + P+    LC  F   M+ FGLSS     AMA+E  L++  P +Y  H+  R    V   V    LAF  LP +G G++    PGTWCFI            H  G+L     +  +  L+AL V  T  CNL  ++ L +  R      Q   +   +     + ++  MC L V +        +  +        K  T ++ E    L A+R  S+  I+DPW++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|345</Hit_id>
+  <Hit_def>sp|P21731|TA2R_HUMAN Thromboxane A2 receptor OS=Homo sapiens OX=9606 GN=TBXA2R PE=1 SV=3</Hit_def>
+  <Hit_accession>345</Hit_accession>
+  <Hit_len>343</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>84.3445</Hsp_bit-score>
+      <Hsp_score>207</Hsp_score>
+      <Hsp_evalue>2.91914e-20</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>302</Hsp_query-to>
+      <Hsp_hit-from>10</Hsp_hit-from>
+      <Hsp_hit-to>317</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>95</Hsp_identity>
+      <Hsp_positive>147</Hsp_positive>
+      <Hsp_gaps>20</Hsp_gaps>
+      <Hsp_align-len>315</Hsp_align-len>
+      <Hsp_qseq>PFYRCQNTTSVEKG--NSAVMGGVLFSTGLLGNLLALGLLA--RSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCN---LGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKD------VKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFR</Hsp_qseq>
+      <Hsp_hseq>PCFRPTNITLEERRLIASPWFAASFCVVGLASNLLALSVLAGARQGGSHTRSSFLTFLCGLVLTDFLGLLVTGTIVVSQHAALFEWHAVDPGCR--LCRFMGVVMIFFGLSPLLLGAAMASERYLGITRPFSRPAVASQRRAWATVGLVWAAALALGLLPLLGVGRYTVQYPGSWCFLTLGAESGDVA---FGLLFSMLGGLSVGLSFLLNTVSVATLCHVYHGQEAAQQRPRDSEVEMMAQLLGIM-VVASVCWLPLLVFIAQTVLRNPPAMSPAGQLSRTTEK-ELLIYLRVATWNQILDPWVYILFRRAVLR</Hsp_hseq>
+      <Hsp_midline>P +R  N T  E+    S          GL  NLLAL +LA  R G     S F   +CGL +TD LG  +   +V++ +A       + P     LC+     M FFGLS  L   AMA E +L +  PF      + R       +V A +LA   LP +G G++    PG+WCF+ +  E G ++   + +L+S L  L V  + L N   +  + ++Y      Q+ P+  E      LL +M V+ ++C LP++        ++        + +RT+E+ E L  LR  +   I+DPW++I+FR  V R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|343</Hit_id>
+  <Hit_def>sp|P43088|PF2R_HUMAN Prostaglandin F2-alpha receptor OS=Homo sapiens OX=9606 GN=PTGFR PE=1 SV=1</Hit_def>
+  <Hit_accession>343</Hit_accession>
+  <Hit_len>359</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>70.0922</Hsp_bit-score>
+      <Hsp_score>170</Hsp_score>
+      <Hsp_evalue>2.2437e-15</Hsp_evalue>
+      <Hsp_query-from>7</Hsp_query-from>
+      <Hsp_query-to>302</Hsp_query-to>
+      <Hsp_hit-from>19</Hsp_hit-from>
+      <Hsp_hit-to>313</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>78</Hsp_identity>
+      <Hsp_positive>131</Hsp_positive>
+      <Hsp_gaps>13</Hsp_gaps>
+      <Hsp_align-len>302</Hsp_align-len>
+      <Hsp_qseq>NTTSVEKGNSAVMGGVLFST-GLLGNLLALGLLARSGL---GPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVK-EKNRTSEEAE-DLRALRFLSVISIVDPWIFIIFRSPVFR</Hsp_qseq>
+      <Hsp_hseq>NTTCQTENRLSVFFSVIFMTVGILSNSLAIAILMKAYQRFRQKSKASFLLLASGLVITDFFGHLINGAIAVFVYASDKEWIRFDQS--NVLCSIFGICMVFSGLCPLLLGSVMAIERCIGVTKPIFHSTKITSKHVKMMLSGVCLFAVFIALLPILGHRDYKIQASRTWCFYN-TEDIKDWEDRFYLLLFSFLGLLALGVSLLCNAITGITLLRVKFKSQQHRQGRSH--HLEM--VIQLLAIMCVSCICWSPFLVTMANIGINGNHSLETCETTLFALRMATWNQILDPWVYILLRKAVLK</Hsp_hseq>
+      <Hsp_midline>NTT   +   +V   V+F T G+L N LA+ +L ++         + F +L  GL +TD  G  +   + +  YA ++       +  N LC  F   M F GL   L    MA+E  + +  P F+   IT +   ++   V  F++    LP +G   +      TWCF     +        Y +L+S L  L +  ++LCN      L  +  + Q+H Q      HL +  ++ +L  MC   + +  +     ++    N + E  E  L ALR  +   I+DPW++I+ R  V +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|122</Hit_id>
+  <Hit_def>sp|Q8NDV2|GPR26_HUMAN G-protein coupled receptor 26 OS=Homo sapiens OX=9606 GN=GPR26 PE=1 SV=1</Hit_def>
+  <Hit_accession>122</Hit_accession>
+  <Hit_len>337</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>43.5134</Hsp_bit-score>
+      <Hsp_score>101</Hsp_score>
+      <Hsp_evalue>1.23698e-06</Hsp_evalue>
+      <Hsp_query-from>16</Hsp_query-from>
+      <Hsp_query-to>167</Hsp_query-to>
+      <Hsp_hit-from>5</Hsp_hit-from>
+      <Hsp_hit-to>156</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>47</Hsp_identity>
+      <Hsp_positive>72</Hsp_positive>
+      <Hsp_gaps>18</Hsp_gaps>
+      <Hsp_align-len>161</Hsp_align-len>
+      <Hsp_qseq>SAVMGGVLFST---GLLGNLLALGLLARSG--LGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAF----CALPFMGFGKFVQYC</Hsp_qseq>
+      <Hsp_hseq>DAGLAGLLVGTMGVSLLSNALVLLCLLHSADIRRQAPALFTL---NLTCGNLLCTVVNMPLTLAGVVAQRQ-----PAGDR-LCRLAAFLDTFLAANSMLSMAALSIDRWVAVVFPLSYRAKMRLRDAALMVAYTWLHALTFPAAALALSWLGFHQLYASC</Hsp_hseq>
+      <Hsp_midline> A + G+L  T    LL N L L  L  S       P++F +    LT  +LL   +  P+ LA     R      PA D  LC+  AF  +F   +S L + A++++ W+++  P  YR  + LR  AL+       +L F     AL ++GF +    C</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|313</Hit_id>
+  <Hit_def>sp|Q9UHM6|OPN4_HUMAN Melanopsin OS=Homo sapiens OX=9606 GN=OPN4 PE=1 SV=1</Hit_def>
+  <Hit_accession>313</Hit_accession>
+  <Hit_len>478</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>43.5134</Hsp_bit-score>
+      <Hsp_score>101</Hsp_score>
+      <Hsp_evalue>1.85581e-06</Hsp_evalue>
+      <Hsp_query-from>26</Hsp_query-from>
+      <Hsp_query-to>164</Hsp_query-to>
+      <Hsp_hit-from>83</Hsp_hit-from>
+      <Hsp_hit-to>213</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>40</Hsp_identity>
+      <Hsp_positive>64</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>139</Hsp_align-len>
+      <Hsp_qseq>TGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFV</Hsp_qseq>
+      <Hsp_hseq>TGMLGNLTVIYTFCRSRSLRTPA--NMFIINLAVSDFLMSFTQAPVFFTSSLYKQWL------FGETGCEFYAFCGALFGISSMITLTAIALDRYLVITRPLATFGVASKRRAAFVLLGVWLYALAWSLPPFFGWSAYV</Hsp_hseq>
+      <Hsp_midline>TG+LGNL  +    RS     P+   M +  L V+D L     +PV   +    + L         + C+ +AF  + FG+SS + L A+AL+ +L +  P       + R  A V   V  ++LA+   PF G+  +V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|278</Hit_id>
+  <Hit_def>sp|P33032|MC5R_HUMAN Melanocortin receptor 5 OS=Homo sapiens OX=9606 GN=MC5R PE=1 SV=3</Hit_def>
+  <Hit_accession>278</Hit_accession>
+  <Hit_len>325</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>38.5058</Hsp_bit-score>
+      <Hsp_score>88</Hsp_score>
+      <Hsp_evalue>5.50936e-05</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>176</Hsp_query-to>
+      <Hsp_hit-from>50</Hsp_hit-from>
+      <Hsp_hit-to>193</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>42</Hsp_identity>
+      <Hsp_positive>69</Hsp_positive>
+      <Hsp_gaps>16</Hsp_gaps>
+      <Hsp_align-len>155</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRL-GALVAPVVSAFSLAFCALPFMGFG-KFVQYCPGTW---CFIQM</Hsp_qseq>
+      <Hsp_hseq>SLLENILVIGAIVKNK--NLHSPMYFFVCSLAVADMLVSMSSAWETITIYLLNNKHLVIADAFVRHIDNVFDSMICISVVASMCSLLAIAVDRYVTIFYALRYHHIMTARRSGAIIAGI-----WAFCT----GCGIVFILYSESTYVILCLISM</Hsp_hseq>
+      <Hsp_midline> LL N+L +G + ++    L S  Y  VC L V D+L     +   +  Y  N    V+A A    +   F   +    ++S   LLA+A++ ++++ +   Y   +T R  GA++A +      AFC     G G  F+ Y   T+   C I M</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>11</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|339</Hit_id>
+  <Hit_def>sp|P34995|PE2R1_HUMAN Prostaglandin E2 receptor EP1 subtype OS=Homo sapiens OX=9606 GN=PTGER1 PE=2 SV=3</Hit_def>
+  <Hit_accession>339</Hit_accession>
+  <Hit_len>402</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.7354</Hsp_bit-score>
+      <Hsp_score>86</Hsp_score>
+      <Hsp_evalue>9.49483e-05</Hsp_evalue>
+      <Hsp_query-from>48</Hsp_query-from>
+      <Hsp_query-to>181</Hsp_query-to>
+      <Hsp_hit-from>71</Hsp_hit-from>
+      <Hsp_hit-to>197</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>41</Hsp_identity>
+      <Hsp_positive>57</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>134</Hsp_align-len>
+      <Hsp_qseq>SVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEG</Hsp_qseq>
+      <Hsp_hseq>ATFLLFVASLLATDLAGHVIPGALVLRLYTAGR-----APA--GGACHFLGGCMVFFGLCPLLLGCGMAVERCVGVTRPLLHAARVSVARARLALAAVAAVALAVALLPLARVGRYELQYPGTWCFIGLGPPGG</Hsp_hseq>
+      <Hsp_midline>+ F + V  L  TDL G  +   +VL  Y   R     APA     C      M FFGL   L    MA+E  + +  P  +   +++    L    V+A +LA   LP    G++    PGTWCFI +    G</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>27.335</Hsp_bit-score>
+      <Hsp_score>59</Hsp_score>
+      <Hsp_evalue>0.235685</Hsp_evalue>
+      <Hsp_query-from>263</Hsp_query-from>
+      <Hsp_query-to>300</Hsp_query-to>
+      <Hsp_hit-from>321</Hsp_hit-from>
+      <Hsp_hit-to>358</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>20</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>38</Hsp_align-len>
+      <Hsp_qseq>VKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPV</Hsp_qseq>
+      <Hsp_hseq>VGGWSSTSLQRPLFLAVRLASWNQILDPWVYILLRQAV</Hsp_hseq>
+      <Hsp_midline>V   + TS +     A+R  S   I+DPW++I+ R  V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>12</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|230</Hit_id>
+  <Hit_def>sp|P47211|GALR1_HUMAN Galanin receptor type 1 OS=Homo sapiens OX=9606 GN=GALR1 PE=1 SV=3</Hit_def>
+  <Hit_accession>230</Hit_accession>
+  <Hit_len>349</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.7354</Hsp_bit-score>
+      <Hsp_score>86</Hsp_score>
+      <Hsp_evalue>9.70265e-05</Hsp_evalue>
+      <Hsp_query-from>11</Hsp_query-from>
+      <Hsp_query-to>125</Hsp_query-to>
+      <Hsp_hit-from>31</Hsp_hit-from>
+      <Hsp_hit-to>139</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>31</Hsp_identity>
+      <Hsp_positive>55</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>115</Hsp_align-len>
+      <Hsp_qseq>VEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGH</Hsp_qseq>
+      <Hsp_hseq>VENFVTLVVFGLIFALGVLGNSLVITVLARSKPGKPRSTTNLFILNLSIADLAYLLFCIPFQATVYA------LPTWVLGAFICKFIHYFFTVSMLVSIFTLAAMSVDRYVAIVH</Hsp_hseq>
+      <Hsp_midline>VE   + V+ G++F+ G+LGN L + +LARS  G   S   + +  L++ DL       P     YA      +    L   +C+   +F +   L S   L AM+++ ++++ H</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>13</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|148</Hit_id>
+  <Hit_def>sp|Q96P66|GP101_HUMAN Probable G-protein coupled receptor 101 OS=Homo sapiens OX=9606 GN=GPR101 PE=1 SV=1</Hit_def>
+  <Hit_accession>148</Hit_accession>
+  <Hit_len>508</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.7354</Hsp_bit-score>
+      <Hsp_score>86</Hsp_score>
+      <Hsp_evalue>0.000106212</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>162</Hsp_query-to>
+      <Hsp_hit-from>40</Hsp_hit-from>
+      <Hsp_hit-to>172</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>64</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>141</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGK</Hsp_qseq>
+      <Hsp_hseq>IFLAASFVGNIVLALVLQRKPQ--LLQVTNRFIFNLLVTDLLQISLVAPWVVAT-----SVPLFWP-LNSHFCTALVSLTHLFAFASVNTIVVVSVDRYLSIIHPLSYPSKMTQRRGYLLLYGTWIVAILQSTPPLYGWGQ</Hsp_hseq>
+      <Hsp_midline>+  +   +GN++   +L R     L  V    +  L VTDLL   L++P V+A      S+ +  P L++  C A       F  +S   ++ ++++ +LS+ HP  Y   +T R G L+       ++     P  G+G+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>14</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|350</Hit_id>
+  <Hit_def>sp|Q96P65|QRFPR_HUMAN Pyroglutamylated RF-amide peptide receptor OS=Homo sapiens OX=9606 GN=QRFPR PE=1 SV=2</Hit_def>
+  <Hit_accession>350</Hit_accession>
+  <Hit_len>431</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.7354</Hsp_bit-score>
+      <Hsp_score>86</Hsp_score>
+      <Hsp_evalue>0.000124028</Hsp_evalue>
+      <Hsp_query-from>18</Hsp_query-from>
+      <Hsp_query-to>136</Hsp_query-to>
+      <Hsp_hit-from>49</Hsp_hit-from>
+      <Hsp_hit-to>160</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>36</Hsp_identity>
+      <Hsp_positive>55</Hsp_positive>
+      <Hsp_gaps>9</Hsp_gaps>
+      <Hsp_align-len>120</Hsp_align-len>
+      <Hsp_qseq>VMGGVL-FSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLR</Hsp_qseq>
+      <Hsp_hseq>VLTGVLIFALALFGNALVFYVVTRSK--AMRTVTNIFICSLALSDLLITFFCIPVTML---QNISDNWLGGAF---ICKMVPFVQSTAVVTEILTMTCIAVERHQGLVHPFKMKWQYTNR</Hsp_hseq>
+      <Hsp_midline>V+ GVL F+  L GN L   ++ RS    + +V  + +C L ++DLL      PV +    QN S   L  A    +C+   F  S   ++  L +  +A+E    L HPF  +   T R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>15</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|138</Hit_id>
+  <Hit_def>sp|Q8IYL9|PSYR_HUMAN Psychosine receptor OS=Homo sapiens OX=9606 GN=GPR65 PE=1 SV=1</Hit_def>
+  <Hit_accession>138</Hit_accession>
+  <Hit_len>337</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>36.965</Hsp_bit-score>
+      <Hsp_score>84</Hsp_score>
+      <Hsp_evalue>0.000185624</Hsp_evalue>
+      <Hsp_query-from>76</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>73</Hsp_hit-from>
+      <Hsp_hit-to>241</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>44</Hsp_identity>
+      <Hsp_positive>79</Hsp_positive>
+      <Hsp_gaps>20</Hsp_gaps>
+      <Hsp_align-len>182</Hsp_align-len>
+      <Hsp_qseq>YAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHP--FFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPG-----TWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>YTWNKDNWTFSPAL----CKGSAFLMYMNFYSSTAFLTCIAVDRYLAVVYPLKFFFLR--TRRFALMVSLSIWILETIFNAVMLWEDETVVEYCDAEKSNFTLCYDKYPLEKWQINLNLFRTCTGYAIPLVTI--LICN----RKVYQAVRH-NKATENKEKKRIIKLLVSITVTFVLCFTP</Hsp_hseq>
+      <Hsp_midline>Y  N+     +PAL    C+  AF M     SST  L  +A++ +L++ +P  FF+ R  T R   +V+  +      F A+        V+YC       T C+ +   E+  +++  +       + L+ +  ++CN    R +Y   R   +  +  E+   + LL  +TV F +C  P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>16</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|273</Hit_id>
+  <Hit_def>sp|Q969V1|MCHR2_HUMAN Melanin-concentrating hormone receptor 2 OS=Homo sapiens OX=9606 GN=MCHR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>273</Hit_accession>
+  <Hit_len>340</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.8094</Hsp_bit-score>
+      <Hsp_score>81</Hsp_score>
+      <Hsp_evalue>0.000397009</Hsp_evalue>
+      <Hsp_query-from>19</Hsp_query-from>
+      <Hsp_query-to>169</Hsp_query-to>
+      <Hsp_hit-from>40</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>36</Hsp_identity>
+      <Hsp_positive>72</Hsp_positive>
+      <Hsp_gaps>18</Hsp_gaps>
+      <Hsp_align-len>155</Hsp_align-len>
+      <Hsp_qseq>MGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPF----FYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPG</Hsp_qseq>
+      <Hsp_hseq>MIGIICSTGLVGNILIVFTIIRSRKKTVPDIY---ICNLAVADLV-HIVGMPFLIHQWARGGEWVFGGP-----LCTIITSLDTCNQFACSAIMTVMSVDRYFALVQPFRLTRWRTRYKTIRIN--LGLWAASFIL---ALPVWVYSKVIKFKDG</Hsp_hseq>
+      <Hsp_midline>M G++ STGL+GN+L +  + RS    +P ++   +C L V DL+   +  P ++  +A+        P     LC       +    + +  +  M+++ + +L  PF    +  R+ T+R+   +    ++F L   ALP   + K +++  G</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>17</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|240</Hit_id>
+  <Hit_def>sp|P23945|FSHR_HUMAN Follicle-stimulating hormone receptor OS=Homo sapiens OX=9606 GN=FSHR PE=1 SV=3</Hit_def>
+  <Hit_accession>240</Hit_accession>
+  <Hit_len>695</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>32.7278</Hsp_bit-score>
+      <Hsp_score>73</Hsp_score>
+      <Hsp_evalue>0.00424189</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>165</Hsp_query-to>
+      <Hsp_hit-from>376</Hsp_hit-from>
+      <Hsp_hit-to>513</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>56</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>140</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDL-LGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQ</Hsp_qseq>
+      <Hsp_hseq>AITGNIIVLVILTTSQYKL--TVPRFLMCNLAFADLCIGIYLLLIASVDIHTKSQYHNYAIDWQTGAGCDAAGFFTVFASELSVYTLTAITLERWHTITHAMQLDCKVQLRHAASVMVMGWIFAFAAALFPIFGISSYMK</Hsp_hseq>
+      <Hsp_midline> + GN++ L +L  S      +V   L+C L   DL +G  LL    +  + +++           + C A  FF  F    S   L A+ LE W ++ H       + LR  A V  +   F+ A    P  G   +++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>18</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|102</Hit_id>
+  <Hit_def>sp|P46094|XCR1_HUMAN Chemokine XC receptor 1 OS=Homo sapiens OX=9606 GN=XCR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>102</Hit_accession>
+  <Hit_len>333</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>32.3426</Hsp_bit-score>
+      <Hsp_score>72</Hsp_score>
+      <Hsp_evalue>0.00501562</Hsp_evalue>
+      <Hsp_query-from>5</Hsp_query-from>
+      <Hsp_query-to>145</Hsp_query-to>
+      <Hsp_hit-from>22</Hsp_hit-from>
+      <Hsp_hit-to>153</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>41</Hsp_identity>
+      <Hsp_positive>63</Hsp_positive>
+      <Hsp_gaps>13</Hsp_gaps>
+      <Hsp_align-len>143</Hsp_align-len>
+      <Hsp_qseq>CQNTTSV-EKGNSAVMGGVLFSTGLLGNLLALGLLAR-SGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVV</Hsp_qseq>
+      <Hsp_hseq>CENQAWVFATLATTVLYCLVFLLSLVGNSLVLWVLVKYESLESLTNIFILNLC---LSDLVFACLL-PVWISPYHWGW-------VLGDFLCKLLNMIFSISLYSSIFFLTIMTIHRYLSVVSPLSTLRVPTLRCRVLVTMAV</Hsp_hseq>
+      <Hsp_midline>C+N   V     + V+  ++F   L+GN L L +L +   L  L ++F + +C   ++DL+  CLL PV ++ Y            L + LC+      S    SS   L  M +  +LS+  P    R  TLR   LV   V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>19</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|275</Hit_id>
+  <Hit_def>sp|Q01718|ACTHR_HUMAN Adrenocorticotropic hormone receptor OS=Homo sapiens OX=9606 GN=MC2R PE=1 SV=1</Hit_def>
+  <Hit_accession>275</Hit_accession>
+  <Hit_len>297</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>32.3426</Hsp_bit-score>
+      <Hsp_score>72</Hsp_score>
+      <Hsp_evalue>0.00538933</Hsp_evalue>
+      <Hsp_query-from>6</Hsp_query-from>
+      <Hsp_query-to>148</Hsp_query-to>
+      <Hsp_hit-from>9</Hsp_hit-from>
+      <Hsp_hit-to>157</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>41</Hsp_identity>
+      <Hsp_positive>71</Hsp_positive>
+      <Hsp_gaps>24</Hsp_gaps>
+      <Hsp_align-len>158</Hsp_align-len>
+      <Hsp_qseq>QNTTSVEKGNS----AVMGGVLFST----GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLG---KCLLSPVVL---AAYAQNR-SLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAF</Hsp_qseq>
+      <Hsp_hseq>ENINNTARNNSDCPRVVLPEEIFFTISIVGVLENLIVL--LAVFKNKNLQAPMYFFICSLAISDMLGSLYKILENILIILRNMGYLKPRGSFETTADDIIDSL-----FVLSLLG--SIFSLSVIAADRYITIFHALRYHSIVTMRRTVVVLTVIWTF</Hsp_hseq>
+      <Hsp_midline>+N  +  + NS     V+   +F T    G+L NL+ L  LA      L +  Y  +C L ++D+LG   K L + +++     Y + R S    A  + +SL     F +S  G  S   L  +A + ++++ H   Y   +T+R   +V  V+  F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>20</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|335</Hit_id>
+  <Hit_def>sp|Q8NFJ6|PKR2_HUMAN Prokineticin receptor 2 OS=Homo sapiens OX=9606 GN=PROKR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>335</Hit_accession>
+  <Hit_len>384</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>31.5722</Hsp_bit-score>
+      <Hsp_score>70</Hsp_score>
+      <Hsp_evalue>0.00883454</Hsp_evalue>
+      <Hsp_query-from>19</Hsp_query-from>
+      <Hsp_query-to>126</Hsp_query-to>
+      <Hsp_hit-from>60</Hsp_hit-from>
+      <Hsp_hit-to>160</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>26</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>108</Hsp_align-len>
+      <Hsp_qseq>MGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHP</Hsp_qseq>
+      <Hsp_hseq>LAGIMLVCGI-GNFVFIAALTR--YKKLRNLTNLLIANLAISDFLVAIICCPFEMDYYV----VRQLSWEHGHVLCASVNYLRTVSLYVSTNALLAIAIDRYLAIVHP</Hsp_hseq>
+      <Hsp_midline>+ G++   G+ GN + +  L R     L ++  +L+  L ++D L   +  P  +  Y     +R L+    + LC +  +  +     ST  LLA+A++ +L++ HP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>21</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|84</Hit_id>
+  <Hit_def>sp|P46091|CML2_HUMAN Chemerin-like receptor 2 OS=Homo sapiens OX=9606 GN=CMKLR2 PE=1 SV=2</Hit_def>
+  <Hit_accession>84</Hit_accession>
+  <Hit_len>355</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>31.187</Hsp_bit-score>
+      <Hsp_score>69</Hsp_score>
+      <Hsp_evalue>0.0120204</Hsp_evalue>
+      <Hsp_query-from>93</Hsp_query-from>
+      <Hsp_query-to>191</Hsp_query-to>
+      <Hsp_hit-from>109</Hsp_hit-from>
+      <Hsp_hit-to>206</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>45</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>99</Hsp_align-len>
+      <Hsp_qseq>LCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVL</Hsp_qseq>
+      <Hsp_hseq>LCKANSFTAQLNMFASVFFLTVISLDHYIHLIHPVLSHRHRTLK-NSLIVIIFIWLLASLIGGPALYFRDTVEFNNHTLCYNNFQKHDPDLTLIRHHVL</Hsp_hseq>
+      <Hsp_midline>LC+A +F       +S   L  ++L+ ++ L HP    RH TL+  +L+  +      +    P + F   V++   T C+      +  L+++ + VL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>22</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|396</Hit_id>
+  <Hit_def>sp|P47901|V1BR_HUMAN Vasopressin V1b receptor OS=Homo sapiens OX=9606 GN=AVPR1B PE=2 SV=1</Hit_def>
+  <Hit_accession>396</Hit_accession>
+  <Hit_len>424</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>31.187</Hsp_bit-score>
+      <Hsp_score>69</Hsp_score>
+      <Hsp_evalue>0.0145218</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>127</Hsp_query-to>
+      <Hsp_hit-from>46</Hsp_hit-from>
+      <Hsp_hit-to>140</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>47</Hsp_positive>
+      <Hsp_gaps>11</Hsp_gaps>
+      <Hsp_align-len>106</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPF</Hsp_qseq>
+      <Hsp_hseq>VLATGGNLAVLLTLGQLGRKR-----SRMHLFVLHLALTDLAVALF---QVLPQLLWDITYRFQGPDL---LCRAVKYLQVLSMFASTYMLLAMTLDRYLAVCHPL</Hsp_hseq>
+      <Hsp_midline>VL + G L  LL LG L R       S  ++ V  L +TDL         VL     + + R   P L   LC+A  +       +ST  LLAM L+ +L++ HP </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>23</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|334</Hit_id>
+  <Hit_def>sp|Q8TCW9|PKR1_HUMAN Prokineticin receptor 1 OS=Homo sapiens OX=9606 GN=PROKR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>334</Hit_accession>
+  <Hit_len>393</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.8018</Hsp_bit-score>
+      <Hsp_score>68</Hsp_score>
+      <Hsp_evalue>0.0173838</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>126</Hsp_query-to>
+      <Hsp_hit-from>71</Hsp_hit-from>
+      <Hsp_hit-to>169</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>26</Hsp_identity>
+      <Hsp_positive>51</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>106</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHP</Hsp_qseq>
+      <Hsp_hseq>GIMLVCGI-GNFIFIAALVR--YKKLRNLTNLLIANLAISDFLVAIVCCPFEMDYYV----VRQLSWEHGHVLCTSVNYLRTVSLYVSTNALLAIAIDRYLAIVHP</Hsp_hseq>
+      <Hsp_midline>G++   G+ GN + +  L R     L ++  +L+  L ++D L   +  P  +  Y     +R L+    + LC +  +  +     ST  LLA+A++ +L++ HP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>24</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|60</Hit_id>
+  <Hit_def>sp|P35348|ADA1A_HUMAN Alpha-1A adrenergic receptor OS=Homo sapiens OX=9606 GN=ADRA1A PE=1 SV=2</Hit_def>
+  <Hit_accession>60</Hit_accession>
+  <Hit_len>466</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.8018</Hsp_bit-score>
+      <Hsp_score>68</Hsp_score>
+      <Hsp_evalue>0.0202432</Hsp_evalue>
+      <Hsp_query-from>18</Hsp_query-from>
+      <Hsp_query-to>201</Hsp_query-to>
+      <Hsp_hit-from>32</Hsp_hit-from>
+      <Hsp_hit-to>203</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>49</Hsp_identity>
+      <Hsp_positive>79</Hsp_positive>
+      <Hsp_gaps>24</Hsp_gaps>
+      <Hsp_align-len>190</Hsp_align-len>
+      <Hsp_qseq>VMGG-VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPV-----VLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVL</Hsp_qseq>
+      <Hsp_hseq>ILGGLILF--GVLGNILV--ILSVACHRHLHSVTHYYIVNLAVADLLLTSTVLPFSAIFEVLGYWAFGRVFCNIWAAVDVLCCTA-----------SIMGLCIISIDRYIGVSYPLRYPTIVTQRRGLMALLCVWALSLVISIGPLFGWR---QPAPEDETICQINEEPGYVLFSALGSFYLPLAIILVM</Hsp_hseq>
+      <Hsp_midline>++GG +LF  G+LGN+L   +L+ +    L SV +  +  L V DLL    + P      VL  +A  R    +  A+D   C A           S + L  ++++ ++ + +P  Y   +T R G +    V A SL     P  G+    Q  P      Q+  E G +        Y  L  +LV+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>25</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|25</Hit_id>
+  <Hit_def>sp|P29275|AA2BR_HUMAN Adenosine receptor A2b OS=Homo sapiens OX=9606 GN=ADORA2B PE=1 SV=1</Hit_def>
+  <Hit_accession>25</Hit_accession>
+  <Hit_len>332</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.4166</Hsp_bit-score>
+      <Hsp_score>67</Hsp_score>
+      <Hsp_evalue>0.0215744</Hsp_evalue>
+      <Hsp_query-from>94</Hsp_query-from>
+      <Hsp_query-to>305</Hsp_query-to>
+      <Hsp_hit-from>78</Hsp_hit-from>
+      <Hsp_hit-to>301</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>50</Hsp_identity>
+      <Hsp_positive>93</Hsp_positive>
+      <Hsp_gaps>26</Hsp_gaps>
+      <Hsp_align-len>231</Hsp_align-len>
+      <Hsp_qseq>CQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGK---FVQYCPGTW--------CFIQMVHEEG-SLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQR-----HPQPL--EELDHLLLLALMTVLFTMCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_qseq>
+      <Hsp_hseq>CLFLACFVLVLTQSSIFSLLAVAVDRYLAICVPLRYKSLVTGTRARGVIAVLWVLAFGIGLTPFLGWNSKDSATNNCTEPWDGTTNESCCLVKCLFENVVPMSYMVYFNFFGCVLPPLLIMLVI----YIKIFLVACRQLQRTELMDHSRTTLQREIHAAKSLAMIVGIFALCWLPVHAVNCVTLFQPAQGKNKPKWAMN--MAILLSHANSVVNPIVY-AYRNRDFRYTF</Hsp_hseq>
+      <Hsp_midline>C   A F+     SS   LLA+A++ +L++  P  Y+  +T      V  V+   +      PF+G+         C   W        C ++ + E    +S + Y   +  ++  L++  V+     ++      R+LQR     H +     E+     LA++  +F +C LPV        F+  + KN+         A+      S+V+P ++  +R+  FR  F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>26</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|292</Hit_id>
+  <Hit_def>sp|Q9GZQ6|NPFF1_HUMAN Neuropeptide FF receptor 1 OS=Homo sapiens OX=9606 GN=NPFFR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>292</Hit_accession>
+  <Hit_len>430</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.4166</Hsp_bit-score>
+      <Hsp_score>67</Hsp_score>
+      <Hsp_evalue>0.0220309</Hsp_evalue>
+      <Hsp_query-from>48</Hsp_query-from>
+      <Hsp_query-to>150</Hsp_query-to>
+      <Hsp_hit-from>76</Hsp_hit-from>
+      <Hsp_hit-to>170</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>27</Hsp_identity>
+      <Hsp_positive>43</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>103</Hsp_align-len>
+      <Hsp_qseq>SVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSL</Hsp_qseq>
+      <Hsp_hseq>TVTNMFILNLAVSDLLVGIFCMPTTLVDNL------ITGWPFDNATCKMSGLVQGMSVSASVFTLVAIAVERFRCIVHPF--REKLTLRKALVTIAVIWALAL</Hsp_hseq>
+      <Hsp_midline>+V  M +  L V+DLL      P  L          +     DN+ C+           +S   L+A+A+E +  + HPF  R  +TLR   +   V+ A +L</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>27</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|314</Hit_id>
+  <Hit_def>sp|Q6U736|OPN5_HUMAN Opsin-5 OS=Homo sapiens OX=9606 GN=OPN5 PE=1 SV=3</Hit_def>
+  <Hit_accession>314</Hit_accession>
+  <Hit_len>354</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.4166</Hsp_bit-score>
+      <Hsp_score>67</Hsp_score>
+      <Hsp_evalue>0.0222755</Hsp_evalue>
+      <Hsp_query-from>94</Hsp_query-from>
+      <Hsp_query-to>183</Hsp_query-to>
+      <Hsp_hit-from>106</Hsp_hit-from>
+      <Hsp_hit-to>194</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
+      <Hsp_gaps>11</Hsp_gaps>
+      <Hsp_align-len>95</Hsp_align-len>
+      <Hsp_qseq>CQAFAFFMSFFGLSSTLQLLAMALE-----CWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSL</Hsp_qseq>
+      <Hsp_hseq>CRWYGWAGFFFGCGSLITMTAVSLDRYLKICYLSYG-VWLKRKHAYICLAA-----IWAYASFWTTMPLVGLGDYVPEPFGTSCTLDWWLAQASV</Hsp_hseq>
+      <Hsp_midline>C+ + +   FFG  S + + A++L+     C+LS G  +  R+H  + L A     + A++  +  +P +G G +V    GT C +     + S+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>28</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|9</Hit_id>
+  <Hit_def>sp|P28566|5HT1E_HUMAN 5-hydroxytryptamine receptor 1E OS=Homo sapiens OX=9606 GN=HTR1E PE=1 SV=1</Hit_def>
+  <Hit_accession>9</Hit_accession>
+  <Hit_len>365</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>30.0314</Hsp_bit-score>
+      <Hsp_score>66</Hsp_score>
+      <Hsp_evalue>0.0314619</Hsp_evalue>
+      <Hsp_query-from>53</Hsp_query-from>
+      <Hsp_query-to>178</Hsp_query-to>
+      <Hsp_hit-from>60</Hsp_hit-from>
+      <Hsp_hit-to>179</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>32</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>126</Hsp_align-len>
+      <Hsp_qseq>LVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVH</Hsp_qseq>
+      <Hsp_hseq>LICSLAVTDLLVAVLVMPLSIIYIVMDRW------KLGYFLCEVWLSVDMTCCTCSILHLCVIALDRYWAITNAIEYARKRTAKRAALMILTVWTISIFISMPPLFWRSHRRLSPPPSQCTIQHDH</Hsp_hseq>
+      <Hsp_midline>L+C L VTDLL   L+ P+ +     +R        L   LC+ +          S L L  +AL+ + ++ +   Y R  T +  AL+   V   S+     P           P + C IQ  H</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>29</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|169</Hit_id>
+  <Hit_def>sp|P32249|GP183_HUMAN G-protein coupled receptor 183 OS=Homo sapiens OX=9606 GN=GPR183 PE=1 SV=3</Hit_def>
+  <Hit_accession>169</Hit_accession>
+  <Hit_len>361</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>29.6462</Hsp_bit-score>
+      <Hsp_score>65</Hsp_score>
+      <Hsp_evalue>0.0383948</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>131</Hsp_query-to>
+      <Hsp_hit-from>39</Hsp_hit-from>
+      <Hsp_hit-to>141</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>111</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRR</Hsp_qseq>
+      <Hsp_hseq>SLVFIIGLVGNLLALVVIVQNRKKINSTTLYST--NLVISDILFTTAL-PTRIAYYAMGFDWRI-----GDALCRITALVFYINTYAGVNFMTCLSIDRFIAVVHPLRYNK</Hsp_hseq>
+      <Hsp_midline> ++F  GL+GNLLAL ++ ++      +  Y     L ++D+L    L P  +A YA     R+      ++LC+  A        +    +  ++++ ++++ HP  Y +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>30</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|211</Hit_id>
+  <Hit_def>sp|P21730|C5AR1_HUMAN C5a anaphylatoxin chemotactic receptor 1 OS=Homo sapiens OX=9606 GN=C5AR1 PE=1 SV=2</Hit_def>
+  <Hit_accession>211</Hit_accession>
+  <Hit_len>350</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>29.6462</Hsp_bit-score>
+      <Hsp_score>65</Hsp_score>
+      <Hsp_evalue>0.0386836</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>79</Hsp_query-to>
+      <Hsp_hit-from>25</Hsp_hit-from>
+      <Hsp_hit-to>99</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>21</Hsp_identity>
+      <Hsp_positive>38</Hsp_positive>
+      <Hsp_gaps>4</Hsp_gaps>
+      <Hsp_align-len>79</Hsp_align-len>
+      <Hsp_qseq>PFYRCQNTTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQN</Hsp_qseq>
+      <Hsp_hseq>PVDKTSNTLRVPDILALVIFAVVFLVGVLGNALVVWVTAFEAKRTINAIWFL---NLAVADFLS-CLALPILFTSIVQH</Hsp_hseq>
+      <Hsp_midline>P  +  NT  V    + V+  V+F  G+LGN L + + A      + +++++    L V D L  CL  P++  +  Q+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>31</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|183</Hit_id>
+  <Hit_def>sp|Q86VZ1|P2RY8_HUMAN P2Y purinoceptor 8 OS=Homo sapiens OX=9606 GN=P2RY8 PE=1 SV=1</Hit_def>
+  <Hit_accession>183</Hit_accession>
+  <Hit_len>359</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>29.261</Hsp_bit-score>
+      <Hsp_score>64</Hsp_score>
+      <Hsp_evalue>0.0512619</Hsp_evalue>
+      <Hsp_query-from>18</Hsp_query-from>
+      <Hsp_query-to>131</Hsp_query-to>
+      <Hsp_hit-from>28</Hsp_hit-from>
+      <Hsp_hit-to>133</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>58</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>115</Hsp_align-len>
+      <Hsp_qseq>VMGGVLFSTGLLGNLLALGLLARSGLGPL-PSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRR</Hsp_qseq>
+      <Hsp_hseq>VVYSLVAAVSIPGNLFSLWVLCRR-MGPRSPSVIFMI--NLSVTDLMLASVLPFQIY--YHCNRHHWVFGVLLCNVVTVAFYANM----YSSILTMTCISVERFLGVLYPLSSKR</Hsp_hseq>
+      <Hsp_midline>V+  ++ +  + GNL +L +L R  +GP  PSV +M+   L+VTDL+   +L   +   Y  NR   V    L N +  AF   M     SS L +  +++E +L + +P   +R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>32</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|308</Hit_id>
+  <Hit_def>sp|P04000|OPSR_HUMAN Long-wave-sensitive opsin 1 OS=Homo sapiens OX=9606 GN=OPN1LW PE=1 SV=1</Hit_def>
+  <Hit_accession>308</Hit_accession>
+  <Hit_len>364</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.4906</Hsp_bit-score>
+      <Hsp_score>62</Hsp_score>
+      <Hsp_evalue>0.0896557</Hsp_evalue>
+      <Hsp_query-from>89</Hsp_query-from>
+      <Hsp_query-to>247</Hsp_query-to>
+      <Hsp_hit-from>121</Hsp_hit-from>
+      <Hsp_hit-to>278</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>33</Hsp_identity>
+      <Hsp_positive>70</Hsp_positive>
+      <Hsp_gaps>11</Hsp_gaps>
+      <Hsp_align-len>164</Hsp_align-len>
+      <Hsp_qseq>LDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCAL----PFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATV-LCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMC</Hsp_qseq>
+      <Hsp_hseq>LGHPMCVLEGYTVSLCGITGLWSLAIISWERWLVVCKPFG-----NVRFDAKLAIVGIAFSWIWSAVWTAPPIFGWSRYWPHGLKTSCGPDVFSGSSYPGVQSYMIVLMVTCCIIPLAIIMLCYLQVWLAIRAVAKQ-QKESESTQKAEKEVTRMVVVMIFAYC</Hsp_hseq>
+      <Hsp_midline>L + +C    + +S  G++    L  ++ E WL +  PF       +R  A +A V  AFS  + A+    P  G+ ++  +   T C   +        V  Y ++      ++ LA + LC L     + A+ ++ Q+  +  ++ +  +   ++ ++F  C</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>33</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|126</Hit_id>
+  <Hit_def>sp|Q49SQ1|GPR33_HUMAN Probable G-protein coupled receptor 33 OS=Homo sapiens OX=9606 GN=GPR33 PE=2 SV=1</Hit_def>
+  <Hit_accession>126</Hit_accession>
+  <Hit_len>333</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.4906</Hsp_bit-score>
+      <Hsp_score>62</Hsp_score>
+      <Hsp_evalue>0.0943996</Hsp_evalue>
+      <Hsp_query-from>32</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>31</Hsp_hit-from>
+      <Hsp_hit-to>166</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>32</Hsp_identity>
+      <Hsp_positive>62</Hsp_positive>
+      <Hsp_gaps>9</Hsp_gaps>
+      <Hsp_align-len>137</Hsp_align-len>
+      <Hsp_qseq>LLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPAL--DN------SLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGF</Hsp_qseq>
+      <Hsp_hseq>IIALSLYISSIIGTITNGLYLWVLRFKMKQTVNTLLFFHLILSYFISTMILPFMATSQLQDNHWNFGTALCKVFNGTLSLGMFTSVFFLSAIGLDRYLLTLHPVWSQQHRTPRWASSIVLGV-WISAAALSIPYLIF</Hsp_hseq>
+      <Hsp_midline>++AL L   S +G + +  Y+ V    +   +   L   ++L+ +     L  +A +   DN      +LC+ F   +S    +S   L A+ L+ +L   HP + ++H T R  + +   V   S A  ++P++ F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>34</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|325</Hit_id>
+  <Hit_def>sp|P51582|P2RY4_HUMAN P2Y purinoceptor 4 OS=Homo sapiens OX=9606 GN=P2RY4 PE=1 SV=1</Hit_def>
+  <Hit_accession>325</Hit_accession>
+  <Hit_len>365</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>28.4906</Hsp_bit-score>
+      <Hsp_score>62</Hsp_score>
+      <Hsp_evalue>0.100604</Hsp_evalue>
+      <Hsp_query-from>5</Hsp_query-from>
+      <Hsp_query-to>47</Hsp_query-to>
+      <Hsp_hit-from>185</Hsp_hit-from>
+      <Hsp_hit-to>232</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>20</Hsp_identity>
+      <Hsp_positive>26</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>49</Hsp_align-len>
+      <Hsp_qseq>CQNTTSVEKGN------SAVMGGVLFSTGLLGNLLALGLLARSGLGPLP</Hsp_qseq>
+      <Hsp_hseq>CHDTTRPEEFDHYVHFSSAVMG-LLFGVPCLVTLVCYGLMARRLYQPLP</Hsp_hseq>
+      <Hsp_midline>C +TT  E+ +      SAVMG +LF    L  L+  GL+AR    PLP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>35</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|336</Hit_id>
+  <Hit_def>sp|P49683|PRLHR_HUMAN Prolactin-releasing peptide receptor OS=Homo sapiens OX=9606 GN=PRLHR PE=1 SV=3</Hit_def>
+  <Hit_accession>336</Hit_accession>
+  <Hit_len>370</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.7202</Hsp_bit-score>
+      <Hsp_score>60</Hsp_score>
+      <Hsp_evalue>0.146132</Hsp_evalue>
+      <Hsp_query-from>13</Hsp_query-from>
+      <Hsp_query-to>156</Hsp_query-to>
+      <Hsp_hit-from>60</Hsp_hit-from>
+      <Hsp_hit-to>193</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>42</Hsp_identity>
+      <Hsp_positive>64</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>144</Hsp_align-len>
+      <Hsp_qseq>KGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALP</Hsp_qseq>
+      <Hsp_hseq>KGLIVLLYSVVVVVGLVGNCLLVLVIAR--VRRLHNVTNFLIGNLALSDVLMCTACVPLTLAYAFEPRGW-----VFGGGLCHLVFFLQPVTVYVSVFTLTTIAVDRYVVLVHPL--RRRISLRLSAYAVLAIWALS-AVLALP</Hsp_hseq>
+      <Hsp_midline>KG   ++  V+   GL+GN L + ++AR  +  L +V   L+  L ++D+L      P+ LA   + R            LC    F        S   L  +A++ ++ L HP   RR I+LRL A     + A S A  ALP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>36</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|279</Hit_id>
+  <Hit_def>sp|P48039|MTR1A_HUMAN Melatonin receptor type 1A OS=Homo sapiens OX=9606 GN=MTNR1A PE=1 SV=1</Hit_def>
+  <Hit_accession>279</Hit_accession>
+  <Hit_len>350</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.7202</Hsp_bit-score>
+      <Hsp_score>60</Hsp_score>
+      <Hsp_evalue>0.164131</Hsp_evalue>
+      <Hsp_query-from>26</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>40</Hsp_hit-from>
+      <Hsp_hit-to>253</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>47</Hsp_identity>
+      <Hsp_positive>91</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>227</Hsp_align-len>
+      <Hsp_qseq>TGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTW--CFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>VDILGNLLVILSVYRNK--KLRNAGNIFVVSLAVADLVVAIYPYPLVLMSIFNN------GWNLGYLHCQVSGFLMGLSVIGSIFNITGIAINRYCYICHSLKYDKLYSSKNSLCYVLLIWLLTLA-AVLPNLRAGT-LQYDPRIYSCTFAQSVSSAYTIAVVVFHFLVPMIIVIFCYLRIWILVLQVRQRVKPDRKPKLKPQ---DFRNFVTMFVVFVLFAICWAP</Hsp_hseq>
+      <Hsp_midline>  +LGNLL +  + R+    L +   + V  L V DL+      P+VL +   N         L    CQ   F M    + S   +  +A+  +  + H   Y +  + +       ++   +LA   LP +  G  +QY P  +   F Q V    +++V+ +  L   ++ +     +   +  +R      R+ +  PQ   +  + + + ++ VLF +C  P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>37</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|226</Hit_id>
+  <Hit_def>sp|O14843|FFAR3_HUMAN Free fatty acid receptor 3 OS=Homo sapiens OX=9606 GN=FFAR3 PE=1 SV=1</Hit_def>
+  <Hit_accession>226</Hit_accession>
+  <Hit_len>346</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.7202</Hsp_bit-score>
+      <Hsp_score>60</Hsp_score>
+      <Hsp_evalue>0.172451</Hsp_evalue>
+      <Hsp_query-from>96</Hsp_query-from>
+      <Hsp_query-to>180</Hsp_query-to>
+      <Hsp_hit-from>92</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>21</Hsp_identity>
+      <Hsp_positive>44</Hsp_positive>
+      <Hsp_gaps>5</Hsp_gaps>
+      <Hsp_align-len>88</Hsp_align-len>
+      <Hsp_qseq>AFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPF-MGFGKFVQYCPGT--WCFIQMVHEE</Hsp_qseq>
+      <Hsp_hseq>GFIFFTTIY--LTALFLAAVSIERFLSVAHPLWYKTRPRLGQAGLVSVACWLLASAHCSVVYVIEFSGDISHSQGTNGTCYLEFRKDQ</Hsp_hseq>
+      <Hsp_midline> F FF + +   + L L A+++E +LS+ HP +Y+    L    LV+      + A C++ + + F   + +  GT   C+++   ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>38</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|112</Hit_id>
+  <Hit_def>sp|O15529|GPR42_HUMAN G-protein coupled receptor 42 OS=Homo sapiens OX=9606 GN=GPR42 PE=1 SV=1</Hit_def>
+  <Hit_accession>112</Hit_accession>
+  <Hit_len>346</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.335</Hsp_bit-score>
+      <Hsp_score>59</Hsp_score>
+      <Hsp_evalue>0.183416</Hsp_evalue>
+      <Hsp_query-from>96</Hsp_query-from>
+      <Hsp_query-to>180</Hsp_query-to>
+      <Hsp_hit-from>92</Hsp_hit-from>
+      <Hsp_hit-to>177</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>21</Hsp_identity>
+      <Hsp_positive>44</Hsp_positive>
+      <Hsp_gaps>5</Hsp_gaps>
+      <Hsp_align-len>88</Hsp_align-len>
+      <Hsp_qseq>AFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPF-MGFGKFVQYCPGT--WCFIQMVHEE</Hsp_qseq>
+      <Hsp_hseq>GFIFFTTIY--LTALFLAAVSIERFLSVAHPLWYKTRPRLGQAGLVSVACWLLASAHCSVVYVIEFSGDISHSQGTNGTCYLEFWKDQ</Hsp_hseq>
+      <Hsp_midline> F FF + +   + L L A+++E +LS+ HP +Y+    L    LV+      + A C++ + + F   + +  GT   C+++   ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>39</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|218</Hit_id>
+  <Hit_def>sp|P21918|DRD5_HUMAN D(1B) dopamine receptor OS=Homo sapiens OX=9606 GN=DRD5 PE=1 SV=2</Hit_def>
+  <Hit_accession>218</Hit_accession>
+  <Hit_len>477</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>27.7202</Hsp_bit-score>
+      <Hsp_score>60</Hsp_score>
+      <Hsp_evalue>0.188118</Hsp_evalue>
+      <Hsp_query-from>92</Hsp_query-from>
+      <Hsp_query-to>138</Hsp_query-to>
+      <Hsp_hit-from>111</Hsp_hit-from>
+      <Hsp_hit-to>157</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>11</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>47</Hsp_align-len>
+      <Hsp_qseq>SLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLG</Hsp_qseq>
+      <Hsp_hseq>AFCDVWVAFDIMCSTASILNLCVISVDRYWAISRPFRYKRKMTQRMA</Hsp_hseq>
+      <Hsp_midline>+ C  +  F      +S L L  ++++ + ++  PF Y+R +T R+ </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>40</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|24</Hit_id>
+  <Hit_def>sp|P29274|AA2AR_HUMAN Adenosine receptor A2a OS=Homo sapiens OX=9606 GN=ADORA2A PE=1 SV=2</Hit_def>
+  <Hit_accession>24</Hit_accession>
+  <Hit_len>412</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.9498</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.270362</Hsp_evalue>
+      <Hsp_query-from>94</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>77</Hsp_hit-from>
+      <Hsp_hit-to>248</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>44</Hsp_identity>
+      <Hsp_positive>69</Hsp_positive>
+      <Hsp_gaps>19</Hsp_gaps>
+      <Hsp_align-len>174</Hsp_align-len>
+      <Hsp_qseq>CQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALL-----VLATVLCNLGA-MRNLYAMHRRL-QRHPQPL----------EELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>CLFIACFVLVLTQSSIFSLLAIAIDRYIAIRIPLRYNGLVTGTRAKGIIAICWVLSFAIGLTPMLGWNNCGQ--PKEGKNHSQGCGEGQVACLFEDVVPMNYMVYFNFFACVLVPLLLMLGVYLRIFLAARRQLKQMESQPLPGERARSTLQKEVHAAKSLAIIVGLFALCWLP</Hsp_hseq>
+      <Hsp_midline>C   A F+     SS   LLA+A++ ++++  P  Y   +T      +  +    S A    P +G+    Q  P           EG ++ L   V+  + M        VL  +L  LG  +R   A  R+L Q   QPL          +E+     LA++  LF +C LP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>41</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|360</Hit_id>
+  <Hit_def>sp|Q9BXA5|SUCR1_HUMAN Succinate receptor 1 OS=Homo sapiens OX=9606 GN=SUCNR1 PE=1 SV=2</Hit_def>
+  <Hit_accession>360</Hit_accession>
+  <Hit_len>334</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.9498</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.279488</Hsp_evalue>
+      <Hsp_query-from>5</Hsp_query-from>
+      <Hsp_query-to>133</Hsp_query-to>
+      <Hsp_hit-from>11</Hsp_hit-from>
+      <Hsp_hit-to>132</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>32</Hsp_identity>
+      <Hsp_positive>62</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>133</Hsp_align-len>
+      <Hsp_qseq>CQN----TTSVEKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHI</Hsp_qseq>
+      <Hsp_hseq>CKNWLAAEAALEKYYLSIFYGIEFVVGVLGNTIVVYGYIFSLKNWNSSNIYLF--NLSVSDLAFLCTL-PMLIRSYANGNWI------YGDVLCISNRYVLHANLYTSILFLTFISIDRYLIIKYPF--REHL</Hsp_hseq>
+      <Hsp_midline>C+N      ++EK   ++  G+ F  G+LGN + +     S      S  Y+    L+V+DL   C L P+++ +YA    +        + LC +  + +     +S L L  ++++ +L + +PF  R H+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>42</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|316</Hit_id>
+  <Hit_def>sp|O43614|OX2R_HUMAN Orexin receptor type 2 OS=Homo sapiens OX=9606 GN=HCRTR2 PE=1 SV=2</Hit_def>
+  <Hit_accession>316</Hit_accession>
+  <Hit_len>444</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.9498</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.284612</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>63</Hsp_hit-from>
+      <Hsp_hit-to>163</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>44</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>109</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>IVFVVALIGNVLVCVAVWKNH--HMRTVTNYFIVNLSLADVLVTITCLPATLVVDITETWF------FGQSLCKVIPYLQTVSVSVSVLTLSCIALDRWYAICHPLMFK</Hsp_hseq>
+      <Hsp_midline>++F   L+GN+L    + ++    + +V    +  L++ D+L      P  L                  SLC+   +  +     S L L  +AL+ W ++ HP  ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>43</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|277</Hit_id>
+  <Hit_def>sp|P32245|MC4R_HUMAN Melanocortin receptor 4 OS=Homo sapiens OX=9606 GN=MC4R PE=1 SV=2</Hit_def>
+  <Hit_accession>277</Hit_accession>
+  <Hit_len>332</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5646</Hsp_bit-score>
+      <Hsp_score>57</Hsp_score>
+      <Hsp_evalue>0.35392</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>151</Hsp_query-to>
+      <Hsp_hit-from>58</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>27</Hsp_identity>
+      <Hsp_positive>66</Hsp_positive>
+      <Hsp_gaps>18</Hsp_gaps>
+      <Hsp_align-len>133</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLL------GKCLLSPVVLAAYAQNRSLRV-LAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITL-RLGALVAPVVSAFSLA</Hsp_qseq>
+      <Hsp_hseq>SLLENILVIVAIAKNK--NLHSPMYFFICSLAVADMLVSVSNGSETIVITLLNSTDTDAQSFTVNIDNVIDSVICSSL--------LASICSLLSIAVDRYFTIFYALQYHNIMTVKRVGIIISCIWAACTVS</Hsp_hseq>
+      <Hsp_midline> LL N+L +  +A++    L S  Y  +C L V D+L       + ++  ++ +     +S  V +   +D+ +C +         L+S   LL++A++ + ++ +   Y   +T+ R+G +++ + +A +++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>44</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|47</Hit_id>
+  <Hit_def>sp|Q8IZF2|AGRF5_HUMAN Adhesion G protein-coupled receptor F5 OS=Homo sapiens OX=9606 GN=ADGRF5 PE=1 SV=3</Hit_def>
+  <Hit_accession>47</Hit_accession>
+  <Hit_len>1346</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5646</Hsp_bit-score>
+      <Hsp_score>57</Hsp_score>
+      <Hsp_evalue>0.402635</Hsp_evalue>
+      <Hsp_query-from>71</Hsp_query-from>
+      <Hsp_query-to>155</Hsp_query-to>
+      <Hsp_hit-from>1069</Hsp_hit-from>
+      <Hsp_hit-to>1140</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>26</Hsp_identity>
+      <Hsp_positive>35</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>86</Hsp_align-len>
+      <Hsp_qseq>VVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAF-CAL</Hsp_qseq>
+      <Hsp_hseq>IVVAAIQDNRYI------LCKTACVAATFFIHFFYLSVFFWM--------LTLGLMLFYRLVFILHETSRSTQKAIAFCLGYGCPL</Hsp_hseq>
+      <Hsp_midline>+V+AA   NR +      L  + C A  FF+ FF LS    +        L+LG   FYR    L   +       AF L + C L</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>45</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|233</Hit_id>
+  <Hit_def>sp|Q92847|GHSR_HUMAN Growth hormone secretagogue receptor type 1 OS=Homo sapiens OX=9606 GN=GHSR PE=1 SV=1</Hit_def>
+  <Hit_accession>233</Hit_accession>
+  <Hit_len>366</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5646</Hsp_bit-score>
+      <Hsp_score>57</Hsp_score>
+      <Hsp_evalue>0.407464</Hsp_evalue>
+      <Hsp_query-from>23</Hsp_query-from>
+      <Hsp_query-to>154</Hsp_query-to>
+      <Hsp_hit-from>53</Hsp_hit-from>
+      <Hsp_hit-to>174</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>30</Hsp_identity>
+      <Hsp_positive>60</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>132</Hsp_align-len>
+      <Hsp_qseq>LFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCA</Hsp_qseq>
+      <Hsp_hseq>LFVVGIAGNLLTMLVVSR--FRELRTTTNLYLSSMAFSDLL-IFLCMPLDLVRLWQYRPWN-----FGDLLCKLFQFVSESCTYATVLTITALSVERYFAICFPL--RAKVVVTKGRVKLVIFVIWAVAFCS</Hsp_hseq>
+      <Hsp_midline>LF  G+ GNLL + +++R     L +   + +  +  +DLL   L  P+ L    Q R          + LC+ F F       ++ L + A+++E + ++  P   R  + +  G +   +   +++AFC+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>46</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|276</Hit_id>
+  <Hit_def>sp|P41968|MC3R_HUMAN Melanocortin receptor 3 OS=Homo sapiens OX=9606 GN=MC3R PE=1 SV=3</Hit_def>
+  <Hit_accession>276</Hit_accession>
+  <Hit_len>323</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.1794</Hsp_bit-score>
+      <Hsp_score>56</Hsp_score>
+      <Hsp_evalue>0.41874</Hsp_evalue>
+      <Hsp_query-from>26</Hsp_query-from>
+      <Hsp_query-to>136</Hsp_query-to>
+      <Hsp_hit-from>51</Hsp_hit-from>
+      <Hsp_hit-to>159</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>26</Hsp_identity>
+      <Hsp_positive>58</Hsp_positive>
+      <Hsp_gaps>18</Hsp_gaps>
+      <Hsp_align-len>119</Hsp_align-len>
+      <Hsp_qseq>TGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLG------KCLLSPVVLAAYA--QNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLR</Hsp_qseq>
+      <Hsp_hseq>VSLLENILVILAVVRNG--NLHSPMYFFLCSLAVADMLVSVSNALETIMIAIVHSDYLTFEDQFIQHMDNIFDSMICISL--------VASICNLLAIAVDRYVTIFYALRYHSIMTVR</Hsp_hseq>
+      <Hsp_midline>  LL N+L +  + R+G   L S  Y  +C L V D+L       + ++  +V + Y   +++ ++ +    D+ +C +         ++S   LLA+A++ ++++ +   Y   +T+R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>47</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|300</Hit_id>
+  <Hit_def>sp|Q15761|NPY5R_HUMAN Neuropeptide Y receptor type 5 OS=Homo sapiens OX=9606 GN=NPY5R PE=2 SV=2</Hit_def>
+  <Hit_accession>300</Hit_accession>
+  <Hit_len>445</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5646</Hsp_bit-score>
+      <Hsp_score>57</Hsp_score>
+      <Hsp_evalue>0.441006</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>165</Hsp_query-to>
+      <Hsp_hit-from>55</Hsp_hit-from>
+      <Hsp_hit-to>182</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>33</Hsp_identity>
+      <Hsp_positive>54</Hsp_positive>
+      <Hsp_gaps>11</Hsp_gaps>
+      <Hsp_align-len>139</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQ</Hsp_qseq>
+      <Hsp_hseq>GFMGNLLILMALMKKRNQKTTVNF--LIGNLAFSDILVVLFCSPFTLTSVLLDQWM------FGKVMCHIMPFLQCVSVLVSTLILISIAIVRYHMIKHPI--SNNLTANHGYFLIATVWTLGFAICS-PLPVFHSLVE</Hsp_hseq>
+      <Hsp_midline>G +GNLL L  L +         F  L+  L  +D+L     SP  L +   ++ +          +C    F      L STL L+++A+  +  + HP     ++T   G  +   V     A C+ P   F   V+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>48</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|264</Hit_id>
+  <Hit_def>sp|Q99677|LPAR4_HUMAN Lysophosphatidic acid receptor 4 OS=Homo sapiens OX=9606 GN=LPAR4 PE=1 SV=1</Hit_def>
+  <Hit_accession>264</Hit_accession>
+  <Hit_len>370</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.1794</Hsp_bit-score>
+      <Hsp_score>56</Hsp_score>
+      <Hsp_evalue>0.453993</Hsp_evalue>
+      <Hsp_query-from>6</Hsp_query-from>
+      <Hsp_query-to>141</Hsp_query-to>
+      <Hsp_hit-from>28</Hsp_hit-from>
+      <Hsp_hit-to>158</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>37</Hsp_identity>
+      <Hsp_positive>65</Hsp_positive>
+      <Hsp_gaps>19</Hsp_gaps>
+      <Hsp_align-len>143</Hsp_align-len>
+      <Hsp_qseq>QNTTSVEKGNSAVMGGVLFST----GLLGNLLALGLLA-RSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQ--AFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALV</Hsp_qseq>
+      <Hsp_hseq>NNTCIVDDSFKYNLNGAVYSVVFILGLITNSVSLFVFCFRMKMRSETAIF---ITNLAVSDLLFVCTLPFKIF--YNFNRHW-----PFGDTLCKISGTAFLTNIYG--SMLFLTCISVDRFLAIVYPFRSRTIRTRRNSAIV</Hsp_hseq>
+      <Hsp_midline> NT  V+      + G ++S     GL+ N ++L +   R  +    ++F   +  L V+DLL  C L   +   Y  NR          ++LC+    AF  + +G  S L L  ++++ +L++ +PF  R   T R  A+V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>49</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|20</Hit_id>
+  <Hit_def>sp|P20309|ACM3_HUMAN Muscarinic acetylcholine receptor M3 OS=Homo sapiens OX=9606 GN=CHRM3 PE=1 SV=1</Hit_def>
+  <Hit_accession>20</Hit_accession>
+  <Hit_len>590</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.1794</Hsp_bit-score>
+      <Hsp_score>56</Hsp_score>
+      <Hsp_evalue>0.509108</Hsp_evalue>
+      <Hsp_query-from>17</Hsp_query-from>
+      <Hsp_query-to>179</Hsp_query-to>
+      <Hsp_hit-from>72</Hsp_hit-from>
+      <Hsp_hit-to>228</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>38</Hsp_identity>
+      <Hsp_positive>69</Hsp_positive>
+      <Hsp_gaps>14</Hsp_gaps>
+      <Hsp_align-len>167</Hsp_align-len>
+      <Hsp_qseq>AVMGGVLFSTGLLGNLLAL-GLLARSGLGPLPSVFYM-LVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR-RHITLRLGALVA-PVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHE</Hsp_qseq>
+      <Hsp_hseq>AFLTGILALVTIIGNILVIVSFKVNKQLKTVNNYFLLSLACADLIIGVISMNLFTTYII----MNRW------ALGNLACDLWLAIDYVASNASVMNLLVISFDRYFSITRPLTYRAKRTTKRAGVMIGLAWVISFVLWAPAILFWQYFVGKRTVPPGECFIQFLSE</Hsp_hseq>
+      <Hsp_midline>A + G+L    ++GN+L +        L  + + F + L C   +  ++   L +  ++     NR       AL N  C  +         +S + LL ++ + + S+  P  YR +  T R G ++    V +F L   A+ F  +    +  P   CFIQ + E</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>50</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|86</Hit_id>
+  <Hit_def>sp|P41597|CCR2_HUMAN C-C chemokine receptor type 2 OS=Homo sapiens OX=9606 GN=CCR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>86</Hit_accession>
+  <Hit_len>374</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.1794</Hsp_bit-score>
+      <Hsp_score>56</Hsp_score>
+      <Hsp_evalue>0.523843</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>224</Hsp_query-to>
+      <Hsp_hit-from>51</Hsp_hit-from>
+      <Hsp_hit-to>239</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>45</Hsp_identity>
+      <Hsp_positive>91</Hsp_positive>
+      <Hsp_gaps>36</Hsp_gaps>
+      <Hsp_align-len>214</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFA--FFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQ---------YCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRH</Hsp_qseq>
+      <Hsp_hseq>LVFIFGFVGNMLVVLILINCKKLKCLTDIYLL--NLAISDLL--FLITLPLWAHSAANEWV------FGNAMCKLFTGLYHIGYFG--GIFFIILLTIDRYLAIVHAVFALKARTVTFG-VVTSVITWLVAVFASVPGIIFTKCQKEDSVYVCGPYFPRGWNNFHTIMR----NILG--------LVLPLLIMVICYSGILKTLLRCRNEKKRH</Hsp_hseq>
+      <Hsp_midline>++F  G +GN+L + +L         +  Y+L   L ++DLL   L++  + A  A N  +        N++C+ F   + + +FG      ++ + ++ +L++ H  F  +  T+  G +V  V++     F ++P + F K  +         Y P  W     +      ++LG        + L +L  V+C  G ++ L       +RH</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>51</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|109</Hit_id>
+  <Hit_def>sp|P32239|GASR_HUMAN Gastrin/cholecystokinin type B receptor OS=Homo sapiens OX=9606 GN=CCKBR PE=1 SV=1</Hit_def>
+  <Hit_accession>109</Hit_accession>
+  <Hit_len>447</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.1794</Hsp_bit-score>
+      <Hsp_score>56</Hsp_score>
+      <Hsp_evalue>0.58907</Hsp_evalue>
+      <Hsp_query-from>93</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>126</Hsp_hit-from>
+      <Hsp_hit-to>163</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>22</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>38</Hsp_align-len>
+      <Hsp_qseq>LCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>ICKAVSYLMGVSVSVSTLSLVAIALERYSAICRPLQAR</Hsp_hseq>
+      <Hsp_midline>+C+A ++ M      STL L+A+ALE + ++  P   R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>52</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|241</Hit_id>
+  <Hit_def>sp|P22888|LSHR_HUMAN Lutropin-choriogonadotropic hormone receptor OS=Homo sapiens OX=9606 GN=LHCGR PE=1 SV=4</Hit_def>
+  <Hit_accession>241</Hit_accession>
+  <Hit_len>699</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.1794</Hsp_bit-score>
+      <Hsp_score>56</Hsp_score>
+      <Hsp_evalue>0.608489</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>305</Hsp_query-to>
+      <Hsp_hit-from>373</Hsp_hit-from>
+      <Hsp_hit-to>635</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>64</Hsp_identity>
+      <Hsp_positive>116</Hsp_positive>
+      <Hsp_gaps>36</Hsp_gaps>
+      <Hsp_align-len>289</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDL-LGKCLLSPVVLAAYAQNRSLRVLAPALD---NSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQ---RHPQPLEELDHLLLLALMTVL-FT--MCSLPVIYRAYYGAFKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_qseq>
+      <Hsp_hseq>AIMGNMTVLFVLLTSRYKL--TVPRFLMCNLSFADFCMGLYLL---LIASVDSQTKGQYYNHAIDWQTGSGCSTAGFFTVFASELSVYTLTVITLERWHTITYAIHLDQKLRLRHAILIMLGGWLFSSLIAMLPLVGVSNYMKV---SICFPMDVE--------------TTLSQVYILTILILNVVAFFIICACYIKIYFAVRNPELMATNKDTKIAKKMAILIFTDFTCMAPISFFAISAAFK-VPLITVTNSK---VLLVLFYPINSCANPFLYAIFTKTFQRDFF</Hsp_hseq>
+      <Hsp_midline> ++GN+  L +L  S      +V   L+C L+  D  +G  LL   ++A+       +    A+D    S C    FF  F    S   L  + LE W ++ +     + + LR   L+      FS     LP +G   +++    + CF   V               ++L  + +L  ++ N+ A   + A + ++    R+P+ +       +   M +L FT   C  P+ + A   AFK V     T+ +   +  + F  + S  +P+++ IF     R FF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>53</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|141</Hit_id>
+  <Hit_def>sp|Q96P69|GPR78_HUMAN G-protein coupled receptor 78 OS=Homo sapiens OX=9606 GN=GPR78 PE=1 SV=2</Hit_def>
+  <Hit_accession>141</Hit_accession>
+  <Hit_len>363</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.7942</Hsp_bit-score>
+      <Hsp_score>55</Hsp_score>
+      <Hsp_evalue>0.625349</Hsp_evalue>
+      <Hsp_query-from>94</Hsp_query-from>
+      <Hsp_query-to>152</Hsp_query-to>
+      <Hsp_hit-from>79</Hsp_hit-from>
+      <Hsp_hit-to>137</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>17</Hsp_identity>
+      <Hsp_positive>28</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>59</Hsp_align-len>
+      <Hsp_qseq>CQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAF</Hsp_qseq>
+      <Hsp_hseq>CQVIGFLDTFLASNAALSVAALSADQWLAVGFPLRYAGRLRPRYAGLLLGCAWGQSLAF</Hsp_hseq>
+      <Hsp_midline>CQ   F  +F   ++ L + A++ + WL++G P  Y   +  R   L+       SLAF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>54</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|274</Hit_id>
+  <Hit_def>sp|Q01726|MSHR_HUMAN Melanocyte-stimulating hormone receptor OS=Homo sapiens OX=9606 GN=MC1R PE=1 SV=2</Hit_def>
+  <Hit_accession>274</Hit_accession>
+  <Hit_len>317</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.751716</Hsp_evalue>
+      <Hsp_query-from>7</Hsp_query-from>
+      <Hsp_query-to>135</Hsp_query-to>
+      <Hsp_hit-from>29</Hsp_hit-from>
+      <Hsp_hit-to>158</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>60</Hsp_positive>
+      <Hsp_gaps>21</Hsp_gaps>
+      <Hsp_align-len>140</Hsp_align-len>
+      <Hsp_qseq>NTTSVEKGNSAVMGGVLFSTGLLG---NLLALGLLARSGLGPLPSVFYMLVCGLTVTDLL--GKCLLSPVVL------AAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITL</Hsp_qseq>
+      <Hsp_hseq>NQTGARCLEVSISDGLFLSLGLVSLVENALVVATIAKNR--NLHSPMYCFICCLALSDLLVSGSNVLETAVILLLEAGALVARAAVLQQLDNVIDVITCSSMLSSLCFLG--------AIAVDRYISIFYALRYHSIVTL</Hsp_hseq>
+      <Hsp_midline>N T       ++  G+  S GL+    N L +  +A++    L S  Y  +C L ++DLL  G  +L   V+      A  A+   L+ L   +D   C +    + F G        A+A++ ++S+ +   Y   +TL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>55</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|291</Hit_id>
+  <Hit_def>sp|Q9GZQ4|NMUR2_HUMAN Neuromedin-U receptor 2 OS=Homo sapiens OX=9606 GN=NMUR2 PE=1 SV=2</Hit_def>
+  <Hit_accession>291</Hit_accession>
+  <Hit_len>415</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.7942</Hsp_bit-score>
+      <Hsp_score>55</Hsp_score>
+      <Hsp_evalue>0.761274</Hsp_evalue>
+      <Hsp_query-from>23</Hsp_query-from>
+      <Hsp_query-to>156</Hsp_query-to>
+      <Hsp_hit-from>55</Hsp_hit-from>
+      <Hsp_hit-to>180</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>63</Hsp_positive>
+      <Hsp_gaps>24</Hsp_gaps>
+      <Hsp_align-len>142</Hsp_align-len>
+      <Hsp_qseq>LFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVL--------APALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALP</Hsp_qseq>
+      <Hsp_hseq>IFVVGVIGNVLVCLVILQHQAMKTPTNYYLF--SLAVSDLLVLLLGMP--LEVYEMWRNYPFLFGPVGCYFKTALFETVC-----------FASILSITTVSVERYVAILHPFRAKLQSTRRRALRILGIVWGFSVLF-SLP</Hsp_hseq>
+      <Hsp_midline>+F  G++GN+L   ++ +      P+ +Y+    L V+DLL   L  P  L  Y   R+   L          AL  ++C            +S L +  +++E ++++ HPF  +   T R    +  +V  FS+ F +LP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>56</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|231</Hit_id>
+  <Hit_def>sp|O43603|GALR2_HUMAN Galanin receptor type 2 OS=Homo sapiens OX=9606 GN=GALR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>231</Hit_accession>
+  <Hit_len>387</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.833178</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>165</Hsp_query-to>
+      <Hsp_hit-from>34</Hsp_hit-from>
+      <Hsp_hit-to>168</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>61</Hsp_positive>
+      <Hsp_gaps>9</Hsp_gaps>
+      <Hsp_align-len>144</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQ</Hsp_qseq>
+      <Hsp_hseq>LIFLVGTVGNTLVLAVLLRGGQAVSTTNLFIL--NLGVADLCFILCCVPFQATIYTLDGWV------FGSLLCKAVHFLIFLTMHASSFTLAAVSLDRYLAIRYPLHSRELRTPRNALAAIGLIWGLSLLFSG-PYLSYYRQSQ</Hsp_hseq>
+      <Hsp_midline>++F  G +GN L L +L R G     +  ++L   L V DL       P     Y  +  +        + LC+A  F +     +S+  L A++L+ +L++ +P   R   T R       ++   SL F   P++ + +  Q</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>57</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|144</Hit_id>
+  <Hit_def>sp|Q9NQS5|GPR84_HUMAN G-protein coupled receptor 84 OS=Homo sapiens OX=9606 GN=GPR84 PE=2 SV=1</Hit_def>
+  <Hit_accession>144</Hit_accession>
+  <Hit_len>396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.852164</Hsp_evalue>
+      <Hsp_query-from>35</Hsp_query-from>
+      <Hsp_query-to>126</Hsp_query-to>
+      <Hsp_hit-from>40</Hsp_hit-from>
+      <Hsp_hit-to>125</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>27</Hsp_identity>
+      <Hsp_positive>39</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>92</Hsp_align-len>
+      <Hsp_qseq>LGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHP</Hsp_qseq>
+      <Hsp_hseq>LTLLALAIQPKLRTRFNLLIANLTLADLLYCTLLQPFSVDTYLH------LHWRTGATFCRVFGLLLFASNSVSILTLCLIALGRYLLIAHP</Hsp_hseq>
+      <Hsp_midline>L LLA +    L + F +L+  LT+ DLL   LL P  +  Y        L      + C+ F   +      S L L  +AL  +L + HP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>58</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|85</Hit_id>
+  <Hit_def>sp|P32246|CCR1_HUMAN C-C chemokine receptor type 1 OS=Homo sapiens OX=9606 GN=CCR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>85</Hit_accession>
+  <Hit_len>355</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.860783</Hsp_evalue>
+      <Hsp_query-from>7</Hsp_query-from>
+      <Hsp_query-to>179</Hsp_query-to>
+      <Hsp_hit-from>20</Hsp_hit-from>
+      <Hsp_hit-to>190</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>37</Hsp_identity>
+      <Hsp_positive>76</Hsp_positive>
+      <Hsp_gaps>20</Hsp_gaps>
+      <Hsp_align-len>182</Hsp_align-len>
+      <Hsp_qseq>NTTSVEKGNSAVMGGVL--------FSTGLLGNLL-ALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHE</Hsp_qseq>
+      <Hsp_hseq>DATPCQKVNERAFGAQLLPPLYSLVFVIGLVGNILVVLVLVQYKRLKNMTSIYLL---NLAISDLLFLFTL-PFWIDYKLKDDWV------FGDAMCKILSGFYYTGLYSEIFFIILLTIDRYLAIVHAVFALRARTVTFGVITSIIIWALAI-LASMPGLYFSKTQWEFTHHTCSLHFPHE</Hsp_hseq>
+      <Hsp_midline>+ T  +K N    G  L        F  GL+GN+L  L L+    L  + S++ +    L ++DLL    L P  +    ++  +        +++C+  + F      S    ++ + ++ +L++ H  F  R  T+  G + + ++ A ++   ++P + F K         C +   HE</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>59</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|158</Hit_id>
+  <Hit_def>sp|Q8TDV0|GP151_HUMAN G-protein coupled receptor 151 OS=Homo sapiens OX=9606 GN=GPR151 PE=1 SV=1</Hit_def>
+  <Hit_accession>158</Hit_accession>
+  <Hit_len>419</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.89291</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>79</Hsp_query-to>
+      <Hsp_hit-from>50</Hsp_hit-from>
+      <Hsp_hit-to>102</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>15</Hsp_identity>
+      <Hsp_positive>29</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>53</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQN</Hsp_qseq>
+      <Hsp_hseq>GFVGNLCVIGILLHNAWKGKPSMIHSLILNLSLADLSLLLFSAPIRATAYSKS</Hsp_hseq>
+      <Hsp_midline>G +GNL  +G+L  +     PS+ + L+  L++ DL      +P+   AY+++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>60</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|309</Hit_id>
+  <Hit_def>sp|P04001|OPSG_HUMAN Medium-wave-sensitive opsin 1 OS=Homo sapiens OX=9606 GN=OPN1MW PE=1 SV=1</Hit_def>
+  <Hit_accession>309</Hit_accession>
+  <Hit_len>364</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>0.928988</Hsp_evalue>
+      <Hsp_query-from>89</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>121</Hsp_hit-from>
+      <Hsp_hit-to>283</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>70</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>170</Hsp_align-len>
+      <Hsp_qseq>LDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCAL----PFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLA-TVLCNLG---AMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>LGHPMCVLEGYTVSLCGITGLWSLAIISWERWMVVCKPFG-----NVRFDAKLAIVGIAFSWIWAAVWTAPPIFGWSRYWPHGLKTSCGPDVFSGSSYPGVQSYMIVLMVTCCITPLSIIVLCYLQVWLAIRAVAKQQKESESTQKAEKEVTRMVV--VMVLAFCFCWGP</Hsp_hseq>
+      <Hsp_midline>L + +C    + +S  G++    L  ++ E W+ +  PF       +R  A +A V  AFS  + A+    P  G+ ++  +   T C   +        V  Y ++      +  L+  VLC L    A+R +    +  +   +  +E+  +++  +M + F  C  P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>61</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|150</Hit_id>
+  <Hit_def>sp|Q8IZ08|GP135_HUMAN G-protein coupled receptor 135 OS=Homo sapiens OX=9606 GN=GPR135 PE=1 SV=2</Hit_def>
+  <Hit_accession>150</Hit_accession>
+  <Hit_len>494</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.409</Hsp_bit-score>
+      <Hsp_score>54</Hsp_score>
+      <Hsp_evalue>1.03045</Hsp_evalue>
+      <Hsp_query-from>94</Hsp_query-from>
+      <Hsp_query-to>139</Hsp_query-to>
+      <Hsp_hit-from>184</Hsp_hit-from>
+      <Hsp_hit-to>233</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>17</Hsp_identity>
+      <Hsp_positive>26</Hsp_positive>
+      <Hsp_gaps>4</Hsp_gaps>
+      <Hsp_align-len>50</Hsp_align-len>
+      <Hsp_qseq>CQAFAFFMSFFGLSSTLQLLAMALECWLSLGHP----FFYRRHITLRLGA</Hsp_qseq>
+      <Hsp_hseq>CAASRFFSSCFGIVSTLSVALISLDRYCAIVRPPREKIGRRRALQLLAGA</Hsp_hseq>
+      <Hsp_midline>C A  FF S FG+ STL +  ++L+ + ++  P       RR + L  GA</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>62</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|333</Hit_id>
+  <Hit_def>sp|P25105|PTAFR_HUMAN Platelet-activating factor receptor OS=Homo sapiens OX=9606 GN=PTAFR PE=1 SV=1</Hit_def>
+  <Hit_accession>333</Hit_accession>
+  <Hit_len>342</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.03478</Hsp_evalue>
+      <Hsp_query-from>170</Hsp_query-from>
+      <Hsp_query-to>293</Hsp_query-to>
+      <Hsp_hit-from>171</Hsp_hit-from>
+      <Hsp_hit-to>293</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>36</Hsp_identity>
+      <Hsp_positive>58</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>131</Hsp_align-len>
+      <Hsp_qseq>TWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVL--FTMCSLP--VIYRAYYGA---FKDVKEKNRTSEEAEDLRALRFLSVISIVDPWIF</Hsp_qseq>
+      <Hsp_hseq>TRCFEH--YEKGSVPVLIIHIFIVFSFFLVFLIILFCNLVIIRTLLMQPVQQQRN----AEVKRRALWMVCTVLAVFIICFVPHHVVQLPWTLAELGFQDSKFHQAINDAHQ--VTLCLLSTNCVLDPVIY</Hsp_hseq>
+      <Hsp_midline>T CF    +E+GS+ VL   +       L+ L  + CNL  +R L     + QR+     E+    L  + TVL  F +C +P  V+   +  A   F+D K     ++  +    L  LS   ++DP I+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>63</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|10</Hit_id>
+  <Hit_def>sp|P30939|5HT1F_HUMAN 5-hydroxytryptamine receptor 1F OS=Homo sapiens OX=9606 GN=HTR1F PE=2 SV=1</Hit_def>
+  <Hit_accession>10</Hit_accession>
+  <Hit_len>366</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.05179</Hsp_evalue>
+      <Hsp_query-from>6</Hsp_query-from>
+      <Hsp_query-to>156</Hsp_query-to>
+      <Hsp_hit-from>9</Hsp_hit-from>
+      <Hsp_hit-to>157</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>37</Hsp_identity>
+      <Hsp_positive>69</Hsp_positive>
+      <Hsp_gaps>28</Hsp_gaps>
+      <Hsp_align-len>164</Hsp_align-len>
+      <Hsp_qseq>QNTTSVEKGN--------SAVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSP-----VVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALP</Hsp_qseq>
+      <Hsp_hseq>QNLTSEELLNRMPSKILVSLTLSGLALMTTTINSLVIAAIIVTRKLHH-PANY--LICSLAVTDFLVAVLVMPFSIVYIVRESWIMGQVVCDIWLSVDITCCTC-----------SILHLSAIALDRYRAITDAVEYARKRTPKHAGIMITIVWIISV-FISMP</Hsp_hseq>
+      <Hsp_midline>QN TS E  N        S  + G+   T  + +L+   ++    L   P+ +  L+C L VTD L   L+ P     +V  ++   + +  +  ++D + C             S L L A+AL+ + ++     Y R  T +   ++  +V   S+ F ++P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>64</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|69</Hit_id>
+  <Hit_def>sp|P30556|AGTR1_HUMAN Type-1 angiotensin II receptor OS=Homo sapiens OX=9606 GN=AGTR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>69</Hit_accession>
+  <Hit_len>359</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.13316</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>144</Hsp_query-to>
+      <Hsp_hit-from>36</Hsp_hit-from>
+      <Hsp_hit-to>147</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>58</Hsp_positive>
+      <Hsp_gaps>14</Hsp_gaps>
+      <Hsp_align-len>125</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGN-LLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPV</Hsp_qseq>
+      <Hsp_hseq>SIIFVVGIFGNSLVVIVIYFYMKLKTVASVFLL---NLALADL---CFL--LTLPLWAVYTAMEYRWP-FGNYLCKIASASVSFNLYASVFLLTCLSIDRYLAIVHPMKSR----LRRTMLVAKV</Hsp_hseq>
+      <Hsp_midline> ++F  G+ GN L+ + +     L  + SVF +    L + DL   C L  + L  +A   ++    P   N LC+  +  +SF   +S   L  ++++ +L++ HP   R    LR   LVA V</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>65</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|280</Hit_id>
+  <Hit_def>sp|P49286|MTR1B_HUMAN Melatonin receptor type 1B OS=Homo sapiens OX=9606 GN=MTNR1B PE=1 SV=1</Hit_def>
+  <Hit_accession>280</Hit_accession>
+  <Hit_len>362</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.13536</Hsp_evalue>
+      <Hsp_query-from>88</Hsp_query-from>
+      <Hsp_query-to>131</Hsp_query-to>
+      <Hsp_hit-from>107</Hsp_hit-from>
+      <Hsp_hit-to>150</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>20</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>44</Hsp_align-len>
+      <Hsp_qseq>ALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRR</Hsp_qseq>
+      <Hsp_hseq>ALGEEHCKASAFVMGLSVIGSVFNITAIAINRYCYICHSMAYHR</Hsp_hseq>
+      <Hsp_midline>AL    C+A AF M    + S   + A+A+  +  + H   Y R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>66</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|397</Hit_id>
+  <Hit_def>sp|P30518|V2R_HUMAN Vasopressin V2 receptor OS=Homo sapiens OX=9606 GN=AVPR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>397</Hit_accession>
+  <Hit_len>371</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.1518</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>132</Hsp_query-to>
+      <Hsp_hit-from>46</Hsp_hit-from>
+      <Hsp_hit-to>150</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>28</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>111</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRH</Hsp_qseq>
+      <Hsp_hseq>IVFVAVALSNGLVLAALARRGRRGHWAPIHVFIGHLCLADLAVALFQ---VLPQLAWKATDRFRGP---DALCRAVKYLQMVGMYASSYMILAMTLDRHRAICRPMLAYRH</Hsp_hseq>
+      <Hsp_midline>++F    L N L L  LAR G     +  ++ +  L + DL         VL   A   + R   P   ++LC+A  +       +S+  +LAM L+   ++  P    RH</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>67</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|207</Hit_id>
+  <Hit_def>sp|O00144|FZD9_HUMAN Frizzled-9 OS=Homo sapiens OX=9606 GN=FZD9 PE=2 SV=1</Hit_def>
+  <Hit_accession>207</Hit_accession>
+  <Hit_len>591</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.17436</Hsp_evalue>
+      <Hsp_query-from>73</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>292</Hsp_hit-from>
+      <Hsp_hit-to>349</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>30</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>58</Hsp_align-len>
+      <Hsp_qseq>LAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>VACDQEAGALYVIQEGLENTGCTLVFLLLYYFGMASSLWWVVLTLTWFLAAGKKWGHE</Hsp_hseq>
+      <Hsp_midline>+A   +  +L V+   L+N+ C      + +FG++S+L  + + L  +L+ G  + + </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>68</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|214</Hit_id>
+  <Hit_def>sp|P21728|DRD1_HUMAN D(1A) dopamine receptor OS=Homo sapiens OX=9606 GN=DRD1 PE=1 SV=1</Hit_def>
+  <Hit_accession>214</Hit_accession>
+  <Hit_len>446</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.19531</Hsp_evalue>
+      <Hsp_query-from>92</Hsp_query-from>
+      <Hsp_query-to>156</Hsp_query-to>
+      <Hsp_hit-from>94</Hsp_hit-from>
+      <Hsp_hit-to>158</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>14</Hsp_identity>
+      <Hsp_positive>29</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>SLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALP</Hsp_qseq>
+      <Hsp_hseq>SFCNIWVAFDIMCSTASILNLCVISVDRYWAISSPFRYERKMTPKAAFILISVAWTLSVLISFIP</Hsp_hseq>
+      <Hsp_midline>S C  +  F      +S L L  ++++ + ++  PF Y R +T +   ++  V    S+    +P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>69</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|392</Hit_id>
+  <Hit_def>sp|P34981|TRFR_HUMAN Thyrotropin-releasing hormone receptor OS=Homo sapiens OX=9606 GN=TRHR PE=1 SV=1</Hit_def>
+  <Hit_accession>392</Hit_accession>
+  <Hit_len>398</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>25.0238</Hsp_bit-score>
+      <Hsp_score>53</Hsp_score>
+      <Hsp_evalue>1.29893</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>157</Hsp_query-to>
+      <Hsp_hit-from>39</Hsp_hit-from>
+      <Hsp_hit-to>161</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>27</Hsp_identity>
+      <Hsp_positive>61</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>132</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLS-STLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPF</Hsp_qseq>
+      <Hsp_hseq>GIVGNIMVVLVVMRTKHMRTPTNCYLV--SLAVADLM-------VLVAAGLPNITDSIYGSWVYGYVGCLCITYLQYLGINASSCSITAFTIERYIAICHPIKAQFLCTFSRAKKIIIFVWAFTSLYCMLWF</Hsp_hseq>
+      <Hsp_midline>G++GN++ + ++ R+     P+  Y++   L V DL+       V++AA   N +  +    +   +      ++ + G++ S+  + A  +E ++++ HP   +   T      +   V AF+  +C L F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>70</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|127</Hit_id>
+  <Hit_def>sp|Q9UPC5|GPR34_HUMAN Probable G-protein coupled receptor 34 OS=Homo sapiens OX=9606 GN=GPR34 PE=2 SV=2</Hit_def>
+  <Hit_accession>127</Hit_accession>
+  <Hit_len>381</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>1.44246</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>261</Hsp_query-to>
+      <Hsp_hit-from>62</Hsp_hit-from>
+      <Hsp_hit-to>286</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>104</Hsp_positive>
+      <Hsp_gaps>30</Hsp_gaps>
+      <Hsp_align-len>248</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNR-SLRVLAPALDNSLCQAFA--FFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSL-AFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMA---LLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAFK</Hsp_qseq>
+      <Hsp_hseq>SVIFIVGLVGNIIALYVFL--GIHRKRNSIQIYLLNVAIADLLLIFCLPFRIMYHINQNKWTLGVI-------LCKVVGTLFYMNMY--ISIILLGFISLDRYIKINRSIQQRKAITTKQSIYVCCIVWMLALGGFLTMIILTLKKGGH--NSTMCF----HYRDKHNAKGEAIFNFILVVMFWLIFLLIILSYIKIGKNLLRISKRRSKFPNSGKYATTARNSFIVLIIFTICFVP------YHAFR</Hsp_hseq>
+      <Hsp_midline> V+F  GL+GN++AL +    G+    +   + +  + + DLL    L   ++    QN+ +L V+       LC+     F+M+ +   S + L  ++L+ ++ +      R+ IT +    V  +V   +L  F  +  +   K       T CF    H     +  G ++    L+    L+ L  +L  +   +NL  + +R  + P   +         ++ ++FT+C +P      Y AF+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>71</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|327</Hit_id>
+  <Hit_def>sp|Q96G91|P2Y11_HUMAN P2Y purinoceptor 11 OS=Homo sapiens OX=9606 GN=P2RY11 PE=2 SV=2</Hit_def>
+  <Hit_accession>327</Hit_accession>
+  <Hit_len>374</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>1.50111</Hsp_evalue>
+      <Hsp_query-from>57</Hsp_query-from>
+      <Hsp_query-to>133</Hsp_query-to>
+      <Hsp_hit-from>71</Hsp_hit-from>
+      <Hsp_hit-to>141</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>37</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>78</Hsp_align-len>
+      <Hsp_qseq>LTVTDLLGKCLLSPVVLAAY-AQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHI</Hsp_qseq>
+      <Hsp_hseq>LAVSDLL--CALTLPPLAAYLYPPKHWR-----YGEAACRLERFLFTCNLLGSVIFITCISLNRYLGIVHPFFARSHL</Hsp_hseq>
+      <Hsp_midline>L V+DLL  C L+   LAAY    +  R        + C+   F  +   L S + +  ++L  +L + HPFF R H+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>72</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|133</Hit_id>
+  <Hit_def>sp|Q13585|MTR1L_HUMAN Melatonin-related receptor OS=Homo sapiens OX=9606 GN=GPR50 PE=1 SV=3</Hit_def>
+  <Hit_accession>133</Hit_accession>
+  <Hit_len>617</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>1.55965</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>174</Hsp_query-to>
+      <Hsp_hit-from>42</Hsp_hit-from>
+      <Hsp_hit-to>179</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>34</Hsp_identity>
+      <Hsp_positive>62</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>148</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFI</Hsp_qseq>
+      <Hsp_hseq>DLIGN--SMVILAVTKNKKLRNSGNIFVVSLSVADMLVAIYPYPLMLHA------MSIGGWDLSQLQCQMVGFITGLSVVGSIFNIVAIAINRYCYICHSLQYERIFSVR-NTCIYLVITWIMTVLAVLPNMYIGT-IEYDPRTYTCI</Hsp_hseq>
+      <Hsp_midline> L+GN  ++ +LA +    L +   + V  L+V D+L      P++L A      + +    L    CQ   F      + S   ++A+A+  +  + H   Y R  ++R    +  V++        LP M  G  ++Y P T+  I</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>73</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|242</Hit_id>
+  <Hit_def>sp|P16473|TSHR_HUMAN Thyrotropin receptor OS=Homo sapiens OX=9606 GN=TSHR PE=1 SV=2</Hit_def>
+  <Hit_accession>242</Hit_accession>
+  <Hit_len>764</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>1.56861</Hsp_evalue>
+      <Hsp_query-from>27</Hsp_query-from>
+      <Hsp_query-to>165</Hsp_query-to>
+      <Hsp_hit-from>428</Hsp_hit-from>
+      <Hsp_hit-to>565</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>37</Hsp_identity>
+      <Hsp_positive>51</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>142</Hsp_align-len>
+      <Hsp_qseq>GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDL-LGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLR--LGALVAPVVSAFSLAFCALPFMGFGKFVQ</Hsp_qseq>
+      <Hsp_hseq>ALLGNVFVLLILLTSHYKL--NVPRFLMCNLAFADFCMGMYLLLIASVDLYTHSEYYNHAIDWQTGPGCNTAGFFTVFASELSVYTLTVITLERWYAITFAMRLDRKIRLRHACAIMVGGWVCCFLLAL--LPLVGISSYAK</Hsp_hseq>
+      <Hsp_midline> LLGN+  L +L  S      +V   L+C L   D  +G  LL    +  Y  +              C    FF  F    S   L  + LE W ++       R I LR     +V   V  F LA   LP +G   + +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>74</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|104</Hit_id>
+  <Hit_def>sp|O00590|ACKR2_HUMAN Atypical chemokine receptor 2 OS=Homo sapiens OX=9606 GN=ACKR2 PE=1 SV=2</Hit_def>
+  <Hit_accession>104</Hit_accession>
+  <Hit_len>384</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.6386</Hsp_bit-score>
+      <Hsp_score>52</Hsp_score>
+      <Hsp_evalue>1.60505</Hsp_evalue>
+      <Hsp_query-from>115</Hsp_query-from>
+      <Hsp_query-to>171</Hsp_query-to>
+      <Hsp_hit-from>138</Hsp_hit-from>
+      <Hsp_hit-to>193</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>29</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>57</Hsp_align-len>
+      <Hsp_qseq>MALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTW</Hsp_qseq>
+      <Hsp_hseq>MSLDKYLEIVHAQPYHRLRTRAKSLLLATIVWAVSLA-VSIPDMVFVQTHENPKGVW</Hsp_hseq>
+      <Hsp_midline>M+L+ +L + H   Y R  T     L+A +V A SLA  ++P M F +  +   G W</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>75</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|307</Hit_id>
+  <Hit_def>sp|P41146|OPRX_HUMAN Nociceptin receptor OS=Homo sapiens OX=9606 GN=OPRL1 PE=1 SV=1</Hit_def>
+  <Hit_accession>307</Hit_accession>
+  <Hit_len>370</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>1.75368</Hsp_evalue>
+      <Hsp_query-from>91</Hsp_query-from>
+      <Hsp_query-to>127</Hsp_query-to>
+      <Hsp_hit-from>120</Hsp_hit-from>
+      <Hsp_hit-to>156</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>10</Hsp_identity>
+      <Hsp_positive>21</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>37</Hsp_align-len>
+      <Hsp_qseq>NSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPF</Hsp_qseq>
+      <Hsp_hseq>NALCKTVIAIDYYNMFTSTFTLTAMSVDRYVAICHPI</Hsp_hseq>
+      <Hsp_midline>N+LC+       +   +ST  L AM+++ ++++ HP </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>76</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|119</Hit_id>
+  <Hit_def>sp|Q99679|GPR21_HUMAN Probable G-protein coupled receptor 21 OS=Homo sapiens OX=9606 GN=GPR21 PE=2 SV=1</Hit_def>
+  <Hit_accession>119</Hit_accession>
+  <Hit_len>349</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>1.77717</Hsp_evalue>
+      <Hsp_query-from>87</Hsp_query-from>
+      <Hsp_query-to>230</Hsp_query-to>
+      <Hsp_hit-from>95</Hsp_hit-from>
+      <Hsp_hit-to>227</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>36</Hsp_identity>
+      <Hsp_positive>65</Hsp_positive>
+      <Hsp_gaps>31</Hsp_gaps>
+      <Hsp_align-len>154</Hsp_align-len>
+      <Hsp_qseq>PALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHIT---LRLGALVAPVVSAFSLAFCALP-FMGFGK------FVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEE</Hsp_qseq>
+      <Hsp_hseq>PVEESLTCQIFGFVVSVLKSVSMASLACISIDRYIAITKPLTYNTLVTPWRLRLCIFLIWLYS--TLVF--LPSFFHWGKPGYHGDVFQWCAESW------HTDSYFTLFIVMMLYAP-AALIVCFT----------YFNIFRICQQHTKDISE</Hsp_hseq>
+      <Hsp_midline>P  ++  CQ F F +S     S   L  ++++ ++++  P  Y   +T   LRL   +  + S  +L F  LP F  +GK        Q+C  +W      H +   ++    +LY+   AL+V  T           + + R  Q+H + + E</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>77</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|139</Hit_id>
+  <Hit_def>sp|Q15743|OGR1_HUMAN Ovarian cancer G-protein coupled receptor 1 OS=Homo sapiens OX=9606 GN=GPR68 PE=1 SV=1</Hit_def>
+  <Hit_accession>139</Hit_accession>
+  <Hit_len>365</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>1.87561</Hsp_evalue>
+      <Hsp_query-from>35</Hsp_query-from>
+      <Hsp_query-to>150</Hsp_query-to>
+      <Hsp_hit-from>48</Hsp_hit-from>
+      <Hsp_hit-to>150</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>30</Hsp_identity>
+      <Hsp_positive>51</Hsp_positive>
+      <Hsp_gaps>13</Hsp_gaps>
+      <Hsp_align-len>116</Hsp_align-len>
+      <Hsp_qseq>LGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSL</Hsp_qseq>
+      <Hsp_hseq>LQIKARNELG-------VYLCNLTVADLFYICSL-PFWLQYVLQHDNW-----SHGDLSCQVCGILLYENIYISVGFLCCISVDRYLAVAHPFRFHQFRTLKAAVGVSVVIWAKEL</Hsp_hseq>
+      <Hsp_midline>L + AR+ LG       + +C LTV DL   C L P  L    Q+ +      +  +  CQ     +      S   L  ++++ +L++ HPF + +  TL+    V+ V+ A  L</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>78</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|118</Hit_id>
+  <Hit_def>sp|Q99678|GPR20_HUMAN G-protein coupled receptor 20 OS=Homo sapiens OX=9606 GN=GPR20 PE=1 SV=2</Hit_def>
+  <Hit_accession>118</Hit_accession>
+  <Hit_len>358</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>2.07503</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>63</Hsp_query-to>
+      <Hsp_hit-from>61</Hsp_hit-from>
+      <Hsp_hit-to>101</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>18</Hsp_identity>
+      <Hsp_positive>22</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>43</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLL</Hsp_qseq>
+      <Hsp_hseq>GAIFLAGLVLNGLALYVFCCRTRAKTPSVIYTI--NLVVTDLL</Hsp_hseq>
+      <Hsp_midline>G +F  GL+ N LAL +         PSV Y +   L VTDLL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>79</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|302</Hit_id>
+  <Hit_def>sp|P30989|NTR1_HUMAN Neurotensin receptor type 1 OS=Homo sapiens OX=9606 GN=NTSR1 PE=1 SV=2</Hit_def>
+  <Hit_accession>302</Hit_accession>
+  <Hit_len>418</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>2.12186</Hsp_evalue>
+      <Hsp_query-from>23</Hsp_query-from>
+      <Hsp_query-to>127</Hsp_query-to>
+      <Hsp_hit-from>73</Hsp_hit-from>
+      <Hsp_hit-to>174</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>30</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>107</Hsp_align-len>
+      <Hsp_qseq>LFSTGLLGNLLALGLLAR-SGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAP-ALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPF</Hsp_qseq>
+      <Hsp_hseq>LFVVGTVGNTVTAFTLARKKSLQSLQSTVHYHLGSLALSDLLTLLLAMPVELYNF-----IWVHHPWAFGDAGCRGYYFLRDACTYATALNVASLSVERYLAICHPF</Hsp_hseq>
+      <Hsp_midline>LF  G +GN +    LAR   L  L S  +  +  L ++DLL   L  PV L  +     + V  P A  ++ C+ + F       ++ L + ++++E +L++ HPF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>80</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|173</Hit_id>
+  <Hit_def>sp|P04201|MAS_HUMAN Proto-oncogene Mas OS=Homo sapiens OX=9606 GN=MAS1 PE=1 SV=1</Hit_def>
+  <Hit_accession>173</Hit_accession>
+  <Hit_len>325</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>24.2534</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>2.19585</Hsp_evalue>
+      <Hsp_query-from>104</Hsp_query-from>
+      <Hsp_query-to>149</Hsp_query-to>
+      <Hsp_hit-from>114</Hsp_hit-from>
+      <Hsp_hit-to>160</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>18</Hsp_identity>
+      <Hsp_positive>28</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>47</Hsp_align-len>
+      <Hsp_qseq>FGLSSTLQLL-AMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFS</Hsp_qseq>
+      <Hsp_hseq>FGYNTGLYLLTAISVERCLSVLYPIWYRCHRPKYQSALVCALLWALS</Hsp_hseq>
+      <Hsp_midline>FG ++ L LL A+++E  LS+ +P +YR H      ALV  ++ A S</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>81</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|81</Hit_id>
+  <Hit_def>sp|P21554|CNR1_HUMAN Cannabinoid receptor 1 OS=Homo sapiens OX=9606 GN=CNR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>81</Hit_accession>
+  <Hit_len>472</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.8682</Hsp_bit-score>
+      <Hsp_score>50</Hsp_score>
+      <Hsp_evalue>2.57913</Hsp_evalue>
+      <Hsp_query-from>17</Hsp_query-from>
+      <Hsp_query-to>161</Hsp_query-to>
+      <Hsp_hit-from>120</Hsp_hit-from>
+      <Hsp_hit-to>256</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>40</Hsp_identity>
+      <Hsp_positive>65</Hsp_positive>
+      <Hsp_gaps>16</Hsp_gaps>
+      <Hsp_align-len>149</Hsp_align-len>
+      <Hsp_qseq>AVMGGVLFSTGLLGNLLALGLLARS-GLGPLPSVFYMLVCGLTVTDLLGKCLL--SPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVA-PVVSAFSLAFCALPFMGFG</Hsp_qseq>
+      <Hsp_hseq>AVLSLTLGTFTVLENLLVLCVILHSRSLRCRPS--YHFIGSLAVADLLGSVIFVYSFIDFHVFHRKDSRNVFLFKLGG----VTASFTASVG-----SLFLTAIDRYISIHRPLAYKRIVT-RPKAVVAFCLMWTIAIVIAVLPLLGWN</Hsp_hseq>
+      <Hsp_midline>AV+   L +  +L NLL L ++  S  L   PS  Y  +  L V DLLG  +   S +    + +  S  V    L        A F +  G      L   A++ ++S+  P  Y+R +T R  A+VA  ++   ++    LP +G+ </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>82</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|131</Hit_id>
+  <Hit_def>sp|O43194|GPR39_HUMAN G-protein coupled receptor 39 OS=Homo sapiens OX=9606 GN=GPR39 PE=1 SV=1</Hit_def>
+  <Hit_accession>131</Hit_accession>
+  <Hit_len>453</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.8682</Hsp_bit-score>
+      <Hsp_score>50</Hsp_score>
+      <Hsp_evalue>2.79603</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>39</Hsp_hit-from>
+      <Hsp_hit-to>144</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>25</Hsp_gaps>
+      <Hsp_align-len>120</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGN---LLALGLLARSGLGPLPSVFYM--LVCGLTVTDLLG------KCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>IIFVMGLLGNSATIRVTQVLQKKGYLQKEVTDHMVSLACSDILVFLIGMPMEFYSIIWNPLTTSSYTLS--------------CKLHTFLFEACSYATLLHVLTLSFERYIAICHPFRYK</Hsp_hseq>
+      <Hsp_midline>++F  GLLGN   +    +L + G        +M  L C   +  L+G        + +P+  ++Y  +              C+   F       ++ L +L ++ E ++++ HPF Y+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>83</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|225</Hit_id>
+  <Hit_def>sp|O15552|FFAR2_HUMAN Free fatty acid receptor 2 OS=Homo sapiens OX=9606 GN=FFAR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>225</Hit_accession>
+  <Hit_len>330</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.483</Hsp_bit-score>
+      <Hsp_score>49</Hsp_score>
+      <Hsp_evalue>3.42048</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>146</Hsp_query-to>
+      <Hsp_hit-from>16</Hsp_hit-from>
+      <Hsp_hit-to>137</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>39</Hsp_identity>
+      <Hsp_positive>59</Hsp_positive>
+      <Hsp_gaps>9</Hsp_gaps>
+      <Hsp_align-len>128</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFY---RRHITLRLGALVAPVVS</Hsp_qseq>
+      <Hsp_hseq>IIFLTGLPANLLALRAFVGRIRQPQPAPVHILLL-SLTLADLLLLLLLPFKIIEAASN--FRWYLPKVVCALT-SFGFYSSIY--CSTWLLAGISIERYLGVAFPVQYKLSRRPLYGVIAALVAWVMS</Hsp_hseq>
+      <Hsp_midline>++F TGL  NLLAL         P P+  ++L+        L   LL P  +   A N   R   P +  +L  +F F+ S +   ST  L  +++E +L +  P  Y   RR +   + ALVA V+S</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>84</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|70</Hit_id>
+  <Hit_def>sp|P50052|AGTR2_HUMAN Type-2 angiotensin II receptor OS=Homo sapiens OX=9606 GN=AGTR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>70</Hit_accession>
+  <Hit_len>363</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>4.12434</Hsp_evalue>
+      <Hsp_query-from>93</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>116</Hsp_hit-from>
+      <Hsp_hit-to>271</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>36</Hsp_identity>
+      <Hsp_positive>75</Hsp_positive>
+      <Hsp_gaps>22</Hsp_gaps>
+      <Hsp_align-len>168</Hsp_align-len>
+      <Hsp_qseq>LCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFG--KFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSL---MALLVLATVLCNLGAMRNLYAMH----RRLQRHPQPLEELDHLLLLALMTVL-FTMCSLP</Hsp_qseq>
+      <Hsp_hseq>MCKVFGSFLTLNMFASIFFITCMSVDRYQSVIYPFLSQRRNPWQ-ASYIVPLVWCMA-CLSSLPTFYFRDVRTIEYLGVNACIMAFPPEKYAQWSAGIALMKNILGFIIPLIFIAT--CYFGIRKHLLKTNSYGKNRITR--------DQVLKMAAAVVLAFIICWLP</Hsp_hseq>
+      <Hsp_midline>+C+ F  F++    +S   +  M+++ + S+ +PF  +R    +  + + P+V   +    +LP   F   + ++Y     C +    E+ +    G +++ + L   + L+ +AT  C  G  ++L   +     R+ R        D +L +A   VL F +C LP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>85</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|4</Hit_id>
+  <Hit_def>sp|P20789|NTR1_RAT Neurotensin receptor type 1 OS=Rattus norvegicus OX=10116 GN=Ntsr1 PE=1 SV=1</Hit_def>
+  <Hit_accession>4</Hit_accession>
+  <Hit_len>424</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.483</Hsp_bit-score>
+      <Hsp_score>49</Hsp_score>
+      <Hsp_evalue>4.1331</Hsp_evalue>
+      <Hsp_query-from>23</Hsp_query-from>
+      <Hsp_query-to>127</Hsp_query-to>
+      <Hsp_hit-from>74</Hsp_hit-from>
+      <Hsp_hit-to>175</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>29</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>7</Hsp_gaps>
+      <Hsp_align-len>107</Hsp_align-len>
+      <Hsp_qseq>LFSTGLLGN-LLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAP-ALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPF</Hsp_qseq>
+      <Hsp_hseq>LFVVGTVGNSVTAFTLARKKSLQSLQSTVHYHLGSLALSDLLILLLAMPVELYNF-----IWVHHPWAFGDAGCRGYYFLRDACTYATALNVASLSVERYLAICHPF</Hsp_hseq>
+      <Hsp_midline>LF  G +GN + A  L  +  L  L S  +  +  L ++DLL   L  PV L  +     + V  P A  ++ C+ + F       ++ L + ++++E +L++ HPF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>86</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|108</Hit_id>
+  <Hit_def>sp|P32238|CCKAR_HUMAN Cholecystokinin receptor type A OS=Homo sapiens OX=9606 GN=CCKAR PE=1 SV=1</Hit_def>
+  <Hit_accession>108</Hit_accession>
+  <Hit_len>428</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>4.17585</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>49</Hsp_hit-from>
+      <Hsp_hit-to>150</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>28</Hsp_identity>
+      <Hsp_positive>53</Hsp_positive>
+      <Hsp_gaps>20</Hsp_gaps>
+      <Hsp_align-len>116</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCL------LSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>SLIFLLSVLGNTLVITVLIRNKR--MRTVTNIFLLSLAVSDLM-LCLFCMPFNLIPNLLKDFI-----------FGSAVCKTTTYFMGTSVSVSTFNLVAISLERYGAICKPLQSR</Hsp_hseq>
+      <Hsp_midline> ++F   +LGN L + +L R+    + +V  + +  L V+DL+  CL      L P +L  +              +++C+   +FM      ST  L+A++LE + ++  P   R</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>87</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|35</Hit_id>
+  <Hit_def>sp|Q9NYQ7|CELR3_HUMAN Cadherin EGF LAG seven-pass G-type receptor 3 OS=Homo sapiens OX=9606 GN=CELSR3 PE=1 SV=2</Hit_def>
+  <Hit_accession>35</Hit_accession>
+  <Hit_len>3312</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.483</Hsp_bit-score>
+      <Hsp_score>49</Hsp_score>
+      <Hsp_evalue>4.23273</Hsp_evalue>
+      <Hsp_query-from>90</Hsp_query-from>
+      <Hsp_query-to>237</Hsp_query-to>
+      <Hsp_hit-from>1727</Hsp_hit-from>
+      <Hsp_hit-to>1869</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>38</Hsp_identity>
+      <Hsp_positive>61</Hsp_positive>
+      <Hsp_gaps>13</Hsp_gaps>
+      <Hsp_align-len>152</Hsp_align-len>
+      <Hsp_qseq>DNSLCQAFAFFMSFFG-LSSTLQLLAMALECWLSLGHPFFYRRHITL--RLGALVAPVVSAF-SLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLL</Hsp_qseq>
+      <Hsp_hseq>DSGPCKNSGFCSERWGSFSCDCPVGFGGKDCQLTMAHPHHFRGNGTLSWNFGSDMAVSVPWYLGLAFRTRATQGVLMQVQAGPHSTLLCQL--DRGLLSVT--VTRGSGRASHLLLDQVTVSDGRWHDL-----RLELQEEPGGRRGHHVLM</Hsp_hseq>
+      <Hsp_midline>D+  C+   F    +G  S    +     +C L++ HP  +R + TL    G+ +A  V  +  LAF      G    VQ  P +    Q+  + G LSV       S   + L+L  V  + G   +L     RL+   +P     H +L+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>88</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|80</Hit_id>
+  <Hit_def>sp|P41180|CASR_HUMAN Extracellular calcium-sensing receptor OS=Homo sapiens OX=9606 GN=CASR PE=1 SV=3</Hit_def>
+  <Hit_accession>80</Hit_accession>
+  <Hit_len>1078</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.483</Hsp_bit-score>
+      <Hsp_score>49</Hsp_score>
+      <Hsp_evalue>4.39646</Hsp_evalue>
+      <Hsp_query-from>180</Hsp_query-from>
+      <Hsp_query-to>260</Hsp_query-to>
+      <Hsp_hit-from>767</Hsp_hit-from>
+      <Hsp_hit-to>832</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>21</Hsp_identity>
+      <Hsp_positive>36</Hsp_positive>
+      <Hsp_gaps>15</Hsp_gaps>
+      <Hsp_align-len>81</Hsp_align-len>
+      <Hsp_qseq>EGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLPVIYRAYYGAF</Hsp_qseq>
+      <Hsp_hseq>EGSLMALGFLIGYTCLLA------AICFFFAFKS-----RKL---PENFNEAKFITFSMLIFFIVWISFIPA-YASTYGKF</Hsp_hseq>
+      <Hsp_midline>EGSL  LG+ + Y+ L+A       +C   A ++     R+L   P+   E   +    L+  +  +  +P  Y + YG F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>89</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|253</Hit_id>
+  <Hit_def>sp|Q8TDS4|HCAR2_HUMAN Hydroxycarboxylic acid receptor 2 OS=Homo sapiens OX=9606 GN=HCAR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>253</Hit_accession>
+  <Hit_len>363</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>4.42391</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>305</Hsp_query-to>
+      <Hsp_hit-from>35</Hsp_hit-from>
+      <Hsp_hit-to>305</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>65</Hsp_identity>
+      <Hsp_positive>119</Hsp_positive>
+      <Hsp_gaps>42</Hsp_gaps>
+      <Hsp_align-len>299</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTD-LLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFC------ALPFMGFGKFVQYCPG-TWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLCNLGAMRNLYAM-HRRLQRHPQPLEELDHLLLLALMTVLFTMCSLP--VIYRAYYGAFKDVKEKNRTSEEAEDLR---ALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_qseq>
+      <Hsp_hseq>GLEFIFGLLGNGLALWIFCFHLKSWKSSRIFLF--NLAVADFLLIICL--PFLMDNYVRRWDWK-----FGDIPCRLMLFMLAMNRQGSIIFLTVVAVDRYFRVVHPHHALNKISNRTAAIISCLLWGITIGLTVHLLKKKMPIQNGG--ANLCSSFSICHTFQWHEAMFL-----------LEFFLPLGIIL--FCSARIIWSLRQRQMDRHAKIKRAITFIMVVA---IVFVICFLPSVVVRIRIFWLLHTSGTQNCEVYRSVDLAFFITLSFTYMNSMLDPVVY-YFSSPSFPNFF</Hsp_hseq>
+      <Hsp_midline>G+ F  GLLGN LAL +          S  ++    L V D LL  CL  P ++  Y +    +       +  C+   F ++     S + L  +A++ +  + HP      I+ R  A+++ ++   ++          +P    G     C   + C     HE   L           L   L L  +L    + R ++++  R++ RH +    +  ++++A   ++F +C LP  V+    +        +N     + DL     L F  + S++DP ++  F SP F  FF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>90</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|254</Hit_id>
+  <Hit_def>sp|P49019|HCAR3_HUMAN Hydroxycarboxylic acid receptor 3 OS=Homo sapiens OX=9606 GN=HCAR3 PE=1 SV=3</Hit_def>
+  <Hit_accession>254</Hit_accession>
+  <Hit_len>387</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>4.63778</Hsp_evalue>
+      <Hsp_query-from>21</Hsp_query-from>
+      <Hsp_query-to>305</Hsp_query-to>
+      <Hsp_hit-from>35</Hsp_hit-from>
+      <Hsp_hit-to>305</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>66</Hsp_identity>
+      <Hsp_positive>125</Hsp_positive>
+      <Hsp_gaps>42</Hsp_gaps>
+      <Hsp_align-len>299</Hsp_align-len>
+      <Hsp_qseq>GVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTD-LLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSV-LGYSVLYS-SLMALLVLATVLCNLG-----AMRNLYAM-HRRLQRHPQPLEELDHLLLLALMTVLFTMCSLP-VIYRAY-YGAFKDVKEKNRTSEEAEDLR---ALRFLSVISIVDPWIFIIFRSPVFRIFF</Hsp_qseq>
+      <Hsp_hseq>GLEFIFGLLGNGLALWIFCFHLKSWKSSRIFLF--NLAVADFLLIICL--PFVMDYYVRRSDWK-----FGDIPCRLVLFMFAMNRQGSIIFLTVVAVDRYFRVVHP----HHALNKISNWTAAIIS------CLLWGITVGLTVHLLKK-----KLLIQNGTANVCISFSICHTFRWHEAMFLLEFFLPLGIILFCSARIIWSLRQRQMDRHAKIKRAITFIMVVA---IVFVICFLPSVVVRIHIFWLLHTSGTQNCEVYRSVDLAFFITLSFTYMNSMLDPVVY-YFSSPSFPNFF</Hsp_hseq>
+      <Hsp_midline>G+ F  GLLGN LAL +          S  ++    L V D LL  CL  P V+  Y +    +       +  C+   F  +     S + L  +A++ +  + HP     H   ++    A ++S      C L  +  G  V          +++ + G+ +V + +S+ ++      + L      LG     + R ++++  R++ RH +    +  ++++A   ++F +C LP V+ R + +        +N     + DL     L F  + S++DP ++  F SP F  FF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>91</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|7</Hit_id>
+  <Hit_def>sp|P28222|5HT1B_HUMAN 5-hydroxytryptamine receptor 1B OS=Homo sapiens OX=9606 GN=HTR1B PE=1 SV=1</Hit_def>
+  <Hit_accession>7</Hit_accession>
+  <Hit_len>390</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>4.89463</Hsp_evalue>
+      <Hsp_query-from>29</Hsp_query-from>
+      <Hsp_query-to>157</Hsp_query-to>
+      <Hsp_hit-from>65</Hsp_hit-from>
+      <Hsp_hit-to>185</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>29</Hsp_identity>
+      <Hsp_positive>51</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>129</Hsp_align-len>
+      <Hsp_qseq>LGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPF</Hsp_qseq>
+      <Hsp_hseq>LSNAFVIATVYRTRKLHTPANY--LIASLAVTDLLVSILVMPISTMYTVTGRW------TLGQVVCDFWLSSDITCCTASILHLCVIALDRYWAITDAVEYSAKRTPKRAAVMIALVWVFSISISLPPF</Hsp_hseq>
+      <Hsp_midline>L N   +  + R+     P+ +  L+  L VTDLL   L+ P+        R        L   +C  +         +S L L  +AL+ + ++     Y    T +  A++  +V  FS++    PF</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>92</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|348</Hit_id>
+  <Hit_def>sp|O00254|PAR3_HUMAN Proteinase-activated receptor 3 OS=Homo sapiens OX=9606 GN=F2RL2 PE=1 SV=1</Hit_def>
+  <Hit_accession>348</Hit_accession>
+  <Hit_len>374</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>5.07434</Hsp_evalue>
+      <Hsp_query-from>22</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>103</Hsp_hit-from>
+      <Hsp_hit-to>202</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>28</Hsp_identity>
+      <Hsp_positive>48</Hsp_positive>
+      <Hsp_gaps>13</Hsp_gaps>
+      <Hsp_align-len>111</Hsp_align-len>
+      <Hsp_qseq>VLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFG--LSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>LVFVVGVPANAVTLWMLFFRTRSICTTVFYT---NLAIADFLF-CVTLPFKIAYHLNGNNW-----VFGEVLCRATT--VIFYGNMYCSILLLACISINRYLAIVHPFTYR</Hsp_hseq>
+      <Hsp_midline>++F  G+  N + L +L         +VFY     L + D L  C+  P  +A +    +           LC+A    + F+G    S L L  +++  +L++ HPF YR</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>93</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|315</Hit_id>
+  <Hit_def>sp|O43613|OX1R_HUMAN Orexin receptor type 1 OS=Homo sapiens OX=9606 GN=HCRTR1 PE=1 SV=2</Hit_def>
+  <Hit_accession>315</Hit_accession>
+  <Hit_len>425</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>5.09905</Hsp_evalue>
+      <Hsp_query-from>91</Hsp_query-from>
+      <Hsp_query-to>151</Hsp_query-to>
+      <Hsp_hit-from>116</Hsp_hit-from>
+      <Hsp_hit-to>174</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>14</Hsp_identity>
+      <Hsp_positive>30</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>61</Hsp_align-len>
+      <Hsp_qseq>NSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLA</Hsp_qseq>
+      <Hsp_hseq>HALCKVIPYLQAVSVSVAVLTLSFIALDRWYAICHPLLFKSTARRARGSILG--IWAVSLA</Hsp_hseq>
+      <Hsp_midline>++LC+   +  +     + L L  +AL+ W ++ HP  ++       G+++   + A SLA</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>94</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|32</Hit_id>
+  <Hit_def>sp|O60242|AGRB3_HUMAN Adhesion G protein-coupled receptor B3 OS=Homo sapiens OX=9606 GN=ADGRB3 PE=1 SV=2</Hit_def>
+  <Hit_accession>32</Hit_accession>
+  <Hit_len>1522</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>23.0978</Hsp_bit-score>
+      <Hsp_score>48</Hsp_score>
+      <Hsp_evalue>5.13522</Hsp_evalue>
+      <Hsp_query-from>90</Hsp_query-from>
+      <Hsp_query-to>152</Hsp_query-to>
+      <Hsp_hit-from>937</Hsp_hit-from>
+      <Hsp_hit-to>1001</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>18</Hsp_identity>
+      <Hsp_positive>31</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>DNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR--RHITLRLGALVAPVVSAFSLAF</Hsp_qseq>
+      <Hsp_hseq>NKSICTTTTAFLHFFFLASFCWVLTEAWQSYMAVTGKIRTRLIRKRFLCLGWGLPALVVATSVGF</Hsp_hseq>
+      <Hsp_midline>+ S+C     F+ FF L+S   +L  A + ++++      R  R   L LG  +  +V A S+ F</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>95</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|393</Hit_id>
+  <Hit_def>sp|Q96RJ0|TAAR1_HUMAN Trace amine-associated receptor 1 OS=Homo sapiens OX=9606 GN=TAAR1 PE=2 SV=1</Hit_def>
+  <Hit_accession>393</Hit_accession>
+  <Hit_len>339</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.7126</Hsp_bit-score>
+      <Hsp_score>47</Hsp_score>
+      <Hsp_evalue>5.98286</Hsp_evalue>
+      <Hsp_query-from>7</Hsp_query-from>
+      <Hsp_query-to>203</Hsp_query-to>
+      <Hsp_hit-from>10</Hsp_hit-from>
+      <Hsp_hit-to>197</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>44</Hsp_identity>
+      <Hsp_positive>83</Hsp_positive>
+      <Hsp_gaps>45</Hsp_gaps>
+      <Hsp_align-len>215</Hsp_align-len>
+      <Hsp_qseq>NTTSVEKGNSAVMGGVLFS-------TGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQN-----RSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALV------APVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLAT</Hsp_qseq>
+      <Hsp_hseq>NISCVKNNWSNDVRASLYSLMVLIILTTLVGNLIVI--VSISHFKQLHTPTNWLIHSMATVDFLLGCLVMPYSMVRSAEHCWYFGEVFCKIHTSTDIMLSSASIFHLSF-----------ISIDRYYAVCDPLRYKAKMNILVICVMIFISWSVPAVFAFGMIFLELNFKGAEEI---------YYKHVHCRG-----GCSVFFSKISGVLTFMT</Hsp_hseq>
+      <Hsp_midline>N + V+   S  +   L+S       T L+GNL+ +  ++ S    L +    L+  +   D L  CL+ P  +   A++          +  + D  L  A  F +SF           ++++ + ++  P  Y+  + + +  ++       P V AF + F  L F G  +          + + VH  G     G SV +S +  +L   T</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>96</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|101</Hit_id>
+  <Hit_def>sp|P49238|CX3C1_HUMAN CX3C chemokine receptor 1 OS=Homo sapiens OX=9606 GN=CX3CR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>101</Hit_accession>
+  <Hit_len>355</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.7126</Hsp_bit-score>
+      <Hsp_score>47</Hsp_score>
+      <Hsp_evalue>6.88718</Hsp_evalue>
+      <Hsp_query-from>17</Hsp_query-from>
+      <Hsp_query-to>41</Hsp_query-to>
+      <Hsp_hit-from>35</Hsp_hit-from>
+      <Hsp_hit-to>59</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>10</Hsp_identity>
+      <Hsp_positive>16</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>AVMGGVLFSTGLLGNLLALGLLARS</Hsp_qseq>
+      <Hsp_hseq>SIFYSVIFAIGLVGNLLVVFALTNS</Hsp_hseq>
+      <Hsp_midline>++   V+F+ GL+GNLL +  L  S</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>97</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|166</Hit_id>
+  <Hit_def>sp|Q9BXC1|GP174_HUMAN Probable G-protein coupled receptor 174 OS=Homo sapiens OX=9606 GN=GPR174 PE=2 SV=1</Hit_def>
+  <Hit_accession>166</Hit_accession>
+  <Hit_len>333</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.7126</Hsp_bit-score>
+      <Hsp_score>47</Hsp_score>
+      <Hsp_evalue>6.91999</Hsp_evalue>
+      <Hsp_query-from>17</Hsp_query-from>
+      <Hsp_query-to>63</Hsp_query-to>
+      <Hsp_hit-from>23</Hsp_hit-from>
+      <Hsp_hit-to>67</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>16</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>47</Hsp_align-len>
+      <Hsp_qseq>AVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLL</Hsp_qseq>
+      <Hsp_hseq>AVTYTVILVPGLIGNILALWVFYGYMKETKRAVIFMI--NLAIADLL</Hsp_hseq>
+      <Hsp_midline>AV   V+   GL+GN+LAL +          +V +M+   L + DLL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>98</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|168</Hit_id>
+  <Hit_def>sp|O15218|GP182_HUMAN G-protein coupled receptor 182 OS=Homo sapiens OX=9606 GN=GPR182 PE=2 SV=1</Hit_def>
+  <Hit_accession>168</Hit_accession>
+  <Hit_len>404</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>7.29881</Hsp_evalue>
+      <Hsp_query-from>220</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>244</Hsp_hit-from>
+      <Hsp_hit-to>273</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>17</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>31</Hsp_align-len>
+      <Hsp_qseq>RLQRHPQPLEELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>RLRQPGQP-KSRRHCLLLCAYVAVFVMCWLP</Hsp_hseq>
+      <Hsp_midline>RL++  QP +   H LLL     +F MC LP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>99</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|295</Hit_id>
+  <Hit_def>sp|P48145|NPBW1_HUMAN Neuropeptides B/W receptor type 1 OS=Homo sapiens OX=9606 GN=NPBWR1 PE=1 SV=2</Hit_def>
+  <Hit_accession>295</Hit_accession>
+  <Hit_len>328</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>7.73233</Hsp_evalue>
+      <Hsp_query-from>185</Hsp_query-from>
+      <Hsp_query-to>230</Hsp_query-to>
+      <Hsp_hit-from>209</Hsp_hit-from>
+      <Hsp_hit-to>244</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>16</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>10</Hsp_gaps>
+      <Hsp_align-len>46</Hsp_align-len>
+      <Hsp_qseq>VLGYSVLYSSLMALLVLATVLCNLGAMRNLYAMHRRLQRHPQPLEE</Hsp_qseq>
+      <Hsp_hseq>VLGFAIPVSTICVLYT--TLLCRLHAM--------RLDSHAKALER</Hsp_hseq>
+      <Hsp_midline>VLG+++  S++  L    T+LC L AM        RL  H + LE </Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>100</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|117</Hit_id>
+  <Hit_def>sp|Q15760|GPR19_HUMAN Probable G-protein coupled receptor 19 OS=Homo sapiens OX=9606 GN=GPR19 PE=2 SV=2</Hit_def>
+  <Hit_accession>117</Hit_accession>
+  <Hit_len>415</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>8.14072</Hsp_evalue>
+      <Hsp_query-from>12</Hsp_query-from>
+      <Hsp_query-to>130</Hsp_query-to>
+      <Hsp_hit-from>64</Hsp_hit-from>
+      <Hsp_hit-to>174</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>50</Hsp_positive>
+      <Hsp_gaps>8</Hsp_gaps>
+      <Hsp_align-len>119</Hsp_align-len>
+      <Hsp_qseq>EKGNSAVMGGVLFSTGLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYR</Hsp_qseq>
+      <Hsp_hseq>EVATASIFFGILWLFSIFGNSLVCLVIHRSRRTQSTTNYF--VVSMACADLLISVASTPFVLLQFTTGRW------TLGSATCKVVRYFQYLTPGVQIYVLLSICIDRFYTIVYPLSFK</Hsp_hseq>
+      <Hsp_midline>E   +++  G+L+   + GN L   ++ RS      + ++  V  +   DLL     +P VL  +   R        L ++ C+   +F           LL++ ++ + ++ +P  ++</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>101</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|356</Hit_id>
+  <Hit_def>sp|P30874|SSR2_HUMAN Somatostatin receptor type 2 OS=Homo sapiens OX=9606 GN=SSTR2 PE=1 SV=1</Hit_def>
+  <Hit_accession>356</Hit_accession>
+  <Hit_len>369</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>8.48526</Hsp_evalue>
+      <Hsp_query-from>91</Hsp_query-from>
+      <Hsp_query-to>206</Hsp_query-to>
+      <Hsp_hit-from>112</Hsp_hit-from>
+      <Hsp_hit-to>225</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>49</Hsp_positive>
+      <Hsp_gaps>4</Hsp_gaps>
+      <Hsp_align-len>117</Hsp_align-len>
+      <Hsp_qseq>NSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPG-TWCFIQMVHEEGSLSVLGYSVLYSSLMALLVLATVLC</Hsp_qseq>
+      <Hsp_hseq>KAICRVVMTVDGINQFTSIFCLTVMSIDRYLAVVHPIKSAKWRRPRTAKMITMAVWGVSL-LVILPIMIYAGLRSNQWGRSSCTINWPGESGAWYT-GF-IIYTFILGFLVPLTIIC</Hsp_hseq>
+      <Hsp_midline> ++C+           +S   L  M+++ +L++ HP    +    R   ++   V   SL    LP M +        G + C I    E G+    G+ ++Y+ ++  LV  T++C</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>102</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|355</Hit_id>
+  <Hit_def>sp|P30872|SSR1_HUMAN Somatostatin receptor type 1 OS=Homo sapiens OX=9606 GN=SSTR1 PE=1 SV=1</Hit_def>
+  <Hit_accession>355</Hit_accession>
+  <Hit_len>391</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>8.64616</Hsp_evalue>
+      <Hsp_query-from>6</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>47</Hsp_hit-from>
+      <Hsp_hit-to>286</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>54</Hsp_identity>
+      <Hsp_positive>106</Hsp_positive>
+      <Hsp_gaps>17</Hsp_gaps>
+      <Hsp_align-len>251</Hsp_align-len>
+      <Hsp_qseq>QNTTSVEKGNSAVMGGVLFST----GLLGNLLALGLLARSGLGPLPSVFYMLVCGLTVTDLLGKCLLSPVVLAAYAQNRSLRVLAPALDNSLCQAFAFFMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWCFIQMVHEEGSLSVLGYSVLYSSLMALL--VLATVLCNLGAMRNLYAMHRRLQRHPQPLEELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>QNGTLSEGQGSAILISFIYSVVCLVGLCGNSMVIYVILRYAKMKTATNIYIL--NLAIADELLMLSVPFLVTSTLLRHWPFGALLCRLVLSV-DAVNMFTSIYCLT------VLSVDRYVAVVHPIKAARYRRPTVAKVVNLGVWVLSL-LVILPIVVFSRTAANSDGTVACNMLMPEPAQRWLVGF-VLYTFLMGFLLPVGAICLCYVLIIAKMRMVALKAGWQQRKRSERKITLMVMMVVMVFVICWMP</Hsp_hseq>
+      <Hsp_midline>QN T  E   SA++   ++S     GL GN + + ++ R       +  Y+L   L + D L    +  +V +   ++     L   L  S+  A   F S + L+       ++++ ++++ HP    R+    +  +V   V   SL    LP + F +      GT     ++ E     ++G+ VLY+ LM  L  V A  LC +  +  +  +  +     +   E    L++ ++ ++F +C +P</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>103</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|182</Hit_id>
+  <Hit_def>sp|Q96LA9|MRGX4_HUMAN Mas-related G-protein coupled receptor member X4 OS=Homo sapiens OX=9606 GN=MRGPRX4 PE=2 SV=2</Hit_def>
+  <Hit_accession>182</Hit_accession>
+  <Hit_len>322</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>9.10144</Hsp_evalue>
+      <Hsp_query-from>100</Hsp_query-from>
+      <Hsp_query-to>172</Hsp_query-to>
+      <Hsp_hit-from>104</Hsp_hit-from>
+      <Hsp_hit-to>173</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>31</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>73</Hsp_align-len>
+      <Hsp_qseq>FMSFFGLSSTLQLLAMALECWLSLGHPFFYRRHITLRLGALVAPVVSAFSLAFCALPFMGFGKFVQYCPGTWC</Hsp_qseq>
+      <Hsp_hseq>FPYFTGLS---MLSAISTERCLSVLWPIWYRCRRPTHLSAVVCVLLWGLSLLFSMLEWRFCDFLFSGADSSWC</Hsp_hseq>
+      <Hsp_midline>F  F GLS    L A++ E  LS+  P +YR      L A+V  ++   SL F  L +            +WC</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>104</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|44</Hit_id>
+  <Hit_def>sp|Q8IZF7|AGRF2_HUMAN Adhesion G-protein coupled receptor F2 OS=Homo sapiens OX=9606 GN=ADGRF2 PE=2 SV=1</Hit_def>
+  <Hit_accession>44</Hit_accession>
+  <Hit_len>708</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>22.3274</Hsp_bit-score>
+      <Hsp_score>46</Hsp_score>
+      <Hsp_evalue>9.13442</Hsp_evalue>
+      <Hsp_query-from>86</Hsp_query-from>
+      <Hsp_query-to>117</Hsp_query-to>
+      <Hsp_hit-from>510</Hsp_hit-from>
+      <Hsp_hit-to>541</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>13</Hsp_identity>
+      <Hsp_positive>16</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>32</Hsp_align-len>
+      <Hsp_qseq>APALDNSLCQAFAFFMSFFGLSSTLQLLAMAL</Hsp_qseq>
+      <Hsp_hseq>GPITHHKGCVAATFFVHFFYLSVFFWMLAKAL</Hsp_hseq>
+      <Hsp_midline> P   +  C A  FF+ FF LS    +LA AL</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>105</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|2</Hit_id>
+  <Hit_def>sp|O02662|ADRB3_CANLF Beta-3 adrenergic receptor OS=Canis lupus familiaris OX=9615 GN=ADRB3 PE=2 SV=1</Hit_def>
+  <Hit_accession>2</Hit_accession>
+  <Hit_len>405</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>21.9422</Hsp_bit-score>
+      <Hsp_score>45</Hsp_score>
+      <Hsp_evalue>9.91394</Hsp_evalue>
+      <Hsp_query-from>227</Hsp_query-from>
+      <Hsp_query-to>250</Hsp_query-to>
+      <Hsp_hit-from>284</Hsp_hit-from>
+      <Hsp_hit-to>307</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>11</Hsp_identity>
+      <Hsp_positive>13</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>24</Hsp_align-len>
+      <Hsp_qseq>PLEELDHLLLLALMTVLFTMCSLP</Hsp_qseq>
+      <Hsp_hseq>PLREHRALRTLGLIVGTFTLCWLP</Hsp_hseq>
+      <Hsp_midline>PL E   L  L L+   FT+C LP</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>401</Statistics_db-num>
+      <Statistics_db-len>206602</Statistics_db-len>
+      <Statistics_hsp-len>72</Statistics_hsp-len>
+      <Statistics_eff-space>41411090</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+
