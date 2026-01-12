@@ -1,10 +1,15 @@
 ## to run on workflow trigger
-
 import os, sys, gzip
 from Bio.PDB import *
 from Bio.SeqUtils import seq1
-from Bio import SearchIO
+from Bio.PDB.Polypeptide import is_aa  
 from Bio.Blast import NCBIXML
+
+# Ensure necessary directories exist immediately
+os.makedirs('data/PDB/fasta', exist_ok=True)
+os.makedirs('data/PDB/GPCRDB', exist_ok=True)
+os.makedirs('data/PDB/pdir', exist_ok=True)
+os.makedirs('data/PDB/blastdb', exist_ok=True)
 
 ## Remove the old version of PFAM clans
 os.system('wget http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam35.0/Pfam-A.clans.tsv.gz -O data/Pfam/Pfam-A.clans.tsv.gz')
@@ -53,102 +58,138 @@ for files in os.listdir('data/PDB/AlphaFold/'):
         dic[pdbID]['BARR'] = '-'
 
 def makeMapFASTA(pdbID, dic):
-    print (pdbID)
-    SEQ2PDB = {};
+    print(f"--> Processing {pdbID}...")
+    SEQ2PDB = {}
     fasta = ''
-    x = ''
-    if pdbID[:3] == 'AF:':
-        #parser = MMCIFParser()
-        parser = PDBParser()
-        structure = parser.get_structure(x, 'data/PDB/AlphaFold/'+pdbID + '.pdb')
-    else:
-        pdbl = PDBList()
-        try:
-            pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False)
-            parser = MMCIFParser()
-            ## Check file
-            cif_path = f'data/PDB/pdir/{pdbID}.cif'
-            if not os.path.isfile(cif_path):
-                os.system(f'wget https://www.ebi.ac.uk/pdbe/entry-files/{pdbID}.cif -O {cif_path}')
-                
-            structure = parser.get_structure(x, 'data/PDB/pdir/'+pdbID+'.cif')
-        except:
-            pdbl.retrieve_pdb_file(pdbID.upper(), pdir='data/PDB/pdir', obsolete=False, file_format="pdb")
-            parser = PDBParser()
-            structure = parser.get_structure(x, 'data/PDB/pdir/pdb'+pdbID+'.ent')
-    print ('pass1')
+    
+    # 1. Define paths
+    pdir = 'data/PDB/pdir'
+    fasta_dir = 'data/PDB/fasta'
+    gpcrdb_dir = 'data/PDB/GPCRDB'
+    cif_path = f'{pdir}/{pdbID}.cif'
+    
+    # 2. Load Structure (Robust Method)
+    structure = None
+    try:
+        # Handle AlphaFold structures
+        if pdbID.startswith('AF:'):
+             parser = PDBParser(QUIET=True)
+             structure = parser.get_structure('struct', f'data/PDB/AlphaFold/{pdbID}.pdb')
+        else:
+            # Handle Standard PDBs (CIF format preferred)
+            parser = MMCIFParser(QUIET=True)
+            
+            # If file doesn't exist or is empty, force download via wget
+            if not os.path.isfile(cif_path) or os.path.getsize(cif_path) == 0:
+                print(f"   Downloading {pdbID}.cif...")
+                # Redirect output to /dev/null to keep logs clean
+                os.system(f'wget https://www.ebi.ac.uk/pdbe/entry-files/{pdbID}.cif -O {cif_path} >/dev/null 2>&1')
+            
+            # Attempt to parse
+            if os.path.isfile(cif_path) and os.path.getsize(cif_path) > 0:
+                structure = parser.get_structure('struct', cif_path)
+            else:
+                print(f"❌ Error: Could not download/find {pdbID}.cif")
+                return ''
 
+    except Exception as e:
+        print(f"❌ CRITICAL ERROR loading structure {pdbID}: {e}")
+        return ''
+
+    # 3. Extract Sequence from Chain
+    target_chain = dic[pdbID]['GPCR']
+    found = False
+    
+    # Iterate through models and chains to find the target GPCR chain
     for model in structure:
         for chain in model:
-            if chain.id == dic[pdbID]['GPCR']:
-                fasta = '>'+pdbID+'|'+dic[pdbID]['GPCR'] + '\n'
+            if chain.id == target_chain:
+                fasta = f'>{pdbID}|{target_chain}\n'
                 num = 1
                 for residue in chain:
-                    for atom in residue:
-                        if atom.id == 'CA':
-                            _, position, _ = residue.id
-                            aa = seq1(residue.resname)
-                            fasta += aa
-                            SEQ2PDB[num] = int(position)
-                            num += 1
-                            #print(chain.id, aa, position)
+                    # check if it is a valid Amino Acid (standard or modified)
+                    if is_aa(residue, standard=False):
+                        for atom in residue:
+                            if atom.id == 'CA': # Use Alpha Carbon for numbering
+                                _, position, _ = residue.id
+                                try:
+                                    # Try to convert 3-letter code to 1-letter
+                                    aa = seq1(residue.resname)
+                                except:
+                                    # Fallback for unknown residues to prevent crash
+                                    aa = 'X' 
+                                fasta += aa
+                                SEQ2PDB[num] = int(position)
+                                num += 1
+                found = True
                 break
-    #print (fasta)
-    open('data/PDB/fasta/'+pdbID+'.fasta', 'w').write(fasta)
-    os.system('blastp -query data/PDB/fasta/'+pdbID+'.fasta'+' -outfmt 5 -out ' + 'data/PDB/fasta/'+pdbID+'.txt -db data/GPCRDB/blastdb/GPCRDB')
-    #print (map)
-    print ('pass2')
-    handle = open('data/PDB/fasta/'+pdbID+'.txt', 'r')
-    blast_records = NCBIXML.parse(handle)
-    #print (blast_records)
+        if found: break
 
-    GPCRDB2SEQ = {}
-    for blast_record in blast_records:
-        #print (blast_record.query)
-        query = blast_record.query
-        chainID = query.split('|')[1].replace('\n', '')
+    # Validation: If chain not found or sequence is too short (empty)
+    if not found or len(fasta.split('\n')[-1]) < 10:
+        print(f"⚠️ WARNING: GPCR Chain '{target_chain}' empty or not found in {pdbID}")
+        return ''
 
-        for alignment in blast_record.alignments:
-            for hsp in alignment.hsps:
-                bestHIT = alignment.title.split(' ')[1]
+    # 4. Save FASTA and Run BLAST
+    fasta_file = f'{fasta_dir}/{pdbID}.fasta'
+    blast_out = f'{fasta_dir}/{pdbID}.txt'
+    
+    with open(fasta_file, 'w') as f:
+        f.write(fasta)
+    
+    # Execute BLASTP
+    # Ensure 'data/PDB/blastdb/GPCRDB' exists before running this
+    os.system(f'blastp -query {fasta_file} -outfmt 5 -out {blast_out} -db data/PDB/blastdb/GPCRDB')
 
-                num_s = hsp.sbjct_start
-                num_q = hsp.query_start
-                for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
-                    if q!='-' and s!='-':
-                        GPCRDB2SEQ[num_s] = num_q
-                        num_q += 1
-                        num_s += 1
-                    elif q!='-':
-                        num_q += 1
-                    else:
-                        num_s += 1
-                break
-            break
-        '''
-        for alignment in blast_record.alignments:
-            for hsp in alignment.hsps:
-                bestHIT = alignment.title.split(' ')[1]
-                for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
-                    if q!='-' and s!='-':
-                        GPCRDB2SEQ[num + hsp.sbjct_start] = num + hsp.query_start
-                break
-            break
-        '''
+    # 5. Process BLAST Results (Map PDB to GPCRdb numbers)
+    if not os.path.exists(blast_out) or os.path.getsize(blast_out) == 0:
+        print(f"⚠️ BLAST failed for {pdbID} (No output file)")
+        return fasta
 
-    #print (SEQ2PDB)
-    #print (GPCRDB2SEQ)
+    try:
+        handle = open(blast_out, 'r')
+        blast_records = NCBIXML.parse(handle)
+        
+        GPCRDB2SEQ = {}
+        bestHIT = 'None'
+        chainID = target_chain
 
-    l = ''
-    for s in GPCRDB2SEQ:
-        q = GPCRDB2SEQ[s]
-        if q in SEQ2PDB:
-            pdbPosition = SEQ2PDB[q]
-            l += str(pdbID) + '\t' + chainID + '\t' + str(pdbPosition) + '\t' + str(s) + '\t' + bestHIT + '\n'
-    open('data/PDB/GPCRDB/'+pdbID+'.txt', 'w').write(l)
+        for blast_record in blast_records:
+            for alignment in blast_record.alignments:
+                for hsp in alignment.hsps:
+                    bestHIT = alignment.title.split(' ')[1]
+                    num_s = hsp.sbjct_start
+                    num_q = hsp.query_start
+                    
+                    # Map residue by residue
+                    for q, s in zip(hsp.query, hsp.sbjct):
+                        if q != '-' and s != '-':
+                            GPCRDB2SEQ[num_s] = num_q
+                            num_q += 1
+                            num_s += 1
+                        elif q != '-':
+                            num_q += 1
+                        else:
+                            num_s += 1
+                    break # Take only the first HSP
+                break # Take only the best alignment
 
-    print (l)
-    #sys.exit()
+        # Write the final mapping file
+        l = ''
+        for s in GPCRDB2SEQ:
+            q = GPCRDB2SEQ[s]
+            if q in SEQ2PDB:
+                pdbPosition = SEQ2PDB[q]
+                l += f"{pdbID}\t{chainID}\t{pdbPosition}\t{s}\t{bestHIT}\n"
+        
+        with open(f'{gpcrdb_dir}/{pdbID}.txt', 'w') as f:
+            f.write(l)
+            
+        print(f"✅ Success: {pdbID} mapped to {bestHIT}")
+
+    except Exception as e:
+        print(f"❌ Error parsing BLAST XML for {pdbID}: {e}")
+
     return fasta
 
 ## Save PDB ID and chain information as well as
