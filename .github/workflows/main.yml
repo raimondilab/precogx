@@ -66,6 +66,7 @@ jobs:
           git add -f data/PDB/GPCRDB/*.txt data/PDB/pdir/*.cif static/pdir/*.cif
           git add -A
           git commit -m "update data" -a
+          git pull --rebase origin main
 
       # push
       - name: push changes
