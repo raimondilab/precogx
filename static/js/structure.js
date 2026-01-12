@@ -144,8 +144,8 @@ function showStructure(uniq_id, gpcr, chainGPCR, chainGPROT, pdbid, positions, n
           extValue = { ext:'pdb'};
         }
         else {
-          loadValue = "rcsb://"+pdbid+".cif";
-          extValue = { ext:'cif'};
+           loadValue = "/static/data/PDB/pdir/" + pdbid + ".cif";
+           extValue = { ext: 'cif' };
         }
 
         //alert(window.location.pathname);
