@@ -409,8 +409,8 @@ function resetPDBlist(uniq_id, gpcr, ordered_pdbs, positions, pair_positions, nu
   for (var i = 0; i < ordered_pdbs.length; i++) {
     var x = ordered_pdbs[i].split('_');
     var pdbid = x[0];
-    var chainGPCR = x[1];
-    var chainGPROT = x[2];
+    var chainGPCR = x[1] || "A"; 
+    var chainGPROT = x[2] || "B"; 
     //var positions = '1.5';
     new_options += "<li><a class=\"dropdown-item\" onClick=\"showStructure(\'"+uniq_id+"\',\'"+gpcr+"\',\'"+chainGPCR+"\',\'"+chainGPROT+"\',\'"+pdbid+"\',\'"+positions+"\',\'"+num_contacts+"\',\'"+pair_positions+"\')\">"+pdbid+"</a></li>";
     // return only the first values as default to display
