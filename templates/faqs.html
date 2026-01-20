@@ -2,22 +2,8 @@
 
 {% block title %} PRECOGx | FAQs  {% endblock %}
 
-{% block script %}
-<script>
-    if (navigator.appVersion.indexOf("Win")==-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">');
-} else if (navigator.appVersion.indexOf("Mac")!=-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}  else {
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}
-
-
-</script>
-{% endblock%}
-
 {% block content %}
-<section class="pt-xxl-8" id="faqs">
+<section class="pt-xxl-4" id="faqs">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-12 text-center text-md-start">
@@ -36,7 +22,7 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify offset-12">
                                     No, you can enter only sequences of length 1024. Butyou may truncate the input
                                     sequence to reduce its length(for e.g. truncate the N-terminal such that the length
                                     of the truncated sequence is <= 1024.
@@ -55,7 +41,7 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">No, this feature is not yet included in the
+                                <p class="text-justify  offset-12">No, this feature is not yet included in the
                                     model.</p>
                             </div>
                         </div>
@@ -73,7 +59,7 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     No, there is no in-built feature PRECOGx to perform any in-silico design. However,
                                     PRECOGx can predict the coupling probabilities of any GPCR sequence. So the user can
                                     perform an in-silico design by themselves and then feed the mutated sequence to
@@ -94,7 +80,7 @@
                         </div>
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     Yes, please check out our GitHub page <a
                                         href="https://github.com/raimondilab/precogx">here</a>.</p>
                             </div>
@@ -112,7 +98,7 @@
                         </div>
                         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     No, PRECOGx only accepts  point mutations in the mutation format style.
                                     However, the user can generate sequences (FASTA-formatted) with more than one insertion (or deletions),
                                     and feed them to PRECOGx as input.</p>
@@ -130,7 +116,7 @@
                         </div>
                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     No, PRECOGx was trained and tested only by considering only GPCR sequences. PRECOGx
                                     will eliminate any non-GPCR sequence(s) from the input.</p>
                             </div>
@@ -149,7 +135,7 @@
                         <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     Yes, PRECOGx can make predictions for all the classes of GPCRs. However, the user
                                     must remember that the majority of receptors used to develop PRECOGx belong to Class
                                     A.</p>
@@ -169,7 +155,7 @@
                         <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     PRECOGx displays only the 3D structure complexes of GPCR/G-proteins or
                                     GPCR/Beta-arrestins available in PDB. Currently, PRECOGx does not display 3D
                                     structures with only GPCRs as polypeptides.
@@ -189,7 +175,7 @@
                         </div>
                         <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     We update PRECOGx structures once every month. If you are looking for a structure
                                     that was released over a month ago, please drop us an email, and we will make it
                                     available as soon as we can.
@@ -209,7 +195,7 @@
                         </div>
                         <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     Currently, PRECOGx displays only the 3D structure complexes with a GPCR/G-protein pair
                                     that is known to be coupled in TGF/GEMTA experimental assays.
                                     We didn’t predict GPCR/β-arrestins complexes as one of the key factors determining
@@ -234,7 +220,7 @@
                         <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     No, these numbering schemes are different. Check this page to know more.
                                 </p>
                             </div>
@@ -253,7 +239,7 @@
                         <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     Currently, PRECOGx displays only the GPCRdb numbering scheme. In the future, we plan
                                     to introduce other schemes too.
                                 </p>
@@ -274,7 +260,7 @@
                         <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     No, this feature is not yet available in PRECOGx. But we understand the importance
                                     of this feature and plan to introduce it in the next version.
                                 </p>
@@ -295,7 +281,7 @@
                         <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen"
                              data-parent="#accordion">
                             <div class="card-body">
-                                <p class="text-justify fs-0 offset-12">
+                                <p class="text-justify  offset-12">
                                     We find the best 3D structure for input by computing the sequence identity (using PSI-BLAST)
                                     of the input against all the 3D structure complexes available from PDB and predicted by AlphaFold.
                                     The 3D structures are ranked in  decreasing order of sequence identity,

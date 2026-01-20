@@ -2,76 +2,76 @@
 
 {% block title %} PRECOGx | Home {% endblock %}
 
-
 {% block script %}
 <script src="{{url_for('static', filename='/js/index.js')}}"></script>
-
-<script>
-    if (navigator.appVersion.indexOf("Win")==-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">');
-} else if (navigator.appVersion.indexOf("Mac")!=-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}  else {
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}
-
-</script>
 {% endblock%}
 
 {% block content %}
-<section class="py-xxl-7 home-margin" id="home" xmlns="http://www.w3.org/1999/html">
+
+<section id="home">
     <div class="container">
-        <div class="row min-vh-xl-100 min-vh-xxl-25">
-            <div class="col-md-75 col-xl-5 col-xxl-5  order-0 order-md-1 text-end py-4">
-                <img class="pt-7 pt-md-0 center w-100" src="static/img/gallery/network_concept.png" alt="Deep network" />
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-5 col-xl-5 col-xxl-5 order-0 order-md-1 text-center py-4">
+                <img class="img-fluid w-100" src="static/img/gallery/network_concept.png" alt="Deep network" style="max-width: 400px;" />
             </div>
-            <div class="col-md-7 col-xl-7 col-xxl-7 text-md-start text-center py-4">
+
+            <div class="col-md-7 col-xl-7 col-xxl-7 text-center text-md-start py-4">
                 <h1 class="fw-light font-base fs-6 fs-xxl-7"><strong>PRECOGx</strong></h1>
-                <p class="fs-1 mb-5 text-justify">
+                <p class="fs-1 mb-4 text-justify">
                     Delving deep into <strong>GPCR</strong> signaling mechanisms with <strong> protein embeddings</strong> (ESM-1b)
                 </p>
-                <form method="POST" action='/input'>
-                <div class="col-md-12 mb-2">
-                    <label class="form-label visually-hidden" for="validationTextarea"></label>
-                    <textarea name="input" class="form-control form-livedoc-control" id="validationTextarea" placeholder="Paste/Upload Gene-symbol(s) or UniProt-ID(s) or FASTA sequence(s)&#10;Max. 15 inputs permitted" rows="10" required="required"></textarea>
-                </div>
-                <div class="col-md-12  g-3">
+
+                <form method="POST" action='/input' id="analysisForm">
+                    <div class="col-md-12 mb-3">
+                         <textarea name="input" class="form-control form-livedoc-control" id="validationTextarea"
+                                  placeholder="Paste/Upload Gene-symbol(s) or UniProt-ID(s) or FASTA sequence(s)&#10;Max. 15 inputs permitted"
+                                  rows="8" required="required"></textarea>
+                    </div>
+                    <div class="col-md-12 g-3">
                          <div class="col-auto">
-                              <button class="btn btn-primary  btn-sm rounded-pill fs--2" id="submit" type="submit">Submit</button>
-                              <label class="mb-3 fs--2">Examples</label>
-			                  <label class="fs--2"></label>
+                              <button class="btn btn-primary btn-sm rounded-pill fs--2" id="submit" type="submit">Submit</button>
+                              <span class="mx-2 fs--2">Examples</span>
                               <button class="btn btn-primary btn-sm rounded-pill fs--2 mb-1" type="button" id="ex1">FASTA</button>
                               <button class="btn btn-primary btn-sm rounded-pill fs--2 mb-1" type="button" id="ex2">UniProt Acc/ID</button>
-                              <button class="btn btn-primary  btn-sm rounded-pill fs--2 mb-1" type="button" id="ex3">Variants</button>
-                              <button class="btn btn-primary  btn-sm rounded-pill fs--2 mb-1" type="button" id="ex4">Oher/Adhesion GPCR</button>
-                              <button class="btn btn-primary  btn-sm rounded-pill fs--2 mb-1" type="button" id="ex5">GtoPdb</button>
+                              <button class="btn btn-primary btn-sm rounded-pill fs--2 mb-1" type="button" id="ex3">Variants</button>
+                              <button class="btn btn-primary btn-sm rounded-pill fs--2 mb-1" type="button" id="ex4">Other/Adhesion GPCR</button>
+                              <button class="btn btn-primary btn-sm rounded-pill fs--2 mb-1" type="button" id="ex5">GtoPdb</button>
                         </div>
-                </div>
-            </form>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- Cookie Banner -->
-<div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert">
-This website uses cookies to ensure you get the best experience on our website.
-<a href="https://www.cookiesandyou.com/" target="blank">Learn more</a>
-<button type="button" class="btn btn-primary btn-sm ms-3" onclick="hideCookieBanner()">
-I Got It
-</button>
+<div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert" style="position: fixed; bottom: 0; width: 100%; z-index: 9999; display: none;">
+    This website uses cookies to ensure you get the best experience on our website.
+    <a href="https://www.cookiesandyou.com/" target="blank" class="text-white text-decoration-underline">Learn more</a>
+    <button type="button" class="btn btn-primary btn-sm ms-3" onclick="hideCookieBanner()">I Got It</button>
 </div>
-<!-- End of Cookie Banner -->
 
-<!-- <section> begin ============================-->
-<section class="py-xxl-7" id="running">
+<section class="py-5" id="running" style="display: none;">
     <div class="container">
-        <div class="row py-11 justify-content-lg-evenly">
+        <div class="row py-5 justify-content-lg-evenly">
             <h1 class="fw-bold font-base fs-6 fs-xxl-7 text-center"> Running...</h1>
             <h5 class="fw-bold font-base text-center">Your results will be stored for one month, beyond which they will be permanently deleted.</h5>
         </div>
     </div>
-    <!-- end of .container-->
 </section>
-{%  endblock %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('analysisForm');
+
+        if (form) {
+            form.addEventListener('submit', function() {
+                document.getElementById('home').style.display = 'none';
+                const runningSection = document.getElementById('running');
+                runningSection.style.setProperty('display', 'flex', 'important');
+            });
+        }
+    });
+</script>
+
+{% endblock %}

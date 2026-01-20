@@ -3,32 +3,15 @@
 {% block title %} PRECOGx | Help  {% endblock %}
 
 
-{% block script %}
-<script src="{{url_for('static', filename='/js/index.js')}}"></script>
-
-<script>
-    if (navigator.appVersion.indexOf("Win")==-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme.css')}}" rel="stylesheet">');
-} else if (navigator.appVersion.indexOf("Mac")!=-1){
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-}  else {
-    $('head').append('<link href="{{url_for('static', filename='/css/theme_windows.css')}}" rel="stylesheet">');
-
-}
-
-</script>
-{% endblock%}
-
-
 {% block content %}
-<section class="pt-xxl-8" id="help">
+<section class="pt-xxl-4" id="help">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-3 order-lg-1 mb-5 mb-lg-0"></div>
-            <div class="col-md-12 text-center text-md-start fs-1 mb-5">
+            <div class="col-md-12 text-center text-md-start  mb-5">
                 <h1 class="fw-bold mb-4">Help</h1>
                 <h2 class="fw-bold mb-4"> Web-server usage</h2>
-                <p class="text-justify fs-0 mb-4">
+                <p class="text-justify  mb-4">
                     A user can input either a wild type (WT) or mutated protein sequence (in case of the latter, calculation
                     of the WT is also carried out for comparison purposes). Protein embeddings from the pre-trained
                     <a href="https://github.com/facebookresearch/esm" target="_blank">ESM-1b model</a> are calculated for the input sequence, and used to:<br>
@@ -37,15 +20,15 @@
                     (iii) visualise the predicted contacts (enriched/depleted) for a given transducer group in 1D (sequence), 2D (contact/attention map) or 3D (structure).
                 </p>
                 <h2 class="fw-bold mb-4">Input format and options</h2>
-                <p class="text-justify fs-0">
+                <p class="text-justify ">
                     PRECOGx requires input in any of the following formats:
                   <ul>
-                      <li class="text-justify fs-0"><strong>UniProt ACC/Entry names/Gene symbols</strong>: Set of proteins specified using the UniProt <a href="https://www.uniprot.org/help/accession_numbers" target="_blank">accessions</a>, <a href="https://www.uniprot.org/help/entry_name" target="_blank">Entry names</a> and <a href="https://www.uniprot.org/help/gene_name" target="_blank">Gene symbols</a></li>
-                      <li class="text-justify fs-0"><strong>Mutations</strong>: Set of variants/mutations by simply
+                      <li class="text-justify "><strong>UniProt ACC/Entry names/Gene symbols</strong>: Set of proteins specified using the UniProt <a href="https://www.uniprot.org/help/accession_numbers" target="_blank">accessions</a>, <a href="https://www.uniprot.org/help/entry_name" target="_blank">Entry names</a> and <a href="https://www.uniprot.org/help/gene_name" target="_blank">Gene symbols</a></li>
+                      <li class="text-justify "><strong>Mutations</strong>: Set of variants/mutations by simply
                       appending the positional information (e.g. D294H), separated by a forward slash (/), to the input ID</li>
-                      <li class="text-justify fs-0"><strong>FASTA format</strong>: A GPCR specified as <a href = "https://en.wikipedia.org/wiki/FASTA_format" target="_blank">whole sequence</a></li>
-                      <li class="text-justify fs-0"><strong>GtoPdb name</strong>: A GPCR specified as <a href = "https://www.guidetopharmacology.org/" target="_blank">GtoPdb receptor</a> name (eg: <a href="https://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=372" target="_blank">VPAC2 receptor</a>)</li>
-                      <li class="text-justify fs-0"><strong>Submit</strong>: Execute the input</li>
+                      <li class="text-justify "><strong>FASTA format</strong>: A GPCR specified as <a href = "https://en.wikipedia.org/wiki/FASTA_format" target="_blank">whole sequence</a></li>
+                      <li class="text-justify "><strong>GtoPdb name</strong>: A GPCR specified as <a href = "https://www.guidetopharmacology.org/" target="_blank">GtoPdb receptor</a> name (eg: <a href="https://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=372" target="_blank">VPAC2 receptor</a>)</li>
+                      <li class="text-justify "><strong>Submit</strong>: Execute the input</li>
                   </ul>
                 </p>
 
@@ -58,30 +41,30 @@
                         <img class="pt-md-0 center w-100" src="static/img/GIFs/couplingProbabilities.gif" alt="result page"/>
                     </div>
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                             The table here represents coupling probabilities predicted by PRECOGx as well experimental information provided by
                             <a href ="https://www.guidetopharmacology.org/">GtoPdb/IUPHAR</a>, the <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/">TGF</a>
                             and the <a href="https://www.biorxiv.org/content/10.1101/2020.04.20.052027v1">GEMTA</a> assays.
                         </p>
 
 
-                        <p class="text-justify fs-0">Columns:</p>
+                        <p class="text-justify ">Columns:</p>
                         <ul>
-                            <li class="text-justify fs-0"><strong>GPCR</strong>: Input name(s) provided by the user.</li>
-                            <li class="text-justify fs-0"><strong>VARIANT</strong>: Type of VARIANT - (a) Wild type; (b) Variant/Mutation; (c) GtoPdb; (d) TGF(LogRAi); (e) GEMTA(dnorm Emax)
+                            <li class="text-justify "><strong>GPCR</strong>: Input name(s) provided by the user.</li>
+                            <li class="text-justify "><strong>VARIANT</strong>: Type of VARIANT - (a) Wild type; (b) Variant/Mutation; (c) GtoPdb; (d) TGF(LogRAi); (e) GEMTA(dnorm Emax)
                             </li>
-                            <li class="text-justify fs-0"><strong>[GNAS - β-arr/GRK2]</strong>: PRECOGx-predicted coupling probabilities (of both wild type and variant/mutation inputs) for all the available transducer groups (G-proteins and β-arrestins);</li>
+                            <li class="text-justify "><strong>[GNAS - β-arr/GRK2]</strong>: PRECOGx-predicted coupling probabilities (of both wild type and variant/mutation inputs) for all the available transducer groups (G-proteins and β-arrestins);</li>
                         </ul>
-                        <p class="text-justify fs-0">Rows with:</p>
+                        <p class="text-justify ">Rows with:</p>
                         <ul>
-                            <li class="text-justify fs-0"><strong>VARIANT = GtoPdb</strong>  primary coupling is represented by <strong>PC</strong> while the secondary ones as <strong>SC</strong> and
+                            <li class="text-justify "><strong>VARIANT = GtoPdb</strong>  primary coupling is represented by <strong>PC</strong> while the secondary ones as <strong>SC</strong> and
                              the unknown ones as <strong>-</strong>.</li>
-                            <li class="text-justify fs-0"><strong>VARIANT = LogRAi-TGF</strong> values > <strong>-1.0</strong> imply coupled while others are not-coupled (< <strong>-1.0</strong>) or unknown <strong>-</strong>.</li>
-                            <li class="text-justify fs-0"><strong>VARIANT = Emax-GEMTA</strong> values > <strong>0.0</strong> imply coupled while others are not-coupled (= <strong>0.0</strong>) or unknown <strong>-</strong>.</li>
-                            <li class="text-justify fs-0"><strong>VARIANT = WT</strong> values with PRECOGx-predicted probability > 0.5 are coupled and otherwise, not-coupled.</li>
-                            <li class="text-justify fs-0"><strong>VARIANT = Variant/Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) values with PRECOGx-predicted probability > 0.5 are coupled and otherwise not-coupled.</li>
+                            <li class="text-justify "><strong>VARIANT = LogRAi-TGF</strong> values > <strong>-1.0</strong> imply coupled while others are not-coupled (< <strong>-1.0</strong>) or unknown <strong>-</strong>.</li>
+                            <li class="text-justify "><strong>VARIANT = Emax-GEMTA</strong> values > <strong>0.0</strong> imply coupled while others are not-coupled (= <strong>0.0</strong>) or unknown <strong>-</strong>.</li>
+                            <li class="text-justify "><strong>VARIANT = WT</strong> values with PRECOGx-predicted probability > 0.5 are coupled and otherwise, not-coupled.</li>
+                            <li class="text-justify "><strong>VARIANT = Variant/Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) values with PRECOGx-predicted probability > 0.5 are coupled and otherwise not-coupled.</li>
                         </ul>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                             <strong><u>Note</u>: This table acts as the master control. Clicking the cells in the table will automatically update the rest of the panels.</strong>
                         </p>
                     </div>
@@ -92,13 +75,13 @@
                 <div class="row mb-4">
 
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           This panel displays the projections of the human GPCRome sequences obtained through
                           Principal Component Analysis (PCA) on the embeddings of the human, non-olfactory GPCRome (shown as dots) for different ESM1b layers (which can be selected from the dropdown menu).
                           The first two components, PC1 and PC2, of the PCA are shown on the X- and Y-axis, respectively. The human GPCRome has a total of 377 receptors
                           (279 Class A, 15 Class B1, 17 Class B2, 17 Class C, 11 Class F, 25 Taste receptors and 14 Others). Place the cursor over a dot to view the GPCR information.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The user can color the human GPCRome based on their known functional information with the help of another drop-down menu:<br>
                           (i) <strong>TGF/GEMTA</strong>: The human GPCRome is colored based on its known binding affinities known from the
                             <a href="https://pubmed.ncbi.nlm.nih.gov/31160049/" target="_blank">TGF</a> or
@@ -111,16 +94,16 @@
                             <span style="color: black; background-color: limegreen; border: 1px solid black">light green (secondary transduction mechanisms)</span>, will be applied to the human GPCRome.<br>
                           (iii) <strong>Class</strong>: A discrete set of colors will be applied to display the different GPCR classes.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong>Wild type</strong> and <strong>Variant</strong> (if provided) are projected on the embedded space.
                           <i>You can select a different transducer group by clicking on the appropriate cell in the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank">Coupling probabilites panel</a></i>.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           In the GIF on the right, the variant <strong>MC1R/D294H</strong> (shown in <span style="background-color: salmon; border: 1px solid black">red</span>; associated with a risk for developing melanoma; PMID: 7581459, 11179997, 17616515)
                           and its wild type (shown in <span style="color: black; background-color: dodgerblue; border: 1px solid black">blue</span>) are projected on the embedded space of the human GPCRome,
                           which is colored based on its binding affinities to the GNAS transducer group (left dropdown menu -> TGF/GEMTA) or its class membership (left dropdown menu -> Class) for different Transformer layers (right dropdown menu).
                           </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong><u>Note</u>: Any activity in this panel will not affect the rendering of other panels.</strong>
                           </p>
                     </div>
@@ -135,7 +118,7 @@
                         <img class="pt-md-0 center w-100" src="static/img/GIFs/contacts.gif" alt="result page"/>
                     </div>
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           This plot displays the predicted differential intra-molecular contacts for a given transducer group (G-protein/β-arrestin).
                           The contacts are predicted for all GPCRs, and then grouped together on the basis of their
                           coupling preferences. The contacts are then summarised via log-odds ratio, which indicates the ones that are observed
@@ -144,19 +127,19 @@
                           <a href="https://www.sciencedirect.com/science/article/abs/pii/S1043947105800497">GPCRdb generic residue numbering scheme</a>.
                           <i>You can select a different transducer group by clicking on the appropriate cell in the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank"> Coupling probabilities panel</a></i>.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The <strong>Log-odds score slider</strong> can be used  to filter and visualize the predicted contacts with an absolute value of the log-odds ratio greater than user-specified absolute value.
                           For example, a slider value of 0.3 will display the predicted contacts
                           that are <span style="background-color: lightgreen; border: 1px solid black">enriched (&gt; 0.3)</span> or
                           <span style="background-color: salmon; border: 1px solid black">depeleted (&lt; 0.3)</span> for the given transducer group.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The <strong>Distance slider</strong> can be used to filter close contact pairs inside the same secondary structural element (helices).
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                         In the GIF on the left, the predicted contacts of the GNAS transducer group are projected on the variant <strong>MC1R/D294H</strong> (associated with a risk for developing melanoma; PMID: 7581459, 11179997, 17616515).
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong><u>Note</u>: Updating any or both the sliders of this panel will automatically update the sliders and 3D structure in the Structure panel.</strong>
                         </p>
                     </div>
@@ -166,7 +149,7 @@
                 <div class="row mb-4">
 
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           This plot displays the predicted differential contacts for a given transducer group (G-protein/β-arrestin).
                           The intra-molecular contacts are predicted for all the GPCRs, and then grouped together on the basis of their
                           coupling preferences. The contacts are then summarised via log-odds ratio, indicating contacts that are
@@ -177,19 +160,19 @@
                           Variant/mutation, if provided, is highlighted in <span style="color: black; background-color: violet; border: 1px solid black">violet</span>.
                           <i>You can select a different transducer group by clicking on the appropriate cell in the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank"> Coupling probabilities panel</a></i>.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The <strong>Log-odds score slider</strong> can be used filter and visualize the predicted contacts with the log-odds ratio greater than user-specified absolute value.
                           For example, a slider value of 0.3 will display the predicted contacts
                           that are <span style="background-color: lightgreen; border: 1px solid black">enriched (&gt; 0.3)</span> or
                           <span style="background-color: salmon; border: 1px solid black">depeleted (&lt; 0.3)</span> for the given transducer group.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The <strong>Distance slider</strong> can be used to filter close contact pairs inside the same secondary structural element (helices).
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                         In the GIF on the right, the predicted contacts of the GNAS transducer group are projected on the variant <strong>MC1R/D294H</strong> (associated with a risk for developing melanoma; PMID: 7581459, 11179997, 17616515).
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong><u>Note</u>: Updating any or both the sliders of this panel will automatically update the sliders and 3D structure if the Structure panel.</strong>
                         </p>
                     </div>
@@ -203,20 +186,20 @@
                         <img class="pt-md-0 center w-100" src="static/img/GIFs/attentionMap.gif" alt="result page"/>
                     </div>
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           This panel displays the attention map outputted by the most important attention head of the best performing embedding layer (not shown) during training of the given transducer group (G-protein/&#946;-arrestin).
                           The labels on the X- and Y-axis represent the input sequence positions.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong>Darker the color</strong>, <strong>higher is the importance</strong> of the pair of positions in the input.
                           The user can compare the attention network of one or more variants (by specifying in the input) with the wild type.
                           <i>You can select a different transducer group by clicking on the appropriate cell in the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank"> Coupling probabilities panel</a></i>.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                         In the GIF on the left, the attention map of the GNAS transducer group is projected on the variant <strong>MC1R/D294H</strong> (associated with a risk for developing melanoma; PMID: 7581459, 11179997, 17616515).
                             The mutation site is one of several found inside a characteristic attention signature centred on residue 170.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong><u>Note</u>: Any activity in this panel will not affect the rendering of other panels.</strong>
                         </p>
                     </div>
@@ -227,13 +210,13 @@
                 <div class="row mb-4">
 
                     <div class="col-md-6">
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           This plot displays the predicted differential contacts for a given transducer group (G-protein/β-arrestin).
                           The contacts are  predicted for all the GPCRs, and then grouped together on the basis of their
                           coupling preferences. The contacts are then summarised via log-odds ratio, indicating contacts that are more (enriched) or less (depleted) frequently than expected for the given transducer group. Contacts are shown in their corresponding
                           <a href="https://www.sciencedirect.com/science/article/abs/pii/S1043947105800497">GPCRdb generic residue numbering scheme</a>.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The positions predicted to mediate the contacts (shown as <span style="background-color: gold; border: 1px solid black">yellow spheres</span>) are mapped to 3D structure of the input.
                           The contact pairs are connected by a line, with the enriched pairs shown in
                           <span style="color: black; background-color: lightgreen; border: 1px solid black">green</span> and the depeleted ones in
@@ -242,23 +225,23 @@
                          (computed using PSI-BLAST against PDB and AlphaFold complexes) is chosen and displayed by default. The user can select another 3D structure from the dropdown menu,
                          which ranked in the descending order of sequence identity with the input receptor.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                             Variant/mutation, if provided, is highlighted as a <span style="background-color: violet;">violet</span> sphere.
                             <i>You can select a different transducer grop by clicking on the appropriate cell in the <a href="https://precogx.bioinfolab.sns.it/help#coupling_panel" target="_blank"> Coupling probabilities panel</a></i>.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The <strong>Log-odds score slider</strong> can be used filter and visualize the predicted contacts with the log-odds ratio greater than user-specified absolute value.
                           For example, a slider value of 0.3 will display the predicted contacts
                           that are <span style="background-color: lightgreen; border: 1px solid black">enriched (&gt; 0.3)</span> or
                           <span style="background-color: salmon; border: 1px solid black">depeleted (&lt; 0.3)</span> for the given transducer group.
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           The <strong>Distance slider</strong> can be used to filter close contact pairs inside the same secondary structural element (helices).
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                         In the GIF on the right, the predicted contacts of the GNAS transducer group are projected on the variant <strong>MC1R/D294H</strong> (associated with a risk for developing melanoma; PMID: 7581459, 11179997, 17616515).
                         </p>
-                        <p class="text-justify fs-0">
+                        <p class="text-justify ">
                           <strong><u>Note</u>: Updating any or both the sliders of this panel will automatically update the sliders of the Contacts panel.</strong>
                         </p>
                     </div>
@@ -268,28 +251,28 @@
                 </div>
 
                 <h2 class="fw-bold mb-4">Download</h2>
-                <p class="text-justify fs-0">
+                <p class="text-justify ">
                     Download is available as TSV format (Tab-Separated Values). This files provides the PRECOGx-predicted coupling probabilties as well as information of the input known through experimental assays.
                 </p>
-                <p class="text-justify fs-0"> Column information: </p>
+                <p class="text-justify "> Column information: </p>
                 <ul>
-                    <li class="text-justify fs-0"><strong>GPCR</strong>: Input name(s) provided by the user.</li>
-                    <li class="text-justify fs-0"><strong>VARIANT</strong>: Type of variants - (a) Wild type; (b) Mutation; (c) GtoPdb; (d) TGF(LogRAi); (e) GEMTA(dnorm Emax)
+                    <li class="text-justify "><strong>GPCR</strong>: Input name(s) provided by the user.</li>
+                    <li class="text-justify "><strong>VARIANT</strong>: Type of variants - (a) Wild type; (b) Mutation; (c) GtoPdb; (d) TGF(LogRAi); (e) GEMTA(dnorm Emax)
                     </li>
-                    <li class="text-justify fs-0"><strong>[GNAS - β-arr/GRK2]</strong>: PRECOGx-predicted coupling probabilities (of both wild type and variant/mutation inputs) for all the available transducer groups (G-proteins and β-arrestins);</li>
+                    <li class="text-justify "><strong>[GNAS - β-arr/GRK2]</strong>: PRECOGx-predicted coupling probabilities (of both wild type and variant/mutation inputs) for all the available transducer groups (G-proteins and β-arrestins);</li>
                 </ul>
 
-                <p class="text-justify fs-0">Rows with:</p>
+                <p class="text-justify ">Rows with:</p>
                 <ul>
-                  <li class="text-justify fs-0"><strong>VARIANT = GtoPdb</strong>  primary coupling is represented by <strong>PC</strong> while the secondary ones as <strong>SC</strong> and
+                  <li class="text-justify "><strong>VARIANT = GtoPdb</strong>  primary coupling is represented by <strong>PC</strong> while the secondary ones as <strong>SC</strong> and
                    the unknown ones as <strong>-</strong>.</li>
-                  <li class="text-justify fs-0"><strong>VARIANT = LogRAi-TGF</strong> values > <strong>-1.0</strong> imply coupled while others are not-coupled (< <strong>-1.0</strong>) or unknown <strong>-</strong>.</li>
-                  <li class="text-justify fs-0"><strong>VARIANT = Emax-GEMTA</strong> values > <strong>-0.0</strong> imply coupled while others are not-coupled (= <strong>0.0</strong>) or unknown <strong>-</strong>.</li>
-                  <li class="text-justify fs-0"><strong>VARIANT = WT</strong> values with PRECOGx-predicted probability > 0.5 are coupled and otherwise, not-coupled.</li>
-                  <li class="text-justify fs-0"><strong>VARIANT = Variant/Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) values with PRECOGx-predicted probability > 0.5 are coupled and otherwise not-coupled.</li>
+                  <li class="text-justify "><strong>VARIANT = LogRAi-TGF</strong> values > <strong>-1.0</strong> imply coupled while others are not-coupled (< <strong>-1.0</strong>) or unknown <strong>-</strong>.</li>
+                  <li class="text-justify "><strong>VARIANT = Emax-GEMTA</strong> values > <strong>-0.0</strong> imply coupled while others are not-coupled (= <strong>0.0</strong>) or unknown <strong>-</strong>.</li>
+                  <li class="text-justify "><strong>VARIANT = WT</strong> values with PRECOGx-predicted probability > 0.5 are coupled and otherwise, not-coupled.</li>
+                  <li class="text-justify "><strong>VARIANT = Variant/Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) values with PRECOGx-predicted probability > 0.5 are coupled and otherwise not-coupled.</li>
                 </ul>
                 <h2 class="fw-bold mb-4">Browser compatibility</h2>
-                <table class="table table-bordered table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table-responsive-xxl fs-0">
+                <table class="table table-bordered table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table-responsive-xxl ">
                     <thead>
                     <th>OS</th>
                     <th>Version</th>
@@ -298,29 +281,29 @@
                     <th>Safari</th>
                     </thead>
                     <tbody>
-                    <tr class="text-justify fs-0">
+                    <tr class="text-justify ">
                         <td>Linux</td>    <td>Ubuntu 20.04.3 LTS</td>    <td>not tested</td>    <td>95.0</td>    <td>n/a</td>
                     </tr>
-                    <tr class="text-justify fs-0">
+                    <tr class="text-justify ">
                         <td>Linux</td>    <td>CentOS 7.2.1511</td>  <td>not tested</td>    <td>ESR 52.6.0</td>    <td>n/a</td>
                     </tr>
-                    <tr class="text-justify fs-0">
+                    <tr class="text-justify ">
                         <td>Windows</td>    <td>10</td>    <td>v96.0.4664.110</td>    <td>n/a</td>   <td></td>
                     </tr>
-                    <tr class="text-justify fs-0">
+                    <tr class="text-justify ">
                         <td>MacOS</td>    <td>BigSur v11.5.2</td>    <td>v96.0.4664.110</td>    <td>v95.0.2</td>    <td>14.1.2</td>
                     </tr>
-                    <tr class="text-justify fs-0">
+                    <tr class="text-justify ">
                         <td>MacOS</td>    <td>BigSur v11.6</td>    <td>v96.0.4664.110</td>    <td>v95.0.2</td>    <td>14.1.2</td>
                     </tr>
                     </tbody>
                 </table>
 
                 <h5 class="fw-bold mb-4">Contacts</h5>
-                <p class="text-justify fs-0">Francesco Raimondi - francesco.raimondi@sns.it</p>
-                <p class="text-justify fs-0">Marin Matic - marin.matic@sns.it</p>
-                <p class="text-justify fs-0">Gurdeep Singh - gurdeep.singh@bioquant.uni-heidelberg.de</p>
-                <p class="text-justify fs-0"> If you are facing any issues in viewing the result page, please provide (if possible) the URL of your results page in the email.</p>
+                <p class="text-justify ">Francesco Raimondi - francesco.raimondi@sns.it</p>
+                <p class="text-justify ">Marin Matic - marin.matic@sns.it</p>
+                <p class="text-justify ">Gurdeep Singh - gurdeep.singh@bioquant.uni-heidelberg.de</p>
+                <p class="text-justify "> If you are facing any issues in viewing the result page, please provide (if possible) the URL of your results page in the email.</p>
             </div>
         </div>
     </div>

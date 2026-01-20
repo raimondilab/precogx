@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %} PRECOGx | Shedding Assay Data {% endblock %}
+
+{% block content %}
+<section class="py-4" id="shedding">
+    <div class="container">
+
+        <div class="row justify-content-center text-center mb-4">
+            <div class="col-lg-8">
+                <h1 class="fw-light font-base fs-5 fs-xxl-6"><strong>Shedding Assay Data</strong></h1>
+                <p class="fs-1 text-muted">Select a receptor to view the activity/coupling data.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 col-lg-6">
+                <div class="input-group shadow-sm">
+                    <input class="form-control" list="receptors" id="receptor-choice" name="receptor-choice" placeholder="Type or select receptor (e.g. 5HT1A)...">
+
+                    <datalist id="receptors">
+                        </datalist>
+
+                    <button class="btn btn-primary" onclick="loadPdf()" type="button">
+                        <i class="fas fa-search me-2"></i>View Data
+                    </button>
+
+                    <a id="download-link" class="btn btn-success" style="display: none;" download>
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div id="pdf-container" class="shadow-sm border rounded bg-light" style="display: none; height: 80vh;">
+                    <iframe id="pdf-viewer" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+
+                <div id="pdf-placeholder" class="text-center py-5 text-muted bg-light rounded border border-dashed">
+                    <i class="fas fa-file-pdf fa-3x mb-3 text-300"></i>
+                    <p>No document loaded.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{%  endblock %}
+
+{% block script %}
+<script>
+    const apiBaseUrl = '/api';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch(`${apiBaseUrl}/receptors`);
+            const data = await response.json();
+            const dataList = document.getElementById('receptors');
+
+            data.forEach(receptor => {
+                const option = document.createElement('option');
+                option.value = receptor;
+                dataList.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Errore caricamento lista:', error);
+        }
+    });
+
+    async function loadPdf() {
+        const receptorName = document.getElementById('receptor-choice').value;
+        const pdfContainer = document.getElementById('pdf-container');
+        const placeholder = document.getElementById('pdf-placeholder');
+        const downloadLink = document.getElementById('download-link');
+
+        if (!receptorName) {
+            alert("Please select a receptor first.");
+            return;
+        }
+
+        const pdfUrl = `${apiBaseUrl}/get-pdf/${receptorName}`;
+
+        try {
+            const response = await fetch(pdfUrl);
+            if (!response.ok) throw new Error("PDF not found");
+
+            const blob = await response.blob();
+            const objectUrl = URL.createObjectURL(blob);
+
+            const viewer = document.getElementById('pdf-viewer');
+            viewer.src = objectUrl;
+
+            // Troca o visual: Esconde placeholder, mostra PDF
+            placeholder.style.display = 'none';
+            pdfContainer.style.display = 'block';
+
+            // Configura botão de download
+            downloadLink.href = objectUrl;
+            downloadLink.download = `${receptorName}_data.pdf`;
+            downloadLink.style.display = 'inline-block';
+
+        } catch (error) {
+            alert("Error loading PDF: " + error.message);
+            pdfContainer.style.display = 'none';
+            placeholder.style.display = 'block';
+            downloadLink.style.display = 'none';
+        }
+    }
+</script>
+{% endblock%}
