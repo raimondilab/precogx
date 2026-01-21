@@ -191,7 +191,10 @@ function makePCA(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein) {
         gpcr = $('#selected').data('gpcr');
     }
 
-    pca_type = '33'
+    if (!pca_type || pca_type === "pca_type"){
+     pca_type = $('#PCAButton').text().trim();
+    }
+
 
  //showPCA(uniq_id, assay, gpcr, gprotein);
   var gpcr = gpcr;
