@@ -71,18 +71,19 @@
                             <span class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#contactsModal">?</span>
                         </h2>
 
-                        <div class="row g-3 align-items-center pb-5">
+                        <div class="row g-3 align-items-center">
                             <div class="col-auto">
                                 <button type="button" id="displayName" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                                     Select display
                                 </button>
                                 <ul id="displayList" class="dropdown-menu"></ul>
                             </div>
-
+                        </div>
+                        <div class="row g-3 align-items-center">
                             <div class="col-auto" id="slider_log">
                                 <label for="slider1A" class="col-form-label fw-bold">Log odds score</label>
                                 <button type="button" class="btn btn-info btn-circle slider-control" data-target="#slider1A" data-action="minus">-</button>
-                                <input type="range" class="form-range sync-slider-a" style="width: 3rem; vertical-align: middle;"
+                                <input type="range" class="form-range sync-slider-a" style="width: 8rem; vertical-align: middle;"
                                        min="0.0" max="1.0" step="0.1" value="0.2" id="slider1A">
                                 <button type="button" class="btn btn-info btn-circle slider-control" data-target="#slider1A" data-action="plus">+</button>
                                 <span id="slider1A_value">0.2</span>
@@ -91,7 +92,7 @@
                             <div class="col-auto" id="slider_dis">
                                 <label for="slider1B" class="col-form-label">Distance</label>
                                 <button type="button" class="btn btn-info btn-circle slider-control" data-target="#slider1B" data-action="minus">-</button>
-                                <input type="range" class="form-range sync-slider-b" style="width: 3rem; vertical-align: middle;"
+                                <input type="range" class="form-range sync-slider-b" style="width: 8rem; vertical-align: middle;"
                                        min="0" max="20" step="1" value="0" id="slider1B">
                                 <button type="button" class="btn btn-info btn-circle slider-control" data-target="#slider1B" data-action="plus">+</button>
                                 <span id="slider1B_value">0</span>
