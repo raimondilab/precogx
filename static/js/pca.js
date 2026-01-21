@@ -192,7 +192,7 @@ function makePCA(uniq_id, assay, pca_type, displayPCAOption, gpcr, gprotein) {
     }
 
     if (!pca_type || pca_type === "pca_type"){
-     pca_type = $('#PCAButton').text().trim();
+       pca_type = $('#PCAButton').text().trim();
     }
 
 
