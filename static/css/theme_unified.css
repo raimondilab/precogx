@@ -18776,7 +18776,7 @@ main > .container, .main > .container {
 
 section#home {
     flex-grow: 1 !important;
-    display: flex !important;
+    display: flex;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
