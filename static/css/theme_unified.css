@@ -18820,3 +18820,7 @@ label {
   aspect-ratio: 1/1;
   width: 100%;
 }
+
+.navbar-brand h3, .nav-link {
+  color: #004059 !important;
+}

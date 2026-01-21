@@ -1045,11 +1045,11 @@ def convertPositionsBW2PDB():
         num_contacts = data['num_contacts']
         gpcr_given = data['gpcr']
         uniq_id = data['uniq_id']
-        #print (pdbID)
-        #print (pair_positions)
+        # print (pdbID)
+        # print (pair_positions)
 
         GPCRDB2PDB = {}
-        for line in open(path + '/data/PDB/GPCRDB/'+pdbID+'.txt', 'r'):
+        for line in open(path + '/data/PDB/GPCRDB/' + pdbID + '.txt', 'r'):
             GPCRDB2PDB[int(line.split('\t')[3].replace('\n', ''))] = int(line.split('\t')[2])
             bestHIT_ACC = line.replace('\n', '').split('\t')[4].split('|')[1]
 
@@ -1060,7 +1060,7 @@ def convertPositionsBW2PDB():
                 acc = line.split('\t')[0].split('_')[1]
                 if acc == bestHIT_ACC:
                     GPCRDB = int(line.split('\t')[1][1:])
-                    #BW = line.split('\t')[2]
+                    # BW = line.split('\t')[2]
                     ## convert . to x in GPCRDB numbering
                     BW = line.split('\t')[2].replace('.', 'x')
                     BW2GPCRDB[BW] = GPCRDB
@@ -1078,7 +1078,7 @@ def convertPositionsBW2PDB():
                     modified_positions.append(str(pdbPosition))
                     modified_positions_labels.append(str(BW))
                     modified_num_contacts.append(str(num_contacts.split(',')[num]))
-        #print (modified_positions_labels)
+        # print (modified_positions_labels)
 
         modified_pair_positions = []
         if pair_positions.split() != []:
@@ -1092,31 +1092,31 @@ def convertPositionsBW2PDB():
                     if GPCRDB1 in GPCRDB2PDB and GPCRDB2 in GPCRDB2PDB:
                         pdbPosition1 = str(GPCRDB2PDB[GPCRDB1])
                         pdbPosition2 = str(GPCRDB2PDB[GPCRDB2])
-                        modified_pair_positions.append(pdbPosition1+':'+pdbPosition2+':'+score)
+                        modified_pair_positions.append(pdbPosition1 + ':' + pdbPosition2 + ':' + score)
 
         mutation_position = '-'
         mutation_position_label = '-'
         if '_WT' not in gpcr_given:
             mutation_sequence_position = int(gpcr_given.split('_')[-1][1:-1])
-            handle = open(path + "/static/predictor/output/"+uniq_id+"/GPCRDBblast.txt", 'r')
+            handle = open(path + "/static/predictor/output/" + uniq_id + "/GPCRDBblast.txt", 'r')
             blast_records = NCBIXML.parse(handle)
             SEQ2GPCRDB = {}
             for blast_record in blast_records:
-                #print (blast_record.query)
+                # print (blast_record.query)
                 if gpcr_given == blast_record.query:
                     for alignment in blast_record.alignments:
                         bestHIT = alignment.title.split(' ')[1]
-                        #print (bestHIT)
+                        # print (bestHIT)
                         if bestHIT_ACC == bestHIT.split('|')[1]:
                             for hsp in alignment.hsps:
                                 q_num = 0
                                 s_num = 0
                                 for num, (q, s) in enumerate(zip(hsp.query, hsp.sbjct)):
-                                    if q!='-' and s!='-':
+                                    if q != '-' and s != '-':
                                         SEQ2GPCRDB[q_num + hsp.query_start] = s_num + hsp.sbjct_start
                                         q_num += 1
                                         s_num += 1
-                                    elif q!='-':
+                                    elif q != '-':
                                         q_num += 1
                                     else:
                                         s_num += 1
@@ -1127,24 +1127,24 @@ def convertPositionsBW2PDB():
 
             if mutation_sequence_position in SEQ2GPCRDB:
                 mutation_GPCRDB_position = SEQ2GPCRDB[mutation_sequence_position]
-                #print (mutation_GPCRDB_position)
+                # print (mutation_GPCRDB_position)
                 if mutation_GPCRDB_position in GPCRDB2BW:
                     mutation_position_label = GPCRDB2BW[mutation_GPCRDB_position]
 
             if mutation_GPCRDB_position in GPCRDB2PDB:
                 mutation_position = GPCRDB2PDB[mutation_GPCRDB_position]
 
-        #print (modified_positions)
-        #print (modified_pair_positions)
+        # print (modified_positions)
+        # print (modified_pair_positions)
 
-        #print (mutation_position)
-        #print (mutation_position_label)
+        # print (mutation_position)
+        # print (mutation_position_label)
 
         pdbData = ''
         if 'AF:' in pdbID:
-            for line in open(path+'/data/PDB/AlphaFold/'+pdbID+'.pdb', 'r'):
+            for line in open(path + '/data/PDB/AlphaFold/' + pdbID + '.pdb', 'r'):
                 pdbData += line
-            #print (data)
+            # print (data)
 
         return jsonify({'modified_positions': '_'.join(modified_positions),
                         'modified_positions_labels': '_'.join(modified_positions_labels),
@@ -1185,9 +1185,11 @@ def fetchContactsPDBStructure():
             cutoff = float(data['cutoff'])
             distance = float(data['distance'])
             uniq_id = data['uniq_id']
-            scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given, cutoff, distance)
-            ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given, gprotein_given) ## return list of reordered PDB IDs based on GPCR
-            #print (ordered_pdbs)
+            scoresMax, scoresMin, scores, positions, pair_positions, num_contacts = extract_contacts(gprotein_given,
+                                                                                                     cutoff, distance)
+            ordered_pdbs = reorder_pdbs(uniq_id, gpcr_given,
+                                        gprotein_given)  ## return list of reordered PDB IDs based on GPCR
+            # print (ordered_pdbs)
             return jsonify({'try': positions.tolist(),
                             'ordered_pdbs': ordered_pdbs,
                             'positions': ','.join(positions.tolist()),
@@ -1196,15 +1198,17 @@ def fetchContactsPDBStructure():
     else:
         return ("<html><h3>It was a GET request</h3></html>")
 
+
 ## Function to return list of PDB IDs based on GPCR using BLAST
 def reorder_pdbs(uniq_id, gpcr, gprotein):
-    path_to_fasta = path+"/static/predictor/output/"+uniq_id+"/input.fasta"
-    path_to_output = path+"/static/predictor/output/"+uniq_id+"/"
+    path_to_fasta = path + "/static/predictor/output/" + uniq_id + "/input.fasta"
+    path_to_output = path + "/static/predictor/output/" + uniq_id + "/"
 
-    os.system('blastp -query '+path_to_fasta+' -num_alignments 5000 -db '+ path + '/data/PDB/blastdb/allPDB -out '+path_to_output+'/blastp_output.txt')
+    os.system(
+        'blastp -query ' + path_to_fasta + ' -num_alignments 5000 -db ' + path + '/data/PDB/blastdb/allPDB -out ' + path_to_output + '/blastp_output.txt')
 
     chain_info = {}
-    for line in open(path+'/data/PDB/pdblist.txt', 'r'):
+    for line in open(path + '/data/PDB/pdblist.txt', 'r'):
         pdbid = line.split(' ')[0]
         gpcr_chain = line.split(' ')[1]
         gprotein_chain = line.split(' ')[2].replace('\n', '')
@@ -1232,34 +1236,35 @@ def reorder_pdbs(uniq_id, gpcr, gprotein):
         '''
 
     dic = {}
-    for line in open(path_to_output+'/blastp_output.txt', 'r'):
+    for line in open(path_to_output + '/blastp_output.txt', 'r'):
         if 'Query=' in line:
-            #name = line.split('Query=')[1].replace('\n', '').replace(' ', '')
+            # name = line.split('Query=')[1].replace('\n', '').replace(' ', '')
             name = line.split('Query=')[1].replace('\n', '').lstrip().rstrip()
-            #print (name)
+            # print (name)
             dic[name] = []
         elif line[0] == '>':
-            #print (line)
+            # print (line)
             if 'AF:' in line:
                 pdbid = line.split('>')[1].split('|')[0].split()[0]
             else:
                 pdbid = line.split('>')[1].split('|')[0].split('_')[0].lower().split()[0]
-                #print (pdbid)
+                # print (pdbid)
             if pdbid in chain_info:
                 row = []
-                #print (chain_info[pdbid])
+                # print (chain_info[pdbid])
                 row.append(pdbid)
                 row.append(chain_info[pdbid]['gpcr_chain'])
                 row.append(chain_info[pdbid]['gprotein_chain'])
-                #dic[name].append(row)
-                dic[name].append(pdbid+'_'+chain_info[pdbid]['gpcr_chain']+'_'+chain_info[pdbid]['gprotein_chain'])
+                # dic[name].append(row)
+                dic[name].append(
+                    pdbid + '_' + chain_info[pdbid]['gpcr_chain'] + '_' + chain_info[pdbid]['gprotein_chain'])
             else:
-                print ('not found', pdbid)
+                print('not found', pdbid)
 
-    #print ('PDBs', dic[gpcr])
-    #print ('PDBs', dic[name])
+    # print ('PDBs', dic[gpcr])
+    # print ('PDBs', dic[name])
     if gpcr in dic.keys():
-        return(dic[gpcr])
+        return (dic[gpcr])
     return None
 
 
