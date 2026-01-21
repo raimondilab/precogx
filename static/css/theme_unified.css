@@ -18742,11 +18742,16 @@ footer p, #footer p {
 }
 
 .container {
-    max-width: 96% !important;
+    max-width: 98% !important;
     padding-left: 15px;
     padding-right: 15px;
 }
 
+@media (min-width: 1920px) {
+    .container {
+        max-width: 70% !important;
+    }
+}
 
 .container-fluid {
     padding-left: 2%;
@@ -18809,4 +18814,9 @@ label {
 
 .table th{
     color: #00819D !important;
+}
+
+.aspect-square {
+  aspect-ratio: 1/1;
+  width: 100%;
 }
