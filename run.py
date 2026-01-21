@@ -1406,7 +1406,7 @@ def faqs():
     return render_template('faqs.html')
 
 
-PDF_FOLDER = 'pdfs'
+PDF_FOLDER = path + '/pdfs'
 
 
 # Route to shedding page
