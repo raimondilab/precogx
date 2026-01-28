@@ -1,0 +1,1336 @@
+(dp0
+S'AVPR1B'
+p1
+(dp2
+S'acc'
+p3
+S'P47901'
+p4
+sS'cn'
+p5
+S' Vasopressin V1b receptor '
+p6
+ssS'AVPR1A'
+p7
+(dp8
+g3
+S'P37288'
+p9
+sg5
+S' Vasopressin V1a receptor '
+p10
+ssS'LTB4R2'
+p11
+(dp12
+g3
+S'Q9NPC1'
+p13
+sg5
+S' Leukotriene B4 receptor 2 '
+p14
+ssS'UTS2R'
+p15
+(dp16
+g3
+S'Q9UKP6'
+p17
+sg5
+S' Urotensin-2 receptor '
+p18
+ssS'GPR35'
+p19
+(dp20
+g3
+S'Q9HC97'
+p21
+sg5
+S' G-protein coupled receptor 35 '
+p22
+ssS'GPR34'
+p23
+(dp24
+g3
+S'Q9UPC5'
+p25
+sg5
+S' Probable G-protein coupled receptor 34 '
+p26
+ssS'PTGER4'
+p27
+(dp28
+g3
+S'P35408'
+p29
+sg5
+S' Prostaglandin E2 receptor EP4 subtype '
+p30
+ssS'GPR183'
+p31
+(dp32
+g3
+S'P32249'
+p33
+sg5
+S' G-protein coupled receptor 183 '
+p34
+ssS'ADRA2A'
+p35
+(dp36
+g3
+S'P08913'
+p37
+sg5
+S' Alpha-2A adrenergic receptor '
+p38
+ssS'ADRA2B'
+p39
+(dp40
+g3
+S'P18089'
+p41
+sg5
+S' Alpha-2B adrenergic receptor '
+p42
+ssS'ADRA2C'
+p43
+(dp44
+g3
+S'P18825'
+p45
+sg5
+S' Alpha-2C adrenergic receptor '
+p46
+ssS'HTR2A'
+p47
+(dp48
+g3
+S'P28223'
+p49
+sg5
+S' 5-hydroxytryptamine receptor 2A '
+p50
+ssS'MC1R'
+p51
+(dp52
+g3
+S'Q01726'
+p53
+sg5
+S' Melanocyte-stimulating hormone receptor '
+p54
+ssS'FPR1'
+p55
+(dp56
+g3
+S'P21462'
+p57
+sg5
+S' fMet-Leu-Phe receptor '
+p58
+ssS'FPR2'
+p59
+(dp60
+g3
+S'P25090'
+p61
+sg5
+S' N-formyl peptide receptor 2 '
+p62
+ssS'HRH1'
+p63
+(dp64
+g3
+S'P35367'
+p65
+sg5
+S' Histamine H1 receptor '
+p66
+ssS'MCHR2'
+p67
+(dp68
+g3
+S'Q969V1'
+p69
+sg5
+S' Melanin-concentrating hormone receptor 2 '
+p70
+ssS'MCHR1'
+p71
+(dp72
+g3
+S'Q99705'
+p73
+sg5
+S' Melanin-concentrating hormone receptor 1 '
+p74
+ssS'HTR6'
+p75
+(dp76
+g3
+S'P50406'
+p77
+sg5
+S' 5-hydroxytryptamine receptor 6 '
+p78
+ssS'HTR7'
+p79
+(dp80
+g3
+S'P34969'
+p81
+sg5
+S' 5-hydroxytryptamine receptor 7 '
+p82
+ssS'HTR4'
+p83
+(dp84
+g3
+S'Q13639'
+p85
+sg5
+S' 5-hydroxytryptamine receptor 4 '
+p86
+ssS'ADRA1A'
+p87
+(dp88
+g3
+S'P35348'
+p89
+sg5
+S' Alpha-1A adrenergic receptor '
+p90
+ssS'ADRA1B'
+p91
+(dp92
+g3
+S'P35368'
+p93
+sg5
+S' Alpha-1B adrenergic receptor '
+p94
+ssS'ADRA1D'
+p95
+(dp96
+g3
+S'P25100'
+p97
+sg5
+S' Alpha-1D adrenergic receptor '
+p98
+ssS'AVPR2'
+p99
+(dp100
+g3
+S'P30518'
+p101
+sg5
+S' Vasopressin V2 receptor '
+p102
+ssS'GALR3'
+p103
+(dp104
+g3
+S'O60755'
+p105
+sg5
+S' Galanin receptor type 3 '
+p106
+ssS'GALR2'
+p107
+(dp108
+g3
+S'O43603'
+p109
+sg5
+S' Galanin receptor type 2 '
+p110
+ssS'GALR1'
+p111
+(dp112
+g3
+S'P47211'
+p113
+sg5
+S' Galanin receptor type 1 '
+p114
+ssS'NMBR'
+p115
+(dp116
+g3
+S'P28336'
+p117
+sg5
+S' Neuromedin-B receptor '
+p118
+ssS'GPR119'
+p119
+(dp120
+g3
+S'Q8TDV5'
+p121
+sg5
+S' Glucose-dependent insulinotropic receptor '
+p122
+ssS'HCRTR1'
+p123
+(dp124
+g3
+S'O43613'
+p125
+sg5
+S' Orexin receptor type 1 '
+p126
+ssS'PTAFR'
+p127
+(dp128
+g3
+S'P25105'
+p129
+sg5
+S' Platelet-activating factor receptor '
+p130
+ssS'HCRTR2'
+p131
+(dp132
+g3
+S'O43614'
+p133
+sg5
+S' Orexin receptor type 2 '
+p134
+ssS'GPR17'
+p135
+(dp136
+g3
+S'Q13304'
+p137
+sg5
+S' Uracil nucleotide/cysteinyl leukotriene receptor '
+p138
+ssS'ADORA1'
+p139
+(dp140
+g3
+S'P30542'
+p141
+sg5
+S' Adenosine receptor A1 '
+p142
+ssS'ADORA3'
+p143
+(dp144
+g3
+S'P0DMS8'
+p145
+sg5
+S' Adenosine receptor A3 '
+p146
+ssS'PTGDR'
+p147
+(dp148
+g3
+S'Q13258'
+p149
+sg5
+S' Prostaglandin D2 receptor '
+p150
+ssS'EDNRA'
+p151
+(dp152
+g3
+S'P25101'
+p153
+sg5
+S' Endothelin-1 receptor '
+p154
+ssS'EDNRB'
+p155
+(dp156
+g3
+S'P24530'
+p157
+sg5
+S' Endothelin B receptor '
+p158
+ssS'CYSLTR2'
+p159
+(dp160
+g3
+S'Q9NS75'
+p161
+sg5
+S' Cysteinyl leukotriene receptor 2 '
+p162
+ssS'MC4R'
+p163
+(dp164
+g3
+S'P32245'
+p165
+sg5
+S' Melanocortin receptor 4 '
+p166
+ssS'CYSLTR1'
+p167
+(dp168
+g3
+S'Q9Y271'
+p169
+sg5
+S' Cysteinyl leukotriene receptor 1 '
+p170
+ssS'CCKBR'
+p171
+(dp172
+g3
+S'P32239'
+p173
+sg5
+S' Gastrin/cholecystokinin type B receptor '
+p174
+ssS'ADORA2A'
+p175
+(dp176
+g3
+S'P29274'
+p177
+sg5
+S' Adenosine receptor A2a '
+p178
+ssS'ADORA2B'
+p179
+(dp180
+g3
+S'P29275'
+p181
+sg5
+S' Adenosine receptor A2b '
+p182
+ssS'F2R'
+p183
+(dp184
+g3
+S'P25116'
+p185
+sg5
+S' Proteinase-activated receptor 1 '
+p186
+ssS'SSTR3'
+p187
+(dp188
+g3
+S'P32745'
+p189
+sg5
+S' Somatostatin receptor type 3 '
+p190
+ssS'HRH4'
+p191
+(dp192
+g3
+S'Q9H3N8'
+p193
+sg5
+S' Histamine H4 receptor '
+p194
+ssS'SSTR2'
+p195
+(dp196
+g3
+S'P30874'
+p197
+sg5
+S' Somatostatin receptor type 2 '
+p198
+ssS'HRH2'
+p199
+(dp200
+g3
+S'P25021'
+p201
+sg5
+S' Histamine H2 receptor '
+p202
+ssS'HRH3'
+p203
+(dp204
+g3
+S'Q9Y5N1'
+p205
+sg5
+S' Histamine H3 receptor '
+p206
+ssS'HTR2C'
+p207
+(dp208
+g3
+S'P28335'
+p209
+sg5
+S' 5-hydroxytryptamine receptor 2C '
+p210
+ssS'HTR2B'
+p211
+(dp212
+g3
+S'P41595'
+p213
+sg5
+S' 5-hydroxytryptamine receptor 2B '
+p214
+ssS'S1PR5'
+p215
+(dp216
+g3
+S'Q9H228'
+p217
+sg5
+S' Sphingosine 1-phosphate receptor 5 '
+p218
+ssS'MC3R'
+p219
+(dp220
+g3
+S'P41968'
+p221
+sg5
+S' Melanocortin receptor 3 '
+p222
+ssS'NPFFR2'
+p223
+(dp224
+g3
+S'Q9Y5X5'
+p225
+sg5
+S' Neuropeptide FF receptor 2 '
+p226
+ssS'NPFFR1'
+p227
+(dp228
+g3
+S'Q9GZQ6'
+p229
+sg5
+S' Neuropeptide FF receptor 1 '
+p230
+ssS'F2RL3'
+p231
+(dp232
+g3
+S'Q96RI0'
+p233
+sg5
+S' Proteinase-activated receptor 4 '
+p234
+ssS'F2RL2'
+p235
+(dp236
+g3
+S'O00254'
+p237
+sg5
+S' Proteinase-activated receptor 3 '
+p238
+ssS'MTNR1B'
+p239
+(dp240
+g3
+S'P49286'
+p241
+sg5
+S' Melatonin receptor type 1B '
+p242
+ssS'MTNR1A'
+p243
+(dp244
+g3
+S'P48039'
+p245
+sg5
+S' Melatonin receptor type 1A '
+p246
+ssS'TACR3'
+p247
+(dp248
+g3
+S'P29371'
+p249
+sg5
+S' Neuromedin-K receptor '
+p250
+ssS'TACR2'
+p251
+(dp252
+g3
+S'P21452'
+p253
+sg5
+S' Substance-K receptor '
+p254
+ssS'TACR1'
+p255
+(dp256
+g3
+S'P25103'
+p257
+sg5
+S' Substance-P receptor '
+p258
+ssS'MLNR'
+p259
+(dp260
+g3
+S'O43193'
+p261
+sg5
+S' Motilin receptor '
+p262
+ssS'APLNR'
+p263
+(dp264
+g3
+S'P35414'
+p265
+sg5
+S' Apelin receptor '
+p266
+ssS'S1PR3'
+p267
+(dp268
+g3
+S'Q99500'
+p269
+sg5
+S' Sphingosine 1-phosphate receptor 3 '
+p270
+ssS'NPBWR1'
+p271
+(dp272
+g3
+S'P48145'
+p273
+sg5
+S' Neuropeptides B/W receptor type 1 '
+p274
+ssS'AGTR1'
+p275
+(dp276
+g3
+S'P30556'
+p277
+sg5
+S' Type-1 angiotensin II receptor '
+p278
+ssS'GPR174'
+p279
+(dp280
+g3
+S'Q9BXC1'
+p281
+sg5
+S' Probable G-protein coupled receptor 174 '
+p282
+ssS'PTGFR'
+p283
+(dp284
+g3
+S'P43088'
+p285
+sg5
+S' Prostaglandin F2-alpha receptor '
+p286
+ssS'PTGER1'
+p287
+(dp288
+g3
+S'P34995'
+p289
+sg5
+S' Prostaglandin E2 receptor EP1 subtype '
+p290
+ssS'LTB4R'
+p291
+(dp292
+g3
+S'Q15722'
+p293
+sg5
+S' Leukotriene B4 receptor 1 '
+p294
+ssS'GNRHR'
+p295
+(dp296
+g3
+S'P30968'
+p297
+sg5
+S' Gonadotropin-releasing hormone receptor '
+p298
+ssS'PTGER2'
+p299
+(dp300
+g3
+S'P43116'
+p301
+sg5
+S' Prostaglandin E2 receptor EP2 subtype '
+p302
+ssS'FFAR3'
+p303
+(dp304
+g3
+S'O14843'
+p305
+sg5
+S' Free fatty acid receptor 3 '
+p306
+ssS'PTGER3'
+p307
+(dp308
+g3
+S'P43115'
+p309
+sg5
+S' Prostaglandin E2 receptor EP3 subtype '
+p310
+ssS'PTH2R'
+p311
+(dp312
+g3
+S'P49190'
+p313
+sg5
+S' Parathyroid hormone 2 receptor '
+p314
+ssS'CNR1'
+p315
+(dp316
+g3
+S'P21554'
+p317
+sg5
+S' Cannabinoid receptor 1 '
+p318
+ssS'CNR2'
+p319
+(dp320
+g3
+S'P34972'
+p321
+sg5
+S' Cannabinoid receptor 2 '
+p322
+ssS'P2RY14'
+p323
+(dp324
+g3
+S'Q15391'
+p325
+sg5
+S' P2Y purinoceptor 14 '
+p326
+ssS'S1PR2'
+p327
+(dp328
+g3
+S'O95136'
+p329
+sg5
+S' Sphingosine 1-phosphate receptor 2 '
+p330
+ssS'S1PR1'
+p331
+(dp332
+g3
+S'P21453'
+p333
+sg5
+S' Sphingosine 1-phosphate receptor 1 '
+p334
+ssS'P2RY10'
+p335
+(dp336
+g3
+S'O00398'
+p337
+sg5
+S' Putative P2Y purinoceptor 10 '
+p338
+ssS'P2RY11'
+p339
+(dp340
+g3
+S'Q96G91'
+p341
+sg5
+S' P2Y purinoceptor 11 '
+p342
+ssS'P2RY12'
+p343
+(dp344
+g3
+S'Q9H244'
+p345
+sg5
+S' P2Y purinoceptor 12 '
+p346
+ssS'P2RY13'
+p347
+(dp348
+g3
+S'Q9BPV8'
+p349
+sg5
+S' P2Y purinoceptor 13 '
+p350
+ssS'MRGPRX1'
+p351
+(dp352
+g3
+S'Q96LB2'
+p353
+sg5
+S' Mas-related G-protein coupled receptor member X1 '
+p354
+ssS'P2RY4'
+p355
+(dp356
+g3
+S'P51582'
+p357
+sg5
+S' P2Y purinoceptor 4 '
+p358
+ssS'MRGPRX2'
+p359
+(dp360
+g3
+S'Q96LB1'
+p361
+sg5
+S' Mas-related G-protein coupled receptor member X2 '
+p362
+ssS'OXGR1'
+p363
+(dp364
+g3
+S'Q96P68'
+p365
+sg5
+S' 2-oxoglutarate receptor 1 '
+p366
+ssS'GPR84'
+p367
+(dp368
+g3
+S'Q9NQS5'
+p369
+sg5
+S' G-protein coupled receptor 84 '
+p370
+ssS'TBXA2R'
+p371
+(dp372
+g3
+S'P21731'
+p373
+sg5
+S' Thromboxane A2 receptor '
+p374
+ssS'OPRK1'
+p375
+(dp376
+g3
+S'P41145'
+p377
+sg5
+S' Kappa-type opioid receptor '
+p378
+ssS'OPRM1'
+p379
+(dp380
+g3
+S'P35372'
+p381
+sg5
+S' Mu-type opioid receptor '
+p382
+ssS'P2RY1'
+p383
+(dp384
+g3
+S'P47900'
+p385
+sg5
+S' P2Y purinoceptor 1 '
+p386
+ssS'GHSR'
+p387
+(dp388
+g3
+S'Q92847'
+p389
+sg5
+S' Growth hormone secretagogue receptor type 1 '
+p390
+ssS'MC5R'
+p391
+(dp392
+g3
+S'P33032'
+p393
+sg5
+S' Melanocortin receptor 5 '
+p394
+ssS'BDKRB1'
+p395
+(dp396
+g3
+S'P46663'
+p397
+sg5
+S' B1 bradykinin receptor '
+p398
+ssS'BDKRB2'
+p399
+(dp400
+g3
+S'P30411'
+p401
+sg5
+S' B2 bradykinin receptor '
+p402
+ssS'CCKAR'
+p403
+(dp404
+g3
+S'P32238'
+p405
+sg5
+S' Cholecystokinin receptor type A '
+p406
+ssS'SSTR1'
+p407
+(dp408
+g3
+S'P30872'
+p409
+sg5
+S' Somatostatin receptor type 1 '
+p410
+ssS'ADRB1'
+p411
+(dp412
+g3
+S'P08588'
+p413
+sg5
+S' Beta-1 adrenergic receptor '
+p414
+ssS'ADRB2'
+p415
+(dp416
+g3
+S'P07550'
+p417
+sg5
+S' Beta-2 adrenergic receptor '
+p418
+ssS'ADRB3'
+p419
+(dp420
+g3
+S'P13945'
+p421
+sg5
+S' Beta-3 adrenergic receptor '
+p422
+ssS'SSTR5'
+p423
+(dp424
+g3
+S'P35346'
+p425
+sg5
+S' Somatostatin receptor type 5 '
+p426
+ssS'SSTR4'
+p427
+(dp428
+g3
+S'P31391'
+p429
+sg5
+S' Somatostatin receptor type 4 '
+p430
+ssS'OXTR'
+p431
+(dp432
+g3
+S'P30559'
+p433
+sg5
+S' Oxytocin receptor '
+p434
+ssS'LPAR2'
+p435
+(dp436
+g3
+S'Q9HBW0'
+p437
+sg5
+S' Lysophosphatidic acid receptor 2 '
+p438
+ssS'LPAR3'
+p439
+(dp440
+g3
+S'Q9UBY5'
+p441
+sg5
+S' Lysophosphatidic acid receptor 3 '
+p442
+ssS'F2RL1'
+p443
+(dp444
+g3
+S'P55085'
+p445
+sg5
+S' Proteinase-activated receptor 2 '
+p446
+ssS'LPAR1'
+p447
+(dp448
+g3
+S'Q92633'
+p449
+sg5
+S' Lysophosphatidic acid receptor 1 '
+p450
+ssS'LPAR6'
+p451
+(dp452
+g3
+S'P43657'
+p453
+sg5
+S' Lysophosphatidic acid receptor 6 '
+p454
+ssS'LPAR4'
+p455
+(dp456
+g3
+S'Q99677'
+p457
+sg5
+S' Lysophosphatidic acid receptor 4 '
+p458
+ssS'LPAR5'
+p459
+(dp460
+g3
+S'Q9H1C0'
+p461
+sg5
+S' Lysophosphatidic acid receptor 5 '
+p462
+ssS'PTH1R'
+p463
+(dp464
+g3
+S'Q03431'
+p465
+sg5
+S' Parathyroid hormone/parathyroid hormone-related peptide receptor '
+p466
+ssS'GPR55'
+p467
+(dp468
+g3
+S'Q9Y2T6'
+p469
+sg5
+S' G-protein coupled receptor 55 '
+p470
+ssS'GIPR'
+p471
+(dp472
+g3
+S'P48546'
+p473
+sg5
+S' Gastric inhibitory polypeptide receptor '
+p474
+ssS'ADCYAP1R1'
+p475
+(dp476
+g3
+S'P41586'
+p477
+sg5
+S' Pituitary adenylate cyclase-activating polypeptide type I receptor '
+p478
+ssS'OPRL1'
+p479
+(dp480
+g3
+S'P41146'
+p481
+sg5
+S' Nociceptin receptor '
+p482
+ssS'P2RY2'
+p483
+(dp484
+g3
+S'P41231'
+p485
+sg5
+S' P2Y purinoceptor 2 '
+p486
+ssS'PRLHR'
+p487
+(dp488
+g3
+S'P49683'
+p489
+sg5
+S' Prolactin-releasing peptide receptor '
+p490
+ssS'KISS1R'
+p491
+(dp492
+g3
+S'Q969F8'
+p493
+sg5
+S' KiSS-1 receptor '
+p494
+ssS'CHRM5'
+p495
+(dp496
+g3
+S'P08912'
+p497
+sg5
+S' Muscarinic acetylcholine receptor M5 '
+p498
+ssS'CHRM4'
+p499
+(dp500
+g3
+S'P08173'
+p501
+sg5
+S' Muscarinic acetylcholine receptor M4 '
+p502
+ssS'CHRM3'
+p503
+(dp504
+g3
+S'P20309'
+p505
+sg5
+S' Muscarinic acetylcholine receptor M3 '
+p506
+ssS'CHRM2'
+p507
+(dp508
+g3
+S'P08172'
+p509
+sg5
+S' Muscarinic acetylcholine receptor M2 '
+p510
+ssS'CHRM1'
+p511
+(dp512
+g3
+S'P11229'
+p513
+sg5
+S' Muscarinic acetylcholine receptor M1 '
+p514
+ssS'PTGIR'
+p515
+(dp516
+g3
+S'P43119'
+p517
+sg5
+S' Prostacyclin receptor '
+p518
+ssS'FFAR2'
+p519
+(dp520
+g3
+S'O15552'
+p521
+sg5
+S' Free fatty acid receptor 2 '
+p522
+ssS'GRPR'
+p523
+(dp524
+g3
+S'P30550'
+p525
+sg5
+S' Gastrin-releasing peptide receptor '
+p526
+ssS'FFAR1'
+p527
+(dp528
+g3
+S'O14842'
+p529
+sg5
+S' Free fatty acid receptor 1 '
+p530
+ssS'P2RY6'
+p531
+(dp532
+g3
+S'Q15077'
+p533
+sg5
+S' P2Y purinoceptor 6 '
+p534
+ssS'FFAR4'
+p535
+(dp536
+g3
+S'Q5NUL3'
+p537
+sg5
+S' Free fatty acid receptor 4 '
+p538
+ssS'NMUR2'
+p539
+(dp540
+g3
+S'Q9GZQ4'
+p541
+sg5
+S' Neuromedin-U receptor 2 '
+p542
+ssS'NMUR1'
+p543
+(dp544
+g3
+S'Q9HB89'
+p545
+sg5
+S' Neuromedin-U receptor 1 '
+p546
+ssS'DRD4'
+p547
+(dp548
+g3
+S'P21917'
+p549
+sg5
+S' D(4) dopamine receptor '
+p550
+ssS'DRD5'
+p551
+(dp552
+g3
+S'P21918'
+p553
+sg5
+S' D(1B) dopamine receptor '
+p554
+ssS'DRD2'
+p555
+(dp556
+g3
+S'P14416'
+p557
+sg5
+S' D(2) dopamine receptor '
+p558
+ssS'DRD3'
+p559
+(dp560
+g3
+S'P35462'
+p561
+sg5
+S' D(3) dopamine receptor '
+p562
+ssS'DRD1'
+p563
+(dp564
+g3
+S'P21728'
+p565
+sg5
+S' D(1A) dopamine receptor '
+p566
+ssS'OPRD1'
+p567
+(dp568
+g3
+S'P41143'
+p569
+sg5
+S' Delta-type opioid receptor '
+p570
+ssS'GPR132'
+p571
+(dp572
+g3
+S'Q9UNW8'
+p573
+sg5
+S' Probable G-protein coupled receptor 132 '
+p574
+ssS'HTR1D'
+p575
+(dp576
+g3
+S'P28221'
+p577
+sg5
+S' 5-hydroxytryptamine receptor 1D '
+p578
+ssS'HTR1E'
+p579
+(dp580
+g3
+S'P28566'
+p581
+sg5
+S' 5-hydroxytryptamine receptor 1E '
+p582
+ssS'HTR1F'
+p583
+(dp584
+g3
+S'P30939'
+p585
+sg5
+S' 5-hydroxytryptamine receptor 1F '
+p586
+ssS'HTR1A'
+p587
+(dp588
+g3
+S'P08908'
+p589
+sg5
+S' 5-hydroxytryptamine receptor 1A '
+p590
+ssS'HTR1B'
+p591
+(dp592
+g3
+S'P28222'
+p593
+sg5
+S' 5-hydroxytryptamine receptor 1B '
+p594
+ss.
