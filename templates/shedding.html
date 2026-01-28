@@ -2,6 +2,12 @@
 
 {% block title %} PRECOGx | Shedding Assay Data {% endblock %}
 
+{% block head %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+
+{% endblock %}
+
 {% block content %}
 <section class="py-4" id="shedding">
     <div class="container">
@@ -13,21 +19,36 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mb-4">
+        <div class="row justify-content-center mb-3">
             <div class="col-md-8 col-lg-6">
                 <div class="input-group shadow-sm">
-                    <input class="form-control" list="receptors" id="receptor-choice" name="receptor-choice" placeholder="Type or select receptor (e.g. 5HT1A)...">
+                    <input type="text" id="gene" class="form-control" placeholder="Type receptor (e.g. 5HT, Vasopressin)...">
+                    <input type="hidden" id="selected_receptor_id">
+                </div>
+            </div>
+        </div>
 
-                    <datalist id="receptors">
-                        </datalist>
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-lg-10">
+                <div id="info-card" class="shadow-sm rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="h4 mb-1" id="info-common-name" style="font-weight: 600;"></h2>
 
-                    <button class="btn btn-primary" onclick="loadPdf()" type="button">
-                        <i class="fas fa-search me-2"></i>View Data
-                    </button>
+                            <div class="text-muted mb-2">
+                                <span class="badge bg-light text-dark border">UniProt</span>
+                                <a id="info-uniprot-link" href="#" target="_blank" class="text-decoration-none fw-bold ms-1">
+                                    <i class="fas fa-external-link-alt small"></i> <span id="info-uniprot-id"></span>
+                                </a>
+                            </div>
+                        </div>
 
-                    <a id="download-link" class="btn btn-success" style="display: none;" download>
-                        <i class="fas fa-download"></i>
-                    </a>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <h6 class="text-uppercase text-muted small fw-bold ls-1">Reported Coupling (IUPHAR)</h6>
+                            <div id="info-coupling-badges">
+                                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,66 +68,183 @@
 
     </div>
 </section>
-{%  endblock %}
+{% endblock %}
 
 {% block script %}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
 <script>
     const apiBaseUrl = '/api';
+    var allReceptors = [];
 
-    document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const response = await fetch(`${apiBaseUrl}/receptors`);
-            const data = await response.json();
-            const dataList = document.getElementById('receptors');
-
-            data.forEach(receptor => {
-                const option = document.createElement('option');
-                option.value = receptor;
-                dataList.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Errore caricamento lista:', error);
+    // --- LEVENSHTEIN DISTANCE (Fuzzy Search Logic) ---
+    function getLevenshteinDistance(a, b) {
+        if (a.length === 0) return b.length;
+        if (b.length === 0) return a.length;
+        var matrix = [];
+        var i;
+        for (i = 0; i <= b.length; i++) { matrix[i] = [i]; }
+        var j;
+        for (j = 0; j <= a.length; j++) { matrix[0][j] = j; }
+        for (i = 1; i <= b.length; i++) {
+            for (j = 1; j <= a.length; j++) {
+                if (b.charAt(i - 1) == a.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } else {
+                    matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1,
+                                            Math.min(matrix[i][j - 1] + 1,
+                                                     matrix[i - 1][j] + 1));
+                }
+            }
         }
+        return matrix[b.length][a.length];
+    }
+
+    $(document).ready(function() {
+
+        // 1. FETCH DATA ONCE
+        fetch(`${apiBaseUrl}/receptors`)
+            .then(response => response.json())
+            .then(data => {
+                // Flatten API data
+                for (const [family, receptors] of Object.entries(data)) {
+                    receptors.forEach(item => {
+
+                        var combinedSearch = (item.search_text + " " + family).toLowerCase();
+
+                        allReceptors.push({
+                            value: item.id,
+                            label: item.text,
+                            desc: item.desc,
+                            family: family,
+                            searchStr: combinedSearch
+                        });
+                    });
+                }
+                console.log("Receptor list loaded:", allReceptors.length, "items.");
+            })
+            .catch(err => console.error("Error loading data:", err));
+
+        // 2. AUTOCOMPLETE
+        $("#gene").autocomplete({
+            minLength: 2,
+
+            // CUSTOM FILTERING (Source)
+            source: function(request, response) {
+                var term = request.term.toLowerCase();
+                var termWords = term.split(/\s+/);
+
+                var filtered = allReceptors.filter(function(item) {
+                    var searchStr = item.searchStr;
+
+                    if (searchStr.indexOf(term) > -1) return true;
+
+                    var matches = 0;
+                    for (var t = 0; t < termWords.length; t++) {
+                        var tWord = termWords[t];
+                        var wordFound = false;
+                        var searchWords = searchStr.split(/\s+/);
+
+                        for (var s = 0; s < searchWords.length; s++) {
+                            var sWord = searchWords[s];
+
+                            if (tWord.length < 3) {
+                                if (sWord.indexOf(tWord) > -1) { wordFound = true; break; }
+                                continue;
+                            }
+
+                            var dist = getLevenshteinDistance(tWord, sWord);
+
+                            var tolerance = 1;
+                            if (sWord.length > 4) tolerance = 2;
+                            if (sWord.length > 7) tolerance = 3;
+
+                            if (dist <= tolerance) { wordFound = true; break; }
+                        }
+                        if (wordFound) matches++;
+                    }
+
+                    return matches === termWords.length;
+                });
+
+                response(filtered.slice(0, 25));
+            },
+
+            // SELECT ITEM
+            select: function(event, ui) {
+                $("#gene").val(ui.item.label);
+                $("#selected_receptor_id").val(ui.item.value);
+
+                loadPdf(ui.item.value);
+                loadMetadata(ui.item.value);
+
+                return false;
+            }
+        })
+        // 3. CUSTOM RENDER
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+                .append(`<div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong>${item.label}</strong>
+                                <span class="badge bg-light text-secondary border" style="font-size: 0.7em;">${item.family}</span>
+                            </div>
+                            <small class='text-muted'>${item.desc}</small>
+                         </div>`)
+                .appendTo( ul );
+        };
     });
 
-    async function loadPdf() {
-        const receptorName = document.getElementById('receptor-choice').value;
-        const pdfContainer = document.getElementById('pdf-container');
-        const placeholder = document.getElementById('pdf-placeholder');
-        const downloadLink = document.getElementById('download-link');
+    // --- HELPER FUNCTIONS ---
 
-        if (!receptorName) {
-            alert("Please select a receptor first.");
-            return;
-        }
-
-        const pdfUrl = `${apiBaseUrl}/get-pdf/${receptorName}`;
-
+    async function loadMetadata(receptorName) {
+        const card = $('#info-card');
         try {
-            const response = await fetch(pdfUrl);
-            if (!response.ok) throw new Error("PDF not found");
+            const response = await fetch(`${apiBaseUrl}/receptor-details/${receptorName}`);
+            const data = await response.json();
 
-            const blob = await response.blob();
-            const objectUrl = URL.createObjectURL(blob);
+            $('#info-common-name').text(data.common_name || receptorName);
 
-            const viewer = document.getElementById('pdf-viewer');
-            viewer.src = objectUrl;
+            const linkEl = $('#info-uniprot-link');
+            if (data.uniprot) {
+                $('#info-uniprot-id').text(data.uniprot);
+                linkEl.attr('href', `https://www.uniprot.org/uniprot/${data.uniprot}`);
+                linkEl.parent().show();
+            } else { linkEl.parent().hide(); }
 
-            // Troca o visual: Esconde placeholder, mostra PDF
+            const badgeContainer = $('#info-coupling-badges');
+            badgeContainer.empty();
+
+            if (data.coupling && data.coupling.length > 0) {
+                data.coupling.forEach(c => {
+                    let badgeClass = 'bg-secondary';
+                    if (c.family.includes('Gs')) badgeClass = 'badge-Gs';
+                    else if (c.family.includes('Gi')) badgeClass = 'badge-Gi';
+                    else if (c.family.includes('Gq')) badgeClass = 'badge-Gq';
+                    else if (c.family.includes('G12')) badgeClass = 'badge-G12';
+                    badgeContainer.append(`<span class="badge ${badgeClass} badge-coupling">${c.family}</span>`);
+                });
+            } else { badgeContainer.append('<span class="text-muted small">No coupling data</span>'); }
+            card.slideDown();
+        } catch (error) { card.hide(); }
+    }
+
+    async function loadPdf(receptorName) {
+        const wrapper = document.getElementById('pdf-container');
+        const placeholder = document.getElementById('pdf-placeholder');
+        try {
+            const res = await fetch(`${apiBaseUrl}/get-pdf/${receptorName}`);
+            if(!res.ok) throw new Error("404");
+            const blob = await res.blob();
+            document.getElementById('pdf-viewer').src = URL.createObjectURL(blob);
             placeholder.style.display = 'none';
-            pdfContainer.style.display = 'block';
-
-            // Configura botão de download
-            downloadLink.href = objectUrl;
-            downloadLink.download = `${receptorName}_data.pdf`;
-            downloadLink.style.display = 'inline-block';
-
-        } catch (error) {
-            alert("Error loading PDF: " + error.message);
-            pdfContainer.style.display = 'none';
+            wrapper.style.display = 'block';
+        } catch (e) {
+            wrapper.style.display = 'none';
             placeholder.style.display = 'block';
-            downloadLink.style.display = 'none';
         }
     }
 </script>
-{% endblock%}
+{% endblock %}

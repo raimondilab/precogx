@@ -3,3 +3,11 @@
 !data/PDB/GPCRDB/*.txt
 !data/PDB/fasta/*.txt
 !data/PDB/pdir/*.txt
+
+
+static/predictor/output/
+__pycache__/
+*.pyc
+
+esm_pretrained/
+

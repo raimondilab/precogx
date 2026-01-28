@@ -7,6 +7,9 @@ from Bio import SearchIO
 from Bio.Blast import NCBIXML
 from matplotlib import cm
 import pandas as pd
+import pickle
+import csv
+
 
 # sys.path.insert(1, 'static/predictor/')
 # from precogxb_app.static.predictor import precogx
@@ -1412,6 +1415,53 @@ def faqs():
 
 
 PDF_FOLDER = path + '/pdfs'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PKL_PATH = os.path.join(BASE_DIR, 'static', 'info.pkl')  # Exemplo de caminho
+CSV_PATH = os.path.join(BASE_DIR, 'static', 'Reported_coupling.csv')
+
+# Cache dos dados
+GPCR_METADATA = {}
+COUPLING_DATA = {}
+
+
+def load_data():
+    global GPCR_METADATA, COUPLING_DATA
+
+    if os.path.exists(PKL_PATH):
+        try:
+            with open(PKL_PATH, 'rb') as f:
+                GPCR_METADATA = pickle.load(f)
+
+                GPCR_METADATA['TRHR'] = {'acc': 'P34981', 'cn': ' Thyrotropin-releasing hormone receptor '}
+                GPCR_METADATA['NTSR1'] = {'acc': 'P30989', 'cn': ' Neurotensin receptor type 1 '}
+
+        except Exception as e:
+            print(f"Erro ao carregar pickle: {e}")
+
+    if os.path.exists(CSV_PATH):
+        try:
+            with open(CSV_PATH, 'r') as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    if len(row) > 2:
+                        receptor = row[0]
+                        coupling_info = row[2:-1]
+
+                        formatted_coupling = []
+                        familias_g = ["Gs", "Gi/o", "Gq/11", "G12/13"]
+
+                        for i, val in enumerate(coupling_info):
+                            if val and val.strip() in ['1', '2']:
+                                if i < len(familias_g):
+                                    type_c = "Primary" if val.strip() == '1' else "Secondary"
+                                    formatted_coupling.append({"family": familias_g[i], "type": type_c})
+
+                        COUPLING_DATA[receptor] = formatted_coupling
+        except Exception as e:
+            print(f"Erro ao carregar CSV: {e}")
+
+
+load_data()
 
 
 # Route to shedding page
@@ -1420,10 +1470,111 @@ def shedding():
     return render_template('shedding.html')
 
 
+GPCR_FAMILIES = {
+    "5-Hydroxytryptamine receptors": ["5HT1A", "5HT1B", "5HT1D", "5HT1E", "5HT1F", "5HT2A", "5HT2B", "5HT2C", "5HT4",
+                                      "5HT5A", "5HT6", "5HT7"],
+    "Acetylcholine receptors (Muscarinic)": ["CHRM1", "CHRM2", "CHRM3", "CHRM4", "CHRM5"],
+    "Adrenoceptors": ["ADRA1A", "ADRA1B", "ADRA1D", "ADRA2A", "ADRA2B", "ADRA2C", "ADRB1", "ADRB2", "ADRB3"],
+    "Adenosine receptors": ["ADORA1", "ADORA2A", "ADORA2B", "ADORA3"],
+    "Alpha-Ketoglutarate receptor": ["OXGR1"],
+    "Anaphylatoxin chemotactic receptors": ["C3AR1", "C5AR1", "C5AR2"],
+    "Angiotensin receptors": ["AGTR1", "AGTR2"],
+    "Apelin receptor": ["APLNR"],
+    "Bile acid receptor": ["GPBAR1"],
+    "Bombesin receptors": ["BB1", "BB2", "BB3"],
+    "Bradykinin receptors": ["BDKRB1", "BDKRB2"],
+    "Calcitonin receptors": ["CALCR", "CALCRL"],
+    "Cannabinoid receptors": ["CNR1", "CNR2"],
+    "Chemokine receptors": ["CCR1", "CCR2", "CCR3", "CCR4", "CCR5", "CCR6", "CCR7", "CCR8", "CCR9", "CCR10", "CXCR1",
+                            "CXCR2", "CXCR3", "CXCR4", "CXCR5", "CXCR6", "CX3CR1", "XCR1"],
+    "Cholecystokinin receptors": ["CCKAR", "CCKBR"],
+    "Dopamine receptors": ["DRD1", "DRD2", "DRD3", "DRD4", "DRD5"],
+    "Endothelin receptors": ["EDNRA", "EDNRB"],
+    "Formylpeptide receptors": ["FPR1", "FPR2", "FPR3"],
+    "Free fatty acid receptors": ["FFAR1", "FFAR2", "FFAR3", "FFAR4"],
+    "GABA receptors": ["GABBR1", "GABBR2"],
+    "Galanin receptors": ["GALR1", "GALR2", "GALR3"],
+    "Ghrelin receptor": ["GHSR"],
+    "Glucagon receptor family": ["GCGR", "GLP1R", "GLP2R", "GIPR", "GHRHR"],
+    "Glycoprotein hormone receptors": ["FSHR", "LHCGR", "TSHR"],
+    "Gonadotrophin-releasing hormone receptors": ["GNRHR", "GNRHR2"],
+    "Histamine receptors": ["HRH1", "HRH2", "HRH3", "HRH4"],
+    "Hydroxycarboxylic acid receptors": ["HCAR1", "HCAR2", "HCAR3"],
+    "Kisspeptin receptor": ["KISS1R"],
+    "Leukotriene receptors": ["LTB4R", "LTB4R2", "CYSLTR1", "CYSLTR2"],
+    "Lysophospholipid (LPA) receptors": ["LPAR1", "LPAR2", "LPAR3", "LPAR4", "LPAR5", "LPAR6"],
+    "Lysophospholipid (S1P) receptors": ["S1PR1", "S1PR2", "S1PR3", "S1PR4", "S1PR5"],
+    "Melanin-concentrating hormone receptors": ["MCHR1", "MCHR2"],
+    "Melanocortin receptors": ["MC1R", "MC2R", "MC3R", "MC4R", "MC5R"],
+    "Melatonin receptors": ["MTNR1A", "MTNR1B"],
+    "Motilin receptor": ["MLNR"],
+    "Neuropeptide FF/neuropeptide AF receptors": ["NPFFR1", "NPFFR2"],
+    "Neuropeptide S receptor": ["NPSR1"],
+    "Neuropeptide W/neuropeptide B receptors": ["NPBWR1", "NPBWR2"],
+    "Neuropeptide Y receptors": ["NPY1R", "NPY2R", "NPY4R", "NPY5R"],
+    "Neurotensin receptors": ["NTSR1", "NTSR2"],
+    "Opioid receptors": ["OPRD1", "OPRK1", "OPRM1", "OPRL1"],
+    "Orexin receptors": ["HCRTR1", "HCRTR2"],
+    "P2Y receptors": ["P2RY1", "P2RY2", "P2RY4", "P2RY6", "P2RY11", "P2RY12", "P2RY13", "P2RY14"],
+    "Parathyroid hormone receptors": ["PTH1R", "PTH2R"],
+    "Platelet-activating factor receptor": ["PTAFR"],
+    "Prokineticin receptors": ["PROKR1", "PROKR2"],
+    "Prolactin-releasing peptide receptor": ["PRLHR"],
+    "Prostanoid receptors": ["PTGDR", "PTGDR2", "PTGER1", "PTGER2", "PTGER3", "PTGER4", "PTGFR", "PTGIR", "TBXA2R"],
+    "Protease-activated receptors": ["F2R", "F2RL1", "F2RL2", "F2RL3"],
+    "Relaxin family peptide receptors": ["RXFP1", "RXFP2", "RXFP3", "RXFP4"],
+    "Somatostatin receptors": ["SSTR1", "SSTR2", "SSTR3", "SSTR4", "SSTR5"],
+    "Tachykinin receptors": ["TACR1", "TACR2", "TACR3"],
+    "Thyrotropin-releasing hormone receptors": ["TRHR"],
+    "Urotensin receptor": ["UTS2R"],
+    "VIP and PACAP receptors": ["ADCYAP1R1", "VIPR1", "VIPR2"],
+    "Vasopressin and oxytocin receptors": ["AVPR1A", "AVPR1B", "AVPR2", "OXTR"],
+    "Class C Orphans": ["GPR156", "GPR158", "GPR179", "GPRC5A", "GPRC5B", "GPRC5C", "GPRC5D"],
+    "Class Frizzled": ["FZD1", "FZD2", "FZD3", "FZD4", "FZD5", "FZD6", "FZD7", "FZD8", "FZD9", "SMO"]
+}
+
+
 @app.route('/api/receptors', methods=['GET'])
 def get_receptors():
-    files = [f.replace('.pdf', '') for f in os.listdir(PDF_FOLDER) if f.endswith('.pdf')]
-    return jsonify(files)
+    try:
+        if not os.path.exists(PDF_FOLDER):
+            return jsonify({"error": "Pasta PDF não encontrada"}), 500
+
+        real_files = set([f.replace('.pdf', '') for f in os.listdir(PDF_FOLDER) if f.endswith('.pdf')])
+
+        organized_data = {}
+
+        for family, members in GPCR_FAMILIES.items():
+            present_members = []
+            for m in members:
+                if m in real_files:
+                    common_name = ""
+                    gene_data = ""
+
+                    if m in GPCR_METADATA:
+                        info = GPCR_METADATA[m]
+                        if 'cn' in info: common_name = str(info['cn']).strip()
+                        if 'gn' in info: gene_data = str(info['gn']).strip()
+                        if 'acc' in info: gene_data += " " + str(info['acc']).strip()
+
+                    full_search_text = f"{m} {common_name} {gene_data}"
+
+                    present_members.append({
+                        "id": m,
+                        "text": m,
+                        "desc": common_name,
+                        "search_text": full_search_text
+                    })
+
+            if present_members:
+                organized_data[family] = present_members
+
+        return jsonify(organized_data)
+
+    except Exception as e:
+        print(f"API ERROR: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 
 @app.route('/api/get-pdf/<receptor_name>', methods=['GET'])
@@ -1435,6 +1586,25 @@ def get_pdf(receptor_name):
         return send_file(file_path, mimetype='application/pdf')
     else:
         return "File not found", 404
+
+
+@app.route('/api/receptor-details/<receptor_name>')
+def get_receptor_details(receptor_name):
+    data = {
+        "common_name": "",
+        "uniprot": "",
+        "coupling": []
+    }
+
+    if receptor_name in GPCR_METADATA:
+        info = GPCR_METADATA[receptor_name]
+        data["common_name"] = info.get('cn', '').strip()
+        data["uniprot"] = info.get('acc', '').strip()
+
+    if receptor_name in COUPLING_DATA:
+        data["coupling"] = COUPLING_DATA[receptor_name]
+
+    return jsonify(data)
 
 
 if __name__ == '__main__':

@@ -2556,7 +2556,7 @@ progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem !important;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -18824,3 +18824,61 @@ label {
 .navbar-brand h3, .nav-link {
   color: #004059 !important;
 }
+
+  /* Estilos anteriores mantidos... */
+        .select2-container .select2-selection--single {
+            height: 50px !important;
+            font-size: 1.1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+        }
+        .select2-container--default .select2-selection--single:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        .select2-selection__arrow { display: none !important; }
+
+
+#info-card {
+    display: none;
+    background: #ffffff;
+    border-left: 5px solid  #00819D ;
+    transition: all 0.3s ease;
+}
+
+
+.badge-coupling {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            margin-right: 5px;
+            border-radius: 20px;
+}
+
+
+.badge-Gs { background-color: #28a745; color: white; }
+.badge-Gi { background-color: #dc3545; color: white; }
+.badge-Gq { background-color: #007bff; color: white; }
+.badge-G12 { background-color: #6f42c1; color: white; }
+
+
+    .ui-autocomplete {
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 9999 !important;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    .ui-menu-item-wrapper {
+        padding: 10px 15px !important;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .ui-state-active {
+        background: #f8f9fa !important;
+        color: #212529 !important;
+        border: 1px solid #dee2e6 !important;
+    }
