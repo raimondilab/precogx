@@ -10,7 +10,6 @@ import pandas as pd
 import pickle
 import csv
 
-
 # sys.path.insert(1, 'static/predictor/')
 # from precogxb_app.static.predictor import precogx
 
@@ -21,6 +20,9 @@ path = os.getcwd()
 path = app.root_path
 sys.path.insert(1, path + '/static/predictor/')
 import precogx
+
+
+PROTEIN_NAMES = {}
 
 
 ## Route to home page
@@ -1425,7 +1427,7 @@ COUPLING_DATA = {}
 
 
 def load_data():
-    global GPCR_METADATA, COUPLING_DATA
+    global GPCR_METADATA, COUPLING_DATA, PROTEIN_NAMES
 
     if os.path.exists(PKL_PATH):
         try:
@@ -1440,12 +1442,16 @@ def load_data():
 
     if os.path.exists(CSV_PATH):
         try:
-            with open(CSV_PATH, 'r') as f:
+            with open(CSV_PATH, 'r', encoding='utf-8-sig', errors='ignore') as f:
                 reader = csv.reader(f)
                 for row in reader:
                     if len(row) > 2:
-                        receptor = row[0]
+                        receptor = row[0].strip()
                         coupling_info = row[2:-1]
+                        prot_name = row[1].strip()
+
+                        if prot_name:
+                            PROTEIN_NAMES[receptor] = prot_name
 
                         formatted_coupling = []
                         familias_g = ["Gs", "Gi/o", "Gq/11", "G12/13"]
@@ -1458,7 +1464,7 @@ def load_data():
 
                         COUPLING_DATA[receptor] = formatted_coupling
         except Exception as e:
-            print(f"Erro ao carregar CSV: {e}")
+            print(f"Loading error: {e}")
 
 
 load_data()
@@ -1471,8 +1477,8 @@ def shedding():
 
 
 GPCR_FAMILIES = {
-    "5-Hydroxytryptamine receptors": ["5HT1A", "5HT1B", "5HT1D", "5HT1E", "5HT1F", "5HT2A", "5HT2B", "5HT2C", "5HT4",
-                                      "5HT5A", "5HT6", "5HT7"],
+    "5-Hydroxytryptamine receptors": ["HTR1A", "HTR1B", "HTR1D", "HTR1E", "HTR1F", "HTR2A", "HTR2B", "HTR2C", "HTR4",
+                                      "HTR6", "HTR7"],
     "Acetylcholine receptors (Muscarinic)": ["CHRM1", "CHRM2", "CHRM3", "CHRM4", "CHRM5"],
     "Adrenoceptors": ["ADRA1A", "ADRA1B", "ADRA1D", "ADRA2A", "ADRA2B", "ADRA2C", "ADRB1", "ADRB2", "ADRB3"],
     "Adenosine receptors": ["ADORA1", "ADORA2A", "ADORA2B", "ADORA3"],
@@ -1481,7 +1487,7 @@ GPCR_FAMILIES = {
     "Angiotensin receptors": ["AGTR1", "AGTR2"],
     "Apelin receptor": ["APLNR"],
     "Bile acid receptor": ["GPBAR1"],
-    "Bombesin receptors": ["BB1", "BB2", "BB3"],
+    "Bombesin receptors": ["NMBR", "GRPR", "BB3"],
     "Bradykinin receptors": ["BDKRB1", "BDKRB2"],
     "Calcitonin receptors": ["CALCR", "CALCRL"],
     "Cannabinoid receptors": ["CNR1", "CNR2"],
@@ -1515,7 +1521,7 @@ GPCR_FAMILIES = {
     "Neurotensin receptors": ["NTSR1", "NTSR2"],
     "Opioid receptors": ["OPRD1", "OPRK1", "OPRM1", "OPRL1"],
     "Orexin receptors": ["HCRTR1", "HCRTR2"],
-    "P2Y receptors": ["P2RY1", "P2RY2", "P2RY4", "P2RY6", "P2RY11", "P2RY12", "P2RY13", "P2RY14"],
+    "P2Y receptors": ["P2RY1", "P2RY2", "P2RY4", "P2RY6", "P2RY10", "P2RY11", "P2RY12", "P2RY13", "P2RY14"],
     "Parathyroid hormone receptors": ["PTH1R", "PTH2R"],
     "Platelet-activating factor receptor": ["PTAFR"],
     "Prokineticin receptors": ["PROKR1", "PROKR2"],
@@ -1529,7 +1535,12 @@ GPCR_FAMILIES = {
     "Urotensin receptor": ["UTS2R"],
     "VIP and PACAP receptors": ["ADCYAP1R1", "VIPR1", "VIPR2"],
     "Vasopressin and oxytocin receptors": ["AVPR1A", "AVPR1B", "AVPR2", "OXTR"],
-    "Class C Orphans": ["GPR156", "GPR158", "GPR179", "GPRC5A", "GPRC5B", "GPRC5C", "GPRC5D"],
+    "Other / Orphan GPCRs": [
+        "GPR17", "GPR34", "GPR35", "GPR55", "GPR84",
+        "GPR119", "GPR132", "GPR174", "GPR183",
+        "MRGPRX1", "MRGPRX2",
+        "GPR156", "GPR158", "GPR179", "GPRC5A", "GPRC5B", "GPRC5C", "GPRC5D"
+    ],
     "Class Frizzled": ["FZD1", "FZD2", "FZD3", "FZD4", "FZD5", "FZD6", "FZD7", "FZD8", "FZD9", "SMO"]
 }
 
@@ -1538,7 +1549,7 @@ GPCR_FAMILIES = {
 def get_receptors():
     try:
         if not os.path.exists(PDF_FOLDER):
-            return jsonify({"error": "Pasta PDF não encontrada"}), 500
+            return jsonify({"error": "PDF folder not found"}), 500
 
         real_files = set([f.replace('.pdf', '') for f in os.listdir(PDF_FOLDER) if f.endswith('.pdf')])
 
@@ -1548,22 +1559,24 @@ def get_receptors():
             present_members = []
             for m in members:
                 if m in real_files:
+
                     common_name = ""
-                    gene_data = ""
+                    if m in GPCR_METADATA and 'cn' in GPCR_METADATA[m]:
+                        common_name = str(GPCR_METADATA[m]['cn']).strip()
 
-                    if m in GPCR_METADATA:
-                        info = GPCR_METADATA[m]
-                        if 'cn' in info: common_name = str(info['cn']).strip()
-                        if 'gn' in info: gene_data = str(info['gn']).strip()
-                        if 'acc' in info: gene_data += " " + str(info['acc']).strip()
+                    short_name = PROTEIN_NAMES.get(m, "")
 
-                    full_search_text = f"{m} {common_name} {gene_data}"
+                    full_search_text = f"{m} {short_name} {common_name}"
+
+                    coupling_info = COUPLING_DATA.get(m, [])
 
                     present_members.append({
                         "id": m,
                         "text": m,
+                        "protein": short_name,
                         "desc": common_name,
-                        "search_text": full_search_text
+                        "search_text": full_search_text,
+                        "coupling": coupling_info
                     })
 
             if present_members:
@@ -1572,9 +1585,7 @@ def get_receptors():
         return jsonify(organized_data)
 
     except Exception as e:
-        print(f"API ERROR: {e}")
         return jsonify({"error": str(e)}), 500
-
 
 
 @app.route('/api/get-pdf/<receptor_name>', methods=['GET'])
@@ -1593,6 +1604,7 @@ def get_receptor_details(receptor_name):
     data = {
         "common_name": "",
         "uniprot": "",
+        "protein": "",
         "coupling": []
     }
 
@@ -1600,6 +1612,9 @@ def get_receptor_details(receptor_name):
         info = GPCR_METADATA[receptor_name]
         data["common_name"] = info.get('cn', '').strip()
         data["uniprot"] = info.get('acc', '').strip()
+
+    if receptor_name in PROTEIN_NAMES:
+        data["protein"] = PROTEIN_NAMES.get(receptor_name, "")
 
     if receptor_name in COUPLING_DATA:
         data["coupling"] = COUPLING_DATA[receptor_name]

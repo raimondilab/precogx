@@ -2556,7 +2556,7 @@ progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.5rem !important;
+  border-radius: 0.5rem;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -18850,35 +18850,34 @@ label {
 }
 
 
-.badge-coupling {
-            font-size: 0.9rem;
-            padding: 8px 12px;
-            margin-right: 5px;
-            border-radius: 20px;
-}
+        .ui-autocomplete {
+            max-height: 400px; overflow-y: auto; overflow-x: hidden;
+            z-index: 9999 !important;
+            border-radius: 0.25rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+        }
+        .ui-menu-item-wrapper { padding: 10px 15px !important; border-bottom: 1px solid #f0f0f0; }
+        .ui-state-active { background: #f8f9fa !important; color: #212529 !important; border: 1px solid #dee2e6 !important; }
 
+        /* --- BADGES (CORES) --- */
+        .badge-coupling { font-size: 0.8rem; margin-right: 4px; padding: 6px 10px; border-radius: 4px; font-weight: 600; }
 
-.badge-Gs { background-color: #28a745; color: white; }
-.badge-Gi { background-color: #dc3545; color: white; }
-.badge-Gq { background-color: #007bff; color: white; }
-.badge-G12 { background-color: #6f42c1; color: white; }
+        /* Cores das Famílias G-Protein */
+        .bg-Gs { background-color: #28a745; border-color: #28a745; color: white; }
+        .bg-Gi { background-color: #dc3545; border-color: #dc3545; color: white; }
+        .bg-Gq { background-color: #0d6efd; border-color: #0d6efd; color: white; }
+        .bg-G12 { background-color: #6610f2; border-color: #6610f2; color: white; }
 
+        /* Estilo para Secondary (Borda colorida, fundo transparente) */
+        .badge-secondary-c { background-color: white !important; border: 2px solid; }
+        .badge-secondary-c.bg-Gs { color: #28a745; border-color: #28a745; }
+        .badge-secondary-c.bg-Gi { color: #dc3545; border-color: #dc3545; }
+        .badge-secondary-c.bg-Gq { color: #0d6efd; border-color: #0d6efd; }
+        .badge-secondary-c.bg-G12 { color: #6610f2; border-color: #6610f2; }
 
-    .ui-autocomplete {
-        max-height: 400px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        z-index: 9999 !important;
-        border: 1px solid #ced4da;
-        border-radius: 0.25rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    }
-    .ui-menu-item-wrapper {
-        padding: 10px 15px !important;
-        border-bottom: 1px solid #f0f0f0;
-    }
-    .ui-state-active {
-        background: #f8f9fa !important;
-        color: #212529 !important;
-        border: 1px solid #dee2e6 !important;
-    }
+        /* --- MODAL --- */
+        .receptor-list-item {
+            cursor: pointer; transition: background 0.2s;
+            border-bottom: 1px solid #eee; padding: 12px;
+            background-color: #fff;
+        }
+        .receptor-list-item:hover { background-color: #e9ecef; }

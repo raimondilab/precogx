@@ -3,8 +3,7 @@
 {% block title %} PRECOGx | Shedding Assay Data {% endblock %}
 
 {% block head %}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 {% endblock %}
 
@@ -15,181 +14,215 @@
         <div class="row justify-content-center text-center mb-4">
             <div class="col-lg-8">
                 <h1 class="fw-light font-base fs-5 fs-xxl-6"><strong>Shedding Assay Data</strong></h1>
-                <p class="fs-1 text-muted">Select a receptor to view the activity/coupling data.</p>
+                <p class="fs-1 text-muted">Search or browse to view activity & coupling data.</p>
             </div>
         </div>
 
-        <div class="row justify-content-center mb-3">
-            <div class="col-md-8 col-lg-6">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-10 col-lg-8">
                 <div class="input-group shadow-sm">
-                    <input type="text" id="gene" class="form-control" placeholder="Type receptor (e.g. 5HT, Vasopressin)...">
+                    <input type="text" id="gene" class="form-control form-control-lg" placeholder="Type receptor/Family (e.g. 5HT, Vasopressin, Adrenoceptors)...">
+                    <button class="btn btn-primary px-4" type="button" data-bs-toggle="modal" data-bs-target="#browseModal">
+                        <i class="fas fa-list-ul me-2"></i> Browse All
+                    </button>
                     <input type="hidden" id="selected_receptor_id">
                 </div>
             </div>
         </div>
 
         <div class="row justify-content-center mb-4">
-            <div class="col-12 col-lg-10">
-                <div id="info-card" class="shadow-sm rounded p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h2 class="h4 mb-1" id="info-common-name" style="font-weight: 600;"></h2>
+        <div class="col-12 col-lg-10">
+            <div id="info-card" class="shadow-sm rounded p-4 bg-white" style="display:none;">
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0 border-end-md">
+                        <h2 class="h3 mb-2 text-dark" id="info-common-name" style="font-weight: 700;"></h2>
 
-                            <div class="text-muted mb-2">
-                                <span class="badge bg-light text-dark border">UniProt</span>
-                                <a id="info-uniprot-link" href="#" target="_blank" class="text-decoration-none fw-bold ms-1">
-                                    <i class="fas fa-external-link-alt small"></i> <span id="info-uniprot-id"></span>
-                                </a>
-                            </div>
+                       <div class="mb-2">
+                        <span class="badge bg-light text-dark border me-1">Gene</span>
+                        <span id="info-receptor-id" class="fw-bold text-dark"></span> [<i id="info-protein-name" class="fw-bold text-dark"></i>]
+                       </div>
+
+                        <div>
+                            <span class="badge bg-light text-dark border me-1" >UniProt</span>
+                            <a id="info-uniprot-link" href="#" target="_blank" class="text-decoration-none fw-bold">
+                                <span id="info-uniprot-id"></span> <i class="fas fa-external-link-alt small ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 ps-md-4">
+                        <h6 class="text-uppercase text-muted fw-bold ls-1 mb-3 border-bottom pb-2">Reported Coupling (IUPHAR)</h6>
+
+                        <div class="mb-3">
+                            <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem;">Primary Transducers</small>
+                            <div id="info-coupling-primary" class="mt-1 d-flex flex-wrap align-items-center" style="min-height: 25px;"></div>
                         </div>
 
-                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                            <h6 class="text-uppercase text-muted small fw-bold ls-1">Reported Coupling (IUPHAR)</h6>
-                            <div id="info-coupling-badges">
-                                </div>
+                        <div>
+                            <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem;">Secondary Transducers</small>
+                            <div id="info-coupling-secondary" class="mt-1 d-flex flex-wrap align-items-center"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <div id="pdf-container" class="shadow-sm border rounded bg-light" style="display: none; height: 80vh;">
+                <div id="pdf-container" class="shadow-sm border rounded bg-light" style="display: none; height: 90vh;">
                     <iframe id="pdf-viewer" src="" style="width: 100%; height: 100%; border: none;"></iframe>
                 </div>
-
                 <div id="pdf-placeholder" class="text-center py-5 text-muted bg-light rounded border border-dashed">
-                    <i class="fas fa-file-pdf fa-3x mb-3 text-300"></i>
-                    <p>No document loaded.</p>
+                    <i class="fas fa-search fa-3x mb-3 opacity-25"></i>
+                    <p class="mb-0">Use the search bar or browse button to load data.</p>
                 </div>
             </div>
         </div>
 
     </div>
 </section>
+
+<div class="modal fade" id="browseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-white border-bottom shadow-sm">
+                <h5 class="modal-title fw-bold text-primary"><i class="fas fa-dna me-2"></i>Select Receptor by Family</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 bg-light">
+                <div class="accordion accordion-flush" id="accordionReceptors">
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block script %}
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     const apiBaseUrl = '/api';
     var allReceptors = [];
 
-    // --- LEVENSHTEIN DISTANCE (Fuzzy Search Logic) ---
     function getLevenshteinDistance(a, b) {
-        if (a.length === 0) return b.length;
-        if (b.length === 0) return a.length;
-        var matrix = [];
-        var i;
-        for (i = 0; i <= b.length; i++) { matrix[i] = [i]; }
-        var j;
-        for (j = 0; j <= a.length; j++) { matrix[0][j] = j; }
-        for (i = 1; i <= b.length; i++) {
-            for (j = 1; j <= a.length; j++) {
-                if (b.charAt(i - 1) == a.charAt(j - 1)) {
-                    matrix[i][j] = matrix[i - 1][j - 1];
-                } else {
-                    matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1,
-                                            Math.min(matrix[i][j - 1] + 1,
-                                                     matrix[i - 1][j] + 1));
-                }
-            }
-        }
-        return matrix[b.length][a.length];
+        if(a.length==0) return b.length; if(b.length==0) return a.length;
+        var matrix=[]; var i; for(i=0;i<=b.length;i++){matrix[i]=[i];}
+        var j; for(j=0;j<=a.length;j++){matrix[0][j]=j;}
+        for(i=1;i<=b.length;i++){for(j=1;j<=a.length;j++){
+            if(b.charAt(i-1)==a.charAt(j-1)){matrix[i][j]=matrix[i-1][j-1];}
+            else{matrix[i][j]=Math.min(matrix[i-1][j-1]+1,Math.min(matrix[i][j-1]+1,matrix[i-1][j]+1));}
+        }} return matrix[b.length][a.length];
+    }
+
+    function generateMiniBadges(couplingList) {
+        if (!couplingList || couplingList.length === 0) return '';
+        let html = '';
+        couplingList.forEach(c => {
+            let colorClass = '';
+            if (c.family.includes('Gs')) colorClass = 'bg-Gs';
+            else if (c.family.includes('Gi') || c.family.includes('Go')) colorClass = 'bg-Gi';
+            else if (c.family.includes('Gq') || c.family.includes('11')) colorClass = 'bg-Gq';
+            else if (c.family.includes('12') || c.family.includes('13')) colorClass = 'bg-G12';
+            else colorClass = 'bg-secondary';
+
+            let styleClass = (c.type === 'Primary') ? '' : 'badge-secondary-c';
+
+            html += `<span class="badge ${colorClass} ${styleClass} me-1" style="font-size: 0.65rem;">${c.family}</span>`;
+        });
+        return html;
     }
 
     $(document).ready(function() {
-
-        // 1. FETCH DATA ONCE
         fetch(`${apiBaseUrl}/receptors`)
             .then(response => response.json())
             .then(data => {
-                // Flatten API data
+                const accordion = $('#accordionReceptors');
+                accordion.empty();
+                let index = 0;
+
                 for (const [family, receptors] of Object.entries(data)) {
+
                     receptors.forEach(item => {
-
-                        var combinedSearch = (item.search_text + " " + family).toLowerCase();
-
+                        var combinedSearch = (item.search_text + " " + item.protein  + " " + family).toLowerCase();
                         allReceptors.push({
-                            value: item.id,
-                            label: item.text,
-                            desc: item.desc,
-                            family: family,
-                            searchStr: combinedSearch
+                            value: item.id, label: item.text, desc: item.desc, protein: item.protein,
+                            family: family, searchStr: combinedSearch, coupling: item.coupling
                         });
                     });
-                }
-                console.log("Receptor list loaded:", allReceptors.length, "items.");
-            })
-            .catch(err => console.error("Error loading data:", err));
 
-        // 2. AUTOCOMPLETE
+                    const collapseId = `collapse${index}`;
+                    const headerId = `heading${index}`;
+
+                    let groupHtml = `
+                        <div class="accordion-item bg-white">
+                            <h2 class="accordion-header" id="${headerId}">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}">
+                                    ${family} <span class="badge bg-light text-dark border ms-2">${receptors.length}</span>
+                                </button>
+                            </h2>
+                            <div id="${collapseId}" class="accordion-collapse collapse" data-bs-parent="#accordionReceptors">
+                                <div class="accordion-body p-0">`;
+
+                    receptors.forEach(r => {
+                        const badges = generateMiniBadges(r.coupling);
+                        groupHtml += `
+                            <div class="receptor-list-item d-flex justify-content-between align-items-center" onclick="selectReceptor('${r.id}')">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-dark">${r.text} [${r.protein}]</div>
+                                    <small class="text-muted">${r.desc || ''}</small>
+                                </div>
+                                <div class="text-end ps-2">${badges}</div>
+                            </div>`;
+                    });
+
+                    groupHtml += `</div></div></div>`;
+                    accordion.append(groupHtml);
+                    index++;
+                }
+            })
+            .catch(err => console.error("Error:", err));
+
         $("#gene").autocomplete({
             minLength: 2,
-
-            // CUSTOM FILTERING (Source)
             source: function(request, response) {
                 var term = request.term.toLowerCase();
                 var termWords = term.split(/\s+/);
-
                 var filtered = allReceptors.filter(function(item) {
                     var searchStr = item.searchStr;
-
                     if (searchStr.indexOf(term) > -1) return true;
-
                     var matches = 0;
-                    for (var t = 0; t < termWords.length; t++) {
+                    for (var t=0; t<termWords.length; t++) {
                         var tWord = termWords[t];
                         var wordFound = false;
                         var searchWords = searchStr.split(/\s+/);
-
-                        for (var s = 0; s < searchWords.length; s++) {
+                        for (var s=0; s<searchWords.length; s++) {
                             var sWord = searchWords[s];
-
-                            if (tWord.length < 3) {
-                                if (sWord.indexOf(tWord) > -1) { wordFound = true; break; }
-                                continue;
-                            }
-
+                            if (tWord.length<3) { if(sWord.indexOf(tWord)>-1){wordFound=true;break;} continue;}
                             var dist = getLevenshteinDistance(tWord, sWord);
-
-                            var tolerance = 1;
-                            if (sWord.length > 4) tolerance = 2;
-                            if (sWord.length > 7) tolerance = 3;
-
-                            if (dist <= tolerance) { wordFound = true; break; }
+                            var tolerance = (sWord.length>7)?3:((sWord.length>4)?2:1);
+                            if (dist<=tolerance) { wordFound=true; break; }
                         }
                         if (wordFound) matches++;
                     }
-
                     return matches === termWords.length;
                 });
-
                 response(filtered.slice(0, 25));
             },
-
-            // SELECT ITEM
             select: function(event, ui) {
-                $("#gene").val(ui.item.label);
-                $("#selected_receptor_id").val(ui.item.value);
-
-                loadPdf(ui.item.value);
-                loadMetadata(ui.item.value);
-
+                selectReceptor(ui.item.value);
                 return false;
             }
-        })
-        // 3. CUSTOM RENDER
-        .autocomplete( "instance" )._renderItem = function( ul, item ) {
-            return $( "<li>" )
+        }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+             return $( "<li>" )
                 .append(`<div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <strong>${item.label}</strong>
-                                <span class="badge bg-light text-secondary border" style="font-size: 0.7em;">${item.family}</span>
+                            <div class="d-flex justify-content-between">
+                                <strong>${item.label} [<i>${item.protein}</i>]</strong>
+                                <span class="badge bg-light text-secondary border">${item.family}</span>
                             </div>
                             <small class='text-muted'>${item.desc}</small>
                          </div>`)
@@ -197,15 +230,47 @@
         };
     });
 
-    // --- HELPER FUNCTIONS ---
+    function selectReceptor(id) {
+        $("#gene").val(id);
+        $("#selected_receptor_id").val(id);
 
-    async function loadMetadata(receptorName) {
+        var modalEl = document.getElementById('browseModal');
+        var modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) {
+            modal.hide();
+        } else {
+            $(modalEl).modal('hide'); // Fallback jQuery
+        }
+
+        setTimeout(() => {
+            $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open');
+            $('body').css('overflow', 'auto'); // Devolve o scroll
+        }, 350);
+
+        loadPdf(id);
+        loadMetadata(id);
+    }
+
+   async function loadMetadata(receptorName) {
         const card = $('#info-card');
+        const primContainer = $('#info-coupling-primary');
+        const secContainer = $('#info-coupling-secondary');
+
         try {
             const response = await fetch(`${apiBaseUrl}/receptor-details/${receptorName}`);
             const data = await response.json();
 
             $('#info-common-name').text(data.common_name || receptorName);
+            $('#info-receptor-id').text(receptorName);
+
+            const protRow = $('#info-protein-row');
+            if (data.protein && data.protein.length > 0) {
+                $('#info-protein-name').text(data.protein);
+                protRow.show();
+            } else {
+                protRow.hide();
+            }
 
             const linkEl = $('#info-uniprot-link');
             if (data.uniprot) {
@@ -214,21 +279,41 @@
                 linkEl.parent().show();
             } else { linkEl.parent().hide(); }
 
-            const badgeContainer = $('#info-coupling-badges');
-            badgeContainer.empty();
+            primContainer.empty();
+            secContainer.empty();
+            let hasPrimary = false;
+            let hasSecondary = false;
 
             if (data.coupling && data.coupling.length > 0) {
                 data.coupling.forEach(c => {
-                    let badgeClass = 'bg-secondary';
-                    if (c.family.includes('Gs')) badgeClass = 'badge-Gs';
-                    else if (c.family.includes('Gi')) badgeClass = 'badge-Gi';
-                    else if (c.family.includes('Gq')) badgeClass = 'badge-Gq';
-                    else if (c.family.includes('G12')) badgeClass = 'badge-G12';
-                    badgeContainer.append(`<span class="badge ${badgeClass} badge-coupling">${c.family}</span>`);
+                    let colorClass = '';
+                    if (c.family.includes('Gs')) colorClass = 'bg-Gs';
+                    else if (c.family.includes('Gi') || c.family.includes('Go')) colorClass = 'bg-Gi';
+                    else if (c.family.includes('Gq') || c.family.includes('11')) colorClass = 'bg-Gq';
+                    else if (c.family.includes('12') || c.family.includes('13')) colorClass = 'bg-G12';
+                    else colorClass = 'bg-secondary';
+
+                    const badge = `<span class="badge ${colorClass} badge-coupling mb-1">${c.family}</span>`;
+
+                    if (c.type === 'Primary') {
+                        primContainer.append(badge);
+                        hasPrimary = true;
+                    } else {
+                        const secBadge = `<span class="badge badge-secondary-c ${colorClass} badge-coupling mb-1">${c.family}</span>`;
+                        secContainer.append(secBadge);
+                        hasSecondary = true;
+                    }
                 });
-            } else { badgeContainer.append('<span class="text-muted small">No coupling data</span>'); }
+            }
+
+            if (!hasPrimary) primContainer.append('<span class="text-muted small">None reported</span>');
+            if (!hasSecondary) secContainer.append('<span class="text-muted small">None reported</span>');
+
             card.slideDown();
-        } catch (error) { card.hide(); }
+        } catch (error) {
+            console.error(error);
+            card.hide();
+        }
     }
 
     async function loadPdf(receptorName) {

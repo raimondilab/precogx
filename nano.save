@@ -1,0 +1,67 @@
+import os
+from Bio.PDB import *
+from Bio.SeqUtils import seq1
+
+pdbID = '8iq6'
+gpcr_chain = 'R' # Vindo do seu zgrep
+
+print(f"--- Iniciando Debug para {pdbID} (Cadeia esperada: {gpcr_chain}) ---")
+
+# 1. Tentar carregar a estrutura
+parser = MMCIFParser(QUIET=True)
+cif_path = f'data/PDB/pdir/{pdbID}.cif'
+
+# Garante download para teste
+if not os.path.exists(cif_path):
+    print("Baixando CIF...")
+    os.system(f'wget https://www.ebi.ac.uk/pdbe/entry-files/{pdbID}.cif -O {cif_path}')
+
+try:
+    structure = parser.get_structure('struct', cif_path)
+    print("✅ Estrutura CIF carregada com sucesso.")
+except Exception as e:
+    print(f"❌ Erro ao carregar CIF: {e}")
+    exit()
+
+# 2. Verificar quais cadeias o Biopython enxerga
+print("\nCadeias encontradas no arquivo CIF:")
+found_target = False
+model = structure[0] # Pega o primeiro modelo
+
+for chain in model:
+    print(f" - Cadeia ID: '{chain.id}' | Num resíduos: {len(chain)}")
+    if chain.id == gpcr_chain:
+        found_target = True
+
+if not found_target:
+    print(f"\n❌ ERRO FATAL: O script procura a cadeia '{gpcr_chain}', mas o Biopython não a encontrou.")
+    print("Isso acontece quando o 'auth_id' (autor) é diferente do 'label_id'.")
+    exit()
+
+# 3. Testar extração de sequência (Onde o seq1 costuma falhar)
+print(f"\nTentando extrair sequência da cadeia {gpcr_chain}...")
+fasta = ''
+try:
+    chain = model[gpcr_chain]
+    for residue in chain:
+        if is_aa(residue, standard=False): # Aceita AA modificados
+            for atom in residue:
+                if atom.id == 'CA':
+                    try:
+                        # Tenta converter o nome do resíduo (ex: ALA -> A)
+                        aa = seq1(residue.resname)
+                        fasta += aa
+                    except Exception as e:
+                        print(f"⚠️ Erro no resíduo {residue.resname} ({residue.id}): {e}")
+                        fasta += 'X' # Coloca X se falhar
+    
+    print(f"\n✅ Sucesso! Sequência extraída (Tamanho: {len(fasta)})")
+    print(f"Início da seq: {fasta[:20]}...")
+    
+    # Tenta salvar
+    with open(f'debug_{pdbID}.fasta', 'w') as f:
+        f.write(f">{pdbID}|{gpcr_chain}\n{fasta}")
+    print(f"✅ Arquivo debug_{pdbID}.fasta salvo.")
+
+except Exception as e:
+    print(f"\n❌ ERRO durante extração da sequência: {e}")
