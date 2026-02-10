@@ -1,0 +1,315 @@
+{% extends "base.html" %}
+
+{% block title %} PRECOGx | precog3D Structural Analysis {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-1.2.1.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+{% endblock %}
+
+{% block content %}
+<section class="py-4" id="precog3D">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-9">
+                <h1 class="fw-light font-base fs-5 fs-xxl-6"><strong>precog3D</strong></h1>
+                <p class="lead text-muted">Structural visualization of GPCR-G Protein complexes and predicted coupling selectivity profiles.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col-lg-8">
+                <div class="input-group shadow-sm">
+                    <input type="text" id="gene" class="form-control form-control-lg" placeholder="Type receptor/Family (e.g. 5HT, Vasopressin, Adrenoceptors)...">
+                    <button class="btn btn-primary px-4" type="button" data-bs-toggle="modal" data-bs-target="#browseModal">
+                        <i class="fas fa-list-ul me-2"></i> Browse All
+                    </button>
+                    <input type="hidden" id="selected_receptor_id">
+                </div>
+            </div>
+        </div>
+
+        <div id="results-section" style="display: none;">
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 col-lg-10">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="bg-white py-2">
+                            <h5 class="mb-0 fw-bold header-card">Coupling probabilites</h5>
+                        </div>
+                        <div class="card-body">
+                            <table id="couplingTable" class="table table-sm table-hover w-100">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>G-Protein Subfamily</th>
+                                        <th>Coupling Value</th>
+                                        <th>Significance</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 col-lg-10">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
+                            <div class="d-flex gap-3 small">
+                                <span><i class="fas fa-circle text-primary"></i> pLDDT > 90</span>
+                                <span><i class="fas fa-circle text-warning"></i> pLDDT < 70</span>
+                                <span><i class="fas fa-circle text-danger"></i> pLDDT < 50</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-0 border">
+                            <div id="myViewer"></div>
+                        </div>
+                        <div class="card-footer bg-light small text-center text-muted">
+                            Model colored by pLDDT (Predicted Local Error Difference Test) confidence scores.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-4"></div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="browseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title fw-bold"><i class="fas fa-dna me-2"></i>Select Receptor by Family</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="accordion accordion-flush" id="accordionReceptors"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" src="https://www.ebi.ac.uk/pdbe/pdb-component-library/js/pdbe-molstar-plugin-3.1.2.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<script>
+    const apiBaseUrl = '/api';
+    let allReceptors = [];
+    let dataTableInstance = null;
+    let viewerInstance = new PDBeMolstarPlugin();
+
+    $(document).ready(function() {
+        // Initialize phylogenetic data
+        fetch(`${apiBaseUrl}/receptors`)
+            .then(response => response.json())
+            .then(data => {
+                const accordion = $('#accordionReceptors');
+                let index = 0;
+
+                for (const [family, receptors] of Object.entries(data)) {
+                    receptors.forEach(item => {
+                        allReceptors.push({
+                            id: item.id,
+                            label: item.text,
+                            protein: item.protein,
+                            family: family,
+                            desc: item.desc,
+                            coupling: item.coupling,
+                            searchStr: `${item.search_text} ${item.protein} ${family}`.toLowerCase()
+                        });
+                    });
+
+                    const collapseId = `collapse${index}`;
+                    let groupHtml = `
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}">
+                                    ${family} <span class="badge rounded-pill bg-light text-primary border ms-2">${receptors.length}</span>
+                                </button>
+                            </h2>
+                            <div id="${collapseId}" class="accordion-collapse collapse" data-bs-parent="#accordionReceptors">
+                                <div class="accordion-body p-0">`;
+
+                    receptors.forEach(r => {
+                        groupHtml += `
+                            <div class="receptor-list-item d-flex justify-content-between align-items-center" onclick="selectReceptor('${r.id}')">
+                                <div>
+                                    <div class="fw-bold text-dark">${r.text} <span class="badge bg-light text-muted fw-normal">${r.protein}</span></div>
+                                    <small class="text-muted italic">${r.desc || ''}</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted opacity-50"></i>
+                            </div>`;
+                    });
+                    groupHtml += `</div></div></div>`;
+                    accordion.append(groupHtml);
+                    index++;
+                }
+            });
+
+          $("#gene").autocomplete({
+            minLength: 2,
+            source: function(request, response) {
+                var term = request.term.toLowerCase();
+                var termWords = term.split(/\s+/);
+                var filtered = allReceptors.filter(function(item) {
+                    var searchStr = item.searchStr;
+                    if (searchStr.indexOf(term) > -1) return true;
+                    var matches = 0;
+                    for (var t=0; t<termWords.length; t++) {
+                        var tWord = termWords[t];
+                        var wordFound = false;
+                        var searchWords = searchStr.split(/\s+/);
+                        for (var s=0; s<searchWords.length; s++) {
+                            var sWord = searchWords[s];
+                            if (tWord.length<3) { if(sWord.indexOf(tWord)>-1){wordFound=true;break;} continue;}
+                            var dist = getLevenshteinDistance(tWord, sWord);
+                            var tolerance = (sWord.length>7)?3:((sWord.length>4)?2:1);
+                            if (dist<=tolerance) { wordFound=true; break; }
+                        }
+                        if (wordFound) matches++;
+                    }
+                    return matches === termWords.length;
+                });
+                response(filtered.slice(0, 25));
+            },
+            select: function(event, ui) {
+                selectReceptor(ui.item.value);
+                return false;
+            }
+        }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+             return $( "<li>" )
+                .append(`<div>
+                            <div class="d-flex justify-content-between">
+                                <strong>${item.label} [<i>${item.protein}</i>]</strong>
+                                <span class="badge bg-light text-secondary border">${item.family}</span>
+                            </div>
+                            <small class='text-muted'>${item.desc}</small>
+                         </div>`)
+                .appendTo( ul );
+        };
+    });
+
+    const testData = {
+    label: "Test Receptor",
+    coupling: {
+        "Gs Family": 5.23,
+        "Gi/o Family": 2.11,
+        "Gq/11 Family": 4.88,
+        "G12/13 Family": 0.95
+    }
+};
+
+    function selectReceptor(id) {
+
+    const data = allReceptors.find(r => r.id === id);
+    if (!data) return;
+
+    $("#gene").val(data.label);
+    $("#results-section").fadeIn(400);
+
+    updateCouplingTable(testData.coupling);
+
+    const modalEl = document.getElementById('browseModal');
+    const modal = bootstrap.Modal.getInstance(modalEl);
+
+    if (modal) {
+        modal.hide();
+    }
+
+        setTimeout(() => {
+            $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '');
+        }, 100);
+    }
+
+    function updateCouplingTable(couplingData) {
+    if (!couplingData) return;
+
+    const tableData = Object.entries(couplingData).map(([gprot, val]) => ({
+        family: gprot,
+        value: parseFloat(val)
+    }));
+
+    if (dataTableInstance) dataTableInstance.destroy();
+
+    dataTableInstance = $('#couplingTable').DataTable({
+        data: tableData,
+        dom: '<"d-flex justify-content-between align-items-center mb-3"Bf>rt<"d-flex justify-content-between mt-3"ip>',
+        buttons: [
+            { extend: 'copy', className: 'dt-button buttons-copy buttons-html5' },
+            { extend: 'csv', className: 'dt-button buttons-copy buttons-html5' },
+            { extend: 'excel', className: 'dt-button buttons-copy buttons-html5' },
+            { extend: 'pdf', className: 'dt-button buttons-copy buttons-html5' }
+        ],
+        columns: [
+            { data: 'family', className: 'fw-bold text-secondary' },
+            {
+                data: 'value',
+                render: function(data) {
+                    const statusClass = data > 4.0 ? 'significant-value' : 'text-dark';
+                    return `<span class="${statusClass}">${data.toFixed(3)}</span>`;
+                }
+            },
+            {
+                data: 'value',
+                render: (data) => data > 4.0 ?
+                    '<span class="text-success small fw-bold"><i class="fas fa-check-circle me-1"></i>Strong Coupling</span>' :
+                    '<span class="text-muted small">Low/No Interaction</span>'
+            }
+        ],
+        paging: false,
+        pageLength: 10,
+        searching: true,
+        info: true,
+        order: [[1, 'desc']]
+    });
+}
+    function loadStructure(receptorId) {
+        const viewerDiv = document.getElementById('myViewer');
+        viewerDiv.innerHTML = ''; // Reset container
+
+        const options = {
+            customData: {
+                url: `${apiBaseUrl}/structure/${receptorId}`,
+                format: 'mmcif',
+            },
+            alphafoldView: true,
+            bgColor: {r: 255, g: 255, b: 255},
+            hideStructureControls: true,
+            hideCanvasControls: ['selection', 'animation', 'controlInternal', 'controlAll'],
+        };
+
+        viewerInstance.render(viewerDiv, options);
+    }
+
+    $(document).ready(function() {
+    $('#couplingTable tbody').on('click', 'tr', function () {
+        var data = dataTableInstance.row(this).data();
+
+        var family = data.family;
+        var value = data.value;
+
+        console.log("Family clicked:", family);
+        console.log("Value clicked:", value);
+
+        loadStructure("AF-A0A0X1KG70-O95837");
+    });
+});
+</script>
+{% endblock %}
