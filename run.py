@@ -1626,7 +1626,7 @@ def get_receptor_details(receptor_name):
     return jsonify(data)
 
 
-mapped_genes = pd.read_csv("./static/mapped_genes.tsv", sep='\t')
+mapped_genes = pd.read_csv(path + "/static/mapped_genes.tsv", sep='\t')
 
 
 @app.route('/api/structure/<receptor_id>')
@@ -1665,7 +1665,7 @@ def get_structure(receptor_id):
         abort(500)
 
 
-precog3d = pd.read_csv("./static/merged_coupling_values.tsv", sep='\t')
+precog3d = pd.read_csv(path + "/static/merged_coupling_values.tsv", sep='\t')
 
 
 @app.route('/api/precog3d/<receptor_id>')
