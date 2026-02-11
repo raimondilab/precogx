@@ -36,19 +36,15 @@
                 <div class="col-12 col-lg-10">
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="bg-white py-2">
-                            <h5 class="mb-0 fw-bold header-card">Coupling probabilites</h5>
+                            <h5 class="mb-0 fw-bold header-card">Coupling values</h5>
                         </div>
                         <div class="card-body">
-                            <table id="couplingTable" class="table table-sm table-hover w-100">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>G-Protein Subfamily</th>
-                                        <th>Coupling Value</th>
-                                        <th>Significance</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                            <div class="table-responsive">
+                            <table id="couplingTable" class="table table-hover table-bordered w-100">
+                            <thead></thead>
+                            <tbody></tbody>
+                        </table>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -107,10 +103,24 @@
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 <script>
+
+       function getLevenshteinDistance(a, b) {
+        if(a.length==0) return b.length; if(b.length==0) return a.length;
+        var matrix=[]; var i; for(i=0;i<=b.length;i++){matrix[i]=[i];}
+        var j; for(j=0;j<=a.length;j++){matrix[0][j]=j;}
+        for(i=1;i<=b.length;i++){for(j=1;j<=a.length;j++){
+            if(b.charAt(i-1)==a.charAt(j-1)){matrix[i][j]=matrix[i-1][j-1];}
+            else{matrix[i][j]=Math.min(matrix[i-1][j-1]+1,Math.min(matrix[i][j-1]+1,matrix[i-1][j]+1));}
+        }} return matrix[b.length][a.length];
+    }
+
     const apiBaseUrl = '/api';
     let allReceptors = [];
     let dataTableInstance = null;
+
     let viewerInstance = new PDBeMolstarPlugin();
+
+    let loadSubscription = null;
 
     $(document).ready(function() {
         // Initialize phylogenetic data
@@ -187,7 +197,7 @@
                 response(filtered.slice(0, 25));
             },
             select: function(event, ui) {
-                selectReceptor(ui.item.value);
+               selectReceptor(ui.item.value);
                 return false;
             }
         }).autocomplete( "instance" )._renderItem = function( ul, item ) {
@@ -203,99 +213,121 @@
         };
     });
 
-    const testData = {
-    label: "Test Receptor",
-    coupling: {
-        "Gs Family": 5.23,
-        "Gi/o Family": 2.11,
-        "Gq/11 Family": 4.88,
-        "G12/13 Family": 0.95
-    }
-};
 
     function selectReceptor(id) {
 
-    const data = allReceptors.find(r => r.id === id);
-    if (!data) return;
+    $.getJSON(`/api/precog3d/${id}`, function(apiData) {
+        if (apiData && !apiData.error) {
+            $("#gene").val(apiData.GPCR_name);
 
-    $("#gene").val(data.label);
-    $("#results-section").fadeIn(400);
+            updateCouplingTable(apiData);
 
-    updateCouplingTable(testData.coupling);
+            $("#results-section").fadeIn(400);
 
-    const modalEl = document.getElementById('browseModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
+            const modalEl = document.getElementById('browseModal');
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            if (modal) modal.hide();
 
-    if (modal) {
-        modal.hide();
-    }
+            loadStructure("");
 
-        setTimeout(() => {
-            $('.modal-backdrop').remove();
-            $('body').removeClass('modal-open');
-            $('body').css('padding-right', '');
-        }, 100);
-    }
-
-    function updateCouplingTable(couplingData) {
-    if (!couplingData) return;
-
-    const tableData = Object.entries(couplingData).map(([gprot, val]) => ({
-        family: gprot,
-        value: parseFloat(val)
-    }));
-
-    if (dataTableInstance) dataTableInstance.destroy();
-
-    dataTableInstance = $('#couplingTable').DataTable({
-        data: tableData,
-        dom: '<"d-flex justify-content-between align-items-center mb-3"Bf>rt<"d-flex justify-content-between mt-3"ip>',
-        buttons: [
-            { extend: 'copy', className: 'dt-button buttons-copy buttons-html5' },
-            { extend: 'csv', className: 'dt-button buttons-copy buttons-html5' },
-            { extend: 'excel', className: 'dt-button buttons-copy buttons-html5' },
-            { extend: 'pdf', className: 'dt-button buttons-copy buttons-html5' }
-        ],
-        columns: [
-            { data: 'family', className: 'fw-bold text-secondary' },
-            {
-                data: 'value',
-                render: function(data) {
-                    const statusClass = data > 4.0 ? 'significant-value' : 'text-dark';
-                    return `<span class="${statusClass}">${data.toFixed(3)}</span>`;
-                }
-            },
-            {
-                data: 'value',
-                render: (data) => data > 4.0 ?
-                    '<span class="text-success small fw-bold"><i class="fas fa-check-circle me-1"></i>Strong Coupling</span>' :
-                    '<span class="text-muted small">Low/No Interaction</span>'
-            }
-        ],
-        paging: false,
-        pageLength: 10,
-        searching: true,
-        info: true,
-        order: [[1, 'desc']]
+            setTimeout(() => {
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open').css('overflow-y', 'auto');
+            }, 300);
+        }
+    }).fail(function() {
+        alert("Error: " + id);
     });
 }
-    function loadStructure(receptorId) {
+function formatTableValue(val) {
+    const num = parseFloat(val);
+    if (isNaN(num)) return val;
+    const statusClass = num > 4.0 ? 'significant-value' : 'text-dark';
+    return `<span class="${statusClass}">${num.toFixed(2)}</span>`;
+}
+
+function updateCouplingTable(rowData) {
+    if (!rowData) return;
+
+    if (!rowData) return;
+
+    if (dataTableInstance) {
+        dataTableInstance.destroy();
+        $('#couplingTable').empty();
+    }
+
+    if ($('#couplingTable thead').length === 0) {
+        $('#couplingTable').append('<thead></thead><tbody></tbody>');
+    }
+
+    const fmt = (val) => {
+        const n = parseFloat(val);
+        if (isNaN(n)) return val;
+        const cls = n > 4.0 ? 'significant-value' : '';
+        return `<span class="${cls}">${n.toFixed(3)}</span>`;
+    };
+
+    dataTableInstance = $('#couplingTable').DataTable({
+        data: [rowData],
+        dom: '<"d-flex justify-content-between align-items-center mb-3"Bf>rt<"d-flex justify-content-between mt-3"ip>',
+        buttons: [
+            { extend: 'copy', className: 'dt-button' },
+            { extend: 'csv', className: 'dt-button' },
+            { extend: 'excel', className: 'dt-button' }
+        ],
+        columns: [
+            { data: 'GPCR_name', title: 'GPCR' },
+            { data: 'GNA11', title: 'GNA11', render: fmt },
+            { data: 'GNA12', title: 'GNA12', render: fmt },
+            { data: 'GNA13', title: 'GNA13', render: fmt },
+            { data: 'GNA14', title: 'GNA14', render: fmt },
+            { data: 'GNA15', title: 'GNA15', render: fmt },
+            { data: 'GNAI1', title: 'GNAI1', render: fmt },
+            { data: 'GNAI2', title: 'GNAI2', render: fmt },
+            { data: 'GNAI3', title: 'GNAI3', render: fmt },
+            { data: 'GNAL', title: 'GNAL', render: fmt },
+            { data: 'GNAO1', title: 'GNAO1', render: fmt },
+            { data: 'GNAQ', title: 'GNAQ', render: fmt },
+            { data: 'GNAS', title: 'GNAS', render: fmt },
+            { data: 'GNAZ', title: 'GNAZ', render: fmt },
+            { data: 'GPCR_class', title: 'Class' }
+        ],
+        paging: false,
+        scrollX: true
+    });
+}
+
+
+function loadStructure(receptorId) {
         const viewerDiv = document.getElementById('myViewer');
+        const url = `${apiBaseUrl}/structure/${receptorId}`;
+
+        console.log("Getting:", url);
 
         const options = {
             customData: {
-                url: `${apiBaseUrl}/structure/${receptorId}`,
+                url: url,
                 format: 'mmcif',
             },
             alphafoldView: true,
             bgColor: {r: 255, g: 255, b: 255},
             hideStructureControls: true,
-            hideCanvasControls: ['selection', 'animation',  'controlToggle','controlInfo']
+            hideCanvasControls: ['selection', 'animation', 'controlToggle', 'controlInfo']
         };
 
-        viewerInstance.render(viewerDiv, options);
+        const isFirstLoad = viewerDiv.querySelector('canvas') === null;
 
-        viewerInstance.events.loadComplete.subscribe(colorPolymerBySecStr);
+        if (isFirstLoad) {
+            viewerInstance.render(viewerDiv, options);
+        } else {
+            viewerInstance.visual.update(options);
+        }
+
+        if (loadSubscription) {
+            loadSubscription.unsubscribe();
+        }
+
+        loadSubscription = viewerInstance.events.loadComplete.subscribe(colorPolymerBySecStr);
     }
 
     function colorPolymerBySecStr() {
@@ -310,17 +342,33 @@
 }
 
 
-    $(document).ready(function() {
-    $('#couplingTable tbody').on('click', 'tr', function () {
-        var data = dataTableInstance.row(this).data();
+$(document).ready(function() {
+    $('body').on('click', '.dataTables_scrollBody td', function () {
 
-        var family = data.family;
-        var value = data.value;
+        if (!dataTableInstance) return;
 
-        console.log("Family clicked:", family);
-        console.log("Value clicked:", value);
+        var cell = dataTableInstance.cell(this);
 
-        loadStructure("AF-A0A0X1KG70-O95837");
+        if (cell.index() === undefined) return;
+
+        var columnIndex = cell.index().column;
+        var rowIndex = cell.index().row;
+
+        var columnName = dataTableInstance.column(columnIndex).header().innerText.trim();
+
+        var rowData = dataTableInstance.row(rowIndex).data();
+        var gpcrName = rowData.GPCR_name;
+
+        if (columnName === "GPCR" || columnName === "Class") {
+            return;
+        }
+
+        $('td.selected-cell').removeClass('selected-cell');
+        $(this).addClass('selected-cell');
+
+        console.log("Carregando:", gpcrName, "_", columnName);
+
+        loadStructure(gpcrName + "_" + columnName);
     });
 });
 </script>
