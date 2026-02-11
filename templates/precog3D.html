@@ -58,17 +58,16 @@
                 <div class="col-12 col-lg-10">
                     <div class="card shadow-sm border-0">
                         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
-                            <div class="d-flex gap-3 small">
-                                <span><i class="fas fa-circle text-primary"></i> pLDDT > 90</span>
-                                <span><i class="fas fa-circle text-warning"></i> pLDDT < 70</span>
-                                <span><i class="fas fa-circle text-danger"></i> pLDDT < 50</span>
-                            </div>
+                           <div class="d-flex gap-3 small">
+                            <span><i class="fas fa-circle" style="color: #f00;"></i> High B-factors (Red)</span>
+                            <span><i class="fas fa-circle" style="color: #00f;"></i> Low B-factors (Blue)</span>
+                        </div>
                         </div>
                         <div class="card-body p-0 border">
                             <div id="myViewer"></div>
                         </div>
                         <div class="card-footer bg-light small text-center text-muted">
-                            Model colored by pLDDT (Predicted Local Error Difference Test) confidence scores.
+                            Model colored by B factor.
                         </div>
                     </div>
                 </div>
@@ -282,7 +281,6 @@
 }
     function loadStructure(receptorId) {
         const viewerDiv = document.getElementById('myViewer');
-        viewerDiv.innerHTML = ''; // Reset container
 
         const options = {
             customData: {
@@ -292,11 +290,25 @@
             alphafoldView: true,
             bgColor: {r: 255, g: 255, b: 255},
             hideStructureControls: true,
-            hideCanvasControls: ['selection', 'animation', 'controlInternal', 'controlAll'],
+            hideCanvasControls: ['selection', 'animation',  'controlToggle','controlInfo']
         };
 
         viewerInstance.render(viewerDiv, options);
+
+        viewerInstance.events.loadComplete.subscribe(colorPolymerBySecStr);
     }
+
+    function colorPolymerBySecStr() {
+    const cells = Array.from(viewerInstance.plugin.state.data.cells.values());
+    const polymerComponents = cells.filter(c => c.transform.tags?.includes('structure-component-static-polymer'));
+    for (const component of polymerComponents) {
+        const polymerRepresentations = viewerInstance.plugin.state.data.tree.children.get(component.transform.ref);
+        for (const repr of polymerRepresentations) {
+            viewerInstance.plugin.build().to(repr).update({ colorTheme: { name: 'uncertainty', params: {} } }).commit();
+        }
+    }
+}
+
 
     $(document).ready(function() {
     $('#couplingTable tbody').on('click', 'tr', function () {
