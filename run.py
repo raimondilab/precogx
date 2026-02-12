@@ -1640,10 +1640,6 @@ def get_structure(receptor_id):
         receptor_raw = parts[0]
         gprotein_raw = parts[1]
 
-        print(receptor_id)
-
-        print(receptor_raw)
-        print(gprotein_raw)
 
         r_match = mapped_genes[mapped_genes["to"] == receptor_raw]["from"]
         g_match = mapped_genes[mapped_genes["to"] == gprotein_raw]["from"]
@@ -1656,12 +1652,10 @@ def get_structure(receptor_id):
 
         filename = f"AF-{receptor_mapped}-{gprotein_mapped}.cif"
 
-        print(filename)
-
         return send_from_directory('static/complex', filename)
 
     except Exception as e:
-        print(f"Erro ao processar estrutura: {e}")
+        print(f"Error: {e}")
         abort(500)
 
 
