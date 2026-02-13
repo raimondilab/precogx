@@ -1417,7 +1417,7 @@ def faqs():
 
 PDF_FOLDER = path + '/pdfs'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PKL_PATH = os.path.join(BASE_DIR, 'static', 'info.pkl')  # Exemplo de caminho
+PKL_PATH = os.path.join(BASE_DIR, 'static', 'info.pkl')
 CSV_PATH = os.path.join(BASE_DIR, 'static', 'Reported_coupling.csv')
 
 # Cache dos dados
@@ -1548,6 +1548,148 @@ GPCR_FAMILIES = {
     "Class Frizzled": ["FZD1", "FZD2", "FZD3", "FZD4", "FZD5", "FZD6", "FZD7", "FZD8", "FZD9", "SMO"]
 }
 
+GPCR_FAMILIES_COMPLEX = {
+    "5-Hydroxytryptamine receptors": ["HTR1A", "HTR1B", "HTR1D", "HTR1E", "HTR1F", "HTR2A", "HTR2B", "HTR2C", "HTR4", "HTR5A", "HTR6", "HTR7"],
+    "Acetylcholine receptors (Muscarinic)": ["CHRM1", "CHRM2", "CHRM3", "CHRM4", "CHRM5"],
+    "Adrenoceptors": ["ADRA1A", "ADRA1B", "ADRA1D", "ADRA2A", "ADRA2B", "ADRA2C", "ADRB1", "ADRB2", "ADRB3"],
+    "Adenosine receptors": ["ADORA1", "ADORA2A", "ADORA2B", "ADORA3"],
+    "Alpha-Ketoglutarate receptor": ["OXGR1"],
+    "Anaphylatoxin chemotactic receptors": ["C3AR1", "C5AR1", "C5AR2"],
+    "Angiotensin receptors": ["AGTR1", "AGTR2"],
+    "Apelin receptor": ["APLNR"],
+    "Bile acid receptor": ["GPBAR1"],
+    "Bombesin receptors": ["NMBR", "GRPR", "BRS3"],
+    "Bradykinin receptors": ["BDKRB1", "BDKRB2"],
+    "Calcitonin receptors": ["CALCR", "CALCRL"],
+    "Cannabinoid receptors": ["CNR1", "CNR2"],
+    "Chemokine receptors": [
+        "CCR1", "CCR2", "CCR3", "CCR4", "CCR5", "CCR6", "CCR7", "CCR8", "CCR9", "CCR10",
+        "CXCR1", "CXCR2", "CXCR3", "CXCR4", "CXCR5", "CXCR6", "CX3CR1", "XCR1",
+        "ACKR1", "ACKR2", "ACKR3", "ACKR4", "CCRL2"
+    ],
+    "Cholecystokinin receptors": ["CCKAR", "CCKBR"],
+    "Dopamine receptors": ["DRD1", "DRD2", "DRD3", "DRD4", "DRD5"],
+    "Endothelin receptors": ["EDNRA", "EDNRB"],
+    "Formylpeptide receptors": ["FPR1", "FPR2", "FPR3"],
+    "Free fatty acid receptors": ["FFAR1", "FFAR2", "FFAR3", "FFAR4"],
+    "GABA receptors": ["GABBR1", "GABBR2"],
+    "Galanin receptors": ["GALR1", "GALR2", "GALR3"],
+    "Ghrelin receptor": ["GHSR"],
+    "Glucagon receptor family": ["GCGR", "GLP1R", "GLP2R", "GIPR", "GHRHR"],
+    "Glycoprotein hormone receptors": ["FSHR", "LHCGR", "TSHR"],
+    "Gonadotrophin-releasing hormone receptors": ["GNRHR"],
+    "Histamine receptors": ["HRH1", "HRH2", "HRH3", "HRH4"],
+    "Hydroxycarboxylic acid receptors": ["HCAR1", "HCAR2", "HCAR3"],
+    "Kisspeptin receptor": ["KISS1R"],
+    "Leukotriene receptors": ["LTB4R", "LTB4R2", "CYSLTR1", "CYSLTR2"],
+    "Lysophospholipid (LPA) receptors": ["LPAR1", "LPAR2", "LPAR3", "LPAR4", "LPAR5", "LPAR6"],
+    "Lysophospholipid (S1P) receptors": ["S1PR1", "S1PR2", "S1PR3", "S1PR4", "S1PR5"],
+    "Melanin-concentrating hormone receptors": ["MCHR1", "MCHR2"],
+    "Melanocortin receptors": ["MC1R", "MC2R", "MC3R", "MC4R", "MC5R"],
+    "Melatonin receptors": ["MTNR1A", "MTNR1B"],
+    "Motilin receptor": ["MLNR"],
+    "Neuropeptide FF/neuropeptide AF receptors": ["NPFFR1", "NPFFR2"],
+    "Neuropeptide S receptor": ["NPSR1"],
+    "Neuropeptide W/neuropeptide B receptors": ["NPBWR1", "NPBWR2"],
+    "Neuropeptide Y receptors": ["NPY1R", "NPY2R", "NPY4R", "NPY5R"],
+    "Neurotensin receptors": ["NTSR1", "NTSR2"],
+    "Opioid receptors": ["OPRD1", "OPRK1", "OPRM1", "OPRL1"],
+    "Orexin receptors": ["HCRTR1", "HCRTR2"],
+    "P2Y receptors": ["P2RY1", "P2RY2", "P2RY4", "P2RY6", "P2RY8", "P2RY10", "P2RY11", "P2RY12", "P2RY13", "P2RY14"],
+    "Parathyroid hormone receptors": ["PTH1R", "PTH2R"],
+    "Platelet-activating factor receptor": ["PTAFR"],
+    "Prokineticin receptors": ["PROKR1", "PROKR2"],
+    "Prolactin-releasing peptide receptor": ["PRLHR"],
+    "Prostanoid receptors": ["PTGDR", "PTGDR2", "PTGER1", "PTGER2", "PTGER3", "PTGER4", "PTGFR", "PTGIR", "TBXA2R"],
+    "Protease-activated receptors": ["F2R", "F2RL1", "F2RL2", "F2RL3"],
+    "Relaxin family peptide receptors": ["RXFP1", "RXFP2", "RXFP3", "RXFP4"],
+    "Somatostatin receptors": ["SSTR1", "SSTR2", "SSTR3", "SSTR4", "SSTR5"],
+    "Tachykinin receptors": ["TACR1", "TACR2", "TACR3"],
+    "Thyrotropin-releasing hormone receptors": ["TRHR"],
+    "Urotensin receptor": ["UTS2R"],
+    "VIP and PACAP receptors": ["ADCYAP1R1", "VIPR1", "VIPR2"],
+    "Vasopressin and oxytocin receptors": ["AVPR1A", "AVPR1B", "AVPR2", "OXTR"],
+    "Metabotropic glutamate receptors": ["GRM1", "GRM2", "GRM3", "GRM4", "GRM5", "GRM6", "GRM7", "GRM8"],
+    "Taste receptors": [
+        "TAS1R1", "TAS1R2", "TAS1R3", "TAS2R1", "TAS2R10", "TAS2R13", "TAS2R14", "TAS2R16", "TAS2R19",
+        "TAS2R20", "TAS2R3", "TAS2R30", "TAS2R31", "TAS2R38", "TAS2R39", "TAS2R4", "TAS2R40", "TAS2R41",
+        "TAS2R42", "TAS2R43", "TAS2R45", "TAS2R46", "TAS2R5", "TAS2R50", "TAS2R60", "TAS2R7", "TAS2R8", "TAS2R9"
+    ],
+    "Opsins": ["OPN1LW", "OPN1MW", "OPN1SW", "OPN3", "OPN4", "OPN5", "RHO"],
+    "Trace amine-associated receptors": ["TAAR1", "TAAR2", "TAAR5", "TAAR6", "TAAR8", "TAAR9"],
+    "Chelmerin receptors": ["CMKLR1", "CMKLR2"],
+    "Calcium-sensing receptor": ["CASR"],
+    "Corticotropin-releasing factor receptors": ["CRHR1", "CRHR2"],
+    "Neuromedin U receptors": ["NMUR1", "NMUR2"],
+    "Secretin receptor": ["SCTR"],
+    "Leucine-rich repeat-containing GPCRs": ["LGR4", "LGR5", "LGR6"],
+    "Pyroglutamylated RFamide peptide receptor": ["QRFPR"],
+    "Oxoeicosanoid receptor": ["OXER1"],
+    "Succinate receptor": ["SUCNR1"],
+    "Class Frizzled": ["FZD1", "FZD2", "FZD3", "FZD4", "FZD5", "FZD6", "FZD7", "FZD8", "FZD9", "FZD10", "SMO"],
+    "Adhesion GPCRs": [
+        "ADGRA1", "ADGRA2", "ADGRA3", "ADGRB1", "ADGRB2", "ADGRB3", "ADGRD1", "ADGRD2",
+        "ADGRE1", "ADGRE2", "ADGRE3", "ADGRE5", "ADGRF1", "ADGRF3", "ADGRF4", "ADGRF5",
+        "ADGRG1", "ADGRG2", "ADGRG3", "ADGRG4", "ADGRG5", "ADGRG6", "ADGRG7",
+        "ADGRL1", "ADGRL2", "ADGRL3", "ADGRL4", "ADGRV1", "CELSR1", "CELSR2", "CELSR3"
+    ],
+    "Other / Orphan GPCRs": [
+        "GPER1", "GPR101", "GPR107", "GPR119", "GPR12", "GPR132", "GPR135", "GPR137", "GPR139", "GPR141",
+        "GPR142", "GPR143", "GPR146", "GPR148", "GPR149", "GPR15", "GPR150", "GPR151", "GPR152", "GPR153",
+        "GPR156", "GPR157", "GPR158", "GPR160", "GPR161", "GPR162", "GPR17", "GPR171", "GPR173", "GPR174",
+        "GPR176", "GPR179", "GPR18", "GPR182", "GPR183", "GPR19", "GPR20", "GPR21", "GPR22", "GPR25",
+        "GPR26", "GPR27", "GPR3", "GPR31", "GPR32", "GPR33", "GPR34", "GPR35", "GPR37", "GPR37L1",
+        "GPR39", "GPR4", "GPR42", "GPR45", "GPR50", "GPR52", "GPR55", "GPR6", "GPR61", "GPR62",
+        "GPR63", "GPR65", "GPR68", "GPR75", "GPR78", "GPR82", "GPR83", "GPR84", "GPR85", "GPR87",
+        "GPR88", "GPRC5A", "GPRC5B", "GPRC5C", "GPRC5D", "GPRC6A", "MAS1", "MAS1L", "MRGPRD",
+        "MRGPRE", "MRGPRF", "MRGPRG", "MRGPRX1", "MRGPRX2", "MRGPRX3", "MRGPRX4", "TPRA1"
+    ],
+    "Olfactory receptors": [
+        "OR10A2", "OR10A3", "OR10A4", "OR10A5", "OR10A6", "OR10A7", "OR10AC1", "OR10AD1", "OR10AG1", "OR10C1",
+        "OR10G2", "OR10G3", "OR10G4", "OR10G6", "OR10G7", "OR10G8", "OR10G9", "OR10H1", "OR10H2", "OR10H3",
+        "OR10H4", "OR10H5", "OR10J1", "OR10J3", "OR10J4", "OR10J5", "OR10K1", "OR10K2", "OR10P1", "OR10Q1",
+        "OR10R2", "OR10S1", "OR10T2", "OR10V1", "OR10W1", "OR10X1", "OR10Z1", "OR11A1", "OR11G2", "OR11H1",
+        "OR11H12", "OR11H2", "OR11H4", "OR11H6", "OR11H7", "OR11L1", "OR12D1", "OR12D2", "OR12D3", "OR13A1",
+        "OR13C2", "OR13C3", "OR13C4", "OR13C5", "OR13C7", "OR13C8", "OR13C9", "OR13D1", "OR13F1", "OR13G1",
+        "OR13H1", "OR13J1", "OR14A16", "OR14A2", "OR14C36", "OR14I1", "OR14J1", "OR14K1", "OR14L1P", "OR1A1",
+        "OR1A2", "OR1B1", "OR1C1", "OR1D2", "OR1D4", "OR1D5", "OR1E1", "OR1E2", "OR1E3", "OR1F1", "OR1G1",
+        "OR1I1", "OR1J1", "OR1J2", "OR1J4", "OR1K1", "OR1L1", "OR1L3", "OR1L4", "OR1L6", "OR1L8", "OR1M1",
+        "OR1N1", "OR1N2", "OR1P1", "OR1Q1", "OR1S1", "OR1S2", "OR2A12", "OR2A14", "OR2A2", "OR2A25", "OR2A4",
+        "OR2A42", "OR2A5", "OR2A7", "OR2AE1", "OR2AG1", "OR2AG2", "OR2AJ1", "OR2AK2", "OR2AP1", "OR2AT4",
+        "OR2B11", "OR2B2", "OR2B3", "OR2B6", "OR2C1", "OR2C3", "OR2D2", "OR2D3", "OR2F1", "OR2F2", "OR2G2",
+        "OR2G3", "OR2G6", "OR2H1", "OR2H2", "OR2J1", "OR2J2", "OR2J3", "OR2K2", "OR2L13", "OR2L2", "OR2L3",
+        "OR2L5", "OR2L8", "OR2M2", "OR2M3", "OR2M4", "OR2M5", "OR2M7", "OR2S2", "OR2T1", "OR2T10", "OR2T11",
+        "OR2T12", "OR2T2", "OR2T27", "OR2T29", "OR2T3", "OR2T33", "OR2T34", "OR2T35", "OR2T4", "OR2T5",
+        "OR2T6", "OR2T7", "OR2T8", "OR2V1", "OR2V2", "OR2W1", "OR2W3", "OR2Y1", "OR2Z1", "OR3A1", "OR3A2",
+        "OR3A3", "OR4A15", "OR4A16", "OR4A47", "OR4A5", "OR4A8", "OR4B1", "OR4C11", "OR4C12", "OR4C13",
+        "OR4C15", "OR4C16", "OR4C3", "OR4C45", "OR4C46", "OR4C5", "OR4C6", "OR4D1", "OR4D10", "OR4D11",
+        "OR4D2", "OR4D5", "OR4D6", "OR4D9", "OR4E1", "OR4E2", "OR4F15", "OR4F17", "OR4F21", "OR4F29",
+        "OR4F4", "OR4F5", "OR4F6", "OR4K1", "OR4K13", "OR4K14", "OR4K15", "OR4K17", "OR4K2", "OR4K3",
+        "OR4K5", "OR4L1", "OR4M2", "OR4M2B", "OR4N2", "OR4N4", "OR4N4C", "OR4N5", "OR4P4", "OR4Q2",
+        "OR4Q3", "OR4S1", "OR4S2", "OR4X1", "OR4X2", "OR51A2", "OR51A4", "OR51A7", "OR51B2", "OR51B4",
+        "OR51B5", "OR51B6", "OR51D1", "OR51E1", "OR51E2", "OR51F1", "OR51F2", "OR51G1", "OR51G2",
+        "OR51H1", "OR51I1", "OR51I2", "OR51J1", "OR51L1", "OR51M1", "OR51Q1", "OR51S1", "OR51T1",
+        "OR51V1", "OR52A1", "OR52A4P", "OR52A5", "OR52B2", "OR52B4", "OR52B6", "OR52D1", "OR52E1",
+        "OR52E2", "OR52E4", "OR52E5", "OR52E6", "OR52E8", "OR52H1", "OR52I1", "OR52I2", "OR52J3",
+        "OR52K1", "OR52K2", "OR52L1", "OR52M1", "OR52N1", "OR52N2", "OR52N4", "OR52N5", "OR52P1",
+        "OR52R1", "OR52W1", "OR52Z1P", "OR56A1", "OR56A3", "OR56A4", "OR56A5", "OR56B1", "OR56B4",
+        "OR5A1", "OR5A2", "OR5AC1", "OR5AC2", "OR5AK2", "OR5AL1", "OR5AN1", "OR5AP2", "OR5AR1",
+        "OR5AS1", "OR5AU1", "OR5B12", "OR5B17", "OR5B2", "OR5B21", "OR5B3", "OR5C1", "OR5D13",
+        "OR5D14", "OR5D16", "OR5D18", "OR5F1", "OR5G3", "OR5H1", "OR5H14", "OR5H15", "OR5H2",
+        "OR5H6", "OR5H8", "OR5I1", "OR5J2", "OR5K1", "OR5K2", "OR5K3", "OR5K4", "OR5L1", "OR5L2",
+        "OR5M1", "OR5M10", "OR5M11", "OR5M3", "OR5M8", "OR5M9", "OR5P2", "OR5P3", "OR5T1", "OR5T2",
+        "OR5T3", "OR5V1", "OR5W2", "OR6A2", "OR6B1", "OR6B2", "OR6B3", "OR6C1", "OR6C2", "OR6C3",
+        "OR6C4", "OR6C6", "OR6C65", "OR6C68", "OR6C70", "OR6C74", "OR6C75", "OR6C76", "OR6F1",
+        "OR6J1", "OR6K2", "OR6K3", "OR6K6", "OR6M1", "OR6N1", "OR6N2", "OR6P1", "OR6Q1", "OR6S1",
+        "OR6T1", "OR6V1", "OR6X1", "OR6Y1", "OR7A10", "OR7A17", "OR7A5", "OR7C1", "OR7C2", "OR7D2",
+        "OR7D4", "OR7E24", "OR7G1", "OR7G2", "OR7G3", "OR8A1", "OR8B12", "OR8B2", "OR8B3", "OR8B4",
+        "OR8B8", "OR8D1", "OR8D2", "OR8D4", "OR8G1", "OR8G5", "OR8H1", "OR8H2", "OR8H3", "OR8I2",
+        "OR8J1", "OR8J2", "OR8J3", "OR8K1", "OR8K3", "OR8K5", "OR8S1", "OR8U1", "OR8U3", "OR8U8",
+        "OR8U9", "OR9A1P", "OR9A2", "OR9A4", "OR9G1", "OR9G4", "OR9G9", "OR9I1", "OR9K2", "OR9Q1",
+        "OR9Q2"
+    ]
+}
+
 
 @app.route('/api/receptors', methods=['GET'])
 def get_receptors():
@@ -1567,6 +1709,696 @@ def get_receptors():
                     common_name = ""
                     if m in GPCR_METADATA and 'cn' in GPCR_METADATA[m]:
                         common_name = str(GPCR_METADATA[m]['cn']).strip()
+
+                    short_name = PROTEIN_NAMES.get(m, "")
+
+                    full_search_text = f"{m} {short_name} {common_name}"
+
+                    coupling_info = COUPLING_DATA.get(m, [])
+
+                    present_members.append({
+                        "id": m,
+                        "text": m,
+                        "protein": short_name,
+                        "desc": common_name,
+                        "search_text": full_search_text,
+                        "coupling": coupling_info
+                    })
+
+            if present_members:
+                organized_data[family] = present_members
+
+        return jsonify(organized_data)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/receptors-complex', methods=['GET'])
+def get_receptors_complex():
+    try:
+        GPCR_METADATA['ACKR1'] = {'acc': 'Q16570', 'cn': ' Atypical chemokine receptor 1 '}
+        GPCR_METADATA['ACKR2'] = {'acc': 'O00590', 'cn': ' Atypical chemokine receptor 2 '}
+        GPCR_METADATA['ACKR3'] = {'acc': 'P25106', 'cn': ' Atypical chemokine receptor 3 '}
+        GPCR_METADATA['ACKR4'] = {'acc': 'Q9NPB9', 'cn': ' Atypical chemokine receptor 4 '}
+        GPCR_METADATA['ADGRA1'] = {'acc': 'Q86SQ6', 'cn': ' Adhesion G protein-coupled receptor A1 '}
+        GPCR_METADATA['ADGRA2'] = {'acc': 'Q96PE1', 'cn': ' Adhesion G protein-coupled receptor A2 '}
+        GPCR_METADATA['ADGRA3'] = {'acc': 'Q8IWK6', 'cn': ' Adhesion G protein-coupled receptor A3 '}
+        GPCR_METADATA['ADGRB1'] = {'acc': 'O14514', 'cn': ' Adhesion G protein-coupled receptor B1 '}
+        GPCR_METADATA['ADGRB2'] = {'acc': 'O60241', 'cn': ' Adhesion G protein-coupled receptor B2 '}
+        GPCR_METADATA['ADGRB3'] = {'acc': 'O60242', 'cn': ' Adhesion G protein-coupled receptor B3 '}
+        GPCR_METADATA['ADGRD1'] = {'acc': 'Q6QNK2', 'cn': ' Adhesion G-protein coupled receptor D1 '}
+        GPCR_METADATA['ADGRD2'] = {'acc': 'Q7Z7M1', 'cn': ' Adhesion G protein-coupled receptor D2 '}
+        GPCR_METADATA['ADGRE1'] = {'acc': 'Q14246', 'cn': ' Adhesion G protein-coupled receptor E1 '}
+        GPCR_METADATA['ADGRE2'] = {'acc': 'Q9UHX3', 'cn': ' Adhesion G protein-coupled receptor E2 '}
+        GPCR_METADATA['ADGRE3'] = {'acc': 'Q9BY15', 'cn': ' Adhesion G protein-coupled receptor E3 '}
+        GPCR_METADATA['ADGRE5'] = {'acc': 'P48960', 'cn': ' Adhesion G protein-coupled receptor E5 '}
+        GPCR_METADATA['ADGRF1'] = {'acc': 'Q5T601', 'cn': ' Adhesion G-protein coupled receptor F1 '}
+        GPCR_METADATA['ADGRF3'] = {'acc': 'Q8IZF5', 'cn': ' Adhesion G-protein coupled receptor F3 '}
+        GPCR_METADATA['ADGRF4'] = {'acc': 'Q8IZF3', 'cn': ' Adhesion G protein-coupled receptor F4 '}
+        GPCR_METADATA['ADGRF5'] = {'acc': 'Q8IZF2', 'cn': ' Adhesion G protein-coupled receptor F5 '}
+        GPCR_METADATA['ADGRG1'] = {'acc': 'Q9Y653', 'cn': ' Adhesion G-protein coupled receptor G1 '}
+        GPCR_METADATA['ADGRG2'] = {'acc': 'Q8IZP9', 'cn': ' Adhesion G-protein coupled receptor G2 '}
+        GPCR_METADATA['ADGRG3'] = {'acc': 'Q86Y34', 'cn': ' Adhesion G protein-coupled receptor G3 '}
+        GPCR_METADATA['ADGRG4'] = {'acc': 'Q8IZF6', 'cn': ' Adhesion G-protein coupled receptor G4 '}
+        GPCR_METADATA['ADGRG5'] = {'acc': 'Q8IZF4', 'cn': ' Adhesion G-protein coupled receptor G5 '}
+        GPCR_METADATA['ADGRG6'] = {'acc': 'Q86SQ4', 'cn': ' Adhesion G-protein coupled receptor G6 '}
+        GPCR_METADATA['ADGRG7'] = {'acc': 'Q96K78', 'cn': ' Adhesion G-protein coupled receptor G7 '}
+        GPCR_METADATA['ADGRL1'] = {'acc': 'O94910', 'cn': ' Adhesion G protein-coupled receptor L1 '}
+        GPCR_METADATA['ADGRL2'] = {'acc': 'O95490', 'cn': ' Adhesion G protein-coupled receptor L2 '}
+        GPCR_METADATA['ADGRL3'] = {'acc': 'Q9HAR2', 'cn': ' Adhesion G protein-coupled receptor L3 '}
+        GPCR_METADATA['ADGRL4'] = {'acc': 'Q9HBW9', 'cn': ' Adhesion G protein-coupled receptor L4 '}
+        GPCR_METADATA['ADGRV1'] = {'acc': 'Q8WXG9', 'cn': ' Adhesion G-protein coupled receptor V1 '}
+        GPCR_METADATA['AGTR2'] = {'acc': 'P50052', 'cn': ' Type-2 angiotensin II receptor '}
+        GPCR_METADATA['BRS3'] = {'acc': 'P32247', 'cn': ' Bombesin receptor subtype-3 '}
+        GPCR_METADATA['C3AR1'] = {'acc': 'Q16581', 'cn': ' C3a anaphylatoxin chemotactic receptor '}
+        GPCR_METADATA['C5AR1'] = {'acc': 'P21730', 'cn': ' C5a anaphylatoxin chemotactic receptor 1 '}
+        GPCR_METADATA['C5AR2'] = {'acc': 'Q9P296', 'cn': ' C5a anaphylatoxin chemotactic receptor 2 '}
+        GPCR_METADATA['CALCR'] = {'acc': 'P30988', 'cn': ' Calcitonin receptor '}
+        GPCR_METADATA['CALCRL'] = {'acc': 'Q16602', 'cn': ' Calcitonin gene-related peptide type 1 receptor '}
+        GPCR_METADATA['CASR'] = {'acc': 'P41180', 'cn': ' Extracellular calcium-sensing receptor '}
+        GPCR_METADATA['CCR1'] = {'acc': 'P32246', 'cn': ' C-C chemokine receptor type 1 '}
+        GPCR_METADATA['CCR10'] = {'acc': 'P46092', 'cn': ' C-C chemokine receptor type 10 '}
+        GPCR_METADATA['CCR2'] = {'acc': 'P41597', 'cn': ' C-C chemokine receptor type 2 '}
+        GPCR_METADATA['CCR3'] = {'acc': 'P51677', 'cn': ' C-C chemokine receptor type 3 '}
+        GPCR_METADATA['CCR4'] = {'acc': 'P51679', 'cn': ' C-C chemokine receptor type 4 '}
+        GPCR_METADATA['CCR5'] = {'acc': 'P51681', 'cn': ' C-C chemokine receptor type 5 '}
+        GPCR_METADATA['CCR6'] = {'acc': 'P51684', 'cn': ' C-C chemokine receptor type 6 '}
+        GPCR_METADATA['CCR7'] = {'acc': 'P32248', 'cn': ' C-C chemokine receptor type 7 '}
+        GPCR_METADATA['CCR8'] = {'acc': 'P51685', 'cn': ' C-C chemokine receptor type 8 '}
+        GPCR_METADATA['CCR9'] = {'acc': 'P51686', 'cn': ' C-C chemokine receptor type 9 '}
+        GPCR_METADATA['CCRL2'] = {'acc': 'O00421', 'cn': ' C-C chemokine receptor-like 2 '}
+        GPCR_METADATA['CELSR1'] = {'acc': 'Q9NYQ6', 'cn': ' Cadherin EGF LAG seven-pass G-type receptor 1 '}
+        GPCR_METADATA['CELSR2'] = {'acc': 'Q9HCU4', 'cn': ' Cadherin EGF LAG seven-pass G-type receptor 2 '}
+        GPCR_METADATA['CELSR3'] = {'acc': 'Q9NYQ7', 'cn': ' Cadherin EGF LAG seven-pass G-type receptor 3 '}
+        GPCR_METADATA['CMKLR1'] = {'acc': 'Q99788', 'cn': ' Chemerin-like receptor 1 '}
+        GPCR_METADATA['CMKLR2'] = {'acc': 'P46091', 'cn': ' Chemerin-like receptor 2 '}
+        GPCR_METADATA['CRHR1'] = {'acc': 'P34998', 'cn': ' Corticotropin-releasing factor receptor 1 '}
+        GPCR_METADATA['CRHR2'] = {'acc': 'Q13324', 'cn': ' Corticotropin-releasing factor receptor 2 '}
+        GPCR_METADATA['CX3CR1'] = {'acc': 'P49238', 'cn': ' CX3C chemokine receptor 1 '}
+        GPCR_METADATA['CXCR1'] = {'acc': 'P25024', 'cn': ' C-X-C chemokine receptor type 1 '}
+        GPCR_METADATA['CXCR2'] = {'acc': 'P25025', 'cn': ' C-X-C chemokine receptor type 2 '}
+        GPCR_METADATA['CXCR3'] = {'acc': 'P49682', 'cn': ' C-X-C chemokine receptor type 3 '}
+        GPCR_METADATA['CXCR4'] = {'acc': 'P61073', 'cn': ' C-X-C chemokine receptor type 4 '}
+        GPCR_METADATA['CXCR5'] = {'acc': 'P32302', 'cn': ' C-X-C chemokine receptor type 5 '}
+        GPCR_METADATA['CXCR6'] = {'acc': 'O00574', 'cn': ' C-X-C chemokine receptor type 6 '}
+        GPCR_METADATA['FPR3'] = {'acc': 'P25089', 'cn': ' N-formyl peptide receptor 3 '}
+        GPCR_METADATA['FSHR'] = {'acc': 'P23945', 'cn': ' Follicle-stimulating hormone receptor '}
+        GPCR_METADATA['FZD1'] = {'acc': 'Q9UP38', 'cn': ' Frizzled-1 '}
+        GPCR_METADATA['FZD10'] = {'acc': 'Q9ULW2', 'cn': ' Frizzled-10 '}
+        GPCR_METADATA['FZD2'] = {'acc': 'Q14332', 'cn': ' Frizzled-2 '}
+        GPCR_METADATA['FZD3'] = {'acc': 'Q9NPG1', 'cn': ' Frizzled-3 '}
+        GPCR_METADATA['FZD4'] = {'acc': 'Q9ULV1', 'cn': ' Frizzled-4 '}
+        GPCR_METADATA['FZD5'] = {'acc': 'Q13467', 'cn': ' Frizzled-5 '}
+        GPCR_METADATA['FZD6'] = {'acc': 'O60353', 'cn': ' Frizzled-6 '}
+        GPCR_METADATA['FZD7'] = {'acc': 'O75084', 'cn': ' Frizzled-7 '}
+        GPCR_METADATA['FZD8'] = {'acc': 'Q9H461', 'cn': ' Frizzled-8 '}
+        GPCR_METADATA['FZD9'] = {'acc': 'O00144', 'cn': ' Frizzled-9 '}
+        GPCR_METADATA['GABBR1'] = {'acc': 'Q9UBS5', 'cn': ' Gamma-aminobutyric acid type B receptor subunit 1 '}
+        GPCR_METADATA['GABBR2'] = {'acc': 'O75899', 'cn': ' Gamma-aminobutyric acid type B receptor subunit 2 '}
+        GPCR_METADATA['GCGR'] = {'acc': 'P47871', 'cn': ' Glucagon receptor '}
+        GPCR_METADATA['GHRHR'] = {'acc': 'Q02643', 'cn': ' Growth hormone-releasing hormone receptor '}
+        GPCR_METADATA['GLP1R'] = {'acc': 'P43220', 'cn': ' Glucagon-like peptide 1 receptor '}
+        GPCR_METADATA['GLP2R'] = {'acc': 'O95838', 'cn': ' Glucagon-like peptide 2 receptor '}
+        GPCR_METADATA['GPBAR1'] = {'acc': 'Q8TDU6', 'cn': ' G-protein coupled bile acid receptor 1 '}
+        GPCR_METADATA['GPER1'] = {'acc': 'Q99527', 'cn': ' G-protein coupled estrogen receptor 1 '}
+        GPCR_METADATA['GPR101'] = {'acc': 'Q96P66', 'cn': ' Probable G-protein coupled receptor 101 '}
+        GPCR_METADATA['GPR107'] = {'acc': 'Q5VW38', 'cn': ' Protein GPR107 '}
+        GPCR_METADATA['GPR12'] = {'acc': 'P47775', 'cn': ' G-protein coupled receptor 12 '}
+        GPCR_METADATA['GPR135'] = {'acc': 'Q8IZ08', 'cn': ' G-protein coupled receptor 135 '}
+        GPCR_METADATA['GPR137'] = {'acc': 'Q96N19', 'cn': ' Integral membrane protein GPR137 '}
+        GPCR_METADATA['GPR139'] = {'acc': 'Q6DWJ6', 'cn': ' Probable G-protein coupled receptor 139 '}
+        GPCR_METADATA['GPR141'] = {'acc': 'Q7Z602', 'cn': ' Probable G-protein coupled receptor 141 '}
+        GPCR_METADATA['GPR142'] = {'acc': 'Q7Z601', 'cn': ' G protein-coupled receptor 142 '}
+        GPCR_METADATA['GPR143'] = {'acc': 'P51810', 'cn': ' G-protein coupled receptor 143 '}
+        GPCR_METADATA['GPR146'] = {'acc': 'Q96CH1', 'cn': ' G-protein coupled receptor 146 '}
+        GPCR_METADATA['GPR148'] = {'acc': 'Q8TDV2', 'cn': ' Probable G-protein coupled receptor 148 '}
+        GPCR_METADATA['GPR149'] = {'acc': 'Q86SP6', 'cn': ' Probable G-protein coupled receptor 149 '}
+        GPCR_METADATA['GPR15'] = {'acc': 'P49685', 'cn': ' G-protein coupled receptor 15 '}
+        GPCR_METADATA['GPR150'] = {'acc': 'Q8NGU9', 'cn': ' Probable G-protein coupled receptor 150 '}
+        GPCR_METADATA['GPR151'] = {'acc': 'Q8TDV0', 'cn': ' G-protein coupled receptor 151 '}
+        GPCR_METADATA['GPR152'] = {'acc': 'Q8TDT2', 'cn': ' Probable G-protein coupled receptor 152 '}
+        GPCR_METADATA['GPR153'] = {'acc': 'Q6NV75', 'cn': ' Probable G-protein coupled receptor 153 '}
+        GPCR_METADATA['GPR156'] = {'acc': 'Q8NFN8', 'cn': ' Probable G-protein coupled receptor 156 '}
+        GPCR_METADATA['GPR157'] = {'acc': 'Q5UAW9', 'cn': ' G-protein coupled receptor 157 '}
+        GPCR_METADATA['GPR158'] = {'acc': 'Q5T848', 'cn': ' Metabotropic glycine receptor '}
+        GPCR_METADATA['GPR160'] = {'acc': 'Q9UJ42', 'cn': ' Probable G-protein coupled receptor 160 '}
+        GPCR_METADATA['GPR161'] = {'acc': 'Q8N6U8', 'cn': ' G-protein coupled receptor 161 '}
+        GPCR_METADATA['GPR162'] = {'acc': 'Q16538', 'cn': ' Probable G-protein coupled receptor 162 '}
+        GPCR_METADATA['GPR171'] = {'acc': 'O14626', 'cn': ' G-protein coupled receptor 171 '}
+        GPCR_METADATA['GPR173'] = {'acc': 'Q9NS66', 'cn': ' Probable G-protein coupled receptor 173 '}
+        GPCR_METADATA['GPR176'] = {'acc': 'Q14439', 'cn': ' G-protein coupled receptor 176 '}
+        GPCR_METADATA['GPR179'] = {'acc': 'Q6PRD1', 'cn': ' Probable G-protein coupled receptor 179 '}
+        GPCR_METADATA['GPR18'] = {'acc': 'Q14330', 'cn': ' N-arachidonyl glycine receptor '}
+        GPCR_METADATA['GPR182'] = {'acc': 'O15218', 'cn': ' Atypical chemokine receptor 5 '}
+        GPCR_METADATA['GPR19'] = {'acc': 'Q15760', 'cn': ' Probable G-protein coupled receptor 19 '}
+        GPCR_METADATA['GPR20'] = {'acc': 'Q99678', 'cn': ' G-protein coupled receptor 20 '}
+        GPCR_METADATA['GPR21'] = {'acc': 'Q99679', 'cn': ' Probable G-protein coupled receptor 21 '}
+        GPCR_METADATA['GPR22'] = {'acc': 'Q99680', 'cn': ' G-protein coupled receptor 22 '}
+        GPCR_METADATA['GPR25'] = {'acc': 'O00155', 'cn': ' C-X-C chemokine receptor GPR25 '}
+        GPCR_METADATA['GPR26'] = {'acc': 'Q8NDV2', 'cn': ' G-protein coupled receptor 26 '}
+        GPCR_METADATA['GPR27'] = {'acc': 'Q9NS67', 'cn': ' Probable G-protein coupled receptor 27 '}
+        GPCR_METADATA['GPR3'] = {'acc': 'P46089', 'cn': ' G-protein coupled receptor 3 '}
+        GPCR_METADATA['GPR31'] = {'acc': 'O00270', 'cn': ' 12-(S)-hydroxy-5,8,10,14-eicosatetraenoic acid receptor '}
+        GPCR_METADATA['GPR32'] = {'acc': 'O75388', 'cn': ' Probable G-protein coupled receptor 32 '}
+        GPCR_METADATA['GPR33'] = {'acc': 'Q49SQ1', 'cn': ' Probable G-protein coupled receptor 33 '}
+        GPCR_METADATA['GPR37'] = {'acc': 'O15354', 'cn': ' Prosaposin receptor GPR37 '}
+        GPCR_METADATA['GPR37L1'] = {'acc': 'O60883', 'cn': ' G-protein coupled receptor 37-like 1 '}
+        GPCR_METADATA['GPR39'] = {'acc': 'O43194', 'cn': ' G-protein coupled receptor 39 '}
+        GPCR_METADATA['GPR4'] = {'acc': 'P46093', 'cn': ' G-protein coupled receptor 4 '}
+        GPCR_METADATA['GPR42'] = {'acc': 'O15529', 'cn': ' G-protein coupled receptor 42 '}
+        GPCR_METADATA['GPR45'] = {'acc': 'Q9Y5Y3', 'cn': ' Probable G-protein coupled receptor 45 '}
+        GPCR_METADATA['GPR50'] = {'acc': 'Q13585', 'cn': ' Melatonin-related receptor '}
+        GPCR_METADATA['GPR52'] = {'acc': 'Q9Y2T5', 'cn': ' G-protein coupled receptor 52 '}
+        GPCR_METADATA['GPR6'] = {'acc': 'P46095', 'cn': ' G-protein coupled receptor 6 '}
+        GPCR_METADATA['GPR61'] = {'acc': 'Q9BZJ8', 'cn': ' G-protein coupled receptor 61 '}
+        GPCR_METADATA['GPR62'] = {'acc': 'Q9BZJ7', 'cn': ' G-protein coupled receptor 62 '}
+        GPCR_METADATA['GPR63'] = {'acc': 'Q9BZJ6', 'cn': ' Probable G-protein coupled receptor 63 '}
+        GPCR_METADATA['GPR65'] = {'acc': 'Q8IYL9', 'cn': ' G-protein coupled receptor 65 '}
+        GPCR_METADATA['GPR68'] = {'acc': 'Q15743', 'cn': ' G-protein coupled receptor 68 '}
+        GPCR_METADATA['GPR75'] = {'acc': 'O95800', 'cn': ' Probable G-protein coupled receptor 75 '}
+        GPCR_METADATA['GPR78'] = {'acc': 'Q96P69', 'cn': ' G-protein coupled receptor 78 '}
+        GPCR_METADATA['GPR82'] = {'acc': 'Q96P67', 'cn': ' Probable G-protein coupled receptor 82 '}
+        GPCR_METADATA['GPR83'] = {'acc': 'Q9NYM4', 'cn': ' G-protein coupled receptor 83 '}
+        GPCR_METADATA['GPR85'] = {'acc': 'P60893', 'cn': ' Probable G-protein coupled receptor 85 '}
+        GPCR_METADATA['GPR87'] = {'acc': 'Q9BY21', 'cn': ' G-protein coupled receptor 87 '}
+        GPCR_METADATA['GPR88'] = {'acc': 'Q9GZN0', 'cn': ' G protein-coupled receptor 88 '}
+        GPCR_METADATA['GPRC5A'] = {'acc': 'Q8NFJ5', 'cn': ' Retinoic acid-induced protein 3 '}
+        GPCR_METADATA['GPRC5B'] = {'acc': 'Q9NZH0', 'cn': ' G-protein coupled receptor family C group 5 member B '}
+        GPCR_METADATA['GPRC5C'] = {'acc': 'Q9NQ84', 'cn': ' G-protein coupled receptor family C group 5 member C '}
+        GPCR_METADATA['GPRC5D'] = {'acc': 'Q9NZD1', 'cn': ' G-protein coupled receptor family C group 5 member D '}
+        GPCR_METADATA['GPRC6A'] = {'acc': 'Q5T6X5', 'cn': ' G-protein coupled receptor family C group 6 member A '}
+        GPCR_METADATA['GRM1'] = {'acc': 'Q13255', 'cn': ' Metabotropic glutamate receptor 1 '}
+        GPCR_METADATA['GRM2'] = {'acc': 'Q14416', 'cn': ' Metabotropic glutamate receptor 2 '}
+        GPCR_METADATA['GRM3'] = {'acc': 'Q14832', 'cn': ' Metabotropic glutamate receptor 3 '}
+        GPCR_METADATA['GRM4'] = {'acc': 'Q14833', 'cn': ' Metabotropic glutamate receptor 4 '}
+        GPCR_METADATA['GRM5'] = {'acc': 'P41594', 'cn': ' Metabotropic glutamate receptor 5 '}
+        GPCR_METADATA['GRM6'] = {'acc': 'O15303', 'cn': ' Metabotropic glutamate receptor 6 '}
+        GPCR_METADATA['GRM7'] = {'acc': 'Q14831', 'cn': ' Metabotropic glutamate receptor 7 '}
+        GPCR_METADATA['GRM8'] = {'acc': 'O00222', 'cn': ' Metabotropic glutamate receptor 8 '}
+        GPCR_METADATA['HCAR1'] = {'acc': 'Q9BXC0', 'cn': ' Hydroxycarboxylic acid receptor 1 '}
+        GPCR_METADATA['HCAR2'] = {'acc': 'Q8TDS4', 'cn': ' Hydroxycarboxylic acid receptor 2 '}
+        GPCR_METADATA['HCAR3'] = {'acc': 'P49019', 'cn': ' Hydroxycarboxylic acid receptor 3 '}
+        GPCR_METADATA['HTR5A'] = {'acc': 'P47898', 'cn': ' 5-hydroxytryptamine receptor 5A '}
+        GPCR_METADATA['LGR4'] = {'acc': 'Q9BXB1', 'cn': ' Leucine-rich repeat-containing G-protein coupled receptor 4 '}
+        GPCR_METADATA['LGR5'] = {'acc': 'O75473', 'cn': ' Leucine-rich repeat-containing G-protein coupled receptor 5 '}
+        GPCR_METADATA['LGR6'] = {'acc': 'Q9HBX8', 'cn': ' Leucine-rich repeat-containing G-protein coupled receptor 6 '}
+        GPCR_METADATA['LHCGR'] = {'acc': 'P22888', 'cn': ' Lutropin-choriogonadotropic hormone receptor '}
+        GPCR_METADATA['MAS1'] = {'acc': 'P04201', 'cn': ' Proto-oncogene Mas '}
+        GPCR_METADATA['MAS1L'] = {'acc': 'P35410', 'cn': ' Mas-related G-protein coupled receptor MRG '}
+        GPCR_METADATA['MC2R'] = {'acc': 'Q01718', 'cn': ' Adrenocorticotropic hormone receptor '}
+        GPCR_METADATA['MRGPRD'] = {'acc': 'Q8TDS7', 'cn': ' Mas-related G-protein coupled receptor member D '}
+        GPCR_METADATA['MRGPRE'] = {'acc': 'Q86SM8', 'cn': ' Mas-related G-protein coupled receptor member E '}
+        GPCR_METADATA['MRGPRF'] = {'acc': 'Q96AM1', 'cn': ' Mas-related G-protein coupled receptor member F '}
+        GPCR_METADATA['MRGPRG'] = {'acc': 'Q86SM5', 'cn': ' Mas-related G-protein coupled receptor member G '}
+        GPCR_METADATA['MRGPRX3'] = {'acc': 'Q96LB0', 'cn': ' Mas-related G-protein coupled receptor member X3 '}
+        GPCR_METADATA['MRGPRX4'] = {'acc': 'Q96LA9', 'cn': ' Mas-related G-protein coupled receptor member X4 '}
+        GPCR_METADATA['NPBWR2'] = {'acc': 'P48146', 'cn': ' Neuropeptides B/W receptor type 2 '}
+        GPCR_METADATA['NPSR1'] = {'acc': 'Q6W5P4', 'cn': ' Neuropeptide S receptor '}
+        GPCR_METADATA['NPY1R'] = {'acc': 'P25929', 'cn': ' Neuropeptide Y receptor type 1 '}
+        GPCR_METADATA['NPY2R'] = {'acc': 'P49146', 'cn': ' Neuropeptide Y receptor type 2 '}
+        GPCR_METADATA['NPY4R'] = {'acc': 'P50391', 'cn': ' Neuropeptide Y receptor type 4 '}
+        GPCR_METADATA['NPY5R'] = {'acc': 'Q15761', 'cn': ' Neuropeptide Y receptor type 5 '}
+        GPCR_METADATA['NTSR1'] = {'acc': 'P30989', 'cn': ' Neurotensin receptor type 1 '}
+        GPCR_METADATA['NTSR2'] = {'acc': 'O95665', 'cn': ' Neurotensin receptor type 2 '}
+        GPCR_METADATA['OPN1LW'] = {'acc': 'P04000', 'cn': ' Long-wave-sensitive opsin 1 '}
+        GPCR_METADATA['OPN1MW'] = {'acc': 'P04001', 'cn': ' Medium-wave-sensitive opsin 1 '}
+        GPCR_METADATA['OPN1SW'] = {'acc': 'P03999', 'cn': ' Short-wave-sensitive opsin 1 '}
+        GPCR_METADATA['OPN3'] = {'acc': 'Q9H1Y3', 'cn': ' Opsin-3 '}
+        GPCR_METADATA['OPN4'] = {'acc': 'Q9UHM6', 'cn': ' Melanopsin '}
+        GPCR_METADATA['OPN5'] = {'acc': 'Q6U736', 'cn': ' Opsin-5 '}
+        GPCR_METADATA['OR10A2'] = {'acc': 'Q9H208', 'cn': ' Olfactory receptor 10A2 '}
+        GPCR_METADATA['OR10A3'] = {'acc': 'P58181', 'cn': ' Olfactory receptor 10A3 '}
+        GPCR_METADATA['OR10A4'] = {'acc': 'Q9H209', 'cn': ' Olfactory receptor 10A4 '}
+        GPCR_METADATA['OR10A5'] = {'acc': 'Q9H207', 'cn': ' Olfactory receptor 10A5 '}
+        GPCR_METADATA['OR10A6'] = {'acc': 'Q8NH74', 'cn': ' Olfactory receptor 10A6 '}
+        GPCR_METADATA['OR10A7'] = {'acc': 'Q8NGE5', 'cn': ' Olfactory receptor 10A7 '}
+        GPCR_METADATA['OR10AC1'] = {'acc': 'Q8NH08', 'cn': ' Olfactory receptor 10AC1 '}
+        GPCR_METADATA['OR10AD1'] = {'acc': 'Q8NGE0', 'cn': ' Olfactory receptor 10AD1 '}
+        GPCR_METADATA['OR10AG1'] = {'acc': 'Q8NH19', 'cn': ' Olfactory receptor 10AG1 '}
+        GPCR_METADATA['OR10C1'] = {'acc': 'Q96KK4', 'cn': ' Olfactory receptor 10C1 '}
+        GPCR_METADATA['OR10G2'] = {'acc': 'Q8NGC3', 'cn': ' Olfactory receptor 10G2 '}
+        GPCR_METADATA['OR10G3'] = {'acc': 'Q8NGC4', 'cn': ' Olfactory receptor 10G3 '}
+        GPCR_METADATA['OR10G4'] = {'acc': 'Q8NGN3', 'cn': ' Olfactory receptor 10G4 '}
+        GPCR_METADATA['OR10G6'] = {'acc': 'Q8NH81', 'cn': ' Olfactory receptor 10G6 '}
+        GPCR_METADATA['OR10G7'] = {'acc': 'Q8NGN6', 'cn': ' Olfactory receptor 10G7 '}
+        GPCR_METADATA['OR10G8'] = {'acc': 'Q8NGN5', 'cn': ' Olfactory receptor 10G8 '}
+        GPCR_METADATA['OR10G9'] = {'acc': 'Q8NGN4', 'cn': ' Olfactory receptor 10G9 '}
+        GPCR_METADATA['OR10H1'] = {'acc': 'Q9Y4A9', 'cn': ' Olfactory receptor 10H1 '}
+        GPCR_METADATA['OR10H2'] = {'acc': 'O60403', 'cn': ' Olfactory receptor 10H2 '}
+        GPCR_METADATA['OR10H3'] = {'acc': 'O60404', 'cn': ' Olfactory receptor 10H3 '}
+        GPCR_METADATA['OR10H4'] = {'acc': 'Q8NGA5', 'cn': ' Olfactory receptor 10H4 '}
+        GPCR_METADATA['OR10H5'] = {'acc': 'Q8NGA6', 'cn': ' Olfactory receptor 10H5 '}
+        GPCR_METADATA['OR10J1'] = {'acc': 'P30954', 'cn': ' Olfactory receptor 10J1 '}
+        GPCR_METADATA['OR10J3'] = {'acc': 'Q5JRS4', 'cn': ' Olfactory receptor 10J3 '}
+        GPCR_METADATA['OR10J4'] = {'acc': 'P0C629', 'cn': ' Olfactory receptor 10J4 '}
+        GPCR_METADATA['OR10J5'] = {'acc': 'Q8NHC4', 'cn': ' Olfactory receptor 10J5 '}
+        GPCR_METADATA['OR10K1'] = {'acc': 'Q8NGX5', 'cn': ' Olfactory receptor 10K1 '}
+        GPCR_METADATA['OR10K2'] = {'acc': 'Q6IF99', 'cn': ' Olfactory receptor 10K2 '}
+        GPCR_METADATA['OR10P1'] = {'acc': 'Q8NGE3', 'cn': ' Olfactory receptor 10P1 '}
+        GPCR_METADATA['OR10Q1'] = {'acc': 'Q8NGQ4', 'cn': ' Olfactory receptor 10Q1 '}
+        GPCR_METADATA['OR10R2'] = {'acc': 'Q8NGX6', 'cn': ' Olfactory receptor 10R2 '}
+        GPCR_METADATA['OR10S1'] = {'acc': 'Q8NGN2', 'cn': ' Olfactory receptor 10S1 '}
+        GPCR_METADATA['OR10T2'] = {'acc': 'Q8NGX3', 'cn': ' Olfactory receptor 10T2 '}
+        GPCR_METADATA['OR10V1'] = {'acc': 'Q8NGI7', 'cn': ' Olfactory receptor 10V1 '}
+        GPCR_METADATA['OR10W1'] = {'acc': 'Q8NGF6', 'cn': ' Olfactory receptor 10W1 '}
+        GPCR_METADATA['OR10X1'] = {'acc': 'Q8NGY0', 'cn': ' Olfactory receptor 10X1 '}
+        GPCR_METADATA['OR10Z1'] = {'acc': 'Q8NGY1', 'cn': ' Olfactory receptor 10Z1 '}
+        GPCR_METADATA['OR11A1'] = {'acc': 'Q9GZK7', 'cn': ' Olfactory receptor 11A1 '}
+        GPCR_METADATA['OR11G2'] = {'acc': 'Q8NGC1', 'cn': ' Olfactory receptor 11G2 '}
+        GPCR_METADATA['OR11H1'] = {'acc': 'Q8NG94', 'cn': ' Olfactory receptor 11H1 '}
+        GPCR_METADATA['OR11H12'] = {'acc': 'B2RN74', 'cn': ' Olfactory receptor 11H12 '}
+        GPCR_METADATA['OR11H2'] = {'acc': 'Q8NH07', 'cn': ' Olfactory receptor 11H2 '}
+        GPCR_METADATA['OR11H4'] = {'acc': 'Q8NGC9', 'cn': ' Olfactory receptor 11H4 '}
+        GPCR_METADATA['OR11H6'] = {'acc': 'Q8NGC7', 'cn': ' Olfactory receptor 11H6 '}
+        GPCR_METADATA['OR11H7'] = {'acc': 'Q8NGC8', 'cn': ' Olfactory receptor 11H7 '}
+        GPCR_METADATA['OR11L1'] = {'acc': 'Q8NGX0', 'cn': ' Olfactory receptor 11L1 '}
+        GPCR_METADATA['OR12D1'] = {'acc': 'P0DN82', 'cn': ' Olfactory receptor 12D1 '}
+        GPCR_METADATA['OR12D2'] = {'acc': 'P58182', 'cn': ' Olfactory receptor 12D2 '}
+        GPCR_METADATA['OR12D3'] = {'acc': 'Q9UGF7', 'cn': ' Olfactory receptor 12D3 '}
+        GPCR_METADATA['OR13A1'] = {'acc': 'Q8NGR1', 'cn': ' Olfactory receptor 13A1 '}
+        GPCR_METADATA['OR13C2'] = {'acc': 'Q8NGS9', 'cn': ' Olfactory receptor 13C2 '}
+        GPCR_METADATA['OR13C3'] = {'acc': 'Q8NGS6', 'cn': ' Olfactory receptor 13C3 '}
+        GPCR_METADATA['OR13C4'] = {'acc': 'Q8NGS5', 'cn': ' Olfactory receptor 13C4 '}
+        GPCR_METADATA['OR13C5'] = {'acc': 'Q8NGS8', 'cn': ' Olfactory receptor 13C5 '}
+        GPCR_METADATA['OR13C7'] = {'acc': 'P0DN81', 'cn': ' Olfactory receptor 13C7 '}
+        GPCR_METADATA['OR13C8'] = {'acc': 'Q8NGS7', 'cn': ' Olfactory receptor 13C8 '}
+        GPCR_METADATA['OR13C9'] = {'acc': 'Q8NGT0', 'cn': ' Olfactory receptor 13C9 '}
+        GPCR_METADATA['OR13D1'] = {'acc': 'Q8NGV5', 'cn': ' Olfactory receptor 13D1 '}
+        GPCR_METADATA['OR13F1'] = {'acc': 'Q8NGS4', 'cn': ' Olfactory receptor 13F1 '}
+        GPCR_METADATA['OR13G1'] = {'acc': 'Q8NGZ3', 'cn': ' Olfactory receptor 13G1 '}
+        GPCR_METADATA['OR13H1'] = {'acc': 'Q8NG92', 'cn': ' Olfactory receptor 13H1 '}
+        GPCR_METADATA['OR13J1'] = {'acc': 'Q8NGT2', 'cn': ' Olfactory receptor 13J1 '}
+        GPCR_METADATA['OR14A16'] = {'acc': 'Q8NHC5', 'cn': ' Olfactory receptor 14A16 '}
+        GPCR_METADATA['OR14A2'] = {'acc': 'Q96R54', 'cn': ' Olfactory receptor 14A2 '}
+        GPCR_METADATA['OR14C36'] = {'acc': 'Q8NHC7', 'cn': ' Olfactory receptor 14C36 '}
+        GPCR_METADATA['OR14I1'] = {'acc': 'A6ND48', 'cn': ' Olfactory receptor 14I1 '}
+        GPCR_METADATA['OR14J1'] = {'acc': 'Q9UGF5', 'cn': ' Olfactory receptor 14J1 '}
+        GPCR_METADATA['OR14K1'] = {'acc': 'Q8NGZ2', 'cn': ' Olfactory receptor 14K1 '}
+        GPCR_METADATA['OR14L1P'] = {'acc': 'Q8NHC6', 'cn': ' Olfactory receptor 14L1 '}
+        GPCR_METADATA['OR1A1'] = {'acc': 'Q9P1Q5', 'cn': ' Olfactory receptor 1A1 '}
+        GPCR_METADATA['OR1A2'] = {'acc': 'Q9Y585', 'cn': ' Olfactory receptor 1A2 '}
+        GPCR_METADATA['OR1B1'] = {'acc': 'Q8NGR6', 'cn': ' Olfactory receptor 1B1 '}
+        GPCR_METADATA['OR1C1'] = {'acc': 'Q15619', 'cn': ' Olfactory receptor 1C1 '}
+        GPCR_METADATA['OR1D2'] = {'acc': 'P34982', 'cn': ' Olfactory receptor 1D2 '}
+        GPCR_METADATA['OR1D4'] = {'acc': 'P47884', 'cn': ' Olfactory receptor 1D4 '}
+        GPCR_METADATA['OR1D5'] = {'acc': 'P58170', 'cn': ' Olfactory receptor 1D5 '}
+        GPCR_METADATA['OR1E1'] = {'acc': 'P30953', 'cn': ' Olfactory receptor 1E1 '}
+        GPCR_METADATA['OR1E2'] = {'acc': 'P47887', 'cn': ' Olfactory receptor 1E2 '}
+        GPCR_METADATA['OR1E3'] = {'acc': 'Q8WZA6', 'cn': ' Olfactory receptor 1E3 '}
+        GPCR_METADATA['OR1F1'] = {'acc': 'O43749', 'cn': ' Olfactory receptor 1F1 '}
+        GPCR_METADATA['OR1G1'] = {'acc': 'P47890', 'cn': ' Olfactory receptor 1G1 '}
+        GPCR_METADATA['OR1I1'] = {'acc': 'O60431', 'cn': ' Olfactory receptor 1I1 '}
+        GPCR_METADATA['OR1J1'] = {'acc': 'Q8NGS3', 'cn': ' Olfactory receptor 1J1 '}
+        GPCR_METADATA['OR1J2'] = {'acc': 'Q8NGS2', 'cn': ' Olfactory receptor 1J2 '}
+        GPCR_METADATA['OR1J4'] = {'acc': 'Q8NGS1', 'cn': ' Olfactory receptor 1J4 '}
+        GPCR_METADATA['OR1K1'] = {'acc': 'Q8NGR3', 'cn': ' Olfactory receptor 1K1 '}
+        GPCR_METADATA['OR1L1'] = {'acc': 'Q8NH94', 'cn': ' Olfactory receptor 1L1 '}
+        GPCR_METADATA['OR1L3'] = {'acc': 'Q8NH93', 'cn': ' Olfactory receptor 1L3 '}
+        GPCR_METADATA['OR1L4'] = {'acc': 'Q8NGR5', 'cn': ' Olfactory receptor 1L4 '}
+        GPCR_METADATA['OR1L6'] = {'acc': 'Q8NGR2', 'cn': ' Olfactory receptor 1L6 '}
+        GPCR_METADATA['OR1L8'] = {'acc': 'Q8NGR8', 'cn': ' Olfactory receptor 1L8 '}
+        GPCR_METADATA['OR1M1'] = {'acc': 'Q8NGA1', 'cn': ' Olfactory receptor 1M1 '}
+        GPCR_METADATA['OR1N1'] = {'acc': 'Q8NGS0', 'cn': ' Olfactory receptor 1N1 '}
+        GPCR_METADATA['OR1N2'] = {'acc': 'Q8NGR9', 'cn': ' Olfactory receptor 1N2 '}
+        GPCR_METADATA['OR1P1'] = {'acc': 'Q8NH06', 'cn': ' Olfactory receptor 1P1 '}
+        GPCR_METADATA['OR1Q1'] = {'acc': 'Q15612', 'cn': ' Olfactory receptor 1Q1 '}
+        GPCR_METADATA['OR1S1'] = {'acc': 'Q8NH92', 'cn': ' Olfactory receptor 1S1 '}
+        GPCR_METADATA['OR1S2'] = {'acc': 'Q8NGQ3', 'cn': ' Olfactory receptor 1S2 '}
+        GPCR_METADATA['OR2A12'] = {'acc': 'Q8NGT7', 'cn': ' Olfactory receptor 2A12 '}
+        GPCR_METADATA['OR2A14'] = {'acc': 'Q96R47', 'cn': ' Olfactory receptor 2A14 '}
+        GPCR_METADATA['OR2A2'] = {'acc': 'Q6IF42', 'cn': ' Olfactory receptor 2A2 '}
+        GPCR_METADATA['OR2A25'] = {'acc': 'A4D2G3', 'cn': ' Olfactory receptor 2A25 '}
+        GPCR_METADATA['OR2A4'] = {'acc': 'O95047', 'cn': ' Olfactory receptor 2A4 '}
+        GPCR_METADATA['OR2A42'] = {'acc': 'Q8NGT9', 'cn': ' Olfactory receptor 2A1/2A42 '}
+        GPCR_METADATA['OR2A5'] = {'acc': 'Q96R48', 'cn': ' Olfactory receptor 2A5 '}
+        GPCR_METADATA['OR2A7'] = {'acc': 'Q96R45', 'cn': ' Olfactory receptor 2A7 '}
+        GPCR_METADATA['OR2AE1'] = {'acc': 'Q8NHA4', 'cn': ' Olfactory receptor 2AE1 '}
+        GPCR_METADATA['OR2AG1'] = {'acc': 'Q9H205', 'cn': ' Olfactory receptor 2AG1 '}
+        GPCR_METADATA['OR2AG2'] = {'acc': 'A6NM03', 'cn': ' Olfactory receptor 2AG2 '}
+        GPCR_METADATA['OR2AJ1'] = {'acc': 'Q8NGZ0', 'cn': ' Olfactory receptor 2AJ1 '}
+        GPCR_METADATA['OR2AK2'] = {'acc': 'Q8NG84', 'cn': ' Olfactory receptor 2AK2 '}
+        GPCR_METADATA['OR2AP1'] = {'acc': 'Q8NGE2', 'cn': ' Olfactory receptor 2AP1 '}
+        GPCR_METADATA['OR2AT4'] = {'acc': 'A6NND4', 'cn': ' Olfactory receptor 2AT4 '}
+        GPCR_METADATA['OR2B11'] = {'acc': 'Q5JQS5', 'cn': ' Olfactory receptor 2B11 '}
+        GPCR_METADATA['OR2B2'] = {'acc': 'Q9GZK3', 'cn': ' Olfactory receptor 2B2 '}
+        GPCR_METADATA['OR2B3'] = {'acc': 'O76000', 'cn': ' Putative olfactory receptor 2B3 '}
+        GPCR_METADATA['OR2B6'] = {'acc': 'P58173', 'cn': ' Olfactory receptor 2B6 '}
+        GPCR_METADATA['OR2C1'] = {'acc': 'O95371', 'cn': ' Olfactory receptor 2C1 '}
+        GPCR_METADATA['OR2C3'] = {'acc': 'Q8N628', 'cn': ' Olfactory receptor 2C3 '}
+        GPCR_METADATA['OR2D2'] = {'acc': 'Q9H210', 'cn': ' Olfactory receptor 2D2 '}
+        GPCR_METADATA['OR2D3'] = {'acc': 'Q8NGH3', 'cn': ' Olfactory receptor 2D3 '}
+        GPCR_METADATA['OR2F1'] = {'acc': 'Q13607', 'cn': ' Olfactory receptor 2F1 '}
+        GPCR_METADATA['OR2F2'] = {'acc': 'O95006', 'cn': ' Olfactory receptor 2F2 '}
+        GPCR_METADATA['OR2G2'] = {'acc': 'Q8NGZ5', 'cn': ' Olfactory receptor 2G2 '}
+        GPCR_METADATA['OR2G3'] = {'acc': 'Q8NGZ4', 'cn': ' Olfactory receptor 2G3 '}
+        GPCR_METADATA['OR2G6'] = {'acc': 'Q5TZ20', 'cn': ' Olfactory receptor 2G6 '}
+        GPCR_METADATA['OR2H1'] = {'acc': 'Q9GZK4', 'cn': ' Olfactory receptor 2H1 '}
+        GPCR_METADATA['OR2H2'] = {'acc': 'O95918', 'cn': ' Olfactory receptor 2H2 '}
+        GPCR_METADATA['OR2J1'] = {'acc': 'Q9GZK6', 'cn': ' Olfactory receptor 2J1 '}
+        GPCR_METADATA['OR2J2'] = {'acc': 'O76002', 'cn': ' Olfactory receptor 2J2 '}
+        GPCR_METADATA['OR2J3'] = {'acc': 'O76001', 'cn': ' Olfactory receptor 2J3 '}
+        GPCR_METADATA['OR2K2'] = {'acc': 'Q8NGT1', 'cn': ' Olfactory receptor 2K2 '}
+        GPCR_METADATA['OR2L13'] = {'acc': 'Q8N349', 'cn': ' Olfactory receptor 2L13 '}
+        GPCR_METADATA['OR2L2'] = {'acc': 'Q8NH16', 'cn': ' Olfactory receptor 2L2 '}
+        GPCR_METADATA['OR2L3'] = {'acc': 'Q8NG85', 'cn': ' Olfactory receptor 2L3 '}
+        GPCR_METADATA['OR2L5'] = {'acc': 'Q8NG80', 'cn': ' Olfactory receptor 2L5 '}
+        GPCR_METADATA['OR2L8'] = {'acc': 'Q8NGY9', 'cn': ' Olfactory receptor 2L8 '}
+        GPCR_METADATA['OR2M2'] = {'acc': 'Q96R28', 'cn': ' Olfactory receptor 2M2 '}
+        GPCR_METADATA['OR2M3'] = {'acc': 'Q8NG83', 'cn': ' Olfactory receptor 2M3 '}
+        GPCR_METADATA['OR2M4'] = {'acc': 'Q96R27', 'cn': ' Olfactory receptor 2M4 '}
+        GPCR_METADATA['OR2M5'] = {'acc': 'A3KFT3', 'cn': ' Olfactory receptor 2M5 '}
+        GPCR_METADATA['OR2M7'] = {'acc': 'Q8NG81', 'cn': ' Olfactory receptor 2M7 '}
+        GPCR_METADATA['OR2S2'] = {'acc': 'Q9NQN1', 'cn': ' Olfactory receptor 2S2 '}
+        GPCR_METADATA['OR2T1'] = {'acc': 'O43869', 'cn': ' Olfactory receptor 2T1 '}
+        GPCR_METADATA['OR2T10'] = {'acc': 'Q8NGZ9', 'cn': ' Olfactory receptor 2T10 '}
+        GPCR_METADATA['OR2T11'] = {'acc': 'Q8NH01', 'cn': ' Olfactory receptor 2T11 '}
+        GPCR_METADATA['OR2T12'] = {'acc': 'Q8NG77', 'cn': ' Olfactory receptor 2T12 '}
+        GPCR_METADATA['OR2T2'] = {'acc': 'Q6IF00', 'cn': ' Olfactory receptor 2T2 '}
+        GPCR_METADATA['OR2T27'] = {'acc': 'Q8NH04', 'cn': ' Olfactory receptor 2T27 '}
+        GPCR_METADATA['OR2T29'] = {'acc': 'Q8NH02', 'cn': ' Olfactory receptor 2T29 '}
+        GPCR_METADATA['OR2T3'] = {'acc': 'Q8NH03', 'cn': ' Olfactory receptor 2T3 '}
+        GPCR_METADATA['OR2T33'] = {'acc': 'Q8NG76', 'cn': ' Olfactory receptor 2T33 '}
+        GPCR_METADATA['OR2T34'] = {'acc': 'Q8NGX1', 'cn': ' Olfactory receptor 2T34 '}
+        GPCR_METADATA['OR2T35'] = {'acc': 'Q8NGX2', 'cn': ' Olfactory receptor 2T35 '}
+        GPCR_METADATA['OR2T4'] = {'acc': 'Q8NH00', 'cn': ' Olfactory receptor 2T4 '}
+        GPCR_METADATA['OR2T5'] = {'acc': 'Q6IEZ7', 'cn': ' Olfactory receptor 2T5 '}
+        GPCR_METADATA['OR2T6'] = {'acc': 'Q8NHC8', 'cn': ' Olfactory receptor 2T6 '}
+        GPCR_METADATA['OR2T7'] = {'acc': 'P0C7T2', 'cn': ' Olfactory receptor 2T7 '}
+        GPCR_METADATA['OR2T8'] = {'acc': 'A6NH00', 'cn': ' Olfactory receptor 2T8 '}
+        GPCR_METADATA['OR2V1'] = {'acc': 'Q8NHB1', 'cn': ' Olfactory receptor 2V1 '}
+        GPCR_METADATA['OR2V2'] = {'acc': 'Q96R30', 'cn': ' Olfactory receptor 2V2 '}
+        GPCR_METADATA['OR2W1'] = {'acc': 'Q9Y3N9', 'cn': ' Olfactory receptor 2W1 '}
+        GPCR_METADATA['OR2W3'] = {'acc': 'Q7Z3T1', 'cn': ' Olfactory receptor 2W3 '}
+        GPCR_METADATA['OR2Y1'] = {'acc': 'Q8NGV0', 'cn': ' Olfactory receptor 2Y1 '}
+        GPCR_METADATA['OR2Z1'] = {'acc': 'Q8NG97', 'cn': ' Olfactory receptor 2Z1 '}
+        GPCR_METADATA['OR3A1'] = {'acc': 'P47881', 'cn': ' Olfactory receptor 3A1 '}
+        GPCR_METADATA['OR3A2'] = {'acc': 'P47893', 'cn': ' Olfactory receptor 3A2 '}
+        GPCR_METADATA['OR3A3'] = {'acc': 'P47888', 'cn': ' Olfactory receptor 3A3 '}
+        GPCR_METADATA['OR4A15'] = {'acc': 'Q8NGL6', 'cn': ' Olfactory receptor 4A15 '}
+        GPCR_METADATA['OR4A16'] = {'acc': 'Q8NH70', 'cn': ' Olfactory receptor 4A16 '}
+        GPCR_METADATA['OR4A47'] = {'acc': 'Q6IF82', 'cn': ' Olfactory receptor 4A47 '}
+        GPCR_METADATA['OR4A5'] = {'acc': 'Q8NH83', 'cn': ' Olfactory receptor 4A5 '}
+        GPCR_METADATA['OR4A8'] = {'acc': 'P0C604', 'cn': ' Olfactory receptor 4A8 '}
+        GPCR_METADATA['OR4B1'] = {'acc': 'Q8NGF8', 'cn': ' Olfactory receptor 4B1 '}
+        GPCR_METADATA['OR4C11'] = {'acc': 'Q6IEV9', 'cn': ' Olfactory receptor 4C11 '}
+        GPCR_METADATA['OR4C12'] = {'acc': 'Q96R67', 'cn': ' Olfactory receptor 4C12 '}
+        GPCR_METADATA['OR4C13'] = {'acc': 'Q8NGP0', 'cn': ' Olfactory receptor 4C13 '}
+        GPCR_METADATA['OR4C15'] = {'acc': 'Q8NGM1', 'cn': ' Olfactory receptor 4C15 '}
+        GPCR_METADATA['OR4C16'] = {'acc': 'Q8NGL9', 'cn': ' Olfactory receptor 4C16 '}
+        GPCR_METADATA['OR4C3'] = {'acc': 'Q8NH37', 'cn': ' Olfactory receptor 4C3 '}
+        GPCR_METADATA['OR4C45'] = {'acc': 'A6NMZ5', 'cn': ' Olfactory receptor 4C45 '}
+        GPCR_METADATA['OR4C46'] = {'acc': 'A6NHA9', 'cn': ' Olfactory receptor 4C46 '}
+        GPCR_METADATA['OR4C5'] = {'acc': 'Q8NGB2', 'cn': ' Olfactory receptor 4C5 '}
+        GPCR_METADATA['OR4C6'] = {'acc': 'Q8NH72', 'cn': ' Olfactory receptor 4C6 '}
+        GPCR_METADATA['OR4D1'] = {'acc': 'Q15615', 'cn': ' Olfactory receptor 4D1 '}
+        GPCR_METADATA['OR4D10'] = {'acc': 'Q8NGI6', 'cn': ' Olfactory receptor 4D10 '}
+        GPCR_METADATA['OR4D11'] = {'acc': 'Q8NGI4', 'cn': ' Olfactory receptor 4D11 '}
+        GPCR_METADATA['OR4D2'] = {'acc': 'P58180', 'cn': ' Olfactory receptor 4D2 '}
+        GPCR_METADATA['OR4D5'] = {'acc': 'Q8NGN0', 'cn': ' Olfactory receptor 4D5 '}
+        GPCR_METADATA['OR4D6'] = {'acc': 'Q8NGJ1', 'cn': ' Olfactory receptor 4D6 '}
+        GPCR_METADATA['OR4D9'] = {'acc': 'Q8NGE8', 'cn': ' Olfactory receptor 4D9 '}
+        GPCR_METADATA['OR4E1'] = {'acc': 'P0C645', 'cn': ' Olfactory receptor 4E1 '}
+        GPCR_METADATA['OR4E2'] = {'acc': 'Q8NGC2', 'cn': ' Olfactory receptor 4E2 '}
+        GPCR_METADATA['OR4F15'] = {'acc': 'Q8NGB8', 'cn': ' Olfactory receptor 4F15 '}
+        GPCR_METADATA['OR4F17'] = {'acc': 'Q8NGA8', 'cn': ' Olfactory receptor 4F17 '}
+        GPCR_METADATA['OR4F21'] = {'acc': 'O95013', 'cn': ' Olfactory receptor 4F21 '}
+        GPCR_METADATA['OR4F29'] = {'acc': 'Q6IEY1', 'cn': ' Olfactory receptor 4F3/4F16/4F29 '}
+        GPCR_METADATA['OR4F4'] = {'acc': 'Q96R69', 'cn': ' Olfactory receptor 4F4 '}
+        GPCR_METADATA['OR4F5'] = {'acc': 'Q8NH21', 'cn': ' Olfactory receptor 4F5 '}
+        GPCR_METADATA['OR4F6'] = {'acc': 'Q8NGB9', 'cn': ' Olfactory receptor 4F6 '}
+        GPCR_METADATA['OR4K1'] = {'acc': 'Q8NGD4', 'cn': ' Olfactory receptor 4K1 '}
+        GPCR_METADATA['OR4K13'] = {'acc': 'Q8NH42', 'cn': ' Olfactory receptor 4K13 '}
+        GPCR_METADATA['OR4K14'] = {'acc': 'Q8NGD5', 'cn': ' Olfactory receptor 4K14 '}
+        GPCR_METADATA['OR4K15'] = {'acc': 'Q8NH41', 'cn': ' Olfactory receptor 4K15 '}
+        GPCR_METADATA['OR4K17'] = {'acc': 'Q8NGC6', 'cn': ' Olfactory receptor 4K17 '}
+        GPCR_METADATA['OR4K2'] = {'acc': 'Q8NGD2', 'cn': ' Olfactory receptor 4K2 '}
+        GPCR_METADATA['OR4K3'] = {'acc': 'Q96R72', 'cn': ' Olfactory receptor 4K3 '}
+        GPCR_METADATA['OR4K5'] = {'acc': 'Q8NGD3', 'cn': ' Olfactory receptor 4K5 '}
+        GPCR_METADATA['OR4L1'] = {'acc': 'Q8NH43', 'cn': ' Olfactory receptor 4L1 '}
+        GPCR_METADATA['OR4M2'] = {'acc': 'Q8NGB6', 'cn': ' Olfactory receptor 4M2 '}
+        GPCR_METADATA['OR4M2B'] = {'acc': 'A0A0X1KG70', 'cn': ' Olfactory receptor 4M2B '}
+        GPCR_METADATA['OR4N2'] = {'acc': 'Q8NGD1', 'cn': ' Olfactory receptor 4N2 '}
+        GPCR_METADATA['OR4N4'] = {'acc': 'Q8N0Y3', 'cn': ' Olfactory receptor 4N4 '}
+        GPCR_METADATA['OR4N4C'] = {'acc': 'A0A096LPK9', 'cn': ' Olfactory receptor 4N4C '}
+        GPCR_METADATA['OR4N5'] = {'acc': 'Q8IXE1', 'cn': ' Olfactory receptor 4N5 '}
+        GPCR_METADATA['OR4P4'] = {'acc': 'Q8NGL7', 'cn': ' Olfactory receptor 4P4 '}
+        GPCR_METADATA['OR4Q2'] = {'acc': 'P0C623', 'cn': ' Olfactory receptor 4Q2 '}
+        GPCR_METADATA['OR4Q3'] = {'acc': 'Q8NH05', 'cn': ' Olfactory receptor 4Q3 '}
+        GPCR_METADATA['OR4S1'] = {'acc': 'Q8NGB4', 'cn': ' Olfactory receptor 4S1 '}
+        GPCR_METADATA['OR4S2'] = {'acc': 'Q8NH73', 'cn': ' Olfactory receptor 4S2 '}
+        GPCR_METADATA['OR4X1'] = {'acc': 'Q8NH49', 'cn': ' Olfactory receptor 4X1 '}
+        GPCR_METADATA['OR4X2'] = {'acc': 'Q8NGF9', 'cn': ' Olfactory receptor 4X2 '}
+        GPCR_METADATA['OR51A2'] = {'acc': 'Q8NGJ7', 'cn': ' Olfactory receptor 51A2 '}
+        GPCR_METADATA['OR51A4'] = {'acc': 'Q8NGJ6', 'cn': ' Olfactory receptor 51A4 '}
+        GPCR_METADATA['OR51A7'] = {'acc': 'Q8NH64', 'cn': ' Olfactory receptor 51A7 '}
+        GPCR_METADATA['OR51B2'] = {'acc': 'Q9Y5P1', 'cn': ' Olfactory receptor 51B2 '}
+        GPCR_METADATA['OR51B4'] = {'acc': 'Q9Y5P0', 'cn': ' Olfactory receptor 51B4 '}
+        GPCR_METADATA['OR51B5'] = {'acc': 'Q9H339', 'cn': ' Olfactory receptor 51B5 '}
+        GPCR_METADATA['OR51B6'] = {'acc': 'Q9H340', 'cn': ' Olfactory receptor 51B6 '}
+        GPCR_METADATA['OR51D1'] = {'acc': 'Q8NGF3', 'cn': ' Olfactory receptor 51D1 '}
+        GPCR_METADATA['OR51E1'] = {'acc': 'Q8TCB6', 'cn': ' Olfactory receptor 51E1 '}
+        GPCR_METADATA['OR51E2'] = {'acc': 'Q9H255', 'cn': ' Olfactory receptor 51E2 '}
+        GPCR_METADATA['OR51F1'] = {'acc': 'A6NGY5', 'cn': ' Olfactory receptor 51F1 '}
+        GPCR_METADATA['OR51F2'] = {'acc': 'Q8NH61', 'cn': ' Olfactory receptor 51F2 '}
+        GPCR_METADATA['OR51G1'] = {'acc': 'Q8NGK1', 'cn': ' Olfactory receptor 51G1 '}
+        GPCR_METADATA['OR51G2'] = {'acc': 'Q8NGK0', 'cn': ' Olfactory receptor 51G2 '}
+        GPCR_METADATA['OR51H1'] = {'acc': 'Q8NH63', 'cn': ' Olfactory receptor 51H1 '}
+        GPCR_METADATA['OR51I1'] = {'acc': 'Q9H343', 'cn': ' Olfactory receptor 51I1 '}
+        GPCR_METADATA['OR51I2'] = {'acc': 'Q9H344', 'cn': ' Olfactory receptor 51I2 '}
+        GPCR_METADATA['OR51J1'] = {'acc': 'Q9H342', 'cn': ' Olfactory receptor 51J1 '}
+        GPCR_METADATA['OR51L1'] = {'acc': 'Q8NGJ5', 'cn': ' Olfactory receptor 51L1 '}
+        GPCR_METADATA['OR51M1'] = {'acc': 'Q9H341', 'cn': ' Olfactory receptor 51M1 '}
+        GPCR_METADATA['OR51Q1'] = {'acc': 'Q8NH59', 'cn': ' Olfactory receptor 51Q1 '}
+        GPCR_METADATA['OR51S1'] = {'acc': 'Q8NGJ8', 'cn': ' Olfactory receptor 51S1 '}
+        GPCR_METADATA['OR51T1'] = {'acc': 'Q8NGJ9', 'cn': ' Olfactory receptor 51T1 '}
+        GPCR_METADATA['OR51V1'] = {'acc': 'Q9H2C8', 'cn': ' Olfactory receptor 51V1 '}
+        GPCR_METADATA['OR52A1'] = {'acc': 'Q9UKL2', 'cn': ' Olfactory receptor 52A1 '}
+        GPCR_METADATA['OR52A4P'] = {'acc': 'A6NMU1', 'cn': ' Olfactory receptor 52A4 '}
+        GPCR_METADATA['OR52A5'] = {'acc': 'Q9H2C5', 'cn': ' Olfactory receptor 52A5 '}
+        GPCR_METADATA['OR52B2'] = {'acc': 'Q96RD2', 'cn': ' Olfactory receptor 52B2 '}
+        GPCR_METADATA['OR52B4'] = {'acc': 'Q8NGK2', 'cn': ' Olfactory receptor 52B4 '}
+        GPCR_METADATA['OR52B6'] = {'acc': 'Q8NGF0', 'cn': ' Olfactory receptor 52B6 '}
+        GPCR_METADATA['OR52D1'] = {'acc': 'Q9H346', 'cn': ' Olfactory receptor 52D1 '}
+        GPCR_METADATA['OR52E1'] = {'acc': 'Q8NGJ3', 'cn': ' Olfactory receptor 52E1 '}
+        GPCR_METADATA['OR52E2'] = {'acc': 'Q8NGJ4', 'cn': ' Olfactory receptor 52E2 '}
+        GPCR_METADATA['OR52E4'] = {'acc': 'Q8NGH9', 'cn': ' Olfactory receptor 52E4 '}
+        GPCR_METADATA['OR52E5'] = {'acc': 'Q8NH55', 'cn': ' Olfactory receptor 52E5 '}
+        GPCR_METADATA['OR52E6'] = {'acc': 'Q96RD3', 'cn': ' Olfactory receptor 52E6 '}
+        GPCR_METADATA['OR52E8'] = {'acc': 'Q6IFG1', 'cn': ' Olfactory receptor 52E8 '}
+        GPCR_METADATA['OR52H1'] = {'acc': 'Q8NGJ2', 'cn': ' Olfactory receptor 52H1 '}
+        GPCR_METADATA['OR52I1'] = {'acc': 'Q8NGK6', 'cn': ' Olfactory receptor 52I1 '}
+        GPCR_METADATA['OR52I2'] = {'acc': 'Q8NH67', 'cn': ' Olfactory receptor 52I2 '}
+        GPCR_METADATA['OR52J3'] = {'acc': 'Q8NH60', 'cn': ' Olfactory receptor 52J3 '}
+        GPCR_METADATA['OR52K1'] = {'acc': 'Q8NGK4', 'cn': ' Olfactory receptor 52K1 '}
+        GPCR_METADATA['OR52K2'] = {'acc': 'Q8NGK3', 'cn': ' Olfactory receptor 52K2 '}
+        GPCR_METADATA['OR52L1'] = {'acc': 'Q8NGH7', 'cn': ' Olfactory receptor 52L1 '}
+        GPCR_METADATA['OR52M1'] = {'acc': 'Q8NGK5', 'cn': ' Olfactory receptor 52M1 '}
+        GPCR_METADATA['OR52N1'] = {'acc': 'Q8NH53', 'cn': ' Olfactory receptor 52N1 '}
+        GPCR_METADATA['OR52N2'] = {'acc': 'Q8NGI0', 'cn': ' Olfactory receptor 52N2 '}
+        GPCR_METADATA['OR52N4'] = {'acc': 'Q8NGI2', 'cn': ' Olfactory receptor 52N4 '}
+        GPCR_METADATA['OR52N5'] = {'acc': 'Q8NH56', 'cn': ' Olfactory receptor 52N5 '}
+        GPCR_METADATA['OR52P1'] = {'acc': 'Q8NH57', 'cn': ' Olfactory receptor 52P1 '}
+        GPCR_METADATA['OR52R1'] = {'acc': 'Q8NGF1', 'cn': ' Olfactory receptor 52R1 '}
+        GPCR_METADATA['OR52W1'] = {'acc': 'Q6IF63', 'cn': ' Olfactory receptor 52W1 '}
+        GPCR_METADATA['OR52Z1P'] = {'acc': 'P0C646', 'cn': ' Olfactory receptor 52Z1P '}
+        GPCR_METADATA['OR56A1'] = {'acc': 'Q8NGH5', 'cn': ' Olfactory receptor 56A1 '}
+        GPCR_METADATA['OR56A3'] = {'acc': 'Q8NH54', 'cn': ' Olfactory receptor 56A3 '}
+        GPCR_METADATA['OR56A4'] = {'acc': 'Q8NGH8', 'cn': ' Olfactory receptor 56A4 '}
+        GPCR_METADATA['OR56A5'] = {'acc': 'P0C7T3', 'cn': ' Olfactory receptor 56A5 '}
+        GPCR_METADATA['OR56B1'] = {'acc': 'Q8NGI3', 'cn': ' Olfactory receptor 56B1 '}
+        GPCR_METADATA['OR56B4'] = {'acc': 'Q8NH76', 'cn': ' Olfactory receptor 56B4 '}
+        GPCR_METADATA['OR5A1'] = {'acc': 'Q8NGJ0', 'cn': ' Olfactory receptor 5A1 '}
+        GPCR_METADATA['OR5A2'] = {'acc': 'Q8NGI9', 'cn': ' Olfactory receptor 5A2 '}
+        GPCR_METADATA['OR5AC1'] = {'acc': 'P0C628', 'cn': ' Olfactory receptor 5AC1 '}
+        GPCR_METADATA['OR5AC2'] = {'acc': 'Q9NZP5', 'cn': ' Olfactory receptor 5AC2 '}
+        GPCR_METADATA['OR5AK2'] = {'acc': 'Q8NH90', 'cn': ' Olfactory receptor 5AK2 '}
+        GPCR_METADATA['OR5AL1'] = {'acc': 'P0C617', 'cn': ' Olfactory receptor 5AL1 '}
+        GPCR_METADATA['OR5AN1'] = {'acc': 'Q8NGI8', 'cn': ' Olfactory receptor 5AN1 '}
+        GPCR_METADATA['OR5AP2'] = {'acc': 'Q8NGF4', 'cn': ' Olfactory receptor 5AP2 '}
+        GPCR_METADATA['OR5AR1'] = {'acc': 'Q8NGP9', 'cn': ' Olfactory receptor 5AR1 '}
+        GPCR_METADATA['OR5AS1'] = {'acc': 'Q8N127', 'cn': ' Olfactory receptor 5AS1 '}
+        GPCR_METADATA['OR5AU1'] = {'acc': 'Q8NGC0', 'cn': ' Olfactory receptor 5AU1 '}
+        GPCR_METADATA['OR5B12'] = {'acc': 'Q96R08', 'cn': ' Olfactory receptor 5B12 '}
+        GPCR_METADATA['OR5B17'] = {'acc': 'Q8NGF7', 'cn': ' Olfactory receptor 5B17 '}
+        GPCR_METADATA['OR5B2'] = {'acc': 'Q96R09', 'cn': ' Olfactory receptor 5B2 '}
+        GPCR_METADATA['OR5B21'] = {'acc': 'A6NL26', 'cn': ' Olfactory receptor 5B21 '}
+        GPCR_METADATA['OR5B3'] = {'acc': 'Q8NH48', 'cn': ' Olfactory receptor 5B3 '}
+        GPCR_METADATA['OR5C1'] = {'acc': 'Q8NGR4', 'cn': ' Olfactory receptor 5C1 '}
+        GPCR_METADATA['OR5D13'] = {'acc': 'Q8NGL4', 'cn': ' Olfactory receptor 5D13 '}
+        GPCR_METADATA['OR5D14'] = {'acc': 'Q8NGL3', 'cn': ' Olfactory receptor 5D14 '}
+        GPCR_METADATA['OR5D16'] = {'acc': 'Q8NGK9', 'cn': ' Olfactory receptor 5D16 '}
+        GPCR_METADATA['OR5D18'] = {'acc': 'Q8NGL1', 'cn': ' Olfactory receptor 5D18 '}
+        GPCR_METADATA['OR5F1'] = {'acc': 'O95221', 'cn': ' Olfactory receptor 5F1 '}
+        GPCR_METADATA['OR5G3'] = {'acc': 'P0C626', 'cn': ' Olfactory receptor 5G3 '}
+        GPCR_METADATA['OR5H1'] = {'acc': 'A6NKK0', 'cn': ' Olfactory receptor 5H1 '}
+        GPCR_METADATA['OR5H14'] = {'acc': 'A6NHG9', 'cn': ' Olfactory receptor 5H14 '}
+        GPCR_METADATA['OR5H15'] = {'acc': 'A6NDH6', 'cn': ' Olfactory receptor 5H15 '}
+        GPCR_METADATA['OR5H2'] = {'acc': 'Q8NGV7', 'cn': ' Olfactory receptor 5H2 '}
+        GPCR_METADATA['OR5H6'] = {'acc': 'Q8NGV6', 'cn': ' Olfactory receptor 5H6 '}
+        GPCR_METADATA['OR5H8'] = {'acc': 'P0DN80', 'cn': ' Olfactory receptor 5H8 '}
+        GPCR_METADATA['OR5I1'] = {'acc': 'Q13606', 'cn': ' Olfactory receptor 5I1 '}
+        GPCR_METADATA['OR5J2'] = {'acc': 'Q8NH18', 'cn': ' Olfactory receptor 5J2 '}
+        GPCR_METADATA['OR5K1'] = {'acc': 'Q8NHB7', 'cn': ' Olfactory receptor 5K1 '}
+        GPCR_METADATA['OR5K2'] = {'acc': 'Q8NHB8', 'cn': ' Olfactory receptor 5K2 '}
+        GPCR_METADATA['OR5K3'] = {'acc': 'A6NET4', 'cn': ' Olfactory receptor 5K3 '}
+        GPCR_METADATA['OR5K4'] = {'acc': 'A6NMS3', 'cn': ' Olfactory receptor 5K4 '}
+        GPCR_METADATA['OR5L1'] = {'acc': 'Q8NGL2', 'cn': ' Olfactory receptor 5L1 '}
+        GPCR_METADATA['OR5L2'] = {'acc': 'Q8NGL0', 'cn': ' Olfactory receptor 5L2 '}
+        GPCR_METADATA['OR5M1'] = {'acc': 'Q8NGP8', 'cn': ' Olfactory receptor 5M1 '}
+        GPCR_METADATA['OR5M10'] = {'acc': 'Q6IEU7', 'cn': ' Olfactory receptor 5M10 '}
+        GPCR_METADATA['OR5M11'] = {'acc': 'Q96RB7', 'cn': ' Olfactory receptor 5M11 '}
+        GPCR_METADATA['OR5M3'] = {'acc': 'Q8NGP4', 'cn': ' Olfactory receptor 5M3 '}
+        GPCR_METADATA['OR5M8'] = {'acc': 'Q8NGP6', 'cn': ' Olfactory receptor 5M8 '}
+        GPCR_METADATA['OR5M9'] = {'acc': 'Q8NGP3', 'cn': ' Olfactory receptor 5M9 '}
+        GPCR_METADATA['OR5P2'] = {'acc': 'Q8WZ92', 'cn': ' Olfactory receptor 5P2 '}
+        GPCR_METADATA['OR5P3'] = {'acc': 'Q8WZ94', 'cn': ' Olfactory receptor 5P3 '}
+        GPCR_METADATA['OR5T1'] = {'acc': 'Q8NG75', 'cn': ' Olfactory receptor 5T1 '}
+        GPCR_METADATA['OR5T2'] = {'acc': 'Q8NGG2', 'cn': ' Olfactory receptor 5T2 '}
+        GPCR_METADATA['OR5T3'] = {'acc': 'Q8NGG3', 'cn': ' Olfactory receptor 5T3 '}
+        GPCR_METADATA['OR5V1'] = {'acc': 'Q9UGF6', 'cn': ' Olfactory receptor 5V1 '}
+        GPCR_METADATA['OR5W2'] = {'acc': 'Q8NH69', 'cn': ' Olfactory receptor 5W2 '}
+        GPCR_METADATA['OR6A2'] = {'acc': 'O95222', 'cn': ' Olfactory receptor 6A2 '}
+        GPCR_METADATA['OR6B1'] = {'acc': 'O95007', 'cn': ' Olfactory receptor 6B1 '}
+        GPCR_METADATA['OR6B2'] = {'acc': 'Q6IFH4', 'cn': ' Olfactory receptor 6B2 '}
+        GPCR_METADATA['OR6B3'] = {'acc': 'Q8NGW1', 'cn': ' Olfactory receptor 6B3 '}
+        GPCR_METADATA['OR6C1'] = {'acc': 'Q96RD1', 'cn': ' Olfactory receptor 6C1 '}
+        GPCR_METADATA['OR6C2'] = {'acc': 'Q9NZP2', 'cn': ' Olfactory receptor 6C2 '}
+        GPCR_METADATA['OR6C3'] = {'acc': 'Q9NZP0', 'cn': ' Olfactory receptor 6C3 '}
+        GPCR_METADATA['OR6C4'] = {'acc': 'Q8NGE1', 'cn': ' Olfactory receptor 6C4 '}
+        GPCR_METADATA['OR6C6'] = {'acc': 'A6NF89', 'cn': ' Olfactory receptor 6C6 '}
+        GPCR_METADATA['OR6C65'] = {'acc': 'A6NJZ3', 'cn': ' Olfactory receptor 6C65 '}
+        GPCR_METADATA['OR6C68'] = {'acc': 'A6NDL8', 'cn': ' Olfactory receptor 6C68 '}
+        GPCR_METADATA['OR6C70'] = {'acc': 'A6NIJ9', 'cn': ' Olfactory receptor 6C70 '}
+        GPCR_METADATA['OR6C74'] = {'acc': 'A6NCV1', 'cn': ' Olfactory receptor 6C74 '}
+        GPCR_METADATA['OR6C75'] = {'acc': 'A6NL08', 'cn': ' Olfactory receptor 6C75 '}
+        GPCR_METADATA['OR6C76'] = {'acc': 'A6NM76', 'cn': ' Olfactory receptor 6C76 '}
+        GPCR_METADATA['OR6F1'] = {'acc': 'Q8NGZ6', 'cn': ' Olfactory receptor 6F1 '}
+        GPCR_METADATA['OR6J1'] = {'acc': 'Q8NGC5', 'cn': ' Olfactory receptor 6J1 '}
+        GPCR_METADATA['OR6K2'] = {'acc': 'Q8NGY2', 'cn': ' Olfactory receptor 6K2 '}
+        GPCR_METADATA['OR6K3'] = {'acc': 'Q8NGY3', 'cn': ' Olfactory receptor 6K3 '}
+        GPCR_METADATA['OR6K6'] = {'acc': 'Q8NGW6', 'cn': ' Olfactory receptor 6K6 '}
+        GPCR_METADATA['OR6M1'] = {'acc': 'Q8NGM8', 'cn': ' Olfactory receptor 6M1 '}
+        GPCR_METADATA['OR6N1'] = {'acc': 'Q8NGY5', 'cn': ' Olfactory receptor 6N1 '}
+        GPCR_METADATA['OR6N2'] = {'acc': 'Q8NGY6', 'cn': ' Olfactory receptor 6N2 '}
+        GPCR_METADATA['OR6P1'] = {'acc': 'Q8NGX9', 'cn': ' Olfactory receptor 6P1 '}
+        GPCR_METADATA['OR6Q1'] = {'acc': 'Q8NGQ2', 'cn': ' Olfactory receptor 6Q1 '}
+        GPCR_METADATA['OR6S1'] = {'acc': 'Q8NH40', 'cn': ' Olfactory receptor 6S1 '}
+        GPCR_METADATA['OR6T1'] = {'acc': 'Q8NGN1', 'cn': ' Olfactory receptor 6T1 '}
+        GPCR_METADATA['OR6V1'] = {'acc': 'Q8N148', 'cn': ' Olfactory receptor 6V1 '}
+        GPCR_METADATA['OR6X1'] = {'acc': 'Q8NH79', 'cn': ' Olfactory receptor 6X1 '}
+        GPCR_METADATA['OR6Y1'] = {'acc': 'Q8NGX8', 'cn': ' Olfactory receptor 6Y1 '}
+        GPCR_METADATA['OR7A10'] = {'acc': 'O76100', 'cn': ' Olfactory receptor 7A10 '}
+        GPCR_METADATA['OR7A17'] = {'acc': 'O14581', 'cn': ' Olfactory receptor 7A17 '}
+        GPCR_METADATA['OR7A5'] = {'acc': 'Q15622', 'cn': ' Olfactory receptor 7A5 '}
+        GPCR_METADATA['OR7C1'] = {'acc': 'O76099', 'cn': ' Olfactory receptor 7C1 '}
+        GPCR_METADATA['OR7C2'] = {'acc': 'O60412', 'cn': ' Olfactory receptor 7C2 '}
+        GPCR_METADATA['OR7D2'] = {'acc': 'Q96RA2', 'cn': ' Olfactory receptor 7D2 '}
+        GPCR_METADATA['OR7D4'] = {'acc': 'Q8NG98', 'cn': ' Olfactory receptor 7D4 '}
+        GPCR_METADATA['OR7E24'] = {'acc': 'Q6IFN5', 'cn': ' Olfactory receptor 7E24 '}
+        GPCR_METADATA['OR7G1'] = {'acc': 'Q8NGA0', 'cn': ' Olfactory receptor 7G1 '}
+        GPCR_METADATA['OR7G2'] = {'acc': 'Q8NG99', 'cn': ' Olfactory receptor 7G2 '}
+        GPCR_METADATA['OR7G3'] = {'acc': 'Q8NG95', 'cn': ' Olfactory receptor 7G3 '}
+        GPCR_METADATA['OR8A1'] = {'acc': 'Q8NGG7', 'cn': ' Olfactory receptor 8A1 '}
+        GPCR_METADATA['OR8B12'] = {'acc': 'Q8NGG6', 'cn': ' Olfactory receptor 8B12 '}
+        GPCR_METADATA['OR8B2'] = {'acc': 'Q96RD0', 'cn': ' Olfactory receptor 8B2 '}
+        GPCR_METADATA['OR8B3'] = {'acc': 'Q8NGG8', 'cn': ' Olfactory receptor 8B3 '}
+        GPCR_METADATA['OR8B4'] = {'acc': 'Q96RC9', 'cn': ' Olfactory receptor 8B4 '}
+        GPCR_METADATA['OR8B8'] = {'acc': 'Q15620', 'cn': ' Olfactory receptor 8B8 '}
+        GPCR_METADATA['OR8D1'] = {'acc': 'Q8WZ84', 'cn': ' Olfactory receptor 8D1 '}
+        GPCR_METADATA['OR8D2'] = {'acc': 'Q9GZM6', 'cn': ' Olfactory receptor 8D2 '}
+        GPCR_METADATA['OR8D4'] = {'acc': 'Q8NGM9', 'cn': ' Olfactory receptor 8D4 '}
+        GPCR_METADATA['OR8G1'] = {'acc': 'Q15617', 'cn': ' Olfactory receptor 8G1 '}
+        GPCR_METADATA['OR8G5'] = {'acc': 'Q8NG78', 'cn': ' Olfactory receptor 8G5 '}
+        GPCR_METADATA['OR8H1'] = {'acc': 'Q8NGG4', 'cn': ' Olfactory receptor 8H1 '}
+        GPCR_METADATA['OR8H2'] = {'acc': 'Q8N162', 'cn': ' Olfactory receptor 8H2 '}
+        GPCR_METADATA['OR8H3'] = {'acc': 'Q8N146', 'cn': ' Olfactory receptor 8H3 '}
+        GPCR_METADATA['OR8I2'] = {'acc': 'Q8N0Y5', 'cn': ' Olfactory receptor 8I2 '}
+        GPCR_METADATA['OR8J1'] = {'acc': 'Q8NGP2', 'cn': ' Olfactory receptor 8J1 '}
+        GPCR_METADATA['OR8J2'] = {'acc': 'Q8NGG1', 'cn': ' Olfactory receptor 8J2 '}
+        GPCR_METADATA['OR8J3'] = {'acc': 'Q8NGG0', 'cn': ' Olfactory receptor 8J3 '}
+        GPCR_METADATA['OR8K1'] = {'acc': 'Q8NGG5', 'cn': ' Olfactory receptor 8K1 '}
+        GPCR_METADATA['OR8K3'] = {'acc': 'Q8NH51', 'cn': ' Olfactory receptor 8K3 '}
+        GPCR_METADATA['OR8K5'] = {'acc': 'Q8NH50', 'cn': ' Olfactory receptor 8K5 '}
+        GPCR_METADATA['OR8S1'] = {'acc': 'Q8NH09', 'cn': ' Olfactory receptor 8S1 '}
+        GPCR_METADATA['OR8U1'] = {'acc': 'Q8NH10', 'cn': ' Olfactory receptor 8U1 '}
+        GPCR_METADATA['OR8U3'] = {'acc': 'Q8NH85', 'cn': ' Olfactory receptor 8U3 '}
+        GPCR_METADATA['OR8U8'] = {'acc': 'P0C7N1', 'cn': ' Olfactory receptor 8U8 '}
+        GPCR_METADATA['OR8U9'] = {'acc': 'P0C7N5', 'cn': ' Olfactory receptor 8U9 '}
+        GPCR_METADATA['OR9A1P'] = {'acc': 'Q8NGU1', 'cn': ' Olfactory receptor 9A1 '}
+        GPCR_METADATA['OR9A2'] = {'acc': 'Q8NGT5', 'cn': ' Olfactory receptor 9A2 '}
+        GPCR_METADATA['OR9A4'] = {'acc': 'Q8NGU2', 'cn': ' Olfactory receptor 9A4 '}
+        GPCR_METADATA['OR9G1'] = {'acc': 'Q8NH87', 'cn': ' Olfactory receptor 9G1 '}
+        GPCR_METADATA['OR9G4'] = {'acc': 'Q8NGQ1', 'cn': ' Olfactory receptor 9G4 '}
+        GPCR_METADATA['OR9G9'] = {'acc': 'P0C7N8', 'cn': ' Olfactory receptor 9G9 '}
+        GPCR_METADATA['OR9I1'] = {'acc': 'Q8NGQ6', 'cn': ' Olfactory receptor 9I1 '}
+        GPCR_METADATA['OR9K2'] = {'acc': 'Q8NGE7', 'cn': ' Olfactory receptor 9K2 '}
+        GPCR_METADATA['OR9Q1'] = {'acc': 'Q8NGQ5', 'cn': ' Olfactory receptor 9Q1 '}
+        GPCR_METADATA['OR9Q2'] = {'acc': 'Q8NGE9', 'cn': ' Olfactory receptor 9Q2 '}
+        GPCR_METADATA['OXER1'] = {'acc': 'Q8TDS5', 'cn': ' Oxoeicosanoid receptor 1 '}
+        GPCR_METADATA['P2RY8'] = {'acc': 'Q86VZ1', 'cn': ' S-geranylgeranyl-glutathione receptor P2RY8 '}
+        GPCR_METADATA['PROKR1'] = {'acc': 'Q8TCW9', 'cn': ' Prokineticin receptor 1 '}
+        GPCR_METADATA['PROKR2'] = {'acc': 'Q8NFJ6', 'cn': ' Prokineticin receptor 2 '}
+        GPCR_METADATA['PTGDR2'] = {'acc': 'Q9Y5Y4', 'cn': ' Prostaglandin D2 receptor 2 '}
+        GPCR_METADATA['QRFPR'] = {'acc': 'Q96P65', 'cn': ' Pyroglutamylated RF-amide peptide receptor '}
+        GPCR_METADATA['RHO'] = {'acc': 'P08100', 'cn': ' Rhodopsin '}
+        GPCR_METADATA['RXFP1'] = {'acc': 'Q9HBX9', 'cn': ' Relaxin receptor 1 '}
+        GPCR_METADATA['RXFP2'] = {'acc': 'Q8WXD0', 'cn': ' Relaxin receptor 2 '}
+        GPCR_METADATA['RXFP3'] = {'acc': 'Q9NSD7', 'cn': ' Relaxin-3 receptor 1 '}
+        GPCR_METADATA['RXFP4'] = {'acc': 'Q8TDU9', 'cn': ' Relaxin-3 receptor 2 '}
+        GPCR_METADATA['S1PR4'] = {'acc': 'O95977', 'cn': ' Sphingosine 1-phosphate receptor 4 '}
+        GPCR_METADATA['SCTR'] = {'acc': 'P47872', 'cn': ' Secretin receptor '}
+        GPCR_METADATA['SMO'] = {'acc': 'Q99835', 'cn': ' Protein smoothened '}
+        GPCR_METADATA['SUCNR1'] = {'acc': 'Q9BXA5', 'cn': ' Succinate receptor 1 '}
+        GPCR_METADATA['TAAR1'] = {'acc': 'Q96RJ0', 'cn': ' Trace amine-associated receptor 1 '}
+        GPCR_METADATA['TAAR2'] = {'acc': 'Q9P1P5', 'cn': ' Trace amine-associated receptor 2 '}
+        GPCR_METADATA['TAAR5'] = {'acc': 'O14804', 'cn': ' Trace amine-associated receptor 5 '}
+        GPCR_METADATA['TAAR6'] = {'acc': 'Q96RI8', 'cn': ' Trace amine-associated receptor 6 '}
+        GPCR_METADATA['TAAR8'] = {'acc': 'Q969N4', 'cn': ' Trace amine-associated receptor 8 '}
+        GPCR_METADATA['TAAR9'] = {'acc': 'Q96RI9', 'cn': ' Trace amine-associated receptor 9 '}
+        GPCR_METADATA['TAS1R1'] = {'acc': 'Q7RTX1', 'cn': ' Taste receptor type 1 member 1 '}
+        GPCR_METADATA['TAS1R2'] = {'acc': 'Q8TE23', 'cn': ' Taste receptor type 1 member 2 '}
+        GPCR_METADATA['TAS1R3'] = {'acc': 'Q7RTX0', 'cn': ' Taste receptor type 1 member 3 '}
+        GPCR_METADATA['TAS2R1'] = {'acc': 'Q9NYW7', 'cn': ' Taste receptor type 2 member 1 '}
+        GPCR_METADATA['TAS2R10'] = {'acc': 'Q9NYW0', 'cn': ' Taste receptor type 2 member 10 '}
+        GPCR_METADATA['TAS2R13'] = {'acc': 'Q9NYV9', 'cn': ' Taste receptor type 2 member 13 '}
+        GPCR_METADATA['TAS2R14'] = {'acc': 'Q9NYV8', 'cn': ' Taste receptor type 2 member 14 '}
+        GPCR_METADATA['TAS2R16'] = {'acc': 'Q9NYV7', 'cn': ' Taste receptor type 2 member 16 '}
+        GPCR_METADATA['TAS2R19'] = {'acc': 'P59542', 'cn': ' Taste receptor type 2 member 19 '}
+        GPCR_METADATA['TAS2R20'] = {'acc': 'P59543', 'cn': ' Taste receptor type 2 member 20 '}
+        GPCR_METADATA['TAS2R3'] = {'acc': 'Q9NYW6', 'cn': ' Taste receptor type 2 member 3 '}
+        GPCR_METADATA['TAS2R30'] = {'acc': 'P59541', 'cn': ' Taste receptor type 2 member 30 '}
+        GPCR_METADATA['TAS2R31'] = {'acc': 'P59538', 'cn': ' Taste receptor type 2 member 31 '}
+        GPCR_METADATA['TAS2R38'] = {'acc': 'P59533', 'cn': ' Taste receptor type 2 member 38 '}
+        GPCR_METADATA['TAS2R39'] = {'acc': 'P59534', 'cn': ' Taste receptor type 2 member 39 '}
+        GPCR_METADATA['TAS2R4'] = {'acc': 'Q9NYW5', 'cn': ' Taste receptor type 2 member 4 '}
+        GPCR_METADATA['TAS2R40'] = {'acc': 'P59535', 'cn': ' Taste receptor type 2 member 40 '}
+        GPCR_METADATA['TAS2R41'] = {'acc': 'P59536', 'cn': ' Taste receptor type 2 member 41 '}
+        GPCR_METADATA['TAS2R42'] = {'acc': 'Q7RTR8', 'cn': ' Taste receptor type 2 member 42 '}
+        GPCR_METADATA['TAS2R43'] = {'acc': 'P59537', 'cn': ' Taste receptor type 2 member 43 '}
+        GPCR_METADATA['TAS2R45'] = {'acc': 'P59539', 'cn': ' Taste receptor type 2 member 45 '}
+        GPCR_METADATA['TAS2R46'] = {'acc': 'P59540', 'cn': ' Taste receptor type 2 member 46 '}
+        GPCR_METADATA['TAS2R5'] = {'acc': 'Q9NYW4', 'cn': ' Taste receptor type 2 member 5 '}
+        GPCR_METADATA['TAS2R50'] = {'acc': 'P59544', 'cn': ' Taste receptor type 2 member 50 '}
+        GPCR_METADATA['TAS2R60'] = {'acc': 'P59551', 'cn': ' Taste receptor type 2 member 60 '}
+        GPCR_METADATA['TAS2R7'] = {'acc': 'Q9NYW3', 'cn': ' Taste receptor type 2 member 7 '}
+        GPCR_METADATA['TAS2R8'] = {'acc': 'Q9NYW2', 'cn': ' Taste receptor type 2 member 8 '}
+        GPCR_METADATA['TAS2R9'] = {'acc': 'Q9NYW1', 'cn': ' Taste receptor type 2 member 9 '}
+        GPCR_METADATA['TPRA1'] = {'acc': 'Q86W33', 'cn': ' Transmembrane protein adipocyte-associated 1 '}
+        GPCR_METADATA['TRHR'] = {'acc': 'P34981', 'cn': ' Thyrotropin-releasing hormone receptor '}
+        GPCR_METADATA['TSHR'] = {'acc': 'P16473', 'cn': ' Thyrotropin receptor '}
+        GPCR_METADATA['VIPR1'] = {'acc': 'P32241', 'cn': ' Vasoactive intestinal polypeptide receptor 1 '}
+        GPCR_METADATA['VIPR2'] = {'acc': 'P41587', 'cn': ' Vasoactive intestinal polypeptide receptor 2 '}
+        GPCR_METADATA['XCR1'] = {'acc': 'P46094', 'cn': ' Chemokine XC receptor 1 '}
+
+        organized_data = {}
+
+        for family, members in GPCR_FAMILIES_COMPLEX.items():
+            present_members = []
+            for m in members:
+                common_name = ""
+                if m in GPCR_METADATA and 'cn' in GPCR_METADATA[m]:
+                    common_name = str(GPCR_METADATA[m]['cn']).strip()
 
                     short_name = PROTEIN_NAMES.get(m, "")
 
@@ -1640,7 +2472,6 @@ def get_structure(receptor_id):
         receptor_raw = parts[0]
         gprotein_raw = parts[1]
 
-
         r_match = mapped_genes[mapped_genes["to"] == receptor_raw]["from"]
         g_match = mapped_genes[mapped_genes["to"] == gprotein_raw]["from"]
 
@@ -1668,7 +2499,6 @@ def get_precog3d_api_data(
     try:
         receptor = receptor_id.split(" ")[0].strip()
         result = precog3d[precog3d["GPCR_name"] == receptor]
-        print(receptor)
 
         if not result.empty:
             return jsonify(result.iloc[0].to_dict())

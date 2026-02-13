@@ -128,7 +128,7 @@
 
     $(document).ready(function() {
         // Initialize phylogenetic data
-        fetch(`${apiBaseUrl}/receptors`)
+        fetch(`${apiBaseUrl}/receptors-complex`)
             .then(response => response.json())
             .then(data => {
                 const accordion = $('#accordionReceptors');
