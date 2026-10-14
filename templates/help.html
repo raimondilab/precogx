@@ -271,6 +271,30 @@
                   <li class="text-justify "><strong>VARIANT = WT</strong> values with PRECOGx-predicted probability > 0.5 are coupled and otherwise, not-coupled.</li>
                   <li class="text-justify "><strong>VARIANT = Variant/Mutation</strong> (eg: D294H - Aspartic acid at sequence position 294 mutated to Histidine) values with PRECOGx-predicted probability > 0.5 are coupled and otherwise not-coupled.</li>
                 </ul>
+                <h2 class="fw-bold mb-4" id="precog3D_help">precog3D</h2>
+                <p class="text-justify ">
+                    precog3D predicts GPCR-G protein coupling from AlphaFold 3 models of the receptor in complex with
+                    Gα, Gβ1 and Gγ1. It reports the predicted coupling to 13 Gα subunits and shows the corresponding 3D complexes.
+                </p>
+                <ul>
+                    <li class="text-justify "><strong>Search</strong>: type a receptor or family name (e.g. 5HT, Vasopressin, Adrenoceptors).</li>
+                    <li class="text-justify "><strong>Browse All</strong>: select a receptor from the list grouped by family.</li>
+                    <li class="text-justify "><strong>Coupling values</strong>: predicted coupling as % of the primary transducer activity. Values &gt; <strong>4</strong> (highlighted) are coupled.
+                        Results can be copied or exported as CSV/Excel.</li>
+                    <li class="text-justify "><strong>Structure</strong>: click a G-protein cell to load its predicted 3D complex, colored by B-factor.</li>
+                </ul>
+
+                <h2 class="fw-bold mb-4" id="shedding_help">Shedding assay data</h2>
+                <p class="text-justify ">
+                    This page shows the shedding assay data available for a receptor.
+                </p>
+                <ul>
+                    <li class="text-justify "><strong>Search</strong> or <strong>Browse All</strong>: select a receptor.</li>
+                    <li class="text-justify "><strong>Receptor card</strong>: gene, UniProt link and the primary and secondary transducers reported in
+                        <a href="https://www.guidetopharmacology.org/" target="_blank">GtoPdb/IUPHAR</a>, colored by G-protein family.</li>
+                    <li class="text-justify "><strong>Assay data</strong>: displayed below the card. If nothing is available for the receptor, the viewer stays empty.</li>
+                </ul>
+
                 <h2 class="fw-bold mb-4">Browser compatibility</h2>
                 <table class="table table-bordered table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table-responsive-xxl ">
                     <thead>
